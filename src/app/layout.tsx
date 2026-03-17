@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import ThemeProvider from "@/providers/ThemeProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const jost = localFont({
+  src: "../fonts/Jost-VariableFont_wght.woff2",
+  variable: "--font-jost",
+  display: "swap",
+  weight: "100 900",
+  style: "normal",
 });
 
-const geistMono = Geist_Mono({
+const playfairDisplay = localFont({
+  src: "../fonts/PlayfairDisplay-Bold.woff2",
+  variable: "--font-playfair-display",
+  weight: "700",
+  display: "swap",
+  style: "normal",
+});
+
+const geistMono = localFont({
+  src: "../fonts/GeistMono-VariableFont_wght.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
+  weight: "100 900",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jost.variable} ${playfairDisplay.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
