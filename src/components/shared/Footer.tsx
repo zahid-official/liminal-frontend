@@ -1,6 +1,8 @@
 import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
+import Logo from "./Logo";
 
+// Footer Component
 const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "https://www.facebook.com/zahid.official8" },
@@ -22,13 +24,13 @@ const Footer = () => {
           {/* Branding */}
           <div className="flex w-full flex-col items-center gap-4 pr-0 lg:col-span-2 lg:items-start lg:pr-12">
             <Link aria-label="Go to homepage" href="/">
-              Liminal
+              <Logo />
             </Link>
 
             <p className="text-base -mt-1.5">
               Transforming spaces into timeless elegance. We blend creativity,
-              functionality, and sustainability to craft interiors that inspire and
-              endure.
+              functionality, and sustainability to craft interiors that inspire
+              and endure.
             </p>
 
             {/* Social Links */}
@@ -37,10 +39,7 @@ const Footer = () => {
                 Follow us{" "}
                 <span className="inline-block h-px w-12 bg-foreground"></span>
               </h3>
-              <div
-                className="flex gap-4"
-                aria-label="Social media links"
-              >
+              <div className="flex gap-4" aria-label="Social media links">
                 {/* Social Icons */}
                 {socialLinks.map((item, i) => {
                   const Icon = item.icon;
@@ -88,7 +87,7 @@ const Footer = () => {
                 },
                 {
                   label: "House Building, Uttara, Dhaka",
-                  href: "/contact",
+                  href: "/",
                 },
               ],
             },
@@ -127,7 +126,7 @@ const Footer = () => {
           <p className="text-muted-foreground order-2 text-center lg:order-1 lg:text-left">
             <span>Copyright © {currentYear}</span>{" "}
             <Link className="hover:underline" href="/">
-              Liminal Intorior Design
+              Liminal Interior Design
             </Link>
             . All rights reserved.
           </p>
