@@ -130,3 +130,9 @@
     @apply bg-background text-foreground font-sans;
   }
 }
+
+@layer components {
+  .custom-container {
+    @apply max-w-7xl container mx-auto w-full px-4;
+  }
+}
