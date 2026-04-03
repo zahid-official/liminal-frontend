@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <section
       id="hero-banner"
-      className="relative min-h-[calc(100vh-72px)] flex items-center justify-center bg-[url('/assets/bg-banner.jpg')] bg-no-repeat bg-cover sm:bg-bottom bg-center"
+      className="relative min-h-screen flex items-center justify-center bg-[url('/assets/bg-banner.jpg')] bg-no-repeat bg-cover sm:bg-bottom bg-center"
     >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/65" />
