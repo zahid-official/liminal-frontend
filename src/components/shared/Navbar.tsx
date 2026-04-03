@@ -46,7 +46,7 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
           ? "bg-background/80 backdrop-blur-xl shadow-sm"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <nav className="custom-container py-6 flex items-center justify-between gap-2">
@@ -60,7 +60,7 @@ const Navbar = () => {
           <nav
             className={cn(
               "flex items-center gap-5.5 font-medium max-md:hidden transition-colors",
-              isScrolled ? "text-muted-foreground" : "text-white/70"
+              isScrolled ? "text-muted-foreground" : "text-white/70",
             )}
           >
             {navLinks?.map((item, idx) => (
@@ -69,7 +69,7 @@ const Navbar = () => {
                 href={item?.href}
                 className={cn(
                   "transition-colors duration-200",
-                  isScrolled ? "hover:text-primary" : "hover:text-white"
+                  isScrolled ? "hover:text-primary" : "hover:text-white",
                 )}
               >
                 {item?.label}
@@ -81,22 +81,20 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              !isScrolled && "bg-white/20"
+              !isScrolled && "bg-white/20",
             )}
           />
 
           {/* Dark Mode & Buttons */}
           <div className="flex items-center md:gap-3.5">
-            <div className="gap-2.5 flex items-center justify-center">
-              <ModeToggle />
-            </div>
+            <ModeToggle isScrolled={isScrolled} />
 
             <Link href={"/login"}>
               <Button
                 className={cn(
                   "max-md:hidden px-6 text-base transition-all duration-300",
                   !isScrolled &&
-                    "bg-white text-black hover:bg-white/90 border-white"
+                    "bg-white text-black hover:bg-white/90 border-white",
                 )}
               >
                 Login
@@ -108,7 +106,14 @@ const Navbar = () => {
           <nav className="relative md:hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className={cn(
+                    isScrolled &&
+                      "bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:text-primary-foreground dark:bg-input/30 dark:text-foreground dark:border-input dark:hover:bg-input/50 dark:hover:text-accent-foreground",
+                  )}
+                >
                   <Menu className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
