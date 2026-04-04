@@ -12,10 +12,10 @@ const About = () => {
     >
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image Collage */}
+          {/* Left Content */}
           <div className="relative w-full aspect-4/3 lg:aspect-[1.1/1] max-w-150 mx-auto lg:mx-0">
             {/* Top-left image */}
-            <div className="absolute top-0 left-0 w-[68%] h-[62%] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden z-0 shadow-lg">
+            <div className="hidden sm:block absolute top-0 left-0 w-[68%] h-[62%] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden z-0 shadow-lg">
               <Image
                 src="/assets/about-1.webp"
                 alt="Modern interior design"
@@ -25,7 +25,7 @@ const About = () => {
             </div>
 
             {/* Bottom-right image */}
-            <div className="absolute bottom-0 right-0 w-[60%] h-[72%] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden z-10 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+            <div className="absolute bottom-0 right-0 w-full h-full sm:w-[60%] sm:h-[72%] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden z-10 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
               <Image
                 src="/assets/about-2.webp"
                 alt="Minimalist living room"
@@ -35,8 +35,8 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right - Content */}
-          <div className="space-y-8">
+          {/* Right Content */}
+          <div className="space-y-8 text-center sm:text-left">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/60 dark:border-border mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-liminal-secondary"></span>
@@ -56,7 +56,7 @@ const About = () => {
             </h2>
 
             {/* Description */}
-            <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed max-w-xl">
+            <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed max-w-xl mx-auto sm:mx-0">
               We believe that every space has the power to inspire and that
               great design brings that inspiration to life. Our mission is to
               craft environments that stir creativity, evoke emotion and reflect
