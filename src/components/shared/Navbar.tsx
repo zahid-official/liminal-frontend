@@ -51,7 +51,7 @@ const Navbar = () => {
           : "bg-transparent",
       )}
     >
-      <nav className="custom-container py-6 flex items-center justify-between gap-2">
+      <div className="custom-container py-6 flex items-center justify-between gap-2">
         {/* Logo */}
         <Link href="/">
           <Logo isScrolled={isScrolled} />
@@ -87,7 +87,7 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              isScrolled ? "bg-black/20" : "bg-white/20",
+              isScrolled ? "bg-foreground/20" : "bg-white/20",
             )}
           />
 
@@ -134,11 +134,12 @@ const Navbar = () => {
                         "justify-center cursor-pointer",
                         isActive && "bg-primary/10 dark:bg-primary/20"
                       )}
+                      asChild
                     >
                       <Link 
                         href={item?.href} 
                         className={cn(
-                          "hover:text-primary w-full text-center transition-colors",
+                          "hover:text-primary w-full text-center transition-colors block",
                           isActive && "text-primary font-medium"
                         )}
                       >
@@ -150,15 +151,15 @@ const Navbar = () => {
 
                 <DropdownMenuSeparator className="mt-2.5" />
                 <div className="mt-2.5">
-                  <Link href={"/login"}>
-                    <Button className="w-full">Login</Button>
+                  <Link href={"/login"} className="w-full" tabIndex={0}>
+                    <Button className="w-full cursor-pointer">Login</Button>
                   </Link>
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };

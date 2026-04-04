@@ -6,6 +6,7 @@ const Banner = () => {
   return (
     <section
       id="hero-banner"
+      aria-labelledby="hero-heading"
       className="relative min-h-screen flex items-center justify-center bg-[url('/assets/bg-banner.jpg')] bg-no-repeat bg-cover sm:bg-bottom bg-center"
     >
       {/* Dark Overlay */}
@@ -20,7 +21,7 @@ const Banner = () => {
         </span>
 
         {/* Heading */}
-        <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white leading-[1.05] tracking-tight">
+        <h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white leading-[1.05] tracking-tight">
           The Art of Stunning
           <br />
           Interior Design
@@ -35,7 +36,7 @@ const Banner = () => {
         {/* CTA Button */}
         <Link
           href="/contact"
-          className="mt-4 size-24 md:size-28 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white text-sm md:text-lg font-semibold leading-tight text-center hover:bg-white/25 transition-colors duration-300"
+          className="mt-4 size-24 md:size-28 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white text-sm md:text-lg font-semibold leading-tight text-center hover:bg-white/25 hover:scale-105 hover:-translate-y-1 hover:shadow-lg transition-all duration-250"
         >
           Start
           <br />
