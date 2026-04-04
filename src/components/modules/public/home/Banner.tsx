@@ -12,7 +12,7 @@ const Banner = () => {
       <div className="absolute inset-0 bg-black/65" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-6">
+      <div className="relative py-12 z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-6">
         {/* Badge */}
         <span className="inline-flex items-center justify-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-white/80 border border-white/20 rounded-full px-5 py-2">
           <Star className="size-3 fill-amber-400 text-amber-400" />

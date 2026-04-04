@@ -31,14 +31,28 @@ export function ModeToggle({ isScrolled }: { isScrolled: boolean }) {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+      <DropdownMenuContent align="end" className="py-2">
+        {/* Light Mode*/}
+        <DropdownMenuItem
+          onClick={() => setTheme("light")}
+          className="justify-center cursor-pointer"
+        >
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+
+        {/* Dark Mode */}
+        <DropdownMenuItem
+          onClick={() => setTheme("dark")}
+          className="justify-center cursor-pointer"
+        >
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+
+        {/* System Mode */}
+        <DropdownMenuItem
+          onClick={() => setTheme("system")}
+          className="justify-center cursor-pointer"
+        >
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

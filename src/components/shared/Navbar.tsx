@@ -39,11 +39,11 @@ const Navbar = () => {
     { label: "About Us", href: "/about-us" },
     { label: "Contact", href: "/contact" },
   ];
-
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
+        "pr-(--removed-body-scroll-bar-size,0px)",
         isScrolled
           ? "bg-background/80 backdrop-blur-xl shadow-sm"
           : "bg-transparent",
@@ -81,7 +81,7 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              !isScrolled && "bg-white/20",
+              isScrolled ? "bg-black/20" : "bg-white/20",
             )}
           />
 
@@ -120,7 +120,10 @@ const Navbar = () => {
 
               <DropdownMenuContent className="w-52 -right-4.5 top-1 absolute border p-3 md:hidden">
                 {navLinks?.map((item, idx) => (
-                  <DropdownMenuItem key={idx} className="cursor-pointer">
+                  <DropdownMenuItem
+                    key={idx}
+                    className="justify-center cursor-pointer"
+                  >
                     <Link href={item?.href} className="hover:text-primary">
                       {item?.label}
                     </Link>
@@ -128,12 +131,11 @@ const Navbar = () => {
                 ))}
 
                 <DropdownMenuSeparator className="mt-2.5" />
-                {/* Buttons */}
-                <DropdownMenuItem asChild className="p-0">
+                <div className="mt-2.5">
                   <Link href={"/login"}>
-                    <Button className="w-full mt-1.5">Login</Button>
+                    <Button className="w-full">Login</Button>
                   </Link>
-                </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
