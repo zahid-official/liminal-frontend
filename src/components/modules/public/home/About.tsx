@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedButton } from "@/components/ui/animated-button";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 // About Component
 const About = () => {
@@ -20,6 +21,7 @@ const About = () => {
                 src="/assets/about-1.webp"
                 alt="Modern interior design"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 className="object-cover"
               />
             </div>
@@ -30,6 +32,7 @@ const About = () => {
                 src="/assets/about-2.webp"
                 alt="Minimalist living room"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 className="object-cover"
               />
             </div>
@@ -38,12 +41,7 @@ const About = () => {
           {/* Right Content */}
           <div className="space-y-8 text-center sm:text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/60 dark:border-border mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-liminal-secondary"></span>
-              <span className="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-foreground">
-                Since 2020
-              </span>
-            </div>
+            <SectionBadge text="Since 2020" className="mb-2" />
 
             {/* Heading */}
             <h2
@@ -69,7 +67,7 @@ const About = () => {
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold">Residential Design</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  From cozy home to luxurious villas, <br /> we create spaces
+                  From cozy homes to luxurious villas, <br /> we create spaces
                   that feel like home.
                 </p>
               </div>
