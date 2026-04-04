@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { ModeToggle } from "../ui/mode-toggler";
 import { Button } from "../ui/button";
@@ -19,6 +20,7 @@ import { cn } from "@/lib/utils";
 // Navbar Component
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Detect scroll position
   useEffect(() => {
@@ -45,7 +47,7 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
         "pr-(--removed-body-scroll-bar-size,0px)",
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-sm"
+          ? "bg-background/70 backdrop-blur-2xl shadow-sm"
           : "bg-transparent",
       )}
     >
@@ -60,21 +62,25 @@ const Navbar = () => {
           <nav
             className={cn(
               "flex items-center gap-5.5 font-medium max-md:hidden transition-colors",
-              isScrolled ? "text-muted-foreground" : "text-white/70",
+              isScrolled ? "text-foreground" : "text-white",
             )}
           >
-            {navLinks?.map((item, idx) => (
-              <Link
-                key={idx}
-                href={item?.href}
-                className={cn(
-                  "transition-colors duration-200",
-                  isScrolled ? "hover:text-primary" : "hover:text-white",
-                )}
-              >
-                {item?.label}
-              </Link>
-            ))}
+            {navLinks?.map((item, idx) => {
+              const isActive = pathname === item?.href;
+              return (
+                <Link
+                  key={idx}
+                  href={item?.href}
+                  className={cn(
+                    "font-medium relative pb-0.5",
+                    "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100",
+                    isActive && "after:scale-x-100",
+                  )}
+                >
+                  {item?.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <Separator
@@ -119,16 +125,28 @@ const Navbar = () => {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent className="w-52 -right-4.5 top-1 absolute border p-3 md:hidden">
-                {navLinks?.map((item, idx) => (
-                  <DropdownMenuItem
-                    key={idx}
-                    className="justify-center cursor-pointer"
-                  >
-                    <Link href={item?.href} className="hover:text-primary">
-                      {item?.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
+                {navLinks?.map((item, idx) => {
+                  const isActive = pathname === item?.href;
+                  return (
+                    <DropdownMenuItem
+                      key={idx}
+                      className={cn(
+                        "justify-center cursor-pointer",
+                        isActive && "bg-primary/10 dark:bg-primary/20"
+                      )}
+                    >
+                      <Link 
+                        href={item?.href} 
+                        className={cn(
+                          "hover:text-primary w-full text-center transition-colors",
+                          isActive && "text-primary font-medium"
+                        )}
+                      >
+                        {item?.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
 
                 <DropdownMenuSeparator className="mt-2.5" />
                 <div className="mt-2.5">

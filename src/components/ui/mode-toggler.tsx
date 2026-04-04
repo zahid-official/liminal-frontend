@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 
 export function ModeToggle({ isScrolled }: { isScrolled: boolean }) {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -35,7 +35,10 @@ export function ModeToggle({ isScrolled }: { isScrolled: boolean }) {
         {/* Light Mode*/}
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className="justify-center cursor-pointer"
+          className={cn(
+            "justify-center cursor-pointer transition-colors",
+            theme === "light" && "bg-primary/10 dark:bg-primary/20 text-primary font-medium"
+          )}
         >
           Light
         </DropdownMenuItem>
@@ -43,7 +46,10 @@ export function ModeToggle({ isScrolled }: { isScrolled: boolean }) {
         {/* Dark Mode */}
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className="justify-center cursor-pointer"
+          className={cn(
+            "justify-center cursor-pointer transition-colors",
+            theme === "dark" && "bg-primary/10 dark:bg-primary/20 text-primary font-medium"
+          )}
         >
           Dark
         </DropdownMenuItem>
@@ -51,7 +57,10 @@ export function ModeToggle({ isScrolled }: { isScrolled: boolean }) {
         {/* System Mode */}
         <DropdownMenuItem
           onClick={() => setTheme("system")}
-          className="justify-center cursor-pointer"
+          className={cn(
+            "justify-center cursor-pointer transition-colors",
+            theme === "system" && "bg-primary/10 dark:bg-primary/20 text-primary font-medium"
+          )}
         >
           System
         </DropdownMenuItem>
