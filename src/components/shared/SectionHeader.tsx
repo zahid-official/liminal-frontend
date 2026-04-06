@@ -24,7 +24,7 @@ const SectionHeader = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:flex-row mb-16 lg:mb-24 relative pt-6 lg:pt-12",
+        "flex flex-col lg:flex-row mb-16 lg:mb-24 lg:pt-12 relative text-center lg:text-left",
         className,
       )}
       {...props}
@@ -35,7 +35,7 @@ const SectionHeader = ({
       <div className="hidden lg:block absolute -top-8 -bottom-16 left-[30%] w-px bg-border/95 -z-10" />
 
       {/* Left: Badge */}
-      <div className="w-full lg:w-[30%] shrink-0 relative mb-6 lg:mb-0 lg:pr-8">
+      <div className="w-full lg:w-[30%] shrink-0 relative mb-6 lg:mb-0 lg:pr-8 flex justify-center lg:block">
         <SectionBadge text={badgeText} className="lg:bg-background" />
       </div>
 
@@ -48,7 +48,7 @@ const SectionHeader = ({
           {title}
         </h2>
         {description && (
-          <p className="max-w-2xl text-muted-foreground text-[15px] sm:text-base leading-relaxed mt-6">
+          <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[15px] sm:text-base leading-relaxed mt-6">
             {description}
           </p>
         )}

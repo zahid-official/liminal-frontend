@@ -39,7 +39,7 @@ const AboutSection = () => {
           </div>
 
           {/* Right Content */}
-          <div className="space-y-8 text-center sm:text-left">
+          <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
             <SectionBadge text="Since 2020" className="mb-5" />
 
@@ -54,7 +54,7 @@ const AboutSection = () => {
             </h2>
 
             {/* Description */}
-            <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed max-w-xl mx-auto sm:mx-0">
+            <p className="text-muted-foreground text-sm md:text-[15px] leading-relaxed max-w-xl mx-auto lg:mx-0">
               We believe that every space has the power to inspire and that
               great design brings that inspiration to life. Our mission is to
               craft environments that stir creativity, evoke emotion and reflect
