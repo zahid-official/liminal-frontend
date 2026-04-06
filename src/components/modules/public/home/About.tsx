@@ -41,12 +41,12 @@ const About = () => {
           {/* Right Content */}
           <div className="space-y-8 text-center sm:text-left">
             {/* Badge */}
-            <SectionBadge text="Since 2020" className="mb-2" />
+            <SectionBadge text="Since 2020" className="mb-5" />
 
             {/* Heading */}
             <h2
               id="about-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-heading leading-[1.05] tracking-tight font-bold"
+              className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-bold"
             >
               Architecture &{" "}
               <span className="text-liminal-secondary">Interiors</span> Our Dual
