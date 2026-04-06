@@ -1,12 +1,12 @@
-import About from "@/components/modules/public/home/About";
-import Banner from "@/components/modules/public/home/Banner";
+import AboutSection from "@/components/modules/public/home/AboutSection";
+import BannerSection from "@/components/modules/public/home/BannerSection";
 
 // HomePage Component
 const HomePage = () => {
   return (
     <div>
-      <Banner />
-      <About />
+      <BannerSection />
+      <AboutSection />
     </div>
   );
 };

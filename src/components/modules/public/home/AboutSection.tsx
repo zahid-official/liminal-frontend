@@ -3,8 +3,8 @@ import Link from "next/link";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import { SectionBadge } from "@/components/ui/section-badge";
 
-// About Component
-const About = () => {
+// AboutSection Component
+const AboutSection = () => {
   return (
     <section
       id="about"
@@ -93,4 +93,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;
