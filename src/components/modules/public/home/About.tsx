@@ -46,7 +46,7 @@ const About = () => {
             {/* Heading */}
             <h2
               id="about-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-heading leading-[1.05] tracking-tight font-bold"
+              className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-bold"
             >
               Architecture &{" "}
               <span className="text-liminal-secondary">Interiors</span> Our Dual

@@ -21,14 +21,14 @@ const Banner = () => {
         </span>
 
         {/* Heading */}
-        <h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white leading-[1.05] tracking-tight">
+        <h1 id="hero-heading" className="text-5xl md:text-7xl lg:text-[6rem] font-bold text-white leading-[1.05] tracking-tight">
           The Art of Stunning
           <br />
           Interior Design
         </h1>
 
         {/* Description */}
-        <p className="max-w-lg text-sm md:text-[15px] text-white/60 leading-relaxed">
+        <p className="max-w-lg text-sm md:text-[15px] text-white/75 leading-relaxed">
           Whether it&apos;s your home, office, or a commercial project, we are
           always dedicated to bringing your vision to life.
         </p>
