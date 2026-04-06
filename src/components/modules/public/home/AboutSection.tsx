@@ -1,7 +1,7 @@
+import AnimatedButton from "@/components/shared/AnimatedButton";
+import SectionBadge from "@/components/shared/SectionBadge";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatedButton } from "@/components/ui/animated-button";
-import { SectionBadge } from "@/components/ui/section-badge";
 
 // AboutSection Component
 const AboutSection = () => {
@@ -46,7 +46,7 @@ const AboutSection = () => {
             {/* Heading */}
             <h2
               id="about-heading"
-              className="text-4xl md:text-5xl leading-[1.05] tracking-tight font-bold"
+              className="text-4xl md:text-5xl leading-[1.05] tracking-tight"
             >
               Architecture &{" "}
               <span className="text-liminal-secondary">Interiors</span> Our Dual

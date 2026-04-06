@@ -5,7 +5,8 @@ export interface SectionBadgeProps extends React.HTMLAttributes<HTMLDivElement> 
   text: string;
 }
 
-export function SectionBadge({ text, className, ...props }: SectionBadgeProps) {
+// SectionBadge Component
+const SectionBadge = ({ text, className, ...props }: SectionBadgeProps) => {
   return (
     <div
       className={cn(
@@ -20,4 +21,6 @@ export function SectionBadge({ text, className, ...props }: SectionBadgeProps) {
       </span>
     </div>
   );
-}
+};
+
+export default SectionBadge;

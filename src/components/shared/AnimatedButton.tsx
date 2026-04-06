@@ -6,6 +6,7 @@ interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   children: React.ReactNode;
 }
 
+// AnimatedButton Component
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, children, ...props }, ref) => {
     return (
@@ -33,4 +34,4 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
 );
 AnimatedButton.displayName = "AnimatedButton";
 
-export { AnimatedButton };
+export default AnimatedButton;
