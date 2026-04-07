@@ -87,7 +87,7 @@ const ProjectSection = () => {
       </div>
 
       {/* Projects Carousel */}
-      <div className="w-full mt-6 md:mt-30 relative z-10 pb-12 cursor-grab active:cursor-grabbing px-4 sm:px-6 lg:px-8 2xl:px-12">
+      <div className="w-full lg:mt-30 relative z-10 pb-12 cursor-grab active:cursor-grabbing px-4 sm:px-6 lg:px-8 2xl:px-12">
         <Carousel
           opts={{
             align: "start",
@@ -104,7 +104,7 @@ const ProjectSection = () => {
               return (
                 <CarouselItem
                   key={project.id}
-                  className="pl-4 sm:pl-6 md:pl-8 basis-[85%] sm:basis-[60%] md:basis-[48%] lg:basis-[38%] xl:basis-[32%] 2xl:basis-[23%]"
+                  className="pl-4 sm:pl-6 md:pl-8 basis-[70%] sm:basis-[60%] md:basis-[48%] lg:basis-[38%] xl:basis-[32%] 2xl:basis-[23%]"
                 >
                   <div className="relative flex flex-col group h-full items-start">
                     {/* Image Container with alternating aspect ratios */}
