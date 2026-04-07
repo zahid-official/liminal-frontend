@@ -8,11 +8,11 @@
 /* Theme Variables */
 @theme inline {
   --color-liminal: var(--liminal);
+  --color-liminal-secondary: var(--liminal-secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-jost);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-playfair-display);
+  --font-heading: var(--font-satoshi);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -54,6 +54,7 @@
 /* Light Theme Variables */
 :root {
   --liminal: oklch(34.928% 0.05959 164.26);
+  --liminal-secondary: oklch(42.168% 0.06333 127.177);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -69,7 +70,7 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: oklch(70.576% 0.00008 271.152);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.809 0.105 251.813);
@@ -130,6 +131,10 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2 {
+    @apply font-heading;
   }
 }
 

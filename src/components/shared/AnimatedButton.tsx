@@ -1,0 +1,37 @@
+import * as React from "react";
+import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+
+// AnimatedButton Component
+const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          "relative overflow-hidden inline-flex items-center gap-4 border border-border/80 dark:border-border rounded-full pl-6 pr-1.5 py-1.5 group hover:border-liminal-secondary dark:hover:border-liminal-secondary transition-colors duration-500 w-fit cursor-pointer",
+          className,
+        )}
+        {...props}
+      >
+        {/* Pill-Stretching Background */}
+        <span className="absolute right-1.5 top-1.5 bottom-1.5 w-9 bg-liminal-secondary rounded-full transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-[calc(100%-12px)] z-0"></span>
+
+        <span className="relative z-10 text-sm font-bold text-foreground group-hover:text-white transition-colors duration-500">
+          {children}
+        </span>
+
+        <span className="relative z-10 size-9 flex shrink-0 items-center justify-center">
+          <ArrowUpRight className="size-4 text-white group-hover:rotate-45 transition-transform duration-400 transform-gpu" />
+        </span>
+      </button>
+    );
+  }
+);
+AnimatedButton.displayName = "AnimatedButton";
+
+export default AnimatedButton;

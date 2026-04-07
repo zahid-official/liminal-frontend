@@ -1,33 +1,23 @@
+import ThemeProvider from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
+import { Jost } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import ThemeProvider from "@/providers/ThemeProvider";
 
 // Jost Font
-const jost = localFont({
-  src: "../fonts/Jost-VariableFont_wght.woff2",
+const jost = Jost({
+  subsets: ["latin"],
   variable: "--font-jost",
   display: "swap",
-  weight: "100 900",
+  weight: ["400", "500", "600", "700"],
   style: "normal",
 });
 
-// Playfair Display Font
-const playfairDisplay = localFont({
-  src: "../fonts/PlayfairDisplay-Bold.woff2",
-  variable: "--font-playfair-display",
+const satoshi = localFont({
+  src: "../fonts/Satoshi-Black.otf",
+  variable: "--font-satoshi",
   weight: "700",
   display: "swap",
-  style: "normal",
-});
-
-// Geist Mono Font
-const geistMono = localFont({
-  src: "../fonts/GeistMono-VariableFont_wght.woff2",
-  variable: "--font-geist-mono",
-  display: "swap",
-  weight: "100 900",
-  style: "normal",
 });
 
 // Metadata for the application
@@ -44,9 +34,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${jost.variable} ${playfairDisplay.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${jost.variable} ${satoshi.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
