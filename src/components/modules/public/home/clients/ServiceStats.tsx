@@ -39,11 +39,14 @@ const ServiceStats = () => {
 
   return (
     <div ref={ref}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-16 md:mt-32">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-18 lg:mt-30">
         {stats.map((stat, index) => (
-          <div key={index} className="flex flex-col gap-5 relative group">
-            <div className="space-y-5">
-              <span className="text-5xl font-semibold tracking-tight text-foreground tabular-nums block min-h-[1em]">
+          <div
+            key={index}
+            className="flex flex-col lg:gap-4 gap-1.5 relative group text-center lg:text-left"
+          >
+            <div className="lg:space-y-4">
+              <span className="text-4xl lg:text-[40px] font-semibold text-foreground tabular-nums block min-h-[1em]">
                 {inView ? (
                   <CountUp
                     end={stat.number}
@@ -56,15 +59,15 @@ const ServiceStats = () => {
                   <span>0{stat.suffix}</span>
                 )}
               </span>
-              
-              <div className="h-px w-full bg-border/50" />
+
+              <div className="max-lg:hidden h-px w-full bg-border/50" />
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
+            <div className="space-y-1">
+              <h3 className="text-lg lg:text-xl font-semibold text-foreground tracking-tight">
                 {stat.title}
               </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
+              <p className="max-lg:text-sm text-muted-foreground leading-relaxed">
                 {stat.description}
               </p>
             </div>
