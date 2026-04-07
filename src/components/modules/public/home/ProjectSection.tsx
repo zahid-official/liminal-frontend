@@ -65,11 +65,11 @@ const ProjectSection = () => {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-project.png')] bg-cover bg-center bg-no-repeat dark:bg-background relative"
+      className="overflow-hidden bg-[url('/assets/bg-project.png')] bg-top bg-no-repeat dark:bg-background relative py-20 md:py-28 lg:py-32"
     >
       {/* Background Overlay (optional for ensuring text readability) */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-black/40 z-0 pointer-events-none" />
-
+      <div className="absolute inset-0 bg-white/30 dark:bg-black/40 z-0 pointer-events-none" />
+      
       {/* Header */}
       <div className="custom-container relative z-10">
         <SectionHeader
@@ -77,9 +77,15 @@ const ProjectSection = () => {
           headingId="projects-heading"
           title={
             <>
-              Creative <span className="text-liminal-secondary font-medium">Projects That</span>
+              Creative{" "}
+              <span className="text-liminal-secondary font-medium">
+                Projects That
+              </span>
               <br className="hidden sm:block" />{" "}
-              <span className="text-liminal-secondary font-medium">Define</span> Our Style
+              <span className="text-liminal-secondary font-medium">
+                Define
+              </span>{" "}
+              Our Style
             </>
           }
           description="Our portfolio showcases a diverse range of projects, from beautifully crafted residential spaces functional and stylish commercial interiors"
@@ -146,6 +152,27 @@ const ProjectSection = () => {
             })}
           </CarouselContent>
         </Carousel>
+      </div>
+
+      {/* Bottom Architectural Feature */}
+      <div className="relative w-full mt-6 md:mt-24 lg:mt-48 pb-8 pointer-events-none select-none z-10 flex justify-center items-center">
+        {/* Huge Background Typography */}
+        <div className="absolute left-1/2 bottom-1/2 -translate-x-1/2 z-0 whitespace-nowrap">
+          <span className="lg:text-[300px] sm:text-[25vw] text-[28vw] font-black tracking-[-0.07em] text-foreground/5 dark:text-foreground/3">
+            Interior
+          </span>
+        </div>
+        
+        {/* Floating Pavilion Render */}
+        <div className="relative w-full max-w-350 aspect-2.5/1 sm:aspect-3/1 md:aspect-4/1 lg:aspect-5.5/1 z-10">
+          <Image
+            src="/assets/project-1.png"
+            alt="Interior Architecture Concept"
+            fill
+            className="object-contain"
+            quality={100}
+          />
+        </div>
       </div>
     </section>
   );
