@@ -4,6 +4,7 @@ import BlogSection from "@/components/modules/public/home/BlogSection";
 import FaqSection from "@/components/modules/public/home/FaqSection";
 import NewsletterSection from "@/components/modules/public/home/NewsletterSection";
 import ProjectSection from "@/components/modules/public/home/ProjectSection";
+import QuoteSection from "@/components/modules/public/home/QuoteSection";
 import ServiceSection from "@/components/modules/public/home/ServiceSection";
 
 // HomePage Component
@@ -14,6 +15,7 @@ const HomePage = () => {
       <AboutSection />
       <ServiceSection />
       <ProjectSection />
+      <QuoteSection />
       <FaqSection />
       <BlogSection />
       <NewsletterSection />
