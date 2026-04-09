@@ -1,41 +1,61 @@
-import Link from "next/link";
-
 // QuoteSection Component
 const QuoteSection = () => {
   return (
-    <section
-      id="quote"
-      aria-labelledby="quote-heading"
-      className="relative min-h-[60vh] lg:min-h-screen flex items-center justify-center bg-[url('/assets/bg-quote.png')] bg-no-repeat bg-cover bg-center overflow-hidden bg-fixed"
-    >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70" />
+    <section className="relative w-full h-[60vh] sm:h-[70vh] md:h-[85vh] overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/assets/bg-quote.png')" }}
+      >
+        {/* Subtle Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 dark:bg-black/50" />
+      </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl mx-auto gap-6 md:gap-10 py-20">
-        {/* Badge */}
-        <span className="inline-flex items-center justify-center gap-2 text-[10px] md:text-xs font-semibold tracking-[0.2em] uppercase text-white/90 border border-white/20 rounded-full px-5 md:px-6 py-2">
-          <div className="size-1.5 md:size-2 rounded-full bg-liminal-secondary"></div>
-          Your Best Choice
-        </span>
+      {/* Content Container */}
+      <div className="custom-container relative z-10 h-full flex flex-col justify-end pb-16 md:pb-24">
+        {/* Quote Button - Absolute Center of Section */}
+        <div className="absolute inset-0 flex items-center justify-center -mt-24 pointer-events-none">
+          <div className="relative flex items-center justify-center pointer-events-auto group">
+            {/* Ripple Animation Rings */}
+            <span
+              className="absolute inset-7 rounded-full border-[1.5px] border-white/70 animate-ping pointer-events-none"
+              style={{ animationDuration: "3s" }}
+            />
+            <span
+              className="absolute inset-7 rounded-full border-[1.5px] border-white/60 animate-ping pointer-events-none"
+              style={{ animationDuration: "3s", animationDelay: "1.5s" }}
+            />
 
-        {/* Heading */}
-        <h2
-          id="quote-heading"
-          className="text-5xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
-        >
-          Let&apos;s Start Your <br className="max-lg:hidden" /> Dream Project
-        </h2>
+            <button
+              type="button"
+              aria-label="Get Quote"
+              className="relative z-10 size-28 md:size-36 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-105 shadow-xl"
+            >
+              <span className="text-white text-lg sm:text-xl md:text-2xl font-bold leading-tight text-center tracking-wide font-outfit">
+                Get
+              </span>
+              <span className="text-white text-lg sm:text-xl md:text-2xl font-bold leading-tight text-center tracking-wide font-outfit">
+                Quote
+              </span>
+            </button>
+          </div>
+        </div>
 
-        {/* CTA Button */}
-        <Link
-          href="/contact"
-          aria-label="Get a quote for your project"
-          className="mt-6 md:mt-8 size-32 rounded-full bg-white/20 backdrop-blur-md flex flex-col items-center justify-center text-white text-base md:text-xl font-semibold leading-tight text-center hover:bg-white/30 hover:scale-105 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-        >
-          <span className="block">Get</span>
-          <span className="block">Quote</span>
-        </Link>
+        {/* Text Content */}
+        <div className="flex flex-col relative z-20">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] font-bold text-white leading-[1.1] tracking-tight">
+            Unlock Your Dream
+          </h2>
+          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 lg:gap-16 mt-2 pb-2">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] font-bold text-white leading-[1.1] tracking-tight whitespace-nowrap">
+              Project Today!
+            </h2>
+            <p className="text-white/90 text-sm sm:text-base font-medium max-w-85 leading-relaxed md:pb-2 lg:pb-4">
+              We encourage clients to actively participate in discussions, share
+              their ideas, preferences, and feedback.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
