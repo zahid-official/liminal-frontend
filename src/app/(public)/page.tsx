@@ -8,6 +8,7 @@ import NewsletterSection from "@/components/modules/public/home/NewsletterSectio
 import ProjectSection from "@/components/modules/public/home/ProjectSection";
 import QuoteSection from "@/components/modules/public/home/QuoteSection";
 import ServiceSection from "@/components/modules/public/home/ServiceSection";
+import TestimonialSection from "@/components/modules/public/TestimonialSection";
 
 // HomePage Component
 const HomePage = () => {
@@ -19,6 +20,7 @@ const HomePage = () => {
       <FeaturedSection />
       <ServiceSection />
       <ProjectSection />
+      <TestimonialSection />
       <QuoteSection />
       <FaqSection />
       <BlogSection />
