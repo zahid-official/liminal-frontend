@@ -80,7 +80,7 @@ const FaqSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mt-12 lg:mt-16">
           {/* Left Column: Image & Text */}
           <div className="flex flex-col gap-8 lg:gap-10 lg:pr-8">
-            <div className="relative w-full aspect-4/3 rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden border border-border/40 shadow-sm bg-muted bg-[url('/assets/faq-img.webp')] bg-cover bg-center">
+            <div className="relative w-full aspect-4/3 rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden border border-border/40 shadow-sm bg-muted">
               <Image
                 src="/assets/faq-1.jpg"
                 fill
@@ -89,7 +89,7 @@ const FaqSection = () => {
                 alt="Interior design team discussing project"
               />
             </div>
-            
+
             <div className="lg:max-w-[85%]">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-heading leading-tight tracking-tight mb-4">
                 Still Looking For Answers Or Need A Fun Chat?
@@ -110,8 +110,8 @@ const FaqSection = () => {
               defaultValue="item-1"
             >
               {faqData.map((faq, index) => (
-                <AccordionItem 
-                  value={faq.id} 
+                <AccordionItem
+                  value={faq.id}
                   key={faq.id}
                   className={`hover:border-liminal-secondary data-[state=open]:border-liminal-secondary ${index === 0 ? "border-t" : ""}`}
                 >

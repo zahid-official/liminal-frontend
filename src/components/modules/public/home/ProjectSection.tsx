@@ -170,7 +170,7 @@ const ProjectSection = () => {
             alt="Interior Architecture Concept"
             fill
             className="object-contain"
-            quality={100}
+            quality={75}
           />
         </div>
       </div>
