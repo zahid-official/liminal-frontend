@@ -94,11 +94,12 @@ const FeaturedSection = () => {
           </div>
 
           {/* Right Content: Images List */}
-          <div className="flex flex-col gap-8 md:gap-12">
-            {projects.map((project) => (
+          <div className="flex flex-col gap-8 md:gap-16 pb-8 lg:pb-16">
+            {projects.map((project, index) => (
               <div
                 key={project.id}
-                className="group relative w-full aspect-4/3 md:aspect-16/10 lg:aspect-4/3 rounded-2xl md:rounded-[2rem] overflow-hidden"
+                className="group sticky w-full aspect-4/3 md:aspect-16/10 lg:aspect-4/3 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-lg border border-white/5"
+                style={{ top: `calc(130px + ${index * 80}px)` }}
               >
                 {/* Background Image */}
                 <Image
@@ -106,10 +107,10 @@ const FeaturedSection = () => {
                   alt={project.title.replace("\n", " ")}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform rounded-2xl md:rounded-[2rem] duration-700 group-hover:scale-105"
                 />
 
-                {/* Left Gradient Overlay - Crucial for text readability */}
+                {/* Image Gradient Overlay - Crucial for text readability */}
                 <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent pointer-events-none transition-opacity duration-500"></div>
 
                 {/* Content Overlay */}
@@ -119,9 +120,9 @@ const FeaturedSection = () => {
                     <div className="px-3.5 md:px-4 py-1.5 rounded-full border border-white/30 backdrop-blur-sm bg-black/20 text-white leading-none text-xs font-bold tracking-widest uppercase">
                       {project.category}
                     </div>
-                    
+
                     <div className="text-white/70 text-3xl md:text-4xl font-bold leading-none tracking-tight">
-                      {String(project.id).padStart(2, '0')}
+                      {String(project.id).padStart(2, "0")}
                     </div>
                   </div>
 
