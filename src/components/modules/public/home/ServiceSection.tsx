@@ -1,6 +1,5 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import ServiceContent from "./clients/ServiceContent";
-import ServiceStats from "./clients/ServiceStats";
 
 // Services Data
 const servicesData = [
@@ -75,9 +74,6 @@ const ServiceSection = () => {
 
         {/* Interactive Service Content */}
         <ServiceContent services={servicesData} />
-
-        {/* Company Stats */}
-        <ServiceStats />
       </div>
     </section>
   );
