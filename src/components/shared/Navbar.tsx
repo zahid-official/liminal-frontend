@@ -119,7 +119,7 @@ const Navbar = () => {
                   size="icon"
                   className={cn(
                     isScrolled &&
-                      "bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:text-primary-foreground dark:bg-input/30 dark:text-foreground dark:border-input dark:hover:bg-input/50 dark:hover:text-accent-foreground",
+                      "bg-liminal-secondary hover:bg-liminal-secondary/95 text-primary-foreground border-primary hover:text-primary-foreground border-none dark:bg-input/30 dark:text-foreground dark:border-input dark:hover:bg-input/50 dark:hover:text-accent-foreground",
                   )}
                 >
                   <Menu className="h-5 w-5" />
@@ -134,7 +134,8 @@ const Navbar = () => {
                       key={idx}
                       className={cn(
                         "justify-center cursor-pointer",
-                        isActive && "bg-primary/10 dark:bg-primary/20",
+                        isActive &&
+                          "bg-primary/10 dark:bg-primary/20",
                       )}
                       asChild
                     >
@@ -142,7 +143,7 @@ const Navbar = () => {
                         href={item?.href}
                         className={cn(
                           "hover:text-primary w-full text-center transition-colors block",
-                          isActive && "text-primary font-medium",
+                          isActive && "text-primary font-semibold",
                         )}
                       >
                         {item?.label}
@@ -154,7 +155,9 @@ const Navbar = () => {
                 <DropdownMenuSeparator className="mt-2.5" />
                 <div className="mt-2.5">
                   <Link href={"/login"} className="w-full" tabIndex={0}>
-                    <Button className="w-full cursor-pointer">Login</Button>
+                    <Button className="w-full cursor-pointer bg-liminal-secondary hover:bg-liminal-secondary/95">
+                      Login
+                    </Button>
                   </Link>
                 </div>
               </DropdownMenuContent>

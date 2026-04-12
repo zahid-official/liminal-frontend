@@ -51,7 +51,7 @@ const ExperienceSection = () => {
             {/* Heading */}
             <h2
               id="experience-heading"
-              className="text-4xl sm:text-5xl leading-[1.05] tracking-tight"
+              className="text-4xl sm:text-5xl leading-[1.1] tracking-tight"
             >
               Behind{" "}
               <span className="text-liminal-secondary font-medium">

@@ -1,4 +1,4 @@
-import SectionBadge from "@/components/shared/SectionBadge";
+import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
 import { ArrowUpRight } from "lucide-react";
 
 // NewsletterSection Component
@@ -7,7 +7,7 @@ const NewsletterSection = () => {
     <section
       id="newsletter"
       aria-labelledby="newsletter-heading"
-      className="relative overflow-hidden py-24 md:py-28 lg:py-32 bg-zinc-50 dark:bg-background"
+      className="relative overflow-hidden py-24 md:py-28 lg:py-32"
     >
       {/* Background Images */}
       <div className="absolute inset-0 z-0 opacity-100 dark:opacity-20 pointer-events-none flex justify-between">
@@ -35,30 +35,28 @@ const NewsletterSection = () => {
 
       {/* Content Container */}
       <div className="custom-container relative z-10 flex flex-col items-center text-center">
-        {/* Badge */}
-        <SectionBadge
-          text="SUBSCRIBE TO THE NEWSLETTER"
-          className="mb-6 lg:mb-8 bg-zinc-50/80 dark:bg-background/80 backdrop-blur-sm"
+        <CenteredSectionHeader
+          badgeText="SUBSCRIBE TO THE NEWSLETTER"
+          headingId="newsletter-heading"
+          className="mb-10 lg:mb-14"
+          badgeClassName="bg-zinc-50/80 dark:bg-background/80 backdrop-blur-sm"
+          title={
+            <>
+              <span>Join </span>
+              <span className="text-liminal-secondary">Our Newsletter</span>
+              <br className="hidden sm:block" />
+              <span className="text-liminal-secondary">Stay </span>
+              <span>Up To Date</span>
+            </>
+          }
+          description={
+            <>
+              Join our newsletter. Learn something new, gain access to exclusive
+              content, <br className="hidden md:block" /> and stay informed with the
+              latest updates in the industry.
+            </>
+          }
         />
-
-        {/* Heading */}
-        <h2
-          id="newsletter-heading"
-          className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] tracking-tight mb-6"
-        >
-          <span>Join </span>
-          <span className="text-liminal-secondary">Our Newsletter</span>
-          <br className="hidden sm:block" />
-          <span className="text-liminal-secondary">Stay </span>
-          <span>Up To Date</span>
-        </h2>
-
-        {/* Subtitle */}
-        <p className="max-w-2xl mx-auto text-muted-foreground text-[15px] sm:text-base leading-relaxed mb-10 lg:mb-14">
-          Join our newsletter. Learn something new, gain access to exclusive
-          content, <br className="hidden md:block" /> and stay informed with the
-          latest updates in the industry.
-        </p>
 
         {/* Input Form */}
         <form className="w-full max-w-sm sm:max-w-md xl:max-w-lg relative flex items-center border-b border-foreground/30 dark:border-border pb-3 group transition-colors focus-within:border-foreground/60">

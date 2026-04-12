@@ -55,7 +55,7 @@ const BlogSection = () => {
     <section
       id="blog"
       aria-labelledby="blog-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50/50 dark:bg-background overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 dark:bg-background overflow-hidden relative"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
@@ -84,7 +84,7 @@ const BlogSection = () => {
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                 alt={featuredPost.title}
               />
-              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full bg-[#cd9b5a]/90 backdrop-blur-md text-white text-[11px] font-bold tracking-widest uppercase">
+              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[11px] font-bold tracking-widest uppercase">
                 {featuredPost.tag}
               </div>
             </div>
@@ -100,7 +100,7 @@ const BlogSection = () => {
               </span>
             </div>
 
-            <h3 className="line-clamp-2 text-[1.35rem] sm:text-[1.75rem] lg:text-3xl font-bold font-heading leading-[1.2] mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
+            <h3 className="line-clamp-2 text-[1.35rem] sm:text-[1.75rem] lg:text-3xl font-bold font-heading leading-[1.1] mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
               {featuredPost.title}
             </h3>
 
@@ -130,7 +130,7 @@ const BlogSection = () => {
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     alt={post.title}
                   />
-                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-[#cd9b5a]/90 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase">
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase">
                     {post.tag}
                   </div>
                 </div>

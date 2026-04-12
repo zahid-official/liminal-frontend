@@ -71,7 +71,7 @@ const ProjectSection = () => {
               />
 
               {/* Heading */}
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] tracking-tight">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight">
                 Creative{" "}
                 <span className="font-medium">Projects That Define</span> Our
                 Style

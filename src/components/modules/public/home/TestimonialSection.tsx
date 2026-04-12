@@ -164,7 +164,7 @@ const TestimonialSection = () => {
                       <h4 className="font-bold text-foreground text-base sm:text-[17px] tracking-tight transition-colors duration-500 group-hover:text-liminal-secondary">
                         {testimonial.name}
                       </h4>
-                      <p className="text-[13px] text-foreground/50 group-hover:text-foreground/70 font-medium leading-[1.2] mt-0.5 transition-colors duration-500">
+                      <p className="text-[13px] text-foreground/50 group-hover:text-foreground/70 font-medium leading-[1.1] mt-0.5 transition-colors duration-500">
                         {testimonial.role}
                       </p>
                     </div>

@@ -43,7 +43,7 @@ const SectionHeader = ({
       <div className="lg:pl-16 relative z-10 w-full xl:w-2/3">
         <h2
           id={headingId}
-          className="text-4xl sm:text-5xl leading-[1.05] tracking-tight"
+          className="text-4xl sm:text-5xl leading-[1.1] tracking-tight"
         >
           {title}
         </h2>
@@ -55,6 +55,6 @@ const SectionHeader = ({
       </div>
     </div>
   );
-}
+};
 
 export default SectionHeader;

@@ -23,7 +23,7 @@ const BannerSection = () => {
         {/* Heading */}
         <h1
           id="hero-heading"
-          className="text-5xl md:text-7xl lg:text-[6rem] font-bold text-white leading-[1.05] tracking-tight"
+          className="text-5xl md:text-7xl lg:text-[6rem] font-bold text-white leading-[1.1] tracking-tight"
         >
           The Art of Stunning
           <br />
