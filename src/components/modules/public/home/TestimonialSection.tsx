@@ -1,7 +1,4 @@
-import * as React from "react";
-import { Star } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
-import TestimonialRating from "./home/clients/TestimonialRating";
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +6,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Star } from "lucide-react";
+import TestimonialRating from "../clients/TestimonialRating";
 
 // Testimonial Data
 const testimonials = [

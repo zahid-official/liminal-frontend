@@ -1,6 +1,6 @@
-import Image from "next/image";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 import SectionBadge from "@/components/shared/SectionBadge";
+import Image from "next/image";
 
 // Project Data
 const projects = [

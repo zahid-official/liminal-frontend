@@ -2,6 +2,7 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import Link from "next/link";
 
+// Blog Data
 const blogData = [
   {
     id: 1,

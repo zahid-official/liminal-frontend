@@ -5,10 +5,9 @@ import ExperienceSection from "@/components/modules/public/home/ExperienceSectio
 import FaqSection from "@/components/modules/public/home/FaqSection";
 import FeaturedSection from "@/components/modules/public/home/FeaturedSection";
 import NewsletterSection from "@/components/modules/public/home/NewsletterSection";
-import ProjectSection from "@/components/modules/public/home/ProjectSection";
 import QuoteSection from "@/components/modules/public/home/QuoteSection";
 import ServiceSection from "@/components/modules/public/home/ServiceSection";
-import TestimonialSection from "@/components/modules/public/TestimonialSection";
+import TestimonialSection from "@/components/modules/public/home/TestimonialSection";
 
 // HomePage Component
 const HomePage = () => {
@@ -19,7 +18,6 @@ const HomePage = () => {
       <ExperienceSection />
       <FeaturedSection />
       <ServiceSection />
-      <ProjectSection />
       <TestimonialSection />
       <QuoteSection />
       <FaqSection />

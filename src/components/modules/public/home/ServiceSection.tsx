@@ -1,5 +1,5 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import ServiceContent from "./clients/ServiceContent";
+import ServiceContent from "../clients/ServiceContent";
 
 // Services Data
 const servicesData = [

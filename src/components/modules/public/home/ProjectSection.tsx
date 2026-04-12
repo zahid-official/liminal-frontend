@@ -1,11 +1,11 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // Projects Data
 const projectsData = [
@@ -69,7 +69,7 @@ const ProjectSection = () => {
     >
       {/* Background Overlay (optional for ensuring text readability) */}
       <div className="absolute inset-0 bg-white/30 dark:bg-black/40 z-0 pointer-events-none" />
-      
+
       {/* Header */}
       <div className="custom-container relative z-10">
         <SectionHeader
@@ -82,9 +82,7 @@ const ProjectSection = () => {
                 Projects That
               </span>
               <br className="hidden sm:block" />{" "}
-              <span className="text-liminal-secondary font-medium">
-                Define
-              </span>{" "}
+              <span className="text-liminal-secondary font-medium">Define</span>{" "}
               Our Style
             </>
           }
@@ -162,7 +160,7 @@ const ProjectSection = () => {
             Interior
           </span>
         </div>
-        
+
         {/* Floating Pavilion Render */}
         <div className="relative w-full max-w-350 aspect-2.5/1 sm:aspect-3/1 md:aspect-4/1 lg:aspect-5.5/1 z-10">
           <Image

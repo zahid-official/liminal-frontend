@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface ServiceItem {
   id: string;

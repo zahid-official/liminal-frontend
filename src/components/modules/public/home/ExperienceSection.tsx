@@ -1,6 +1,6 @@
 import SectionBadge from "@/components/shared/SectionBadge";
 import Image from "next/image";
-import ExperienceStats from "./clients/ExperienceStats";
+import ExperienceStats from "../clients/ExperienceStats";
 
 // Experience Statistics Data
 const statsData = [

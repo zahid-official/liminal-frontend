@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
 import SectionBadge from "@/components/shared/SectionBadge";
+import { ArrowUpRight } from "lucide-react";
 
 // NewsletterSection Component
 const NewsletterSection = () => {
@@ -56,7 +56,8 @@ const NewsletterSection = () => {
         {/* Subtitle */}
         <p className="max-w-2xl mx-auto text-muted-foreground text-[15px] sm:text-base leading-relaxed mb-10 lg:mb-14">
           Join our newsletter. Learn something new, gain access to exclusive
-          content, <br className="hidden md:block" /> and stay informed with the latest updates in the industry.
+          content, <br className="hidden md:block" /> and stay informed with the
+          latest updates in the industry.
         </p>
 
         {/* Input Form */}

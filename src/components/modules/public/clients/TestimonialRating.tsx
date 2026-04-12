@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Star } from "lucide-react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
@@ -30,16 +29,11 @@ const TestimonialRating = () => {
             <Star key={i} className="w-3.5 h-3.5 fill-current" />
           ))}
         </div>
-        
+
         {/* Total Reviews with count-up animation */}
         <span className="text-[13px] font-semibold text-foreground/80 tracking-tight lowercase">
           {inView ? (
-            <CountUp
-              end={2688}
-              separator=","
-              duration={4}
-              useEasing={true}
-            />
+            <CountUp end={2688} separator="," duration={4} useEasing={true} />
           ) : (
             <span>0</span>
           )}{" "}
