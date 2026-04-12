@@ -8,7 +8,7 @@ const QuoteSection = () => {
         style={{ backgroundImage: "url('/assets/bg-quote.png')" }}
       >
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/50" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content Container */}

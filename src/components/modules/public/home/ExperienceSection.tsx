@@ -36,7 +36,7 @@ const ExperienceSection = () => {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80 dark:bg-background"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80"
     >
       <div className="custom-container space-y-18 lg:space-y-24">
         {/* Top Content: Text + Image */}

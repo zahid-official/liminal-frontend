@@ -55,7 +55,7 @@ const BlogSection = () => {
     <section
       id="blog"
       aria-labelledby="blog-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 dark:bg-background overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden relative"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}

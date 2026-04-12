@@ -46,7 +46,7 @@ const ServiceContent = ({ services }: ServiceContentProps) => {
         {/* Floating Description Box */}
         <div
           key={activeService.id}
-          className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-[85%] max-w-105 lg:left-6 lg:translate-x-0 bg-black/60 dark:bg-black/60 backdrop-blur-md rounded-[1.25rem] p-5 md:p-7 shadow-2xl border border-white/10 z-10 animate-in fade-in slide-in-from-bottom-4 duration-700"
+          className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] md:w-[85%] max-w-105 lg:left-6 lg:translate-x-0 bg-black/60 backdrop-blur-md rounded-[1.25rem] p-5 md:p-7 shadow-2xl border border-white/10 z-10 animate-in fade-in slide-in-from-bottom-4 duration-700"
         >
           <p className="text-white/95 text-[15px] sm:text-base leading-relaxed">
             {activeService.description}

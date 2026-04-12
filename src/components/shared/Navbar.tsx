@@ -119,7 +119,7 @@ const Navbar = () => {
                   size="icon"
                   className={cn(
                     isScrolled &&
-                      "bg-liminal-secondary hover:bg-liminal-secondary/95 text-primary-foreground border-primary hover:text-primary-foreground border-none dark:bg-input/30 dark:text-foreground dark:border-input dark:hover:bg-input/50 dark:hover:text-accent-foreground",
+                      "bg-liminal-secondary hover:bg-liminal-secondary/95 text-primary-foreground border-primary hover:text-primary-foreground border-none",
                   )}
                 >
                   <Menu className="h-5 w-5" />
@@ -135,7 +135,7 @@ const Navbar = () => {
                       className={cn(
                         "justify-center cursor-pointer",
                         isActive &&
-                          "bg-primary/10 dark:bg-primary/20",
+                          "bg-primary/10",
                       )}
                       asChild
                     >

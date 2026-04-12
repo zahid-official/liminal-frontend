@@ -1,4 +1,3 @@
-import ThemeProvider from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import localFont from "next/font/local";
@@ -35,14 +34,7 @@ const RootLayout = ({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${jost.variable} ${satoshi.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

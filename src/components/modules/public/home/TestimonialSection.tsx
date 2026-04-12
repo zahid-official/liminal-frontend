@@ -61,7 +61,7 @@ const testimonials = [
 // TestimonialSection Component
 const TestimonialSection = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-[url('/assets/bg-testimonial.png')] bg-bottom-left bg-no-repeat bg-zinc-50/80 dark:bg-background">
+    <section className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-[url('/assets/bg-testimonial.png')] bg-bottom-left bg-no-repeat bg-zinc-50/80">
       <Carousel
         opts={{
           align: "start",
@@ -76,11 +76,11 @@ const TestimonialSection = () => {
             title={
               <span className="font-bold">
                 Here&apos;s What{" "}
-                <span className="text-liminal-secondary dark:text-liminal-secondary">
+                <span className="text-liminal-secondary">
                   Warm Words
                 </span>
                 <br className="hidden md:block" />
-                <span className="text-liminal-secondary dark:text-liminal-secondary">
+                <span className="text-liminal-secondary">
                   Our Clients
                 </span>{" "}
                 Say
@@ -101,7 +101,7 @@ const TestimonialSection = () => {
                   <TestimonialRating />
 
                   {/* Vertical Divider (Next to Reviews) */}
-                  <div className="hidden sm:block w-px h-16 bg-black/20 dark:bg-white/20 mx-2 shrink-0"></div>
+                  <div className="hidden sm:block w-px h-16 bg-black/20 mx-2 shrink-0"></div>
 
                   {/* Text Statement */}
                   <p className="text-[14px] sm:text-[15px] font-semibold text-foreground/90 max-w-85 leading-[1.6]">
@@ -113,8 +113,8 @@ const TestimonialSection = () => {
 
                 {/* Carousel Navigation Buttons */}
                 <div className="flex items-center gap-3 shrink-0">
-                  <CarouselPrevious className="static inset-auto translate-x-0 translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white dark:bg-card text-foreground border-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] hover:bg-liminal-secondary hover:text-white dark:hover:bg-liminal-secondary transition-all duration-300 rounded-full cursor-pointer flex items-center justify-center" />
-                  <CarouselNext className="static inset-auto translate-x-0 translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white dark:bg-card text-foreground border-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] hover:bg-liminal-secondary hover:text-white dark:hover:bg-liminal-secondary transition-all duration-300 rounded-full cursor-pointer flex items-center justify-center" />
+                  <CarouselPrevious className="static inset-auto translate-x-0 translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white text-foreground border-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] hover:bg-liminal-secondary hover:text-white transition-all duration-300 rounded-full cursor-pointer flex items-center justify-center" />
+                  <CarouselNext className="static inset-auto translate-x-0 translate-y-0 h-10 w-10 md:h-12 md:w-12 bg-white text-foreground border-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] hover:bg-liminal-secondary hover:text-white transition-all duration-300 rounded-full cursor-pointer flex items-center justify-center" />
                 </div>
               </div>
             </div>
@@ -129,9 +129,9 @@ const TestimonialSection = () => {
                 key={testimonial.id}
                 className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3 xl:basis-[28%]"
               >
-                <div className="group bg-white dark:bg-card rounded-[2rem] p-8 sm:p-10 h-full flex flex-col shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-black/4 dark:border-white/4 hover:border-liminal-secondary/25 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden cursor-pointer select-none">
+                <div className="group bg-white rounded-[2rem] p-8 sm:p-10 h-full flex flex-col shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-black/4 hover:border-liminal-secondary/25 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden cursor-pointer select-none">
                   {/* Premium Glossy Sheen Effect */}
-                  <div className="absolute top-0 left-[-20%] h-full w-60 bg-linear-to-r from-transparent via-black/3 dark:via-white/6 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[400%] transition-none group-hover:transition-all group-hover:duration-1500 group-hover:ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0" />
+                  <div className="absolute top-0 left-[-20%] h-full w-60 bg-linear-to-r from-transparent via-black/3 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[400%] transition-none group-hover:transition-all group-hover:duration-1500 group-hover:ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0" />
 
                   {/* Rating */}
                   <div className="flex items-center gap-1 mb-8 relative z-10">
@@ -152,7 +152,7 @@ const TestimonialSection = () => {
 
                   {/* Author Profile */}
                   <div className="flex items-center gap-4 mt-auto relative z-10">
-                    <div className="overflow-hidden rounded-full border-[3px] border-[#F6F6F6] dark:border-background shadow-sm shrink-0 transition-colors duration-500 group-hover:border-liminal-secondary/20">
+                    <div className="overflow-hidden rounded-full border-[3px] border-[#F6F6F6] shadow-sm shrink-0 transition-colors duration-500 group-hover:border-liminal-secondary/20">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={testimonial.avatar}

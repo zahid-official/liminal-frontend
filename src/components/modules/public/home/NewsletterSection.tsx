@@ -10,7 +10,7 @@ const NewsletterSection = () => {
       className="relative overflow-hidden py-24 md:py-28 lg:py-32"
     >
       {/* Background Images */}
-      <div className="absolute inset-0 z-0 opacity-100 dark:opacity-20 pointer-events-none flex justify-between">
+      <div className="absolute inset-0 z-0 opacity-100 pointer-events-none flex justify-between">
         {/* Left Image */}
         <div
           className="w-1/2 h-full bg-left object-cover"
@@ -39,7 +39,7 @@ const NewsletterSection = () => {
           badgeText="SUBSCRIBE TO THE NEWSLETTER"
           headingId="newsletter-heading"
           className="mb-10 lg:mb-14"
-          badgeClassName="bg-zinc-50/80 dark:bg-background/80 backdrop-blur-sm"
+          badgeClassName="bg-zinc-50/80 backdrop-blur-sm"
           title={
             <>
               <span>Join </span>
@@ -59,7 +59,7 @@ const NewsletterSection = () => {
         />
 
         {/* Input Form */}
-        <form className="w-full max-w-sm sm:max-w-md xl:max-w-lg relative flex items-center border-b border-foreground/30 dark:border-border pb-3 group transition-colors focus-within:border-foreground/60">
+        <form className="w-full max-w-sm sm:max-w-md xl:max-w-lg relative flex items-center border-b border-foreground/30 pb-3 group transition-colors focus-within:border-foreground/60">
           <input
             type="email"
             placeholder="Email address.."

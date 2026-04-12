@@ -10,7 +10,7 @@ const SectionBadge = ({ text, className, ...props }: SectionBadgeProps) => {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border/60 dark:border-border",
+        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border/60",
         className,
       )}
       {...props}

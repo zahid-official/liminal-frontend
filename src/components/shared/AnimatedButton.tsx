@@ -13,7 +13,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "relative overflow-hidden inline-flex items-center gap-4 border border-border/80 dark:border-border rounded-full pl-6 pr-1.5 py-1.5 group hover:border-liminal-secondary dark:hover:border-liminal-secondary transition-colors duration-500 w-fit cursor-pointer text-sm",
+          "relative overflow-hidden inline-flex items-center gap-4 border border-border/80 rounded-full pl-6 pr-1.5 py-1.5 group hover:border-liminal-secondary transition-colors duration-500 w-fit cursor-pointer text-sm",
           className,
         )}
         {...props}
