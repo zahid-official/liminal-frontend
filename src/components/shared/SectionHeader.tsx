@@ -31,7 +31,7 @@ const SectionHeader = ({
     >
       {/* Horizontal Line passing above everything */}
       <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-border -z-10" />
-      {/* Vertical Line diving the columns */}
+      {/* Vertical Line dividing the columns */}
       <div className="hidden lg:block absolute -top-8 -bottom-16 left-[30%] w-px bg-border -z-10" />
 
       {/* Left: Badge */}

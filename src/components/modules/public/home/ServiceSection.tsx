@@ -33,7 +33,7 @@ const servicesData = [
   },
   {
     id: "05",
-    title: "Renovation And Remodeling",
+    title: "Renovation and Remodeling",
     description:
       "Comprehensive home modification services to refresh, repair, or completely reinvent your existing spaces.",
     image: "/assets/about-1.webp",
@@ -68,7 +68,7 @@ const ServiceSection = () => {
               Services
             </>
           }
-          description="We specialize in transforming visions into reality. Explore our portfolio of innovative architectural and interior design projects crafted with precision."
+          description="We specialize in bringing visions to life through tailored solutions. Discover our range of innovative interior design and architectural services crafted with precision."
         />
 
         {/* Interactive Service Content */}

@@ -61,7 +61,7 @@ const Footer = () => {
             {
               title: "Company",
               links: [
-                { label: "About liminal", href: "/about-us" },
+                { label: "About Liminal", href: "/about-us" },
                 { label: "Showroom", href: "/contact" },
                 { label: "Support", href: "/contact" },
                 { label: "Contact", href: "/contact" },
@@ -134,7 +134,7 @@ const Footer = () => {
             className="order-1 flex flex-col items-center gap-4 text-center lg:order-2 lg:flex-row lg:items-start lg:gap-8 lg:text-left"
             aria-label="Legal links"
           >
-            {["Privacy Policy", "Terms of Service", "Cookies Settings"].map(
+            {["Privacy Policy", "Terms of Service", "Cookie Settings"].map(
               (item) => (
                 <Link
                   key={item}

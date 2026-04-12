@@ -77,7 +77,7 @@ const AboutSection = () => {
                 <h3 className="text-lg font-semibold">Sustainable Solutions</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   We prioritize eco-friendly materials & <br />
-                  energy-efficient.
+                  energy-efficient designs.
                 </p>
               </div>
             </div>

@@ -10,23 +10,21 @@ const NewsletterSection = () => {
       className="relative overflow-hidden py-24 md:py-28 lg:py-32"
     >
       {/* Background Images */}
-      <div className="absolute inset-0 z-0 opacity-100 pointer-events-none flex justify-between">
+      <div className="absolute inset-0 z-0 pointer-events-none flex justify-between">
         {/* Left Image */}
         <div
-          className="w-1/2 h-full bg-left object-cover"
+          className="w-1/2 h-full"
           style={{
             backgroundImage: "url('/assets/bg-newsletter.png')",
-            backgroundSize: "",
             backgroundPosition: "left bottom",
             backgroundRepeat: "no-repeat",
           }}
         />
         {/* Right Image (Flipped) */}
         <div
-          className="w-1/2 h-full bg-left object-cover -scale-x-100"
+          className="w-1/2 h-full -scale-x-100"
           style={{
             backgroundImage: "url('/assets/bg-newsletter.png')",
-            backgroundSize: "",
             backgroundPosition: "left bottom",
             backgroundRepeat: "no-repeat",
           }}
@@ -62,7 +60,7 @@ const NewsletterSection = () => {
         <form className="w-full max-w-sm sm:max-w-md xl:max-w-lg relative flex items-center border-b border-foreground/30 pb-3 group transition-colors focus-within:border-foreground/60">
           <input
             type="email"
-            placeholder="Email address.."
+            placeholder="Email address..."
             required
             className="w-full bg-transparent border-none outline-none text-[15px] sm:text-base text-foreground placeholder:text-muted-foreground/80 focus:ring-0 px-2"
           />

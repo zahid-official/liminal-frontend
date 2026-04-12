@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import Image from "next/image";
 
+// faqData
 const faqData = [
   {
     id: "item-1",
@@ -95,7 +96,7 @@ const FaqSection = () => {
                 Still Looking For Answers Or Need A Fun Chat?
               </h3>
               <p className="text-muted-foreground text-[15px] sm:text-base leading-relaxed">
-                Our team will guide you through our design process, project
+                Our team will guide you through our design process, <br className="max-lg:hidden" /> project
                 specifications and cost estimate.
               </p>
             </div>

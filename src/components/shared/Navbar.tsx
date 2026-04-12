@@ -40,7 +40,7 @@ const Navbar = () => {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/projects" },
-    { label: "Blogs", href: "/blogs" },
+    { label: "Blog", href: "/blog" },
     { label: "About Us", href: "/about-us" },
     { label: "Contact", href: "/contact" },
   ];
@@ -68,19 +68,19 @@ const Navbar = () => {
               isScrolled ? "text-foreground" : "text-white",
             )}
           >
-            {navLinks?.map((item, idx) => {
-              const isActive = pathname === item?.href;
+            {navLinks.map((item, idx) => {
+              const isActive = pathname === item.href;
               return (
                 <Link
                   key={idx}
-                  href={item?.href}
+                  href={item.href}
                   className={cn(
                     "font-medium relative pb-0.5",
                     "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100",
                     isActive && "after:scale-x-100",
                   )}
                 >
-                  {item?.label}
+                  {item.label}
                 </Link>
               );
             })}
@@ -94,7 +94,7 @@ const Navbar = () => {
             )}
           />
 
-          {/* Dark Mode & Buttons */}
+          {/* Auth & Actions Button */}
           <div className="flex items-center md:gap-3.5">
             <Link href="/login">
               <AnimatedButton
@@ -127,26 +127,25 @@ const Navbar = () => {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent className="w-52 -right-4.5 top-1 absolute border p-3 md:hidden">
-                {navLinks?.map((item, idx) => {
-                  const isActive = pathname === item?.href;
+                {navLinks.map((item, idx) => {
+                  const isActive = pathname === item.href;
                   return (
                     <DropdownMenuItem
                       key={idx}
                       className={cn(
                         "justify-center cursor-pointer",
-                        isActive &&
-                          "bg-primary/10",
+                        isActive && "bg-primary/10",
                       )}
                       asChild
                     >
                       <Link
-                        href={item?.href}
+                        href={item.href}
                         className={cn(
                           "hover:text-primary w-full text-center transition-colors block",
                           isActive && "text-primary font-semibold",
                         )}
                       >
-                        {item?.label}
+                        {item.label}
                       </Link>
                     </DropdownMenuItem>
                   );

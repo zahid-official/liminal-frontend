@@ -17,7 +17,7 @@ const testimonials = [
     role: "Company Owner",
     rating: 4,
     quote:
-      "A wonderful experience! They knew what they were doing and were incredibly knowledgeable throughout the process.",
+      "A wonderful experience! They knew exactly what they were doing and were incredibly knowledgeable throughout the entire process.",
     avatar: "https://i.pravatar.cc/150?u=shahin",
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     role: "Company Owner",
     rating: 5,
     quote:
-      "I absolutely love my the new modern living room! The clean lines, a neutral tones, and minimalist interior create such a calming & stylish atmosphere. Highly recommend their modern interior design...",
+      "I absolutely love my new modern living room! The clean lines, neutral tones, and minimalist interior create such a calming and stylish atmosphere. Highly recommend them!",
     avatar: "https://i.pravatar.cc/150?u=noah",
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
     role: "Company Owner",
     rating: 5,
     quote:
-      "A wonderful experience! They knew what they were doing and were incredibly knowledgeable throughout the process.",
+      "Exceptional service! They truly understood my vision and turned it into reality with stunning attention to detail and professional care.",
     avatar: "https://i.pravatar.cc/150?u=morgan",
   },
   {
@@ -44,7 +44,7 @@ const testimonials = [
     role: "Company Owner",
     rating: 4,
     quote:
-      "I absolutely love my the new modern living room! The clean lines, a neutral tones, and minimalist interior create such a calming & stylish atmosphere. Highly recommend their mod...",
+      "The professional guidance I received for my office redesign was outstanding. Their commercial interior services are truly top-notch and refined.",
     avatar: "https://i.pravatar.cc/150?u=liam",
   },
   {
@@ -53,8 +53,8 @@ const testimonials = [
     role: "Home Owner",
     rating: 5,
     quote:
-      "The whole process was completely seamless. I'm beyond thrilled with the results and will definitely use their services again.",
-    avatar: "https://i.pravatar.cc/150?u=emma",
+      "The whole process was completely seamless. I'm beyond thrilled with the results and will definitely use their services for my next project.",
+    avatar: "https://i.pravatar.cc/150?u=emma_new",
   },
 ];
 
@@ -72,18 +72,15 @@ const TestimonialSection = () => {
         <div className="custom-container relative">
           {/* Reusing Common SectionHeader for perfect architectural cross-lines and spacing */}
           <SectionHeader
-            badgeText="OWR CLIENTS SAY"
+            badgeText="OUR CLIENTS SAY"
             title={
               <span className="font-bold">
-                Here&apos;s What{" "}
-                <span className="text-liminal-secondary">
-                  Warm Words
-                </span>
+                Warm Words From{" "}
                 <br className="hidden md:block" />
                 <span className="text-liminal-secondary">
-                  Our Clients
+                  Our Satisfied
                 </span>{" "}
-                Say
+                Clients
               </span>
             }
             className="mb-8 lg:mb-12"
@@ -105,9 +102,9 @@ const TestimonialSection = () => {
 
                   {/* Text Statement */}
                   <p className="text-[14px] sm:text-[15px] font-semibold text-foreground/90 max-w-85 leading-[1.6]">
-                    From Concept To Reality, The Team Turned My Vision Into A
-                    Stunning, Livable Space. I Couldn&apos;t Be Happier With
-                    This!
+                    From concept to reality, the team turned my vision into a
+                    stunning, livable space. I couldn&apos;t be happier with
+                    the results!
                   </p>
                 </div>
 
@@ -138,7 +135,7 @@ const TestimonialSection = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-4 h-4 sm:w-4.5 sm:h-4.5 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "fill-foreground/10 text-foreground/10"}`}
+                        className={`w-4 h-4 sm:w-5 sm:h-5 ${i < testimonial.rating ? "fill-amber-400 text-amber-400" : "fill-foreground/10 text-foreground/10"}`}
                       />
                     ))}
                   </div>

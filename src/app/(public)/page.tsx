@@ -8,6 +8,14 @@ import NewsletterSection from "@/components/modules/public/home/NewsletterSectio
 import QuoteSection from "@/components/modules/public/home/QuoteSection";
 import ServiceSection from "@/components/modules/public/home/ServiceSection";
 import TestimonialSection from "@/components/modules/public/home/TestimonialSection";
+import { Metadata } from "next";
+
+// Metadata for the Home Page
+export const metadata: Metadata = {
+  title: "Liminal | Stunning Interior Design & Architecture",
+  description:
+    "Transform your space with Liminal. We specialize in art-focused, high-end interior design and architectural solutions for residential and commercial projects.",
+};
 
 // HomePage Component
 const HomePage = () => {

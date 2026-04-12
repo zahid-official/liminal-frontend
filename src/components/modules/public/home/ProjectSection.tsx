@@ -80,15 +80,15 @@ const ProjectSection = () => {
               {/* Description */}
               <p className="text-white/70 text-[15px] sm:text-base leading-relaxed max-w-xl">
                 Our portfolio showcases a diverse range of projects, from
-                beautifully crafted residential spaces functional and stylish
-                commercial interiors
+                beautifully crafted residential spaces to functional and stylish
+                commercial interiors.
               </p>
             </div>
 
             {/* Action Button */}
             <div className="">
               <AnimatedButton className="border-white/20 hover:border-white/40 [&_span.text-foreground]:text-white/90">
-                Explore Project
+                Explore Projects
               </AnimatedButton>
             </div>
           </div>

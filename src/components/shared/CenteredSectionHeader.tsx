@@ -31,9 +31,7 @@ const CenteredSectionHeader = ({
       {...props}
     >
       {/* Badge */}
-      <div className="flex justify-center">
-        <SectionBadge text={badgeText} className={badgeClassName} />
-      </div>
+      <SectionBadge text={badgeText} className={badgeClassName} />
 
       {/* Title */}
       <h2

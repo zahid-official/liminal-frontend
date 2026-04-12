@@ -6,25 +6,25 @@ import ExperienceStats from "../clients/ExperienceStats";
 const statsData = [
   {
     id: "stat-1",
-    value: "2013",
+    value: "13+",
     title: "Years Experience",
-    description: "Improving homes with expert craftsmanship for years",
+    description: "Improving homes with expert craftsmanship for 13 years",
   },
   {
     id: "stat-2",
-    value: "190+",
+    value: "250+",
     title: "Projects Completed",
     description: "Over 250 successful projects delivered with quality and care",
   },
   {
     id: "stat-3",
-    value: "260+",
+    value: "30+",
     title: "Skilled Tradespeople",
-    description: "Our team of 30 experts ensures top-quality results",
+    description: "Our dedicated team of 30+ experts ensures top-quality results",
   },
   {
     id: "stat-4",
-    value: "328+",
+    value: "100%",
     title: "Client Satisfaction",
     description: "All of our clients are satisfied with our work and service",
   },
