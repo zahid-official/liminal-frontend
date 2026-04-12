@@ -30,9 +30,9 @@ const SectionHeader = ({
       {...props}
     >
       {/* Horizontal Line passing above everything */}
-      <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-border/95 -z-10" />
+      <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-border -z-10" />
       {/* Vertical Line diving the columns */}
-      <div className="hidden lg:block absolute -top-8 -bottom-16 left-[30%] w-px bg-border/95 -z-10" />
+      <div className="hidden lg:block absolute -top-8 -bottom-16 left-[30%] w-px bg-border -z-10" />
 
       {/* Left: Badge */}
       <div className="w-full lg:w-[30%] shrink-0 relative mb-6 lg:mb-0 lg:pr-8 flex justify-center lg:block">

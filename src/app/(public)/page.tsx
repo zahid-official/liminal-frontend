@@ -3,7 +3,7 @@ import BannerSection from "@/components/modules/public/home/BannerSection";
 import BlogSection from "@/components/modules/public/home/BlogSection";
 import ExperienceSection from "@/components/modules/public/home/ExperienceSection";
 import FaqSection from "@/components/modules/public/home/FaqSection";
-import FeaturedSection from "@/components/modules/public/home/FeaturedSection";
+import ProjectSection from "@/components/modules/public/home/ProjectSection";
 import NewsletterSection from "@/components/modules/public/home/NewsletterSection";
 import QuoteSection from "@/components/modules/public/home/QuoteSection";
 import ServiceSection from "@/components/modules/public/home/ServiceSection";
@@ -16,12 +16,12 @@ const HomePage = () => {
       <BannerSection />
       <AboutSection />
       <ExperienceSection />
-      <FeaturedSection />
+      <ProjectSection />
       <ServiceSection />
-      <TestimonialSection />
+      <BlogSection />
       <QuoteSection />
       <FaqSection />
-      <BlogSection />
+      <TestimonialSection />
       <NewsletterSection />
     </div>
   );

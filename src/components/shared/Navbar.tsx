@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "./Logo";
-import { ModeToggle } from "../ui/mode-toggler";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -13,9 +13,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Menu } from "lucide-react";
 import { Separator } from "../ui/separator";
-import { cn } from "@/lib/utils";
+import AnimatedButton from "./AnimatedButton";
+import Logo from "./Logo";
 
 // Navbar Component
 const Navbar = () => {
@@ -27,6 +27,9 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
+    // Ensure state is correct on initial load or reload
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -87,24 +90,23 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              isScrolled ? "bg-foreground/20" : "bg-white/20",
+              isScrolled ? "bg-foreground/25" : "bg-white/25",
             )}
           />
 
           {/* Dark Mode & Buttons */}
           <div className="flex items-center md:gap-3.5">
-            <ModeToggle isScrolled={isScrolled} />
-
-            <Link href={"/login"}>
-              <Button
+            <Link href="/login">
+              <AnimatedButton
                 className={cn(
-                  "max-md:hidden px-6 text-base transition-all duration-300",
-                  !isScrolled &&
-                    "bg-white text-black hover:bg-white/90 border-white",
+                  "max-md:hidden text-base transition-all duration-300 pl-4.5 gap-2",
+                  isScrolled
+                    ? "border-foreground/25"
+                    : "bg-white text-black hover:bg-white/90",
                 )}
               >
                 Login
-              </Button>
+              </AnimatedButton>
             </Link>
           </div>
 
@@ -132,15 +134,15 @@ const Navbar = () => {
                       key={idx}
                       className={cn(
                         "justify-center cursor-pointer",
-                        isActive && "bg-primary/10 dark:bg-primary/20"
+                        isActive && "bg-primary/10 dark:bg-primary/20",
                       )}
                       asChild
                     >
-                      <Link 
-                        href={item?.href} 
+                      <Link
+                        href={item?.href}
                         className={cn(
                           "hover:text-primary w-full text-center transition-colors block",
-                          isActive && "text-primary font-medium"
+                          isActive && "text-primary font-medium",
                         )}
                       >
                         {item?.label}

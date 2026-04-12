@@ -93,7 +93,7 @@ const TestimonialSection = () => {
           <div className="flex flex-col lg:flex-row justify-end mb-14 md:mb-20">
             <div className="w-full lg:w-[70%] lg:pl-16 relative">
               {/* Divider separating Heading from Stats Row */}
-              <div className="h-px w-full bg-black/3.5 mb-8 md:mb-12" />
+              <div className="h-px w-full bg-black/10 mb-8 md:mb-12" />
 
               <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-8">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8">
@@ -101,7 +101,7 @@ const TestimonialSection = () => {
                   <TestimonialRating />
 
                   {/* Vertical Divider (Next to Reviews) */}
-                  <div className="hidden sm:block w-px h-16 bg-black/10 dark:bg-white/10 mx-2 shrink-0"></div>
+                  <div className="hidden sm:block w-px h-16 bg-black/20 dark:bg-white/20 mx-2 shrink-0"></div>
 
                   {/* Text Statement */}
                   <p className="text-[14px] sm:text-[15px] font-semibold text-foreground/90 max-w-85 leading-[1.6]">

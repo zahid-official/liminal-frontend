@@ -73,11 +73,11 @@ const ExperienceSection = () => {
           <div
             className="relative w-full aspect-[1.75]"
             style={{
-              WebkitMaskImage: "url('/assets/h2-mark-1.png')",
+              WebkitMaskImage: "url('/assets/experience-2.png')",
               WebkitMaskSize: "100% 100%",
               WebkitMaskPosition: "center center",
               WebkitMaskRepeat: "no-repeat",
-              maskImage: "url('/assets/h2-mark-1.png')",
+              maskImage: "url('/assets/experience-2.png')",
               maskSize: "100% 100%",
               maskPosition: "center center",
               maskRepeat: "no-repeat",

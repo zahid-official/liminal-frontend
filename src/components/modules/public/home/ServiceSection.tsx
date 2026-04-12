@@ -53,7 +53,7 @@ const ServiceSection = () => {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden sm:bg-zinc-50/80 bg-zinc-50 dark:bg-background"
+      className="py-20 md:py-28 lg:py-32 overflow-hidde dark:bg-background"
     >
       <div className="custom-container">
         {/* Section Header */}
