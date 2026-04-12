@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
 import ServiceContent from "../clients/ServiceContent";
 
 // Services Data
@@ -56,8 +56,7 @@ const ServiceSection = () => {
       className="py-20 md:py-28 lg:py-32 overflow-hidde dark:bg-background"
     >
       <div className="custom-container">
-        {/* Section Header */}
-        <SectionHeader
+        <CenteredSectionHeader
           badgeText="OUR SERVICES"
           headingId="services-heading"
           title={

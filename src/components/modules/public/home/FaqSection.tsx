@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
 import {
   Accordion,
   AccordionContent,
@@ -62,7 +62,7 @@ const FaqSection = () => {
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
-        <SectionHeader
+        <CenteredSectionHeader
           badgeText="POPULAR QUERIES"
           headingId="faq-heading"
           title={

@@ -18,10 +18,10 @@ const HomePage = () => {
       <ExperienceSection />
       <ProjectSection />
       <ServiceSection />
-      <BlogSection />
+      <TestimonialSection />
       <QuoteSection />
       <FaqSection />
-      <TestimonialSection />
+      <BlogSection />
       <NewsletterSection />
     </div>
   );
