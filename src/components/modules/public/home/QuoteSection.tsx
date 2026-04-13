@@ -8,7 +8,7 @@ const QuoteSection = () => {
         style={{ backgroundImage: "url('/assets/bg-quote.png')" }}
       >
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40 dark:bg-black/50" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content Container */}
@@ -47,7 +47,7 @@ const QuoteSection = () => {
             Unlock Your Dream
           </h2>
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 lg:gap-16 mt-2 pb-2">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] font-bold text-white leading-[1.1] tracking-tight whitespace-nowrap">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[90px] font-bold text-white leading-[1.1] tracking-tight">
               Project Today!
             </h2>
             <p className="text-white/90 text-sm sm:text-base font-medium max-w-85 leading-relaxed md:pb-2 lg:pb-4">

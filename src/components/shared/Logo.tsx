@@ -6,15 +6,13 @@ interface LogoProps {
 // Logo Component
 const Logo = ({ isScrolled = true }: LogoProps) => {
   return (
-    <div>
-      <h1
-        className={`text-4xl font-semibold transition-colors duration-300 ${
-          isScrolled ? "" : "text-white"
-        }`}
-      >
-        Liminal
-      </h1>
-    </div>
+    <span
+      className={`text-4xl font-heading font-semibold transition-colors duration-300 ${
+        isScrolled ? "text-foreground" : "text-white"
+      }`}
+    >
+      Liminal
+    </span>
   );
 };
 

@@ -1,12 +1,13 @@
-import SectionHeader from "@/components/shared/SectionHeader";
-import Image from "next/image";
+import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Image from "next/image";
 
+// faqData
 const faqData = [
   {
     id: "item-1",
@@ -58,11 +59,11 @@ const FaqSection = () => {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50/50 dark:bg-background overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden relative"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
-        <SectionHeader
+        <CenteredSectionHeader
           badgeText="POPULAR QUERIES"
           headingId="faq-heading"
           title={
@@ -79,7 +80,7 @@ const FaqSection = () => {
         {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mt-12 lg:mt-16">
           {/* Left Column: Image & Text */}
-          <div className="flex flex-col gap-8 lg:gap-10 lg:pr-8">
+          <div className="flex flex-col gap-8 lg:pr-8">
             <div className="relative w-full aspect-4/3 rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden border border-border/40 shadow-sm bg-muted">
               <Image
                 src="/assets/faq-1.jpg"
@@ -95,7 +96,7 @@ const FaqSection = () => {
                 Still Looking For Answers Or Need A Fun Chat?
               </h3>
               <p className="text-muted-foreground text-[15px] sm:text-base leading-relaxed">
-                Our team will guide you through our design process, project
+                Our team will guide you through our design process, <br className="max-lg:hidden" /> project
                 specifications and cost estimate.
               </p>
             </div>
