@@ -1,5 +1,8 @@
 import Image from "next/image";
 import AnimatedButton from "@/components/shared/AnimatedButton";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Field, FieldLabel } from "@/components/ui/field";
 
 // ContactForm Component
 const ContactForm = () => {
@@ -24,97 +27,98 @@ const ContactForm = () => {
             Send a <span className="text-liminal-secondary">Message</span>
           </h3>
           <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed">
-            Please fill out the form below and we will get back to you as soon as possible.
+            Please fill out the form below and we will get back to you as soon
+            as possible.
           </p>
         </div>
 
         <form className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Full Name */}
-            <div className="space-y-1.5">
-              <label
+            <Field className="gap-1.5">
+              <FieldLabel
                 htmlFor="fullName"
-                className="block pl-5 text-[15px] font-semibold text-foreground"
+                className="pl-2.5 text-[15px] font-semibold text-foreground"
               >
                 Full Name*
-              </label>
-              <input
+              </FieldLabel>
+              <Input
                 type="text"
                 id="fullName"
                 placeholder="Liam Anderson"
-                className="w-full px-5 py-3.5 rounded-full border border-border bg-background focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
+                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
                 required
               />
-            </div>
+            </Field>
             {/* Your Email */}
-            <div className="space-y-1.5">
-              <label
+            <Field className="gap-1.5">
+              <FieldLabel
                 htmlFor="email"
-                className="block pl-5 text-[15px] font-semibold text-foreground"
+                className="pl-2.5 text-[15px] font-semibold text-foreground"
               >
                 Your Email*
-              </label>
-              <input
+              </FieldLabel>
+              <Input
                 type="email"
                 id="email"
                 placeholder="info@intorio.com"
-                className="w-full px-5 py-3.5 rounded-full border border-border bg-background focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
+                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
                 required
               />
-            </div>
+            </Field>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Phone Number */}
-            <div className="space-y-1.5">
-              <label
+            <Field className="gap-1.5">
+              <FieldLabel
                 htmlFor="phone"
-                className="block pl-5 text-[15px] font-semibold text-foreground"
+                className="pl-2.5 text-[15px] font-semibold text-foreground"
               >
                 Phone Number*
-              </label>
-              <input
+              </FieldLabel>
+              <Input
                 type="tel"
                 id="phone"
                 placeholder="(212) 555-7890"
-                className="w-full px-5 py-3.5 rounded-full border border-border bg-background focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
+                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
                 required
               />
-            </div>
+            </Field>
             {/* Subject */}
-            <div className="space-y-1.5">
-              <label
+            <Field className="gap-1.5">
+              <FieldLabel
                 htmlFor="subject"
-                className="block pl-5 text-[15px] font-semibold text-foreground"
+                className="pl-2.5 text-[15px] font-semibold text-foreground"
               >
                 Subject*
-              </label>
-              <input
+              </FieldLabel>
+              <Input
                 type="text"
                 id="subject"
                 placeholder="Luxury Interior Design"
-                className="w-full px-5 py-3.5 rounded-full border border-border bg-background focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
+                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
                 required
               />
-            </div>
+            </Field>
           </div>
 
           {/* Your Message */}
-          <div className="space-y-1.5">
-            <label
+          <Field className="gap-1.5">
+            <FieldLabel
               htmlFor="message"
-              className="block pl-5 text-[15px] font-semibold text-foreground"
+              className="pl-2.5 text-[15px] font-semibold text-foreground"
             >
               Your Message*
-            </label>
-            <textarea
+            </FieldLabel>
+            <Textarea
               id="message"
               rows={5}
               placeholder="Please Type Your Message Here..."
-              className="w-full px-5 py-4 rounded-[1.5rem] border border-border bg-background focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px] resize-y"
+              className="block min-h-37 w-full px-3.5 py-4 rounded-xl border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px] resize-y"
               required
-            ></textarea>
-          </div>
+            />
+          </Field>
 
           {/* Submit Button */}
           <div className="pt-2">
