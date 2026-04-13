@@ -41,12 +41,12 @@ const AboutSection = () => {
           {/* Right Content */}
           <div className="space-y-8 text-center lg:text-left">
             {/* Badge */}
-            <SectionBadge text="Since 2020" className="mb-5" />
+            <SectionBadge text="Since 2020" />
 
             {/* Heading */}
             <h2
               id="about-heading"
-              className="text-4xl md:text-5xl leading-[1.05] tracking-tight"
+              className="text-4xl md:text-5xl leading-[1.1] tracking-tight"
             >
               Architecture &{" "}
               <span className="text-liminal-secondary">Interiors</span> Our Dual
@@ -77,7 +77,7 @@ const AboutSection = () => {
                 <h3 className="text-lg font-semibold">Sustainable Solutions</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   We prioritize eco-friendly materials & <br />
-                  energy-efficient.
+                  energy-efficient designs.
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
-import SectionHeader from "@/components/shared/SectionHeader";
-import ServiceContent from "./clients/ServiceContent";
+import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import ServiceContent from "../clients/ServiceContent";
 
 // Services Data
 const servicesData = [
@@ -33,7 +33,7 @@ const servicesData = [
   },
   {
     id: "05",
-    title: "Renovation And Remodeling",
+    title: "Renovation and Remodeling",
     description:
       "Comprehensive home modification services to refresh, repair, or completely reinvent your existing spaces.",
     image: "/assets/about-1.webp",
@@ -53,11 +53,10 @@ const ServiceSection = () => {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden sm:bg-zinc-50/80 bg-zinc-50 dark:bg-background"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
       <div className="custom-container">
-        {/* Section Header */}
-        <SectionHeader
+        <CenteredSectionHeader
           badgeText="OUR SERVICES"
           headingId="services-heading"
           title={
@@ -69,7 +68,7 @@ const ServiceSection = () => {
               Services
             </>
           }
-          description="We specialize in transforming visions into reality. Explore our portfolio of innovative architectural and interior design projects crafted with precision."
+          description="We specialize in bringing visions to life through tailored solutions. Discover our range of innovative interior design and architectural services crafted with precision."
         />
 
         {/* Interactive Service Content */}

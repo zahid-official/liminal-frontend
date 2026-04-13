@@ -2,44 +2,45 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import Link from "next/link";
 
+// Blog Data
 const blogData = [
   {
     id: 1,
-    title: "Functional Design Trends That Blend Style And Comfort",
+    title: "Functional Design Trends That Blend Style and Comfort",
     summary:
-      "Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you're updating a single room or redesigning your entire home,",
-    tag: "Power Tools",
+      "Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether you're updating a single room or redesigning your entire home, our team ensures every detail is perfect.",
+    tag: "Design Trends",
     date: "June 2, 2025",
     author: "Admin",
     image: "/assets/about-1.webp",
   },
   {
     id: 2,
-    title: "Functional Design Trends That Blend Style And Comfort",
+    title: "How to Choose the Perfect Palette for Your Living Room",
     summary:
-      "Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether",
-    tag: "Power Tools",
-    date: "June 2, 2025",
+      "Color plays a vital role in setting the mood of a space. Learn how to choose a palette that balances warmth and modern sophistication for a truly inviting home.",
+    tag: "Interior Tips",
+    date: "June 5, 2025",
     author: "Admin",
     image: "/assets/about-2.webp",
   },
   {
     id: 3,
-    title: "Innovative Interior Ideas To Refresh Your Living Space",
+    title: "Innovative Interior Ideas to Refresh Your Living Space",
     summary:
-      "Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether",
-    tag: "Electrical & Lighting",
-    date: "June 2, 2025",
+      "Discover clever ways to revitalize your home with innovative layouts and creative storage solutions that don't compromise on style.",
+    tag: "Space Planning",
+    date: "June 10, 2025",
     author: "Admin",
     image: "/assets/project-1.png",
   },
   {
     id: 4,
-    title: "Transform Your Home With The Modern Interior Design",
+    title: "Transform Your Home With Modern Architectural Details",
     summary:
-      "Modern interior design is all about creating a sleek, functional, and aesthetically pleasing space that reflects contemporary living. Whether",
-    tag: "Accessories",
-    date: "June 2, 2025",
+      "Small architectural changes can make a big impact. Explore how minimal details can completely redefine the character of your living environment.",
+    tag: "Architecture",
+    date: "June 15, 2025",
     author: "Admin",
     image: "/assets/about-1.webp",
   },
@@ -54,7 +55,7 @@ const BlogSection = () => {
     <section
       id="blog"
       aria-labelledby="blog-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50/50 dark:bg-background overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden relative"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
@@ -83,7 +84,7 @@ const BlogSection = () => {
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                 alt={featuredPost.title}
               />
-              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full bg-[#cd9b5a]/90 backdrop-blur-md text-white text-[11px] font-bold tracking-widest uppercase">
+              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[11px] font-bold tracking-widest uppercase">
                 {featuredPost.tag}
               </div>
             </div>
@@ -99,7 +100,7 @@ const BlogSection = () => {
               </span>
             </div>
 
-            <h3 className="line-clamp-2 text-[1.35rem] sm:text-[1.75rem] lg:text-3xl font-bold font-heading leading-[1.2] mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
+            <h3 className="line-clamp-2 text-[1.35rem] sm:text-[1.75rem] lg:text-3xl font-bold font-heading leading-[1.1] mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
               {featuredPost.title}
             </h3>
 
@@ -129,7 +130,7 @@ const BlogSection = () => {
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     alt={post.title}
                   />
-                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-[#cd9b5a]/90 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase">
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase">
                     {post.tag}
                   </div>
                 </div>

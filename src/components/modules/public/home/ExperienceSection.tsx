@@ -1,30 +1,30 @@
 import SectionBadge from "@/components/shared/SectionBadge";
 import Image from "next/image";
-import ExperienceStats from "./clients/ExperienceStats";
+import ExperienceStats from "../clients/ExperienceStats";
 
 // Experience Statistics Data
 const statsData = [
   {
     id: "stat-1",
-    value: "2013",
+    value: "13+",
     title: "Years Experience",
-    description: "Improving homes with expert craftsmanship for years",
+    description: "Improving homes with expert craftsmanship for 13 years",
   },
   {
     id: "stat-2",
-    value: "190+",
+    value: "250+",
     title: "Projects Completed",
     description: "Over 250 successful projects delivered with quality and care",
   },
   {
     id: "stat-3",
-    value: "260+",
+    value: "30+",
     title: "Skilled Tradespeople",
-    description: "Our team of 30 experts ensures top-quality results",
+    description: "Our dedicated team of 30+ experts ensures top-quality results",
   },
   {
     id: "stat-4",
-    value: "328+",
+    value: "100%",
     title: "Client Satisfaction",
     description: "All of our clients are satisfied with our work and service",
   },
@@ -36,7 +36,7 @@ const ExperienceSection = () => {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80 dark:bg-background"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80"
     >
       <div className="custom-container space-y-18 lg:space-y-24">
         {/* Top Content: Text + Image */}
@@ -51,7 +51,7 @@ const ExperienceSection = () => {
             {/* Heading */}
             <h2
               id="experience-heading"
-              className="text-4xl sm:text-5xl leading-[1.05] tracking-tight"
+              className="text-4xl sm:text-5xl leading-[1.1] tracking-tight"
             >
               Behind{" "}
               <span className="text-liminal-secondary font-medium">
@@ -73,11 +73,11 @@ const ExperienceSection = () => {
           <div
             className="relative w-full aspect-[1.75]"
             style={{
-              WebkitMaskImage: "url('/assets/h2-mark-1.png')",
+              WebkitMaskImage: "url('/assets/experience-2.png')",
               WebkitMaskSize: "100% 100%",
               WebkitMaskPosition: "center center",
               WebkitMaskRepeat: "no-repeat",
-              maskImage: "url('/assets/h2-mark-1.png')",
+              maskImage: "url('/assets/experience-2.png')",
               maskSize: "100% 100%",
               maskPosition: "center center",
               maskRepeat: "no-repeat",

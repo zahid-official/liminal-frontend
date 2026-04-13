@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "./Logo";
-import { ModeToggle } from "../ui/mode-toggler";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -13,9 +13,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Menu } from "lucide-react";
 import { Separator } from "../ui/separator";
-import { cn } from "@/lib/utils";
+import AnimatedButton from "./AnimatedButton";
+import Logo from "./Logo";
 
 // Navbar Component
 const Navbar = () => {
@@ -28,6 +28,9 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    // Ensure state is correct on initial load or reload
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,7 +40,7 @@ const Navbar = () => {
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "Projects", href: "/projects" },
-    { label: "Blogs", href: "/blogs" },
+    { label: "Blog", href: "/blog" },
     { label: "About Us", href: "/about-us" },
     { label: "Contact", href: "/contact" },
   ];
@@ -65,19 +68,19 @@ const Navbar = () => {
               isScrolled ? "text-foreground" : "text-white",
             )}
           >
-            {navLinks?.map((item, idx) => {
-              const isActive = pathname === item?.href;
+            {navLinks.map((item, idx) => {
+              const isActive = pathname === item.href;
               return (
                 <Link
                   key={idx}
-                  href={item?.href}
+                  href={item.href}
                   className={cn(
                     "font-medium relative pb-0.5",
                     "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100",
                     isActive && "after:scale-x-100",
                   )}
                 >
-                  {item?.label}
+                  {item.label}
                 </Link>
               );
             })}
@@ -87,24 +90,23 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              isScrolled ? "bg-foreground/20" : "bg-white/20",
+              isScrolled ? "bg-foreground/25" : "bg-white/25",
             )}
           />
 
-          {/* Dark Mode & Buttons */}
+          {/* Auth & Actions Button */}
           <div className="flex items-center md:gap-3.5">
-            <ModeToggle isScrolled={isScrolled} />
-
-            <Link href={"/login"}>
-              <Button
+            <Link href="/login">
+              <AnimatedButton
                 className={cn(
-                  "max-md:hidden px-6 text-base transition-all duration-300",
-                  !isScrolled &&
-                    "bg-white text-black hover:bg-white/90 border-white",
+                  "max-md:hidden text-base transition-all duration-300 pl-4.5 gap-2",
+                  isScrolled
+                    ? "border-foreground/25"
+                    : "bg-white text-black hover:bg-white/90",
                 )}
               >
                 Login
-              </Button>
+              </AnimatedButton>
             </Link>
           </div>
 
@@ -117,7 +119,7 @@ const Navbar = () => {
                   size="icon"
                   className={cn(
                     isScrolled &&
-                      "bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:text-primary-foreground dark:bg-input/30 dark:text-foreground dark:border-input dark:hover:bg-input/50 dark:hover:text-accent-foreground",
+                      "bg-liminal-secondary hover:bg-liminal-secondary/95 text-primary-foreground border-primary hover:text-primary-foreground border-none",
                   )}
                 >
                   <Menu className="h-5 w-5" />
@@ -125,25 +127,25 @@ const Navbar = () => {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent className="w-52 -right-4.5 top-1 absolute border p-3 md:hidden">
-                {navLinks?.map((item, idx) => {
-                  const isActive = pathname === item?.href;
+                {navLinks.map((item, idx) => {
+                  const isActive = pathname === item.href;
                   return (
                     <DropdownMenuItem
                       key={idx}
                       className={cn(
                         "justify-center cursor-pointer",
-                        isActive && "bg-primary/10 dark:bg-primary/20"
+                        isActive && "bg-primary/10",
                       )}
                       asChild
                     >
-                      <Link 
-                        href={item?.href} 
+                      <Link
+                        href={item.href}
                         className={cn(
                           "hover:text-primary w-full text-center transition-colors block",
-                          isActive && "text-primary font-medium"
+                          isActive && "text-primary font-semibold",
                         )}
                       >
-                        {item?.label}
+                        {item.label}
                       </Link>
                     </DropdownMenuItem>
                   );
@@ -152,7 +154,9 @@ const Navbar = () => {
                 <DropdownMenuSeparator className="mt-2.5" />
                 <div className="mt-2.5">
                   <Link href={"/login"} className="w-full" tabIndex={0}>
-                    <Button className="w-full cursor-pointer">Login</Button>
+                    <Button className="w-full cursor-pointer bg-liminal-secondary hover:bg-liminal-secondary/95">
+                      Login
+                    </Button>
                   </Link>
                 </div>
               </DropdownMenuContent>

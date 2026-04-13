@@ -13,7 +13,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "relative overflow-hidden inline-flex items-center gap-4 border border-border/80 dark:border-border rounded-full pl-6 pr-1.5 py-1.5 group hover:border-liminal-secondary dark:hover:border-liminal-secondary transition-colors duration-500 w-fit cursor-pointer",
+          "relative overflow-hidden inline-flex items-center gap-4 border border-border/80 rounded-full pl-6 pr-1.5 py-1.5 group hover:border-liminal-secondary transition-colors duration-500 w-fit cursor-pointer text-sm",
           className,
         )}
         {...props}
@@ -21,7 +21,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         {/* Pill-Stretching Background */}
         <span className="absolute right-1.5 top-1.5 bottom-1.5 w-9 bg-liminal-secondary rounded-full transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-[calc(100%-12px)] z-0"></span>
 
-        <span className="relative z-10 text-sm font-bold text-foreground group-hover:text-white transition-colors duration-500">
+        <span className="relative z-10 font-bold text-foreground group-hover:text-white transition-colors duration-500">
           {children}
         </span>
 
