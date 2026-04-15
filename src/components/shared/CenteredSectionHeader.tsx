@@ -6,7 +6,7 @@ interface CenteredSectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "title"
 > {
-  badgeText: string;
+  badgeText?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   headingId?: string;
@@ -31,7 +31,7 @@ const CenteredSectionHeader = ({
       {...props}
     >
       {/* Badge */}
-      <SectionBadge text={badgeText} className={badgeClassName} />
+      {badgeText && <SectionBadge text={badgeText} className={badgeClassName} />}
 
       {/* Title */}
       <h2
