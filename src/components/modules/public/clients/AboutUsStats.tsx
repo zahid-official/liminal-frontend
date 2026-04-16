@@ -13,8 +13,8 @@ interface AboutStatsProps {
   stats: StatItem[];
 }
 
-// AboutStats Component
-const AboutStats = ({ stats }: AboutStatsProps) => {
+// AboutUsStats Component
+const AboutUsStats = ({ stats }: AboutStatsProps) => {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -76,4 +76,4 @@ const AboutStats = ({ stats }: AboutStatsProps) => {
   );
 };
 
-export default AboutStats;
+export default AboutUsStats;

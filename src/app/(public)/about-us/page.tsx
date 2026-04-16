@@ -1,4 +1,7 @@
-import AboutUsSection from "@/components/modules/public/about-us/AboutUsSection";
+import ProcessSection from "@/components/modules/public/about-us/ProcessSection";
+import StorySection from "@/components/modules/public/about-us/StorySection";
+import TeamSection from "@/components/modules/public/about-us/TeamSection";
+import VisionSection from "@/components/modules/public/about-us/VisionSection";
 import PageHeader from "@/components/shared/PageHeader";
 
 // AboutUsPage Component
@@ -10,7 +13,10 @@ const AboutUsPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
         bgImage="/assets/bg-about.avif"
       />
-      <AboutUsSection />
+      <StorySection />
+      <VisionSection />
+      <ProcessSection />
+      <TeamSection />
     </main>
   );
 };
