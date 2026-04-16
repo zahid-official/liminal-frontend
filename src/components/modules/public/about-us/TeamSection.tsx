@@ -54,7 +54,7 @@ const TeamSection = () => {
       aria-labelledby="team-heading"
       className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
+      <div className="custom-container relative z-10 space-y-32 lg:space-y-36">
         {/* Section Header */}
         <SectionHeader
           headingId="team-heading"

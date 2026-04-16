@@ -16,8 +16,14 @@ const StorySection = () => {
           badgeText="WHO WE ARE"
           title={
             <>
-              Crafting Immersive Interiors With <br className="hidden lg:block" />
-              Innovation and <span className="text-liminal-secondary">Elegance</span>
+              Crafting{" "}
+              <span className="text-liminal-secondary">
+                {" "}
+                Immersive Interiors
+              </span>{" "}
+              With <br className="hidden lg:block" />
+              Innovation and{" "}
+              <span className="text-liminal-secondary">Elegance</span>
             </>
           }
           description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary—blending avant-garde innovation with a legacy of timeless elegance."

@@ -99,18 +99,21 @@ const ProcessSection = () => {
                   className="flex flex-col items-center text-center space-y-8 group px-8"
                 >
                   {/* Number Circle */}
-                  <div className="w-20 h-20 rounded-2xl bg-background border border-border flex items-center justify-center relative shadow-sm transition-all duration-700 group-hover:border-liminal-secondary group-hover:rotate-6">
+                  <div className="w-25 h-25 rounded-full bg-background border border-border flex items-center justify-center relative shadow-sm transition-all duration-700 group-hover:border-liminal-secondary group-hover:scale-105">
                     <span className="text-2xl font-bold font-heading text-foreground/80 group-hover:text-liminal-secondary transition-colors duration-500">
                       {step.number}
                     </span>
 
-                    {/* Decorative blueprint corners */}
-                    <div className="absolute -top-1 -left-1 w-3 h-3 border-t border-l border-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b border-r border-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* Technical Rotating Ring */}
+                    <div className="absolute -inset-3 border border-dashed border-liminal-secondary/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-1500 ease-in-out" />
+                    
+                    {/* Compass points */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <div className="space-y-4">
-                    <h4 className="text-xl font-bold font-heading tracking-tight">
+                  <div className="space-y-4 transition-transform duration-500 group-hover:-translate-y-2">
+                    <h4 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
                       {step.title}
                     </h4>
                     <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
@@ -160,12 +163,12 @@ const ProcessSection = () => {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 };
 
 export default ProcessSection;

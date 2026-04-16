@@ -1,6 +1,5 @@
 import Image from "next/image";
 import AboutUsStats from "../clients/AboutUsStats";
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
 
 // Stats Data
 const stats = [
@@ -42,20 +41,7 @@ const VisionSection = () => {
       aria-labelledby="vision-heading"
       className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
-        {/* Section Header */}
-        <CenteredSectionHeader
-          headingId="vision-heading"
-          badgeText="MISSION & VISION"
-          title={
-            <>
-              Architecting a <span className="text-liminal-secondary">Bolder</span>{" "}
-              <br className="hidden lg:block" />
-              Future Together
-            </>
-          }
-          description="Our mission and vision define who we are and where we are going. We are committed to pushing the boundaries of what's possible."
-        />
+      <div className="custom-container relative z-10 space-y-32 lg:space-y-36">
         {/* Top: Mission & Vision */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center relative z-10">
           {/* Content Side */}
@@ -72,7 +58,10 @@ const VisionSection = () => {
                     Our Mission
                   </span>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-bold font-heading leading-tight italic">
+                <h3
+                  id="vision-heading"
+                  className="text-4xl md:text-5xl font-bold font-heading leading-tight italic"
+                >
                   Elevating life through <br />
                   <span className="text-liminal-secondary underline underline-offset-10 decoration-1">
                     intentional design
@@ -117,10 +106,10 @@ const VisionSection = () => {
           <div className="lg:col-span-6 relative flex flex-col items-center">
             <div className="w-full relative aspect-square lg:aspect-4/5 rounded-3xl overflow-hidden border border-border/40 shadow-2xl group">
               <Image
-                src="/assets/about-vision.png"
-                alt="Architectural vision"
+                src="/assets/vision-1.jpg"
+                alt="Architectural vision masterpiece"
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 scale-[1.01] will-change-transform backface-hidden transform-gpu"
+                className="object-bottom-right object-cover transition-transform duration-700 ease-out group-hover:scale-110 scale-[1.01] will-change-transform backface-hidden transform-gpu"
               />
               {/* Subtle Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -131,7 +120,7 @@ const VisionSection = () => {
               {/* Decorative brackets */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-liminal-secondary/30" />
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-liminal-secondary/30" />
-              
+
               <p className="text-xl md:text-2xl font-heading font-light italic text-muted-foreground leading-relaxed">
                 &quot;Design is not just what it looks like and feels like.
                 Design is how it works.&quot;
