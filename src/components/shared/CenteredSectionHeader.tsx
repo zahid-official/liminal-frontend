@@ -43,7 +43,7 @@ const CenteredSectionHeader = ({
 
       {/* Description */}
       {description && (
-        <p className="max-w-2xl mx-auto text-muted-foreground text-[15px] sm:text-base leading-relaxed">
+        <p className="max-w-2xl text-muted-foreground text-[15px] sm:text-base leading-relaxed">
           {description}
         </p>
       )}
