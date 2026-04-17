@@ -1,23 +1,36 @@
-import PageHeader from "@/components/shared/PageHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
+import ContactForm from "./ContactForm";
+import ContactInfo from "./ContactInfo";
 
 // ContactSection Component
 const ContactSection = () => {
   return (
-    <div>
-      <PageHeader
-        title="Contact Us"
-        items={[{ label: "Home", href: "/" }, { label: "Contact" }]}
-        bgImage="/assets/bg-contact.avif"
-      />
-      <div className="py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold">Get In Touch</h2>
-          <p className="mt-4 text-muted-foreground">
-            Contact form functionality coming soon.
-          </p>
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="relative py-20 md:py-28 lg:py-32 bg-[url('/assets/bg-contact.png')] bg-top-right bg-no-repeat"
+    >
+      <div className="custom-container relative z-10">
+        <SectionHeader
+          badgeText="GET IN TOUCH"
+          title={
+            <>
+              Have A Project In{" "}
+              <span className="text-liminal-secondary">
+                Mind? <br className="hidden lg:block" /> Let&apos;s Make
+              </span>{" "}
+              It Happen
+            </>
+          }
+        />
+
+        {/* Contact Info and Form */}
+        <div className="mt-16 lg:mt-24">
+          <ContactInfo />
+          <ContactForm />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
