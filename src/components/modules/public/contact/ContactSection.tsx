@@ -1,3 +1,5 @@
+import ContactForm from "./ContactForm";
+
 // ContactSection Component
 const ContactSection = () => {
   return (
@@ -58,6 +60,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Side: Form */}
+          <ContactForm />
         </div>
       </div>
     </section>
