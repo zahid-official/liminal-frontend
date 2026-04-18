@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -17,6 +18,7 @@ export interface PageHeaderProps {
     href?: string;
   }[];
   bgImage?: string;
+  className?: string;
 }
 
 // PageHeader Component
@@ -24,10 +26,14 @@ const PageHeader = ({
   title,
   items,
   bgImage = "/assets/bg-banner.jpg",
+  className,
 }: PageHeaderProps) => {
   return (
     <section
-      className="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center bg-no-repeat bg-cover bg-center"
+      className={cn(
+        "relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center bg-no-repeat bg-cover bg-center",
+        className
+      )}
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
       {/* Dark Overlay */}
