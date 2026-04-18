@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AboutUsStats from "../clients/AboutUsStats";
+import AboutUsStats from "./AboutUsStats";
 
 // Stats Data
 const stats = [

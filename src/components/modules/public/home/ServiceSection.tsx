@@ -1,5 +1,5 @@
 import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
-import ServiceContent from "../clients/ServiceContent";
+import ServiceContent from "./ServiceContent";
 
 // Services Data
 const servicesData = [

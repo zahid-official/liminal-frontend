@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { Field, FieldLabel } from "@/components/ui/field";
@@ -25,13 +25,18 @@ const interests = [
 const ContactForm = () => {
   const [interest, setInterest] = useState<string>("placeholder");
 
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Logic for transmitting inquiry would go here
+  };
+
   return (
     <div className="lg:col-span-7">
-      <form className="space-y-12">
+      <form onSubmit={handleSubmit} className="space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {/* Name Field */}
           <Field className="space-y-4 group">
-            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors border-none p-0 bg-transparent shadow-none">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
               Full Name
             </FieldLabel>
             <Input
@@ -44,7 +49,7 @@ const ContactForm = () => {
 
           {/* Email Field */}
           <Field className="space-y-4 group">
-            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors border-none p-0 bg-transparent shadow-none">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
               Email Address
             </FieldLabel>
             <Input
@@ -57,7 +62,7 @@ const ContactForm = () => {
 
           {/* Interest Field using Shadcn Select */}
           <Field className="space-y-4 group">
-            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors border-none p-0 bg-transparent shadow-none">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
               Interest
             </FieldLabel>
             <Select defaultValue="placeholder" onValueChange={setInterest}>
@@ -98,7 +103,7 @@ const ContactForm = () => {
 
           {/* Budget/Timeline Field */}
           <Field className="space-y-4 group">
-            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors border-none p-0 bg-transparent shadow-none">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
               Estimated Timeline
             </FieldLabel>
             <Input
@@ -111,7 +116,7 @@ const ContactForm = () => {
 
         {/* Message Field */}
         <Field className="space-y-4 group">
-          <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors border-none p-0 bg-transparent shadow-none">
+          <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
             Project Vision & Brief
           </FieldLabel>
           <Textarea
@@ -134,7 +139,7 @@ const ContactForm = () => {
               <ArrowRight
                 size={16}
                 className="relative z-10 transition-transform group-hover:translate-x-1.5"
-                strokeWidth={2.5}
+                strokeWidth={2}
               />
               {/* Glossy Overlay */}
               <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />

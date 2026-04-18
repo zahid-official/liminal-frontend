@@ -39,7 +39,11 @@ const infoItems = [
 // InfoSection Component
 const InfoSection = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 relative overflow-hidden">
+    <section
+      id="studio-info-section"
+      aria-labelledby="info-heading"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 relative overflow-hidden"
+    >
       {/* Decorative Stamp Element */}
       <div className="absolute -bottom-20 -right-20 w-96 h-96 border border-liminal-secondary/10 rounded-full flex items-center justify-center rotate-12 pointer-events-none">
         <div className="w-80 h-80 border border-dashed border-liminal-secondary/20 rounded-full flex items-center justify-center px-12">
@@ -60,9 +64,12 @@ const InfoSection = () => {
                   Studio Logistics
                 </span>
               </div>
-              <h2 className="text-4xl sm:text-5xl leading-[1.1] tracking-tight">
-                Where Vision Meets{" "}
-                <span className="text-liminal-secondary">Reality</span>
+              <h2
+                id="info-heading"
+                className="text-4xl sm:text-5xl leading-[1.1] tracking-tight"
+              >
+                Where Vision{" "}
+                <span className="text-liminal-secondary font-serif">Meets Reality</span>
               </h2>
             </div>
             <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-60">
@@ -75,7 +82,7 @@ const InfoSection = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {infoItems.map((item, index) => (
               <div
                 key={index}

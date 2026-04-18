@@ -3,7 +3,11 @@ import ContactForm from "./ContactForm";
 // ContactSection Component
 const ContactSection = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-background">
+    <section
+      id="contact-form-section"
+      aria-labelledby="contact-heading"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-background"
+    >
       {/* Editorial Background Element */}
       <div className="absolute top-20 -left-20 text-[25rem] font-bold font-heading text-liminal-secondary/3 select-none pointer-events-none uppercase">
         C
@@ -21,7 +25,7 @@ const ContactSection = () => {
                     ESTABLISH CONTACT
                   </span>
                 </div>
-                <h2 className="text-4xl sm:text-6xl leading-[1.1] tracking-tight">
+                <h2 id="contact-heading" className="text-4xl sm:text-6xl leading-[1.1] tracking-tight">
                   Let&apos;s Build <br />
                   <span className="text-liminal-secondary italic font-serif">
                     Your Vision

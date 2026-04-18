@@ -1,6 +1,6 @@
 import SectionBadge from "@/components/shared/SectionBadge";
 import Image from "next/image";
-import ExperienceStats from "../clients/ExperienceStats";
+import ExperienceStats from "./ExperienceStats";
 
 // Experience Statistics Data
 const statsData = [
@@ -20,7 +20,8 @@ const statsData = [
     id: "stat-3",
     value: "30+",
     title: "Skilled Tradespeople",
-    description: "Our dedicated team of 30+ experts ensures top-quality results",
+    description:
+      "Our dedicated team of 30+ experts ensures top-quality results",
   },
   {
     id: "stat-4",

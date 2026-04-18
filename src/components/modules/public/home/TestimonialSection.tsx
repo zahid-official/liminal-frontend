@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
-import TestimonialRating from "../clients/TestimonialRating";
+import TestimonialRating from "./TestimonialRating";
 
 // Testimonial Data
 const testimonials = [
@@ -75,8 +75,7 @@ const TestimonialSection = () => {
             badgeText="OUR CLIENTS SAY"
             title={
               <span className="font-bold">
-                Warm Words From{" "}
-                <br className="hidden md:block" />
+                Warm Words From <br className="hidden md:block" />
                 <span className="text-liminal-secondary">
                   Our Satisfied
                 </span>{" "}
@@ -103,8 +102,8 @@ const TestimonialSection = () => {
                   {/* Text Statement */}
                   <p className="text-[14px] sm:text-[15px] font-semibold text-foreground/90 max-w-85 leading-[1.6]">
                     From concept to reality, the team turned my vision into a
-                    stunning, livable space. I couldn&apos;t be happier with
-                    the results!
+                    stunning, livable space. I couldn&apos;t be happier with the
+                    results!
                   </p>
                 </div>
 
