@@ -1,5 +1,6 @@
 import BlogGrid from "@/components/modules/public/blog/BlogGrid";
 import FeaturedPost from "@/components/modules/public/blog/FeaturedPost";
+import NewsletterSection from "@/components/modules/public/blog/NewsletterSection";
 import PageHeader from "@/components/shared/PageHeader";
 
 // Blog Page Component
@@ -23,6 +24,9 @@ const BlogPage = async ({
 
       {/* Main Blog Content with Category Filters and Technical Grid */}
       <BlogGrid activeCategory={category} activePage={page} />
+
+      {/* Premium Newsletter Section */}
+      <NewsletterSection />
     </main>
   );
 };

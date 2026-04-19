@@ -136,7 +136,7 @@ const BlogGrid = ({
   );
 
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-white relative overflow-clip">
+    <section className="py-20 md:py-28 lg:py-32 relative overflow-clip">
       {/* Decorative Background Text */}
       <div className="absolute top-40 right-10 text-[15rem] font-bold font-heading text-liminal-secondary/5 select-none z-0 rotate-90 origin-right pointer-events-none">
         JOURNAL
@@ -236,9 +236,9 @@ const BlogGrid = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 lg:gap-x-12 lg:gap-y-20">
               {currentPosts.map((post) => (
                 <article key={post.id} className="group relative">
-                  <Link href={`/blog/${post.id}`} className="block space-y-8">
+                  <Link href={`/blog/${post.id}`} className="block space-y-10">
                     {/* Image Container with Architectural Decoration */}
-                    <div className="relative aspect-4/3 rounded-[2rem] overflow-hidden bg-zinc-100 border border-border/40 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-liminal-secondary/10">
+                    <div className="relative aspect-4/3 rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-border/40 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-liminal-secondary/10">
                       <Image
                         src={post.image}
                         alt={post.title}
@@ -246,39 +246,68 @@ const BlogGrid = ({
                         className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
                       />
 
+                      {/* Floating Status Badge */}
+                      <div className="absolute top-8 left-8 z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[8px] font-bold text-white uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                        <div className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                        Status: Investigation
+                      </div>
+
                       {/* Top-right Badge */}
-                      <div className="absolute top-6 right-6 z-10 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-liminal-secondary text-[10px] font-bold tracking-widest uppercase border border-white/20">
+                      <div className="absolute top-8 right-8 z-10 px-4 py-2 rounded-xl bg-white/95 backdrop-blur-md text-liminal-secondary text-[9px] font-extrabold tracking-widest uppercase border border-white/20 shadow-xl">
                         {post.tag}
                       </div>
 
-                      {/* Hover Overlay Measurement Lines */}
-                      <div className="absolute inset-x-8 inset-y-8 border-l border-t border-white/0 group-hover:border-white/20 transition-all duration-700 pointer-events-none" />
-                      <div className="absolute bottom-8 right-8 w-8 h-8 border-r border-b border-white/0 group-hover:border-white/20 transition-all duration-700 pointer-events-none" />
+                      {/* Hover Overlay Architectural Elements */}
+                      <div className="absolute inset-0 border-20 border-white/0 group-hover:border-white/5 transition-all duration-1000 pointer-events-none" />
+
+                      {/* Technical Corners */}
+                      <div className="absolute top-10 left-10 w-6 h-6 border-l border-t border-white/0 group-hover:border-white/40 transition-all duration-700 pointer-events-none" />
+                      <div className="absolute bottom-10 right-10 w-6 h-6 border-r border-b border-white/0 group-hover:border-white/40 transition-all duration-700 pointer-events-none" />
                     </div>
 
                     {/* Text Content */}
-                    <div className="space-y-4 px-2">
-                      <div className="flex items-center justify-between gap-6 text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-60">
-                        <div className="flex items-center gap-2">
-                          <User size={12} className="text-liminal-secondary" />
-                          {post.author}
+                    <div className="space-y-6 px-4 relative">
+                      {/* Technical Ref Line */}
+                      <div className="absolute -left-4 top-0 bottom-0 w-px bg-linear-to-b from-liminal-secondary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between gap-6 text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground opacity-60">
+                          <div className="flex items-center gap-2 group-hover:text-liminal-secondary transition-colors">
+                            <User
+                              size={12}
+                              className="text-liminal-secondary"
+                            />
+                            {post.author}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock
+                              size={12}
+                              className="text-liminal-secondary"
+                            />
+                            {post.readTime}
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Clock size={12} className="text-liminal-secondary" />
-                          {post.readTime}
-                        </div>
+
+                        <h3 className="text-2xl lg:text-3xl font-bold font-heading leading-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                          {post.title}
+                        </h3>
+
+                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 font-light">
+                          {post.summary}
+                        </p>
                       </div>
 
-                      <h3 className="text-2xl font-bold font-heading leading-tight group-hover:text-liminal-secondary transition-colors duration-300">
-                        {post.title}
-                      </h3>
-
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 font-light">
-                        {post.summary}
-                      </p>
-
-                      <div className="pt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-liminal-secondary border-t border-dashed border-border/40 w-fit group-hover:w-full transition-all duration-700">
-                        Read Investigation <ArrowUpRight size={14} />
+                      <div className="pt-6 flex items-center justify-between border-t border-dashed border-border/40">
+                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-liminal-secondary group/ink">
+                          Read Full Investigation
+                          <ArrowUpRight
+                            size={14}
+                            className="group-hover/ink:translate-x-0.5 group-hover/ink:-translate-y-0.5 transition-transform"
+                          />
+                        </div>
+                        <span className="text-[8px] font-bold text-zinc-300 tracking-widest">
+                          {post.ref}
+                        </span>
                       </div>
                     </div>
                   </Link>
