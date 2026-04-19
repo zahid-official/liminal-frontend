@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import {
   Accordion,
   AccordionContent,
@@ -59,22 +59,30 @@ const FaqSection = () => {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden relative"
+      className="py-24 md:py-32 lg:py-40 overflow-hidden relative"
     >
+
+      {/* Technical Status Badge: Vertical Annotation */}
+      <div className="absolute bottom-40 left-10 text-[9px] font-mono tracking-[0.3em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
+        ARCH_QUERIES // INDEX_01
+      </div>
+
       <div className="custom-container relative z-10">
         {/* Section Header */}
-        <CenteredSectionHeader
+        <SectionHeader
+          variant="centered"
           badgeText="POPULAR QUERIES"
           headingId="faq-heading"
           title={
             <>
-              Quick And Clear{" "}
-              <span className="text-liminal-secondary">Answers</span>
-              <br className="hidden lg:block" />
-              <span className="text-liminal-secondary">To Your Key</span>{" "}
-              Questions
+              Quick And Clear <br className="hidden lg:block" />
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Answers
+              </span>{" "}
+              To Your Questions
             </>
           }
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Content Layout */}

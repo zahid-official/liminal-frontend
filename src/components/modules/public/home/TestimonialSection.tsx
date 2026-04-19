@@ -61,7 +61,11 @@ const testimonials = [
 // TestimonialSection Component
 const TestimonialSection = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-[url('/assets/bg-testimonial.png')] bg-bottom-left bg-no-repeat bg-zinc-50/80">
+    <section className="py-24 md:py-32 lg:py-40 overflow-hidden relative bg-[url('/assets/bg-testimonial.png')] bg-bottom-left bg-no-repeat bg-zinc-50/70">
+      {/* Technical Status Badge: Vertical Annotation */}
+      <div className="absolute top-40 left-10 text-[9px] font-mono tracking-[0.4em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
+        CLIENT_FEEDBACK_LOOP // VERIFIED
+      </div>
       <Carousel
         opts={{
           align: "start",
@@ -74,13 +78,13 @@ const TestimonialSection = () => {
           <SectionHeader
             badgeText="OUR CLIENTS SAY"
             title={
-              <span className="font-bold">
+              <>
                 Warm Words From <br className="hidden md:block" />
-                <span className="text-liminal-secondary">
-                  Our Satisfied
+                <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                  Satisfied
                 </span>{" "}
                 Clients
-              </span>
+              </>
             }
             className="mb-8 lg:mb-12"
           />

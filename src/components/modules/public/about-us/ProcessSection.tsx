@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { Compass, Leaf, Diamond, Users } from "lucide-react";
 
 // Process Steps Data
@@ -67,13 +67,16 @@ const ProcessSection = () => {
     >
       <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
         {/* Section Header */}
-        <CenteredSectionHeader
+        <SectionHeader
+          variant="centered"
           headingId="process-heading"
           badgeText="OUR METHOD"
           title={
             <>
               A Meticulous{" "}
-              <span className="text-liminal-secondary">Process</span>
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Process
+              </span>
             </>
           }
           description="We follow a structured yet fluid methodology to bring your vision to life with precision and care."

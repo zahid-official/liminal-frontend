@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import ServiceContent from "./ServiceContent";
 
 // Services Data
@@ -47,32 +47,42 @@ const servicesData = [
   },
 ];
 
-// ServiceSection Component
+/**
+ * ServiceSection Component
+ * Presents the core services with an interactive content switcher.
+ * Designed with a premium editorial header and architectural decorative elements.
+ */
 const ServiceSection = () => {
   return (
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 overflow-hidden relative"
     >
-      <div className="custom-container">
-        <CenteredSectionHeader
-          badgeText="OUR SERVICES"
+      <div className="custom-container relative z-10">
+        <SectionHeader
+          variant="centered"
+          badgeText="SERVICES REVEALED"
           headingId="services-heading"
           title={
             <>
-              Explore Our{" "}
-              <span className="text-liminal-secondary font-medium">
-                Comprehensive Interior Design
+              Explore Our <br />
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Comprehensive
               </span>{" "}
-              Services
+              Solutions
             </>
           }
-          description="We specialize in bringing visions to life through tailored solutions. Discover our range of innovative interior design and architectural services crafted with precision."
+          description="We specialize in bringing visions to life through tailored architectural solutions. Discover our range of innovative interior design and technical services crafted with surgical precision."
+          className="mb-16 md:mb-24 lg:mb-32 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Interactive Service Content */}
-        <ServiceContent services={servicesData} />
+        <div className="relative">
+          {/* Technical accent behind content */}
+          <div className="absolute -top-16 -left-16 size-48 border border-border/20 rounded-full opacity-40 pointer-events-none hidden xl:block" />
+          <ServiceContent services={servicesData} />
+        </div>
       </div>
     </section>
   );

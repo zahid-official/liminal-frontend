@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
 // StorySection Component
@@ -11,19 +11,17 @@ const StorySection = () => {
     >
       <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
         {/* Intro Header */}
-        <CenteredSectionHeader
+        <SectionHeader
+          variant="centered"
           headingId="our-story-heading"
           badgeText="WHO WE ARE"
           title={
             <>
-              Crafting{" "}
-              <span className="text-liminal-secondary">
-                {" "}
+              Crafting <br className="hidden lg:block" />
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
                 Immersive Interiors
               </span>{" "}
-              With <br className="hidden lg:block" />
-              Innovation and{" "}
-              <span className="text-liminal-secondary">Elegance</span>
+              With Innovation
             </>
           }
           description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary—blending avant-garde innovation with a legacy of timeless elegance."
