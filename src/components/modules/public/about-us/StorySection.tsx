@@ -7,9 +7,9 @@ const StorySection = () => {
     <section
       id="our-story"
       aria-labelledby="our-story-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 overflow-hidden"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
+      <div className="custom-container relative z-10">
         {/* Intro Header */}
         <SectionHeader
           variant="centered"
@@ -17,18 +17,19 @@ const StorySection = () => {
           badgeText="WHO WE ARE"
           title={
             <>
-              Crafting <br className="hidden lg:block" />
+              Crafting Immersive {" "}
               <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
-                Immersive Interiors
+                Interiors
               </span>{" "}
               With Innovation
             </>
           }
-          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary—blending avant-garde innovation with a legacy of timeless elegance."
+          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary blending avant-garde innovation with a legacy of timeless elegance."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Our Story */}
-        <div className="relative group">
+        <div className="relative group pt-16">
           {/* Background Decorative Letter */}
           <div className="absolute top-0 right-10 text-[20rem] font-bold font-heading text-liminal-secondary/5 select-none -z-10 group-hover:text-liminal-secondary/10 transition-all duration-1000">
             S
@@ -63,11 +64,11 @@ const StorySection = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-px bg-liminal-secondary" />
-                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-liminal-secondary">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                     The Genesis
                   </span>
                 </div>
-                <h3 className="text-4xl font-bold font-heading leading-tight italic">
+                <h3 className="text-3xl font-bold font-heading leading-tight italic">
                   &quot;We don&apos;t just design rooms; we create environments
                   where{" "}
                   <span className="text-liminal-secondary underline underline-offset-10 decoration-1">

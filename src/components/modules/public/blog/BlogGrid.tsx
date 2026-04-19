@@ -136,7 +136,7 @@ const BlogGrid = ({
   );
 
   return (
-    <section className="py-20 md:py-28 lg:py-32 relative overflow-clip">
+    <section className="py-24 md:py-32 lg:py-40 relative overflow-clip">
       {/* Decorative Background Text */}
       <div className="absolute top-40 right-10 text-[15rem] font-bold font-heading text-liminal-secondary/5 select-none z-0 rotate-90 origin-right pointer-events-none">
         JOURNAL
@@ -145,7 +145,7 @@ const BlogGrid = ({
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Sidebar / Filters */}
-          <aside className="lg:col-span-3 space-y-12 lg:sticky lg:top-32 self-start">
+          <aside className="lg:col-span-3 space-y-12 lg:sticky lg:top-32 self-start animate-in fade-in slide-in-from-left-8 duration-1200 ease-out fill-mode-both">
             <div className="space-y-8">
               <div className="relative group">
                 <input
@@ -211,7 +211,7 @@ const BlogGrid = ({
           </aside>
 
           {/* Blog Content */}
-          <div className="lg:col-span-9 space-y-16">
+          <div className="lg:col-span-9 space-y-16 animate-in fade-in slide-in-from-right-8 duration-1200 delay-300 ease-out fill-mode-both">
             {/* Controls / View Switcher */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-border/40">
               <div className="space-y-1">
@@ -288,7 +288,7 @@ const BlogGrid = ({
                           </div>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-bold font-heading leading-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                        <h3 className="text-xl sm:text-2xl font-bold font-heading leading-tight group-hover:text-liminal-secondary transition-colors duration-500">
                           {post.title}
                         </h3>
 

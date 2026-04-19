@@ -39,13 +39,13 @@ const VisionSection = () => {
     <section
       id="mission-and-vision"
       aria-labelledby="vision-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
+      className="py-24 md:py-32 lg:py-40 overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container relative z-10 space-y-32 lg:space-y-36">
         {/* Top: Mission & Vision */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center relative z-10">
           {/* Content Side */}
-          <div className="lg:col-span-6 space-y-24">
+          <div className="lg:col-span-6 space-y-24 animate-in fade-in slide-in-from-left-8 duration-1200 ease-out fill-mode-both">
             {/* Mission Block */}
             <div className="relative group pl-12 md:pl-16">
               <div className="absolute -left-4 -top-8 text-9xl font-bold font-heading text-liminal-secondary/5 select-none -z-10 transition-colors duration-500 group-hover:text-liminal-secondary/10">
@@ -53,8 +53,8 @@ const VisionSection = () => {
               </div>
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-px bg-liminal-secondary" />
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-liminal-secondary">
+                  <div className="w-10 h-px bg-liminal-secondary/40" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                     Our Mission
                   </span>
                 </div>
@@ -63,7 +63,7 @@ const VisionSection = () => {
                   className="text-4xl md:text-5xl font-bold font-heading leading-tight italic"
                 >
                   Elevating life through <br />
-                  <span className="text-liminal-secondary underline underline-offset-10 decoration-1">
+                  <span className="text-liminal-secondary font-serif underline underline-offset-10 decoration-1">
                     intentional design
                   </span>
                 </h3>
@@ -82,14 +82,14 @@ const VisionSection = () => {
               </div>
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-px bg-liminal-secondary" />
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-liminal-secondary">
+                  <div className="w-10 h-px bg-liminal-secondary/40" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                     Our Vision
                   </span>
                 </div>
                 <h3 className="text-4xl md:text-5xl font-bold font-heading leading-tight">
                   Setting the global <br />
-                  <span className="text-liminal-secondary italic">
+                  <span className="italic underline-offset-10 decoration-1">
                     benchmark of luxury
                   </span>
                 </h3>

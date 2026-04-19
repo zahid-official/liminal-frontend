@@ -6,7 +6,7 @@ const ContactSection = () => {
     <section
       id="contact-form-section"
       aria-labelledby="contact-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-background"
+      className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
     >
       {/* Editorial Background Element */}
       <div className="absolute top-20 -left-20 text-[25rem] font-bold font-heading text-liminal-secondary/3 select-none pointer-events-none uppercase">
@@ -16,23 +16,26 @@ const ContactSection = () => {
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-start">
           {/* Left Side: Editorial Content */}
-          <div className="lg:col-span-5 space-y-16">
+          <div className="lg:col-span-5 space-y-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
             <div>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 pl-1.5">
-                  <div className="w-2 h-2 rounded-full bg-liminal-secondary" />
-                  <span className="text-xs font-bold uppercase tracking-[0.4em] text-liminal-secondary">
+                <div className="flex items-center gap-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                     ESTABLISH CONTACT
                   </span>
                 </div>
-                <h2 id="contact-heading" className="text-4xl sm:text-6xl leading-[1.1] tracking-tight">
+                <h2
+                  id="contact-heading"
+                  className="text-4xl sm:text-6xl leading-[1.1] tracking-tight font-bold font-heading"
+                >
                   Let&apos;s Build <br />
-                  <span className="text-liminal-secondary italic font-serif">
+                  <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
                     Your Vision
                   </span>
                 </h2>
               </div>
-              <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[15px] sm:text-base leading-relaxed mt-6">
+              <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-lg leading-relaxed mt-6">
                 Our approach is collaborative, transparent, and meticulous. We
                 transform architectural possibilities into lived experiences.
               </p>

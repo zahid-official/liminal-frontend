@@ -63,9 +63,9 @@ const ProcessSection = () => {
     <section
       id="our-methodology"
       aria-labelledby="process-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 overflow-hidden"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
+      <div className="custom-container relative z-10 space-y-16">
         {/* Section Header */}
         <SectionHeader
           variant="centered"
@@ -80,6 +80,7 @@ const ProcessSection = () => {
             </>
           }
           description="We follow a structured yet fluid methodology to bring your vision to life with precision and care."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         <div className="space-y-24">
@@ -109,7 +110,7 @@ const ProcessSection = () => {
 
                     {/* Technical Rotating Ring */}
                     <div className="absolute -inset-3 border border-dashed border-liminal-secondary/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-1500 ease-in-out" />
-                    
+
                     {/* Compass points */}
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -134,38 +135,42 @@ const ProcessSection = () => {
           {/* Bottom: Core Values */}
           <div className="space-y-10">
             <div className="text-center space-y-3">
-              <h4 className="text-sm font-bold uppercase tracking-[0.25em] text-liminal-secondary">Our Core Principles</h4>
-              <p className="text-3xl font-bold font-heading">The Foundation of Every Project</p>
+              <h4 className="text-sm font-bold uppercase tracking-[0.25em] text-liminal-secondary">
+                Our Core Principles
+              </h4>
+              <p className="text-3xl font-bold font-heading">
+                The Foundation of Every Project
+              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 border border-border/40 rounded-3xl overflow-hidden shadow-lg bg-secondary/5">
-            {values.map((item, index) => (
-              <div
-                key={index}
-                className="group p-10 lg:p-12 bg-background border-b md:border-b-0 md:border-r last:border-b-0 last:border-r-0 border-border/40 transition-all duration-700 hover:bg-secondary/10 relative overflow-hidden"
-              >
-                {/* Background Decorative Number */}
-                <div className="absolute top-10 right-10 text-7xl font-bold font-heading text-liminal-secondary/5 select-none z-0 transition-all duration-700 group-hover:text-liminal-secondary/10 group-hover:-translate-y-2">
-                  0{index + 1}
-                </div>
-
-                <div className="relative z-10 space-y-8">
-                  <div className="w-14 h-14 rounded-full bg-liminal-secondary/5 border border-liminal-secondary/10 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-500 shadow-sm">
-                    <item.icon size={24} strokeWidth={1.5} />
-                  </div>
-                  <div className="space-y-4">
-                    <h4 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
-                      {item.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {item.description}
-                    </p>
+              {values.map((item, index) => (
+                <div
+                  key={index}
+                  className="group p-10 lg:p-12 bg-background border-b md:border-b-0 md:border-r last:border-b-0 last:border-r-0 border-border/40 transition-all duration-700 hover:bg-secondary/10 relative overflow-hidden"
+                >
+                  {/* Background Decorative Number */}
+                  <div className="absolute top-10 right-10 text-7xl font-bold font-heading text-liminal-secondary/5 select-none z-0 transition-all duration-700 group-hover:text-liminal-secondary/10 group-hover:-translate-y-2">
+                    0{index + 1}
                   </div>
 
-                  {/* Bottom accent line */}
-                  <div className="w-0 group-hover:w-12 h-0.5 bg-liminal-secondary transition-all duration-500" />
+                  <div className="relative z-10 space-y-8">
+                    <div className="w-14 h-14 rounded-full bg-liminal-secondary/5 border border-liminal-secondary/10 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-500 shadow-sm">
+                      <item.icon size={24} strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                        {item.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div className="w-0 group-hover:w-12 h-0.5 bg-liminal-secondary transition-all duration-500" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           </div>
         </div>

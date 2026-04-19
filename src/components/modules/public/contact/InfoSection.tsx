@@ -42,37 +42,39 @@ const InfoSection = () => {
     <section
       id="studio-info-section"
       aria-labelledby="info-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 relative overflow-hidden"
+      className="py-24 md:py-32 lg:py-40 bg-zinc-50/80 relative overflow-hidden"
     >
       {/* Decorative Stamp Element */}
       <div className="absolute -bottom-20 -right-20 w-96 h-96 border border-liminal-secondary/10 rounded-full flex items-center justify-center rotate-12 pointer-events-none">
         <div className="w-80 h-80 border border-dashed border-liminal-secondary/20 rounded-full flex items-center justify-center px-12">
-          <span className="text-[10px] font-bold uppercase tracking-[0.8em] text-liminal-secondary/40 -rotate-12 text-center leading-relaxed">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary/40 -rotate-12 text-center leading-relaxed">
             Certified Premium Design Studio
           </span>
         </div>
       </div>
 
       <div className="custom-container relative z-10">
-        <div className="space-y-20">
+        <div className="space-y-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
           {/* Section Heading */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 border-b border-border/40 pb-16">
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-2 h-2 rounded-full bg-liminal-secondary" />
-                <span className="text-xs font-bold uppercase tracking-[0.4em] text-liminal-secondary">
+                <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                   Studio Logistics
                 </span>
               </div>
               <h2
                 id="info-heading"
-                className="text-4xl sm:text-5xl leading-[1.1] tracking-tight"
+                className="text-4xl sm:text-5xl leading-tight tracking-tight font-bold font-heading"
               >
                 Where Vision{" "}
-                <span className="text-liminal-secondary font-serif">Meets Reality</span>
+                <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                  Meets Reality
+                </span>
               </h2>
             </div>
-            <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-60">
+            <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground opacity-60">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={14} className="text-liminal-secondary" />
                 Secure Operations

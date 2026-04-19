@@ -4,11 +4,11 @@ import { ArrowUpRight, Share2, Bookmark } from "lucide-react";
 
 const FeaturedPost = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 border-b border-border/40">
+    <section className="py-24 md:py-32 lg:py-40 bg-zinc-50/80">
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Large Image - 7 columns */}
-          <div className="lg:col-span-7 relative group">
+          <div className="lg:col-span-7 relative group animate-in fade-in slide-in-from-left-8 duration-1200 ease-out fill-mode-both">
             {/* Architectural Frame Decoration */}
             <div className="absolute -top-4 -left-4 w-24 h-24 border-l border-t border-liminal-secondary/40 pointer-events-none z-20" />
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r border-b border-liminal-secondary/40 pointer-events-none z-20" />
@@ -28,17 +28,17 @@ const FeaturedPost = () => {
           </div>
 
           {/* Text Content - 5 columns */}
-          <div className="lg:col-span-5 space-y-10">
+          <div className="lg:col-span-5 space-y-10 animate-in fade-in slide-in-from-right-8 duration-1200 delay-300 ease-out fill-mode-both">
             <div className="space-y-6">
-              <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+              <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">
                 <span>April 19, 2026</span>
                 <span className="w-1 h-1 rounded-full bg-liminal-secondary" />
                 <span>Architecture</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-[1.05] tracking-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight tracking-tight">
                 The Anatomy of{" "}
-                <span className="text-liminal-secondary font-serif italic font-normal">
+                <span className="text-liminal-secondary font-serif italic font-normal underline underline-offset-8 decoration-1">
                   Sustainable
                 </span>{" "}
                 Luxury.
@@ -76,13 +76,13 @@ const FeaturedPost = () => {
             {/* Technical Metadata */}
             <div className="pt-10 border-t border-border/40 grid grid-cols-2 gap-8">
               <div className="space-y-1">
-                <span className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold">
                   Word Count
                 </span>
                 <p className="text-sm font-bold font-heading">2,450 Words</p>
               </div>
               <div className="space-y-1">
-                <span className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold">
                   Complexity
                 </span>
                 <p className="text-sm font-bold font-heading">
