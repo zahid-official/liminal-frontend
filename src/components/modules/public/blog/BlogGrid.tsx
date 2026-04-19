@@ -1,150 +1,335 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Calendar, User, Tag } from "lucide-react";
+import {
+  Clock,
+  User,
+  ArrowUpRight,
+  Search,
+  LayoutGrid,
+  List,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
-const blogPosts = [
+// Blog Categories
+const blogCategories = [
+  { name: "All Insights", count: 24, slug: "all" },
+  { name: "Architecture", count: 8, slug: "architecture" },
+  { name: "Interior Design", count: 6, slug: "interior" },
+  { name: "Sustainability", count: 4, slug: "sustainability" },
+  { name: "Smart Living", count: 3, slug: "smart-living" },
+  { name: "Materials", count: 3, slug: "materials" },
+];
+
+// Blog Data
+const blogData = [
   {
-    id: "01",
-    ref: "LBD-ART-B01",
-    title: "Light & Shadow: Designing for Contrast",
-    excerpt: "How to manipulate natural light to create dramatic, evolving spaces throughout the diurnal cycle.",
-    image: "/assets/blog-2.png",
+    id: 1,
+    title: "Structural Integrity: The Intersection of Form and Physics",
+    summary:
+      "Exploring how modern architectural techniques allow for dramatic cantilevered designs without compromising structural stability. A deep dive into the engineering behind Liminal's latest projects.",
+    tag: "Architecture",
+    date: "April 15, 2026",
+    author: "Zahid Hasan",
+    image: "/assets/about-1.webp",
+    readTime: "8 min read",
+    ref: "LBD-JRNL-001",
+  },
+  {
+    id: 2,
+    title: "Biophilic Design: Bringing the Outdoors In",
+    summary:
+      "How to integrate natural elements into commercial spaces to improve mental well-being and productivity. We look at the latest trends in living walls and natural light optimization.",
+    tag: "Interior",
     date: "April 12, 2026",
-    author: "Zahidul Islam",
-    category: "Design Theory",
-    readTime: "5 min",
+    author: "Sara Ahmed",
+    image: "/assets/about-2.webp",
+    readTime: "5 min read",
+    ref: "LBD-JRNL-002",
   },
   {
-    id: "02",
-    ref: "LBD-ART-B02",
-    title: "Sustainable Brutalism in Modern Living",
-    excerpt: "Merging raw concrete aesthetics with carbon-negative materials for the eco-conscious urbanite.",
-    image: "/assets/blog-3.png",
+    id: 3,
+    title: "The Future of Concrete: Self-Healing and Carbon Neutral",
+    summary:
+      "Materials science is transforming the way we build. Discover how carbon-negative concrete is becoming a reality in contemporary high-end developments.",
+    tag: "Materials",
     date: "April 08, 2026",
-    author: "Elena Rossi",
-    category: "Architecture",
-    readTime: "7 min",
+    author: "Rayhan Kabir",
+    image: "/assets/project-1.png",
+    readTime: "12 min read",
+    ref: "LBD-JRNL-003",
   },
   {
-    id: "03",
-    ref: "LBD-ART-B03",
-    title: "The Renaissance of Curved Geometry",
-    excerpt: "Breaking away from linear constraints to embrace organic forms inspired by the Fibonacci sequence.",
-    image: "/assets/blog-1.png",
-    date: "April 02, 2026",
-    author: "Marcus Chen",
-    category: "Innovation",
-    readTime: "6 min",
+    id: 4,
+    title: "Minimalism vs. Maximalism: The Architectural Debate",
+    summary:
+      "Is the 'less is more' philosophy still relevant in 2026? We analyze the shift towards expressive minimalism in luxury residential architecture.",
+    tag: "Design Theory",
+    date: "April 05, 2026",
+    author: "Zahid Hasan",
+    image: "/assets/about-1.webp",
+    readTime: "6 min read",
+    ref: "LBD-JRNL-004",
   },
   {
-    id: "04",
-    ref: "LBD-ART-B04",
-    title: "Materiality: The Soul of the Interior",
-    excerpt: "Exploring the tactile relationship between human touch and curated architectural surfaces.",
-    image: "/assets/blog-2.png",
+    id: 5,
+    title: "Lighting as a Sculptural Element in Modern Homes",
+    summary:
+      "Beyond illumination, lighting serves as a tool for defining space. Learn how to use hidden LED troughs and focal pendants to create drama.",
+    tag: "Interior",
+    date: "April 01, 2026",
+    author: "Sara Ahmed",
+    image: "/assets/about-2.webp",
+    readTime: "7 min read",
+    ref: "LBD-JRNL-005",
+  },
+  {
+    id: 6,
+    title: "Renewable Energy Integration for Luxury Villas",
+    summary:
+      "Solar glass and geothermal heating are no longer niche. A technical guide to making high-end homes energy independent.",
+    tag: "Sustainability",
     date: "March 28, 2026",
-    author: "Zahidul Islam",
-    category: "Materials",
-    readTime: "4 min",
-  },
-  {
-    id: "05",
-    ref: "LBD-ART-B05",
-    title: "Vertical Gardens: Breathing Structures",
-    excerpt: "Integrating biophilic design into high-density urban residential complexes for wellness.",
-    image: "/assets/blog-3.png",
-    date: "March 22, 2026",
-    author: "Sarah Jenkins",
-    category: "Landscape",
-    readTime: "8 min",
-  },
-  {
-    id: "06",
-    ref: "LBD-ART-B06",
-    title: "Digital Fabrication in Bespoke Joinery",
-    excerpt: "How CNC and 3D printing are revolutionizing traditional craftsmanship in luxury interiors.",
-    image: "/assets/blog-1.png",
-    date: "March 15, 2026",
-    author: "Tom Baker",
-    category: "Technology",
-    readTime: "5 min",
+    author: "Rayhan Kabir",
+    image: "/assets/project-1.png",
+    readTime: "10 min read",
+    ref: "LBD-JRNL-006",
   },
 ];
 
-const BlogGrid = () => {
+interface BlogGridProps {
+  activeCategory?: string;
+  activePage?: string;
+}
+
+// Blog Grid Component
+const BlogGrid = ({
+  activeCategory = "all",
+  activePage = "1",
+}: BlogGridProps) => {
+  // Map slugs back to display names for filtering
+  const categoryMap: Record<string, string> = {
+    all: "All Insights",
+    architecture: "Architecture",
+    interior: "Interior",
+    sustainability: "Sustainability",
+    "smart-living": "Smart Living",
+    materials: "Materials",
+  };
+
+  const displayName = categoryMap[activeCategory] || "All Insights";
+  const currentPage = Number(activePage) || 1;
+  const postsPerPage = 4;
+
+  const filteredPosts =
+    activeCategory === "all"
+      ? blogData
+      : blogData.filter(
+          (post) =>
+            post.tag.toLowerCase().replace(/\s+/g, "-") === activeCategory,
+        );
+
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const currentPosts = filteredPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage,
+  );
+
   return (
-    <section className="py-20 bg-zinc-50/50 relative overflow-hidden">
-      {/* Background Decorative Line */}
-      <div className="absolute top-0 right-0 w-1/3 h-full border-l border-border/20 z-0 pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-border/40 to-transparent z-0 pointer-events-none" />
+    <section className="py-20 md:py-28 lg:py-32 bg-white relative overflow-clip">
+      {/* Decorative Background Text */}
+      <div className="absolute top-40 right-10 text-[15rem] font-bold font-heading text-liminal-secondary/5 select-none z-0 rotate-90 origin-right pointer-events-none">
+        JOURNAL
+      </div>
 
       <div className="custom-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
-          {blogPosts.map((post) => (
-            <article key={post.id} className="group flex flex-col h-full">
-              {/* Image Container */}
-              <div className="relative aspect-4/3 rounded-3xl overflow-hidden border border-border/40 shadow-sm transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-liminal-secondary/5 mb-8">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          {/* Sidebar / Filters */}
+          <aside className="lg:col-span-3 space-y-12 lg:sticky lg:top-32 self-start">
+            <div className="space-y-8">
+              <div className="relative group">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  className="w-full bg-zinc-50 border border-border/40 rounded-full py-4 px-6 pl-14 text-sm focus:outline-none focus:ring-1 focus:ring-liminal-secondary transition-all"
                 />
-                
-                {/* Floating Technical Tag */}
-                <div className="absolute top-6 right-6 px-3 py-1 bg-black/40 border border-white/20 rounded-full flex items-center gap-2 backdrop-blur-md">
-                   <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                   <span className="text-[9px] font-bold text-white uppercase tracking-widest">{post.ref}</span>
-                </div>
-
-                {/* Border Overlay */}
-                <div className="absolute inset-4 border border-white/10 rounded-2xl pointer-events-none group-hover:border-white/20 transition-colors duration-500" />
+                <Search
+                  className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-liminal-secondary transition-colors"
+                  size={18}
+                />
               </div>
 
-              {/* Meta Info */}
-              <div className="flex items-center gap-6 mb-4 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-                <div className="flex items-center gap-2 group-hover:text-liminal-secondary transition-colors duration-300">
-                  <Tag size={12} strokeWidth={2.5} />
-                  {post.category}
-                </div>
-                <div className="w-1 h-1 rounded-full bg-border" />
-                <div className="flex items-center gap-2">
-                  <Calendar size={12} strokeWidth={2.5} />
-                  {post.date}
-                </div>
-              </div>
-
-              {/* Title */}
-              <h3 className="text-2xl font-bold font-heading tracking-tight mb-4 grow group-hover:text-liminal-secondary transition-colors duration-500 line-clamp-2">
-                <Link href={`/blog/${post.id}`}>
-                  {post.title}
-                </Link>
-              </h3>
-
-              {/* Excerpt */}
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8 line-clamp-3 font-light">
-                {post.excerpt}
-              </p>
-
-              {/* Author & CTA */}
-              <div className="pt-8 border-t border-dashed border-border flex items-center justify-between mt-auto">
+              <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-secondary/10 border border-border/40 flex items-center justify-center text-liminal-secondary">
-                    <User size={14} />
-                  </div>
-                  <span className="text-xs font-bold text-foreground tracking-tight">{post.author}</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-liminal-secondary">
+                    Categories
+                  </span>
                 </div>
-                
-                <Link 
-                  href={`/blog/${post.id}`}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-liminal-secondary hover:text-white hover:border-liminal-secondary transition-all duration-500 transform group-hover:rotate-45"
-                >
-                  <ArrowUpRight size={18} />
-                </Link>
+                <ul className="space-y-2">
+                  {blogCategories.map((cat) => (
+                    <li key={cat.slug}>
+                      <Link
+                        href={`/blog?category=${cat.slug}&page=1`}
+                        scroll={false}
+                        className={`w-full flex items-center justify-between py-3 px-4 rounded-xl text-sm transition-all ${
+                          activeCategory === cat.slug
+                            ? "bg-liminal-secondary text-white shadow-xl shadow-liminal-secondary/20"
+                            : "hover:bg-zinc-50 text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        <span className="font-medium">{cat.name}</span>
+                        <span
+                          className={`text-[10px] font-bold ${activeCategory === cat.slug ? "text-white/60" : "text-muted-foreground/40"}`}
+                        >
+                          {cat.count.toString().padStart(2, "0")}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </article>
-          ))}
+
+              {/* Newsletter Teaser in Sidebar */}
+              <div className="p-8 bg-zinc-50 border border-border/40 rounded-[2rem] relative overflow-hidden group">
+                <div className="relative z-10 space-y-4">
+                  <h4 className="text-xl font-bold font-heading leading-tight">
+                    Stay informed with our technical newsletter.
+                  </h4>
+                  <button className="text-[10px] font-bold uppercase tracking-widest text-liminal-secondary flex items-center gap-2 group/btn">
+                    Subscribe Now{" "}
+                    <ArrowUpRight
+                      size={14}
+                      className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                    />
+                  </button>
+                </div>
+                {/* Decorative technical ring */}
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 border border-dashed border-liminal-secondary/10 rounded-full group-hover:rotate-90 transition-transform duration-1000" />
+              </div>
+            </div>
+          </aside>
+
+          {/* Blog Content */}
+          <div className="lg:col-span-9 space-y-16">
+            {/* Controls / View Switcher */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-border/40">
+              <div className="space-y-1">
+                <h3 className="text-2xl font-bold font-heading">
+                  Recent Publications
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Displaying {filteredPosts.length} articles in {displayName}
+                </p>
+              </div>
+              <div className="flex items-center gap-4 bg-zinc-50 p-1.5 rounded-full border border-border/20">
+                <button className="p-2 bg-white rounded-full shadow-sm text-liminal-secondary">
+                  <LayoutGrid size={18} />
+                </button>
+                <button className="p-2 text-muted-foreground hover:text-foreground transition-colors">
+                  <List size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Articles Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 lg:gap-x-12 lg:gap-y-20">
+              {currentPosts.map((post) => (
+                <article key={post.id} className="group relative">
+                  <Link href={`/blog/${post.id}`} className="block space-y-8">
+                    {/* Image Container with Architectural Decoration */}
+                    <div className="relative aspect-4/3 rounded-[2rem] overflow-hidden bg-zinc-100 border border-border/40 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-liminal-secondary/10">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                      />
+
+                      {/* Top-right Badge */}
+                      <div className="absolute top-6 right-6 z-10 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-liminal-secondary text-[10px] font-bold tracking-widest uppercase border border-white/20">
+                        {post.tag}
+                      </div>
+
+                      {/* Hover Overlay Measurement Lines */}
+                      <div className="absolute inset-x-8 inset-y-8 border-l border-t border-white/0 group-hover:border-white/20 transition-all duration-700 pointer-events-none" />
+                      <div className="absolute bottom-8 right-8 w-8 h-8 border-r border-b border-white/0 group-hover:border-white/20 transition-all duration-700 pointer-events-none" />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="space-y-4 px-2">
+                      <div className="flex items-center justify-between gap-6 text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-60">
+                        <div className="flex items-center gap-2">
+                          <User size={12} className="text-liminal-secondary" />
+                          {post.author}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock size={12} className="text-liminal-secondary" />
+                          {post.readTime}
+                        </div>
+                      </div>
+
+                      <h3 className="text-2xl font-bold font-heading leading-tight group-hover:text-liminal-secondary transition-colors duration-300">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 font-light">
+                        {post.summary}
+                      </p>
+
+                      <div className="pt-4 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-liminal-secondary border-t border-dashed border-border/40 w-fit group-hover:w-full transition-all duration-700">
+                        Read Investigation <ArrowUpRight size={14} />
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Pagination - Centered on page */}
+        {totalPages > 1 && (
+          <div className="pt-20 flex items-center justify-center gap-4">
+            <Link
+              href={`/blog?category=${activeCategory}&page=${Math.max(1, currentPage - 1)}`}
+              className={`w-12 h-12 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:border-liminal-secondary hover:text-liminal-secondary transition-all ${
+                currentPage === 1 ? "opacity-30 pointer-events-none" : ""
+              }`}
+            >
+              <ChevronLeft size={20} />
+            </Link>
+
+            <div className="flex items-center gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <Link
+                    key={page}
+                    href={`/blog?category=${activeCategory}&page=${page}`}
+                    className={`w-12 h-12 rounded-full text-xs font-bold flex items-center justify-center transition-all ${
+                      currentPage === page
+                        ? "bg-liminal-secondary text-white shadow-lg shadow-liminal-secondary/20"
+                        : "border border-border/40 text-muted-foreground hover:border-liminal-secondary hover:text-liminal-secondary"
+                    }`}
+                  >
+                    {page.toString().padStart(2, "0")}
+                  </Link>
+                ),
+              )}
+            </div>
+
+            <Link
+              href={`/blog?category=${activeCategory}&page=${Math.min(totalPages, currentPage + 1)}`}
+              className={`w-12 h-12 rounded-full border border-border/40 flex items-center justify-center text-muted-foreground hover:border-liminal-secondary hover:text-liminal-secondary transition-all ${
+                currentPage === totalPages
+                  ? "opacity-30 pointer-events-none"
+                  : ""
+              }`}
+            >
+              <ChevronRight size={20} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

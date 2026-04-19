@@ -1,77 +1,87 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowUpRight, Share2, Bookmark } from "lucide-react";
 
 const FeaturedPost = () => {
   return (
-    <section className="py-12 md:py-20">
+    <section className="bg-zinc-50/50 py-16 lg:py-24 border-b border-border/40">
       <div className="custom-container">
-        <div className="group relative overflow-hidden rounded-[2.5rem] bg-zinc-900 aspect-video md:aspect-21/9 lg:aspect-3/1 border border-white/10 shadow-2xl">
-          {/* Background Image */}
-          <Image
-            src="/assets/blog-1.png"
-            alt="Featured architectural design"
-            fill
-            className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-60 group-hover:opacity-70"
-            priority
-          />
-
-          {/* Technical Grid Overlay */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/4 w-px h-full bg-white/5" />
-            <div className="absolute top-0 left-2/4 w-px h-full bg-white/10" />
-            <div className="absolute top-0 left-3/4 w-px h-full bg-white/5" />
-            <div className="absolute top-1/2 left-0 w-full h-px bg-white/5" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          
+          {/* Featured Content Area */}
+          <div className="lg:col-span-12 mb-10">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-px bg-liminal-secondary" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-liminal-secondary">Editorial Pick</span>
+            </div>
           </div>
 
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16 lg:p-20 z-10 transition-colors duration-500">
-            {/* Background Accent Decorative */}
-            <div className="absolute top-10 right-10 flex flex-col items-end opacity-40">
-              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-white">Ref: LBD-FEAT-2026</span>
-              <div className="w-12 h-px bg-liminal-secondary mt-2 shadow-[0_0_10px_rgba(var(--liminal-secondary),0.5)]" />
+          {/* Large Image - 7 columns */}
+          <div className="lg:col-span-7 relative group">
+            {/* Architectural Frame Decoration */}
+            <div className="absolute -top-4 -left-4 w-24 h-24 border-l border-t border-liminal-secondary/40 pointer-events-none z-20" />
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r border-b border-liminal-secondary/40 pointer-events-none z-20" />
+            
+            <div className="relative aspect-video lg:aspect-4/3 rounded-[2.5rem] overflow-hidden border border-border/40 shadow-2xl bg-zinc-100">
+              <Image 
+                src="/assets/bg-blog.jpeg" 
+                alt="Featured Post" 
+                fill 
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
 
-            <div className="space-y-6 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-6">
-                <span className="px-4 py-1.5 rounded-full bg-liminal-secondary/90 text-white text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
-                  FEATURED INSIGHT
-                </span>
-                <div className="flex items-center gap-2 text-white/60 text-xs font-medium uppercase tracking-widest">
-                  <Calendar size={14} className="text-liminal-secondary" />
-                  April 15, 2026
-                </div>
-                <div className="flex items-center gap-2 text-white/60 text-xs font-medium uppercase tracking-widest">
-                  <Clock size={14} className="text-liminal-secondary" />
-                  8 MIN READ
-                </div>
-              </div>
+            {/* Rotating Technical Ring Decoration */}
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 border border-dashed border-liminal-secondary/10 rounded-full group-hover:rotate-180 transition-transform duration-3000 pointer-events-none" />
+          </div>
 
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-heading text-white leading-[1.1] tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
-                The Future of Minimalist <br className="hidden md:block" />
-                <span className="italic font-serif">Structural Elegance</span>
+          {/* Text Content - 5 columns */}
+          <div className="lg:col-span-5 space-y-10">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+                <span>April 19, 2026</span>
+                <span className="w-1 h-1 rounded-full bg-liminal-secondary" />
+                <span>Architecture</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-[1.05] tracking-tight">
+                The Anatomy of <span className="text-liminal-secondary font-serif italic font-normal">Sustainable</span> Luxury.
               </h2>
-
-              <p className="text-white/70 text-lg md:text-xl max-w-2xl font-light leading-relaxed line-clamp-2 md:line-clamp-none">
-                Exploring how modern architectural practices are redefining the boundaries between functional space 
-                and poetic minimalism in the 21st century.
+              
+              <p className="text-muted-foreground text-lg leading-relaxed font-light">
+                Redefining the boundaries of ultra-premium residential architecture through the integration of passive cooling systems and net-zero material sourcing.
               </p>
+            </div>
 
-              <div className="pt-4">
-                <Link
-                  href="/blog/future-of-minimalism"
-                  className="inline-flex items-center gap-4 group/btn"
-                >
-                  <span className="text-sm font-bold uppercase tracking-[0.3em] text-white group-hover/btn:text-liminal-secondary transition-colors">
-                    READ FULL ARTICLE
-                  </span>
-                  <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white group-hover/btn:border-liminal-secondary group-hover/btn:bg-liminal-secondary group-hover/btn:text-white transition-all duration-500">
-                    <ArrowRight size={20} className="transform group-hover/btn:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
+            <div className="flex items-center gap-10">
+              <Link href="/blog/featured-post" className="group/btn flex items-center gap-3 bg-liminal-secondary text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl shadow-liminal-secondary/20 hover:scale-105 transition-all">
+                Read Full Story <ArrowUpRight size={18} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+              </Link>
+              
+              <div className="flex items-center gap-4">
+                <button className="p-3 rounded-full border border-border/40 text-muted-foreground hover:text-liminal-secondary hover:border-liminal-secondary transition-all">
+                  <Share2 size={18} />
+                </button>
+                <button className="p-3 rounded-full border border-border/40 text-muted-foreground hover:text-liminal-secondary hover:border-liminal-secondary transition-all">
+                  <Bookmark size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Technical Metadata */}
+            <div className="pt-10 border-t border-border/40 grid grid-cols-2 gap-8">
+              <div className="space-y-1">
+                <span className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Word Count</span>
+                <p className="text-sm font-bold font-heading">2,450 Words</p>
+              </div>
+              <div className="space-y-1">
+                <span className="text-[9px] uppercase tracking-widest text-muted-foreground font-bold">Complexity</span>
+                <p className="text-sm font-bold font-heading">Technical Deep-Dive</p>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
