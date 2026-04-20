@@ -47,17 +47,13 @@ const servicesData = [
   },
 ];
 
-/**
- * ServiceSection Component
- * Presents the core services with an interactive content switcher.
- * Designed with a premium editorial header and architectural decorative elements.
- */
+// ServiceSection Component
 const ServiceSection = () => {
   return (
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden relative"
     >
       <div className="custom-container relative z-10">
         <SectionHeader

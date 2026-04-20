@@ -33,17 +33,13 @@ const statsData = [
   },
 ];
 
-/**
- * ExperienceSection Component
- * Showcases the studio's metrics and legacy.
- * Features an editorial layout with technical mask-effects and architectural annotations.
- */
+// ExperienceSection Component
 const ExperienceSection = () => {
   return (
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80 relative"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-[url('/assets/bg-experience.png')] bg-top-left bg-no-repeat bg-zinc-50/80 relative"
     >
       {/* Technical Precision Element: Structural Crosshairs */}
       <div className="absolute top-1/4 left-0 w-64 h-64 opacity-10 pointer-events-none hidden lg:block">

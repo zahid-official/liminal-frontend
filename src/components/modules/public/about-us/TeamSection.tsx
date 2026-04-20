@@ -52,7 +52,7 @@ const TeamSection = () => {
     <section
       id="our-team"
       aria-labelledby="team-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden bg-zinc-50/80"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container relative z-10 space-y-12">
         {/* Section Header */}
@@ -62,7 +62,7 @@ const TeamSection = () => {
           badgeText="THE CREATIVE MINDS"
           title={
             <>
-              Visionaries Behind {" "}
+              Visionaries Behind{" "}
               <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
                 Spatial Innovation
               </span>

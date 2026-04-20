@@ -39,7 +39,7 @@ const VisionSection = () => {
     <section
       id="mission-and-vision"
       aria-labelledby="vision-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden bg-zinc-50/80"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container relative z-10 space-y-32 lg:space-y-36">
         {/* Top: Mission & Vision */}

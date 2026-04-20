@@ -13,7 +13,7 @@ const AboutSection = () => {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="overflow-hidden py-24 md:py-32 lg:py-40 relative bg-background"
+      className="overflow-hidden py-20 md:py-28 lg:py-32 relative bg-background"
     >
       {/* Left: Enhanced Image Composition */}
       <div className="custom-container relative z-10">
@@ -107,7 +107,7 @@ const AboutSection = () => {
             {/* CTA Button */}
             <Link href="/about-us">
               <AnimatedButton className="mt-2 tracking-[0.05em]">
-                Explore Our Process
+                Explore Process
               </AnimatedButton>
             </Link>
           </div>

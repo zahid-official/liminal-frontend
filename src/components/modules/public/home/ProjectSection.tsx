@@ -58,7 +58,7 @@ const ProjectSection = () => {
         <div className="absolute -top-[10%] -right-[5%] w-[33vw] min-w-75 aspect-square rounded-full bg-white/3"></div>
       </div>
 
-      <div className="custom-container relative z-10 py-24 md:py-32 lg:py-40 bg-[url('/assets/bg-project.png')] bg-no-repeat bg-bottom-left">
+      <div className="custom-container relative z-10 py-20 md:py-28 lg:py-32 bg-[url('/assets/bg-project.png')] bg-no-repeat bg-bottom-left">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Content */}
           <div className="flex flex-col justify-between gap-12 lg:sticky lg:top-52 lg:h-[65vh] lg:self-start">
@@ -173,4 +173,3 @@ const ProjectSection = () => {
 };
 
 export default ProjectSection;
-

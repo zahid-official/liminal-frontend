@@ -59,9 +59,8 @@ const FaqSection = () => {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden relative"
     >
-
       {/* Technical Status Badge: Vertical Annotation */}
       <div className="absolute bottom-40 left-10 text-[9px] font-mono tracking-[0.3em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
         ARCH_QUERIES // INDEX_01
@@ -104,8 +103,9 @@ const FaqSection = () => {
                 Still Looking For Answers Or Need A Fun Chat?
               </h3>
               <p className="text-muted-foreground text-[15px] sm:text-base leading-relaxed">
-                Our team will guide you through our design process, <br className="max-lg:hidden" /> project
-                specifications and cost estimate.
+                Our team will guide you through our design process,{" "}
+                <br className="max-lg:hidden" /> project specifications and cost
+                estimate.
               </p>
             </div>
           </div>

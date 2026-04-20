@@ -55,7 +55,7 @@ const BlogSection = () => {
     <section
       id="blog"
       aria-labelledby="blog-heading"
-      className="py-24 md:py-32 lg:py-40 bg-zinc-50/70 overflow-hidden relative"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden relative"
     >
       {/* Technical Status Badge: Vertical Annotation */}
       <div className="absolute top-60 right-10 text-[9px] font-mono tracking-[0.3em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">

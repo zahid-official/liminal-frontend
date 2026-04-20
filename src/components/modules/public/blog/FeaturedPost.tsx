@@ -1,10 +1,12 @@
+import SectionHeader from "@/components/shared/SectionHeader";
+import LiminalButton from "@/components/shared/LiminalButton";
+import { Bookmark, Share2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Share2, Bookmark } from "lucide-react";
 
 const FeaturedPost = () => {
   return (
-    <section className="py-24 md:py-32 lg:py-40 bg-zinc-50/80">
+    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80">
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Large Image - 7 columns */}
@@ -36,31 +38,24 @@ const FeaturedPost = () => {
                 <span>Architecture</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight tracking-tight">
-                The Anatomy of{" "}
-                <span className="text-liminal-secondary font-serif italic font-normal underline underline-offset-8 decoration-1">
-                  Sustainable
-                </span>{" "}
-                Luxury.
-              </h2>
-
-              <p className="text-muted-foreground text-lg leading-relaxed font-light">
-                Redefining the boundaries of ultra-premium residential
-                architecture through the integration of passive cooling systems
-                and net-zero material sourcing.
-              </p>
+              <SectionHeader
+                variant="inline"
+                title={
+                  <>
+                    The Anatomy of{" "}
+                    <span className="text-liminal-secondary font-serif italic font-normal underline underline-offset-8 decoration-1">
+                      Sustainable
+                    </span>{" "}
+                    Luxury.
+                  </>
+                }
+                description="Redefining the boundaries of ultra-premium residential architecture through the integration of passive cooling systems and net-zero material sourcing."
+              />
             </div>
 
             <div className="flex items-center gap-10">
-              <Link
-                href="/blog/featured-post"
-                className="group/btn flex items-center gap-3 bg-liminal-secondary text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl shadow-liminal-secondary/20 hover:scale-105 transition-all"
-              >
-                Read Full Story{" "}
-                <ArrowUpRight
-                  size={18}
-                  className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                />
+              <Link href="/blog/featured-post">
+                <LiminalButton>Read Full Story</LiminalButton>
               </Link>
 
               <div className="flex items-center gap-4">
@@ -79,13 +74,15 @@ const FeaturedPost = () => {
                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold">
                   Word Count
                 </span>
-                <p className="text-sm font-bold font-heading">2,450 Words</p>
+                <p className="text-[15px] font-bold font-heading leading-none">
+                  2,450 Words
+                </p>
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold">
                   Complexity
                 </span>
-                <p className="text-sm font-bold font-heading">
+                <p className="text-[15px] font-bold font-heading leading-none">
                   Technical Deep-Dive
                 </p>
               </div>

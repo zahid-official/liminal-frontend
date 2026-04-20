@@ -1,8 +1,4 @@
-/**
- * QuoteSection Component
- * Represents a high-impact call to action for starting a project.
- * Designed with a cinematic background, technical annotations, and a focused interactive trigger.
- */
+// QuoteSection Component
 const QuoteSection = () => {
   return (
     <section className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden">

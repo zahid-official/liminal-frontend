@@ -42,7 +42,7 @@ const InfoSection = () => {
     <section
       id="studio-info-section"
       aria-labelledby="info-heading"
-      className="py-24 md:py-32 lg:py-40 bg-zinc-50/80 relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 relative overflow-hidden"
     >
       {/* Decorative Stamp Element */}
       <div className="absolute -bottom-20 -right-20 w-96 h-96 border border-liminal-secondary/10 rounded-full flex items-center justify-center rotate-12 pointer-events-none">

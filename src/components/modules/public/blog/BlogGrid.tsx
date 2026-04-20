@@ -1,15 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
 import {
-  Clock,
-  User,
   ArrowUpRight,
-  Search,
-  LayoutGrid,
-  List,
   ChevronLeft,
   ChevronRight,
+  Clock,
+  LayoutGrid,
+  List,
+  Search,
+  User,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // Blog Categories
 const blogCategories = [
@@ -136,12 +136,7 @@ const BlogGrid = ({
   );
 
   return (
-    <section className="py-24 md:py-32 lg:py-40 relative overflow-clip">
-      {/* Decorative Background Text */}
-      <div className="absolute top-40 right-10 text-[15rem] font-bold font-heading text-liminal-secondary/5 select-none z-0 rotate-90 origin-right pointer-events-none">
-        JOURNAL
-      </div>
-
+    <section className="py-20 md:py-28 lg:py-32 relative overflow-clip bg-background">
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Sidebar / Filters */}
@@ -191,7 +186,7 @@ const BlogGrid = ({
               </div>
 
               {/* Newsletter Teaser in Sidebar */}
-              <div className="p-8 bg-zinc-50 border border-border/40 rounded-[2rem] relative overflow-hidden group">
+              <div className="p-8 bg-zinc-50/80 border border-border/40 rounded-3xl relative overflow-hidden group">
                 <div className="relative z-10 space-y-4">
                   <h4 className="text-xl font-bold font-heading leading-tight">
                     Stay informed with our technical newsletter.
@@ -205,7 +200,7 @@ const BlogGrid = ({
                   </button>
                 </div>
                 {/* Decorative technical ring */}
-                <div className="absolute -bottom-10 -right-10 w-32 h-32 border border-dashed border-liminal-secondary/10 rounded-full group-hover:rotate-90 transition-transform duration-1000" />
+                <div className="absolute -bottom-10 -right-10 w-28 h-28 border border-dashed border-liminal-secondary/40 rounded-full group-hover:rotate-90 transition-transform duration-1000" />
               </div>
             </div>
           </aside>
@@ -214,12 +209,13 @@ const BlogGrid = ({
           <div className="lg:col-span-9 space-y-16 animate-in fade-in slide-in-from-right-8 duration-1200 delay-300 ease-out fill-mode-both">
             {/* Controls / View Switcher */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-border/40">
-              <div className="space-y-1">
-                <h3 className="text-2xl font-bold font-heading">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-bold font-heading tracking-tight">
                   Recent Publications
                 </h3>
-                <p className="text-xs text-muted-foreground">
-                  Displaying {filteredPosts.length} articles in {displayName}
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground opacity-60">
+                  Ref: {filteredPosts.length} Articles // Category:{" "}
+                  {displayName}
                 </p>
               </div>
               <div className="flex items-center gap-4 bg-zinc-50 p-1.5 rounded-full border border-border/20">
@@ -238,12 +234,12 @@ const BlogGrid = ({
                 <article key={post.id} className="group relative">
                   <Link href={`/blog/${post.id}`} className="block space-y-10">
                     {/* Image Container with Architectural Decoration */}
-                    <div className="relative aspect-4/3 rounded-[2.5rem] overflow-hidden bg-zinc-100 border border-border/40 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-liminal-secondary/10">
+                    <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-zinc-100 border border-border/40 transition-all duration-700 group-hover:shadow-3xl group-hover:shadow-liminal-secondary/10">
                       <Image
                         src={post.image}
                         alt={post.title}
                         fill
-                        className="object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                        className="object-cover transition-all duration-1000 group-hover:scale-110"
                       />
 
                       {/* Floating Status Badge */}
@@ -292,20 +288,20 @@ const BlogGrid = ({
                           {post.title}
                         </h3>
 
-                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 font-light">
+                        <p className="text-muted-foreground text-[15px] sm:text-base leading-relaxed line-clamp-3 font-light">
                           {post.summary}
                         </p>
                       </div>
 
                       <div className="pt-6 flex items-center justify-between border-t border-dashed border-border/40">
-                        <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-liminal-secondary group/ink">
+                        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-liminal-secondary group/ink">
                           Read Full Investigation
                           <ArrowUpRight
                             size={14}
                             className="group-hover/ink:translate-x-0.5 group-hover/ink:-translate-y-0.5 transition-transform"
                           />
                         </div>
-                        <span className="text-[8px] font-bold text-zinc-300 tracking-widest">
+                        <span className="text-[9px] font-bold text-zinc-300 tracking-widest">
                           {post.ref}
                         </span>
                       </div>

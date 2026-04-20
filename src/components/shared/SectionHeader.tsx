@@ -8,7 +8,7 @@ interface SectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   "title"
 > {
-  badgeText: string;
+  badgeText?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   variant?: SectionHeaderVariant;
@@ -18,7 +18,7 @@ interface SectionHeaderProps extends Omit<
 
 /**
  * Reusable SectionHeader Component
- * 
+ *
  * Variants:
  * - editorial: Split layout 30/70 with background grid lines (Default)
  * - centered: Centered badge, title, and description
@@ -40,7 +40,7 @@ const SectionHeader = ({
       <div
         className={cn(
           "flex flex-col lg:flex-row mb-16 lg:mb-24 lg:pt-12 relative text-center lg:text-left",
-          className
+          className,
         )}
         {...props}
       >
@@ -51,10 +51,12 @@ const SectionHeader = ({
 
         {/* Left: Badge */}
         <div className="w-full lg:w-[30%] shrink-0 relative mb-6 lg:mb-0 lg:pr-8 flex justify-center lg:block">
-          <SectionBadge 
-            text={badgeText} 
-            className={cn("lg:bg-background", badgeClassName)} 
-          />
+          {badgeText && (
+            <SectionBadge
+              text={badgeText}
+              className={cn("lg:bg-background", badgeClassName)}
+            />
+          )}
         </div>
 
         {/* Right: Title & Description */}
@@ -81,11 +83,11 @@ const SectionHeader = ({
       <div
         className={cn(
           "flex flex-col items-center text-center max-w-4xl mx-auto space-y-7",
-          className
+          className,
         )}
         {...props}
       >
-        <SectionBadge text={badgeText} className={badgeClassName} />
+        {badgeText && <SectionBadge text={badgeText} className={badgeClassName} />}
         <h2
           id={headingId}
           className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
@@ -106,17 +108,30 @@ const SectionHeader = ({
     <div
       className={cn(
         "flex flex-col items-center lg:items-start text-center lg:text-left space-y-7",
-        className
+        className,
       )}
       {...props}
     >
       {/* Editorial Line Badge */}
-      <div className="flex items-center gap-5">
-        <div className={cn("w-14 h-px bg-liminal-secondary", badgeClassName?.includes("white") && "bg-white", badgeClassName)} />
-        <span className={cn("text-[11px] font-bold uppercase tracking-[0.45em] text-liminal-secondary", badgeClassName)}>
-          {badgeText}
-        </span>
-      </div>
+      {badgeText && (
+        <div className="flex items-center gap-5">
+          <div
+            className={cn(
+              "w-14 h-px bg-liminal-secondary",
+              badgeClassName?.includes("white") && "bg-white",
+              badgeClassName,
+            )}
+          />
+          <span
+            className={cn(
+              "text-[11px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
+              badgeClassName,
+            )}
+          >
+            {badgeText}
+          </span>
+        </div>
+      )}
 
       <h2
         id={headingId}

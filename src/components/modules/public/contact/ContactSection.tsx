@@ -6,7 +6,7 @@ const ContactSection = () => {
     <section
       id="contact-form-section"
       aria-labelledby="contact-heading"
-      className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-background"
     >
       {/* Editorial Background Element */}
       <div className="absolute top-20 -left-20 text-[25rem] font-bold font-heading text-liminal-secondary/3 select-none pointer-events-none uppercase">

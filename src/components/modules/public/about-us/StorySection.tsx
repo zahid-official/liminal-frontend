@@ -7,7 +7,7 @@ const StorySection = () => {
     <section
       id="our-story"
       aria-labelledby="our-story-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
       <div className="custom-container relative z-10">
         {/* Intro Header */}
@@ -17,7 +17,7 @@ const StorySection = () => {
           badgeText="WHO WE ARE"
           title={
             <>
-              Crafting Immersive {" "}
+              Crafting Immersive{" "}
               <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
                 Interiors
               </span>{" "}

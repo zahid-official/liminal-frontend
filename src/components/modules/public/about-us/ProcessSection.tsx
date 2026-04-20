@@ -63,7 +63,7 @@ const ProcessSection = () => {
     <section
       id="our-methodology"
       aria-labelledby="process-heading"
-      className="py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
       <div className="custom-container relative z-10 space-y-16">
         {/* Section Header */}
