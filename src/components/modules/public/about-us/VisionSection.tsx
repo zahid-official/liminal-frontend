@@ -89,7 +89,7 @@ const VisionSection = () => {
                 </div>
                 <h3 className="text-4xl md:text-5xl font-bold font-heading leading-tight">
                   Setting the global <br />
-                  <span className="italic underline-offset-10 decoration-1">
+                  <span className="italic font-serif underline-offset-10 decoration-1">
                     benchmark of luxury
                   </span>
                 </h3>

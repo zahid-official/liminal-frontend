@@ -24,7 +24,7 @@ const StorySection = () => {
               With Innovation
             </>
           }
-          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary blending avant-garde innovation with a legacy of timeless elegance."
+          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary, blending avant-garde innovation with a legacy of timeless elegance."
           className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 

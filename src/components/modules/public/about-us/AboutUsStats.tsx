@@ -29,7 +29,7 @@ const AboutUsStats = ({ stats }: AboutStatsProps) => {
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center lg:px-4 lg:border-l first:lg:border-l-0 border-border/40 group transition-all duration-500 py-3"
+            className="flex flex-col items-center lg:px-4 lg:border-l first:lg:border-l-0 border-border/40 group transition-all duration-500 py-6 lg:py-3 border-b sm:border-b-0"
           >
             <div className="flex flex-col items-center text-center w-full">
               {/* Number Section */}
