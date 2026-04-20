@@ -1,3 +1,4 @@
+import SectionHeader from "@/components/shared/SectionHeader";
 import { MapPin, Phone, Clock, ShieldCheck } from "lucide-react";
 
 const infoItems = [
@@ -27,9 +28,9 @@ const infoItems = [
     icon: Clock,
     title: "Operating Cycles",
     details: [
-      "MON - FRI: 09:00 - 18:00",
-      "SAT: 10:00 - 16:00",
-      "SUN: By Appointment Only",
+      "Monday - Friday: 09:00 - 18:00",
+      "Saturday: 10:00 - 16:00",
+      "Sunday: By Appointment Only",
     ],
     tag: "Studio Availability",
     specs: ["GMT +6", "Active Hours"],
@@ -57,23 +58,20 @@ const InfoSection = () => {
         <div className="space-y-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
           {/* Section Heading */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 border-b border-border/40 pb-16">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
-                  Studio Logistics
-                </span>
-              </div>
-              <h2
-                id="info-heading"
-                className="text-4xl sm:text-5xl leading-tight tracking-tight font-bold font-heading"
-              >
-                Where Vision{" "}
-                <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
-                  Meets Reality
-                </span>
-              </h2>
-            </div>
+            <SectionHeader
+              variant="inline"
+              badgeText="Studio Logistics"
+              headingId="info-heading"
+              title={
+                <>
+                  Where Vision{" "}
+                  <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                    Meets Reality
+                  </span>
+                </>
+              }
+              className="lg:items-start"
+            />
             <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground opacity-60">
               <div className="flex items-center gap-2">
                 <ShieldCheck size={14} className="text-liminal-secondary" />

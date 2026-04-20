@@ -1,3 +1,4 @@
+import SectionHeader from "@/components/shared/SectionHeader";
 import ContactForm from "./ContactForm";
 
 // ContactSection Component
@@ -17,29 +18,21 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-start">
           {/* Left Side: Editorial Content */}
           <div className="lg:col-span-5 space-y-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
-            <div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
-                    ESTABLISH CONTACT
-                  </span>
-                </div>
-                <h2
-                  id="contact-heading"
-                  className="text-4xl sm:text-6xl leading-[1.1] tracking-tight font-bold font-heading"
-                >
+            <SectionHeader
+              variant="inline"
+              badgeText="ESTABLISH CONTACT"
+              headingId="contact-heading"
+              title={
+                <>
                   Let&apos;s Build <br />
                   <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
                     Your Vision
                   </span>
-                </h2>
-              </div>
-              <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-lg leading-relaxed mt-6">
-                Our approach is collaborative, transparent, and meticulous. We
-                transform architectural possibilities into lived experiences.
-              </p>
-            </div>
+                </>
+              }
+              description="Our approach is collaborative, transparent, and meticulous. We transform architectural possibilities into lived experiences."
+              className="lg:items-start"
+            />
 
             {/* Decorative Architectural Element */}
             <div className="relative w-64 h-64 hidden xl:block mx-auto lg:mx-0">

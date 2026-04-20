@@ -133,7 +133,7 @@ const ContactForm = () => {
               type="submit"
               className="group relative flex items-center gap-3 bg-liminal-secondary text-white px-8 py-5 cursor-pointer rounded-full overflow-hidden transition-all hover:shadow-2xl hover:shadow-liminal-secondary/40 active:scale-[0.98]"
             >
-              <span className="relative z-10 font-bold uppercase tracking-[0.25em] text-[10px]">
+              <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">
                 Transmit Inquiry
               </span>
               <ArrowRight

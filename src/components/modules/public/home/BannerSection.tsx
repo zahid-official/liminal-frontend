@@ -59,7 +59,7 @@ const BannerSection = () => {
         <div className="mt-4 sm:mt-8 animate-in fade-in zoom-in duration-1200 delay-800 ease-out">
           <Link
             href="/contact"
-            className="group relative size-28 sm:size-36 rounded-full border border-white/20 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] leading-[1.6] text-center transition-all duration-700 overflow-hidden hover:border-white/40"
+            className="group relative size-28 sm:size-36 rounded-full border border-white/20 flex items-center justify-center text-white text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] leading-[1.6] text-center transition-all duration-700 overflow-hidden hover:border-white/40"
           >
             <span className="relative z-10 group-hover:scale-105 transition-all duration-500">
               START

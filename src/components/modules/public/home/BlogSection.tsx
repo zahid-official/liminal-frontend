@@ -95,7 +95,7 @@ const BlogSection = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 font-medium uppercase tracking-wider text-[11px] sm:text-xs">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 font-medium uppercase tracking-wider text-[10px] sm:text-xs">
               {!featuredPost.date ? null : <span>{featuredPost.date} </span>}
               {!featuredPost.date ? null : <span>•</span>}
               <span>
@@ -143,7 +143,7 @@ const BlogSection = () => {
 
                 {/* Text Content */}
                 <div className="flex flex-col justify-center flex-1">
-                  <div className="flex items-center gap-1.5 text-muted-foreground mb-3 font-medium tracking-wider text-[10px] sm:text-[11px]">
+                  <div className="flex items-center gap-1.5 text-muted-foreground mb-3 font-medium tracking-wider text-[10px] sm:text-[10px]">
                     <span className="uppercase">{post.date}</span>
                     <span className="w-1 h-1 rounded-full bg-liminal-secondary"></span>
                     <span>

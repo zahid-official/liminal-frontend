@@ -87,7 +87,9 @@ const SectionHeader = ({
         )}
         {...props}
       >
-        {badgeText && <SectionBadge text={badgeText} className={badgeClassName} />}
+        {badgeText && (
+          <SectionBadge text={badgeText} className={badgeClassName} />
+        )}
         <h2
           id={headingId}
           className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
@@ -124,7 +126,7 @@ const SectionHeader = ({
           />
           <span
             className={cn(
-              "text-[11px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
+              "text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
               badgeClassName,
             )}
           >

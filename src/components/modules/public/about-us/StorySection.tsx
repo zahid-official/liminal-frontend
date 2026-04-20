@@ -78,7 +78,7 @@ const StorySection = () => {
                 </h3>
               </div>
 
-              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed max-w-xl">
+              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed max-w-xl font-light">
                 <p>
                   Founded with a desire to redefine luxury, Liminal began as a
                   boutique studio with a grand vision. Over the last decade,

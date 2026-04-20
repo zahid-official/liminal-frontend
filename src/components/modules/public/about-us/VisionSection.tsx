@@ -67,7 +67,7 @@ const VisionSection = () => {
                     intentional design
                   </span>
                 </h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-light">
                   We harmonise functionality with poetic aesthetics, delivering
                   bespoke environments that inspire, comfort, and endure for
                   generations.
@@ -93,7 +93,7 @@ const VisionSection = () => {
                     benchmark of luxury
                   </span>
                 </h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md font-light">
                   We envision a world where every interior is a masterpiece of
                   sustainable innovation, pushing the boundaries of
                   architectural possibility.
