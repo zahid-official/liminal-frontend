@@ -81,6 +81,7 @@ const ProjectList = () => {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-muted/20 to-transparent pointer-events-none -z-10" />
 
       <div className="custom-container">
+        {/* Section Header */}
         <SectionHeader
           variant="editorial"
           badgeText="PORTFOLIO"
@@ -93,7 +94,8 @@ const ProjectList = () => {
               Narratives
             </>
           }
-          description="Explore our archive of spatial interventions. Each project is a meticulous exploration of form, function, and the human experience within built environments."
+          description="Explore our curated selection of projects, where functionality meets aesthetic innovation. Each space is crafted with precision and attention to detail, reflecting our commitment to design excellence."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Filters */}
@@ -103,7 +105,7 @@ const ProjectList = () => {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "text-[11px] font-bold tracking-[0.3em] uppercase transition-all relative py-2",
+                "text-[11px] font-bold tracking-[0.3em] uppercase transition-all relative py-2 cursor-pointer",
                 activeCategory === category
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground",
