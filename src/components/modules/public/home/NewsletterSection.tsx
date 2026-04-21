@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { ArrowUpRight } from "lucide-react";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -10,8 +10,13 @@ const NewsletterSection = () => {
     <section
       id="newsletter"
       aria-labelledby="newsletter-heading"
-      className="relative overflow-hidden py-24 md:py-28 lg:py-32"
+      className="relative overflow-hidden py-20 md:py-28 lg:py-32"
     >
+      {/* Technical Status Badge: Vertical Annotation */}
+      <div className="absolute top-20 right-10 text-[9px] font-mono tracking-[0.3em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
+        COMM_LIST // SYNC_ACTIVE
+      </div>
+
       {/* Background Images */}
       <div className="absolute inset-0 z-0 pointer-events-none flex justify-between">
         {/* Left Image */}
@@ -35,28 +40,22 @@ const NewsletterSection = () => {
       </div>
 
       {/* Content Container */}
-      <div className="custom-container relative z-10 flex flex-col items-center text-center">
-        <CenteredSectionHeader
+      <div className="custom-container relative z-10 flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
+        <SectionHeader
+          variant="centered"
           badgeText="SUBSCRIBE TO THE NEWSLETTER"
           headingId="newsletter-heading"
           className="mb-10 lg:mb-14"
-          badgeClassName="bg-zinc-50/80 backdrop-blur-sm"
           title={
             <>
-              <span>Join </span>
-              <span className="text-liminal-secondary">Our Newsletter</span>
-              <br className="hidden sm:block" />
-              <span className="text-liminal-secondary">Stay </span>
-              <span>Up To Date</span>
+              Join Our <br className="hidden sm:block" />
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Newsletter
+              </span>{" "}
+              Community
             </>
           }
-          description={
-            <>
-              Join our newsletter. Learn something new, gain access to exclusive
-              content, <br className="hidden md:block" /> and stay informed with
-              the latest updates in the industry.
-            </>
-          }
+          description="Join something new, gain access to exclusive content, and stay informed with the latest updates in the architectural industry."
         />
 
         {/* Newsletter Form */}

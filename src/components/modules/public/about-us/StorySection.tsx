@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
 // StorySection Component
@@ -9,28 +9,27 @@ const StorySection = () => {
       aria-labelledby="our-story-heading"
       className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
+      <div className="custom-container relative z-10">
         {/* Intro Header */}
-        <CenteredSectionHeader
+        <SectionHeader
+          variant="centered"
           headingId="our-story-heading"
           badgeText="WHO WE ARE"
           title={
             <>
-              Crafting{" "}
-              <span className="text-liminal-secondary">
-                {" "}
-                Immersive Interiors
+              Crafting Immersive{" "}
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Interiors
               </span>{" "}
-              With <br className="hidden lg:block" />
-              Innovation and{" "}
-              <span className="text-liminal-secondary">Elegance</span>
+              With Innovation
             </>
           }
-          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary—blending avant-garde innovation with a legacy of timeless elegance."
+          description="At Liminal, we believe every space holds a narrative waiting to be told. Our purpose is translating your highest aspirations into architectural realities that transcend the ordinary, blending avant-garde innovation with a legacy of timeless elegance."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Our Story */}
-        <div className="relative group">
+        <div className="relative group pt-16">
           {/* Background Decorative Letter */}
           <div className="absolute top-0 right-10 text-[20rem] font-bold font-heading text-liminal-secondary/5 select-none -z-10 group-hover:text-liminal-secondary/10 transition-all duration-1000">
             S
@@ -65,11 +64,11 @@ const StorySection = () => {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-px bg-liminal-secondary" />
-                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-liminal-secondary">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
                     The Genesis
                   </span>
                 </div>
-                <h3 className="text-4xl font-bold font-heading leading-tight italic">
+                <h3 className="text-3xl font-bold font-heading leading-tight italic">
                   &quot;We don&apos;t just design rooms; we create environments
                   where{" "}
                   <span className="text-liminal-secondary underline underline-offset-10 decoration-1">
@@ -79,7 +78,7 @@ const StorySection = () => {
                 </h3>
               </div>
 
-              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed max-w-xl">
+              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed max-w-xl font-light">
                 <p>
                   Founded with a desire to redefine luxury, Liminal began as a
                   boutique studio with a grand vision. Over the last decade,

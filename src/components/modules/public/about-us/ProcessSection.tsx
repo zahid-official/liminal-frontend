@@ -1,4 +1,4 @@
-import CenteredSectionHeader from "@/components/shared/CenteredSectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { Compass, Leaf, Diamond, Users } from "lucide-react";
 
 // Process Steps Data
@@ -47,7 +47,7 @@ const values = [
     icon: Diamond,
     title: "Uncompromising Quality",
     description:
-      "From the initial sketch to the final polish, we maintain the highest standards of craftsmanship",
+      "From the initial sketch to the final polish, we maintain the highest standards of craftsmanship.",
   },
   {
     icon: Users,
@@ -65,18 +65,22 @@ const ProcessSection = () => {
       aria-labelledby="process-heading"
       className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-48">
+      <div className="custom-container relative z-10 space-y-16">
         {/* Section Header */}
-        <CenteredSectionHeader
+        <SectionHeader
+          variant="editorial"
           headingId="process-heading"
           badgeText="OUR METHOD"
           title={
             <>
               A Meticulous{" "}
-              <span className="text-liminal-secondary">Process</span>
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Process
+              </span>
             </>
           }
           description="We follow a structured yet fluid methodology to bring your vision to life with precision and care."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         <div className="space-y-24">
@@ -106,7 +110,7 @@ const ProcessSection = () => {
 
                     {/* Technical Rotating Ring */}
                     <div className="absolute -inset-3 border border-dashed border-liminal-secondary/60 rounded-full opacity-0 group-hover:opacity-100 group-hover:rotate-90 transition-all duration-1500 ease-in-out" />
-                    
+
                     {/* Compass points */}
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-1 h-2 bg-liminal-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -129,40 +133,52 @@ const ProcessSection = () => {
           </div>
 
           {/* Bottom: Core Values */}
-          <div className="space-y-10">
-            <div className="text-center space-y-3">
-              <h4 className="text-sm font-bold uppercase tracking-[0.25em] text-liminal-secondary">Our Core Principles</h4>
-              <p className="text-3xl font-bold font-heading">The Foundation of Every Project</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 border border-border/40 rounded-3xl overflow-hidden shadow-lg bg-secondary/5">
-            {values.map((item, index) => (
-              <div
-                key={index}
-                className="group p-10 lg:p-12 bg-background border-b md:border-b-0 md:border-r last:border-b-0 last:border-r-0 border-border/40 transition-all duration-700 hover:bg-secondary/10 relative overflow-hidden"
-              >
-                {/* Background Decorative Number */}
-                <div className="absolute top-10 right-10 text-7xl font-bold font-heading text-liminal-secondary/5 select-none z-0 transition-all duration-700 group-hover:text-liminal-secondary/10 group-hover:-translate-y-2">
-                  0{index + 1}
-                </div>
-
-                <div className="relative z-10 space-y-8">
-                  <div className="w-14 h-14 rounded-full bg-liminal-secondary/5 border border-liminal-secondary/10 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-500 shadow-sm">
-                    <item.icon size={24} strokeWidth={1.5} />
-                  </div>
-                  <div className="space-y-4">
-                    <h4 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
-                      {item.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom accent line */}
-                  <div className="w-0 group-hover:w-12 h-0.5 bg-liminal-secondary transition-all duration-500" />
-                </div>
+          <div className="">
+            <div className="flex flex-col items-center text-center space-y-7 relative py-12">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-px bg-border group-hover:w-16 transition-all duration-700" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary">
+                  Our Core Principles
+                </span>
+                <div className="w-12 h-px bg-border group-hover:w-16 transition-all duration-700" />
               </div>
-            ))}
+
+              <h3 className="text-4xl md:text-5xl font-bold font-heading tracking-tight leading-tight">
+                The Foundation Of Every{" "}
+                <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-12 decoration-1">
+                  Project
+                </span>
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-border/40 rounded-3xl overflow-hidden shadow-lg bg-secondary/5 divide-y md:divide-y-0 md:divide-x divide-border/40">
+              {values.map((item, index) => (
+                <div
+                  key={index}
+                  className="group p-10 lg:p-12 bg-background transition-all duration-700 hover:bg-secondary/10 relative overflow-hidden"
+                >
+                  {/* Background Decorative Number */}
+                  <div className="absolute top-10 right-10 text-7xl font-bold font-heading text-liminal-secondary/5 select-none z-0 transition-all duration-700 group-hover:text-liminal-secondary/10 group-hover:-translate-y-2">
+                    0{index + 1}
+                  </div>
+
+                  <div className="relative z-10 space-y-8">
+                    <div className="w-14 h-14 rounded-full bg-liminal-secondary/5 border border-liminal-secondary/10 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-500 shadow-sm">
+                      <item.icon size={24} strokeWidth={1.5} />
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                        {item.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <div className="w-0 group-hover:w-12 h-0.5 bg-liminal-secondary transition-all duration-500" />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

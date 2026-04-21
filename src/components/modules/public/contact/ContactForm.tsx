@@ -1,131 +1,158 @@
-import Image from "next/image";
-import AnimatedButton from "@/components/shared/AnimatedButton";
+"use client";
+
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Field, FieldLabel } from "@/components/ui/field";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-// ContactForm Component
+const interests = [
+  "Residential Architecture",
+  "Commercial Space",
+  "Heritage Restoration",
+  "Luxury Interior Design",
+  "Strategic Consultancy",
+];
+
 const ContactForm = () => {
+  const [interest, setInterest] = useState<string>("placeholder");
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Logic for transmitting inquiry would go here
+  };
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      {/* Left Image */}
-      <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg border border-border/10 shrink-0">
-        <Image
-          src="/assets/contact-1.jpg"
-          alt="Contact interior space"
-          fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover object-bottom"
-        />
-      </div>
-
-      {/* Right Form */}
-      <div className="w-full">
-        {/* Form Heading */}
-        <div className="mb-8 lg:mb-10">
-          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground mb-3">
-            Send a <span className="text-liminal-secondary">Message</span>
-          </h3>
-          <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed">
-            Please fill out the form below and we will get back to you as soon
-            as possible.
-          </p>
-        </div>
-
-        <form className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Full Name */}
-            <Field className="gap-1.5">
-              <FieldLabel
-                htmlFor="fullName"
-                className="pl-2.5 text-[15px] font-semibold text-foreground"
-              >
-                Full Name*
-              </FieldLabel>
-              <Input
-                type="text"
-                id="fullName"
-                placeholder="Liam Anderson"
-                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
-                required
-              />
-            </Field>
-            {/* Your Email */}
-            <Field className="gap-1.5">
-              <FieldLabel
-                htmlFor="email"
-                className="pl-2.5 text-[15px] font-semibold text-foreground"
-              >
-                Your Email*
-              </FieldLabel>
-              <Input
-                type="email"
-                id="email"
-                placeholder="info@intorio.com"
-                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
-                required
-              />
-            </Field>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Phone Number */}
-            <Field className="gap-1.5">
-              <FieldLabel
-                htmlFor="phone"
-                className="pl-2.5 text-[15px] font-semibold text-foreground"
-              >
-                Phone Number*
-              </FieldLabel>
-              <Input
-                type="tel"
-                id="phone"
-                placeholder="(212) 555-7890"
-                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
-                required
-              />
-            </Field>
-            {/* Subject */}
-            <Field className="gap-1.5">
-              <FieldLabel
-                htmlFor="subject"
-                className="pl-2.5 text-[15px] font-semibold text-foreground"
-              >
-                Subject*
-              </FieldLabel>
-              <Input
-                type="text"
-                id="subject"
-                placeholder="Luxury Interior Design"
-                className="h-auto w-full p-3 rounded-md border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px]"
-                required
-              />
-            </Field>
-          </div>
-
-          {/* Your Message */}
-          <Field className="gap-1.5">
-            <FieldLabel
-              htmlFor="message"
-              className="pl-2.5 text-[15px] font-semibold text-foreground"
-            >
-              Your Message*
+    <div className="lg:col-span-7">
+      <form onSubmit={handleSubmit} className="space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {/* Name Field */}
+          <Field className="space-y-4 group">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
+              Full Name
             </FieldLabel>
-            <Textarea
-              id="message"
-              rows={5}
-              placeholder="Please Type Your Message Here..."
-              className="block min-h-37 w-full px-3.5 py-4 rounded-xl border border-border bg-transparent focus:outline-none focus:ring-1 focus:ring-liminal-secondary focus:border-liminal-secondary transition-all placeholder:text-muted-foreground/50 text-[15px] resize-y"
+            <Input
+              type="text"
+              placeholder="e.g. Julian Anderson"
+              className="w-full bg-transparent! border-t-0 border-x-0 border-b border-border/80 rounded-none p-0 pb-3 text-sm font-normal text-foreground focus-visible:ring-0 focus-visible:border-liminal-secondary transition-all placeholder:text-muted-foreground/40 placeholder:font-light h-auto"
               required
             />
           </Field>
 
-          {/* Submit Button */}
-          <div className="pt-2">
-            <AnimatedButton type="submit">Send Message</AnimatedButton>
+          {/* Email Field */}
+          <Field className="space-y-4 group">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
+              Email Address
+            </FieldLabel>
+            <Input
+              type="email"
+              placeholder="julian@example.com"
+              className="w-full bg-transparent! border-t-0 border-x-0 border-b border-border/80 rounded-none p-0 pb-3 text-sm font-normal text-foreground focus-visible:ring-0 focus-visible:border-liminal-secondary transition-all placeholder:text-muted-foreground/40 placeholder:font-light h-auto"
+              required
+            />
+          </Field>
+
+          {/* Interest Field using Shadcn Select */}
+          <Field className="space-y-4 group">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
+              Interest
+            </FieldLabel>
+            <Select defaultValue="placeholder" onValueChange={setInterest}>
+              <SelectTrigger
+                className={cn(
+                  "w-full bg-transparent! border-t-0 border-x-0 border-b border-border/80 rounded-none p-0! pb-3 text-sm font-normal focus:ring-0! focus:ring-offset-0! focus-visible:ring-0! focus-visible:ring-offset-0! focus:border-liminal-secondary focus-visible:border-liminal-secondary transition-all h-auto outline-none! shadow-none",
+                  interest === "placeholder"
+                    ? "text-muted-foreground/40 font-light"
+                    : "text-foreground font-normal",
+                )}
+              >
+                <SelectValue placeholder="Select Project Type" />
+              </SelectTrigger>
+              <SelectContent
+                position="popper"
+                className="w-(--radix-select-trigger-width) rounded-2xl pb-1.5 border-border/50 bg-white/98 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] animate-in fade-in-0 zoom-in-95"
+              >
+                <SelectItem
+                  value="placeholder"
+                  disabled
+                  className="py-3 px-5 text-sm font-light placeholder:text-muted-foreground/40 opacity-100"
+                >
+                  Select Project Type
+                </SelectItem>
+
+                {interests.map((interest) => (
+                  <SelectItem
+                    key={interest}
+                    value={interest.toLowerCase().replace(/\s+/g, "-")}
+                    className="py-2.5 pl-5 pr-12 text-sm font-light focus:bg-zinc-50 focus:text-liminal-secondary cursor-pointer rounded-xl transition-all duration-200"
+                  >
+                    {interest}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </Field>
+
+          {/* Budget/Timeline Field */}
+          <Field className="space-y-4 group">
+            <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
+              Estimated Timeline
+            </FieldLabel>
+            <Input
+              type="text"
+              placeholder="e.g. 12-18 Months"
+              className="w-full bg-transparent! border-t-0 border-x-0 border-b border-border/80 rounded-none p-0 pb-3 text-sm font-normal text-foreground focus-visible:ring-0 focus-visible:border-liminal-secondary transition-all placeholder:text-muted-foreground/40 placeholder:font-light h-auto"
+            />
+          </Field>
+        </div>
+
+        {/* Message Field */}
+        <Field className="space-y-4 group">
+          <FieldLabel className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground group-focus-within:text-liminal-secondary transition-colors">
+            Project Vision & Brief
+          </FieldLabel>
+          <Textarea
+            placeholder="Tell us about the space you imagine..."
+            className="w-full bg-transparent! border-t-0 border-x-0 border-b border-border/80 rounded-none p-0 pb-4 text-sm font-normal text-foreground focus-visible:ring-0 focus-visible:border-liminal-secondary transition-all resize-none placeholder:text-muted-foreground/40 placeholder:font-light min-h-32"
+            required
+          />
+        </Field>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 pt-3">
+          <div className="">
+            <button
+              type="submit"
+              className="group relative flex items-center gap-3 bg-liminal-secondary text-white px-8 py-5 cursor-pointer rounded-full overflow-hidden transition-all hover:shadow-2xl hover:shadow-liminal-secondary/40 active:scale-[0.98]"
+            >
+              <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">
+                Transmit Inquiry
+              </span>
+              <ArrowRight
+                size={16}
+                className="relative z-10 transition-transform group-hover:translate-x-1.5"
+                strokeWidth={2}
+              />
+              {/* Glossy Overlay */}
+              <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+            </button>
           </div>
-        </form>
-      </div>
+
+          {/* Privacy Policy */}
+          <p className="text-[11.5px] text-muted-foreground/60 leading-relaxed max-w-xs italic font-light">
+            By submitting this inquiry, you acknowledge that your data will be
+            handled in accordance with our high-security privacy protocols.
+          </p>
+        </div>
+      </form>
     </div>
   );
 };

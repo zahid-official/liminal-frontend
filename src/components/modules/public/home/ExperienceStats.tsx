@@ -53,10 +53,10 @@ const ExperienceStats = ({ statsData }: ExperienceStatsProps) => {
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-lg lg:text-xl font-semibold text-foreground tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
                   {stat.title}
                 </h3>
-                <p className="max-lg:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-[15px] text-muted-foreground leading-relaxed">
                   {stat.description}
                 </p>
               </div>

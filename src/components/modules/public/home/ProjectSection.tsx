@@ -1,5 +1,5 @@
 import AnimatedButton from "@/components/shared/AnimatedButton";
-import SectionBadge from "@/components/shared/SectionBadge";
+import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
 // Project Data
@@ -63,26 +63,50 @@ const ProjectSection = () => {
           {/* Left Content */}
           <div className="flex flex-col justify-between gap-12 lg:sticky lg:top-52 lg:h-[65vh] lg:self-start">
             {/* Top Text Content */}
-            <div className="flex flex-col items-start gap-6 lg:gap-8">
-              {/* Badge */}
-              <SectionBadge
-                text="FEATURED PROJECTS"
-                className="border-white/15 [&>span:last-child]:text-white/90"
-              />
+            <div className="space-y-8">
+              <div className="flex flex-col items-start gap-8">
+                <SectionHeader
+                  variant="inline"
+                  badgeText="FEATURED PROJECTS"
+                  badgeClassName="text-white"
+                  headingId="project-heading"
+                  title={
+                    <span className="text-white">
+                      Architecture <br />
+                      <span className="italic font-serif font-light underline underline-offset-8 decoration-1">
+                        Defined
+                      </span>{" "}
+                      By Vision
+                    </span>
+                  }
+                  description={
+                    <span className="text-white/60">
+                      Our portfolio is a curated chronicle of spatial
+                      transformations. From avant-garde residential retreats to
+                      brand-focused commercial landscapes, we architect
+                      environments that transcend the ephemeral.
+                    </span>
+                  }
+                />
+              </div>
 
-              {/* Heading */}
-              <h2 className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight">
-                Creative{" "}
-                <span className="font-medium">Projects That Define</span> Our
-                Style
-              </h2>
-
-              {/* Description */}
-              <p className="text-white/70 text-[15px] sm:text-base leading-relaxed max-w-xl">
-                Our portfolio showcases a diverse range of projects, from
-                beautifully crafted residential spaces to functional and stylish
-                commercial interiors.
-              </p>
+              {/* Digital Parameter Annotations */}
+              <div className="flex items-center gap-10">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-mono tracking-[0.3em] text-liminal-secondary uppercase font-bold">
+                    PRJ_COUNT
+                  </span>
+                  <span className="text-xl font-bold text-white">250+</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-mono tracking-[0.3em] text-liminal-secondary uppercase font-bold">
+                    GLB_RANGE
+                  </span>
+                  <span className="text-xl font-bold text-white">
+                    MULTI-CITY
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* Action Button */}

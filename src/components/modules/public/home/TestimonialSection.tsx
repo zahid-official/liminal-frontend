@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
-import TestimonialRating from "../clients/TestimonialRating";
+import TestimonialRating from "./TestimonialRating";
 
 // Testimonial Data
 const testimonials = [
@@ -62,6 +62,10 @@ const testimonials = [
 const TestimonialSection = () => {
   return (
     <section className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-[url('/assets/bg-testimonial.png')] bg-bottom-left bg-no-repeat bg-zinc-50/80">
+      {/* Technical Status Badge: Vertical Annotation */}
+      <div className="absolute top-40 left-10 text-[9px] font-mono tracking-[0.4em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
+        CLIENT_FEEDBACK_LOOP // VERIFIED
+      </div>
       <Carousel
         opts={{
           align: "start",
@@ -74,14 +78,13 @@ const TestimonialSection = () => {
           <SectionHeader
             badgeText="OUR CLIENTS SAY"
             title={
-              <span className="font-bold">
-                Warm Words From{" "}
-                <br className="hidden md:block" />
-                <span className="text-liminal-secondary">
-                  Our Satisfied
+              <>
+                Warm Words From <br className="hidden md:block" />
+                <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                  Satisfied
                 </span>{" "}
                 Clients
-              </span>
+              </>
             }
             className="mb-8 lg:mb-12"
           />
@@ -103,8 +106,8 @@ const TestimonialSection = () => {
                   {/* Text Statement */}
                   <p className="text-[14px] sm:text-[15px] font-semibold text-foreground/90 max-w-85 leading-[1.6]">
                     From concept to reality, the team turned my vision into a
-                    stunning, livable space. I couldn&apos;t be happier with
-                    the results!
+                    stunning, livable space. I couldn&apos;t be happier with the
+                    results!
                   </p>
                 </div>
 

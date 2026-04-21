@@ -29,7 +29,7 @@ const AboutUsStats = ({ stats }: AboutStatsProps) => {
         {stats.map((stat, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center lg:px-4 lg:border-l first:lg:border-l-0 border-border/40 group transition-all duration-500 py-3"
+            className="flex flex-col items-center lg:px-4 lg:border-l first:lg:border-l-0 border-border/40 group transition-all duration-500 py-6 lg:py-3 border-b sm:border-b-0"
           >
             <div className="flex flex-col items-center text-center w-full">
               {/* Number Section */}
@@ -61,10 +61,10 @@ const AboutUsStats = ({ stats }: AboutStatsProps) => {
 
               {/* Label & Description Section */}
               <div className="space-y-4">
-                <h4 className="text-sm md:text-base font-bold uppercase tracking-[0.18em] text-foreground leading-tight">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.45em] text-foreground leading-tight group-hover:text-liminal-secondary transition-colors duration-500">
                   {stat.label}
                 </h4>
-                <p className="text-muted-foreground text-[13px] md:text-sm leading-relaxed max-w-55 mx-auto">
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-55 mx-auto font-light">
                   {stat.description}
                 </p>
               </div>
