@@ -57,19 +57,25 @@ const BlogSection = () => {
       aria-labelledby="blog-heading"
       className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden relative"
     >
+      {/* Technical Status Badge: Vertical Annotation */}
+      <div className="absolute top-60 right-10 text-[9px] font-mono tracking-[0.3em] text-muted-foreground hidden lg:block [writing-mode:vertical-rl] uppercase">
+        STUDIO_JOURNAL // VOL_001
+      </div>
+
       <div className="custom-container relative z-10">
         {/* Section Header */}
         <SectionHeader
-          badgeText="STRAIGHT FROM THE NEWSROOM"
+          badgeText="STORY REVELATION"
           headingId="blog-heading"
           title={
             <>
-              Take A Look At{" "}
-              <span className="text-liminal-secondary">Our Latest</span>
-              <br className="hidden lg:block" />
-              <span className="text-liminal-secondary">Blog</span> & Articles.
+              Journal of <br />
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Refinement
+              </span>
             </>
           }
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Content Layout */}
@@ -84,12 +90,12 @@ const BlogSection = () => {
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                 alt={featuredPost.title}
               />
-              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[11px] font-bold tracking-widest uppercase">
+              <div className="absolute top-5 left-5 md:top-6 md:left-6 z-10 px-4 py-1.5 rounded-full border border-white/30 backdrop-blur-md bg-black/20 text-white text-[10px] font-bold tracking-widest uppercase">
                 {featuredPost.tag}
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 font-medium uppercase tracking-wider text-[11px] sm:text-xs">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4 font-medium uppercase tracking-wider text-[10px] sm:text-xs">
               {!featuredPost.date ? null : <span>{featuredPost.date} </span>}
               {!featuredPost.date ? null : <span>•</span>}
               <span>
@@ -100,7 +106,7 @@ const BlogSection = () => {
               </span>
             </div>
 
-            <h3 className="line-clamp-2 text-[1.35rem] sm:text-[1.75rem] lg:text-3xl font-bold font-heading leading-[1.1] mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
+            <h3 className="line-clamp-2 text-2xl sm:text-3xl font-bold font-heading leading-tight mb-4 group-hover:text-liminal-secondary transition-colors duration-300">
               {featuredPost.title}
             </h3>
 
@@ -130,14 +136,14 @@ const BlogSection = () => {
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                     alt={post.title}
                   />
-                  <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-full bg-liminal-secondary backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase">
+                  <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full border border-white/30 backdrop-blur-md bg-black/20 text-white text-[9px] font-bold tracking-widest uppercase">
                     {post.tag}
                   </div>
                 </div>
 
                 {/* Text Content */}
                 <div className="flex flex-col justify-center flex-1">
-                  <div className="flex items-center gap-1.5 text-muted-foreground mb-3 font-medium tracking-wider text-[10px] sm:text-[11px]">
+                  <div className="flex items-center gap-1.5 text-muted-foreground mb-3 font-medium tracking-wider text-[10px] sm:text-[10px]">
                     <span className="uppercase">{post.date}</span>
                     <span className="w-1 h-1 rounded-full bg-liminal-secondary"></span>
                     <span>
@@ -148,7 +154,7 @@ const BlogSection = () => {
                     </span>
                   </div>
 
-                  <h4 className="line-clamp-2 text-xl sm:text-[22px] font-bold font-heading leading-tight mb-3 group-hover:text-liminal-secondary transition-colors duration-300">
+                  <h4 className="line-clamp-2 text-xl sm:text-2xl font-bold font-heading leading-tight mb-3 group-hover:text-liminal-secondary transition-colors duration-300">
                     {post.title}
                   </h4>
 

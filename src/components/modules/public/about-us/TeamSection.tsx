@@ -54,18 +54,22 @@ const TeamSection = () => {
       aria-labelledby="team-heading"
       className="py-20 md:py-28 lg:py-32 overflow-hidden bg-zinc-50/80"
     >
-      <div className="custom-container relative z-10 space-y-32 lg:space-y-36">
+      <div className="custom-container relative z-10 space-y-12">
         {/* Section Header */}
         <SectionHeader
+          variant="centered"
           headingId="team-heading"
           badgeText="THE CREATIVE MINDS"
           title={
             <>
-              Meet the Visionaries <br />
-              Behind <span className="text-liminal-secondary">Liminal</span>
+              Visionaries Behind{" "}
+              <span className="text-liminal-secondary italic font-serif font-light underline underline-offset-8 decoration-1">
+                Spatial Innovation
+              </span>
             </>
           }
           description="Our multi-disciplinary team combines technical expertise with creative flair to deliver exceptional results for every client."
+          className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both"
         />
 
         {/* Team Members */}
@@ -115,7 +119,7 @@ const TeamSection = () => {
                 </h4>
                 <div className="flex items-center justify-center gap-3">
                   <div className="w-1 h-1 rounded-full bg-liminal-secondary/40" />
-                  <p className="text-muted-foreground text-[11px] uppercase tracking-[0.25em] font-bold">
+                  <p className="text-muted-foreground text-[10px] uppercase tracking-[0.25em] font-bold">
                     {member.role}
                   </p>
                   <div className="w-1 h-1 rounded-full bg-liminal-secondary/40" />

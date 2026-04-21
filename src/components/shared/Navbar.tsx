@@ -99,7 +99,7 @@ const Navbar = () => {
             <Link href="/login">
               <AnimatedButton
                 className={cn(
-                  "max-md:hidden text-base transition-all duration-300 pl-4.5 gap-2",
+                  "max-md:hidden text-base tracking-[0.03em] transition-all duration-300 pl-4.5 gap-2",
                   isScrolled
                     ? "border-foreground/25"
                     : "bg-white text-black hover:bg-white/90",

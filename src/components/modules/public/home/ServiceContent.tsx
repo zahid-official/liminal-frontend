@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
+// Interface for ServiceItem
 interface ServiceItem {
   id: string;
   title: string;
