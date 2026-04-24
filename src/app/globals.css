@@ -4,7 +4,6 @@
 
 /* Theme Variables */
 @theme inline {
-  --color-liminal: var(--liminal);
   --color-liminal-secondary: var(--liminal-secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -52,7 +51,6 @@
 
 /* Light Theme Variables */
 :root {
-  --liminal: oklch(34.928% 0.05959 164.26);
   --liminal-secondary: oklch(42.168% 0.06333 127.177);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

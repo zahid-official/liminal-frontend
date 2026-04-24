@@ -1,3 +1,6 @@
+import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
+import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
+import InteriorServicesList from "@/components/modules/public/services/interior/InteriorServicesList";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -21,6 +24,15 @@ const InteriorPage = () => {
         ]}
         bgImage="/assets/interior-hero.png"
       />
+
+      {/* Philosophy Section */}
+      <InteriorPhilosophy />
+
+      {/* Services List Section */}
+      <InteriorServicesList />
+
+      {/* Process Section */}
+      <InteriorProcess />
     </main>
   );
 };

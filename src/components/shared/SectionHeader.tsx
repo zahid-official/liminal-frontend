@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
+  import { cn } from "@/lib/utils";
 import * as React from "react";
 import SectionBadge from "./SectionBadge";
 
-type SectionHeaderVariant = "editorial" | "centered" | "inline";
+type SectionHeaderVariant = "editorial" | "centered" | "inline" | "split";
 
 interface SectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -23,6 +23,7 @@ interface SectionHeaderProps extends Omit<
  * - editorial: Split layout 30/70 with background grid lines (Default)
  * - centered: Centered badge, title, and description
  * - inline: Left-aligned with a horizontal line prefix to the badge
+ * - split: Grid layout with Title (Left) and Description (Right)
  */
 const SectionHeader = ({
   badgeText,
@@ -105,6 +106,50 @@ const SectionHeader = ({
     );
   }
 
+  // Split Variant (Title Left, Description Right)
+  if (variant === "split") {
+    return (
+      <div
+        className={cn(
+          "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 mb-16 lg:mb-24 items-end",
+          className,
+        )}
+        {...props}
+      >
+        <div className="lg:col-span-7 space-y-7 text-center lg:text-left">
+          {badgeText && (
+            <div className="flex items-center justify-center lg:justify-start gap-5">
+              <div
+                className={cn("w-14 h-px bg-liminal-secondary", badgeClassName)}
+              />
+              <span
+                className={cn(
+                  "text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
+                  badgeClassName,
+                )}
+              >
+                {badgeText}
+              </span>
+            </div>
+          )}
+          <h2
+            id={headingId}
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight font-heading"
+          >
+            {title}
+          </h2>
+        </div>
+        <div className="lg:col-span-5 text-center lg:text-left">
+          {description && (
+            <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+              {description}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // Inline Variant (Like About Us)
   return (
     <div
@@ -120,7 +165,6 @@ const SectionHeader = ({
           <div
             className={cn(
               "w-14 h-px bg-liminal-secondary",
-              badgeClassName?.includes("white") && "bg-white",
               badgeClassName,
             )}
           />
@@ -143,7 +187,7 @@ const SectionHeader = ({
       </h2>
 
       {description && (
-        <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-xl font-light">
+        <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light">
           {description}
         </p>
       )}
