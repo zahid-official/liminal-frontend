@@ -1,6 +1,5 @@
-import PageHeader from "@/components/shared/PageHeader";
 import ProjectList from "@/components/modules/public/projects/ProjectList";
-import ProjectCTA from "@/components/modules/public/projects/ProjectCTA";
+import PageHeader from "@/components/shared/PageHeader";
 
 // ProjectsPage Component
 const ProjectsPage = () => {
@@ -12,7 +11,6 @@ const ProjectsPage = () => {
         bgImage="/assets/bg-project.webp"
       />
       <ProjectList />
-      <ProjectCTA />
     </main>
   );
 };
