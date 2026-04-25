@@ -1,9 +1,9 @@
 import PageHeader from "@/components/shared/PageHeader";
-import { Metadata } from "next";
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
-import InteriorServicesList from "@/components/modules/public/services/interior/InteriorServicesList";
-import InteriorProjects from "@/components/modules/public/services/interior/InteriorProjects";
+import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
 import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
+import InteriorCTA from "@/components/modules/public/services/interior/InteriorCTA";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Interior Design Services | Liminal",
@@ -23,22 +23,20 @@ const InteriorPage = () => {
           { label: "Services", href: "/services" },
           { label: "Interior" },
         ]}
-        bgImage="/assets/interior-hero.png"
+        bgImage="/assets/interior/hero-premium-new.png"
       />
 
       {/* Philosophy Section */}
       <InteriorPhilosophy />
 
-      {/* Services List Section */}
-      <InteriorServicesList />
-
-      {/* Projects Showcase Section */}
-      <InteriorProjects />
+      {/* Core Services Section */}
+      <InteriorServices />
 
       {/* Process Section */}
       <InteriorProcess />
 
       {/* CTA Section */}
+      <InteriorCTA />
     </main>
   );
 };
