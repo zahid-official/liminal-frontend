@@ -1,8 +1,7 @@
-import React from "react";
-import Image from "next/image";
+import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
-import LiminalButton from "@/components/shared/LiminalButton";
+import Image from "next/image";
 
 const services = [
   {
@@ -56,17 +55,17 @@ const InteriorServices = () => {
               key={service.id}
               className={cn(
                 "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center",
-                index % 2 === 1 && "lg:flex-row-reverse"
+                index % 2 === 1 && "lg:flex-row-reverse",
               )}
             >
               {/* Image Side */}
               <div
                 className={cn(
                   "lg:col-span-7 relative group",
-                  index % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                  index % 2 === 1 ? "lg:order-2" : "lg:order-1",
                 )}
               >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-sm shadow-xl">
+                <div className="relative aspect-16/10 overflow-hidden rounded-sm shadow-xl">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -75,12 +74,14 @@ const InteriorServices = () => {
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
                 </div>
-                
+
                 {/* Number Overlay */}
-                <div className={cn(
-                  "absolute -bottom-10 -left-10 text-[12rem] font-bold font-heading text-liminal-secondary/10 select-none hidden lg:block",
-                  index % 2 === 1 && "-left-auto -right-10"
-                )}>
+                <div
+                  className={cn(
+                    "absolute -bottom-10 -left-10 text-[12rem] font-bold font-heading text-liminal-secondary/10 select-none hidden lg:block",
+                    index % 2 === 1 && "-left-auto -right-10",
+                  )}
+                >
                   {service.number}
                 </div>
               </div>
@@ -89,7 +90,9 @@ const InteriorServices = () => {
               <div
                 className={cn(
                   "lg:col-span-5 space-y-8",
-                  index % 2 === 1 ? "lg:order-1 lg:pr-10" : "lg:order-2 lg:pl-10"
+                  index % 2 === 1
+                    ? "lg:order-1 lg:pr-10"
+                    : "lg:order-2 lg:pl-10",
                 )}
               >
                 <div className="space-y-4">

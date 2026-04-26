@@ -60,8 +60,8 @@ const InteriorPhilosophy = () => {
                 </h3>
                 <p className="text-muted-foreground font-light leading-relaxed">
                   As an architect-led firm, our interiors are seamlessly
-                  integrated with the building's structure, ensuring a cohesive
-                  vision from the outside in.
+                  integrated with the building&apos;s structure, ensuring a
+                  cohesive vision from the outside in.
                 </p>
               </div>
             </div>
@@ -74,7 +74,7 @@ const InteriorPhilosophy = () => {
               PHI
             </div>
 
-            <div className="relative aspect-[4/5] md:aspect-video lg:aspect-[4/5] overflow-hidden group rounded-sm shadow-2xl">
+            <div className="relative aspect-4/5 md:aspect-video lg:aspect-4/5 overflow-hidden group rounded-sm shadow-2xl">
               <Image
                 src="/assets/interior/philosophy.png"
                 alt="Interior Design Philosophy"
@@ -90,13 +90,13 @@ const InteriorPhilosophy = () => {
             <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-liminal-secondary/40 -z-10" />
 
             {/* Measurement Ticks */}
-            <div className="absolute -right-8 top-1/2 -translate-y-1/2 flex flex-col gap-8 items-center hidden lg:flex">
+            <div className="absolute -right-8 top-1/2 -translate-y-1/2 flex-col gap-8 items-center hidden lg:flex">
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
                   className={cn(
                     "w-1 h-px bg-border",
-                    i === 2 && "w-3 bg-liminal-secondary"
+                    i === 2 && "w-3 bg-liminal-secondary",
                   )}
                 />
               ))}
