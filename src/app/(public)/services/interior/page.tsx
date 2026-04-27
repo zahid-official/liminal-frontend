@@ -1,8 +1,6 @@
-import PageHeader from "@/components/shared/PageHeader";
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
-import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
-import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
-import InteriorCTA from "@/components/modules/public/services/interior/InteriorCTA";
+import InteriorServices4 from "@/components/modules/public/services/interior/InteriorServices4";
+import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,13 +28,13 @@ const InteriorPage = () => {
       <InteriorPhilosophy />
 
       {/* Core Services Section */}
-      <InteriorServices />
+      <InteriorServices4 />
 
       {/* Process Section */}
-      <InteriorProcess />
+      {/* <InteriorProcess /> */}
 
       {/* CTA Section */}
-      <InteriorCTA />
+      {/* <InteriorCTA /> */}
     </main>
   );
 };
