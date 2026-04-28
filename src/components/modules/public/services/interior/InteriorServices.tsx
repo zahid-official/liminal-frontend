@@ -6,31 +6,34 @@ import AnimatedButton from "@/components/shared/AnimatedButton";
 // Interior Services Data
 const services = [
   {
-    title: "Residential Sanctuaries",
+    title: "Residential Architecture",
     description:
-      "Living spaces that breathe with intention. We merge technical precision with emotional resonance to create sanctuaries where every detail, from light to texture, aligns with your personal narrative.",
+      "Curating the private narrative. We implement structural precision and emotive spatial design to architect residential sanctuaries that reflect the occupant's intellectual and emotional identity.",
     image: "/assets/interior/residential-premium.png",
     id: "residential",
-    phase: "Vision to Reality",
+    phase: "Concept to Execution",
     expertise: "Emotive Spatial Design",
+    ctaText: "Explore Private Narratives",
   },
   {
-    title: "Commercial Environments",
+    title: "Enterprise Environments",
     description:
-      "Defining the intersection of performance and identity. We design immersive environments that translate brand ethos into physical form, balancing operational efficiency with a soul-stirring atmosphere.",
+      "Architecting brand identity. We develop high-performance commercial landscapes that optimize operational efficiency while translating brand ethos into immersive, tangible reality.",
     image: "/assets/commercial-design.png",
     id: "commercial",
-    phase: "Concept to Reality",
-    expertise: "Brand Immersion",
+    phase: "Strategy to Reality",
+    expertise: "Identity Immersion",
+    ctaText: "Analyze Corporate Works",
   },
   {
-    title: "Design Consultancy",
+    title: "Strategic Consultancy",
     description:
-      "The bridge between vision and structural reality. Our consultancy provides the rigorous logic and spatial intelligence required to ground ambitious architectural concepts in functional truth.",
+      "The analytical bridge between vision and structural truth. Our consultancy provides the spatial intelligence and technical rigor required to ground ambitious concepts in functional reality.",
     image: "/assets/interior/consultancy-premium.png",
     id: "consultancy",
-    phase: "Aspiration to Reality",
+    phase: "Analysis to Truth",
     expertise: "Structural Intelligence",
+    ctaText: "Review Strategic Insights",
   },
 ];
 
@@ -44,13 +47,13 @@ const InteriorServices = () => {
           badgeText="Our Expertise"
           title={
             <>
-              Curated Interior{" "}
+              Strategic Interior{" "}
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Typologies
+                Solutions
               </span>
             </>
           }
-          description="The intersection of architectural rigor and human emotion. We deliver bespoke interior solutions that balance structural precision with the warm soul of design."
+          description="The intersection of architectural logic and strategic performance. We deliver high-impact interior solutions that balance structural precision with the intellectual depth of design."
           variant="centered"
           className="mb-16 custom-container"
         />
@@ -141,7 +144,7 @@ const InteriorServices = () => {
                     index % 2 !== 0 ? "flex justify-end" : "flex justify-start",
                   )}
                 >
-                  <AnimatedButton>Explore Projects</AnimatedButton>
+                  <AnimatedButton>{service.ctaText}</AnimatedButton>
                 </div>
               </div>
             </div>

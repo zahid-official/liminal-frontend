@@ -1,6 +1,7 @@
 import InteriorCTA from "@/components/modules/public/services/interior/InteriorCTA";
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
 import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
+import InteriorProjects from "@/components/modules/public/services/interior/InteriorProjects";
 import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -26,11 +27,14 @@ const InteriorPage = () => {
         bgImage="/assets/interior/hero-premium-new.png"
       />
 
-      {/* Philosophy Section */}
-      <InteriorPhilosophy />
-
       {/* Core Services Section */}
       <InteriorServices />
+
+      {/* Projects Section */}
+      <InteriorProjects />
+
+      {/* Philosophy Section */}
+      <InteriorPhilosophy />
 
       {/* Process Section */}
       <InteriorProcess />
