@@ -1,5 +1,5 @@
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
-import InteriorServices4 from "@/components/modules/public/services/interior/InteriorServices4";
+import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -28,7 +28,7 @@ const InteriorPage = () => {
       <InteriorPhilosophy />
 
       {/* Core Services Section */}
-      <InteriorServices4 />
+      <InteriorServices />
 
       {/* Process Section */}
       {/* <InteriorProcess /> */}
