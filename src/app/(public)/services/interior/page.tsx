@@ -1,4 +1,5 @@
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
+import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
 import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -6,7 +7,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Interior Design Services | Liminal",
   description:
-    "Explore Liminal's premium interior design services, including residential, commercial, and architectural consultancy. We craft sophisticated, high-end spaces with precision and soul.",
+    "Explore Liminal's premium interior design services. We manifest sophisticated, high-end spaces by bridging creative vision with architectural reality.",
 };
 
 // InteriorPage Component
@@ -31,7 +32,7 @@ const InteriorPage = () => {
       <InteriorServices />
 
       {/* Process Section */}
-      {/* <InteriorProcess /> */}
+      <InteriorProcess />
 
       {/* CTA Section */}
       {/* <InteriorCTA /> */}

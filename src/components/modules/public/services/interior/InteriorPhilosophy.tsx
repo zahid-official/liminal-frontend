@@ -20,7 +20,7 @@ const InteriorPhilosophy = () => {
               badgeText="Our Philosophy"
               title={
                 <>
-                  Crafting Spaces with{" "}
+                  Manifesting Vision through{" "}
                   <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
                     Precision & Soul
                   </span>

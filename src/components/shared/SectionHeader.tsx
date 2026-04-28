@@ -134,7 +134,7 @@ const SectionHeader = ({
           )}
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight font-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
           >
             {title}
           </h2>

@@ -11,7 +11,7 @@ const services = [
       "Living spaces that breathe with intention. We merge technical precision with emotional resonance to create sanctuaries where every detail, from light to texture, aligns with your personal narrative.",
     image: "/assets/interior/residential-premium.png",
     id: "residential",
-    phase: "Concept to Curation",
+    phase: "Vision to Reality",
     expertise: "Emotive Spatial Design",
   },
   {
@@ -20,7 +20,7 @@ const services = [
       "Defining the intersection of performance and identity. We design immersive environments that translate brand ethos into physical form, balancing operational efficiency with a soul-stirring atmosphere.",
     image: "/assets/commercial-design.png",
     id: "commercial",
-    phase: "Strategy to Execution",
+    phase: "Concept to Reality",
     expertise: "Brand Immersion",
   },
   {
@@ -29,7 +29,7 @@ const services = [
       "The bridge between vision and structural reality. Our consultancy provides the rigorous logic and spatial intelligence required to ground ambitious architectural concepts in functional truth.",
     image: "/assets/interior/consultancy-premium.png",
     id: "consultancy",
-    phase: "Logic to Blueprint",
+    phase: "Aspiration to Reality",
     expertise: "Structural Intelligence",
   },
 ];
