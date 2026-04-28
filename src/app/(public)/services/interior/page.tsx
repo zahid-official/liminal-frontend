@@ -1,3 +1,4 @@
+import InteriorCTA from "@/components/modules/public/services/interior/InteriorCTA";
 import InteriorPhilosophy from "@/components/modules/public/services/interior/InteriorPhilosophy";
 import InteriorProcess from "@/components/modules/public/services/interior/InteriorProcess";
 import InteriorServices from "@/components/modules/public/services/interior/InteriorServices";
@@ -35,7 +36,7 @@ const InteriorPage = () => {
       <InteriorProcess />
 
       {/* CTA Section */}
-      {/* <InteriorCTA /> */}
+      <InteriorCTA />
     </main>
   );
 };
