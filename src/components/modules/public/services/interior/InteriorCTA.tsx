@@ -1,20 +1,38 @@
 import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { MessageSquare } from "lucide-react";
-import Image from "next/image";
 
 // InteriorCTA Component
 const InteriorCTA = () => {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 lg:py-32">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/assets/interior/hero-v2.png"
-          alt="Architectural Background"
-          fill
-          className="object-cover grayscale opacity-3"
-        />
+    <section className="py-24 md:py-32 bg-zinc-50 relative overflow-hidden">
+      {/* Abstract structural graphic */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <path d="M0,100 L100,0 L100,100 Z" fill="currentColor" />
+          <line
+            x1="0"
+            y1="50"
+            x2="100"
+            y2="50"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <line
+            x1="50"
+            y1="0"
+            x2="50"
+            y2="100"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+        </svg>
       </div>
 
       {/* Main Content Container */}
