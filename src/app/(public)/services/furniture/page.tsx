@@ -1,4 +1,5 @@
 import FurnitureAtelier from "@/components/modules/public/services/furniture/FurnitureAtelier";
+import FurnitureCollection from "@/components/modules/public/services/furniture/FurnitureCollection";
 import FurniturePhilosophy from "@/components/modules/public/services/furniture/FurniturePhilosophy";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -27,6 +28,9 @@ const FurniturePage = () => {
 
       {/* Furniture Atelier */}
       <FurnitureAtelier />
+
+      {/* Furniture Collection */}
+      <FurnitureCollection />
     </main>
   );
 };

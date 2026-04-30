@@ -1,8 +1,8 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
-// Philosophy Image Data
-const PHILOSOPHY_IMAGES = [
+// philosophyImages
+const philosophyImages = [
   {
     columnClass: "space-y-4",
     images: [
@@ -35,8 +35,8 @@ const PHILOSOPHY_IMAGES = [
   },
 ];
 
-// Philosophy Points Data
-const PHILOSOPHY_POINTS = [
+// philosophyPoints
+const philosophyPoints = [
   {
     number: "01",
     title: "Material Integrity",
@@ -54,12 +54,12 @@ const PHILOSOPHY_POINTS = [
 // FurniturePhilosophy Component
 const FurniturePhilosophy = () => {
   return (
-    <section className="py-20 md:py-32 bg-zinc-50/50 overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           {/* Left: Image Grid */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            {PHILOSOPHY_IMAGES.map((column, colIndex) => (
+            {philosophyImages.map((column, colIndex) => (
               <div key={colIndex} className={column.columnClass}>
                 {column.images.map((image, imgIndex) => (
                   <div
@@ -94,8 +94,9 @@ const FurniturePhilosophy = () => {
               variant="inline"
             />
 
+            {/* Philosophy Points Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-4">
-              {PHILOSOPHY_POINTS.map((point, index) => (
+              {philosophyPoints.map((point, index) => (
                 <div key={index} className="space-y-5">
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-mono font-bold text-liminal-secondary px-2 py-1 bg-white border border-zinc-200 rounded-sm">
@@ -113,8 +114,9 @@ const FurniturePhilosophy = () => {
               ))}
             </div>
 
+            {/* Quote Section */}
             <div className="p-10 bg-white border border-zinc-200 rounded-sm relative group overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-liminal-secondary opacity-20" />
+              <div className="absolute top-0 left-0 w-1 h-full bg-liminal-secondary/80" />
               <p className="text-sm italic font-serif text-zinc-600 leading-relaxed relative z-10">
                 &quot;Furniture should not merely fill a space; it should define
                 it. It is the tactical interface between the human body and the

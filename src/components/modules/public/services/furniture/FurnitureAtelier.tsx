@@ -35,11 +35,12 @@ const processSteps = [
   },
 ];
 
+// FurnitureAtelier Component
 const FurnitureAtelier = () => {
   return (
     <section
       id="atelier"
-      className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-white"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidde"
     >
       {/* Background Decorative Element - Blueprint Style */}
       <div className="absolute top-0 right-0 w-1/3 h-full opacity-4 pointer-events-none hidden lg:block">

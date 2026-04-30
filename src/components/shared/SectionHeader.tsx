@@ -111,7 +111,7 @@ const SectionHeader = ({
     return (
       <div
         className={cn(
-          "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 mb-16 lg:mb-24 items-end",
+          "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-12 items-end",
           className,
         )}
         {...props}
