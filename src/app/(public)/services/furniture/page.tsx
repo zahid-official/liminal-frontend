@@ -1,3 +1,4 @@
+import FurnitureAtelier from "@/components/modules/public/services/furniture/FurnitureAtelier";
 import FurniturePhilosophy from "@/components/modules/public/services/furniture/FurniturePhilosophy";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -21,7 +22,11 @@ const FurniturePage = () => {
         ]}
         bgImage="/assets/furniture/header-bg-refined.png"
       />
+      {/* Furniture Philosophy */}
       <FurniturePhilosophy />
+
+      {/* Furniture Atelier */}
+      <FurnitureAtelier />
     </main>
   );
 };
