@@ -7,12 +7,12 @@ const philosophyImages = [
     columnClass: "space-y-4",
     images: [
       {
-        src: "/assets/furniture/atelier-workshop.png",
+        src: "/assets/furniture/custom-process-v2.png",
         alt: "Material texture",
         aspect: "aspect-3/4",
       },
       {
-        src: "/assets/furniture/collection-chair.png",
+        src: "/assets/furniture/halo-lounge-chair.png",
         alt: "Crafting process",
         aspect: "aspect-square",
       },
@@ -22,7 +22,7 @@ const philosophyImages = [
     columnClass: "pt-12 space-y-4",
     images: [
       {
-        src: "/assets/furniture/collection-table.png",
+        src: "/assets/furniture/monolith-dining-table.png",
         alt: "Precision tool",
         aspect: "aspect-square",
       },

@@ -98,7 +98,7 @@ const FurnitureAtelier = () => {
               description="Beyond our ready collection, we offer a dedicated bespoke service. From single statement pieces to full-suite custom furniture projects, our Atelier bridges the gap between imagination and reality."
             />
 
-            <div className="pt-10 pb-3">
+            <div className="pt-12 pb-6">
               {processSteps.map((step, idx) => (
                 <div key={step.code} className="group flex gap-6">
                   <div className="flex flex-col items-center">
@@ -129,12 +129,12 @@ const FurnitureAtelier = () => {
           </div>
 
           {/* Right: Visual Showcase */}
-          <div className="lg:col-span-6 lg:sticky lg:top-32">
+          <div className="lg:col-span-6 lg:sticky lg:top-38">
             <div className="relative">
               {/* Main Image */}
               <div className="relative aspect-4/5 rounded-sm overflow-hidden shadow-3xl">
                 <Image
-                  src="/assets/furniture/custom-workshop.png"
+                  src="/assets/furniture/atelier-bg.png"
                   alt="Liminal Furniture Atelier Workshop"
                   fill
                   className="object-cover"
@@ -161,7 +161,7 @@ const FurnitureAtelier = () => {
                           className="w-8 h-8 rounded-full border-2 border-white/80 bg-zinc-200 overflow-hidden"
                         >
                           <Image
-                            src={`/assets/furniture/collection-chair-v2.png`}
+                            src={`/assets/furniture/bespoke-coffee-table.png`}
                             alt="Crafstman"
                             width={32}
                             height={32}

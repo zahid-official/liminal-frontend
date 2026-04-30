@@ -5,37 +5,76 @@ import Image from "next/image";
 // collectionData
 const collection = [
   {
-    id: "FC-001",
-    title: "The Sculptural Armchair",
+    id: "FC-01",
+    title: "Horizon Sectional",
     description:
-      "An ergonomic masterpiece blending brutalist form with soft comfort.",
+      "A modular seating architecture balancing expansive comfort with a refined, low-profile profile.",
     category: "Seating",
-    materials: "Walnut & Premium Leather",
-    dimensions: "850 x 750 x 900 mm",
-    image: "/assets/furniture/armchair.png",
-    price: "$2,450",
+    materials: "Bouclé & Smoked Oak",
+    dimensions: "3200 x 1050 x 680 mm",
+    image: "/assets/furniture/horizon-sofa.png",
+    price: "$8,600",
+    status: "Made to Order",
   },
   {
-    id: "FC-002",
-    title: "Minimalist Oak Console",
+    id: "FC-02",
+    title: "Monolith Table",
     description:
-      "Refined storage solution featuring clean lines and natural grain textures.",
-    category: "Storage",
-    materials: "Solid White Oak",
-    dimensions: "1200 x 400 x 750 mm",
-    image: "/assets/furniture/cabinet.png",
-    price: "$1,850",
-  },
-  {
-    id: "FC-003",
-    title: "Arch Dining Table",
-    description:
-      "A monumental centerpiece crafted from rare Italian travertine.",
+      "A brutalist-inspired centerpiece carved from a single slab of honed Nero Marquina marble.",
     category: "Tables",
-    materials: "Travertine & Dark Ash",
+    materials: "Nero Marquina Marble",
     dimensions: "2400 x 1100 x 750 mm",
-    image: "/assets/furniture/dining-table.png",
-    price: "$4,200",
+    image: "/assets/furniture/monolith-dining-table.png",
+    price: "$5,400",
+    status: "Limited Edition",
+  },
+  {
+    id: "FC-03",
+    title: "Ether Sideboard",
+    description:
+      "Minimalist storage featuring seamless joinery and hand-applied Eucalyptus veneer.",
+    category: "Storage",
+    materials: "Eucalyptus & Bronze",
+    dimensions: "2100 x 500 x 720 mm",
+    image: "/assets/furniture/ether-sideboard.png",
+    price: "$5,200",
+    status: "In Stock",
+  },
+  {
+    id: "FC-04",
+    title: "Halo Chair",
+    description:
+      "A study in circular geometry featuring a wraparound backrest and precision rotating base.",
+    category: "Seating",
+    materials: "Bouclé & Brass",
+    dimensions: "920 x 880 x 740 mm",
+    image: "/assets/furniture/halo-lounge-chair.png",
+    price: "$3,800",
+    status: "In Stock",
+  },
+  {
+    id: "FC-05",
+    title: "Linear Library",
+    description:
+      "A slender vertical shelving unit crafted from American Walnut with delicate brass accents.",
+    category: "Storage",
+    materials: "Walnut & Brass",
+    dimensions: "800 x 350 x 2100 mm",
+    image: "/assets/furniture/walnut-bookcase.png",
+    price: "$4,900",
+    status: "Made to Order",
+  },
+  {
+    id: "FC-06",
+    title: "Travertine Table",
+    description:
+      "An interplay of transparency and mass, pairing a honed travertine base with tinted glass.",
+    category: "Tables",
+    materials: "Travertine & Glass",
+    dimensions: "1100 x 1100 x 320 mm",
+    image: "/assets/furniture/bespoke-coffee-table.png",
+    price: "$3,400",
+    status: "Limited Edition",
   },
 ];
 
@@ -45,25 +84,32 @@ const FurnitureCollection = () => {
     <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80">
       <div className="custom-container">
         <SectionHeader
-          badgeText="The Signature Edit"
+          badgeText="The Curated Edit"
           title={
             <>
-              Refined Furniture{" "} <br className="max-lg:hidden" />
+              Iconic Furniture <br className="max-lg:hidden" />
               <span className="italic font-serif font-light text-liminal-secondary">
-                Gallery
+                Selection
               </span>
             </>
           }
-          description="A selection of our most refined designs, pre-crafted and ready for immediate purchase. This collection offers a seamless way to acquire artisanal furniture masterpieces, allowing you to elevate your space instantly."
+          description="A selection of our most iconic designs, balancing structural honesty with human comfort. Each piece is crafted to endure, both in material and aesthetic."
           variant="split"
         />
 
         {/* Collection Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
           {collection.map((item) => (
             <div key={item.id} className="group relative flex flex-col">
               {/* Image Container */}
               <div className="relative aspect-3/4 overflow-hidden bg-zinc-100 mb-3 rounded-sm">
+                {/* Status Badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="bg-white/90 backdrop-blur-sm px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-black rounded-sm border border-black/5">
+                    {item.status}
+                  </span>
+                </div>
+
                 <Image
                   src={item.image}
                   alt={item.title}

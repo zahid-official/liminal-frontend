@@ -21,16 +21,16 @@ const FurniturePage = () => {
           { label: "Services", href: "/services" },
           { label: "Furniture" },
         ]}
-        bgImage="/assets/furniture/header-bg-refined.png"
+        bgImage="/assets/furniture/hero-premium.png"
       />
       {/* Furniture Philosophy */}
       <FurniturePhilosophy />
 
-      {/* Furniture Atelier */}
-      <FurnitureAtelier />
-
       {/* Furniture Collection */}
       <FurnitureCollection />
+
+      {/* Furniture Atelier */}
+      <FurnitureAtelier />
     </main>
   );
 };
