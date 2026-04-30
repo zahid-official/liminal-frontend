@@ -76,7 +76,7 @@ const AboutSection = () => {
                   Meets Precision
                 </>
               }
-              description="We believe every environment holds a narrative. Our purpose is translating your aspirations into architectural realities that transcend the ordinary—blending avant-garde innovation with a legacy of timeless elegance."
+              description="We believe every environment holds a narrative. Our purpose is translating your aspirations into architectural realities that transcend the ordinary, blending avant-garde innovation with a legacy of timeless elegance."
             />
 
             {/* Technical Features Grid */}

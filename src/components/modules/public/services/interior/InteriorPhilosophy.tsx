@@ -8,7 +8,7 @@ const InteriorPhilosophy = () => {
     <section
       id="philosophy"
       aria-labelledby="philosophy-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
@@ -20,7 +20,7 @@ const InteriorPhilosophy = () => {
               badgeText="Our Philosophy"
               title={
                 <>
-                  Crafting Spaces with{" "}
+                  Manifesting Vision through{" "}
                   <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
                     Precision & Soul
                   </span>
@@ -47,7 +47,7 @@ const InteriorPhilosophy = () => {
             </div>
 
             {/* Technical Detail Badge */}
-            <div className="inline-flex items-center gap-6 p-6 border border-border/40 rounded-sm bg-zinc-50/80">
+            <div className="inline-flex items-center gap-6 p-6 border border-border/40 rounded-sm bg-background">
               <div className="w-12 h-12 rounded-full border border-dashed border-liminal-secondary/40 relative flex items-center justify-center animate-[spin_10s_linear_infinite]">
                 <div className="w-2 h-2 rounded-full bg-liminal-secondary absolute top-0 left-1/2 -translate-x-1/2 mt-1.5" />
               </div>
