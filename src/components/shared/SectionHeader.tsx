@@ -111,7 +111,7 @@ const SectionHeader = ({
     return (
       <div
         className={cn(
-          "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 mb-16 lg:mb-24 items-end",
+          "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-12 items-end",
           className,
         )}
         {...props}
@@ -134,7 +134,7 @@ const SectionHeader = ({
           )}
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight font-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
           >
             {title}
           </h2>

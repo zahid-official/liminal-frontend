@@ -9,6 +9,7 @@ interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   className?: string;
   iconClassName?: string;
   showIcon?: boolean;
+  animateIcon?: boolean;
 }
 
 const LiminalButton = ({
@@ -18,6 +19,7 @@ const LiminalButton = ({
   className,
   iconClassName,
   showIcon = true,
+  animateIcon = true,
   ...props
 }: LiminalButtonProps) => {
   const variants = {
@@ -47,7 +49,8 @@ const LiminalButton = ({
             size={16}
             strokeWidth={2}
             className={cn(
-              "size-4 text-white group-hover:rotate-45 transition-transform duration-400 transform-gpu",
+              "size-4 transition-transform duration-400 transform-gpu",
+              animateIcon && "group-hover:rotate-45",
               iconClassName,
             )}
           />

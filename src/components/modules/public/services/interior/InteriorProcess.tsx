@@ -5,25 +5,25 @@ const steps = [
     number: "01",
     title: "Discovery & Vision",
     description:
-      "We begin by diving deep into your lifestyle, preferences, and functional needs to establish a clear creative direction.",
+      "We explore the landscape of your lifestyle and aspirations to anchor the project in a distinct, purpose-driven vision.",
   },
   {
     number: "02",
-    title: "Concept Development",
+    title: "Conceptual Evolution",
     description:
-      "Our designers craft mood boards, spatial layouts, and initial 3D visualizations to bring the vision to life.",
+      "Translating initial concepts into vivid spatial narratives and digital models that begin to shape the physical world.",
   },
   {
     number: "03",
     title: "Technical Drafting",
     description:
-      "Precise blueprints, electrical layouts, and material specifications are developed with architectural rigor.",
+      "Developing precise blueprints and technical specifications that ground the creative vision in architectural logic and structural truth.",
   },
   {
     number: "04",
-    title: "Execution & Styling",
+    title: "Final Realization",
     description:
-      "We oversee the transformation, ensuring every detail matches the design intent, finishing with expert curation.",
+      "The culmination of our journey, where artisanal craftsmanship and expert oversight breathe life into your finished sanctuary.",
   },
 ];
 
@@ -36,10 +36,13 @@ const InteriorProcess = () => {
           badgeText="Our Process"
           title={
             <>
-              How We <span className="italic font-light">Craft</span> Excellence
+              From Vision to{" "}
+              <span className="italic font-light font-serif text-liminal-secondary">
+                Reality
+              </span>
             </>
           }
-          description="A structured, transparent approach that ensures your project is delivered on time, within budget, and beyond expectations."
+          description="A meticulous four-stage evolution that translates abstract inspiration into tangible architectural reality."
         />
 
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -56,7 +59,7 @@ const InteriorProcess = () => {
                   {step.number}
                 </span>
 
-                <div className="space-y-4">
+                <div className="space-y-4 mb-6">
                   <h3 className="text-xl font-bold font-heading">
                     {step.title}
                   </h3>
@@ -67,9 +70,9 @@ const InteriorProcess = () => {
               </div>
 
               {/* Measurement Line at bottom */}
-              <div className="absolute bottom-4 left-8 right-8 h-px bg-border group-hover:bg-liminal-secondary/30 transition-colors duration-500">
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-border group-hover:bg-liminal-secondary" />
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-border group-hover:bg-liminal-secondary" />
+              <div className="absolute bottom-6.5 left-8 right-8 h-px bg-border group-hover:bg-liminal-secondary/80 transition-colors duration-300">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-border group-hover:bg-liminal-secondary transition-colors duration-300" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-border group-hover:bg-liminal-secondary transition-colors duration-300" />
               </div>
             </div>
           ))}
