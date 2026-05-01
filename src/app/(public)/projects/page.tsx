@@ -1,3 +1,4 @@
+import ProjectsCTA from "@/components/modules/public/projects/ProjectsCTA";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -16,6 +17,8 @@ const ProjectsPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         bgImage="/assets/projects/bg-project-premium.png"
       />
+
+      <ProjectsCTA />
     </main>
   );
 };
