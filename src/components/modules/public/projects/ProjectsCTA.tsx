@@ -2,6 +2,24 @@ import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 
 const ProjectsCTA = () => {
+  const stats = [
+    {
+      id: "01",
+      label: "Technical",
+      value: "Architectural Rigor",
+    },
+    {
+      id: "02",
+      label: "Conceptual",
+      value: "Spatial Logic",
+    },
+    {
+      id: "03",
+      label: "Craft",
+      value: "Execution Excellence",
+    },
+  ];
+
   return (
     <section className="py-24 md:py-40 bg-zinc-50 relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -11,7 +29,7 @@ const ProjectsCTA = () => {
       <div className="custom-container relative z-10">
         <div className="bg-[#141F0A] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 flex flex-col lg:flex-row items-stretch">
           {/* Left: Content */}
-          <div className="flex-1 p-8 md:p-16 lg:p-20 space-y-8 relative">
+          <div className="flex-1 p-8 md:p-16 lg:p-24 space-y-10 relative flex flex-col justify-center">
             {/* Blueprint texture overlay */}
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[40px_40px]" />
 
@@ -19,8 +37,7 @@ const ProjectsCTA = () => {
             <SectionHeader
               variant="simple"
               badgeText="Next Phase"
-              badgeClassName="border-background/20 text-background text-xs font-semibold capitalize"
-              badgeDotClassName="bg-background"
+              badgeClassName="border-background/20 text-background text-xs font-semibold capitalize mb-8"
               className="relative z-10 text-background"
               title={
                 <>
@@ -47,43 +64,37 @@ const ProjectsCTA = () => {
             </div>
           </div>
 
-          {/* Right: Accents/Stats - Unique Technical Sidebar */}
-          <div className="w-full lg:w-1/3 bg-background/5 border-l border-background/10 p-8 md:p-16 lg:p-20 flex flex-col justify-center space-y-12">
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-background/30 uppercase tracking-widest">
-                Precision
-              </span>
-              <p className="text-2xl font-bold text-background">
-                Architectural Rigor
-              </p>
-            </div>
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-background/30 uppercase tracking-widest">
-                Innovation
-              </span>
-              <p className="text-2xl font-bold text-background">
-                Spatial Logic
-              </p>
-            </div>
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-background/30 uppercase tracking-widest">
-                Mastery
-              </span>
-              <p className="text-2xl font-bold text-background">
-                Execution Excellence
-              </p>
-            </div>
+          {/* Right: Technical Stats Sidebar */}
+          <div className="w-full lg:w-1/3 bg-background/5 border-l border-border/10 p-8 md:p-16 flex flex-col justify-center space-y-12">
+            {stats.map((stat) => (
+              <div key={stat.id} className="group space-y-4">
+                <div className="flex items-center gap-4">
+                  <span className="text-[10px] font-mono text-white/20 font-bold">
+                    {stat.id}
+                  </span>
+                  <div className="h-px flex-1 bg-white/10" />
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em]">
+                    {stat.label}
+                  </span>
+                  <p className="text-2xl font-medium text-white tracking-tight">
+                    {stat.value}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Technical Line Decoration */}
-      <div className="absolute bottom-12 left-0 right-0 custom-container flex justify-between items-center opacity-30 pointer-events-none">
-        <div className="h-px w-24 bg-liminal-secondary" />
-        <span className="text-[11px] font-mono uppercase tracking-widest text-liminal-secondary">
+      <div className="absolute bottom-12 left-0 right-0 custom-container flex justify-between items-center opacity-20 pointer-events-none">
+        <div className="h-px w-32 bg-liminal-secondary" />
+        <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-liminal-secondary">
           Liminal Architectural Studio — Est. 2024
         </span>
-        <div className="h-px w-24 bg-liminal-secondary" />
+        <div className="h-px w-32 bg-liminal-secondary" />
       </div>
     </section>
   );
