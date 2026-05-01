@@ -1,6 +1,5 @@
 import LiminalButton from "@/components/shared/LiminalButton";
-import SectionBadge from "@/components/shared/SectionBadge";
-import { ArrowRight } from "lucide-react";
+import SectionHeader from "@/components/shared/SectionHeader";
 
 const ProjectsCTA = () => {
   return (
@@ -16,34 +15,35 @@ const ProjectsCTA = () => {
             {/* Blueprint texture overlay */}
             <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[40px_40px]" />
 
-            {/* Content */}
-            <div className="relative z-10 space-y-6 text-background">
-              <SectionBadge
-                text="Next Phase"
-                className="border-background/20 text-foreground"
-              />
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading">
-                Ready to architect your <br />
-                <span className="italic font-serif font-light  underline underline-offset-8 decoration-1">
-                  future space?
+            {/* Section Header */}
+            <SectionHeader
+              variant="simple"
+              badgeText="Next Phase"
+              badgeClassName="border-background/20 text-background text-xs font-semibold capitalize"
+              badgeDotClassName="bg-background"
+              className="relative z-10 text-background"
+              title={
+                <>
+                  Ready to architect your <br />
+                  <span className="italic font-serif font-light underline underline-offset-8 decoration-1">
+                    future space?
+                  </span>
+                </>
+              }
+              description={
+                <span className="text-background/60">
+                  We don&apos;t just design buildings; we craft immersive
+                  environments that tell a story. Collaborate with our experts
+                  to bring your most ambitious visions to life.
                 </span>
-              </h2>
-              <p className="text-background/60 text-lg max-w-xl font-light leading-relaxed">
-                We don&apos;t just design buildings; we craft immersive
-                environments that tell a story. Collaborate with our experts to
-                bring your most ambitious visions to life.
-              </p>
-            </div>
+              }
+            />
 
             {/* CTA Buttons */}
             <div className="relative z-10 flex flex-wrap gap-6 pt-4">
               <LiminalButton className="bg-background text-foreground hover:bg-background/90 shadow-none">
                 Start a Conversation
               </LiminalButton>
-              <button className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-background/60 hover:text-background transition-colors group px-4">
-                View Project Process
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
             </div>
           </div>
 

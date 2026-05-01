@@ -18,6 +18,7 @@ const ProjectsPage = () => {
         bgImage="/assets/projects/bg-project-premium.png"
       />
 
+      {/* Project CTA */}
       <ProjectsCTA />
     </main>
   );
