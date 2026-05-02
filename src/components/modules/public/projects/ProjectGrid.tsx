@@ -124,7 +124,7 @@ const ProjectGrid = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-background text-zinc-900 overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-background text-zinc-900 overflow-hidden">
       <div className="custom-container">
         {/* Section Header */}
         <SectionHeader

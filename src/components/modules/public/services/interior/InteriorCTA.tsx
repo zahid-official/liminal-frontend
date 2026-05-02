@@ -5,7 +5,7 @@ import { MessageSquare } from "lucide-react";
 // InteriorCTA Component
 const InteriorCTA = () => {
   return (
-    <section className="py-24 md:py-32 bg-zinc-50 relative overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50 relative overflow-hidden">
       {/* Abstract structural graphic */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
         <svg

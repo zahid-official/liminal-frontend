@@ -1,5 +1,6 @@
 import ProjectGrid from "@/components/modules/public/projects/ProjectGrid";
 import ProjectsCTA from "@/components/modules/public/projects/ProjectsCTA";
+import ProjectTeam from "@/components/modules/public/projects/ProjectTeam";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -21,6 +22,9 @@ const ProjectsPage = () => {
 
       {/* Project Grid */}
       <ProjectGrid />
+
+      {/* Project Team */}
+      <ProjectTeam />
 
       {/* Project CTA */}
       <ProjectsCTA />

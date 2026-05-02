@@ -22,7 +22,7 @@ const ProjectsFilter = ({
   currentYear,
 }: ProjectsFilterProps) => {
   return (
-    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-11">
+    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
       {/* Left: Classification Controller */}
       <div className="space-y-4">
         <div className="flex items-center gap-3">
