@@ -1,10 +1,7 @@
-"use client";
-
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
-import { useMemo, useState } from "react";
-import ProjectsFilter from "./ProjectsFilter";
 import ProjectCard, { Project } from "./ProjectCard";
+import ProjectsFilter from "./ProjectsFilter";
 
 // Projects Data
 const projectsData: Project[] = [
@@ -24,7 +21,7 @@ const projectsData: Project[] = [
     title: "Urban Loft Concept",
     category: "Commercial",
     location: "Banani, Dhaka",
-    year: "2024",
+    year: "2025",
     status: "Completed",
     image: "/assets/projects/retail.png",
     client: "Moderne Retail Group",
@@ -46,7 +43,7 @@ const projectsData: Project[] = [
     location: "Motijheel, Dhaka",
     year: "2024",
     status: "In Progress",
-    image: "/assets/projects/office-zen.png",
+    image: "/assets/projects/office-zen-premium.png",
     client: "Zenith Global",
   },
   {
@@ -100,39 +97,56 @@ const categories = [
   "Interior",
 ];
 
-// ProjectsGrid Component
-const ProjectGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+// ProjectsGrid Props
+interface ProjectGridProps {
+  activeCategory: string;
+}
 
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return projectsData;
-    return projectsData.filter((p) => p.category === activeCategory);
-  }, [activeCategory]);
+// ProjectsGrid Component
+const ProjectGrid = ({ activeCategory }: ProjectGridProps) => {
+  const filteredProjects =
+    activeCategory === "All"
+      ? projectsData
+      : projectsData.filter((p) => p.category === activeCategory);
+
+  // Calculate Metadata for Filter
+  const counts: Record<string, number> = {
+    All: projectsData.length,
+  };
+  let maxYear = 0;
+  projectsData.forEach((project) => {
+    counts[project.category] = (counts[project.category] || 0) + 1;
+    const year = parseInt(project.year);
+    if (!isNaN(year) && year > maxYear) maxYear = year;
+  });
+  const metadata = { counts, maxYear: maxYear || new Date().getFullYear() };
 
   return (
     <section className="py-20 md:py-32 bg-background text-zinc-900 overflow-hidden">
       <div className="custom-container">
         {/* Section Header */}
         <SectionHeader
-          badgeText="Portfolio"
+          badgeText="ARCHIVE"
           title={
             <>
-              Selected <br />
+              Architecture of the <br />
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Works
+                Liminal State
               </span>
             </>
           }
-          description="A curated selection of our most ambitious projects, spanning residential masterpieces, commercial hubs, and experimental spatial concepts."
+          description="Our work occupies the intersection of conceptual rigour and material presence. Explore a curated selection of environments that redefine the boundaries of spatial experience."
           variant="inline"
-          className="mb-12"
+          className="mb-16"
         />
 
-        {/* Filter */}
+        {/* Projects Filter - Reimagined Archive Controller */}
         <ProjectsFilter
           categories={categories}
           activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+          categoryCounts={metadata.counts}
+          totalCount={projectsData.length}
+          currentYear={metadata.maxYear}
         />
 
         {/* Projects Grid */}
