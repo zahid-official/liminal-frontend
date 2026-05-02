@@ -1,12 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 // ProjectsFilter Props
 interface ProjectsFilterProps {
   categories: string[];
   activeCategory: string;
+  setActiveCategory: (category: string) => void;
   categoryCounts: Record<string, number>;
   totalCount: number;
   currentYear: string | number;
@@ -16,23 +16,11 @@ interface ProjectsFilterProps {
 const ProjectsFilter = ({
   categories,
   activeCategory,
+  setActiveCategory,
   categoryCounts,
   totalCount,
   currentYear,
 }: ProjectsFilterProps) => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const handleCategoryClick = (category: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (category === "All") {
-      params.delete("category");
-    } else {
-      params.set("category", category);
-    }
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
-  };
   return (
     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-11">
       {/* Left: Classification Controller */}
@@ -52,7 +40,7 @@ const ProjectsFilter = ({
             return (
               <button
                 key={category}
-                onClick={() => handleCategoryClick(category)}
+                onClick={() => setActiveCategory(category)}
                 className={cn(
                   "group relative flex items-center gap-3 px-5 py-2.5 transition-all duration-300 border cursor-pointer",
                   isActive

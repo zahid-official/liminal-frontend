@@ -10,17 +10,7 @@ export const metadata: Metadata = {
 };
 
 // ProjectsPage Component
-const ProjectsPage = async ({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) => {
-  const resolvedSearchParams = await searchParams;
-  const activeCategory =
-    typeof resolvedSearchParams.category === "string"
-      ? resolvedSearchParams.category
-      : "All";
-
+const ProjectsPage = () => {
   return (
     <main>
       <PageHeader
@@ -30,7 +20,7 @@ const ProjectsPage = async ({
       />
 
       {/* Project Grid */}
-      <ProjectGrid activeCategory={activeCategory} />
+      <ProjectGrid />
 
       {/* Project CTA */}
       <ProjectsCTA />

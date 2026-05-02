@@ -1,5 +1,8 @@
+"use client";
+
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
+import { useMemo, useState } from "react";
 import ProjectCard, { Project } from "./ProjectCard";
 import ProjectsFilter from "./ProjectsFilter";
 
@@ -97,29 +100,28 @@ const categories = [
   "Interior",
 ];
 
-// ProjectsGrid Props
-interface ProjectGridProps {
-  activeCategory: string;
-}
-
 // ProjectsGrid Component
-const ProjectGrid = ({ activeCategory }: ProjectGridProps) => {
-  const filteredProjects =
-    activeCategory === "All"
-      ? projectsData
-      : projectsData.filter((p) => p.category === activeCategory);
+const ProjectGrid = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projectsData;
+    return projectsData.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
 
   // Calculate Metadata for Filter
-  const counts: Record<string, number> = {
-    All: projectsData.length,
-  };
-  let maxYear = 0;
-  projectsData.forEach((project) => {
-    counts[project.category] = (counts[project.category] || 0) + 1;
-    const year = parseInt(project.year);
-    if (!isNaN(year) && year > maxYear) maxYear = year;
-  });
-  const metadata = { counts, maxYear: maxYear || new Date().getFullYear() };
+  const metadata = useMemo(() => {
+    const counts: Record<string, number> = {
+      All: projectsData.length,
+    };
+    let maxYear = 0;
+    projectsData.forEach((project) => {
+      counts[project.category] = (counts[project.category] || 0) + 1;
+      const year = parseInt(project.year);
+      if (!isNaN(year) && year > maxYear) maxYear = year;
+    });
+    return { counts, maxYear: maxYear || new Date().getFullYear() };
+  }, []);
 
   return (
     <section className="py-20 md:py-32 bg-background text-zinc-900 overflow-hidden">
@@ -144,6 +146,7 @@ const ProjectGrid = ({ activeCategory }: ProjectGridProps) => {
         <ProjectsFilter
           categories={categories}
           activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
           categoryCounts={metadata.counts}
           totalCount={projectsData.length}
           currentYear={metadata.maxYear}
