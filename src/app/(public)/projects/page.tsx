@@ -1,3 +1,4 @@
+import ProjectGrid from "@/components/modules/public/projects/ProjectGrid";
 import ProjectsCTA from "@/components/modules/public/projects/ProjectsCTA";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -17,6 +18,9 @@ const ProjectsPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         bgImage="/assets/projects/bg-project-premium.png"
       />
+
+      {/* Project Grid */}
+      <ProjectGrid />
 
       {/* Project CTA */}
       <ProjectsCTA />
