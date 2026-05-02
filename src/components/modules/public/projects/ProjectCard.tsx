@@ -25,10 +25,17 @@ interface ProjectCardProps {
 
 // Project Card Component
 const ProjectCard = ({ project, className }: ProjectCardProps) => {
+  const metaInfo = [
+    { label: "Location", value: project.location },
+    { label: "Archive", value: project.year },
+    { label: "Collaborator", value: project.client },
+    { label: "Status", value: project.status },
+  ];
+
   return (
     <div
       className={cn(
-        "group relative border border-border/40 p-1.5 bg-background/50 backdrop-blur-sm hover:border-liminal-secondary transition-all duration-700 hover:shadow-2xl hover:shadow-liminal-secondary/5",
+        "group relative border border-border/40 p-1.5 bg-background/50 backdrop-blur-sm hover:border-liminal-secondary transition-all duration-500 ease-in-out hover:shadow-2xl hover:shadow-liminal-secondary/5 overflow-hidden",
         className,
       )}
     >
@@ -43,7 +50,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-all duration-1000 group-hover:scale-110 group-hover:blur-[0.5px]"
+          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 will-change-transform"
         />
 
         {/* Hover Overlay */}
@@ -58,76 +65,60 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                 <h3 className="font-heading text-xl font-bold text-white uppercase tracking-tight">
                   {project.title}
                 </h3>
-                <div className="h-px flex-1 bg-background/20 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-50" />
+                <div className="h-px flex-1 bg-background/20 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-100" />
               </div>
             </div>
 
             {/* Meta Info */}
             <div className="grid grid-cols-2 gap-6 pt-4 border-t border-background/10">
-              {/* Location */}
-              <div className="space-y-1">
-                <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
-                  Location
-                </span>
-                <p className="text-sm font-bold text-white uppercase">
-                  {project.location}
-                </p>
-              </div>
-
-              {/* Year */}
-              <div className="space-y-1">
-                <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
-                  Archive
-                </span>
-                <p className="text-sm font-bold text-white uppercase">
-                  {project.year}
-                </p>
-              </div>
-
-              {/* Client */}
-              <div className="space-y-1">
-                <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
-                  Collaborator
-                </span>
-                <p className="text-xs font-bold text-white uppercase">
-                  {project.client}
-                </p>
-              </div>
-
-              {/* Status */}
-              <div className="space-y-1">
-                <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
-                  Status
-                </span>
-                <p className="text-xs font-bold text-white uppercase">
-                  {project.status}
-                </p>
-              </div>
+              {metaInfo.map((item, index) => (
+                <div key={index} className="space-y-1">
+                  <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
+                    {item.label}
+                  </span>
+                  <p className="text-xs font-bold text-white uppercase">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
       {/* Base Info */}
-      <div className="p-5 flex justify-between items-center group-hover:bg-liminal-secondary/5 transition-colors duration-700">
-        <div>
-          <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest mb-1 block">
-            {project.category} / {project.year}
-          </span>
+      <div className="pt-5 pb-3 px-2.5 group-hover:bg-liminal-secondary/5 transition-colors duration-700">
+        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest block">
+          {project.category} / {project.year}
+        </span>
+
+        <div className="flex justify-between items-center gap-4">
           <h4 className="text-sm font-bold uppercase tracking-tight text-foreground/90">
             {project.title}
           </h4>
-        </div>
 
-        {/*  */}
-        <div className="size-8 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:border-liminal-secondary group-hover:text-liminal-secondary transition-all duration-500">
-          <ArrowUpRight className="size-4" />
+          {/* View Details Action */}
+          <div className="flex items-center gap-2 group/details cursor-pointer shrink-0">
+            {/* Button Text */}
+            <div className="relative">
+              <span className="text-xs font-semibold uppercase text-liminal-secondary opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500 ease-out delay-100 block will-change-transform">
+                View Details
+              </span>
+              {/* Border Bottom Animation */}
+              <div className="absolute -bottom-0.5 right-0 h-px bg-liminal-secondary w-0 group-hover/details:w-full transition-[width] duration-500 ease-in-out" />
+            </div>
+
+            {/* Arrow Icon */}
+            <div className="size-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all duration-300 ease-in-out group-hover:border-liminal-secondary group-hover:text-liminal-secondary group-hover:bg-liminal-secondary/5 group-hover/details:bg-liminal-secondary group-hover/details:text-background group-hover/details:border-liminal-secondary">
+              <ArrowUpRight className="size-4 transition-transform duration-500 ease-in-out group-hover/details:rotate-45 will-change-transform" />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Animated Border Reveal on Hover */}
-      <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-700 group-hover:w-full" />
-      <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-700 group-hover:w-full" />
+      <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-500 ease-in-out group-hover:w-full" />
+      <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-500 ease-in-out group-hover:w-full" />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 
+// ProjectsCTA Component
 const ProjectsCTA = () => {
   const stats = [
     {
