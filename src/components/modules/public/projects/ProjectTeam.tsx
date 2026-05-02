@@ -1,83 +1,123 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
+// Expertise Data
 const expertise = [
   {
-    title: "Architectural Design",
-    description: "Conceptualizing spaces that redefine the relationship between form and function.",
+    title: "Architectural Identity",
+    description:
+      "Creating iconic structures that balance contextual heritage with a unique sense of place.",
   },
   {
-    title: "Interior Curation",
-    description: "Selecting materials and furniture that create a cohesive and premium atmosphere.",
+    title: "Material Curation",
+    description:
+      "Curating textures and tones that evoke emotional resonance and tactile sophistication.",
   },
   {
-    title: "Project Management",
-    description: "Ensuring every detail is executed with precision and architectural rigor.",
+    title: "Technical Rigor",
+    description:
+      "Translating complex visions into buildable reality through meticulous technical coordination.",
   },
   {
-    title: "Sustainable Solutions",
-    description: "Integrating environmentally conscious practices into our high-end designs.",
+    title: "Sustainable Legacy",
+    description:
+      "Integrating resilient design systems to ensure a lasting legacy of environmental stewardship.",
   },
 ];
 
+// ProjectTeam Component
 const ProjectTeam = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 text-black overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden">
       <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left: Image Container */}
-          <div className="relative aspect-square lg:aspect-4/5 overflow-hidden group">
+          <div className="relative aspect-square lg:aspect-4/5 overflow-hidden group cursor-pointer">
             <Image
-              src="/assets/projects/bg-project-premium.png" // Using the image from the header
+              src="/assets/projects/bg-project-premium.png"
               alt="Professional Team"
               fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-110 ease-out"
             />
-            <div className="absolute inset-0 border-20px border-white/10" />
+            
+            {/* Subtle Brand Overlay */}
+            <div className="absolute inset-0 bg-liminal-secondary/5 group-hover:bg-transparent transition-colors duration-1000" />
+            
+            <div className="absolute inset-0 border-20 border-background/10" />
 
             {/* Technical Stamp */}
-            <div className="absolute bottom-10 right-10 bg-black text-white p-6 md:p-8 flex flex-col gap-2">
+            <div className="absolute bottom-10 right-10 bg-black text-background p-6 md:p-8 flex flex-col gap-2">
               <span className="text-[10px] font-mono uppercase tracking-[0.4em]">
                 Liminal Std.
               </span>
-              <span className="text-xl font-bold uppercase tracking-tighter italic font-serif">
+              <span className="text-lg font-bold uppercase tracking-wide italic font-serif">
                 Expertise
               </span>
             </div>
           </div>
 
           {/* Right: Content Container */}
-          <div className="space-y-12">
+          <div className="">
             <SectionHeader
-              badgeText="The Collective"
+              badgeText="The Approach"
               title={
                 <>
-                  Driven by <br className="max-lg:hidden" />
+                  Architecture of <br className="max-lg:hidden" />
                   <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                    Expert Minds
+                    Pure Intention
                   </span>
                 </>
               }
-              description="Our team consists of industry veterans and creative visionaries who bring a wealth of experience to every project. We focus on delivering premium experiences through collaborative architectural excellence."
+              description="A studio dedicated to spatial storytelling, bridging structural logic and human experience through refined, intentional detail."
               variant="inline"
-              className="mb-0"
+              className=" space-y-5"
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+            {/* Expertise Grid */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 border-y border-border/60">
               {expertise.map((item, index) => (
-                <div key={index} className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-black/40">
+                <div
+                  key={index}
+                  className={`
+                    p-8 md:p-10 hover:bg-liminal-secondary transition-colors duration-500 ease-in-out group relative
+                    ${index % 2 === 0 ? "sm:border-r border-border/60" : ""}
+                    ${index < 2 ? "border-b border-border/60" : ""}
+                  `}
+                >
+                  <div className="relative z-10 flex flex-col h-full">
+                    {/* Heading Info  */}
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        <span className="text-[11px] font-mono tracking-[0.2em] text-liminal-secondary group-hover:text-background/90 uppercase font-semibold transition-colors duration-500 ease-in-out">
+                          STRATUM
+                        </span>
+
+                        <span className="w-1 h-1 rounded-full bg-liminal-secondary group-hover:bg-background/30 transition-colors duration-500 ease-in-out" />
+
+                        <span className="text-[11px] font-mono tracking-widest text-foreground/60 group-hover:text-background/60 uppercase transition-colors duration-500 ease-in-out">
+                          0{index + 1}
+                        </span>
+                      </div>
+
+                      {/* Horizontal Line */}
+                      <div className="h-px w-4 bg-border group-hover:w-8 group-hover:bg-background transition-all duration-500 ease-in-out" />
+                    </div>
+
+                    <h3 className="text-xl md:text-2xl font-light tracking-tighter my-2.5 group-hover:text-background transition-colors duration-500 ease-in-out">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-foreground/60 leading-relaxed group-hover:text-background/80 transition-colors duration-500 ease-in-out">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Subtle Decorative Background Number */}
+                  <div className="absolute bottom-2 right-3 opacity-0 group-hover:opacity-10 transition-all duration-500 ease-in-out pointer-events-none transform translate-y-4 group-hover:translate-y-0">
+                    <span className="text-4xl font-mono italic select-none text-background">
                       0{index + 1}
                     </span>
-                    <div className="h-px flex-1 bg-black/10" />
                   </div>
-                  <h4 className="text-sm font-bold uppercase tracking-wider">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
               ))}
             </div>
