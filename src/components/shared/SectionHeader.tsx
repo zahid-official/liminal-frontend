@@ -2,7 +2,7 @@
 import * as React from "react";
 import SectionBadge from "./SectionBadge";
 
-type SectionHeaderVariant = "editorial" | "centered" | "inline" | "split";
+type SectionHeaderVariant = "editorial" | "centered" | "inline" | "split" | "simple";
 
 interface SectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -14,6 +14,7 @@ interface SectionHeaderProps extends Omit<
   variant?: SectionHeaderVariant;
   headingId?: string;
   badgeClassName?: string;
+  badgeDotClassName?: string;
 }
 
 /**
@@ -24,6 +25,7 @@ interface SectionHeaderProps extends Omit<
  * - centered: Centered badge, title, and description
  * - inline: Left-aligned with a horizontal line prefix to the badge
  * - split: Grid layout with Title (Left) and Description (Right)
+ * - simple: Left-aligned with a SectionBadge (Pill style)
  */
 const SectionHeader = ({
   badgeText,
@@ -32,6 +34,7 @@ const SectionHeader = ({
   variant = "editorial",
   headingId,
   badgeClassName,
+  badgeDotClassName,
   className,
   ...props
 }: SectionHeaderProps) => {
@@ -56,6 +59,7 @@ const SectionHeader = ({
             <SectionBadge
               text={badgeText}
               className={cn("lg:bg-background", badgeClassName)}
+              dotClassName={badgeDotClassName}
             />
           )}
         </div>
@@ -89,11 +93,47 @@ const SectionHeader = ({
         {...props}
       >
         {badgeText && (
-          <SectionBadge text={badgeText} className={badgeClassName} />
+          <SectionBadge
+            text={badgeText}
+            className={badgeClassName}
+            dotClassName={badgeDotClassName}
+          />
         )}
         <h2
           id={headingId}
           className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+        >
+          {title}
+        </h2>
+        {description && (
+          <p className="max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Simple Variant (Left-aligned with Pill Badge)
+  if (variant === "simple") {
+    return (
+      <div
+        className={cn(
+          "flex flex-col items-center lg:items-start text-center lg:text-left space-y-6",
+          className,
+        )}
+        {...props}
+      >
+        {badgeText && (
+          <SectionBadge
+            text={badgeText}
+            className={badgeClassName}
+            dotClassName={badgeDotClassName}
+          />
+        )}
+        <h2
+          id={headingId}
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading"
         >
           {title}
         </h2>
@@ -120,7 +160,7 @@ const SectionHeader = ({
           {badgeText && (
             <div className="flex items-center justify-center lg:justify-start gap-5">
               <div
-                className={cn("w-14 h-px bg-liminal-secondary", badgeClassName)}
+                className={cn("w-14 h-px bg-liminal-secondary shrink-0", badgeDotClassName)}
               />
               <span
                 className={cn(
@@ -164,8 +204,8 @@ const SectionHeader = ({
         <div className="flex items-center gap-5">
           <div
             className={cn(
-              "w-14 h-px bg-liminal-secondary",
-              badgeClassName,
+              "w-14 h-px bg-liminal-secondary shrink-0",
+              badgeDotClassName,
             )}
           />
           <span
