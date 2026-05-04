@@ -23,7 +23,7 @@ const LoginPage = () => {
       </div>
 
       {/* Right Side: Login Form */}
-      <div className="flex flex-1 items-center justify-center bg-white">
+      <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-lg">
           <LoginForm />
         </div>
