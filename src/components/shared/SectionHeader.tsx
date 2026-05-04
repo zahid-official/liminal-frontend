@@ -15,6 +15,8 @@ interface SectionHeaderProps extends Omit<
   headingId?: string;
   badgeClassName?: string;
   badgeDotClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
 /**
@@ -35,6 +37,8 @@ const SectionHeader = ({
   headingId,
   badgeClassName,
   badgeDotClassName,
+  titleClassName,
+  descriptionClassName,
   className,
   ...props
 }: SectionHeaderProps) => {
@@ -68,12 +72,20 @@ const SectionHeader = ({
         <div className="lg:pl-16 relative z-10 w-full xl:w-2/3">
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+            className={cn(
+              "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+              titleClassName,
+            )}
           >
             {title}
           </h2>
           {description && (
-            <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[16px] sm:text-lg leading-relaxed mt-7 font-light">
+            <p
+              className={cn(
+                "max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[16px] sm:text-lg leading-relaxed mt-7 font-light",
+                descriptionClassName,
+              )}
+            >
               {description}
             </p>
           )}
@@ -101,12 +113,20 @@ const SectionHeader = ({
         )}
         <h2
           id={headingId}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+            titleClassName,
+          )}
         >
           {title}
         </h2>
         {description && (
-          <p className="max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+          <p
+            className={cn(
+              "max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+              descriptionClassName,
+            )}
+          >
             {description}
           </p>
         )}
@@ -133,12 +153,20 @@ const SectionHeader = ({
         )}
         <h2
           id={headingId}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading"
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading",
+            titleClassName,
+          )}
         >
           {title}
         </h2>
         {description && (
-          <p className="max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+          <p
+            className={cn(
+              "max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+              descriptionClassName,
+            )}
+          >
             {description}
           </p>
         )}
@@ -174,14 +202,22 @@ const SectionHeader = ({
           )}
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+            className={cn(
+              "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+              titleClassName,
+            )}
           >
             {title}
           </h2>
         </div>
         <div className="lg:col-span-5 text-center lg:text-left">
           {description && (
-            <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+            <p
+              className={cn(
+                "text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+                descriptionClassName,
+              )}
+            >
               {description}
             </p>
           )}
@@ -221,13 +257,21 @@ const SectionHeader = ({
 
       <h2
         id={headingId}
-        className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+        className={cn(
+          "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+          titleClassName,
+        )}
       >
         {title}
       </h2>
 
       {description && (
-        <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light">
+        <p
+          className={cn(
+            "text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light",
+            descriptionClassName,
+          )}
+        >
           {description}
         </p>
       )}

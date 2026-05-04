@@ -2,71 +2,97 @@
 
 import Image from "next/image";
 import Logo from "@/components/shared/Logo";
+import SectionHeader from "@/components/shared/SectionHeader";
+import { Compass, Layers, Cpu } from "lucide-react";
+
+const brandPillars = [
+  {
+    icon: Compass,
+    title: "Precision",
+    description: (
+      <>
+        Exacting standards in <br /> every single detail
+      </>
+    ),
+  },
+  {
+    icon: Layers,
+    title: "Materiality",
+    description: (
+      <>
+        Sensory-rich and <br /> tactile environments
+      </>
+    ),
+  },
+  {
+    icon: Cpu,
+    title: "Innovation",
+    description: (
+      <>
+        Future-proof <br /> architectural tech
+      </>
+    ),
+  },
+];
 
 const LoginBranding = () => {
   return (
-    <div className="relative hidden h-full w-full flex-col bg-zinc-950 lg:flex overflow-hidden">
+    <div className="relative hidden h-full w-full flex-col bg-foreground lg:flex overflow-hidden">
       {/* High-Impact Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/auth/showcase-1.png"
           alt="Liminal Architectural Excellence"
           fill
-          className="object-cover opacity-30 animate-pulse-slow scale-105"
+          className="object-cover opacity-30 animate-in zoom-in-110 duration-3000 ease-out"
           priority
         />
         {/* Deep gradient overlay for premium feel */}
-        <div className="absolute inset-0 bg-linear-to-tr from-zinc-950 via-zinc-950/60 to-zinc-950/20" />
+        <div className="absolute inset-0 bg-linear-to-tr from-foreground via-foreground/40 to-transparent" />
       </div>
 
       {/* Main Content Overlay */}
-      <div className="relative z-10 flex h-full flex-col justify-between p-16 animate-fade-in">
-        <div>
+      <div className="relative z-10 flex h-full flex-col justify-between p-16 lg:p-20">
+        {/* Top: Logo */}
+        <div className="animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out fill-mode-both">
           <Logo isScrolled={false} />
         </div>
 
-        <div className="max-w-xl">
-          <div className="space-y-8">
-            {/* Minimalist Heading */}
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-liminal-secondary">
-                Studio Portal / 01
-              </span>
-              <h1 className="text-6xl font-heading font-bold text-white tracking-tighter leading-[0.95]">
-                Defining the <br />
-                <span className="italic font-light opacity-80">Liminal Space</span>
-              </h1>
-            </div>
-            
-            {/* Meaningful, Clean Description */}
-            <p className="text-lg text-zinc-400 font-sans leading-relaxed border-l border-zinc-800 pl-8 max-w-sm">
-              An exclusive gateway for our clients and partners. 
-              Securely access your project data, technical blueprints, 
-              and design narratives in one unified space.
-            </p>
-          </div>
+        {/* Center: Section Header */}
+        <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-300 ease-in-out fill-mode-both">
+          <SectionHeader
+            title={
+              <>
+                Architecting the <br className="max-lg:hidden" />
+                <span className="italic font-serif font-light underline underline-offset-8 decoration-1">
+                  Boundless.
+                </span>
+              </>
+            }
+            description="Defining the threshold between imagination and reality through spatial intelligence and material innovation."
+            variant="simple"
+            titleClassName="text-background lg:text-7xl"
+            descriptionClassName="text-background/60 text-lg leading-relaxed max-w-sm font-light block"
+          />
         </div>
 
-        {/* Technical/Professional Detail Footer */}
-        <div className="flex items-end justify-between text-zinc-600">
-          <div className="flex flex-col gap-1">
-            <span className="text-[9px] font-mono uppercase tracking-[0.3em]">System Status</span>
-            <div className="flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-liminal-secondary animate-pulse" />
-              <span className="text-[10px] font-mono text-zinc-400">Encrypted / Secure Node</span>
+        {/* Bottom: Brand Pillars */}
+        <div className="grid grid-cols-3 gap-8 border-t border-border/20 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 ease-in-out fill-mode-both">
+          {brandPillars.map((pillar, index) => (
+            <div key={index} className="space-y-3.5">
+              <pillar.icon className="h-5 w-5 text-background/40 stroke-[1.5px]" />
+              <div>
+                <h4 className="text-[11px] font-medium uppercase tracking-[0.3em] text-background/70 mb-1.5">
+                  {pillar.title}
+                </h4>
+                <p className="text-[9px] text-background/40 uppercase tracking-widest leading-loose">
+                  {pillar.description}
+                </p>
+              </div>
             </div>
-          </div>
-          
-          <div className="text-right">
-            <span className="text-[9px] font-mono uppercase tracking-[0.3em] block mb-1">Location</span>
-            <span className="text-[10px] font-mono text-zinc-400">23.8103° N, 90.4125° E</span>
-          </div>
+          ))}
         </div>
       </div>
-
-      {/* Subtle Grid Pattern for Technical Feel */}
-      <div className="absolute inset-0 z-5 opacity-[0.03] pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
     </div>
   );
 };
