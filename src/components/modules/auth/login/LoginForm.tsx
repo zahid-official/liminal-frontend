@@ -4,8 +4,17 @@ import LiminalButton from "@/components/shared/LiminalButton";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel, FieldSeparator } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Apple, ArrowLeft, Chrome, Lock, Mail } from "lucide-react";
+import {
+  Apple,
+  ArrowLeft,
+  Chrome,
+  Eye,
+  EyeOff,
+  Lock,
+  Mail,
+} from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 const socialProviders = [
   { name: "Google", icon: Chrome },
@@ -13,6 +22,8 @@ const socialProviders = [
 ];
 
 const LoginForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="mx-auto flex w-full flex-col justify-center space-y-8 sm:w-md animate-in fade-in slide-in-from-right-4 duration-1000 ease-in-out">
       {/* Header Section */}
@@ -86,11 +97,23 @@ const LoginForm = () => {
             <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
             <Input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="••••••••"
-              className="pl-10 h-12 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+              className="pl-10 pr-10 h-12 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
               required
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground/70 hover:text-foreground transition-colors focus:outline-none cursor-pointer"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? (
+                <EyeOff className="size-4.5" />
+              ) : (
+                <Eye className="size-4.5" />
+              )}
+            </button>
           </div>
         </Field>
 
