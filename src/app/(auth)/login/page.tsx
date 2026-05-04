@@ -1,5 +1,5 @@
 import LoginBranding from "@/components/modules/auth/login/LoginBranding";
-import LoginForm from "@/components/modules/auth/login/LoginForm";
+import LoginFormWrapper from "@/components/modules/auth/login/LoginFormWrapper";
 import Logo from "@/components/shared/Logo";
 import { Metadata } from "next";
 
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Securely sign in to your Liminal account to access premium architectural projects and professional design tools.",
 };
 
+// LoginPage
 const LoginPage = () => {
   return (
     <main className="relative flex min-h-screen w-full flex-col overflow-hidden lg:flex-row">
@@ -25,7 +26,7 @@ const LoginPage = () => {
       {/* Right Side: Login Form */}
       <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-lg">
-          <LoginForm />
+          <LoginFormWrapper />
         </div>
       </div>
     </main>

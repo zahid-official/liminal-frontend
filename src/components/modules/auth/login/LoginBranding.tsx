@@ -1,10 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Logo from "@/components/shared/Logo";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { Compass, Layers, Cpu } from "lucide-react";
 
+// Brand Pillars
 const brandPillars = [
   {
     icon: Compass,
@@ -35,10 +34,11 @@ const brandPillars = [
   },
 ];
 
+// LoginBranding Component
 const LoginBranding = () => {
   return (
     <div className="relative hidden h-full w-full flex-col bg-foreground lg:flex overflow-hidden">
-      {/* High-Impact Background Image */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/auth/showcase-1.png"
