@@ -24,10 +24,10 @@ const RegisterFormWrapper = () => {
 
         {/* Heading and Description */}
         <h1 className="text-3xl font-heading font-bold tracking-tight">
-          Begin Your Legacy
+          Join the Collective
         </h1>
         <p className="text-sm text-muted-foreground">
-          Join our elite collective of designers and architects.
+          Become part of an elite network of architectural visionaries.
         </p>
       </div>
 

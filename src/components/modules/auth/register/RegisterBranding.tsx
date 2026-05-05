@@ -1,91 +1,90 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Logo from "@/components/shared/Logo";
 import SectionHeader from "@/components/shared/SectionHeader";
+import { Quote } from "lucide-react";
+
+// Signature Details Data
+const signatureDetails = [
+  { label: "Established", value: "Liminal Agency" },
+  { label: "Phase", value: "Registration" },
+];
 
 // RegisterBranding Component
 const RegisterBranding = () => {
   return (
     <div className="relative hidden h-full w-full flex-col bg-foreground lg:flex overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/assets/auth/showcase-2.png"
+          src="/assets/auth/register-premium-bg-2.png"
           alt="Liminal Design Philosophy"
           fill
-          className="object-cover opacity-35 animate-in zoom-in-110 duration-3000 ease-out"
+          className="object-cover opacity-30 scale-105 animate-in zoom-in-110 duration-5000 ease-out"
           priority
         />
-        {/* Architectural gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-foreground/80 via-foreground/20 to-foreground" />
+        {/* Deep gradient overlay for premium feel */}
+        <div className="absolute inset-0 bg-linear-to-r from-foreground via-foreground/70 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-foreground via-transparent to-transparent" />
       </div>
 
       {/* Main Content Overlay */}
       <div className="relative z-10 flex h-full flex-col justify-between p-16 lg:p-20">
         {/* Top: Logo */}
-        <div className="animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out fill-mode-both">
+        <div className="flex items-center justify-between animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out">
           <Logo isScrolled={false} />
+          <div className="text-[10px] font-medium uppercase tracking-[0.4em] text-background/30 border-l border-border/20 pl-6 h-4 flex items-center">
+            Registration Portal
+          </div>
         </div>
 
-        {/* Center: Structural Statement */}
-        <div className="flex flex-col gap-12">
-          <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-300 ease-in-out fill-mode-both">
-            <SectionHeader
-              title={
-                <>
-                  Join the <br />
-                  <span className="italic font-serif font-light underline underline-offset-8 decoration-1">
-                    Collective.
-                  </span>
-                </>
-              }
-              description="Step into a realm where architectural vision meets technical precision. Your journey towards spatial excellence begins here."
-              variant="simple"
-              titleClassName="text-background lg:text-7xl"
-              descriptionClassName="text-background/60 text-lg leading-relaxed max-w-sm font-light block"
-            />
-          </div>
+        {/* Center: Manifesto */}
+        <div className="flex flex-col items-center justify-center flex-1 animate-in fade-in zoom-in-95 duration-1200 delay-300 ease-out fill-mode-both">
+          <Quote className="h-10 w-10 text-background/30 mb-8 stroke-[1px]" />
+          {/* Vertical Accent Line */}
+          <div className="absolute -left-10 top-0 bottom-0 w-px bg-linear-to-b from-transparent via-background/10 to-transparent" />
 
-          {/* Unique Vertical Vision Track */}
-          <div className="flex gap-16 border-l border-border/20 pl-10 py-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 ease-in-out fill-mode-both">
-            <div className="space-y-8">
-              <div className="group">
-                <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-background/30 block mb-2 transition-colors group-hover:text-background/60">
-                  Phase 01
-                </span>
-                <h4 className="text-sm font-light text-background/80 tracking-wide">
-                  Conceptual Integration
-                </h4>
-              </div>
-              <div className="group">
-                <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-background/30 block mb-2 transition-colors group-hover:text-background/60">
-                  Phase 02
-                </span>
-                <h4 className="text-sm font-light text-background/80 tracking-wide">
-                  Material Manifestation
-                </h4>
-              </div>
-              <div className="group">
-                <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-background/30 block mb-2 transition-colors group-hover:text-background/60">
-                  Phase 03
-                </span>
-                <h4 className="text-sm font-light text-background/80 tracking-wide">
-                  Spatial Legacy
-                </h4>
-              </div>
+          <SectionHeader
+            variant="centered"
+            title={
+              <>
+                Design is the <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-background via-background to-background/40 italic font-serif font-light">
+                  silent ambassador
+                </span>{" "}
+                <br />
+                of your brand.
+              </>
+            }
+            description={
+              <>
+                <span className="block w-12 h-px bg-background/30 mx-auto mb-8" />
+                Join our exclusive network of visionaries and architects
+                redefining the boundaries of spatial intelligence.
+              </>
+            }
+            titleClassName="text-background lg:text-7xl font-light leading-tight"
+            descriptionClassName="text-background/60 text-lg font-light leading-relaxed tracking-wide max-w-2xl"
+          />
+        </div>
+
+        {/* Bottom: Signature detail */}
+        <div className="flex items-center justify-between border-t border-border/10 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 ease-in-out fill-mode-both">
+          {signatureDetails.map((detail, index) => (
+            <div
+              key={index}
+              className={cn("flex flex-col", index === 1 && "text-right")}
+            >
+              <span className="text-[10px] uppercase tracking-[0.4em] text-background/40 font-medium mb-1">
+                {detail.label}
+              </span>
+              <span className="text-xs text-background/70 font-light font-serif uppercase tracking-widest">
+                {detail.value}
+              </span>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom: Signature / Quote */}
-        <div className="animate-in fade-in duration-1000 delay-1000 ease-in-out fill-mode-both">
-          <p className="text-[11px] font-medium uppercase tracking-[0.5em] text-background/40">
-            Liminal &copy; MMXXIV / All Rights Reserved
-          </p>
+          ))}
         </div>
       </div>
-      
-      {/* Decorative vertical line element for unique identity */}
-      <div className="absolute right-0 top-0 bottom-0 w-px bg-linear-to-b from-transparent via-border/10 to-transparent z-10" />
     </div>
   );
 };

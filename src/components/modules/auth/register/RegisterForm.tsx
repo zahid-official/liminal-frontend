@@ -1,11 +1,17 @@
 "use client";
 
 import LiminalButton from "@/components/shared/LiminalButton";
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel, FieldSeparator } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff, Lock, Mail, User, ShieldCheck } from "lucide-react";
+import { Chrome, Facebook, Eye, EyeOff, Lock, Mail, User } from "lucide-react";
 import { useState } from "react";
+
+// Social Providers
+const socialProviders = [
+  { name: "Google", icon: Chrome },
+  { name: "Facebook", icon: Facebook },
+];
 
 // RegisterForm Component
 const RegisterForm = () => {
@@ -99,7 +105,7 @@ const RegisterForm = () => {
         </FieldLabel>
 
         <div className="relative">
-          <ShieldCheck className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
+          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
           <Input
             id="confirm-password"
             type={showConfirmPassword ? "text" : "password"}
@@ -122,29 +128,30 @@ const RegisterForm = () => {
         </div>
       </Field>
 
-      {/* Terms and Conditions */}
-      <div className="flex items-start space-x-2 pt-2">
-        <Checkbox id="terms" className="mt-1" required />
-        <label
-          htmlFor="terms"
-          className="text-xs leading-relaxed text-muted-foreground"
-        >
-          I agree to the{" "}
-          <button type="button" className="text-foreground hover:underline font-medium">
-            Terms of Service
-          </button>{" "}
-          and{" "}
-          <button type="button" className="text-foreground hover:underline font-medium">
-            Privacy Policy
-          </button>
-          .
-        </label>
-      </div>
-
-      {/* Create account button */}
-      <LiminalButton className="w-full mt-6 shadow-none" type="submit">
-        Create Professional Account
+      {/* Sign up button */}
+      <LiminalButton className="w-full mt-8 shadow-none" type="submit">
+        Create Your Account
       </LiminalButton>
+
+      {/* Separator */}
+      <FieldSeparator className="my-6 text-[11px] uppercase tracking-widest text-muted-foreground">
+        Or sign up with
+      </FieldSeparator>
+
+      {/* Social buttons */}
+      <div className="grid grid-cols-2 gap-4">
+        {socialProviders.map((provider) => (
+          <Button
+            key={provider.name}
+            variant="outline"
+            type="button"
+            className="h-12 rounded-full border-border/50 gap-1.5 transition-all duration-300"
+          >
+            <provider.icon className="size-4" />
+            {provider.name}
+          </Button>
+        ))}
+      </div>
     </form>
   );
 };

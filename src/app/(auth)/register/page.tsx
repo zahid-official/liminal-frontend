@@ -6,10 +6,10 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Register | Liminal Architecture & Design",
   description:
-    "Join the Liminal collective. Create your account to access exclusive architectural resources, project management tools, and a community of design excellence.",
+    "Join the Liminal collective to access premium architectural projects and collaborate with professional designers.",
 };
 
-// RegisterPage Component
+// RegisterPage
 const RegisterPage = () => {
   return (
     <main className="relative flex min-h-screen w-full flex-col overflow-hidden lg:flex-row">
@@ -18,13 +18,13 @@ const RegisterPage = () => {
         <Logo isScrolled={true} />
       </div>
 
-      {/* Left Side: Branding & Phases (Register-Specific Identity) */}
+      {/* Left Side: Branding & Features */}
       <div className="hidden h-screen w-[60%] lg:block">
         <RegisterBranding />
       </div>
 
       {/* Right Side: Register Form */}
-      <div className="flex flex-1 items-center justify-center p-8 lg:p-12">
+      <div className="flex flex-1 items-center justify-center p-6 lg:p-0">
         <div className="w-full max-w-lg">
           <RegisterFormWrapper />
         </div>

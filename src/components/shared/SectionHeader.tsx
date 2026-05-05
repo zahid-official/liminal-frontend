@@ -1,8 +1,13 @@
-  import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 import SectionBadge from "./SectionBadge";
 
-type SectionHeaderVariant = "editorial" | "centered" | "inline" | "split" | "simple";
+type SectionHeaderVariant =
+  | "editorial"
+  | "centered"
+  | "inline"
+  | "split"
+  | "simple";
 
 interface SectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -188,7 +193,10 @@ const SectionHeader = ({
           {badgeText && (
             <div className="flex items-center justify-center lg:justify-start gap-5">
               <div
-                className={cn("w-14 h-px bg-liminal-secondary shrink-0", badgeDotClassName)}
+                className={cn(
+                  "w-14 h-px bg-liminal-secondary shrink-0",
+                  badgeDotClassName,
+                )}
               />
               <span
                 className={cn(
