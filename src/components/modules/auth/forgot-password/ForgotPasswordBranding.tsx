@@ -44,7 +44,7 @@ const ForgotPasswordBranding = () => {
           src="/assets/auth/forgot-password-professional.png"
           alt="Liminal Professional Excellence"
           fill
-          className="object-cover opacity-35 animate-in zoom-in-110 duration-3000 ease-out"
+          className="object-cover opacity-35 animate-in zoom-in-110 duration-3000 ease-out transform-gpu will-change-transform"
           priority
         />
         {/* Deep gradient overlay for premium feel */}
@@ -54,12 +54,12 @@ const ForgotPasswordBranding = () => {
       {/* Main Content Overlay */}
       <div className="relative z-10 flex h-full flex-col justify-between p-16 lg:p-20">
         {/* Top: Logo */}
-        <div className="animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out fill-mode-both">
+        <div className="animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out fill-mode-both transform-[translateZ(0)] will-change-[opacity,transform]">
           <Logo isScrolled={false} />
         </div>
 
         {/* Center: Section Header */}
-        <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-300 ease-in-out fill-mode-both">
+        <div className="animate-in fade-in slide-in-from-left-8 duration-1000 delay-300 ease-in-out fill-mode-both transform-[translateZ(0)] will-change-[opacity,transform]">
           <SectionHeader
             title={
               <>
@@ -77,7 +77,7 @@ const ForgotPasswordBranding = () => {
         </div>
 
         {/* Bottom: Professional Achievements */}
-        <div className="grid grid-cols-3 gap-8 border-t border-border/20 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 ease-in-out fill-mode-both">
+        <div className="grid grid-cols-3 gap-8 border-t border-border/20 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 ease-in-out fill-mode-both transform-[translateZ(0)] will-change-[opacity,transform]">
           {achievements.map((achievement, index) => (
             <div key={index} className="space-y-3.5">
               <achievement.icon className="h-5 w-5 text-background/40 stroke-[1.5px]" />

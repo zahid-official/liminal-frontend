@@ -22,7 +22,7 @@ const ForgotPasswordForm = () => {
 
   if (isSent) {
     return (
-      <div className="flex flex-col items-center justify-center space-y-6 text-center animate-in fade-in zoom-in-95 duration-700">
+      <div className="flex flex-col items-center justify-center space-y-6 text-center animate-in fade-in zoom-in-95 duration-700 transform-[translateZ(0)] will-change-[opacity,transform]">
         <div className="relative">
           <div className="absolute inset-0 animate-ping rounded-full bg-liminal-secondary/20 duration-1000" />
           <CheckCircle2 className="relative h-16 w-16 text-liminal-secondary" />

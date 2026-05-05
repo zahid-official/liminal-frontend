@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 // LoginFormWrapper Component
 const LoginFormWrapper = () => {
   return (
-    <div className="mx-auto flex w-full flex-col justify-center space-y-8 sm:w-md animate-in fade-in slide-in-from-right-4 duration-1000 ease-in-out">
+    <div className="mx-auto flex w-full flex-col justify-center space-y-8 sm:w-md animate-in fade-in slide-in-from-right-4 duration-1000 ease-in-out transform-[translateZ(0)] will-change-[opacity,transform]">
       {/* Top: Header Section */}
       <div className="flex flex-col gap-1 text-center lg:text-left">
         {/* Back button */}
