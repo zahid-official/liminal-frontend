@@ -4,10 +4,7 @@ import LiminalButton from "@/components/shared/LiminalButton";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel, FieldSeparator } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Chrome, Facebook, Eye, EyeOff, Lock, Mail, User } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 // Social Providers
@@ -19,11 +16,10 @@ const socialProviders = [
 // RegisterForm Component
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-      {/* Full Name field */}
+      {/* Name field */}
       <Field className="space-y-1 group">
         <FieldLabel
           htmlFor="name"
@@ -98,71 +94,23 @@ const RegisterForm = () => {
         </div>
       </Field>
 
-      {/* Confirm Password field */}
-      <Field className="space-y-1 group">
-        <FieldLabel
-          htmlFor="confirm-password"
-          className="text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors group-focus-within:text-liminal-secondary"
-        >
-          Confirm Password
-        </FieldLabel>
-
-        <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
-          <Input
-            id="confirm-password"
-            type={showConfirmPassword ? "text" : "password"}
-            placeholder="••••••••"
-            className="pl-10 pr-10 h-12 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-            required
-          />
-          <button
-            type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground/70 hover:text-foreground transition-colors focus:outline-none cursor-pointer"
-            aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-          >
-            {showConfirmPassword ? (
-              <EyeOff className="size-4.5" />
-            ) : (
-              <Eye className="size-4.5" />
-            )}
-          </button>
-        </div>
-      </Field>
-
       {/* Terms and conditions */}
-      <div className="flex items-start space-x-3 group py-2">
-        <Checkbox id="terms" className="mt-1 transition-all duration-300 data-checked:bg-liminal-secondary data-checked:border-liminal-secondary" required />
-        <Label
-          htmlFor="terms"
-          className="text-xs font-medium text-muted-foreground leading-relaxed cursor-pointer select-none"
-        >
-          I agree to the{" "}
-          <Link
-            href="/terms"
-            className="text-liminal-secondary hover:text-foreground transition-colors underline underline-offset-4 decoration-liminal-secondary/30 hover:decoration-foreground"
-          >
-            Terms of Service
-          </Link>{" "}
-          and{" "}
-          <Link
-            href="/privacy"
-            className="text-liminal-secondary hover:text-foreground transition-colors underline underline-offset-4 decoration-liminal-secondary/30 hover:decoration-foreground"
-          >
-            Privacy Policy
-          </Link>
-        </Label>
+      <div className="flex items-center space-x-2 pt-1">
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
+          By clicking &quot;Create Account&quot;, you agree to our{" "}
+          <button type="button" className="text-foreground hover:underline underline-offset-4">Terms of Service</button> and{" "}
+          <button type="button" className="text-foreground hover:underline underline-offset-4">Privacy Policy</button>.
+        </p>
       </div>
 
-      {/* Sign up button */}
+      {/* Create button */}
       <LiminalButton className="w-full mt-6 shadow-none" type="submit">
-        Create Your Account
+        Create Professional Account
       </LiminalButton>
 
       {/* Separator */}
-      <FieldSeparator className="my-6 text-[11px] uppercase tracking-widest text-muted-foreground">
-        Or sign up with
+      <FieldSeparator className="my-8 text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
+        Or register with
       </FieldSeparator>
 
       {/* Social buttons */}
@@ -172,9 +120,9 @@ const RegisterForm = () => {
             key={provider.name}
             variant="outline"
             type="button"
-            className="h-12 rounded-full border-border/50 gap-1.5 transition-all duration-300"
+            className="h-11 rounded-full border-border/50 gap-2 text-xs font-medium hover:bg-muted/50 transition-all duration-300"
           >
-            <provider.icon className="size-4" />
+            <provider.icon className="size-3.5" />
             {provider.name}
           </Button>
         ))}

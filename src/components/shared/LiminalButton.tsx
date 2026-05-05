@@ -32,11 +32,12 @@ const LiminalButton = ({
   return (
     <button
       className={cn(
-        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer",
+        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer transform-gpu transform-[translateZ(0)] will-change-transform",
         "px-7 min-h-12",
         variants[variant],
         variant === "primary" && [
-          !className?.includes("shadow") && "shadow-xl shadow-liminal-secondary/10",
+          !className?.includes("shadow") &&
+            "shadow-xl shadow-liminal-secondary/10",
           !className?.includes("shadow") &&
             "hover:shadow-2xl hover:shadow-liminal-secondary/40",
         ],
@@ -44,7 +45,7 @@ const LiminalButton = ({
       )}
       {...props}
     >
-      <span className="relative z-10 flex items-center justify-center gap-3 h-full">
+      <span className="relative z-10 flex items-center justify-center gap-3 h-full transform-[translateZ(0)] will-change-transform">
         <span className="font-semibold text-[15px] tracking-[0.05em] transition-colors duration-500 leading-none">
           {children}
         </span>

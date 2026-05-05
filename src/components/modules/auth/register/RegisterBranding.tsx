@@ -31,7 +31,7 @@ const RegisterBranding = () => {
       {/* Main Content Overlay */}
       <div className="relative z-10 flex h-full flex-col justify-between p-16 lg:p-20">
         {/* Top: Logo */}
-        <div className="flex items-center justify-between animate-in fade-in slide-in-from-top-8 duration-1000 ease-in-out">
+        <div className="flex items-center justify-between animate-in fade-in slide-in-from-top-2 duration-1000 ease-out transform-[translateZ(0)] will-change-[opacity,transform]">
           <Logo isScrolled={false} />
           <div className="text-[10px] font-medium uppercase tracking-[0.4em] text-background/30 border-l border-border/20 pl-6 h-4 flex items-center">
             Registration Portal
@@ -39,7 +39,7 @@ const RegisterBranding = () => {
         </div>
 
         {/* Center: Manifesto */}
-        <div className="flex flex-col items-center justify-center flex-1 animate-in fade-in zoom-in-95 duration-1200 delay-300 ease-out fill-mode-both">
+        <div className="flex flex-col items-center justify-center flex-1 animate-in fade-in slide-in-from-bottom-2 duration-1000 delay-300 ease-out fill-mode-both transform-[translateZ(0)] will-change-[opacity,transform]">
           <Quote className="h-10 w-10 text-background/30 mb-8 stroke-[1px]" />
           {/* Vertical Accent Line */}
           <div className="absolute -left-10 top-0 bottom-0 w-px bg-linear-to-b from-transparent via-background/10 to-transparent" />
@@ -69,7 +69,7 @@ const RegisterBranding = () => {
         </div>
 
         {/* Bottom: Signature detail */}
-        <div className="flex items-center justify-between border-t border-border/10 pt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 ease-in-out fill-mode-both">
+        <div className="flex items-center justify-between border-t border-border/10 pt-10 animate-in fade-in slide-in-from-bottom-2 duration-1000 delay-700 ease-out fill-mode-both transform-[translateZ(0)] will-change-[opacity,transform]">
           {signatureDetails.map((detail, index) => (
             <div
               key={index}

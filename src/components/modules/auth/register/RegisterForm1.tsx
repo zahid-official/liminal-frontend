@@ -4,10 +4,7 @@ import LiminalButton from "@/components/shared/LiminalButton";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel, FieldSeparator } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Chrome, Facebook, Eye, EyeOff, Lock, Mail, User } from "lucide-react";
-import Link from "next/link";
+import { Chrome, Facebook, Eye, EyeOff, Lock, Mail, User, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
 // Social Providers
@@ -16,7 +13,10 @@ const socialProviders = [
   { name: "Facebook", icon: Facebook },
 ];
 
-// RegisterForm Component
+/**
+ * RegisterForm Component
+ * A premium registration form with validation and elegant interactions.
+ */
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -26,7 +26,7 @@ const RegisterForm = () => {
       {/* Full Name field */}
       <Field className="space-y-1 group">
         <FieldLabel
-          htmlFor="name"
+          htmlFor="fullName"
           className="text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors group-focus-within:text-liminal-secondary"
         >
           Full Name
@@ -35,7 +35,7 @@ const RegisterForm = () => {
         <div className="relative">
           <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
           <Input
-            id="name"
+            id="fullName"
             type="text"
             placeholder="John Doe"
             className="pl-10 h-12 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
@@ -101,16 +101,16 @@ const RegisterForm = () => {
       {/* Confirm Password field */}
       <Field className="space-y-1 group">
         <FieldLabel
-          htmlFor="confirm-password"
+          htmlFor="confirmPassword"
           className="text-xs font-semibold uppercase tracking-wider text-muted-foreground transition-colors group-focus-within:text-liminal-secondary"
         >
           Confirm Password
         </FieldLabel>
 
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
+          <ShieldCheck className="absolute left-3 top-1/2 -translate-y-1/2 size-4.5 text-muted-foreground/70 group-focus-within:text-liminal-secondary transition-colors" />
           <Input
-            id="confirm-password"
+            id="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             placeholder="••••••••"
             className="pl-10 pr-10 h-12 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
@@ -131,38 +131,14 @@ const RegisterForm = () => {
         </div>
       </Field>
 
-      {/* Terms and conditions */}
-      <div className="flex items-start space-x-3 group py-2">
-        <Checkbox id="terms" className="mt-1 transition-all duration-300 data-checked:bg-liminal-secondary data-checked:border-liminal-secondary" required />
-        <Label
-          htmlFor="terms"
-          className="text-xs font-medium text-muted-foreground leading-relaxed cursor-pointer select-none"
-        >
-          I agree to the{" "}
-          <Link
-            href="/terms"
-            className="text-liminal-secondary hover:text-foreground transition-colors underline underline-offset-4 decoration-liminal-secondary/30 hover:decoration-foreground"
-          >
-            Terms of Service
-          </Link>{" "}
-          and{" "}
-          <Link
-            href="/privacy"
-            className="text-liminal-secondary hover:text-foreground transition-colors underline underline-offset-4 decoration-liminal-secondary/30 hover:decoration-foreground"
-          >
-            Privacy Policy
-          </Link>
-        </Label>
-      </div>
-
-      {/* Sign up button */}
+      {/* Register button */}
       <LiminalButton className="w-full mt-6 shadow-none" type="submit">
-        Create Your Account
+        Create Professional Account
       </LiminalButton>
 
       {/* Separator */}
-      <FieldSeparator className="my-6 text-[11px] uppercase tracking-widest text-muted-foreground">
-        Or sign up with
+      <FieldSeparator className="my-8 text-[11px] uppercase tracking-widest text-muted-foreground">
+        Or register with
       </FieldSeparator>
 
       {/* Social buttons */}
