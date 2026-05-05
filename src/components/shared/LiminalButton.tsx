@@ -1,5 +1,5 @@
 import React from "react";
-import { LucideIcon, ArrowUpRight } from "lucide-react";
+import { LucideIcon, ArrowUpRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,6 +10,7 @@ interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconClassName?: string;
   showIcon?: boolean;
   animateIcon?: boolean;
+  isLoading?: boolean;
 }
 
 const LiminalButton = ({
@@ -20,6 +21,8 @@ const LiminalButton = ({
   iconClassName,
   showIcon = true,
   animateIcon = true,
+  isLoading = false,
+  disabled,
   ...props
 }: LiminalButtonProps) => {
   const variants = {
@@ -31,8 +34,9 @@ const LiminalButton = ({
 
   return (
     <button
+      disabled={disabled || isLoading}
       className={cn(
-        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer transform-gpu transform-[translateZ(0)] will-change-transform",
+        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer transform-gpu transform-[translateZ(0)] will-change-transform disabled:opacity-70 disabled:cursor-not-allowed",
         "px-7 min-h-12",
         variants[variant],
         variant === "primary" && [
@@ -49,19 +53,23 @@ const LiminalButton = ({
         <span className="font-semibold text-[15px] tracking-[0.05em] transition-colors duration-500 leading-none">
           {children}
         </span>
-        {showIcon && Icon && (
-          <Icon
-            size={16}
-            strokeWidth={2}
-            className={cn(
-              "size-4 transition-transform duration-400 transform-gpu",
-              animateIcon && "group-hover:rotate-45",
-              iconClassName,
-            )}
-          />
+        {isLoading ? (
+          <Loader2 className="size-4 animate-spin" />
+        ) : (
+          showIcon && Icon && (
+            <Icon
+              size={16}
+              strokeWidth={2}
+              className={cn(
+                "size-4 transition-transform duration-400 transform-gpu",
+                animateIcon && "group-hover:rotate-45",
+                iconClassName,
+              )}
+            />
+          )
         )}
       </span>
-      {variant === "primary" && (
+      {variant === "primary" && !isLoading && (
         <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
       )}
     </button>

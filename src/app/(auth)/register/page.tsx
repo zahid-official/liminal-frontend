@@ -14,7 +14,7 @@ const RegisterPage = () => {
   return (
     <main className="relative flex min-h-screen w-full flex-col overflow-hidden lg:flex-row">
       {/* Mobile Logo Only */}
-      <div className="absolute top-6 left-6 z-50 lg:hidden">
+      <div className="absolute top-8 left-0 right-0 z-50 flex justify-center lg:hidden">
         <Logo isScrolled={true} />
       </div>
 
