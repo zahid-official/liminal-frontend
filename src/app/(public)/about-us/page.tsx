@@ -1,3 +1,4 @@
+import AboutPhilosophy from "@/components/modules/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/about-us/AboutStory";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -18,7 +19,12 @@ const AboutUsPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
         bgImage="/assets/about-us/bg-about.png"
       />
+
+      {/* About Story */}
       <AboutStory />
+
+      {/* About Philosophy */}
+      <AboutPhilosophy />
     </main>
   );
 };
