@@ -49,7 +49,7 @@ const AboutStory = () => {
             {/* Technical Label */}
             <div className="absolute top-6 left-6 z-10">
               <span className="text-[9px] font-mono tracking-[0.4em] text-background/70 uppercase bg-foreground/40 backdrop-blur-sm px-3 py-2">
-                Established | 2024
+                Established | 2020
               </span>
             </div>
           </div>

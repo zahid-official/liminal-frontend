@@ -7,6 +7,7 @@ type SectionHeaderVariant =
   | "centered"
   | "inline"
   | "split"
+  | "manifesto"
   | "simple";
 
 interface SectionHeaderProps extends Omit<
@@ -129,6 +130,65 @@ const SectionHeader = ({
           <p
             className={cn(
               "max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+              descriptionClassName,
+            )}
+          >
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Manifesto Variant (Centered with lines)
+  if (variant === "manifesto") {
+    return (
+      <div
+        className={cn(
+          "flex flex-col items-center text-center max-w-4xl mx-auto space-y-7",
+          className,
+        )}
+        {...props}
+      >
+        {badgeText && (
+          <div className="flex items-center justify-center gap-4">
+            <div
+              className={cn(
+                "w-12 h-px bg-liminal-secondary/40",
+                badgeDotClassName,
+              )}
+            />
+            <span
+              className={cn(
+                "text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
+                badgeClassName,
+              )}
+            >
+              {badgeText}
+            </span>
+            <div
+              className={cn(
+                "w-12 h-px bg-liminal-secondary/40",
+                badgeDotClassName,
+              )}
+            />
+          </div>
+        )}
+
+        <h2
+          id={headingId}
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+            titleClassName,
+          )}
+        >
+          {title}
+        </h2>
+
+        {description && (
+          <p
+            className={cn(
+              "text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light",
               descriptionClassName,
             )}
           >

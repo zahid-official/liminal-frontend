@@ -1,3 +1,4 @@
+import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -23,8 +24,7 @@ const AboutUsPage = () => {
       <AboutStory />
 
       {/* Who We Are — Editorial Manifesto */}
-      {/* <AboutIdentity />
-      <AboutIdentity1 /> */}
+      <AboutIdentity />
 
       {/* Design Philosophy */}
       {/* <AboutPhilosophy /> */}
