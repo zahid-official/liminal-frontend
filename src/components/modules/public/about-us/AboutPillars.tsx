@@ -1,109 +1,140 @@
-import SectionHeader from "@/components/shared/SectionHeader";
-import { cn } from "@/lib/utils";
+import { Sparkles, Layers, Sun, Users } from "lucide-react";
 
-// Core Design Pillars Data
+// Pillar Data
 const pillars = [
   {
-    number: "01",
-    title: "Artisanal Craftsmanship",
+    icon: Sparkles,
+    title: "Spatial Poetry",
     description:
-      "We believe in the irreplaceable value of the human hand. Every material joint, every surface finish, every spatial transition is executed with artisanal precision — honoring the traditions of craft while embracing contemporary technique.",
-    accent: "Craft · Heritage · Precision",
+      "We compose rooms like stanzas — each element contributing to a larger narrative of light, form, and human experience.",
+    metric: "Form & Flow",
   },
   {
-    number: "02",
-    title: "Spatial Intelligence",
-    description:
-      "Great design begins with understanding how people move through, inhabit, and experience space. We apply spatial intelligence to every project — optimizing flow, proportion, and scale to create environments that feel intuitively right.",
-    accent: "Flow · Proportion · Intuition",
-  },
-  {
-    number: "03",
+    icon: Layers,
     title: "Material Honesty",
     description:
-      "We select materials not for spectacle but for integrity. Wood should feel like wood. Stone should carry the weight of the earth. We celebrate authentic materials that age gracefully and tell a richer story over time.",
-    accent: "Authenticity · Texture · Longevity",
+      "Authentic materials, honestly expressed. We celebrate the raw beauty of stone, timber, metal, and textile in their truest forms.",
+    metric: "Texture & Truth",
   },
   {
-    number: "04",
-    title: "Emotional Resonance",
+    icon: Sun,
+    title: "Light Choreography",
     description:
-      "Beyond function and form lies the realm of feeling. We design for emotional resonance — spaces that calm, inspire, energize, or embrace. The ultimate measure of our work is how it makes people feel.",
-    accent: "Feeling · Connection · Memory",
+      "Light is our most powerful tool. We sculpt natural and artificial illumination to transform mood, perception, and spatial drama.",
+    metric: "Mood & Atmosphere",
+  },
+  {
+    icon: Users,
+    title: "Human Scale",
+    description:
+      "Every dimension is calibrated to the human body and spirit. Comfort is not negotiable — it is the foundation of every design decision.",
+    metric: "Comfort & Proportion",
   },
 ];
 
-// AboutPillars Component — Staggered Masonry Grid
+// AboutPillars Component — Core Design Pillars
 const AboutPillars = () => {
   return (
     <section
       id="about-pillars"
       aria-labelledby="pillars-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
-      {/* Large Background Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14rem] md:text-[20rem] lg:text-[26rem] font-bold font-heading text-foreground/[0.015] select-none pointer-events-none whitespace-nowrap -z-10">
-        LMNL
-      </div>
-
       <div className="custom-container relative z-10">
         {/* Section Header */}
-        <SectionHeader
-          variant="editorial"
-          badgeText="Design Pillars"
-          headingId="pillars-heading"
-          title={
-            <>
-              The Foundations of{" "}
-              <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Every Space
-              </span>{" "}
-              We Create
-            </>
-          }
-          description="Four immovable principles anchor our design practice. They are not guidelines — they are convictions."
-        />
+        <div className="text-center mb-16 lg:mb-24 space-y-6">
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-px bg-liminal-secondary/40" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary">
+              Core Pillars
+            </span>
+            <div className="w-12 h-px bg-liminal-secondary/40" />
+          </div>
 
-        {/* Staggered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto lg:mx-0">
-          {pillars.map((pillar, index) => (
-            <div
-              key={pillar.number}
-              className={cn(
-                "group relative border border-border/50 bg-white p-8 sm:p-10 transition-all duration-500 hover:border-liminal-secondary/40 hover:shadow-xl hover:shadow-liminal-secondary/5",
-                // Stagger: odd items shifted down on desktop
-                index % 2 !== 0 && "md:mt-12 lg:mt-16"
-              )}
-            >
-              {/* Hover accent corner */}
-              <div className="absolute top-0 left-0 w-0 h-0 border-t border-l border-liminal-secondary opacity-0 group-hover:w-8 group-hover:h-8 group-hover:opacity-100 transition-all duration-500" />
-              <div className="absolute bottom-0 right-0 w-0 h-0 border-b border-r border-liminal-secondary opacity-0 group-hover:w-8 group-hover:h-8 group-hover:opacity-100 transition-all duration-500" />
+          <h2
+            id="pillars-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading tracking-tight leading-[1.05]"
+          >
+            The Foundations of{" "}
+            <span className="italic font-serif font-light text-liminal-secondary">
+              Our Craft
+            </span>
+          </h2>
 
-              <div className="space-y-6">
-                {/* Number + Title */}
-                <div className="space-y-4">
-                  <span className="text-5xl sm:text-6xl font-bold font-heading text-liminal-secondary/15 group-hover:text-liminal-secondary/30 transition-colors duration-500 block">
-                    {pillar.number}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold font-heading tracking-tight">
-                    {pillar.title}
-                  </h3>
-                </div>
+          <p className="max-w-2xl mx-auto text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+            Four immutable principles that define every project we undertake —
+            from concept to completion.
+          </p>
+        </div>
 
-                {/* Description */}
-                <p className="text-muted-foreground font-light leading-relaxed text-[15px]">
-                  {pillar.description}
-                </p>
-
-                {/* Accent Tags */}
-                <div className="pt-4 border-t border-border/30">
-                  <span className="text-[10px] font-mono tracking-[0.3em] text-liminal-secondary/70 uppercase">
-                    {pillar.accent}
-                  </span>
-                </div>
-              </div>
+        {/* Measurement Ruler Decoration */}
+        <div className="hidden lg:flex items-center gap-0 mb-1 px-0">
+          {[...Array(40)].map((_, i) => (
+            <div key={i} className="flex-1 flex justify-center">
+              <div
+                className={`w-px ${
+                  i % 10 === 0
+                    ? "h-3 bg-liminal-secondary/40"
+                    : i % 5 === 0
+                      ? "h-2 bg-border/60"
+                      : "h-1 bg-border/30"
+                }`}
+              />
             </div>
           ))}
+        </div>
+
+        {/* 4 Pillar Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-border/40">
+          {pillars.map((pillar, idx) => {
+            const Icon = pillar.icon;
+            return (
+              <div
+                key={idx}
+                className={`group relative p-8 md:p-10 lg:p-10 xl:p-12 flex flex-col justify-between min-h-[340px] lg:min-h-[400px] transition-all duration-700 ease-out hover:bg-liminal-secondary cursor-default ${
+                  idx < pillars.length - 1
+                    ? "border-b sm:border-b lg:border-b-0 lg:border-r border-border/40"
+                    : ""
+                } ${idx === 1 ? "sm:border-r-0 lg:border-r border-border/40" : ""} ${idx === 2 ? "sm:border-b-0" : ""}`}
+              >
+                {/* Top Content */}
+                <div className="space-y-6">
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-xl border border-border/40 flex items-center justify-center text-liminal-secondary group-hover:text-white group-hover:border-white/20 transition-all duration-500">
+                    <Icon size={22} strokeWidth={1.5} />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold font-heading tracking-tight group-hover:text-white transition-colors duration-500">
+                    {pillar.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed font-light group-hover:text-white/80 transition-colors duration-500">
+                    {pillar.description}
+                  </p>
+                </div>
+
+                {/* Bottom Metric Tag */}
+                <div className="pt-8 mt-auto">
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-px bg-border group-hover:bg-white/30 transition-colors duration-500" />
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground/60 font-bold group-hover:text-white/60 transition-colors duration-500">
+                      {pillar.metric}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Corner Number Decoration */}
+                <div className="absolute top-6 right-6 text-[10px] font-mono text-border group-hover:text-white/20 transition-colors duration-500 tracking-widest">
+                  0{idx + 1}
+                </div>
+
+                {/* Bottom accent bar */}
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-liminal-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

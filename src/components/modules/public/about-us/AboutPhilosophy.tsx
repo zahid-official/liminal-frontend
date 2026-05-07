@@ -1,96 +1,119 @@
-// AboutPhilosophy Component — Dark Section, Typographic Philosophy Pillars
-const philosophyPillars = [
+import SectionHeader from "@/components/shared/SectionHeader";
+import Image from "next/image";
+
+// Philosophy Principles Data
+const principles = [
   {
-    statement: "Space is Emotion",
+    index: "01",
+    title: "Emotional Architecture",
     description:
-      "Every room holds the potential for feeling. We design environments that evoke — that stir something wordless in the people who step inside. Architecture without emotion is merely shelter.",
+      "Every space carries an emotional signature. We design environments that resonate with the human spirit — rooms that comfort, inspire, and quietly transform the quality of daily life.",
   },
   {
-    statement: "Detail is Devotion",
+    index: "02",
+    title: "Material Truth",
     description:
-      "The finest design reveals itself in the smallest gestures — a joint perfectly aligned, a shadow cast with intention, a texture chosen for how it feels beneath a fingertip. We devote ourselves to the details others overlook.",
+      "We believe in the honest expression of materials. Natural stone, aged timber, hand-forged metals — each element is chosen for its integrity, its texture, and the story it tells over time.",
   },
   {
-    statement: "Light is Language",
+    index: "03",
+    title: "Restrained Elegance",
     description:
-      "Natural and artificial light are our most expressive tools. We sculpt with illumination — using it to define space, guide movement, set mood, and transform the ordinary into the atmospheric.",
+      "True luxury whispers. We practice disciplined restraint, ensuring every detail earns its place. The result is spaces that feel effortlessly sophisticated — never overdone, always unforgettable.",
   },
 ];
 
+// AboutPhilosophy Component
 const AboutPhilosophy = () => {
   return (
     <section
       id="about-philosophy"
       aria-labelledby="philosophy-heading"
-      className="py-24 md:py-32 lg:py-40 bg-[#141f0a] text-white relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:60px_60px]" />
-
       <div className="custom-container relative z-10">
-        {/* Section Label */}
-        <div className="flex items-center justify-center gap-5 mb-8">
-          <div className="w-16 h-px bg-white/20" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-white/60">
-            Our Philosophy
-          </span>
-          <div className="w-16 h-px bg-white/20" />
-        </div>
-
-        {/* Heading */}
-        <h2
-          id="philosophy-heading"
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight font-heading text-center mb-6"
-        >
-          The Beliefs That{" "}
-          <span className="italic font-serif font-light">Guide Us</span>
-        </h2>
-        <p className="text-center text-white/50 font-light max-w-2xl mx-auto mb-20 sm:text-lg leading-relaxed">
-          Three foundational convictions shape every line we draw, every material
-          we select, and every space we bring to life.
-        </p>
-
-        {/* Philosophy Pillars */}
-        <div className="max-w-5xl mx-auto">
-          {philosophyPillars.map((pillar, index) => (
-            <div key={index}>
-              {/* Divider with Diamond */}
-              <div className="flex items-center gap-0 my-0">
-                <div className="flex-1 h-px bg-white/10" />
-                <div className="w-2.5 h-2.5 rotate-45 border border-white/25 mx-6 shrink-0" />
-                <div className="flex-1 h-px bg-white/10" />
-              </div>
-
-              {/* Pillar Content */}
-              <div className="py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center text-center lg:text-left">
-                {/* Large Typographic Statement */}
-                <div className="lg:col-span-5">
-                  <span className="text-[10px] font-mono tracking-[0.4em] text-white/25 uppercase block mb-3">
-                    Pillar {String(index + 1).padStart(2, "0")}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+          {/* Left: Philosophy Cards */}
+          <div className="lg:col-span-6 xl:col-span-5 space-y-10">
+            <SectionHeader
+              variant="inline"
+              headingId="philosophy-heading"
+              badgeText="Our Philosophy"
+              title={
+                <>
+                  Design with{" "}
+                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                    Purpose & Soul
                   </span>
-                  <h3 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold font-heading leading-[1.05] tracking-tight">
-                    {pillar.statement}
-                  </h3>
-                </div>
+                </>
+              }
+              description="Three principles guide every decision we make — from the first sketch to the final reveal."
+              className="lg:items-start"
+            />
 
-                {/* Description */}
-                <div className="lg:col-span-7">
-                  <p className="text-white/60 leading-relaxed font-light text-[16px] sm:text-lg lg:pl-8 lg:border-l lg:border-white/10">
-                    {pillar.description}
-                  </p>
-                </div>
-              </div>
+            {/* Stacked Principle Cards */}
+            <div className="space-y-0">
+              {principles.map((principle, idx) => (
+                <div
+                  key={idx}
+                  className="group py-8 border-b border-border/40 first:border-t transition-all duration-500 hover:bg-zinc-50/80 px-0 hover:px-6"
+                >
+                  <div className="flex gap-6">
+                    {/* Index Number */}
+                    <span className="text-3xl font-heading font-bold text-liminal-secondary/20 group-hover:text-liminal-secondary transition-colors duration-500 shrink-0 leading-none mt-1">
+                      {principle.index}
+                    </span>
 
-              {/* Last divider */}
-              {index === philosophyPillars.length - 1 && (
-                <div className="flex items-center gap-0">
-                  <div className="flex-1 h-px bg-white/10" />
-                  <div className="w-2.5 h-2.5 rotate-45 border border-white/25 mx-6 shrink-0" />
-                  <div className="flex-1 h-px bg-white/10" />
+                    <div className="space-y-3">
+                      <h3 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                        {principle.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed font-light">
+                        {principle.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Right: Atmospheric Image */}
+          <div className="lg:col-span-6 xl:col-span-7 relative">
+            {/* Background Decorative Text */}
+            <div className="absolute -top-16 -right-16 text-[16rem] xl:text-[20rem] font-bold font-heading text-liminal-secondary/[0.03] select-none -z-10 hidden xl:block leading-none">
+              PHI
+            </div>
+
+            <div className="relative aspect-[4/5] md:aspect-video lg:aspect-[4/5] overflow-hidden group">
+              <Image
+                src="/assets/about-us/philosophy.png"
+                alt="Liminal Design Philosophy — Purpose & Soul"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            </div>
+
+            {/* Architectural Corner Brackets */}
+            <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-liminal-secondary/30 -z-10" />
+            <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-liminal-secondary/30 -z-10" />
+
+            {/* Measurement Ticks */}
+            <div className="absolute -right-6 top-1/2 -translate-y-1/2 flex-col gap-6 items-center hidden lg:flex">
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-px ${
+                    i === 2
+                      ? "w-3 bg-liminal-secondary"
+                      : "w-1.5 bg-border/60"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
