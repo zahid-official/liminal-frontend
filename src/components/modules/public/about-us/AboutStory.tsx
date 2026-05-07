@@ -77,7 +77,7 @@ const AboutStory = () => {
                 silent choreographer of human experience. Based in Dhaka, our
                 studio operates at the threshold of the &ldquo;liminal&rdquo;
                 &mdash; the precise point where imagination meets structural
-                reality, and abstract visions are distilled into evocative
+                reality and abstract visions are distilled into evocative
                 living environments.
               </p>
 
@@ -109,7 +109,7 @@ const AboutStory = () => {
                   Zahidul Islam
                 </span>
                 <span className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
-                  Founder & Lead Designer
+                  Founder & Principal Architect
                 </span>
               </div>
               <div className="w-12 h-px bg-border group-hover/signature:w-20 group-hover/signature:bg-liminal-secondary transition-all duration-700" />

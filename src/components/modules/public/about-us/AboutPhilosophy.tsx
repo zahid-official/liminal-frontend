@@ -7,7 +7,7 @@ const AboutPhilosophy = () => {
     <section
       id="philosophy-vision"
       aria-labelledby="philosophy-heading"
-      className="py-20 md:py-28 lg:py-36 bg-[#141f0a] text-background relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 bg-[#141f0a] text-background relative overflow-hidden"
     >
       {/* Background Decorative Circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 pointer-events-none">

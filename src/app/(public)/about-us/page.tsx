@@ -1,5 +1,6 @@
-import AboutPhilosophy from "@/components/modules/about-us/AboutPhilosophy";
-import AboutStory from "@/components/modules/about-us/AboutStory";
+import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
+import AboutStory from "@/components/modules/public/about-us/AboutStory";
+import AboutTeam from "@/components/modules/public/about-us/AboutTeam";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -25,6 +26,9 @@ const AboutUsPage = () => {
 
       {/* About Philosophy */}
       <AboutPhilosophy />
+
+      {/* About Team */}
+      <AboutTeam />
     </main>
   );
 };
