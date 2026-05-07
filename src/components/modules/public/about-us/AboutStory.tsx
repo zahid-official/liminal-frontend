@@ -1,119 +1,116 @@
-import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
-// AboutStory Component
+// AboutStory Component — Editorial Origin Narrative
 const AboutStory = () => {
   return (
     <section
-      id="studio-story"
-      aria-labelledby="studio-story-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      id="about-story"
+      aria-labelledby="story-heading"
+      className="relative overflow-hidden"
     >
-      <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          {/* Left: Overlapping Image Composition */}
-          <div className="lg:col-span-6 relative">
-            {/* Primary Image */}
-            <div className="relative aspect-4/5 overflow-hidden group rounded-sm shadow-2xl">
-              <Image
-                src="/assets/about-us/about-story.png"
-                alt="Liminal Studio: Where Ideas Take Shape"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
-              {/* Subtle overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/15 to-transparent" />
-            </div>
+      {/* Full-Bleed Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/assets/about-us/story-hero.png"
+          alt=""
+          fill
+          className="object-cover"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-white/[0.92]" />
+      </div>
 
-            {/* Secondary Overlapping Image */}
-            <div className="hidden md:block absolute -bottom-10 -right-6 lg:-right-12 w-[55%] aspect-square overflow-hidden rounded-sm shadow-2xl border-4 border-background z-10 group">
-              <Image
-                src="/assets/about-us/bg-about.png"
-                alt="Liminal Design Detail: Material Craftsmanship"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
-            </div>
-
-            {/* Architectural Corner Markers */}
-            <div className="absolute -top-4 -left-4 w-10 h-10 border-t-2 border-l-2 border-liminal-secondary/40" />
-            <div className="absolute -bottom-4 -right-4 w-10 h-10 border-b-2 border-r-2 border-liminal-secondary/40 hidden md:hidden lg:block" />
-
-            {/* Technical Label */}
-            <div className="absolute top-6 left-6 z-10">
-              <span className="text-[9px] font-mono tracking-[0.4em] text-background/70 uppercase bg-foreground/40 backdrop-blur-sm px-3 py-1.5">
-                LIMINAL | EST. 2024
-              </span>
-            </div>
+      {/* Content — Narrow editorial column */}
+      <div className="py-24 md:py-32 lg:py-40">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 relative">
+          {/* Section Label */}
+          <div className="flex items-center justify-center gap-5 mb-14">
+            <div className="w-16 h-px bg-liminal-secondary/40" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary">
+              Our Story
+            </span>
+            <div className="w-16 h-px bg-liminal-secondary/40" />
           </div>
 
-          {/* Right: Narrative Content */}
-          <div className="lg:col-span-6 space-y-8 relative">
-            {/* Background Decorative Letter */}
-            <div className="absolute top-40 right-10 text-[20rem] font-bold font-heading text-liminal-secondary/5 select-none -z-10 group-hover:text-liminal-secondary/10 transition-all duration-1000">
-              S
-            </div>
+          {/* Headline */}
+          <h2
+            id="story-heading"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight font-heading text-center mb-12"
+          >
+            Born from a Belief That
+            <br />
+            <span className="italic font-serif font-light text-liminal-secondary">
+              Spaces Shape Souls
+            </span>
+          </h2>
 
-            {/* Section Header */}
-            <SectionHeader
-              variant="inline"
-              headingId="studio-story-heading"
-              badgeText="Our Story"
-              title={
-                <>
-                  Where Art Meets{" "}
-                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                    Spatial Poetry
-                  </span>
-                </>
-              }
-              className="space-y-5"
-            />
+          {/* Editorial Body — Magazine style */}
+          <div className="space-y-6 text-foreground/80 leading-[1.85] font-light text-[16.5px] sm:text-[17px]">
+            {/* Drop Cap Paragraph */}
+            <p className="first-letter:text-6xl first-letter:font-heading first-letter:font-bold first-letter:text-liminal-secondary first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.8]">
+              Liminal was born not from a business plan, but from a deeply held
+              conviction: that the spaces we inhabit are not passive backdrops to
+              our lives — they are active participants in shaping how we think,
+              feel, and connect. In 2024, our founding team came together in
+              Dhaka with a shared vision — to create an interior design studio
+              that would challenge the conventional and celebrate the
+              extraordinary.
+            </p>
 
-            {/* Body Text */}
-            <div className="space-y-5 text-muted-foreground leading-relaxed font-light">
-              <p>
-                Liminal was born from a singular conviction: that space is the
-                silent choreographer of human experience. Based in Dhaka, our
-                studio operates at the threshold of the &ldquo;liminal&rdquo;
-                &mdash; the precise point where imagination meets structural
-                reality and abstract visions are distilled into evocative
-                living environments.
-              </p>
+            <p>
+              The name{" "}
+              <em className="font-serif text-foreground not-italic font-medium">
+                Liminal
+              </em>{" "}
+              itself speaks to our ethos. Derived from the Latin{" "}
+              <em className="font-serif">limen</em> — meaning threshold — it
+              represents the transformative space between what was and what could
+              be. Every project we undertake exists in this threshold: between
+              vision and reality, between art and function, between the architect
+              and the inhabitant.
+            </p>
 
-              {/* Signature Pull Quote */}
-              <blockquote className="relative pl-6 py-4 border-l-2 border-liminal-secondary/40 my-8">
-                <p className="text-foreground/85 text-lg lg:text-xl italic font-light leading-relaxed">
-                  &ldquo;Design is not something to be observed; it is something
-                  to be inhabited. It is the invisible harmony that greets you
-                  the moment you cross the threshold.&rdquo;
-                </p>
-                <cite className="block mt-4 text-[11px] font-bold uppercase tracking-[0.3em] text-liminal-secondary not-italic">
-                  Liminal Design Philosophy
-                </cite>
-              </blockquote>
-
-              <p>
-                Every commission is an intimate dialogue between a client&apos;s
-                aspiration and a site&apos;s innate potential. We believe that
-                true luxury is atmospheric, not just ornamental. To us, great
-                design remains subtle, revealing its depth through the profound
-                sense of belonging you feel the moment you step inside.
-              </p>
-            </div>
-
-            {/* Founder Attribution */}
-            <div className="inline-flex items-center gap-6 group/signature pt-3 pl-1">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold font-heading text-foreground group-hover/signature:text-liminal-secondary transition-colors duration-500">
-                  Zahidul Islam
-                </span>
-                <span className="text-xs uppercase tracking-widest text-muted-foreground font-bold">
-                  Founder & Principal Architect
-                </span>
+            {/* Pull Quote */}
+            <blockquote className="relative my-10 py-8 px-0 text-center">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 text-7xl text-liminal-secondary/15 font-serif leading-none select-none pointer-events-none">
+                &ldquo;
               </div>
-              <div className="w-12 h-px bg-border group-hover/signature:w-20 group-hover/signature:bg-liminal-secondary transition-all duration-700" />
-            </div>
+              <p className="text-xl sm:text-2xl font-serif italic text-foreground/90 leading-relaxed max-w-xl mx-auto pt-4">
+                We saw an industry focused on surfaces. We chose to design for
+                the soul beneath.
+              </p>
+              <footer className="mt-5 flex items-center justify-center gap-3">
+                <div className="w-8 h-px bg-liminal-secondary/40" />
+                <cite className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground not-italic">
+                  Founding Principle
+                </cite>
+                <div className="w-8 h-px bg-liminal-secondary/40" />
+              </footer>
+            </blockquote>
+
+            <p>
+              From our earliest residential projects to our most ambitious
+              commercial environments, a singular thread has connected every
+              space we have touched: the relentless pursuit of emotional truth in
+              design. We don&apos;t chase trends. We study how light falls
+              across a room at different hours of the day. We consider how a
+              material ages, how a corridor guides movement, how a ceiling
+              height influences conversation.
+            </p>
+
+            <p>
+              Today, Liminal stands as a testament to the idea that interior
+              design, at its finest, is not about decoration — it is about
+              creating the conditions for life to be lived more deeply, more
+              intentionally, and more beautifully.
+            </p>
+          </div>
+
+          {/* Bottom Ornament */}
+          <div className="flex items-center justify-center mt-14">
+            <div className="w-12 h-px bg-border" />
+            <div className="w-2 h-2 rotate-45 border border-liminal-secondary/40 mx-4" />
+            <div className="w-12 h-px bg-border" />
           </div>
         </div>
       </div>

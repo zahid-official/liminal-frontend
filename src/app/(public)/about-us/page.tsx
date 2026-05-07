@@ -1,6 +1,11 @@
+import AboutCTA from "@/components/modules/public/about-us/AboutCTA";
+import AboutIntro from "@/components/modules/public/about-us/AboutIntro";
 import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
+import AboutPillars from "@/components/modules/public/about-us/AboutPillars";
+import AboutProcess from "@/components/modules/public/about-us/AboutProcess";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import AboutTeam from "@/components/modules/public/about-us/AboutTeam";
+import AboutVisionMission from "@/components/modules/public/about-us/AboutVisionMission";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -21,14 +26,29 @@ const AboutUsPage = () => {
         bgImage="/assets/about-us/bg-about.png"
       />
 
-      {/* About Story */}
+      {/* Studio Introduction */}
+      <AboutIntro />
+
+      {/* Our Story */}
       <AboutStory />
 
-      {/* About Philosophy */}
+      {/* Design Philosophy */}
       <AboutPhilosophy />
 
-      {/* About Team */}
+      {/* Vision & Mission */}
+      <AboutVisionMission />
+
+      {/* Core Design Pillars */}
+      <AboutPillars />
+
+      {/* Our Approach */}
+      <AboutProcess />
+
+      {/* Team */}
       <AboutTeam />
+
+      {/* Call to Action */}
+      <AboutCTA />
     </main>
   );
 };

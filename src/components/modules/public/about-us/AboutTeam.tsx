@@ -1,164 +1,165 @@
-import SectionHeader from "@/components/shared/SectionHeader";
-import { cn } from "@/lib/utils";
-import { Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import SectionHeader from "@/components/shared/SectionHeader";
 
-// Team Members Data
+// Team members data
+const founder = {
+  name: "Zahid Hasan",
+  role: "Founder & Lead Architect",
+  image: "/assets/about-us/team-1.png",
+  quote:
+    "Design is the silent language between a space and its inhabitant. Our job is to make that conversation beautiful.",
+};
+
 const teamMembers = [
   {
-    name: "Zahidul Islam",
-    role: "Founder & Principal Architect",
-    image: "/assets/about-us/team-1.png",
-    quote:
-      "Architecture is frozen music, and I aspire to compose symphonies in space.",
-    linkedin: "#",
-    email: "zahid@liminal.com",
-    specialization: "Spatial Design & Vision",
-  },
-  {
-    name: "Kai Nakamura",
-    role: "Creative Director",
+    name: "Sara Ahmed",
+    role: "Senior Interior Designer",
     image: "/assets/about-us/team-2.png",
-    quote:
-      "True creativity lies in the tension between constraint and expression.",
-    linkedin: "#",
-    email: "kai@liminal.com",
-    specialization: "Material Curation",
   },
   {
-    name: "James Whitfield",
-    role: "Lead Architect",
+    name: "Rafiq Islam",
+    role: "Project Architect",
     image: "/assets/about-us/team-3.png",
-    quote:
-      "Great design is invisible, it's the feeling of belonging in a space.",
-    linkedin: "#",
-    email: "james@liminal.com",
-    specialization: "Technical Excellence",
   },
   {
-    name: "Marco Venturi",
-    role: "Strategic Operations Director",
+    name: "Nadia Karim",
+    role: "Material Specialist",
     image: "/assets/about-us/team-4.png",
-    quote:
-      "Operational precision is the foundation upon which creative freedom is built.",
-    linkedin: "#",
-    email: "marco@liminal.com",
-    specialization: "Project Strategy",
   },
 ];
 
-// AboutTeam Component
+// AboutTeam Component — Featured Founder + Team Grid
 const AboutTeam = () => {
   return (
     <section
-      id="team-section"
+      id="about-team"
       aria-labelledby="team-heading"
       className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
+      {/* Faint Background Texture */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/assets/about-us/team-bg.png"
+          alt=""
+          fill
+          className="object-cover opacity-[0.03]"
+          aria-hidden="true"
+        />
+      </div>
+
       <div className="custom-container relative z-10">
+        {/* Section Header */}
         <SectionHeader
-          variant="split"
+          variant="editorial"
           badgeText="Our Team"
           headingId="team-heading"
           title={
             <>
-              The Creative Minds{" "}
+              The Minds Behind{" "}
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Behind Liminal
+                Every Detail
               </span>
             </>
           }
-          description="A collective of visionary architects, designers and strategists united by a singular passion, creating spaces that transcend the ordinary."
-          className="mb-14"
+          description="A collective of architects, designers, and specialists united by a shared obsession with craft, precision, and the transformative power of space."
         />
 
-        {/* Staggered Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className={cn("group relative", index % 2 !== 0 && "lg:mt-12")}
-            >
-              {/* Image Container */}
-              <div className="relative aspect-3/4 overflow-hidden bg-muted isolate">
-                <Image
-                  src={member.image}
-                  alt={`${member.name} - ${member.role} at Liminal`}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105 transform-gpu will-change-transform backface-hidden"
-                />
+        {/* Founder Feature Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 mb-12 lg:mb-16 max-w-5xl">
+          {/* Founder Image */}
+          <div className="lg:col-span-5 relative group overflow-hidden">
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] overflow-hidden">
+              <Image
+                src={founder.image}
+                alt={`${founder.name} — ${founder.role}`}
+                fill
+                className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105 will-change-transform"
+              />
+              {/* Subtle gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            </div>
+          </div>
 
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-700 transform-gpu will-change-transform backface-hidden">
-                    {/* Quote */}
-                    <p className="text-background/80 text-sm  font-light leading-relaxed mb-4">
-                      &ldquo;{member.quote}&rdquo;
-                    </p>
-
-                    {/* Social Links */}
-                    <div className="flex items-center justify-between gap-4">
-                      <Link
-                        href={`mailto:${member.email}`}
-                        className="inline-flex items-center gap-2 text-background/60 hover:text-background transition-colors duration-300"
-                        aria-label={`Email ${member.name}`}
-                      >
-                        <Mail size={14} />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                          Email
-                        </span>
-                      </Link>
-
-                      <Link
-                        href={member.linkedin}
-                        className="inline-flex items-center gap-2 text-background/60 hover:text-background transition-colors duration-300"
-                        aria-label={`${member.name} LinkedIn profile`}
-                      >
-                        <Linkedin size={14} />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-                          LinkedIn
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Top-right Reference Number */}
-                <div className="absolute top-4 right-4 text-xs font-mono text-background/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  Team_{String(index + 1).padStart(2, "0")}
-                </div>
+          {/* Founder Details */}
+          <div className="lg:col-span-7 bg-[#141f0a] text-white flex flex-col justify-center p-8 sm:p-10 lg:p-14 xl:p-16">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-px bg-white/30" />
+                <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/40">
+                  Founder
+                </span>
               </div>
 
-              {/* Info Area */}
-              <div className="pt-5 pb-2 space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-px bg-liminal-secondary/50 group-hover:w-8 transition-all duration-500" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-liminal-secondary">
-                    {member.specialization}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold font-heading tracking-tight">
-                  {member.name}
+              <div className="space-y-2">
+                <h3 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight">
+                  {founder.name}
                 </h3>
-                <p className="text-muted-foreground text-sm font-light">
+                <p className="text-white/50 text-sm font-light tracking-wide">
+                  {founder.role}
+                </p>
+              </div>
+
+              <blockquote className="relative pl-6 border-l border-white/20">
+                <p className="text-lg sm:text-xl font-serif italic text-white/80 leading-relaxed">
+                  &ldquo;{founder.quote}&rdquo;
+                </p>
+              </blockquote>
+
+              {/* Founder Stats */}
+              <div className="flex gap-10 pt-6 border-t border-white/10">
+                {[
+                  { value: "10+", label: "Years Experience" },
+                  { value: "50+", label: "Projects Led" },
+                  { value: "12", label: "Awards Won" },
+                ].map((stat) => (
+                  <div key={stat.label} className="space-y-1">
+                    <span className="text-xl sm:text-2xl font-bold font-heading">
+                      {stat.value}
+                    </span>
+                    <p className="text-[9px] font-mono tracking-[0.2em] text-white/40 uppercase">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 max-w-5xl">
+          {teamMembers.map((member) => (
+            <div
+              key={member.name}
+              className="group relative border border-border/40 bg-white overflow-hidden transition-all duration-500 hover:border-liminal-secondary/30 hover:shadow-lg hover:shadow-liminal-secondary/5"
+            >
+              {/* Member Image */}
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={`${member.name} — ${member.role}`}
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105 will-change-transform"
+                />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+
+              {/* Member Details */}
+              <div className="p-6 space-y-1">
+                <h4 className="text-lg font-bold font-heading tracking-tight">
+                  {member.name}
+                </h4>
+                <p className="text-sm text-muted-foreground font-light">
                   {member.role}
                 </p>
               </div>
 
-              {/* Animated Top Border */}
-              <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary group-hover:w-full transition-all duration-700 ease-out" />
+              {/* Animated top border on hover */}
+              <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary group-hover:w-full transition-all duration-700" />
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Bottom Tagline */}
-      <div className="text-center absolute bottom-12 left-1/2 transform -translate-x-1/2 w-full px-6">
-        <p className="italic font-serif text-xl sm:text-2xl text-muted-foreground font-light tracking-tight">
-          &ldquo;Individually skilled. Collectively unstoppable.&rdquo;
-        </p>
-        <div className="w-8 h-px bg-liminal-secondary/40 mx-auto mt-5" />
       </div>
     </section>
   );
