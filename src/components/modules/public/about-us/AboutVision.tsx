@@ -32,7 +32,7 @@ const AboutVision = () => {
         </div>
 
         {/* Right: Content — Vision */}
-        <div className="relative z-10 flex items-center justify-center py-20 md:py-28 lg:py-32">
+        <div className="relative z-10 flex items-center justify-center py-20 md:py-28 lg:py-32 px-4 sm:px-8">
           <div className="space-y-12 max-w-2xl">
             <SectionHeader
               badgeText="Our Vision"

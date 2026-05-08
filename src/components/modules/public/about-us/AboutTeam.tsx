@@ -128,6 +128,9 @@ const AboutTeam = () => {
                 <div className="absolute top-4 right-4 text-xs font-mono text-background/50 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   Team_{String(index + 1).padStart(2, "0")}
                 </div>
+
+                {/* Animated Top Border */}
+                <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary group-hover:w-full transition-all duration-700 ease-out" />
               </div>
 
               {/* Info Area */}
@@ -145,9 +148,6 @@ const AboutTeam = () => {
                   {member.role}
                 </p>
               </div>
-
-              {/* Animated Top Border */}
-              <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary group-hover:w-full transition-all duration-700 ease-out" />
             </div>
           ))}
         </div>

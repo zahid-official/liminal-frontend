@@ -1,6 +1,5 @@
 import AboutApproach from "@/components/modules/public/about-us/AboutApproach";
 import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
-import AboutImpact from "@/components/modules/public/about-us/AboutImpact";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import AboutTeam from "@/components/modules/public/about-us/AboutTeam";
 import AboutVision from "@/components/modules/public/about-us/AboutVision";
@@ -40,10 +39,7 @@ const AboutUsPage = () => {
       <AboutTeam />
 
       {/* Impact in Numbers */}
-      <AboutImpact />
-
-      {/* Call to Action */}
-      {/* <AboutCTA /> */}
+      {/* <AboutImpact /> */}
     </main>
   );
 };
