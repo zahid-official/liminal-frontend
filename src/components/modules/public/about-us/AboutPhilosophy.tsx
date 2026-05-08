@@ -1,116 +1,92 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
-// Philosophy Principles Data
-const principles = [
-  {
-    index: "01",
-    title: "Emotional Architecture",
-    description:
-      "Every space carries an emotional signature. We design environments that resonate with the human spirit — rooms that comfort, inspire, and quietly transform the quality of daily life.",
-  },
-  {
-    index: "02",
-    title: "Material Truth",
-    description:
-      "We believe in the honest expression of materials. Natural stone, aged timber, hand-forged metals — each element is chosen for its integrity, its texture, and the story it tells over time.",
-  },
-  {
-    index: "03",
-    title: "Restrained Elegance",
-    description:
-      "True luxury whispers. We practice disciplined restraint, ensuring every detail earns its place. The result is spaces that feel effortlessly sophisticated — never overdone, always unforgettable.",
-  },
-];
-
 // AboutPhilosophy Component
 const AboutPhilosophy = () => {
   return (
     <section
-      id="about-philosophy"
+      id="philosophy-vision"
       aria-labelledby="philosophy-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="relative overflow-hidden bg-[#141F0A] text-background"
     >
-      <div className="custom-container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
-          {/* Left: Philosophy Cards */}
-          <div className="lg:col-span-6 xl:col-span-5 space-y-10">
+      {/* Subtle Blueprint Grid Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[60px_60px]" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-175 lg:min-h-200">
+        {/* Left: Full-Height Image */}
+        <div className="relative aspect-square lg:aspect-auto overflow-hidden group">
+          <Image
+            src="/assets/about-us/vision_man.png"
+            alt="Liminal Design Vision — Crafting Timeless Spaces"
+            fill
+            className="object-cover transition-transform duration-1500 group-hover:scale-105"
+          />
+          {/* Gradient overlay for depth */}
+          <div className="absolute inset-0 bg-linear-to-r from-transparent via-transparent to-[#141F0A]/60 hidden lg:block" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#141F0A]/80 to-transparent lg:hidden" />
+
+          {/* Corner Markers */}
+          <div className="absolute top-8 left-8 w-8 h-8 border-t border-l border-background/20" />
+          <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-background/20" />
+        </div>
+
+        {/* Right: Content — Vision & Mission */}
+        <div className="relative z-10 flex flex-col justify-center px-8 py-20 md:px-16 lg:px-20 xl:px-28 gap-24">
+          {/* Vertical Connecting Line (Subtle) */}
+          <div className="absolute left-14 md:left-22 lg:left-26 xl:left-34 top-32 bottom-32 w-px bg-linear-to-b from-transparent via-background/10 to-transparent hidden sm:block" />
+
+          {/* Vision Block — 01 */}
+          <div className="relative">
             <SectionHeader
-              variant="inline"
-              headingId="philosophy-heading"
-              badgeText="Our Philosophy"
+              variant="simple"
+              badgeText="01 / Our Vision"
               title={
                 <>
-                  Design with{" "}
-                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                    Purpose & Soul
+                  The Art of{" "}
+                  <span className="italic font-serif font-light underline underline-offset-12 decoration-1 decoration-background/20">
+                    Refined Living
                   </span>
                 </>
               }
-              description="Three principles guide every decision we make — from the first sketch to the final reveal."
-              className="lg:items-start"
+              description="We envision a future where interior architecture transcends aesthetic beauty to become a fundamental catalyst for inspiration, tranquility, and profound human connection—shaping environments that resonate with the soul."
+              descriptionClassName="text-background/60"
+              badgeClassName="border-background/15 text-background"
             />
-
-            {/* Stacked Principle Cards */}
-            <div className="space-y-0">
-              {principles.map((principle, idx) => (
-                <div
-                  key={idx}
-                  className="group py-8 border-b border-border/40 first:border-t transition-all duration-500 hover:bg-zinc-50/80 px-0 hover:px-6"
-                >
-                  <div className="flex gap-6">
-                    {/* Index Number */}
-                    <span className="text-3xl font-heading font-bold text-liminal-secondary/20 group-hover:text-liminal-secondary transition-colors duration-500 shrink-0 leading-none mt-1">
-                      {principle.index}
-                    </span>
-
-                    <div className="space-y-3">
-                      <h3 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
-                        {principle.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                        {principle.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Right: Atmospheric Image */}
-          <div className="lg:col-span-6 xl:col-span-7 relative">
-            {/* Background Decorative Text */}
-            <div className="absolute -top-16 -right-16 text-[16rem] xl:text-[20rem] font-bold font-heading text-liminal-secondary/[0.03] select-none -z-10 hidden xl:block leading-none">
-              PHI
-            </div>
+          {/* Mission Block — 02 */}
+          <div className="relative">
+            <SectionHeader
+              variant="simple"
+              badgeText="02 / Our Mission"
+              title={
+                <>
+                  The Soul of{" "}
+                  <span className="italic font-serif font-light underline underline-offset-12 decoration-1 decoration-background/20">
+                    Precision
+                  </span>
+                </>
+              }
+              description="To bridge the void between architectural vision and the visceral experience of a space. We synthesize surgical precision with creative intuition to deliver environments that are as structurally enduring as they are emotionally evocative."
+              descriptionClassName="text-background/60"
+              badgeClassName="border-background/15 text-background"
+            />
 
-            <div className="relative aspect-[4/5] md:aspect-video lg:aspect-[4/5] overflow-hidden group">
-              <Image
-                src="/assets/about-us/philosophy.png"
-                alt="Liminal Design Philosophy — Purpose & Soul"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              />
-              {/* Subtle overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            </div>
-
-            {/* Architectural Corner Brackets */}
-            <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-liminal-secondary/30 -z-10" />
-            <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-liminal-secondary/30 -z-10" />
-
-            {/* Measurement Ticks */}
-            <div className="absolute -right-6 top-1/2 -translate-y-1/2 flex-col gap-6 items-center hidden lg:flex">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-px ${
-                    i === 2
-                      ? "w-3 bg-liminal-secondary"
-                      : "w-1.5 bg-border/60"
-                  }`}
-                />
+            {/* Mission Pillars — Refined Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-10 border-t border-background/5 mt-10">
+              {[
+                { label: "Intent", value: "Bespoke Design" },
+                { label: "Craft", value: "Meticulous Detail" },
+                { label: "Legacy", value: "Enduring Value" },
+              ].map((pillar) => (
+                <div key={pillar.label} className="group/pillar">
+                  <span className="text-[10px] font-mono tracking-[0.4em] text-background/30 uppercase block mb-3 group-hover/pillar:text-liminal-secondary transition-colors duration-500">
+                    {pillar.label}
+                  </span>
+                  <p className="text-base font-medium text-background/70 tracking-tight group-hover/pillar:text-background transition-colors duration-300">
+                    {pillar.value}
+                  </p>
+                </div>
               ))}
             </div>
           </div>

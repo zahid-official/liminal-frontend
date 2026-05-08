@@ -1,4 +1,5 @@
 import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
+import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -27,7 +28,7 @@ const AboutUsPage = () => {
       <AboutIdentity />
 
       {/* Design Philosophy */}
-      {/* <AboutPhilosophy /> */}
+      <AboutPhilosophy />
 
       {/* Core Design Pillars */}
       {/* <AboutPillars /> */}
