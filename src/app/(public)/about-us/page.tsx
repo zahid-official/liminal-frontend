@@ -1,3 +1,4 @@
+import AboutApproach from "@/components/modules/public/about-us/AboutApproach";
 import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
 import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
@@ -30,11 +31,8 @@ const AboutUsPage = () => {
       {/* Design Philosophy */}
       <AboutPhilosophy />
 
-      {/* Core Design Pillars */}
-      {/* <AboutPillars /> */}
-
-      {/* Our Approach — Process Timeline */}
-      {/* <AboutProcess /> */}
+      {/* Our Design Principles */}
+      <AboutApproach />
 
       {/* Impact in Numbers */}
       {/* <AboutImpact /> */}
