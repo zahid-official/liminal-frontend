@@ -1,5 +1,6 @@
 import AboutApproach from "@/components/modules/public/about-us/AboutApproach";
 import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
+import AboutImpact from "@/components/modules/public/about-us/AboutImpact";
 import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import PageHeader from "@/components/shared/PageHeader";
@@ -35,7 +36,7 @@ const AboutUsPage = () => {
       <AboutApproach />
 
       {/* Impact in Numbers */}
-      {/* <AboutImpact /> */}
+      <AboutImpact />
 
       {/* The Team */}
       {/* <AboutTeam /> */}

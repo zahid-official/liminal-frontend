@@ -2,9 +2,11 @@
 
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
+import { cn } from "@/lib/utils";
+import SectionHeader from "@/components/shared/SectionHeader";
 
-// Impact Metrics Data
-const metrics = [
+// Impact Stats Data
+const stats = [
   {
     value: 150,
     suffix: "+",
@@ -31,92 +33,106 @@ const metrics = [
   },
 ];
 
-// AboutImpact Component — Dark Section with Animated Counters
+// AboutImpact Component
 const AboutImpact = () => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
     triggerOnce: true,
+    threshold: 0.2,
   });
 
   return (
-    <section
-      id="about-impact"
-      aria-labelledby="impact-heading"
-      className="py-20 md:py-28 lg:py-36 relative overflow-hidden bg-[#141F0A] text-white"
-      ref={ref}
-    >
-      {/* Blueprint Grid Pattern Overlay */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-[size:60px_60px]" />
+    <section className="relative py-24 lg:py-32 bg-[#141F0A] text-background overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-background/5 skew-x-12 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 border border-background/10 rounded-full -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+      {/* Subtle Pattern */}
+      <div className="absolute inset-0 opacity-4 pointer-events-none bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-size-[32px_32px]" />
 
-      {/* Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-liminal-secondary/5 blur-3xl pointer-events-none" />
-
-      <div className="custom-container relative z-10">
+      <div className="custom-container relative z-10" ref={ref}>
         {/* Section Header */}
-        <div className="text-center mb-16 lg:mb-24 space-y-6">
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-px bg-white/20" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-white/60">
-              Our Impact
-            </span>
-            <div className="w-12 h-px bg-white/20" />
-          </div>
+        <SectionHeader
+          variant="manifesto"
+          badgeText="Our Impact"
+          title={
+            <>
+              Numbers That{" "}
+              <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                Speak
+              </span>
+            </>
+          }
+          description="Behind every number is a story of trust, dedication, and the relentless pursuit of design excellence."
+          className="mb-16"
+          titleClassName="text-background"
+          descriptionClassName="text-background/60 max-w-xl -mt-4"
+          badgeClassName="text-background/60"
+          badgeDotClassName="bg-background/30"
+        />
 
-          <h2
-            id="impact-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading tracking-tight leading-[1.05]"
-          >
-            Numbers That{" "}
-            <span className="italic font-serif font-light text-liminal-secondary">
-              Speak
-            </span>
-          </h2>
-
-          <p className="max-w-xl mx-auto text-white/50 text-[16px] sm:text-lg leading-relaxed font-light">
-            The measurable impact of our commitment to design excellence.
-          </p>
-        </div>
-
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 max-w-5xl mx-auto">
-          {metrics.map((metric, idx) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {stats.map((stat, index) => (
             <div
-              key={idx}
-              className="bg-[#141F0A] p-8 md:p-12 text-center space-y-4 group hover:bg-white/[0.03] transition-colors duration-700"
+              key={index}
+              className={cn(
+                "flex flex-col items-center text-center space-y-4 transition-all duration-1000",
+                inView
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10",
+              )}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Counter */}
-              <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tighter">
+              <div className="text-5xl lg:text-7xl font-heading font-bold tracking-tighter text-background">
                 {inView ? (
                   <CountUp
-                    end={metric.value}
+                    end={stat.value}
                     duration={2.5}
-                    delay={idx * 0.2}
-                    suffix={metric.suffix}
+                    suffix={stat.suffix}
                   />
                 ) : (
-                  <span>0{metric.suffix}</span>
+                  <span>0{stat.suffix}</span>
                 )}
               </div>
-
-              {/* Label */}
-              <h3 className="text-sm md:text-base font-semibold tracking-tight">
-                {metric.label}
-              </h3>
-
-              {/* Detail */}
-              <span className="text-[10px] uppercase tracking-[0.25em] text-white/30 font-bold block">
-                {metric.detail}
-              </span>
+              <div className="w-12 h-1 bg-liminal-secondary rounded-full" />
+              <div>
+                <p className="max-sm:text-sm font-semibold tracking-tight">
+                  {stat.label}
+                </p>
+                <span className="text-[10px] mt-1 uppercase tracking-[0.25em] text-white/30 font-bold block">
+                  {stat.detail}
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Attribution */}
-        <div className="mt-16 text-center">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-white/20 font-medium">
-            Data reflects our commitment since 2020 — Liminal Design Studio
-          </p>
+        {/* Studio Philosophy Line */}
+        <div
+          className={cn(
+            "mt-24 lg:mt-32 pt-16 border-t border-background/10 flex flex-col lg:flex-row items-center justify-between gap-12 transition-all duration-1000 delay-500",
+            inView ? "opacity-100" : "opacity-0",
+          )}
+        >
+          <h3 className="text-2xl lg:text-3xl font-heading font-light max-w-2xl text-center lg:text-left leading-tight italic">
+            &quot;We don&apos;t just design interiors; we curate the
+            intersection of lifestyle and architecture.&quot;
+          </h3>
+          <div className="hidden lg:block w-px h-24 bg-background/20" />
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-right space-y-2">
+            <span className="text-background/60 text-sm uppercase tracking-widest">
+              Est. 2012
+            </span>
+            <span className="text-background font-heading font-bold text-xl tracking-tight">
+              Liminal Architectural Collective
+            </span>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom Attribution */}
+      <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none">
+        <p className="text-[11px] uppercase tracking-[0.3em] text-background/20 font-medium">
+          Data reflects our commitment since 2020 — Liminal Design Studio
+        </p>
       </div>
     </section>
   );
