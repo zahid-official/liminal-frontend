@@ -3,6 +3,7 @@ import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
 import AboutImpact from "@/components/modules/public/about-us/AboutImpact";
 import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
+import AboutTeam from "@/components/modules/public/about-us/AboutTeam";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -35,11 +36,11 @@ const AboutUsPage = () => {
       {/* Our Design Principles */}
       <AboutApproach />
 
+      {/* The Team */}
+      <AboutTeam />
+
       {/* Impact in Numbers */}
       <AboutImpact />
-
-      {/* The Team */}
-      {/* <AboutTeam /> */}
 
       {/* Vision — Split Screen */}
       {/* <AboutVision /> */}

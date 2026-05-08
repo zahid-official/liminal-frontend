@@ -35,15 +35,8 @@ const AboutApproach = () => {
     <section
       id="design-principles"
       aria-labelledby="design-principles-heading"
-      className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
-      {/* Background Architectural Grid (Subtle) */}
-      {/* <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[100px_100px]" /> */}
-
-      {/* Decorative radial gradient for depth */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-liminal-secondary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-liminal-secondary/5 rounded-full blur-3xl pointer-events-none" />
-
       <div className="custom-container relative z-10">
         {/* Section Header */}
         <SectionHeader
