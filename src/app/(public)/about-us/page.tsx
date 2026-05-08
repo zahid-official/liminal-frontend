@@ -1,9 +1,9 @@
 import AboutApproach from "@/components/modules/public/about-us/AboutApproach";
 import AboutIdentity from "@/components/modules/public/about-us/AboutIdentity";
 import AboutImpact from "@/components/modules/public/about-us/AboutImpact";
-import AboutPhilosophy from "@/components/modules/public/about-us/AboutPhilosophy";
 import AboutStory from "@/components/modules/public/about-us/AboutStory";
 import AboutTeam from "@/components/modules/public/about-us/AboutTeam";
+import AboutVision from "@/components/modules/public/about-us/AboutVision";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 
@@ -30,8 +30,8 @@ const AboutUsPage = () => {
       {/* Who We Are — Editorial Manifesto */}
       <AboutIdentity />
 
-      {/* Design Philosophy */}
-      <AboutPhilosophy />
+      {/* Our Vision*/}
+      <AboutVision />
 
       {/* Our Design Principles */}
       <AboutApproach />
@@ -41,9 +41,6 @@ const AboutUsPage = () => {
 
       {/* Impact in Numbers */}
       <AboutImpact />
-
-      {/* Vision — Split Screen */}
-      {/* <AboutVision /> */}
 
       {/* Call to Action */}
       {/* <AboutCTA /> */}

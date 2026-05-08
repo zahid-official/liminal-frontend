@@ -1,93 +1,85 @@
+import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
-// AboutVision Component — Split-Screen Dark/Light
+// AboutVision Component
 const AboutVision = () => {
   return (
     <section
-      id="about-vision"
+      id="vision"
       aria-labelledby="vision-heading"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden bg-[#141F0A] text-background"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px] lg:min-h-[700px]">
-        {/* Left: Dark Panel — Vision Statement */}
-        <div className="bg-[#141F0A] text-white px-8 md:px-16 lg:px-20 xl:px-28 py-20 md:py-28 lg:py-32 flex items-center relative overflow-hidden">
-          {/* Subtle Pattern */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-[size:32px_32px]" />
+      {/* Subtle Blueprint Grid Overlay */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-size-[32px_32px]" />
 
-          <div className="relative z-10 space-y-10 max-w-lg">
-            {/* Badge */}
-            <div className="flex items-center gap-5">
-              <div className="w-14 h-px bg-white/20 shrink-0" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-white/50">
-                Our Vision
-              </span>
-            </div>
+      {/* Design Vision Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Left: Full-Height Image */}
+        <div className="relative aspect-square lg:aspect-auto overflow-hidden group">
+          <Image
+            src="/assets/about-us/vision_man.png"
+            alt="Liminal Design Vision — Crafting Timeless Spaces"
+            fill
+            className="object-cover transition-transform duration-1500 group-hover:scale-105"
+          />
+          {/* Gradient overlay for depth */}
+          <div className="absolute inset-0 bg-linear-to-r from-transparent via-transparent to-[#141F0A]/60 hidden lg:block" />
+          <div className="absolute inset-0 bg-linear-to-t from-[#141F0A]/80 to-transparent lg:hidden" />
 
-            <h2
-              id="vision-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight leading-[1.1]"
-            >
-              Shaping the Future of{" "}
-              <span className="italic font-serif font-light text-liminal-secondary">
-                Living
-              </span>
-            </h2>
+          {/* Corner Markers */}
+          <div className="absolute top-8 left-8 w-8 h-8 border-t border-l border-background/20" />
+          <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-background/20" />
+        </div>
 
-            <div className="space-y-6 text-white/60 leading-relaxed font-light">
+        {/* Right: Content — Vision */}
+        <div className="relative z-10 flex items-center justify-center py-20 md:py-28 lg:py-32">
+          <div className="space-y-12 max-w-2xl">
+            <SectionHeader
+              badgeText="Our Vision"
+              headingId="vision-heading"
+              title={
+                <>
+                  Shaping the{" "}
+                  <span className="italic font-serif font-light underline underline-offset-8 decoration-1">
+                    Future of Living
+                  </span>
+                </>
+              }
+              variant="inline"
+              badgeClassName="text-background/60"
+              badgeDotClassName="bg-background/20"
+              titleClassName="text-background leading-[1.1]"
+            />
+
+            {/* Vision Statement */}
+            <div className="space-y-6 text-background/60 leading-relaxed font-light">
               <p>
-                We envision a world where every interior space is a catalyst for
-                well-being — where design elevates the human experience beyond
-                function into the realm of feeling and meaning.
+                Our vision is dedicated to shaping the future of living through
+                design that prioritizes human well-being and emotional
+                resonance. We believe that every interior should serve as a
+                catalyst for a better life, elevating daily rituals into moments
+                of meaning.
               </p>
 
               <p>
-                Our ambition extends beyond individual projects. We seek to
-                redefine the standard of interior design in South Asia, proving
-                that world-class spatial design can emerge from Dhaka and
-                resonate globally.
+                We are committed to redefining spatial standards across South
+                Asia and beyond. By blending innovation with soulful
+                craftsmanship, we ensure that the spaces we create today become
+                the enduring foundations for how we live, work, and thrive
+                tomorrow.
               </p>
             </div>
 
             {/* Vision Quote */}
-            <div className="relative pt-8">
-              <div className="w-12 h-px bg-liminal-secondary/40 mb-6" />
-              <blockquote className="text-xl md:text-2xl italic font-serif text-white/90 leading-relaxed">
-                &quot;Every space has a threshold — a liminal moment — where
-                possibility meets purpose.&quot;
+            <div className="relative pt-8 max-w-xl">
+              <div className="w-12 h-px bg-liminal-secondary/50 mb-6" />
+              <blockquote className="text-xl md:text-2xl italic font-serif text-background leading-relaxed">
+                &quot;To shape the future of living is to design the silent
+                rhythms of the soul, creating sanctuaries where life truly
+                begins.&quot;
               </blockquote>
-              <span className="block mt-4 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">
-                — The Liminal Manifesto
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Image Panel */}
-        <div className="relative group min-h-[400px] lg:min-h-0">
-          <Image
-            src="/assets/about-us/vision-1.png"
-            alt="Liminal Vision — The future of interior design"
-            fill
-            className="object-cover transition-transform duration-1000 group-hover:scale-105"
-          />
-
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#141F0A]/30 to-transparent lg:block hidden" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-
-          {/* Center Divider Element — Desktop Only */}
-          <div className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
-            <div className="w-6 h-6 rotate-45 bg-liminal-secondary border-2 border-[#141F0A]" />
-          </div>
-
-          {/* Bottom Right Tag */}
-          <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
-            <div className="bg-black/30 backdrop-blur-sm border border-white/10 px-5 py-3 space-y-1">
-              <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-white/40 block">
-                Horizon
-              </span>
-              <span className="text-sm font-semibold text-white tracking-tight">
-                Design Without Limits
+              <span className="block mt-4 text-[10px] uppercase tracking-[0.3em] text-background/30 font-bold">
+                The Liminal Manifesto
               </span>
             </div>
           </div>
