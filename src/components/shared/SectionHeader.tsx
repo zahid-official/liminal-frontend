@@ -1,8 +1,14 @@
-  import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 import SectionBadge from "./SectionBadge";
 
-type SectionHeaderVariant = "editorial" | "centered" | "inline" | "split" | "simple";
+type SectionHeaderVariant =
+  | "editorial"
+  | "centered"
+  | "inline"
+  | "split"
+  | "manifesto"
+  | "simple";
 
 interface SectionHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -15,6 +21,8 @@ interface SectionHeaderProps extends Omit<
   headingId?: string;
   badgeClassName?: string;
   badgeDotClassName?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
 /**
@@ -35,6 +43,8 @@ const SectionHeader = ({
   headingId,
   badgeClassName,
   badgeDotClassName,
+  titleClassName,
+  descriptionClassName,
   className,
   ...props
 }: SectionHeaderProps) => {
@@ -68,12 +78,20 @@ const SectionHeader = ({
         <div className="lg:pl-16 relative z-10 w-full xl:w-2/3">
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+            className={cn(
+              "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+              titleClassName,
+            )}
           >
             {title}
           </h2>
           {description && (
-            <p className="max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[16px] sm:text-lg leading-relaxed mt-7 font-light">
+            <p
+              className={cn(
+                "max-w-2xl mx-auto lg:mx-0 text-muted-foreground text-[16px] sm:text-lg leading-relaxed mt-7 font-light",
+                descriptionClassName,
+              )}
+            >
               {description}
             </p>
           )}
@@ -101,12 +119,79 @@ const SectionHeader = ({
         )}
         <h2
           id={headingId}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+            titleClassName,
+          )}
         >
           {title}
         </h2>
         {description && (
-          <p className="max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+          <p
+            className={cn(
+              "max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+              descriptionClassName,
+            )}
+          >
+            {description}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Manifesto Variant (Centered with lines)
+  if (variant === "manifesto") {
+    return (
+      <div
+        className={cn(
+          "flex flex-col items-center text-center max-w-4xl mx-auto space-y-7",
+          className,
+        )}
+        {...props}
+      >
+        {badgeText && (
+          <div className="flex items-center justify-center gap-4">
+            <div
+              className={cn(
+                "w-12 h-px bg-liminal-secondary/40",
+                badgeDotClassName,
+              )}
+            />
+            <span
+              className={cn(
+                "text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary",
+                badgeClassName,
+              )}
+            >
+              {badgeText}
+            </span>
+            <div
+              className={cn(
+                "w-12 h-px bg-liminal-secondary/40",
+                badgeDotClassName,
+              )}
+            />
+          </div>
+        )}
+
+        <h2
+          id={headingId}
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+            titleClassName,
+          )}
+        >
+          {title}
+        </h2>
+
+        {description && (
+          <p
+            className={cn(
+              "text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light",
+              descriptionClassName,
+            )}
+          >
             {description}
           </p>
         )}
@@ -133,12 +218,20 @@ const SectionHeader = ({
         )}
         <h2
           id={headingId}
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading"
+          className={cn(
+            "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading",
+            titleClassName,
+          )}
         >
           {title}
         </h2>
         {description && (
-          <p className="max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+          <p
+            className={cn(
+              "max-w-2xl text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+              descriptionClassName,
+            )}
+          >
             {description}
           </p>
         )}
@@ -160,7 +253,10 @@ const SectionHeader = ({
           {badgeText && (
             <div className="flex items-center justify-center lg:justify-start gap-5">
               <div
-                className={cn("w-14 h-px bg-liminal-secondary shrink-0", badgeDotClassName)}
+                className={cn(
+                  "w-14 h-px bg-liminal-secondary shrink-0",
+                  badgeDotClassName,
+                )}
               />
               <span
                 className={cn(
@@ -174,14 +270,22 @@ const SectionHeader = ({
           )}
           <h2
             id={headingId}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+            className={cn(
+              "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+              titleClassName,
+            )}
           >
             {title}
           </h2>
         </div>
         <div className="lg:col-span-5 text-center lg:text-left">
           {description && (
-            <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light">
+            <p
+              className={cn(
+                "text-muted-foreground text-[16px] sm:text-lg leading-relaxed font-light",
+                descriptionClassName,
+              )}
+            >
               {description}
             </p>
           )}
@@ -221,13 +325,21 @@ const SectionHeader = ({
 
       <h2
         id={headingId}
-        className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading"
+        className={cn(
+          "text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight font-heading",
+          titleClassName,
+        )}
       >
         {title}
       </h2>
 
       {description && (
-        <p className="text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light">
+        <p
+          className={cn(
+            "text-muted-foreground text-[16px] sm:text-lg leading-relaxed max-w-2xl font-light",
+            descriptionClassName,
+          )}
+        >
           {description}
         </p>
       )}

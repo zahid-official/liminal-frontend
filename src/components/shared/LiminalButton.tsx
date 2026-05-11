@@ -1,5 +1,5 @@
 import React from "react";
-import { LucideIcon, ArrowUpRight } from "lucide-react";
+import { LucideIcon, ArrowUpRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,6 +10,7 @@ interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconClassName?: string;
   showIcon?: boolean;
   animateIcon?: boolean;
+  isLoading?: boolean;
 }
 
 const LiminalButton = ({
@@ -20,11 +21,12 @@ const LiminalButton = ({
   iconClassName,
   showIcon = true,
   animateIcon = true,
+  isLoading = false,
+  disabled,
   ...props
 }: LiminalButtonProps) => {
   const variants = {
-    primary:
-      "bg-liminal-secondary text-white shadow-xl shadow-liminal-secondary/10 hover:shadow-2xl hover:shadow-liminal-secondary/40",
+    primary: "bg-liminal-secondary text-white",
     outline:
       "bg-transparent border border-border/60 text-foreground hover:bg-zinc-50",
     ghost: "bg-transparent text-foreground hover:bg-zinc-50",
@@ -32,31 +34,42 @@ const LiminalButton = ({
 
   return (
     <button
+      disabled={disabled || isLoading}
       className={cn(
-        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer",
-        "px-7 py-4",
+        "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer transform-gpu transform-[translateZ(0)] will-change-transform disabled:opacity-70 disabled:cursor-not-allowed",
+        "px-7 min-h-12",
         variants[variant],
+        variant === "primary" && [
+          !className?.includes("shadow") &&
+            "shadow-xl shadow-liminal-secondary/10",
+          !className?.includes("shadow") &&
+            "hover:shadow-2xl hover:shadow-liminal-secondary/40",
+        ],
         className,
       )}
       {...props}
     >
-      <span className="relative z-10 flex items-center gap-3">
-        <span className="font-semibold text-[15px] tracking-[0.05em] transition-colors duration-500">
+      <span className="relative z-10 flex items-center justify-center gap-3 h-full transform-[translateZ(0)] will-change-transform">
+        <span className="font-semibold text-[15px] tracking-[0.05em] transition-colors duration-500 leading-none">
           {children}
         </span>
-        {showIcon && Icon && (
-          <Icon
-            size={16}
-            strokeWidth={2}
-            className={cn(
-              "size-4 transition-transform duration-400 transform-gpu",
-              animateIcon && "group-hover:rotate-45",
-              iconClassName,
-            )}
-          />
+        {isLoading ? (
+          <Loader2 className="size-4 animate-spin" />
+        ) : (
+          showIcon && Icon && (
+            <Icon
+              size={16}
+              strokeWidth={2}
+              className={cn(
+                "size-4 transition-transform duration-400 transform-gpu",
+                animateIcon && "group-hover:rotate-45",
+                iconClassName,
+              )}
+            />
+          )
         )}
       </span>
-      {variant === "primary" && (
+      {variant === "primary" && !isLoading && (
         <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
       )}
     </button>
