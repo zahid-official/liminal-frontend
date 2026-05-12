@@ -21,7 +21,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         {/* Pill-Stretching Background */}
         <span className="absolute right-1.5 top-1.5 bottom-1.5 w-9 bg-liminal-secondary rounded-full transition-all duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-[calc(100%-12px)] z-0"></span>
 
-        <span className="relative z-10 font-bold text-foreground group-hover:text-white transition-colors duration-500">
+        <span className="relative z-10 font-semibold text-foreground group-hover:text-white transition-colors duration-500">
           {children}
         </span>
 
