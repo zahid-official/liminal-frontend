@@ -1,3 +1,5 @@
+import HomeHero from "@/components/modules/public/home/HomeHero";
+import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
 import { Metadata } from "next";
 
 // Metadata for the Home Page
@@ -9,7 +11,15 @@ export const metadata: Metadata = {
 
 // HomePage Component
 const HomePage = () => {
-  return <div></div>;
+  return (
+    <main>
+      {/* Home Hero */}
+      <HomeHero />
+
+      {/* Home Manifesto */}
+      <HomeManifesto />
+    </main>
+  );
 };
 
 export default HomePage;
