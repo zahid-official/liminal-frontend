@@ -8,14 +8,14 @@ const HomeHero = () => {
   return (
     <section
       id="hero"
-      aria-label="Hero — Liminal Interior Design Studio"
+      aria-label="Hero | Liminal Interior Design Studio"
       className="min-h-screen flex flex-col justify-between relative overflow-hidden bg-foreground"
     >
       {/* Background Image with Slow Zoom */}
       <div className="absolute inset-0 z-0 animate-slow-zoom overflow-hidden will-change-transform transform-gpu">
         <Image
           src="/assets/home/hero-image.jpg"
-          alt="Liminal — Ultra-modern symmetrical luxury villa interior with travertine and walnut wood"
+          alt="Liminal: Ultra-modern symmetrical luxury villa interior with travertine and walnut wood"
           fill
           priority
           className="object-cover"
