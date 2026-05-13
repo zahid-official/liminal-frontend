@@ -101,55 +101,57 @@ const HomeFeaturedProjects = () => {
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                {/* Overlay: Cinematic Multi-layered Gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-foreground via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-1000" />
-                <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
               </div>
+              {/* Project Content: Editorial Spread */}
+              <div className="absolute inset-0 z-10 flex p-6 md:p-8">
+                {/* Left Anchor: Vertical Line & Metadata */}
+                <div className="flex flex-col items-center gap-6 h-full border-l border-background/20 group-hover:border-background/60 transition-colors duration-700 pl-4 md:pl-6">
+                  <span className="text-xl font-heading font-light text-background/30 group-hover:text-background/80 transition-colors duration-700">
+                    {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                  </span>
+                  <div className="flex-1 flex items-center justify-center">
+                    <p className="[writing-mode:vertical-lr] rotate-180 text-[10px] uppercase tracking-[0.4em] font-bold text-background/40 group-hover:text-background/90 transition-all duration-700 whitespace-nowrap">
+                      {project.category}
+                    </p>
+                  </div>
+                </div>
 
-              {/* Project Content: Architectural Frame */}
-              <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 md:p-8">
-                {/* Est Year */}
-                <div className="flex justify-end items-start">
-                  <div className="flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-background/60">
-                      Est.
+                {/* Right Content: Title & Action (Asymmetrical) */}
+                <div className="flex-1 flex flex-col justify-between items-end text-right">
+                  {/* Top Right: Year */}
+                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 translate-y-[-10px] group-hover:translate-y-0">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-background/60 block">
+                      Archive
                     </span>
-                    <span className="text-xs font-medium text-background tracking-widest">
+                    <span className="text-sm font-medium text-background tracking-widest">
                       {project.year}
                     </span>
                   </div>
-                </div>
 
-                {/* Title, Category & Interaction */}
-                <div className="relative group/content">
-                  {/* Sliding Mask Effect Background */}
-                  <div className="absolute -inset-x-8 -bottom-8 h-0 bg-background/5 backdrop-blur-md group-hover:h-40 transition-all duration-700 ease-out -z-10" />
-
-                  <div className="space-y-4">
-                    {/* Editorial Line */}
-                    <div className="h-px w-0 bg-background/60 group-hover:w-16 transition-all duration-1000 ease-out" />
-
-                    <div className="space-y-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700">
-                      <p className="text-background/70 text-xs font-serif italic tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                        {project.category}
-                      </p>
-                      <h3 className="text-2xl md:text-3xl font-bold text-background leading-tight font-heading group-hover:tracking-tight transition-all duration-700">
-                        {project.title}
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-300">
-                      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-background  group-hover/details">
-                        View Project
-                      </span>
-                      <ArrowUpRight className="size-3.5 text-background transition-transform group-hover/details:rotate-45" />
+                  {/* Bottom Right: Title & CTA */}
+                  <div className="space-y-5 transform translate-x-4 group-hover:translate-x-0 transition-transform duration-700 ease-out">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-background leading-[1.1] font-heading max-w-xs">
+                      {project.title}
+                    </h3>
+                    
+                    <div className="flex flex-col items-end gap-3 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-300">
+                      <div className="h-px w-12 bg-background/40 group-hover:w-20 transition-all duration-1000" />
+                      <div className="flex items-center gap-3 group/details cursor-pointer">
+                        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+                          View Project
+                        </span>
+                        <div className="size-8 rounded-full border border-background/20 flex items-center justify-center transition-all duration-500 group-hover/details:bg-background group-hover/details:text-foreground">
+                          <ArrowUpRight className="size-3.5 transition-transform duration-500 group-hover/details:rotate-45" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Inner Border Frame (Reveals on hover) */}
-              <div className="absolute inset-0 border border-background/0 group-hover:border-background/10 transition-all duration-700 pointer-events-none z-20 m-4" />
+              {/* Lateral Cinematic Gradient */}
+              <div className="absolute inset-0 bg-linear-to-r from-foreground/80 via-foreground/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none" />
+              <div className="absolute inset-0 border border-background/0 group-hover:border-background/5 transition-all duration-1000 pointer-events-none z-20 m-4" />
             </Link>
           ))}
         </div>
