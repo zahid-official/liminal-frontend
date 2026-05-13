@@ -1,6 +1,7 @@
 import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -100,40 +101,55 @@ const HomeFeaturedProjects = () => {
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                {/* Overlay: Cinematic Gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+                {/* Overlay: Cinematic Multi-layered Gradient */}
+                <div className="absolute inset-0 bg-linear-to-t from-foreground via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-1000" />
+                <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
               </div>
 
-              {/* Project Content */}
-              <div className="relative z-10 p-6 md:p-10 transform transition-transform duration-700 group-hover:-translate-y-2.5">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/60">
+              {/* Project Content: Architectural Frame */}
+              <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 md:p-8">
+                {/* Est Year */}
+                <div className="flex justify-end items-start">
+                  <div className="flex flex-col items-end gap-1 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-background/60">
+                      Est.
+                    </span>
+                    <span className="text-xs font-medium text-background tracking-widest">
                       {project.year}
                     </span>
-                    <div className="w-8 h-px bg-white/20" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
-                      {project.category}
-                    </span>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-white leading-tight">
-                    {project.title}
-                  </h3>
                 </div>
 
-                {/* Hidden Reveal: View Project Label */}
-                <div className="mt-6 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-white">
-                    View Project
-                  </span>
-                  <div className="size-8 rounded-full border border-white/20 flex items-center justify-center">
-                    <div className="size-1.5 rounded-full bg-liminal-secondary animate-pulse" />
+                {/* Title, Category & Interaction */}
+                <div className="relative group/content">
+                  {/* Sliding Mask Effect Background */}
+                  <div className="absolute -inset-x-8 -bottom-8 h-0 bg-background/5 backdrop-blur-md group-hover:h-40 transition-all duration-700 ease-out -z-10" />
+
+                  <div className="space-y-4">
+                    {/* Editorial Line */}
+                    <div className="h-px w-0 bg-background/60 group-hover:w-16 transition-all duration-1000 ease-out" />
+
+                    <div className="space-y-1 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700">
+                      <p className="text-background/70 text-xs font-serif italic tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                        {project.category}
+                      </p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-background leading-tight font-heading group-hover:tracking-tight transition-all duration-700">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-300">
+                      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-background  group-hover/details">
+                        View Project
+                      </span>
+                      <ArrowUpRight className="size-3.5 text-background transition-transform group-hover/details:rotate-45" />
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Subtle Noise Texture on Overlay */}
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay z-10 bg-noise" />
+              {/* Inner Border Frame (Reveals on hover) */}
+              <div className="absolute inset-0 border border-background/0 group-hover:border-background/10 transition-all duration-700 pointer-events-none z-20 m-4" />
             </Link>
           ))}
         </div>
@@ -170,7 +186,10 @@ const HomeFeaturedProjects = () => {
             </div>
 
             <Link href="/projects" className="w-full sm:w-auto">
-              <LiminalButton variant="outline" className="w-full sm:w-auto px-8 h-14 border-foreground/10 hover:border-foreground transition-all hover:tracking-widest group shadow-2xl shadow-foreground/5">
+              <LiminalButton
+                variant="outline"
+                className="w-full sm:w-auto px-8 h-14 border-foreground/10 hover:border-foreground transition-all hover:tracking-widest group shadow-2xl shadow-foreground/5"
+              >
                 <span className="relative z-10">View Full Portfolio</span>
               </LiminalButton>
             </Link>
