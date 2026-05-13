@@ -1,3 +1,4 @@
+import HomeFeaturedProjects from "@/components/modules/public/home/HomeFeaturedProjects";
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
 import { Metadata } from "next";
@@ -18,6 +19,9 @@ const HomePage = () => {
 
       {/* Home Manifesto */}
       <HomeManifesto />
+
+      {/* Home Featured Projects */}
+      <HomeFeaturedProjects />
     </main>
   );
 };
