@@ -88,7 +88,7 @@ const HomeFeaturedProjects = () => {
               key={index}
               href={`/projects/${project.slug}`}
               className={cn(
-                "group relative overflow-hidden rounded bg-zinc-100 flex flex-col justify-end",
+                "group relative overflow-hidden rounded bg-zinc-100 flex flex-col justify-end isolate",
                 project.span,
               )}
             >
@@ -98,76 +98,58 @@ const HomeFeaturedProjects = () => {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                  className="object-cover transition-transform duration-1000 ease-out scale-100 group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                {/* Overlay: Narrative Depth Gradient */}
-                <div className="absolute inset-0 bg-linear-to-r from-foreground/80 via-foreground/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-1000" />
+                {/* Overlay: Cinematic Multi-layered Gradient */}
+                <div className="absolute inset-0 bg-linear-to-t from-foreground via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-1000" />
                 <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
               </div>
 
-              {/* Project Content: Narrative Timeline */}
-              <div className="absolute inset-0 z-10 flex p-6 md:p-8">
-                {/* Left Side: Information Tracks */}
-                <div className="flex-1 flex flex-col justify-end">
-                  {/* Track 1: Category */}
-                  <div className="overflow-hidden">
-                    <div className="transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out">
-                      <p className="text-xs font-medium text-background tracking-widest uppercase">
+              {/* Project Content: Architectural Frame */}
+              <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 md:p-8">
+                {/* Top Right: Year */}
+                <div className="opacity-0 text-right group-hover:opacity-100 transition-all duration-700 delay-100 translate-y-2.5 group-hover:translate-y-0">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-background/60 block">
+                    Archive
+                  </span>
+                  <span className="text-sm font-medium text-background tracking-widest">
+                    {project.year}
+                  </span>
+                </div>
+
+                {/* Title, Category & Interaction */}
+                <div className="relative group/content">
+                  {/* Sliding Mask Effect Background */}
+                  <div className="absolute -inset-x-8 -bottom-8 h-0 bg-background/5 backdrop-blur-md group-hover:h-40 transition-all duration-700 ease-out -z-10" />
+
+                  <div className="space-y-3">
+                    {/* Editorial Line */}
+                    <div className="h-px w-0 bg-background/60 group-hover:w-16 transition-all duration-1000 ease-out" />
+
+                    {/* Title, Category */}
+                    <div className="space-y-1 transform translate-y-9 group-hover:translate-y-0 transition-transform duration-700 transform-gpu backface-hidden will-change-transform">
+                      <p className="text-background/70 text-xs font-serif italic tracking-wide">
                         {project.category}
                       </p>
-                    </div>
-                  </div>
-
-                  {/* Track 2: Title */}
-                  <div className="overflow-hidden mb-5 mt-3">
-                    <div className="transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out delay-75">
-                      <h3 className="text-3xl font-bold text-background leading-none font-heading tracking-tighter uppercase">
+                      <h3 className="text-2xl md:text-3xl font-bold text-background leading-tight font-heading transform-gpu backface-hidden antialiased">
                         {project.title}
                       </h3>
                     </div>
-                  </div>
 
-                  {/* Track 3: Action */}
-                  <div className="overflow-hidden">
-                    <div className="flex items-center gap-4 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out delay-150">
-                      <div className="flex items-center gap-2 group/action cursor-pointer">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-background">
-                          View Details
-                        </span>
-                        <ArrowUpRight className="size-3.5 text-background transition-transform group-hover/action:rotate-45" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Side: Timeline Axis */}
-                <div className="w-12 flex flex-col items-center">
-                  <div className="h-0 group-hover:h-full w-px bg-background/20 transition-all duration-1000 ease-in-out relative">
-                    {/* Year Marker */}
-                    <div className="absolute top-0 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                      <span className="text-[9px] font-mono text-background/40 uppercase block mb-1">
-                        Year
+                    <div className="inline-flex items-center gap-1 group/details cursor-pointer opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 group-hover:duration-700 group-hover:delay-300">
+                      <span className="relative text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+                        View Project
+                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-background transition-all duration-300 ease-out group-hover/details:w-full" />
                       </span>
-                      <span className="text-xs font-bold text-background">
-                        {project.year}
-                      </span>
-                    </div>
-                    {/* Index Marker */}
-                    <div className="absolute bottom-0 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-500">
-                      <span className="text-[9px] font-mono text-background/40 uppercase block mb-1">
-                        Ref
-                      </span>
-                      <span className="text-sm font-heading text-background">
-                        {index + 1 < 10 ? `0${index + 1}` : index + 1}
-                      </span>
+                      <ArrowUpRight className="size-4 text-background transition-transform duration-500 group-hover/details:rotate-45" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Inner Border Frame */}
-              <div className="absolute inset-0 border border-background/0 group-hover:border-background/10 transition-all duration-1000 pointer-events-none z-20 m-4" />
+              {/* Inner Border Frame (Reveals on hover) */}
+              <div className="absolute inset-0 border border-background/20 pointer-events-none z-20 m-4" />
             </Link>
           ))}
         </div>
