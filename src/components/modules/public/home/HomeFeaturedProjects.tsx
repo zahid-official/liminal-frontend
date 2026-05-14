@@ -98,12 +98,14 @@ const HomeFeaturedProjects = () => {
                   src={project.image}
                   alt={project.title}
                   fill
+                  quality={100}
+                  priority={index === 0}
                   className="object-cover transition-transform duration-1000 ease-out scale-100 group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes={project.span.includes("col-span-8") ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
                 />
-                {/* Overlay: Cinematic Multi-layered Gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-foreground via-foreground/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-1000" />
-                <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-40 transition-opacity duration-1000" />
+                {/* Overlay: Minimalist Cinematic Gradient */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-25 group-hover:opacity-50 transition-opacity duration-1000" />
+                <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-20 transition-opacity duration-1000" />
               </div>
 
               {/* Project Content: Architectural Frame */}
@@ -188,7 +190,7 @@ const HomeFeaturedProjects = () => {
             <Link href="/projects" className="w-full sm:w-auto">
               <LiminalButton
                 variant="outline"
-                className="w-full sm:w-auto px-8 h-14 border-foreground/10 hover:border-foreground transition-all hover:tracking-widest group shadow-2xl shadow-foreground/5"
+                className="w-full sm:w-auto px-8 h-14 border-foreground/10 hover:border-foreground/30 transition-all hover:tracking-widest group shadow-2xl shadow-foreground/5"
               >
                 <span className="relative z-10">View Full Portfolio</span>
               </LiminalButton>

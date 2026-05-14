@@ -25,7 +25,9 @@ const HomeManifesto = () => {
                 src="/assets/home/home-manifesto-interior-refined.png"
                 alt="Liminal Studio: Luxury Minimalist Living Room Design"
                 fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                quality={100}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 transform-gpu will-change-transform backface-hidden"
                 priority
               />
 

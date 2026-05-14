@@ -50,7 +50,9 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 will-change-transform"
+          quality={100}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
         />
 
         {/* Hover Overlay */}
