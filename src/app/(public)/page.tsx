@@ -22,37 +22,37 @@ export const metadata: Metadata = {
 const HomePage = () => {
   return (
     <main>
-      {/* Hero — Full-screen cinematic introduction */}
+      {/* 1. Hero — Cinematic first impression (dark) */}
       <HomeHero />
 
-      {/* Studio — Who we are, with metrics */}
+      {/* 2. Studio — Who we are (white) — Split layout */}
       <HomeStudio />
 
-      {/* Projects — Proof of work, early in the narrative */}
-      <HomeProjects />
-
-      {/* Philosophy — Dark immersive anchor section */}
-      <HomePhilosophy />
-
-      {/* Services — Our disciplines & expertise */}
+      {/* 3. Services — What we do (zinc) — 3-column cards */}
       <HomeServices />
 
-      {/* Manifesto — Design philosophy with imagery */}
-      <HomeManifesto />
+      {/* 4. Projects — Our work (white) — Hero banner + 2 cards */}
+      <HomeProjects />
 
-      {/* Testimonials — Social proof & trust */}
+      {/* 5. Philosophy — What we believe (dark) — Immersive pillars */}
+      <HomePhilosophy />
+
+      {/* 6. Testimonials — Client trust (zinc) — Single centered quote */}
       <HomeTestimonials />
 
-      {/* Journal — Thought leadership & insights */}
+      {/* 7. Journal — Our insights (white) — 2-column articles */}
       <HomeJournal />
 
-      {/* FAQ — Address concerns before conversion */}
+      {/* 8. Manifesto — Our statement (zinc) — Pure typography */}
+      <HomeManifesto />
+
+      {/* 9. FAQ — Questions answered (white) — Split accordion */}
       <HomeFAQ />
 
-      {/* Newsletter — Capture interest */}
+      {/* 10. Newsletter — Stay connected (zinc) — Centered compact */}
       <HomeNewsletter />
 
-      {/* CTA — Cinematic finale with background imagery */}
+      {/* 11. CTA — Let's begin (dark) — Cinematic finale */}
       <HomeCTA />
     </main>
   );

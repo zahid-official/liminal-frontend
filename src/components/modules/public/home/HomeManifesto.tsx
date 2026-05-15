@@ -1,96 +1,48 @@
-import SectionHeader from "@/components/shared/SectionHeader";
-import Image from "next/image";
-
-// HomeManifesto Component
+// HomeManifesto Component — Pure Typography
 const HomeManifesto = () => {
   return (
-    <section
-      id="manifesto"
-      aria-labelledby="manifesto-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
-    >
-      <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          {/* Left: Atmospheric Image */}
-          <div className="lg:col-span-7 relative">
-            <div className="relative group/manifesto">
-              {/* Main Image */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-2xl">
-                <Image
-                  src="/assets/home/home-manifesto-premium.png"
-                  alt="Liminal Design Manifesto — Spaces that speak before words do"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  quality={90}
-                  className="object-cover transition-transform duration-[1500ms] group-hover/manifesto:scale-105 will-change-transform transform-gpu"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-foreground/15 to-transparent" />
-              </div>
+    <section id="manifesto" aria-labelledby="manifesto-heading" className="py-20 md:py-28 lg:py-36 relative overflow-hidden bg-zinc-50/80">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28rem] md:text-[40rem] lg:text-[55rem] font-heading font-bold text-liminal-secondary/[0.03] select-none pointer-events-none leading-none">L</div>
 
-              {/* Architectural Corner Brackets */}
-              <div className="absolute -top-4 -left-4 w-10 h-10 border-t-2 border-l-2 border-liminal-secondary/25 group-hover/manifesto:-translate-x-1 group-hover/manifesto:-translate-y-1 group-hover/manifesto:border-liminal-secondary/50 transition-all duration-700" />
-              <div className="absolute -bottom-4 -right-4 w-10 h-10 border-b-2 border-r-2 border-liminal-secondary/25 group-hover/manifesto:translate-x-1 group-hover/manifesto:translate-y-1 group-hover/manifesto:border-liminal-secondary/50 transition-all duration-700" />
-
-              {/* Floating Label */}
-              <div className="absolute -bottom-4 left-8 bg-background px-5 py-2 border border-border/50 shadow-md">
-                <span className="text-[10px] font-mono tracking-[0.4em] text-liminal-secondary uppercase">
-                  The Liminal Way
-                </span>
-              </div>
-            </div>
+      <div className="custom-container relative z-10">
+        <div className="max-w-3xl mx-auto text-center space-y-10">
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-px bg-liminal-secondary/40" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-liminal-secondary">Design Manifesto</span>
+            <div className="w-12 h-px bg-liminal-secondary/40" />
           </div>
 
-          {/* Right: Manifesto Content */}
-          <div className="lg:col-span-5 space-y-8">
-            <SectionHeader
-              variant="inline"
-              badgeText="Design Manifesto"
-              headingId="manifesto-heading"
-              title={
-                <>
-                  The Silent{" "}
-                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                    Language
-                  </span>{" "}
-                  of Space
-                </>
-              }
-            />
+          <h2 id="manifesto-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight font-heading">
+            Design is not decoration.{" "}<span className="italic font-serif font-light text-liminal-secondary">It is the silent language</span>{" "}of space, light, and intention.
+          </h2>
 
-            <div className="space-y-5 text-muted-foreground leading-relaxed font-light text-center lg:text-left">
-              <p>
-                Design is not decoration. It is the silent language of space,
-                light, and intention. At Liminal, we believe every space holds a
-                story waiting to be told.
-              </p>
+          <div className="max-w-2xl mx-auto space-y-5">
+            <p className="text-lg text-muted-foreground leading-relaxed font-light">
+              At Liminal, we believe every space holds a story waiting to be told. Our role is not to impose style, but to reveal the inherent character of a place — to listen to the light, understand the materials, and honour the lives that unfold within.
+            </p>
+            <p className="text-muted-foreground leading-relaxed font-light">
+              We reject the disposable. We pursue design that ages with grace, grows more beautiful with time, and resonates with something deeper than aesthetics alone.
+            </p>
+          </div>
 
-              <p>
-                Our role is not to impose style, but to reveal the inherent
-                character of a place — to listen to the light, understand the
-                materials, and honour the lives that will unfold within.
-              </p>
-
-              {/* Manifesto Pull Quote */}
-              <blockquote className="border-l-2 border-liminal-secondary/40 pl-5 py-3 italic text-foreground/80 font-serif text-lg">
-                &quot;We reject the disposable. We reject the superficial.
-                Instead, we pursue design that ages with grace.&quot;
-              </blockquote>
-
-              <p>
-                Every material we choose, every proportion we define, every
-                threshold we compose is an act of care — a commitment to the
-                people who will call these spaces home.
-              </p>
+          <blockquote className="max-w-xl mx-auto relative py-8">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 text-6xl text-liminal-secondary/50 font-serif leading-none select-none pointer-events-none">&ldquo;</div>
+            <p className="text-xl md:text-2xl italic font-serif text-foreground/85 leading-relaxed">
+              &quot;The best design is the one you never notice — it simply feels right, like coming home to a place you&apos;ve always known.&quot;
+            </p>
+            <div className="flex items-center justify-center gap-3 mt-6">
+              <div className="w-8 h-px bg-liminal-secondary/50" />
+              <div className="w-1.5 h-1.5 rotate-45 border border-liminal-secondary/70" />
+              <div className="w-8 h-px bg-liminal-secondary/50" />
             </div>
+          </blockquote>
 
-            {/* Spec Bar */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground/50 font-bold pt-2">
-              <span>Material Honesty</span>
-              <div className="w-px h-4 bg-border hidden sm:block" />
-              <span>Context-First</span>
-              <div className="w-px h-4 bg-border hidden sm:block" />
-              <span>Timeless Craft</span>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-[10px] uppercase tracking-[0.25em] text-muted-foreground/45 font-bold">
+            <span>Material Honesty</span>
+            <div className="w-px h-4 bg-border hidden sm:block" />
+            <span>Context-First Design</span>
+            <div className="w-px h-4 bg-border hidden sm:block" />
+            <span>Timeless Craft</span>
           </div>
         </div>
       </div>
