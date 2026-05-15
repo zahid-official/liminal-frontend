@@ -1,100 +1,95 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
+// HomeManifesto Component
 const HomeManifesto = () => {
-  const manifestoSpecs = [
-    { label: "Discipline", value: "Interior Architecture" },
-    { label: "Focus", value: "Minimalist Modernity" },
-    { label: "Experience", value: "5+ Years" },
-  ];
-
   return (
     <section
       id="manifesto"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      aria-labelledby="manifesto-heading"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center">
-          {/* Left: Image Column (spans 7/12) */}
-          <div className="lg:col-span-7 relative z-10">
-            <div className="relative aspect-4/5 md:aspect-16/10 lg:aspect-4/5 overflow-hidden group rounded">
-              {/* Image Frame/Border */}
-              <div className="absolute inset-4 border border-background/20 z-20 pointer-events-none" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          {/* Left: Atmospheric Image */}
+          <div className="lg:col-span-7 relative">
+            <div className="relative group/manifesto">
+              {/* Main Image */}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-2xl">
+                <Image
+                  src="/assets/home/home-manifesto-premium.png"
+                  alt="Liminal Design Manifesto — Spaces that speak before words do"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  quality={90}
+                  className="object-cover transition-transform duration-[1500ms] group-hover/manifesto:scale-105 will-change-transform transform-gpu"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/15 to-transparent" />
+              </div>
 
-              <Image
-                src="/assets/home/home-manifesto-interior-refined.png"
-                alt="Liminal Studio: Luxury Minimalist Living Room Design"
-                fill
-                quality={100}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-1000 group-hover:scale-105 transform-gpu will-change-transform backface-hidden"
-                priority
-              />
+              {/* Architectural Corner Brackets */}
+              <div className="absolute -top-4 -left-4 w-10 h-10 border-t-2 border-l-2 border-liminal-secondary/25 group-hover/manifesto:-translate-x-1 group-hover/manifesto:-translate-y-1 group-hover/manifesto:border-liminal-secondary/50 transition-all duration-700" />
+              <div className="absolute -bottom-4 -right-4 w-10 h-10 border-b-2 border-r-2 border-liminal-secondary/25 group-hover/manifesto:translate-x-1 group-hover/manifesto:translate-y-1 group-hover/manifesto:border-liminal-secondary/50 transition-all duration-700" />
 
-              {/* Overlay for subtle depth */}
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/10 to-transparent opacity-40 pointer-events-none" />
-
-              {/* Floating Year Badge */}
-              <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 bg-[#141F0A] text-white px-8 py-6 shadow-2xl text-center">
-                <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/50 block">
-                  Established
-                </span>
-                <span className="text-3xl font-bold font-heading tracking-tight block mt-1">
-                  2020
-                </span>
-                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40 block mt-1">
-                  Dhaka, Bangladesh
+              {/* Floating Label */}
+              <div className="absolute -bottom-4 left-8 bg-background px-5 py-2 border border-border/50 shadow-md">
+                <span className="text-[10px] font-mono tracking-[0.4em] text-liminal-secondary uppercase">
+                  The Liminal Way
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right: Content Column (spans 5/12, overlaps slightly) */}
-          <div className="lg:col-span-5 lg:-ml-20 relative z-20">
-            <div className="bg-background space-y-6 lg:p-16 lg:shadow-[40px_40px_80px_-20px_rgba(0,0,0,0.05)] rounded">
-              {/* Using Shared SectionHeader for consistency */}
-              <SectionHeader
-                variant="inline"
-                badgeText="The Manifesto"
-                title={
-                  <>
-                    The Architecture{" "}
-                    <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                      beyond form
-                    </span>
-                  </>
-                }
-                className="mb-8"
-              />
+          {/* Right: Manifesto Content */}
+          <div className="lg:col-span-5 space-y-8">
+            <SectionHeader
+              variant="inline"
+              badgeText="Design Manifesto"
+              headingId="manifesto-heading"
+              title={
+                <>
+                  The Silent{" "}
+                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                    Language
+                  </span>{" "}
+                  of Space
+                </>
+              }
+            />
 
-              {/* Narrative Copy */}
-              <div className="space-y-6 text-muted-foreground leading-relaxed font-light">
-                <p>
-                  At Liminal, we believe that true luxury isn&apos;t found in
-                  excess, but in the precise dialogue between light, material,
-                  and void. Our studio is dedicated to crafting spaces that
-                  offer a respite from the noise of the world.
-                </p>
-                <p>
-                  Every line we draw and every texture we select is an
-                  intentional step toward creating an environment that feels
-                  both monumental and intimate.
-                </p>
-              </div>
+            <div className="space-y-5 text-muted-foreground leading-relaxed font-light text-center lg:text-left">
+              <p>
+                Design is not decoration. It is the silent language of space,
+                light, and intention. At Liminal, we believe every space holds a
+                story waiting to be told.
+              </p>
 
-              {/* Stats / Specs Grid */}
-              <div className="pt-6 border-t border-border/60 grid grid-cols-2 sm:grid-cols-3 gap-8 ">
-                {manifestoSpecs.map((spec) => (
-                  <div key={spec.label} className="space-y-1 text-center">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60 block">
-                      {spec.label}
-                    </span>
-                    <p className="text-sm font-semibold tracking-tight text-foreground/80">
-                      {spec.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <p>
+                Our role is not to impose style, but to reveal the inherent
+                character of a place — to listen to the light, understand the
+                materials, and honour the lives that will unfold within.
+              </p>
+
+              {/* Manifesto Pull Quote */}
+              <blockquote className="border-l-2 border-liminal-secondary/40 pl-5 py-3 italic text-foreground/80 font-serif text-lg">
+                &quot;We reject the disposable. We reject the superficial.
+                Instead, we pursue design that ages with grace.&quot;
+              </blockquote>
+
+              <p>
+                Every material we choose, every proportion we define, every
+                threshold we compose is an act of care — a commitment to the
+                people who will call these spaces home.
+              </p>
+            </div>
+
+            {/* Spec Bar */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-[10px] uppercase tracking-[0.25em] text-muted-foreground/50 font-bold pt-2">
+              <span>Material Honesty</span>
+              <div className="w-px h-4 bg-border hidden sm:block" />
+              <span>Context-First</span>
+              <div className="w-px h-4 bg-border hidden sm:block" />
+              <span>Timeless Craft</span>
             </div>
           </div>
         </div>
