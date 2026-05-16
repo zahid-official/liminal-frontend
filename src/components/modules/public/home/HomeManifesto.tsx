@@ -1,22 +1,10 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+import Image from "next/image";
 
-// Manifesto Pillars
-const pillars = [
-  {
-    title: "Spatial Intelligence",
-    description:
-      "Understanding how space shapes behavior, emotion, and the quality of daily life.",
-  },
-  {
-    title: "Material Authenticity",
-    description:
-      "Celebrating the honest character of stone, wood, and metal — materials that age with grace.",
-  },
-  {
-    title: "Light Choreography",
-    description:
-      "Sculpting natural and artificial illumination to transform mood and spatial perception.",
-  },
+// Discipline Pillars
+const disciplines = [
+  { title: "Spatial Intelligence", id: "01" },
+  { title: "Material Authenticity", id: "02" },
+  { title: "Light Choreography", id: "03" },
 ];
 
 // HomeManifesto Component
@@ -25,97 +13,94 @@ const HomeManifesto = () => {
     <section
       id="brand-manifesto"
       aria-labelledby="manifesto-heading"
-      className="py-20 md:py-28 lg:py-36 relative overflow-hidden bg-zinc-50/80"
+      className="relative overflow-hidden min-h-[80vh] lg:min-h-[85vh] flex items-center"
     >
-      {/* Giant Background Letter */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28rem] md:text-[40rem] lg:text-[55rem] font-heading font-bold text-liminal-secondary/[0.03] select-none pointer-events-none leading-none">
-        L
+      {/* Full-Bleed Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/assets/home/manifesto-interior.png"
+          alt="Liminal: Architectural interior showcasing spatial intention and material authenticity"
+          fill
+          quality={90}
+          sizes="100vw"
+          className="object-cover transform-gpu"
+        />
       </div>
 
-      <div className="custom-container relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-14">
-          {/* Section Header */}
-          <SectionHeader
-            variant="manifesto"
-            badgeText="Our Conviction"
-            headingId="manifesto-heading"
-            title={
-              <>
-                We don&apos;t decorate rooms.
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                We{" "}
-                <span className="italic font-serif font-light text-liminal-secondary">
-                  architect emotions
-                </span>
-              </>
-            }
-          />
+      {/* Cinematic Overlays */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <div className="absolute inset-0 bg-foreground/65" />
+        <div className="absolute inset-0 bg-linear-to-b from-foreground/40 via-transparent to-foreground/50" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-40" />
+      </div>
 
-          {/* Manifesto Body */}
-          <div className="max-w-2xl mx-auto space-y-6">
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
-              Every material, every proportion, every shadow is placed with
-              absolute intention. Our work sits at the intersection of
-              architectural precision and human intuition — designing spaces that
-              feel inevitable, not merely beautiful.
-            </p>
+      {/* Noise Texture */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay z-10 bg-noise" />
 
-            <p className="text-muted-foreground leading-relaxed font-light">
-              We don&apos;t follow trends. We study how light falls, how
-              materials age, how a room makes you pause. Then we design
-              accordingly — with the patience of craftsmen and the rigor of
-              architects.
-            </p>
+      {/* Content */}
+      <div className="custom-container relative z-20 py-24 md:py-32 lg:py-40">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-px bg-background/25" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-background/50">
+              Our Conviction
+            </span>
+            <div className="w-12 h-px bg-background/25" />
           </div>
 
+          {/* Manifesto Statement — Large Serif Typography */}
+          <h2
+            id="manifesto-heading"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-heading font-bold leading-[1.15] tracking-tight text-background"
+          >
+            We don&apos;t decorate rooms.
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            We{" "}
+            <span className="italic font-serif font-light text-liminal-secondary">
+              architect emotions
+            </span>
+          </h2>
+
+          {/* Supporting Text */}
+          <p className="text-background/45 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+            Every material, every proportion, every shadow is placed with
+            absolute intention. We design spaces that feel inevitable — not
+            merely beautiful, but deeply, quietly right.
+          </p>
+
           {/* Pull Quote */}
-          <div className="max-w-xl mx-auto">
-            <blockquote className="relative py-14 px-6">
-              {/* Decorative Quotation */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 text-7xl text-liminal-secondary/60 font-serif leading-none select-none pointer-events-none">
+          <div className="max-w-xl mx-auto pt-4">
+            <blockquote className="relative">
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-7xl text-liminal-secondary/30 font-serif leading-none select-none pointer-events-none">
                 &ldquo;
               </div>
-
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-3">
-                <div className="w-10 h-px bg-liminal-secondary/60" />
-                <div className="w-2 h-2 rotate-45 border border-liminal-secondary/80" />
-                <div className="w-10 h-px bg-liminal-secondary/60" />
-              </div>
-
-              {/* Quote Text */}
-              <p className="text-xl md:text-2xl italic font-serif text-foreground/90 leading-relaxed">
+              <p className="text-xl md:text-2xl italic font-serif text-background/80 leading-relaxed pt-6">
                 &quot;Design is not what you see. It&apos;s what you feel when
                 you enter a room.&quot;
               </p>
-              <footer className="block mt-4 text-[10px] uppercase tracking-[0.3em] text-liminal-secondary font-bold">
+              <footer className="mt-5 text-[10px] uppercase tracking-[0.3em] text-liminal-secondary font-bold">
                 — Liminal Design Philosophy
               </footer>
             </blockquote>
           </div>
 
-          {/* Three Discipline Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pt-6">
-            {pillars.map((pillar, index) => (
-              <div key={pillar.title} className="group text-center space-y-4">
-                {/* Numbered Label */}
-                <div className="flex items-center justify-center gap-3">
-                  <div className="w-8 h-px bg-liminal-secondary/40 group-hover:w-12 transition-all duration-700" />
-                  <span className="text-[10px] font-mono tracking-[0.4em] text-muted-foreground/50 group-hover:text-liminal-secondary transition-colors duration-500">
-                    {String(index + 1).padStart(2, "0")}
+          {/* Three Discipline Pillars — Horizontal Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0 pt-8">
+            {disciplines.map((discipline, index) => (
+              <div key={discipline.id} className="flex items-center">
+                {index > 0 && (
+                  <div className="hidden sm:block w-px h-10 bg-background/15 mx-8 lg:mx-12" />
+                )}
+                <div className="text-center space-y-2">
+                  <span className="text-[10px] font-mono tracking-[0.4em] text-background/30">
+                    {discipline.id}
                   </span>
-                  <div className="w-8 h-px bg-liminal-secondary/40 group-hover:w-12 transition-all duration-700" />
+                  <p className="text-sm sm:text-base font-semibold text-background/80 tracking-wide">
+                    {discipline.title}
+                  </p>
                 </div>
-
-                {/* Pillar Title */}
-                <h3 className="text-lg md:text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
-                  {pillar.title}
-                </h3>
-
-                {/* Pillar Description */}
-                <p className="text-muted-foreground/80 font-light text-sm leading-relaxed max-w-xs mx-auto">
-                  {pillar.description}
-                </p>
               </div>
             ))}
           </div>

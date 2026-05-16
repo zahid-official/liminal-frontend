@@ -1,25 +1,29 @@
+"use client";
+
 import LiminalButton from "@/components/shared/LiminalButton";
+import { Send } from "lucide-react";
 import Link from "next/link";
 
-// HomeCTA Component
+// HomeCTA Component — Combined CTA + Newsletter
 const HomeCTA = () => {
   return (
     <section
       id="consultation-cta"
       aria-label="Start a consultation with Liminal"
-      className="py-20 md:py-28 lg:py-36 relative overflow-hidden bg-[#141F0A] text-background"
+      className="relative overflow-hidden bg-[#141F0A] text-background"
     >
       {/* Blueprint Grid Texture */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[50px_50px]" />
 
-      {/* Subtle Noise */}
+      {/* Noise Texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-noise" />
 
       {/* Decorative Corner Elements */}
       <div className="absolute top-8 left-8 w-16 h-16 border-t border-l border-background/10" />
       <div className="absolute bottom-8 right-8 w-16 h-16 border-b border-r border-background/10" />
 
-      <div className="custom-container relative z-10">
+      {/* CTA Section */}
+      <div className="custom-container relative z-10 pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20">
         <div className="max-w-3xl mx-auto text-center space-y-10">
           {/* Eyebrow */}
           <div className="flex items-center justify-center gap-4">
@@ -68,8 +72,74 @@ const HomeCTA = () => {
         </div>
       </div>
 
+      {/* Divider with "or" */}
+      <div className="custom-container relative z-10">
+        <div className="flex items-center gap-6 max-w-2xl mx-auto">
+          <div className="flex-1 h-px bg-background/10" />
+          <span className="text-[11px] font-mono tracking-[0.3em] text-background/20 uppercase">
+            or
+          </span>
+          <div className="flex-1 h-px bg-background/10" />
+        </div>
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="custom-container relative z-10 pt-16 md:pt-20 pb-24 md:pb-32 lg:pb-40">
+        <div className="max-w-2xl mx-auto text-center space-y-7">
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-8 h-px bg-background/15" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-background/35">
+              Stay Connected
+            </span>
+            <div className="w-8 h-px bg-background/15" />
+          </div>
+
+          {/* Heading */}
+          <h3 className="text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight font-heading text-background/90">
+            Design Intelligence,{" "}
+            <span className="italic font-serif font-light text-liminal-secondary">
+              Delivered
+            </span>
+          </h3>
+
+          {/* Description */}
+          <p className="text-background/35 text-sm md:text-base font-light leading-relaxed max-w-md mx-auto">
+            Curated insights on interior design, material culture, and spatial
+            thinking — delivered monthly.
+          </p>
+
+          {/* Email Form */}
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto pt-2"
+          >
+            <div className="relative flex-1 w-full">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                required
+                className="w-full h-12 px-5 bg-background/5 border border-background/10 rounded-full text-sm font-medium text-background placeholder:text-background/20 focus:outline-none focus:border-liminal-secondary/40 focus:ring-2 focus:ring-liminal-secondary/10 transition-all duration-300"
+              />
+            </div>
+            <LiminalButton
+              type="submit"
+              icon={Send}
+              className="w-full sm:w-auto shrink-0"
+            >
+              Subscribe
+            </LiminalButton>
+          </form>
+
+          {/* Privacy Note */}
+          <p className="text-[11px] text-background/20 font-light">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </div>
+      </div>
+
       {/* Bottom Technical Label */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none">
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none z-10">
         <div className="flex items-center gap-6 opacity-20">
           <div className="h-px w-16 bg-background" />
           <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-background">

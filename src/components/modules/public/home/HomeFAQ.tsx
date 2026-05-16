@@ -49,7 +49,7 @@ const HomeFAQ = () => {
     <section
       id="faq-section"
       aria-labelledby="faq-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
+      className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}

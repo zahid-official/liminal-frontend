@@ -3,7 +3,6 @@ import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeJournal from "@/components/modules/public/home/HomeJournal";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
-import HomeNewsletter from "@/components/modules/public/home/HomeNewsletter";
 import HomePhilosophy from "@/components/modules/public/home/HomePhilosophy";
 import HomeProjects from "@/components/modules/public/home/HomeProjects";
 import HomeServices from "@/components/modules/public/home/HomeServices";
@@ -28,32 +27,29 @@ const HomePage = () => {
       {/* 2. Studio Introduction — Intimate brand reveal (white) */}
       <HomeStudio />
 
-      {/* 3. Brand Manifesto — Philosophical depth (zinc) */}
+      {/* 3. Brand Manifesto — Philosophical depth (dark / image) */}
       <HomeManifesto />
 
       {/* 4. Featured Projects — Portfolio authority (white) */}
       <HomeProjects />
 
-      {/* 5. Design Philosophy — Technical credibility (dark) */}
+      {/* 5. Design Philosophy — Typographic principles (zinc) */}
       <HomePhilosophy />
 
-      {/* 6. Services Overview — Clear offering structure (white) */}
+      {/* 6. Services Overview — Interactive horizontal bands (white) */}
       <HomeServices />
 
-      {/* 7. Testimonials — Social proof & trust (zinc) */}
+      {/* 7. Testimonials — Single spotlight quote (zinc) */}
       <HomeTestimonials />
 
-      {/* 8. Journal / Insights — Thought leadership (white) */}
+      {/* 8. Journal / Insights — Asymmetric editorial (white) */}
       <HomeJournal />
 
       {/* 9. FAQ — Questions answered (zinc) */}
       <HomeFAQ />
 
-      {/* 10. Consultation CTA — Conversion moment (dark) */}
+      {/* 10. CTA + Newsletter — Combined conversion (dark) */}
       <HomeCTA />
-
-      {/* 11. Newsletter — Soft final engagement (white) */}
-      <HomeNewsletter />
     </main>
   );
 };
