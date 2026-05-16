@@ -1,53 +1,134 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
-const pillars = [
-  { number: "01", title: "Contextual Sensitivity", description: "Every project begins with deep listening — understanding the culture, environment, and human stories that define a place." },
-  { number: "02", title: "Material Integrity", description: "We celebrate the honest character of stone, wood, and metal — sourcing materials that age with grace and tell stories." },
-  { number: "03", title: "Spatial Narrative", description: "Our spaces are composed sequences — each threshold orchestrated to guide movement and evoke emotional response." },
+// Philosophy tenets
+const tenets = [
+  {
+    number: "01",
+    title: "Spaces Should Feel Before They Function",
+    description:
+      "A beautifully proportioned room can change the quality of your entire day. We design spaces that make you pause — where the interplay of volume, light, and material creates an immediate emotional response before the mind even registers why.",
+  },
+  {
+    number: "02",
+    title: "Materials Tell Stories",
+    description:
+      "Every surface in our designs is chosen not just for appearance, but for character. We source stone that carries geological memory, wood that reveals its growth in every grain, and metals that develop patina with the dignity of time.",
+  },
+  {
+    number: "03",
+    title: "Light Is the Most Honest Architect",
+    description:
+      "We treat light as a primary building material. The way morning sun grazes a travertine wall, or how an indirect glow washes across a ceiling at dusk — these moments of illumination define how a space is truly experienced.",
+  },
 ];
 
 // HomePhilosophy Component
 const HomePhilosophy = () => {
   return (
-    <section id="philosophy" aria-labelledby="philosophy-heading" className="relative overflow-hidden bg-[#141F0A] text-background">
-      <div className="absolute inset-0 z-0">
-        <Image src="/assets/home/conviction-detail.png" alt="" fill sizes="100vw" quality={85} className="object-cover opacity-25" />
-        <div className="absolute inset-0 bg-[#141F0A]/70" />
-      </div>
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none z-[1] bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-size-[36px_36px]" />
+    <section
+      id="design-philosophy"
+      aria-labelledby="philosophy-heading"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-[#141F0A] text-background"
+    >
+      {/* Blueprint Grid Texture */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[60px_60px]" />
 
-      <div className="custom-container relative z-10 py-20 md:py-28 lg:py-36">
-        <SectionHeader
-          variant="manifesto"
-          headingId="philosophy-heading"
-          badgeText="Our Philosophy"
-          badgeClassName="text-background/50"
-          badgeDotClassName="bg-background/20"
-          title={<>Design Rooted in{" "}<span className="italic font-serif font-light underline underline-offset-8 decoration-1 decoration-background/30">Conviction</span></>}
-          titleClassName="text-background"
-          description={<span className="text-background/40">We believe design is an act of responsibility — a dialogue between intention, craft, and the lives that inhabit the spaces we create.</span>}
-          className="mb-16 lg:mb-20"
-        />
+      {/* Subtle Noise Texture */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-noise" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
-          {pillars.map((p) => (
-            <div key={p.number} className="group p-8 md:p-10 border-t md:border-t-0 md:border-l first:border-l-0 first:border-t-0 border-background/10">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-[10px] font-mono tracking-[0.3em] text-background/25 group-hover:text-liminal-secondary transition-colors duration-500">{p.number}</span>
-                <div className="h-px w-8 bg-background/10 group-hover:w-14 group-hover:bg-liminal-secondary/40 transition-all duration-700" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold font-heading text-background tracking-tight mb-4 group-hover:text-liminal-secondary transition-colors duration-500">{p.title}</h3>
-              <p className="text-background/35 font-light text-[15px] leading-relaxed group-hover:text-background/55 transition-colors duration-500">{p.description}</p>
+      <div className="custom-container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          {/* Left: Large Atmospheric Image */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-3/4 overflow-hidden rounded-sm shadow-2xl group will-change-transform sticky top-32">
+              <Image
+                src="/assets/home/philosophy.png"
+                alt="Architectural philosophy: Light, material, and spatial intention"
+                fill
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu backface-hidden"
+              />
+              {/* Dark overlay for depth */}
+              <div className="absolute inset-0 bg-linear-to-t from-[#141F0A]/40 to-transparent" />
+
+              {/* Technical Corner Brackets */}
+              <div className="absolute -top-3 -left-3 w-8 h-8 border-t border-l border-liminal-secondary/30" />
+              <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b border-r border-liminal-secondary/30" />
             </div>
-          ))}
-        </div>
 
-        <div className="max-w-2xl mx-auto text-center mt-16 pt-10 border-t border-background/10">
-          <p className="text-lg md:text-xl italic font-serif text-background/55 leading-relaxed">
-            &quot;Great design doesn&apos;t shout. It whispers — and lingers long after you&apos;ve left the room.&quot;
-          </p>
-          <span className="block mt-4 text-[10px] uppercase tracking-[0.3em] text-background/20 font-bold">— The Liminal Manifesto</span>
+            {/* Bottom Label */}
+            <div className="mt-6 flex items-center gap-3 justify-center lg:justify-start">
+              <div className="w-8 h-px bg-background/20" />
+              <span className="text-[9px] font-mono tracking-[0.4em] text-background/30 uppercase">
+                Ref: LM-Philosophy
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Philosophy Content */}
+          <div className="lg:col-span-7 space-y-12 lg:pt-4">
+            {/* Header */}
+            <SectionHeader
+              variant="inline"
+              badgeText="Philosophy"
+              headingId="philosophy-heading"
+              badgeClassName="border-background/20 text-background/90"
+              badgeDotClassName="bg-liminal-secondary"
+              titleClassName="text-background"
+              title={
+                <>
+                  The Art of{" "}
+                  <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                    Intentional
+                  </span>{" "}
+                  Space
+                </>
+              }
+              description={
+                <span className="text-background/50">
+                  Three foundational principles that guide every decision we
+                  make — from the earliest sketch to the final placement of
+                  light.
+                </span>
+              }
+              className="lg:items-start text-center lg:text-left"
+            />
+
+            {/* Philosophy Tenets */}
+            <div className="space-y-0">
+              {tenets.map((tenet, index) => (
+                <div
+                  key={tenet.number}
+                  className="group relative border-t border-background/10 py-10 first:border-t-0 first:pt-0"
+                >
+                  {/* Tenet Content */}
+                  <div className="flex gap-6 md:gap-8">
+                    {/* Number */}
+                    <div className="flex flex-col items-center gap-3 pt-1">
+                      <span className="text-2xl md:text-3xl font-heading font-bold text-background/10 group-hover:text-liminal-secondary/60 transition-colors duration-700 tabular-nums">
+                        {tenet.number}
+                      </span>
+                      {index < tenets.length - 1 && (
+                        <div className="w-px flex-1 bg-background/10 group-hover:bg-liminal-secondary/30 transition-colors duration-700" />
+                      )}
+                    </div>
+
+                    {/* Text */}
+                    <div className="space-y-4 flex-1">
+                      <h3 className="text-xl md:text-2xl font-bold font-heading tracking-tight text-background/90 group-hover:text-background transition-colors duration-500">
+                        {tenet.title}
+                      </h3>
+                      <p className="text-background/40 font-light leading-relaxed group-hover:text-background/60 transition-colors duration-500 max-w-lg">
+                        {tenet.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

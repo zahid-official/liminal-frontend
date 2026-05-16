@@ -25,35 +25,35 @@ const HomePage = () => {
       {/* 1. Hero — Cinematic first impression (dark) */}
       <HomeHero />
 
-      {/* 2. Studio — Who we are (white) — Split layout */}
+      {/* 2. Studio Introduction — Intimate brand reveal (white) */}
       <HomeStudio />
 
-      {/* 3. Services — What we do (zinc) — 3-column cards */}
-      <HomeServices />
-
-      {/* 4. Projects — Our work (white) — Hero banner + 2 cards */}
-      <HomeProjects />
-
-      {/* 5. Philosophy — What we believe (dark) — Immersive pillars */}
-      <HomePhilosophy />
-
-      {/* 6. Testimonials — Client trust (zinc) — Single centered quote */}
-      <HomeTestimonials />
-
-      {/* 7. Journal — Our insights (white) — 2-column articles */}
-      <HomeJournal />
-
-      {/* 8. Manifesto — Our statement (zinc) — Pure typography */}
+      {/* 3. Brand Manifesto — Philosophical depth (zinc) */}
       <HomeManifesto />
 
-      {/* 9. FAQ — Questions answered (white) — Split accordion */}
+      {/* 4. Featured Projects — Portfolio authority (white) */}
+      <HomeProjects />
+
+      {/* 5. Design Philosophy — Technical credibility (dark) */}
+      <HomePhilosophy />
+
+      {/* 6. Services Overview — Clear offering structure (white) */}
+      <HomeServices />
+
+      {/* 7. Testimonials — Social proof & trust (zinc) */}
+      <HomeTestimonials />
+
+      {/* 8. Journal / Insights — Thought leadership (white) */}
+      <HomeJournal />
+
+      {/* 9. FAQ — Questions answered (zinc) */}
       <HomeFAQ />
 
-      {/* 10. Newsletter — Stay connected (zinc) — Centered compact */}
-      <HomeNewsletter />
-
-      {/* 11. CTA — Let's begin (dark) — Cinematic finale */}
+      {/* 10. Consultation CTA — Conversion moment (dark) */}
       <HomeCTA />
+
+      {/* 11. Newsletter — Soft final engagement (white) */}
+      <HomeNewsletter />
     </main>
   );
 };
