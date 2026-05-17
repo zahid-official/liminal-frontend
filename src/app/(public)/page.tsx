@@ -1,13 +1,5 @@
-import HomeCTA from "@/components/modules/public/home/HomeCTA";
-import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
-import HomeJournal from "@/components/modules/public/home/HomeJournal";
-import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
-import HomePhilosophy from "@/components/modules/public/home/HomePhilosophy";
-import HomeProjects from "@/components/modules/public/home/HomeProjects";
-import HomeServices from "@/components/modules/public/home/HomeServices";
 import HomeStudio from "@/components/modules/public/home/HomeStudio";
-import HomeTestimonials from "@/components/modules/public/home/HomeTestimonials";
 import { Metadata } from "next";
 
 // Metadata for the Home Page
@@ -27,29 +19,32 @@ const HomePage = () => {
       {/* 2. Studio Introduction — Intimate brand reveal (white) */}
       <HomeStudio />
 
-      {/* 3. Brand Manifesto — Philosophical depth (dark / image) */}
-      <HomeManifesto />
+      {/* 3. Brand Manifesto — Philosophical depth (zinc) */}
+      {/* <HomeManifesto /> */}
 
       {/* 4. Featured Projects — Portfolio authority (white) */}
-      <HomeProjects />
+      {/* <HomeProjects /> */}
 
-      {/* 5. Design Philosophy — Typographic principles (zinc) */}
-      <HomePhilosophy />
+      {/* 5. Design Philosophy — Technical credibility (dark) */}
+      {/* <HomePhilosophy /> */}
 
-      {/* 6. Services Overview — Interactive horizontal bands (white) */}
-      <HomeServices />
+      {/* 6. Services Overview — Clear offering structure (white) */}
+      {/* <HomeServices /> */}
 
-      {/* 7. Testimonials — Single spotlight quote (zinc) */}
-      <HomeTestimonials />
+      {/* 7. Testimonials — Social proof & trust (zinc) */}
+      {/* <HomeTestimonials /> */}
 
-      {/* 8. Journal / Insights — Asymmetric editorial (white) */}
-      <HomeJournal />
+      {/* 8. Journal / Insights — Thought leadership (white) */}
+      {/* <HomeJournal /> */}
 
       {/* 9. FAQ — Questions answered (zinc) */}
-      <HomeFAQ />
+      {/* <HomeFAQ /> */}
 
-      {/* 10. CTA + Newsletter — Combined conversion (dark) */}
-      <HomeCTA />
+      {/* 10. Consultation CTA — Conversion moment (dark) */}
+      {/* <HomeCTA /> */}
+
+      {/* 11. Newsletter — Soft final engagement (white) */}
+      {/* <HomeNewsletter /> */}
     </main>
   );
 };
