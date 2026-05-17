@@ -1,5 +1,6 @@
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
+import HomeProjects from "@/components/modules/public/home/HomeProjects";
 import HomeStudio from "@/components/modules/public/home/HomeStudio";
 import { Metadata } from "next";
 
@@ -24,7 +25,7 @@ const HomePage = () => {
       <HomeManifesto />
 
       {/* 4. Featured Projects — Portfolio authority (white) */}
-      {/* <HomeProjects /> */}
+      <HomeProjects />
 
       {/* 5. Design Philosophy — Technical credibility (dark) */}
       {/* <HomePhilosophy /> */}

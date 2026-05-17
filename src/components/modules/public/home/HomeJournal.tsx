@@ -69,7 +69,7 @@ const HomeJournal = () => {
           {articles.map((article) => (
             <article
               key={article.id}
-              className="group flex flex-col bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg hover:-translate-y-1 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
+              className="group flex flex-col bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg hover:-translate-y-1 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] transform-gpu backface-hidden"
             >
               {/* Image */}
               <div className="relative aspect-video overflow-hidden">
