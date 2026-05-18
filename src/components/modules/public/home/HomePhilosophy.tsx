@@ -6,6 +6,7 @@ import { Fragment } from "react";
 const philosophies = [
   { label: "Discipline", value: "Material Poetry" },
   { label: "Focus", value: "Tactile Experience" },
+  { label: "Rigor", value: "Honest Longevity" },
 ];
 
 // HomePhilosophy Component
@@ -43,24 +44,26 @@ const HomePhilosophy = () => {
             {/* Body Text */}
             <div className="space-y-6 text-background/60 leading-relaxed font-light mt-8 max-w-xl">
               <p>
-                We believe that true design is invisible. It’s found in the
-                seamless alignment of a joint, the way a shadow falls at golden
-                hour, and the tactile response of a door handle. We design for
-                the senses.
+                We believe that true design is invisible. It is found in the
+                quiet alignment of a joint, the geometry of a shadow sweeping
+                across travertine at golden hour, and the heavy, tactile
+                response of cast bronze. We design not just for the eyes, but
+                for the senses.
               </p>
               <p>
-                By focusing on material authenticity—celebrating the honest
-                character of stone, wood, and metal—we create environments that
-                age with grace and tell a story of longevity.
+                By anchoring our work in material authenticity, celebrating the
+                honest grain of timber, the weight of stone, and the cool patina
+                of metal, we craft enduring spaces that age with grace and tell
+                a continuous story of quiet longevity.
               </p>
             </div>
 
             <div className="relative pt-8 mt-10 max-w-xl border-t border-background/10">
               {/* Quote */}
               <blockquote className="text-xl italic font-serif text-background leading-relaxed">
-                &ldquo; Great design doesn&apos;t shout. It whispers — and
-                lingers in your memory long after you&apos;ve left the
-                room.&rdquo;
+                &ldquo; Great design does not shout. It whispers, lingering in
+                the memory long after the physical space has been left
+                behind.&rdquo;
                 <footer className="block mt-4 text-[9px] font-sans not-italic uppercase tracking-[0.3em] text-background/20 font-bold">
                   — Liminal Design Studio
                 </footer>
@@ -88,15 +91,15 @@ const HomePhilosophy = () => {
           {/* Right: Image Composition */}
           <div className="lg:col-span-6 relative">
             {/* Primary Image */}
-            <div className="relative aspect-10/11 overflow-hidden rounded-sm shadow-2xl group will-change-transform">
+            <div className="relative aspect-4/5 overflow-hidden rounded-sm shadow-2xl group will-change-transform">
               <Image
-                src="/assets/home/philosophy-material.png"
+                src="/assets/home/philosophy-material-detail.png"
                 alt="Liminal Design Philosophy: Materiality & Craftsmanship"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu"
               />
               {/* Subtle overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/15 to-transparent" />
             </div>
 
             {/* Architectural Corner Markers */}
