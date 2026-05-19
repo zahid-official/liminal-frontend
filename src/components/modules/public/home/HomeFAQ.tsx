@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "What types of projects does Liminal specialize in?",
     answer:
-      "We specialize in residential interiors, commercial spaces, and architectural consultancy. Our work spans private homes, corporate offices, retail environments, and hospitality projects — always with an emphasis on material authenticity and spatial intelligence.",
+      "We specialize in residential interiors, commercial spaces, and architectural consultancy. Our work spans private homes, corporate offices, retail environments, and hospitality projects, always with an emphasis on material authenticity and spatial intelligence.",
   },
   {
     question: "How does the design process work?",
@@ -24,17 +24,17 @@ const faqs = [
   {
     question: "What is the typical project timeline?",
     answer:
-      "Timelines vary by scope and complexity. A residential interior project typically takes 3–6 months from concept to completion, while larger commercial or architectural projects may extend to 8–12 months. We provide detailed timelines during the initial consultation.",
+      "Timelines vary by scope and complexity. A residential interior project typically takes 3-6 months from concept to completion, while larger commercial or architectural projects may extend to 8-12 months. We provide detailed timelines during the initial consultation.",
   },
   {
     question: "Do you work with clients outside of Dhaka?",
     answer:
-      "Yes. While our studio is based in Dhaka, we work with clients across Bangladesh and internationally. We leverage digital collaboration tools for remote projects and travel for key project milestones when needed.",
+      "Yes. While our studio is based in Dhaka, we work with clients across Bangladesh and internationally. We leverage digital collaboration tools for remote projects and travel for key project milestones when needed, ensuring our design rigor and execution standards remain uncompromising.",
   },
   {
-    question: "What makes Liminal different from other design firms?",
+    question: "What makes Liminal different from other firms?",
     answer:
-      "Our approach is rooted in architectural thinking rather than decorative styling. We don't follow trends — we study how spaces affect human behavior and emotion. Every material choice, every spatial proportion, and every detail is intentional and purposeful.",
+      "Our approach is rooted in architectural thinking rather than decorative styling. We don't follow trends. We study how spaces affect human behavior and emotion. Every material choice, every spatial proportion, and every detail is intentional and purposeful.",
   },
   {
     question: "How do I start a project with Liminal?",
@@ -49,52 +49,48 @@ const HomeFAQ = () => {
     <section
       id="faq-section"
       aria-labelledby="faq-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
         <SectionHeader
-          variant="editorial"
-          badgeText="Common Questions"
+          variant="manifesto"
+          badgeText="Common Queries"
           headingId="faq-heading"
           title={
             <>
               Everything You Need
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>
-              to{" "}
+              <br className="max-xl:hidden" />
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Know
+                to Know
               </span>
             </>
           }
           description="Answers to the questions we hear most often. If you don't find what you're looking for, we'd love to hear from you directly."
+          className="mb-12"
         />
 
         {/* Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-4">
           {/* Left: Image & Text */}
           <div className="flex flex-col gap-8 lg:pr-8">
-            <div className="relative w-full aspect-4/3 rounded-sm overflow-hidden border border-border/40 shadow-sm bg-muted group">
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border/40 shadow-sm bg-muted group">
               <Image
                 src="/assets/home/faq.jpg"
                 fill
-                quality={90}
+                quality={100}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu backface-hidden"
                 alt="Liminal design team discussing project details and material selections"
               />
-
-              {/* Architectural Corner Brackets */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-liminal-secondary/30 z-10 pointer-events-none" />
-              <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-liminal-secondary/30 z-10 pointer-events-none" />
             </div>
 
-            <div className="lg:max-w-[85%]">
+            {/* Content Text */}
+            <div className="lg:w-[85%] pb-2">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-heading leading-tight tracking-tight mb-4">
                 Still Looking For Answers Or Need A Fun Chat?
               </h3>
-              <p className="text-muted-foreground text-[15px] sm:text-base leading-relaxed mb-6">
+              <p className="text-muted-foreground max-sm:text-sm leading-relaxed mb-6">
                 Our team will guide you through our design process,{" "}
                 <br className="max-lg:hidden" /> project specifications and cost
                 estimate.
@@ -113,7 +109,7 @@ const HomeFAQ = () => {
               type="single"
               collapsible
               className="w-full"
-              defaultValue=""
+              defaultValue="item-0"
             >
               {faqs.map((faq, index) => (
                 <AccordionItem

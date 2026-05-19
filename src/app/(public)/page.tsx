@@ -1,3 +1,4 @@
+import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
 import HomePhilosophy from "@/components/modules/public/home/HomePhilosophy";
@@ -43,7 +44,7 @@ const HomePage = () => {
       {/* <HomeJournal /> */}
 
       {/* 9. FAQ — Questions answered (zinc) */}
-      {/* <HomeFAQ /> */}
+      <HomeFAQ />
 
       {/* 10. Consultation CTA — Conversion moment (dark) */}
       {/* <HomeCTA /> */}
