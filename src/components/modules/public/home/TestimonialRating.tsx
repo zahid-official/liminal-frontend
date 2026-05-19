@@ -14,7 +14,7 @@ const TestimonialRating = () => {
   return (
     <div ref={ref} className="flex items-center gap-4 shrink-0">
       {/* Score */}
-      <span className="text-5xl sm:text-[64px] font-bold text-foreground leading-none tracking-tight tabular-nums">
+      <span className="text-5xl sm:text-6xl font-bold text-foreground leading-none tracking-tight tabular-nums">
         {inView ? (
           <CountUp end={4.8} decimals={2} duration={3} useEasing={true} />
         ) : (
@@ -24,7 +24,7 @@ const TestimonialRating = () => {
 
       <div className="flex flex-col gap-1.5 mt-1">
         {/* Star Rating */}
-        <div className="flex items-center gap-0.5 bg-liminal-secondary rounded-full py-1 px-2.5 text-white shadow-sm w-fit">
+        <div className="flex items-center gap-0.5 bg-liminal-secondary rounded-full py-1 px-2.5 text-background shadow-sm w-fit">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-3.5 h-3.5 fill-current" />
           ))}
@@ -33,7 +33,7 @@ const TestimonialRating = () => {
         {/* Total Reviews */}
         <span className="text-[13px] font-semibold text-foreground/80 tracking-tight lowercase">
           {inView ? (
-            <CountUp end={2688} separator="," duration={4} useEasing={true} />
+            <CountUp end={1658} separator="," duration={4} useEasing={true} />
           ) : (
             <span>0</span>
           )}{" "}

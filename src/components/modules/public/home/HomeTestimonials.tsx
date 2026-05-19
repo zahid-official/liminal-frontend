@@ -7,59 +7,55 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
+import Image from "next/image";
 import TestimonialRating from "./TestimonialRating";
 
 // Testimonial Data
 const testimonials = [
   {
     id: 1,
-    name: "Shahin Alam",
-    role: "Homeowner, Gulshan",
+    name: "Arthur Pendelton",
+    role: "Client, Apex Residence",
     rating: 5,
     quote:
-      "Liminal transformed our apartment into something we couldn't have imagined. The attention to material selection and spatial flow made every room feel considered and intentional. It's not just beautiful — it feels like us.",
-    initial: "S",
-    accentColor: "bg-liminal-secondary",
+      "A profound collaboration. Their understanding of spatial flow and structural details was evident throughout the design.",
+    avatar: "https://i.pravatar.cc/150?img=57",
   },
   {
     id: 2,
-    name: "Noah Mitchell",
-    role: "CEO, Atlas Ventures",
+    name: "Farhan Huq",
+    role: "Curator, Artistic Lounge",
     rating: 5,
     quote:
-      "Our new office space has genuinely changed how our team works. The design balances openness with privacy, energy with calm. Clients always comment on the atmosphere the moment they walk in.",
-    initial: "N",
-    accentColor: "bg-[#5B7553]",
+      "Our gallery space is a masterpiece of light and form. The clean lines and neutral materials establish a quiet, contemplative atmosphere.",
+    avatar: "https://i.pravatar.cc/150?img=12",
   },
   {
     id: 3,
-    name: "Morgan Dufresne",
-    role: "Creative Director",
+    name: "Marcus Thorne",
+    role: "Founder, Corporate Zen",
     rating: 5,
     quote:
-      "Working with Liminal felt like a true collaboration. They understood our vision before we could fully articulate it, then elevated it with details we never would have considered. Exceptional craft.",
-    initial: "M",
-    accentColor: "bg-[#7A6C5D]",
+      "They captured our brand identity with absolute clarity, translating it into a refined spatial experience with exceptional material craft.",
+    avatar: "https://i.pravatar.cc/150?img=56",
   },
   {
     id: 4,
-    name: "Liam Reynolds",
-    role: "Property Developer",
+    name: "Michael Vance",
+    role: "Managing Partner, Zenith Commercial",
     rating: 4,
     quote:
-      "The professional guidance on our commercial redesign was outstanding. Every design decision was backed by clear reasoning, and the results exceeded our expectations in both aesthetics and functionality.",
-    initial: "L",
-    accentColor: "bg-[#4A6741]",
+      "Their rigor and professional conduct throughout the project was impressive. The corporate interior they designed is both functional and serene.",
+    avatar: "https://i.pravatar.cc/150?img=55",
   },
   {
     id: 5,
-    name: "Emma Thompson",
-    role: "Homeowner, Banani",
+    name: "Tanvir Kabir",
+    role: "Client, Marble Haven",
     rating: 5,
     quote:
-      "From concept to completion, the process was seamless. What impressed me most was how they considered how we actually live — the light at different times of day, our routines, how we gather. The result is a home that breathes.",
-    initial: "E",
-    accentColor: "bg-[#6B8F71]",
+      "The process was seamless and intellectual. They elevated our home beyond our expectations and crafted a space that we cherish every single day.",
+    avatar: "https://i.pravatar.cc/150?img=68",
   },
 ];
 
@@ -86,17 +82,18 @@ const HomeTestimonials = () => {
             headingId="testimonials-heading"
             title={
               <>
-                Words That{" "}
+                Warm Words From <br className="max-lg:hidden" />
                 <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                  Validate
+                  Satisfied Clients
                 </span>
               </>
             }
             description="The trust our clients place in us is the most meaningful measure of our work. These are their experiences, in their own words."
+            className="mb-8 lg:mb-10"
           />
 
           {/* Stats & Navigation Row */}
-          <div className="flex flex-col lg:flex-row justify-end mb-14 md:mb-20">
+          <div className="flex justify-end mb-10">
             <div className="w-full lg:w-7/10 lg:pl-16 relative">
               {/* Divider */}
               <div className="h-px w-full bg-foreground/10 mb-8 md:mb-12" />
@@ -110,7 +107,7 @@ const HomeTestimonials = () => {
                   <div className="hidden sm:block w-px h-16 bg-foreground/20 mx-2 shrink-0" />
 
                   {/* Text Statement */}
-                  <p className="text-sm sm:text-base font-semibold text-foreground/90 max-w-85 leading-[1.6]">
+                  <p className="text-sm font-semibold text-foreground/90 max-w-85 leading-relaxed">
                     From concept to reality, the team turned my vision into a
                     stunning, livable space. I couldn&apos;t be happier with the
                     results!
@@ -129,13 +126,13 @@ const HomeTestimonials = () => {
 
         {/* Carousel Slider */}
         <div className="w-full">
-          <CarouselContent className="ml-0 py-4 px-4 sm:px-6">
+          <CarouselContent className="ml-0 p-4">
             {testimonials.map((testimonial) => (
               <CarouselItem
                 key={testimonial.id}
                 className="pl-4 sm:pl-6 md:basis-1/2 lg:basis-1/3 xl:basis-[28%]"
               >
-                <div className="group bg-background rounded-lg p-8 sm:p-10 h-full flex flex-col shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-foreground/4 hover:border-liminal-secondary/25 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden cursor-default select-none">
+                <div className="group bg-background rounded-xl p-8 sm:p-10 h-full flex flex-col shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-foreground/4 hover:border-liminal-secondary/25 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden select-none cursor-pointer">
                   {/* Premium Glossy Sheen Effect */}
                   <div className="absolute top-0 left-[-20%] h-full w-60 bg-linear-to-r from-transparent via-foreground/3 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[400%] transition-none group-hover:transition-all group-hover:duration-1500 group-hover:ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0" />
 
@@ -151,26 +148,29 @@ const HomeTestimonials = () => {
 
                   {/* Quote */}
                   <div className="flex-1 relative z-10">
-                    <p className="text-foreground/70 group-hover:text-foreground/90 font-medium text-[15px] sm:text-base leading-[1.7] mb-3 transition-colors duration-500">
+                    <p className="text-foreground/70 group-hover:text-foreground/90 font-medium text-sm sm:text-base leading-relaxed mb-6 transition-colors duration-500">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>
                   </div>
 
                   {/* Author Profile */}
                   <div className="flex items-center gap-4 mt-auto relative z-10">
-                    {/* Initial-based Avatar */}
-                    <div
-                      className={`w-12 h-12 sm:w-13 sm:h-13 rounded-full ${testimonial.accentColor} flex items-center justify-center shrink-0 shadow-sm transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110`}
-                    >
-                      <span className="text-white font-bold text-lg sm:text-xl font-heading leading-none">
-                        {testimonial.initial}
-                      </span>
+                    <div className="overflow-hidden rounded-full border-3 border-foreground/20 shadow-sm shrink-0 transition-colors duration-500 group-hover:border-liminal-secondary/20 isolate">
+                      <Image
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        width={52}
+                        height={52}
+                        className="w-12 h-12 sm:w-13 sm:h-13 object-cover scale-100 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
+                      />
                     </div>
+
+                    {/* Name and Role */}
                     <div className="flex flex-col">
-                      <h4 className="font-bold text-foreground text-base sm:text-[17px] tracking-tight transition-colors duration-500 group-hover:text-liminal-secondary">
+                      <h4 className="font-bold text-foreground tracking-tight transition-colors duration-500 group-hover:text-liminal-secondary">
                         {testimonial.name}
                       </h4>
-                      <p className="text-[13px] text-foreground/50 group-hover:text-foreground/70 font-medium leading-[1.1] mt-0.5 transition-colors duration-500">
+                      <p className="text-xs text-foreground/50 group-hover:text-foreground/70 font-medium transition-colors duration-500">
                         {testimonial.role}
                       </p>
                     </div>
