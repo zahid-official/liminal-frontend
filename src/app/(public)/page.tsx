@@ -2,6 +2,7 @@ import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
 import HomePhilosophy from "@/components/modules/public/home/HomePhilosophy";
 import HomeProjects from "@/components/modules/public/home/HomeProjects";
+import HomeServices from "@/components/modules/public/home/HomeServices";
 import HomeStudio from "@/components/modules/public/home/HomeStudio";
 import { Metadata } from "next";
 
@@ -33,7 +34,7 @@ const HomePage = () => {
       <HomePhilosophy />
 
       {/* 6. Services Overview — Clear offering structure (white) */}
-      {/* <HomeServices /> */}
+      <HomeServices />
 
       {/* 7. Testimonials — Social proof & trust (zinc) */}
       {/* <HomeTestimonials /> */}

@@ -69,18 +69,18 @@ const HomeProjects = () => {
     <section
       id="featured-projects"
       aria-labelledby="featured-projects-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
       <div className="custom-container relative z-10">
         {/* Section Header */}
         <SectionHeader
-          variant="manifesto"
+          variant="split"
           badgeText="Our Work"
           title={
             <>
-              Curated{" "}
+              Spatial{" "}
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Perspectives
+                Narratives
               </span>
             </>
           }

@@ -1,42 +1,32 @@
-import AnimatedButton from "@/components/shared/AnimatedButton";
 import SectionHeader from "@/components/shared/SectionHeader";
-import { Armchair, Compass, Layers } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-// Services Data
+// Services data
 const services = [
   {
-    id: "interior-design",
+    number: "01",
     title: "Interior Design",
-    icon: Layers,
     description:
-      "From private residences to commercial environments, we create immersive interiors that balance aesthetic refinement with functional intelligence. Every element is curated to serve both beauty and purpose.",
+      "Bespoke residential and commercial interiors that balance material honesty with spatial poetry, seamlessly guiding each project from initial concept to final installation.",
     image: "/assets/home/discipline-interior.png",
-    scope: "Residential & Commercial",
-    approach: "End-to-End Design",
     href: "/services/interior",
   },
   {
-    id: "architectural-consultancy",
-    title: "Architectural Consultancy",
-    icon: Compass,
+    number: "02",
+    title: "Architecture",
     description:
-      "Strategic spatial planning that grounds ambitious visions in structural truth. We provide the analytical framework and design intelligence to transform complex briefs into buildable reality.",
+      "Contextually intelligent architectural solutions that respond deeply to unique place, natural light and the poetic human experience of modern inhabitation.",
     image: "/assets/home/discipline-architecture.png",
-    scope: "Spatial Strategy",
-    approach: "Analysis to Execution",
-    href: "/services/interior",
+    href: "/services",
   },
   {
-    id: "bespoke-furnishings",
-    title: "Bespoke Furnishings",
-    icon: Armchair,
+    number: "03",
+    title: "Bespoke Furniture",
     description:
-      "Custom furniture and fixture design that completes the spatial narrative. Each piece is conceived as an integral part of the architectural composition, crafted with artisanal precision.",
+      "Handcrafted furniture designed as functional sculpture, where each bespoke piece narrates a rich story of material, proportion and human touch.",
     image: "/assets/home/discipline-curation.png",
-    scope: "Custom Design",
-    approach: "Craft-Led Process",
     href: "/services/furniture",
   },
 ];
@@ -45,112 +35,82 @@ const services = [
 const HomeServices = () => {
   return (
     <section
-      id="services-overview"
+      id="services"
       aria-labelledby="services-heading"
       className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
       <div className="custom-container">
         {/* Section Header */}
         <SectionHeader
-          variant="centered"
-          badgeText="Our Expertise"
+          variant="manifesto"
           headingId="services-heading"
+          badgeText="Our Disciplines"
           title={
             <>
-              Disciplines of{" "}
+              Pillars of{" "}
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Design
+                Excellence
               </span>
             </>
           }
-          description="Comprehensive design services rooted in architectural thinking — from spatial strategy and interior curation to bespoke furniture that completes the narrative."
-          className="mb-16 lg:mb-20"
+          description="A curated ecosystem of design disciplines bridging architectural rigor and material poetry to craft enduring spatial experiences of quiet luxury."
+          className="mb-12"
         />
 
-        {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={service.id}
-                className="group relative bg-background rounded-sm border border-border/40 overflow-hidden hover:border-liminal-secondary/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col"
-              >
-                {/* Top Accent Line */}
-                <div className="h-0.5 bg-liminal-secondary/20 group-hover:bg-liminal-secondary transition-colors duration-700" />
-
-                {/* Image */}
-                <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    quality={85}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu backface-hidden"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-foreground/10 to-transparent" />
+        {/* Service Rows */}
+        <div>
+          {services.map((service) => (
+            <Link
+              key={service.number}
+              href={service.href}
+              className="group block border-t border-border/50 last:border-b"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 py-8 lg:py-10 items-center">
+                {/* Number */}
+                <div className="lg:col-span-1 hidden lg:block">
+                  <span className="text-[11px] font-mono tracking-[0.3em] text-muted-foreground/35 group-hover:text-liminal-secondary transition-colors duration-500">
+                    {service.number}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-7 md:p-8 flex flex-col flex-1">
-                  {/* Icon + Title */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-10 h-10 rounded-full border border-border/60 flex items-center justify-center group-hover:border-liminal-secondary/40 group-hover:bg-liminal-secondary/5 transition-all duration-500">
-                      <Icon className="size-4.5 text-muted-foreground group-hover:text-liminal-secondary transition-colors duration-500" />
-                    </div>
-                    <h3 className="text-xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
+                {/* Title */}
+                <div className="lg:col-span-3">
+                  <div className="flex items-center gap-3 lg:block">
+                    <span className="text-[11px] font-mono tracking-[0.3em] text-muted-foreground/35 lg:hidden group-hover:text-liminal-secondary transition-colors duration-500">
+                      {service.number}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-bold font-heading tracking-tight group-hover:text-liminal-secondary transition-colors duration-500">
                       {service.title}
                     </h3>
                   </div>
+                </div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground font-light text-[15px] leading-relaxed mb-6 flex-1">
+                {/* Description */}
+                <div className="lg:col-span-4">
+                  <p className="text-muted-foreground font-light text-[15px] leading-relaxed">
                     {service.description}
                   </p>
+                </div>
 
-                  {/* Tech Specs */}
-                  <div className="flex items-center gap-6 pt-5 border-t border-border/40 mb-6">
-                    <div className="space-y-1">
-                      <span className="text-[9px] font-mono tracking-widest text-muted-foreground uppercase">
-                        Scope
-                      </span>
-                      <p className="text-[11px] font-bold uppercase tracking-tight">
-                        {service.scope}
-                      </p>
-                    </div>
-                    <div className="w-px h-7 bg-border/40" />
-                    <div className="space-y-1">
-                      <span className="text-[9px] font-mono tracking-widest text-muted-foreground uppercase">
-                        Approach
-                      </span>
-                      <p className="text-[11px] font-bold uppercase tracking-tight">
-                        {service.approach}
-                      </p>
-                    </div>
+                {/* Image Thumbnail + Arrow */}
+                <div className="lg:col-span-4 flex items-center gap-5 justify-between">
+                  <div className="relative h-16 lg:h-30 flex-1 max-w-50 overflow-hidden rounded-sm">
+                    <Image
+                      src={service.image}
+                      alt={`Liminal ${service.title}`}
+                      fill
+                      sizes="200px"
+                      quality={75}
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform transform-gpu"
+                    />
                   </div>
-
-                  {/* CTA Link */}
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-liminal-secondary hover:gap-3 transition-all duration-500 group/link"
-                  >
-                    <span>Explore Service</span>
-                    <span className="transition-transform duration-300 group-hover/link:translate-x-0.5">
-                      →
-                    </span>
-                  </Link>
+                  <div className="shrink-0 w-11 h-11 rounded-full border border-border/50 flex items-center justify-center group-hover:bg-liminal-secondary group-hover:border-liminal-secondary transition-all duration-500">
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-white group-hover:rotate-45 transition-all duration-400 transform-gpu" />
+                  </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="flex justify-center pt-16 md:pt-20">
-          <Link href="/services/interior">
-            <AnimatedButton>View All Services</AnimatedButton>
-          </Link>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
