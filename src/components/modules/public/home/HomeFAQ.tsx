@@ -86,7 +86,7 @@ const HomeFAQ = () => {
             </div>
 
             {/* Content Text */}
-            <div className="lg:w-[85%] pb-2">
+            <div className="lg:max-w-[85%] pb-2">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-heading leading-tight tracking-tight mb-4">
                 Still Looking For Answers Or Need A Fun Chat?
               </h3>

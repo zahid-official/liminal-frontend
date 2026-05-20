@@ -1,3 +1,4 @@
+import HomeCTA from "@/components/modules/public/home/HomeCTA";
 import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
@@ -47,7 +48,7 @@ const HomePage = () => {
       <HomeFAQ />
 
       {/* 10. Consultation CTA — Conversion moment (dark) */}
-      {/* <HomeCTA /> */}
+      <HomeCTA />
 
       {/* 11. Newsletter — Soft final engagement (white) */}
       {/* <HomeNewsletter /> */}
