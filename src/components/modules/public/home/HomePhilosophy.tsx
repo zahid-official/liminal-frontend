@@ -15,7 +15,7 @@ const HomePhilosophy = () => {
     <section
       id="home-philosophy"
       aria-labelledby="philosophy-heading"
-      className="py-20 md:py-28 lg:py-32 bg-[#141F0A] text-background relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 bg-liminal-dark text-background relative overflow-hidden"
     >
       {/* Subtle Blueprint Grid Overlay */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-size-[32px_32px]" />

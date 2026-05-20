@@ -1,4 +1,4 @@
-﻿import SectionHeader from "@/components/shared/SectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 
@@ -49,7 +49,7 @@ const projectsData = [
 
 const InteriorProjects = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-[#141f0a] text-background overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-liminal-dark text-background overflow-hidden">
       <div className="custom-container">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-16">

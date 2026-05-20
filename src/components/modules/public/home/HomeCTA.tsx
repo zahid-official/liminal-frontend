@@ -34,7 +34,7 @@ const HomeCTA = () => {
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-liminal-secondary/5 -skew-x-12 -translate-x-1/4" />
 
       <div className="custom-container relative z-10">
-        <div className="bg-[#141F0A] rounded-[2rem] overflow-hidden shadow-2xl shadow-foreground/20 flex flex-col lg:flex-row items-stretch">
+        <div className="bg-liminal-dark rounded-[2rem] overflow-hidden shadow-2xl shadow-foreground/20 flex flex-col lg:flex-row items-stretch">
           {/* Left: Content */}
           <div className="flex-1 p-8 md:p-16 lg:p-24 space-y-10 relative flex flex-col justify-center">
             {/* Blueprint texture overlay */}

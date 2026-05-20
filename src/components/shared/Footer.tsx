@@ -1,4 +1,4 @@
-﻿import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import Logo from "./Logo";
 
@@ -14,7 +14,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer
-      className="bg-[#141f0a] text-background relative overflow-hidden"
+      className="bg-liminal-dark text-background relative overflow-hidden"
       role="contentinfo"
       aria-label="Site footer"
     >
