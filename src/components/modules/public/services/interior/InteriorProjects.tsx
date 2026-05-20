@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import AnimatedButton from "@/components/shared/AnimatedButton";
 
@@ -49,13 +49,13 @@ const projectsData = [
 
 const InteriorProjects = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-[#141f0a] text-white overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 bg-[#141f0a] text-background overflow-hidden">
       <div className="custom-container">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-16">
           <SectionHeader
             badgeText="Featured Work"
-            badgeClassName="text-white"
+            badgeClassName="text-background"
             title={
               <>
                 Architectural <br />
@@ -69,7 +69,7 @@ const InteriorProjects = () => {
             className="lg:mb-0"
           />
           <div className="hidden lg:block pb-4">
-            <AnimatedButton className="border-white/20 hover:border-white/40 [&_span.text-foreground]:text-white/90">
+            <AnimatedButton className="border-background/20 hover:border-background/40 [&_span.text-foreground]:text-background/90">
               Explore Portfolio
             </AnimatedButton>
           </div>
@@ -80,10 +80,10 @@ const InteriorProjects = () => {
           {projectsData.map((project) => (
             <div
               key={project.id}
-              className="group relative border border-white/50 p-1 hover:border-white/80 transition-colors duration-500"
+              className="group relative border border-background/50 p-1 hover:border-background/80 transition-colors duration-500"
             >
               {/* Technical Numbering */}
-              <div className="absolute top-4 right-4 text-5xl font-black text-white/10 group-hover:text-white/50 transition-all duration-700 font-heading select-none pointer-events-none z-10">
+              <div className="absolute top-4 right-4 text-5xl font-black text-background/10 group-hover:text-background/50 transition-all duration-700 font-heading select-none pointer-events-none z-10">
                 {String(project.id).padStart(2, "0")}
               </div>
 
@@ -99,17 +99,17 @@ const InteriorProjects = () => {
                 />
 
                 {/* Overlay with technical specs */}
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
                   <div className="space-y-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
                     <div className="flex items-center gap-3">
                       <span className="font-mono font-bold uppercase">
                         {project.title}
                       </span>
-                      <div className="h-px flex-1 bg-white/20" />
+                      <div className="h-px flex-1 bg-background/20" />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <span className="text-[9px] font-mono text-white/50 uppercase">
+                        <span className="text-[9px] font-mono text-background/50 uppercase">
                           Context
                         </span>
                         <p className="text-[11px] font-bold uppercase">
@@ -117,7 +117,7 @@ const InteriorProjects = () => {
                         </p>
                       </div>
                       <div className="space-y-1">
-                        <span className="text-[9px] font-mono text-white/50 uppercase">
+                        <span className="text-[9px] font-mono text-background/50 uppercase">
                           Typology
                         </span>
                         <p className="text-[11px] font-bold uppercase">
@@ -130,15 +130,15 @@ const InteriorProjects = () => {
               </div>
 
               {/* Animated Border Reveal on Hover */}
-              <div className="absolute top-0 left-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full" />
-              <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full" />
+              <div className="absolute top-0 left-0 w-0 h-0.5 bg-background transition-all duration-500 group-hover:w-full" />
+              <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-background transition-all duration-500 group-hover:w-full" />
             </div>
           ))}
         </div>
 
         {/* Mobile View All Button */}
         <div className="mt-16 lg:hidden flex justify-center">
-          <AnimatedButton className="border-white/20 hover:border-white/40 [&_span.text-foreground]:text-white/90">
+          <AnimatedButton className="border-background/20 hover:border-background/40 [&_span.text-foreground]:text-background/90">
             Explore Portfolio
           </AnimatedButton>
         </div>

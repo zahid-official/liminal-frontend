@@ -1,4 +1,4 @@
-import LiminalButton from "@/components/shared/LiminalButton";
+﻿import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
@@ -115,7 +115,7 @@ const HomeProjects = () => {
                   }
                 />
                 {/* Overlay: Minimalist Cinematic Gradient */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-25 group-hover:opacity-50 transition-opacity duration-1000" />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/60 to-transparent opacity-25 group-hover:opacity-50 transition-opacity duration-1000" />
                 <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-20 transition-opacity duration-1000" />
               </div>
 

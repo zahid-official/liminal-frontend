@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -105,7 +105,7 @@ const HomeServices = () => {
                     />
                   </div>
                   <div className="shrink-0 w-11 h-11 rounded-full border border-border/50 flex items-center justify-center group-hover:bg-liminal-secondary group-hover:border-liminal-secondary transition-all duration-500">
-                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-white group-hover:rotate-45 transition-all duration-400 transform-gpu" />
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-background group-hover:rotate-45 transition-all duration-400 transform-gpu" />
                   </div>
                 </div>
               </div>

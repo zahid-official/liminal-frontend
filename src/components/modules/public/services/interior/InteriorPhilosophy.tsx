@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -77,7 +77,7 @@ const InteriorPhilosophy = () => {
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               {/* Overlay for depth */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
 
             {/* Architectural Elements - Blueprint Corners */}

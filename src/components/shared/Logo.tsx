@@ -1,4 +1,4 @@
-// Logo Props
+﻿// Logo Props
 interface LogoProps {
   isScrolled?: boolean;
 }
@@ -8,7 +8,7 @@ const Logo = ({ isScrolled = true }: LogoProps) => {
   return (
     <span
       className={`text-4xl font-heading font-semibold transition-colors duration-300 ${
-        isScrolled ? "text-foreground" : "text-white"
+        isScrolled ? "text-foreground" : "text-background"
       }`}
     >
       Liminal

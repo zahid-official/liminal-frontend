@@ -1,4 +1,4 @@
-import LiminalButton from "@/components/shared/LiminalButton";
+﻿import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { Hammer, Layers, PenTool, Sparkles } from "lucide-react";
 import Image from "next/image";
@@ -139,10 +139,10 @@ const FurnitureAtelier = () => {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/60 via-transparent to-transparent" />
 
                 {/* Floating Detail Card */}
-                <div className="absolute bottom-10 left-10 right-10 rounded bg-white/75 backdrop-blur-lg p-8 border-l-4 border-liminal-secondary/80 shadow-xl">
+                <div className="absolute bottom-10 left-10 right-10 rounded bg-background/75 backdrop-blur-lg p-8 border-l-4 border-liminal-secondary/80 shadow-xl">
                   <p className="text-[10px] font-mono text-liminal-secondary uppercase tracking-[0.3em]">
                     Currently Crafting
                   </p>
@@ -158,7 +158,7 @@ const FurnitureAtelier = () => {
                       {[1, 2, 3].map((i) => (
                         <div
                           key={i}
-                          className="w-8 h-8 rounded-full border-2 border-white/80 bg-zinc-200 overflow-hidden"
+                          className="w-8 h-8 rounded-full border-2 border-background/80 bg-zinc-200 overflow-hidden"
                         >
                           <Image
                             src={`/assets/furniture/bespoke-coffee-table.png`}
@@ -170,7 +170,7 @@ const FurnitureAtelier = () => {
                         </div>
                       ))}
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-black/70">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/70">
                       4 Master Craftsmen assigned
                     </span>
                   </div>
@@ -178,7 +178,7 @@ const FurnitureAtelier = () => {
               </div>
 
               {/* Secondary Overlapping Image */}
-              <div className="absolute -top-12 -right-12 w-48 h-48 md:w-64 md:h-64 border-8 border-white rounded-sm overflow-hidden shadow-2xl hidden md:block">
+              <div className="absolute -top-12 -right-12 w-48 h-48 md:w-64 md:h-64 border-8 border-background rounded-sm overflow-hidden shadow-2xl hidden md:block">
                 <Image
                   src="/assets/furniture/custom-process-v2.png"
                   alt="Material Detail"
@@ -188,7 +188,7 @@ const FurnitureAtelier = () => {
               </div>
 
               {/* Technical Drawing Overlay (SVG) */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-liminal-secondary flex items-center justify-center p-6 text-white shadow-xl">
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-liminal-secondary flex items-center justify-center p-6 text-background shadow-xl">
                 <div className="text-center">
                   <p className="text-2xl font-bold font-heading leading-tight">
                     100%

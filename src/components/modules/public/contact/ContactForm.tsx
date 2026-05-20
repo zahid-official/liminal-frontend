@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -78,7 +78,7 @@ const ContactForm = () => {
               </SelectTrigger>
               <SelectContent
                 position="popper"
-                className="w-(--radix-select-trigger-width) rounded-2xl pb-1.5 border-border/50 bg-white/98 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] animate-in fade-in-0 zoom-in-95"
+                className="w-(--radix-select-trigger-width) rounded-2xl pb-1.5 border-border/50 bg-background/98 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] animate-in fade-in-0 zoom-in-95"
               >
                 <SelectItem
                   value="placeholder"
@@ -131,7 +131,7 @@ const ContactForm = () => {
           <div className="">
             <button
               type="submit"
-              className="group relative flex items-center gap-3 bg-liminal-secondary text-white px-8 py-5 cursor-pointer rounded-full overflow-hidden transition-all hover:shadow-2xl hover:shadow-liminal-secondary/40 active:scale-[0.98]"
+              className="group relative flex items-center gap-3 bg-liminal-secondary text-background px-8 py-5 cursor-pointer rounded-full overflow-hidden transition-all hover:shadow-2xl hover:shadow-liminal-secondary/40 active:scale-[0.98]"
             >
               <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">
                 Transmit Inquiry
@@ -142,7 +142,7 @@ const ContactForm = () => {
                 strokeWidth={2}
               />
               {/* Glossy Overlay */}
-              <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+              <div className="absolute inset-0 bg-linear-to-r from-background/0 via-background/15 to-background/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
             </button>
           </div>
 
