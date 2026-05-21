@@ -1,99 +1,78 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import Image from "next/image";
 
+// HomeManifesto Component: The Conceptual Foundation
 const HomeManifesto = () => {
-  const manifestoSpecs = [
-    { label: "Discipline", value: "Interior Architecture" },
-    { label: "Focus", value: "Minimalist Modernity" },
-    { label: "Experience", value: "5+ Years" },
-  ];
-
   return (
     <section
-      id="manifesto"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      id="home-manifesto"
+      aria-labelledby="manifesto-heading"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
-      <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-center">
-          {/* Left: Image Column (spans 7/12) */}
-          <div className="lg:col-span-7 relative z-10">
-            <div className="relative aspect-4/5 md:aspect-16/10 lg:aspect-4/5 overflow-hidden group rounded">
-              {/* Image Frame/Border */}
-              <div className="absolute inset-4 border border-background/20 z-20 pointer-events-none" />
+      {/* Giant Background Letter */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28rem] md:text-[48rem] font-heading font-bold text-liminal-secondary/3 select-none pointer-events-none leading-none">
+        L
+      </div>
 
-              <Image
-                src="/assets/home/home-manifesto-interior-refined.png"
-                alt="Liminal Studio: Luxury Minimalist Living Room Design"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                priority
-              />
+      <div className="custom-container relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          {/* Section Header */}
+          <SectionHeader
+            variant="manifesto"
+            badgeText="Our Conviction"
+            headingId="manifesto-heading"
+            title={
+              <>
+                We don&apos;t decorate rooms.
+                <br className="hidden sm:block" />{" "}
+                <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                  We architect emotions
+                </span>
+              </>
+            }
+          />
 
-              {/* Overlay for subtle depth */}
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/10 to-transparent opacity-40 pointer-events-none" />
+          {/* Manifesto Body */}
+          <div className="max-w-2xl mx-auto space-y-6">
+            <p className="text-lg text-muted-foreground leading-relaxed font-light">
+              Every material, every proportion, every shadow is placed with
+              absolute intention. Our work sits at the intersection of
+              architectural precision and human intuition, designing spaces
+              that feel inevitable, not merely beautiful.
+            </p>
 
-              {/* Floating Year Badge */}
-              <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 bg-[#141F0A] text-white px-8 py-6 shadow-2xl text-center">
-                <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-white/50 block">
-                  Established
-                </span>
-                <span className="text-3xl font-bold font-heading tracking-tight block mt-1">
-                  2020
-                </span>
-                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-white/40 block mt-1">
-                  Dhaka, Bangladesh
-                </span>
-              </div>
-            </div>
+            <p className="text-muted-foreground leading-relaxed font-light">
+              We don&apos;t follow trends. We study how light falls, how
+              materials age, how textures whisper and how a room makes you
+              pause. Then we design accordingly, with the patience of
+              craftsmen, the rigor of architects and a profound reverence
+              for the timeless poetry of space.
+            </p>
           </div>
 
-          {/* Right: Content Column (spans 5/12, overlaps slightly) */}
-          <div className="lg:col-span-5 lg:-ml-20 relative z-20">
-            <div className="bg-background space-y-6 lg:p-16 lg:shadow-[40px_40px_80px_-20px_rgba(0,0,0,0.05)] rounded">
-              {/* Using Shared SectionHeader for consistency */}
-              <SectionHeader
-                variant="inline"
-                badgeText="The Manifesto"
-                title={
-                  <>
-                    The Architecture{" "}
-                    <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                      beyond form
-                    </span>
-                  </>
-                }
-                className="mb-8"
-              />
-
-              {/* Narrative Copy */}
-              <div className="space-y-6 text-muted-foreground leading-relaxed font-light">
-                <p>
-                  At Liminal, we believe that true luxury isn&apos;t found in
-                  excess, but in the precise dialogue between light, material,
-                  and void. Our studio is dedicated to crafting spaces that
-                  offer a respite from the noise of the world.
-                </p>
-                <p>
-                  Every line we draw and every texture we select is an
-                  intentional step toward creating an environment that feels
-                  both monumental and intimate.
-                </p>
+          {/* Pull Quote with Diamond Ornament */}
+          <div className="max-w-xl mx-auto">
+            <blockquote className="relative py-14 px-6">
+              {/* Decorative Quotation */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 text-7xl text-liminal-secondary/60 font-serif leading-none select-none pointer-events-none">
+                &ldquo;
               </div>
 
-              {/* Stats / Specs Grid */}
-              <div className="pt-6 border-t border-border/60 grid grid-cols-2 sm:grid-cols-3 gap-8 ">
-                {manifestoSpecs.map((spec) => (
-                  <div key={spec.label} className="space-y-1 text-center">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60 block">
-                      {spec.label}
-                    </span>
-                    <p className="text-sm font-semibold tracking-tight text-foreground/80">
-                      {spec.value}
-                    </p>
-                  </div>
-                ))}
+              {/* Diamond Ornament Divider */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-3">
+                <div className="w-10 h-px bg-liminal-secondary/60" />
+                <div className="w-2 h-2 rotate-45 border border-liminal-secondary/80" />
+                <div className="w-10 h-px bg-liminal-secondary/60" />
               </div>
-            </div>
+
+              {/* Quote */}
+              <p className="text-xl md:text-2xl italic font-serif text-foreground/90 leading-relaxed">
+                &quot;Design is not what you see. It&apos;s what you feel when
+                you enter a room.&quot;
+              </p>
+              <footer className="block mt-4 text-[10px] uppercase tracking-[0.3em] text-liminal-secondary font-bold">
+                Liminal Design Manifesto
+              </footer>
+            </blockquote>
           </div>
         </div>
       </div>

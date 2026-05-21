@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { cn } from "@/lib/utils";
 import { ChevronDown, Menu } from "lucide-react";
@@ -72,7 +72,7 @@ const Navbar = () => {
           <nav
             className={cn(
               "flex items-center gap-5.5 font-medium max-md:hidden transition-colors",
-              isScrolled ? "text-foreground" : "text-white",
+              isScrolled ? "text-foreground" : "text-background",
             )}
           >
             {navLinks.map((item, idx) => {
@@ -152,7 +152,7 @@ const Navbar = () => {
             orientation="vertical"
             className={cn(
               "mx-1 max-md:hidden transition-colors duration-300",
-              isScrolled ? "bg-foreground/25" : "bg-white/25",
+              isScrolled ? "bg-foreground/25" : "bg-background/25",
             )}
           />
 
@@ -164,7 +164,7 @@ const Navbar = () => {
                   "max-md:hidden text-base tracking-[0.03em] transition-all duration-300 pl-4.5 gap-2",
                   isScrolled
                     ? "border-foreground/25"
-                    : "bg-white text-black hover:bg-white/90",
+                    : "bg-background text-foreground hover:bg-background/90",
                 )}
               >
                 Login

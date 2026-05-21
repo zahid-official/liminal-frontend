@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
@@ -50,11 +50,13 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 will-change-transform"
+          quality={100}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
         />
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
+        <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
           <div className="space-y-1 translate-y-8 group-hover:translate-y-0 transition-transform duration-700 delay-100">
             {/* Title and Category */}
             <div className="space-y-2">
@@ -62,7 +64,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                 {project.category}
               </span>
               <div className="flex items-center gap-4">
-                <h3 className="font-heading text-xl font-bold text-white uppercase tracking-tight">
+                <h3 className="font-heading text-xl font-bold text-background uppercase tracking-tight">
                   {project.title}
                 </h3>
                 <div className="h-px flex-1 bg-background/20 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-100" />
@@ -73,10 +75,10 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <div className="grid grid-cols-2 gap-6 pt-4 border-t border-background/10">
               {metaInfo.map((item, index) => (
                 <div key={index} className="space-y-1">
-                  <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest block">
+                  <span className="text-[9px] font-mono text-background/40 uppercase tracking-widest block">
                     {item.label}
                   </span>
-                  <p className="text-xs font-bold text-white uppercase">
+                  <p className="text-xs font-bold text-background uppercase">
                     {item.value}
                   </p>
                 </div>

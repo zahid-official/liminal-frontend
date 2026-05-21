@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 
 const steps = [
   {
@@ -49,7 +49,7 @@ const InteriorProcess = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative p-8 bg-white border border-border/60 hover:border-liminal-secondary transition-all duration-500 hover:shadow-2xl hover:shadow-liminal-secondary/5"
+              className="group relative p-8 bg-background border border-border/60 hover:border-liminal-secondary transition-all duration-500 hover:shadow-2xl hover:shadow-liminal-secondary/5"
             >
               {/* Animated Corner */}
               <div className="absolute top-0 right-0 w-0 h-0 border-t-2 border-r-2 border-liminal-secondary opacity-0 group-hover:w-4 group-hover:h-4 group-hover:opacity-100 transition-all duration-500" />

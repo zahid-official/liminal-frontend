@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import { ArrowRight, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 
@@ -105,7 +105,7 @@ const FurnitureCollection = () => {
               <div className="relative aspect-3/4 overflow-hidden bg-zinc-100 mb-3 rounded-sm">
                 {/* Status Badge */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-white/90 backdrop-blur-sm px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-black rounded-sm border border-black/5">
+                  <span className="bg-background/90 backdrop-blur-sm px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-foreground rounded-sm border border-foreground/5">
                     {item.status}
                   </span>
                 </div>
@@ -118,12 +118,12 @@ const FurnitureCollection = () => {
                 />
 
                 {/* Quick Action Overlay */}
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
+                <div className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
                   <div className="flex flex-col items-center gap-4 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                    <button className="bg-white rounded cursor-pointer text-black p-4 tracking-widest text-[11px] font-bold uppercase flex items-center gap-2 transition-colors duration-300 hover:bg-liminal-secondary hover:text-white">
+                    <button className="bg-background rounded cursor-pointer text-foreground p-4 tracking-widest text-[11px] font-bold uppercase flex items-center gap-2 transition-colors duration-300 hover:bg-liminal-secondary hover:text-background">
                       View Specifications <ShoppingBag className="w-4 h-4" />
                     </button>
-                    <span className="text-white/60 text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+                    <span className="text-background/60 text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
                       Ref: {item.id}
                     </span>
                   </div>
@@ -187,7 +187,7 @@ const FurnitureCollection = () => {
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] border-b pb-2 hover:text-liminal-secondary group-hover:border-liminal-secondary transition-all duration-300">
               Explore Full Collection
             </span>
-            <span className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:border-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-300">
+            <span className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center group-hover:border-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-background transition-all duration-300">
               <ArrowRight className="w-5 h-5" />
             </span>
           </button>

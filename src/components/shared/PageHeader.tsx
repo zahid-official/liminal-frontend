@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -37,19 +37,19 @@ const PageHeader = ({
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-foreground/55" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 w-full max-w-4xl mx-auto gap-6 mt-8 md:mt-0">
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-background tracking-tight">
           {title}
         </h1>
 
         {/* Breadcrumbs */}
-        <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-6 py-2.5">
+        <div className="bg-background/10 backdrop-blur-sm border border-background/15 rounded-full px-6 py-2.5">
           <Breadcrumb>
-            <BreadcrumbList className="text-white/80 sm:text-[15px] gap-2">
+            <BreadcrumbList className="text-background/80 sm:text-[15px] gap-2">
               {items.map((item, index) => {
                 const isLast = index === items.length - 1;
                 return (
@@ -63,7 +63,7 @@ const PageHeader = ({
                         <BreadcrumbLink asChild>
                           <Link
                             href={item.href || "#"}
-                            className="hover:text-white transition-colors"
+                            className="hover:text-background transition-colors"
                           >
                             {item.label}
                           </Link>
@@ -71,7 +71,7 @@ const PageHeader = ({
                       )}
                     </BreadcrumbItem>
                     {!isLast && (
-                      <BreadcrumbSeparator className="text-white/50" />
+                      <BreadcrumbSeparator className="text-background/50" />
                     )}
                   </React.Fragment>
                 );

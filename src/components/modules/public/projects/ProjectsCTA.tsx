@@ -28,7 +28,7 @@ const ProjectsCTA = () => {
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-liminal-secondary/5 -skew-x-12 -translate-x-1/4" />
 
       <div className="custom-container relative z-10">
-        <div className="bg-[#141F0A] rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 flex flex-col lg:flex-row items-stretch">
+        <div className="bg-liminal-dark rounded-[2rem] overflow-hidden shadow-2xl shadow-foreground/20 flex flex-col lg:flex-row items-stretch">
           {/* Left: Content */}
           <div className="flex-1 p-8 md:p-16 lg:p-24 space-y-10 relative flex flex-col justify-center">
             {/* Blueprint texture overlay */}
@@ -70,16 +70,16 @@ const ProjectsCTA = () => {
             {stats.map((stat) => (
               <div key={stat.id} className="group space-y-4">
                 <div className="flex items-center gap-4">
-                  <span className="text-[10px] font-mono text-white/20 font-bold">
+                  <span className="text-[10px] font-mono text-background/20 font-bold">
                     {stat.id}
                   </span>
-                  <div className="h-px flex-1 bg-white/10" />
+                  <div className="h-px flex-1 bg-background/10" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em]">
+                  <span className="text-[10px] font-mono text-background/40 uppercase tracking-[0.3em]">
                     {stat.label}
                   </span>
-                  <p className="text-2xl font-medium text-white tracking-tight">
+                  <p className="text-2xl font-medium text-background tracking-tight">
                     {stat.value}
                   </p>
                 </div>
