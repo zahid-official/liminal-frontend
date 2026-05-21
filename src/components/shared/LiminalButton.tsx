@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { LucideIcon, ArrowUpRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ const LiminalButton = ({
   ...props
 }: LiminalButtonProps) => {
   const variants = {
-    primary: "bg-liminal-secondary text-white",
+    primary: "bg-liminal-secondary text-background",
     outline:
       "bg-transparent border border-border/60 text-foreground hover:bg-zinc-50",
     ghost: "bg-transparent text-foreground hover:bg-zinc-50",
@@ -70,7 +70,7 @@ const LiminalButton = ({
         )}
       </span>
       {variant === "primary" && !isLoading && (
-        <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/0 via-background/15 to-background/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
       )}
     </button>
   );

@@ -14,7 +14,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer
-      className="bg-[#141f0a] text-white relative overflow-hidden"
+      className="bg-liminal-dark text-background relative overflow-hidden"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -27,7 +27,7 @@ const Footer = () => {
               <Logo isScrolled={false} />
             </Link>
 
-            <p className="text-base -mt-1.5 text-white/80">
+            <p className="text-base -mt-1.5 text-background/80">
               Transforming spaces into timeless elegance. We blend creativity,
               functionality, and sustainability to craft interiors that inspire.
             </p>
@@ -36,7 +36,7 @@ const Footer = () => {
             <div className="w-full flex flex-col lg:items-start items-center">
               <h3 className="text-lg font-medium -mt-1 mb-2 flex items-center gap-2">
                 Follow us{" "}
-                <span className="inline-block h-px w-12 bg-white/30"></span>
+                <span className="inline-block h-px w-12 bg-background/30"></span>
               </h3>
               <div className="flex gap-4" aria-label="Social media links">
                 {/* Social Icons */}
@@ -46,7 +46,7 @@ const Footer = () => {
                     <Link
                       key={i}
                       href={item.href}
-                      className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-liminal-secondary hover:scale-110"
+                      className="w-10 h-10 rounded-full border border-background/10 flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-liminal-secondary hover:scale-110"
                     >
                       <Icon size={18} />
                     </Link>
@@ -92,7 +92,7 @@ const Footer = () => {
             },
           ].map((section, idx) => (
             <div key={idx} className="flex flex-col gap-4">
-              <h2 className="text-white text-base font-semibold tracking-tight">
+              <h2 className="text-background text-base font-semibold tracking-tight">
                 {section.title}
               </h2>
               <nav
@@ -103,7 +103,7 @@ const Footer = () => {
                   <Link
                     key={idx}
                     href={item?.href}
-                    className="text-white/60 hover:text-white transition-colors duration-200"
+                    className="text-background/60 hover:text-background transition-colors duration-200"
                   >
                     {item?.label}
                   </Link>
@@ -117,14 +117,14 @@ const Footer = () => {
         <div
           data-orientation="horizontal"
           role="presentation"
-          className="bg-white/10 shrink-0 h-px w-full mt-8"
+          className="bg-background/10 shrink-0 h-px w-full mt-8"
         />
 
         {/* Bottom Section */}
         <div className="flex flex-col gap-4 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
-          <p className="text-white/50 order-2 text-center lg:order-1 lg:text-left">
+          <p className="text-background/50 order-2 text-center lg:order-1 lg:text-left">
             <span>Copyright © {currentYear}</span>{" "}
-            <Link className="hover:underline text-white/70" href="/">
+            <Link className="hover:underline text-background/70" href="/">
               Liminal Interior Design
             </Link>
             . All rights reserved.
@@ -139,7 +139,7 @@ const Footer = () => {
                 <Link
                   key={item}
                   href="/contact"
-                  className="text-white/50 hover:text-white transition-colors duration-200"
+                  className="text-background/50 hover:text-background transition-colors duration-200"
                 >
                   {item}
                 </Link>

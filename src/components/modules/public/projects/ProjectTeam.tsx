@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
 // Expertise Data
@@ -46,7 +46,7 @@ const ProjectTeam = () => {
             <div className="absolute inset-0 border-20 border-background/10" />
 
             {/* Technical Stamp */}
-            <div className="absolute bottom-10 right-10 bg-black text-background p-6 md:p-8 flex flex-col gap-2">
+            <div className="absolute bottom-10 right-10 bg-foreground text-background p-6 md:p-8 flex flex-col gap-2">
               <span className="text-[10px] font-mono uppercase tracking-[0.4em]">
                 Liminal Std.
               </span>

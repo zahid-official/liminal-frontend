@@ -44,7 +44,7 @@ const ProjectsFilter = ({
                 className={cn(
                   "group relative flex items-center gap-3 px-5 py-2.5 transition-all duration-300 border cursor-pointer",
                   isActive
-                    ? "bg-[#141F0A] border-[#141F0A] text-background shadow-lg shadow-[#141F0A]/10"
+                    ? "bg-liminal-dark border-liminal-dark text-background shadow-lg shadow-liminal-dark/10"
                     : " border-border/50 hover:border-liminal-secondary",
                 )}
               >

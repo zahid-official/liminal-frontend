@@ -18,7 +18,9 @@ const HomeHero = () => {
           alt="Liminal: Ultra-modern symmetrical luxury villa interior with travertine and walnut wood"
           fill
           priority
-          className="object-cover"
+          quality={100}
+          sizes="100vw"
+          className="object-cover transform-gpu"
         />
       </div>
 

@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import { MapPin, Phone, Clock, ShieldCheck } from "lucide-react";
 
 const infoItems = [
@@ -94,7 +94,7 @@ const InfoSection = () => {
                 </div>
 
                 <div className="space-y-12">
-                  <div className="w-14 h-14 rounded-2xl bg-secondary/5 border border-border/40 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                  <div className="w-14 h-14 rounded-2xl bg-secondary/5 border border-border/40 flex items-center justify-center text-liminal-secondary group-hover:bg-liminal-secondary group-hover:text-background transition-all duration-500 transform group-hover:rotate-6">
                     <item.icon size={24} strokeWidth={1.5} />
                   </div>
 

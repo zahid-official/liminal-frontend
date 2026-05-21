@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/shared/SectionHeader";
+﻿import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 
 // philosophyImages
@@ -99,7 +99,7 @@ const FurniturePhilosophy = () => {
               {philosophyPoints.map((point, index) => (
                 <div key={index} className="space-y-5">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold text-liminal-secondary px-2 py-1 bg-white border border-zinc-200 rounded-sm">
+                    <span className="text-xs font-mono font-bold text-liminal-secondary px-2 py-1 bg-background border border-zinc-200 rounded-sm">
                       {point.number}
                     </span>
                     <div className="h-px flex-1 bg-zinc-200" />
@@ -115,7 +115,7 @@ const FurniturePhilosophy = () => {
             </div>
 
             {/* Quote Section */}
-            <div className="p-10 bg-white border border-zinc-200 rounded-sm relative group overflow-hidden">
+            <div className="p-10 bg-background border border-zinc-200 rounded-sm relative group overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-liminal-secondary/80" />
               <p className="text-sm italic font-serif text-zinc-600 leading-relaxed relative z-10">
                 &quot;Furniture should not merely fill a space; it should define

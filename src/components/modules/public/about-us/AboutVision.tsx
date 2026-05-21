@@ -7,7 +7,7 @@ const AboutVision = () => {
     <section
       id="vision"
       aria-labelledby="vision-heading"
-      className="relative overflow-hidden bg-[#141F0A] text-background"
+      className="relative overflow-hidden bg-liminal-dark text-background"
     >
       {/* Subtle Blueprint Grid Overlay */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(circle_at_1px_1px,currentColor_1px,transparent_0)] bg-size-[32px_32px]" />
@@ -23,8 +23,8 @@ const AboutVision = () => {
             className="object-cover transition-transform duration-1500 group-hover:scale-105"
           />
           {/* Gradient overlay for depth */}
-          <div className="absolute inset-0 bg-linear-to-r from-transparent via-transparent to-[#141F0A]/60 hidden lg:block" />
-          <div className="absolute inset-0 bg-linear-to-t from-[#141F0A]/80 to-transparent lg:hidden" />
+          <div className="absolute inset-0 bg-linear-to-r from-transparent via-transparent to-liminal-dark/60 hidden lg:block" />
+          <div className="absolute inset-0 bg-linear-to-t from-liminal-dark/80 to-transparent lg:hidden" />
 
           {/* Corner Markers */}
           <div className="absolute top-8 left-8 w-8 h-8 border-t border-l border-background/20" />
