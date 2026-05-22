@@ -9,7 +9,7 @@ const ContactPage = () => {
       <PageHeader
         title="Contact Us"
         items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
-        bgImage="/assets/bg-contact.avif"
+        bgImage="/assets/contact/bg-about.jpg"
       />
       <ContactSection />
       <InfoSection />
