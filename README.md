@@ -1,1 +1,1 @@
-Liminal frontend repo
+Liminal Interior Design - Frontend Repo
