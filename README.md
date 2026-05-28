@@ -1,1 +1,1 @@
-Liminal Repository
+Liminal - Frontend Repository
