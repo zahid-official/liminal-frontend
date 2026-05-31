@@ -1,1 +1,1 @@
-Liminal - Interior Design Studio - Frontend Github Repository
+Liminal - Interior Design Studio - Github Repository
