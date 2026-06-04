@@ -1,3 +1,4 @@
+import BlogExplorer from "@/components/modules/public/blog/BlogExplorer";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
 
@@ -12,11 +13,15 @@ export const metadata: Metadata = {
 const BlogPage = () => {
   return (
     <main>
+      {/* Page Header */}
       <PageHeader
         title="The Journal"
-        items={[{ label: "Home", href: "/" }, { label: "Journal" }]}
+        items={[{ label: "Home", href: "/" }, { label: "Blog" }]}
         bgImage="/assets/blog/staircase.png"
       />
+
+      {/* Design Journal Explorer */}
+      <BlogExplorer />
     </main>
   );
 };
