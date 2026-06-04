@@ -1,5 +1,6 @@
 import BlogEditorialIntro from "@/components/modules/public/blog/BlogEditorialIntro";
 import BlogExplorer from "@/components/modules/public/blog/BlogExplorer";
+import BlogPhilosophy from "@/components/modules/public/blog/BlogPhilosophy";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
 
@@ -26,6 +27,9 @@ const BlogPage = () => {
 
       {/* Design Journal Explorer */}
       <BlogExplorer />
+
+      {/* Design Philosophy */}
+      <BlogPhilosophy />
     </main>
   );
 };
