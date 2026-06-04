@@ -1,3 +1,4 @@
+import BlogEditorialIntro from "@/components/modules/public/blog/BlogEditorialIntro";
 import BlogExplorer from "@/components/modules/public/blog/BlogExplorer";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
@@ -19,6 +20,9 @@ const BlogPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "Blog" }]}
         bgImage="/assets/blog/staircase.png"
       />
+
+      {/* Editorial Intro */}
+      <BlogEditorialIntro />
 
       {/* Design Journal Explorer */}
       <BlogExplorer />
