@@ -1,5 +1,6 @@
 import BlogEditorialIntro from "@/components/modules/public/blog/BlogEditorialIntro";
 import BlogExplorer from "@/components/modules/public/blog/BlogExplorer";
+import BlogNewsletter from "@/components/modules/public/blog/BlogNewsletter";
 import BlogPhilosophy from "@/components/modules/public/blog/BlogPhilosophy";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
@@ -30,6 +31,9 @@ const BlogPage = () => {
 
       {/* Design Philosophy */}
       <BlogPhilosophy />
+
+      {/* Journal Newsletter */}
+      <BlogNewsletter />
     </main>
   );
 };
