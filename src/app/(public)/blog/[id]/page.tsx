@@ -1,37 +1,31 @@
 import {
-  blogArticles,
+  getAdjacentArticles,
   getArticleBySlug,
 } from "@/components/modules/public/blog/blogData";
-import BlogDetailContent from "@/components/modules/public/blog/blogDetails/BlogDetailContent";
-import BlogDetailNewsletter from "@/components/modules/public/blog/blogDetails/BlogDetailNewsletter";
-import BlogDetailRelated from "@/components/modules/public/blog/blogDetails/BlogDetailRelated";
+import BlogArticleContent from "@/components/modules/public/blog/blogDetails/BlogArticleContent";
+import BlogArticleHero from "@/components/modules/public/blog/blogDetails/BlogArticleHero";
+import BlogArticleNavigation from "@/components/modules/public/blog/blogDetails/BlogArticleNavigation";
+import BlogArticleSidebar from "@/components/modules/public/blog/blogDetails/BlogArticleSidebar";
+import BlogDesignerInsights from "@/components/modules/public/blog/blogDetails/BlogDesignerInsights";
+import BlogRelatedArticles from "@/components/modules/public/blog/blogDetails/BlogRelatedArticles";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 // Props
-interface BlogDetailPageProps {
+interface BlogDetailsPageProps {
   params: Promise<{ id: string }>;
 }
 
-// Generate static params for all articles
-export async function generateStaticParams() {
-  return blogArticles.map((article) => ({
-    id: article.id,
-  }));
-}
-
-// Dynamic metadata
+// Dynamic Metadata
 export async function generateMetadata({
   params,
-}: BlogDetailPageProps): Promise<Metadata> {
+}: BlogDetailsPageProps): Promise<Metadata> {
   const { id } = await params;
   const article = getArticleBySlug(id);
 
   if (!article) {
-    return {
-      title: "Article Not Found",
-    };
+    return { title: "Article Not Found" };
   }
 
   return {
@@ -41,7 +35,7 @@ export async function generateMetadata({
 }
 
 // BlogDetailsPage Component
-const BlogDetailsPage = async ({ params }: BlogDetailPageProps) => {
+const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
   const { id } = await params;
   const article = getArticleBySlug(id);
 
@@ -49,28 +43,47 @@ const BlogDetailsPage = async ({ params }: BlogDetailPageProps) => {
     notFound();
   }
 
+  const { prev, next } = getAdjacentArticles(article.id);
+
   return (
     <main>
-      {/* 1. Hero — Immersive article hero with reading progress (dark) */}
+      {/* Page Header — Consistent with other pages */}
       <PageHeader
-        title="Journal Details"
+        title={article.title}
         items={[
           { label: "Home", href: "/" },
-          { label: "Journal", href: "/blog" },
-          { label: "Blog Details" },
+          { label: "Blog", href: "/blog" },
+          { label: article.category },
         ]}
-        bgImage="/assets/blog/travertine.png"
+        bgImage={article.image}
       />
 
-      {/* 2. Content — Rich editorial body with TOC sidebar (background) */}
-      <BlogDetailContent article={article} />
+      {/* Hero Image — Full-width immersive presentation */}
+      <BlogArticleHero article={article} />
 
-      {/* 3. Related Articles — Prev/Next + grid (zinc) */}
-      <BlogDetailRelated article={article} />
+      {/* Article Body — Content + Sidebar */}
+      <section className="py-8 md:py-16 relative">
+        <div className="custom-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Sidebar — Desktop only, sticky */}
+            <BlogArticleSidebar content={article.content} />
 
+            {/* Main Content */}
+            <div className="lg:col-span-8 lg:col-start-4">
+              <BlogArticleContent content={article.content} />
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* 5. Newsletter — Journal subscription (background) */}
-      <BlogDetailNewsletter />
+      {/* Previous / Next Article Navigation */}
+      <BlogArticleNavigation prev={prev} next={next} />
+
+      {/* Designer Insights — Studio commentary */}
+      <BlogDesignerInsights />
+
+      {/* Related Articles — From The Journal */}
+      <BlogRelatedArticles currentId={article.id} />
     </main>
   );
 };
