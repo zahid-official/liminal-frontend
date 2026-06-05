@@ -1,68 +1,57 @@
-import BlogDetailContent from "@/components/modules/public/blog/blogDetails/BlogDetailContent";
-import BlogDetailMeta from "@/components/modules/public/blog/blogDetails/BlogDetailMeta";
-import BlogDetailNavigation from "@/components/modules/public/blog/blogDetails/BlogDetailNavigation";
-import BlogDetailRelated from "@/components/modules/public/blog/blogDetails/BlogDetailRelated";
-import BlogReadingProgress from "@/components/modules/public/blog/blogDetails/BlogReadingProgress";
-import PageHeader from "@/components/shared/PageHeader";
 import {
   blogArticles,
-  getAdjacentArticles,
   getArticleBySlug,
-  getRelatedArticles,
 } from "@/components/modules/public/blog/blogData";
-import type { Metadata } from "next";
+import BlogDetailContent from "@/components/modules/public/blog/blogDetails/BlogDetailContent";
+import BlogDetailNewsletter from "@/components/modules/public/blog/blogDetails/BlogDetailNewsletter";
+import BlogDetailRelated from "@/components/modules/public/blog/blogDetails/BlogDetailRelated";
+import PageHeader from "@/components/shared/PageHeader";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Generate static params for all blog posts
+// Props
+interface BlogDetailPageProps {
+  params: Promise<{ id: string }>;
+}
+
+// Generate static params for all articles
 export async function generateStaticParams() {
-  return blogArticles.map((post) => ({
-    id: post.slug,
+  return blogArticles.map((article) => ({
+    id: article.id,
   }));
 }
 
-// Generate dynamic metadata
+// Dynamic metadata
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
+}: BlogDetailPageProps): Promise<Metadata> {
   const { id } = await params;
-  const post = getArticleBySlug(id);
+  const article = getArticleBySlug(id);
 
-  if (!post) {
+  if (!article) {
     return {
       title: "Article Not Found",
     };
   }
 
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: article.title,
+    description: article.excerpt,
   };
 }
 
 // BlogDetailsPage Component
-const BlogDetailsPage = async ({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) => {
+const BlogDetailsPage = async ({ params }: BlogDetailPageProps) => {
   const { id } = await params;
-  const post = getArticleBySlug(id);
+  const article = getArticleBySlug(id);
 
-  if (!post) {
+  if (!article) {
     notFound();
   }
 
-  const relatedPosts = getRelatedArticles(post.id, 3);
-  const { prev, next } = getAdjacentArticles(post.id);
-
   return (
     <main>
-      {/* Reading Progress Bar */}
-      <BlogReadingProgress />
-
-      {/* 1. Editorial Hero — Immersive full-bleed hero */}
+      {/* 1. Hero — Immersive article hero with reading progress (dark) */}
       <PageHeader
         title="Journal Details"
         items={[
@@ -73,17 +62,15 @@ const BlogDetailsPage = async ({
         bgImage="/assets/blog/travertine.png"
       />
 
-      {/* 2. Author & Metadata Bar */}
-      <BlogDetailMeta post={post} />
+      {/* 2. Content — Rich editorial body with TOC sidebar (background) */}
+      <BlogDetailContent article={article} />
 
-      {/* 3. Rich Content Body */}
-      <BlogDetailContent content={post.content} />
+      {/* 3. Related Articles — Prev/Next + grid (zinc) */}
+      <BlogDetailRelated article={article} />
 
-      {/* 4. Previous/Next Navigation */}
-      <BlogDetailNavigation prev={prev} next={next} />
 
-      {/* 5. Related Articles */}
-      <BlogDetailRelated posts={relatedPosts} />
+      {/* 5. Newsletter — Journal subscription (background) */}
+      <BlogDetailNewsletter />
     </main>
   );
 };

@@ -1,116 +1,193 @@
 import SectionHeader from "@/components/shared/SectionHeader";
-import type { IBlogArticle } from "../blogData";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  getAdjacentArticles,
+  getRelatedArticles,
+  type IBlogArticle,
+} from "../blogData";
 
+// BlogDetailRelated Props
 interface BlogDetailRelatedProps {
-  posts: IBlogArticle[];
+  article: IBlogArticle;
 }
 
-// BlogDetailRelated Component — Premium related articles section
-const BlogDetailRelated = ({ posts }: BlogDetailRelatedProps) => {
-  if (posts.length === 0) return null;
+// BlogDetailRelated Component — Related articles + prev/next navigation
+const BlogDetailRelated = ({ article }: BlogDetailRelatedProps) => {
+  const { prev, next } = getAdjacentArticles(article.id);
+  const related = getRelatedArticles(article.id, 3);
 
   return (
     <section
       id="blog-detail-related"
-      aria-labelledby="related-articles-heading"
+      aria-labelledby="related-heading"
       className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
-      <div className="custom-container">
-        {/* Section Header */}
+      {/* Giant Background Letter */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28rem] md:text-[40rem] font-heading font-bold text-liminal-secondary/3 select-none pointer-events-none leading-none">
+        L
+      </div>
+
+      <div className="custom-container relative z-10">
+        {/* Prev / Next Navigation */}
+        {(prev || next) && (
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-8 h-px bg-liminal-secondary shrink-0" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
+                Continue Reading
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Previous Article */}
+              {prev ? (
+                <Link href={`/blog/${prev.id}`}>
+                  <div className="group flex items-stretch bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg transition-all duration-700 h-full">
+                    {/* Image */}
+                    <div className="relative w-1/3 min-h-35 overflow-hidden shrink-0">
+                      <Image
+                        src={prev.image}
+                        alt={prev.title}
+                        fill
+                        quality={80}
+                        sizes="15vw"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu"
+                      />
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1 p-5 md:p-6 flex flex-col justify-center">
+                      <div className="flex items-center gap-2 mb-2">
+                        <ArrowLeft className="size-3 text-muted-foreground/40" />
+                        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground/50">
+                          Previous Article
+                        </span>
+                      </div>
+                      <h4 className="text-base font-bold font-heading tracking-tight leading-snug group-hover:text-liminal-secondary transition-colors duration-500">
+                        {prev.title}
+                      </h4>
+                      <span className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mt-2">
+                        {prev.category}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div />
+              )}
+
+              {/* Next Article */}
+              {next ? (
+                <Link href={`/blog/${next.id}`}>
+                  <div className="group flex items-stretch bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg transition-all duration-700 h-full flex-row-reverse">
+                    {/* Image */}
+                    <div className="relative w-1/3 min-h-35 overflow-hidden shrink-0">
+                      <Image
+                        src={next.image}
+                        alt={next.title}
+                        fill
+                        quality={80}
+                        sizes="15vw"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu"
+                      />
+                    </div>
+                    {/* Content */}
+                    <div className="flex-1 p-5 md:p-6 flex flex-col justify-center text-right">
+                      <div className="flex items-center justify-end gap-2 mb-2">
+                        <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground/50">
+                          Next Article
+                        </span>
+                        <ArrowRight className="size-3 text-muted-foreground/40" />
+                      </div>
+                      <h4 className="text-base font-bold font-heading tracking-tight leading-snug group-hover:text-liminal-secondary transition-colors duration-500">
+                        {next.title}
+                      </h4>
+                      <span className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase mt-2">
+                        {next.category}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div />
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Related Articles Grid */}
         <SectionHeader
-          variant="manifesto"
-          badgeText="Continue Reading"
-          headingId="related-articles-heading"
+          variant="centered"
+          badgeText="Related Entries"
+          headingId="related-heading"
           title={
             <>
-              More{" "}
-              <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Explorations
+              More From the{" "}
+              <span className="italic font-serif font-light text-liminal-secondary">
+                Journal
               </span>
             </>
           }
-          description="Continue your journey through design thinking — explore related articles from the Liminal Journal."
-          className="mb-16 lg:mb-20"
+          description="Further explorations in design thinking, material studies, and spatial philosophy."
+          className="mb-16"
         />
 
-        {/* Related Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-10 lg:gap-y-14">
-          {posts.map((article, index) => (
-            <article
-              key={article.id}
-              className="group flex flex-col"
-            >
-              {/* Image */}
-              <Link
-                href={`/blog/${article.slug}`}
-                className="relative aspect-[4/3] overflow-hidden rounded-sm mb-6 block"
-              >
-                <Image
-                  src={article.image}
-                  alt={article.title}
-                  fill
-                  quality={85}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-[1200ms] group-hover:scale-110 will-change-transform transform-gpu backface-hidden"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-foreground/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {related.map((relatedArticle) => (
+            <Link key={relatedArticle.id} href={`/blog/${relatedArticle.id}`}>
+              <article className="group flex flex-col bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg hover:-translate-y-1 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] transform-gpu backface-hidden h-full">
+                {/* Image */}
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src={relatedArticle.image}
+                    alt={relatedArticle.title}
+                    fill
+                    quality={85}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu backface-hidden"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-foreground/10 to-transparent" />
 
-                {/* Category Tag */}
-                <div className="absolute top-4 left-4">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/95 bg-foreground/50 backdrop-blur-sm px-3.5 py-1.5 rounded-sm">
-                    {article.category}
-                  </span>
+                  {/* Category Tag */}
+                  <div className="absolute top-4 left-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/90 bg-foreground/40 backdrop-blur-sm px-3 py-1.5 rounded-sm">
+                      {relatedArticle.category}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Index */}
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 group-hover:translate-y-0 transform-gpu">
-                  <span className="text-5xl font-heading font-bold text-background/15">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
+                {/* Content */}
+                <div className="p-7 md:p-8 flex flex-col flex-1">
+                  {/* Date & Read Time */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
+                      {relatedArticle.date}
+                    </span>
+                    <div className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                    <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
+                      {relatedArticle.readTime}
+                    </span>
+                  </div>
 
-                {/* Inner Border Frame on hover */}
-                <div className="absolute inset-0 border border-background/0 group-hover:border-background/15 pointer-events-none m-3 transition-all duration-700" />
-              </Link>
-
-              {/* Content */}
-              <div className="flex flex-col flex-1">
-                {/* Date & Read Time */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase">
-                    {article.date}
-                  </span>
-                  <div className="w-4 h-px bg-muted-foreground/20" />
-                  <span className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase">
-                    {article.readTime}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <Link href={`/blog/${article.slug}`}>
+                  {/* Title */}
                   <h3 className="text-xl font-bold font-heading tracking-tight leading-snug mb-3 group-hover:text-liminal-secondary transition-colors duration-500">
-                    {article.title}
+                    {relatedArticle.title}
                   </h3>
-                </Link>
 
-                {/* Excerpt */}
-                <p className="text-muted-foreground font-light text-[15px] leading-relaxed mb-6 flex-1 line-clamp-2">
-                  {article.excerpt}
-                </p>
+                  {/* Excerpt */}
+                  <p className="text-muted-foreground font-light text-[15px] leading-relaxed mb-6 flex-1 line-clamp-3">
+                    {relatedArticle.excerpt}
+                  </p>
 
-                {/* Read Link */}
-                <Link
-                  href={`/blog/${article.slug}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-liminal-secondary hover:gap-3 transition-all duration-500 group/link"
-                >
-                  <span className="text-xs tracking-wider uppercase">Read Article</span>
-                  <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover/link:rotate-45 transform-gpu" />
-                </Link>
-              </div>
-            </article>
+                  {/* Read Link */}
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-liminal-secondary hover:gap-3 transition-all duration-500 group/link">
+                    <span>Read Article</span>
+                    <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:rotate-45 transform-gpu" />
+                  </span>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
