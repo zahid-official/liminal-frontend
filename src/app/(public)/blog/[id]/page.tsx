@@ -1,85 +1,68 @@
-import { blogArticles } from "@/components/modules/public/blog/blogData";
-import BlogDetailsView from "@/components/modules/public/blog/blogDetails/BlogDetailsView";
+import BlogDetailContent from "@/components/modules/public/blog/blogDetails/BlogDetailContent";
+import BlogDetailMeta from "@/components/modules/public/blog/blogDetails/BlogDetailMeta";
+import BlogDetailNavigation from "@/components/modules/public/blog/blogDetails/BlogDetailNavigation";
+import BlogDetailRelated from "@/components/modules/public/blog/blogDetails/BlogDetailRelated";
+import BlogReadingProgress from "@/components/modules/public/blog/blogDetails/BlogReadingProgress";
 import PageHeader from "@/components/shared/PageHeader";
+import {
+  blogArticles,
+  getAdjacentArticles,
+  getArticleBySlug,
+  getRelatedArticles,
+} from "@/components/modules/public/blog/blogData";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-interface PageProps {
-  params: Promise<{ id: string }>;
-}
-
-// 1. Generate Static Params for build pre-rendering
+// Generate static params for all blog posts
 export async function generateStaticParams() {
-  return blogArticles.map((article) => ({
-    id: article.id,
+  return blogArticles.map((post) => ({
+    id: post.slug,
   }));
 }
 
-// 2. Generate Dynamic Metadata for Search Engine Optimization
+// Generate dynamic metadata
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
   const { id } = await params;
-  const article = blogArticles.find((art) => art.id === id);
+  const post = getArticleBySlug(id);
 
-  if (!article) {
+  if (!post) {
     return {
-      title: "Article Not Found | Liminal Journal",
-      description:
-        "The requested architectural design journal entry could not be found.",
+      title: "Article Not Found",
     };
   }
 
   return {
-    title: `${article.title} — Journal`,
-    description: article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-      images: [{ url: article.image }],
-    },
+    title: post.title,
+    description: post.excerpt,
   };
 }
 
-// 3. Blog Details Page Server Component
-const BlogDetailsPage = async ({ params }: PageProps) => {
+// BlogDetailsPage Component
+const BlogDetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
   const { id } = await params;
+  const post = getArticleBySlug(id);
 
-  // Find current article index
-  const currentIndex = blogArticles.findIndex((art) => art.id === id);
-
-  if (currentIndex === -1) {
+  if (!post) {
     notFound();
   }
 
-  const article = blogArticles[currentIndex];
-
-  // Calculate Next and Previous Articles with circular wrapping
-  const prevArticle =
-    blogArticles[
-      currentIndex === 0 ? blogArticles.length - 1 : currentIndex - 1
-    ];
-  const nextArticle =
-    blogArticles[
-      currentIndex === blogArticles.length - 1 ? 0 : currentIndex + 1
-    ];
-
-  // Calculate Related Articles (same category, up to 2 items, excluding current article)
-  let relatedArticles = blogArticles.filter(
-    (art) => art.category === article.category && art.id !== article.id,
-  );
-
-  // If we don't have enough related articles in the same category, fill with others
-  if (relatedArticles.length < 2) {
-    const extraArticles = blogArticles.filter(
-      (art) =>
-        art.id !== article.id && !relatedArticles.some((r) => r.id === art.id),
-    );
-    relatedArticles = [...relatedArticles, ...extraArticles].slice(0, 2);
-  }
+  const relatedPosts = getRelatedArticles(post.id, 3);
+  const { prev, next } = getAdjacentArticles(post.id);
 
   return (
     <main>
+      {/* Reading Progress Bar */}
+      <BlogReadingProgress />
+
+      {/* 1. Editorial Hero — Immersive full-bleed hero */}
       <PageHeader
         title="Journal Details"
         items={[
@@ -89,12 +72,18 @@ const BlogDetailsPage = async ({ params }: PageProps) => {
         ]}
         bgImage="/assets/blog/travertine.png"
       />
-      <BlogDetailsView
-        article={article}
-        relatedArticles={relatedArticles}
-        prevArticle={prevArticle}
-        nextArticle={nextArticle}
-      />
+
+      {/* 2. Author & Metadata Bar */}
+      <BlogDetailMeta post={post} />
+
+      {/* 3. Rich Content Body */}
+      <BlogDetailContent content={post.content} />
+
+      {/* 4. Previous/Next Navigation */}
+      <BlogDetailNavigation prev={prev} next={next} />
+
+      {/* 5. Related Articles */}
+      <BlogDetailRelated posts={relatedPosts} />
     </main>
   );
 };
