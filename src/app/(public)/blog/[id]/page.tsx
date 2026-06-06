@@ -64,7 +64,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
       {/* Article Body — Content + Sidebar */}
       <section className="py-8 md:py-16 relative">
         <div className="custom-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* Sidebar — Desktop only, sticky */}
             <BlogArticleSidebar content={article.content} />
 

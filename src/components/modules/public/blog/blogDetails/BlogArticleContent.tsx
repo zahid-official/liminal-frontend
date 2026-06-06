@@ -1,4 +1,4 @@
-import { IBlogContentBlock } from "./blogData";
+import { IBlogContentBlock } from "../blogData";
 import Image from "next/image";
 
 interface BlogArticleContentProps {
@@ -6,21 +6,19 @@ interface BlogArticleContentProps {
 }
 
 const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
-  // Track whether we've rendered the first paragraph (for drop cap)
-  let isFirstParagraph = true;
+  const firstParagraphIndex = content.findIndex(block => block.type === "paragraph");
 
   return (
     <div className="space-y-8">
       {content.map((block, index) => {
         switch (block.type) {
           case "paragraph": {
-            const applyDropCap = isFirstParagraph;
-            if (isFirstParagraph) isFirstParagraph = false;
+            const applyDropCap = index === firstParagraphIndex;
 
             return (
               <p
                 key={index}
-                className="text-lg leading-loose text-foreground/80 font-light"
+                className="text-lg text-foreground/80 font-light"
               >
                 {applyDropCap ? (
                   <>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { IBlogContentBlock } from "./blogData";
+import { IBlogContentBlock } from "../blogData";
 import { Link2, Twitter } from "lucide-react";
 
 interface BlogArticleSidebarProps {
@@ -91,13 +91,13 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
   if (headings.length === 0) return null;
 
   return (
-    <aside className="hidden lg:block lg:col-span-2 lg:col-start-1 lg:row-start-1">
-      <div className="sticky top-32 space-y-8">
+    <aside className="hidden lg:block lg:col-span-3 lg:col-start-1 lg:row-start-1 mt-2 border-r">
+      <div className="sticky top-32 space-y-10">
         {/* Table of Contents */}
         <nav aria-label="Table of contents" className="space-y-4">
-          <span className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/40 uppercase block">
+          <div className="text-[11px] underline underline-offset-4 font-bold font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
             Contents
-          </span>
+          </div>
           <div className="space-y-1">
             {headings.map((heading) => {
               const isActive = activeHeading === heading.id;
@@ -107,10 +107,10 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
                   href={`#${heading.id}`}
                   onClick={(e) => handleTocClick(e, heading.id)}
                   className={cn(
-                    "flex items-center gap-2.5 py-1.5 text-[11px] leading-snug transition-all duration-300",
+                    "flex items-center gap-2.5 py-1.5 text-sm leading-snug transition-all duration-300",
                     isActive
                       ? "text-liminal-secondary font-semibold"
-                      : "text-muted-foreground/40 font-medium hover:text-foreground/70"
+                      : "text-muted-foreground/50 font-medium hover:text-foreground/70",
                   )}
                 >
                   <span
@@ -118,7 +118,7 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
                       "shrink-0 rounded-full transition-all duration-300",
                       isActive
                         ? "w-1.5 h-1.5 bg-liminal-secondary"
-                        : "w-1 h-1 bg-border"
+                        : "w-1 h-1 bg-border",
                     )}
                   />
                   <span className={cn(isActive && "translate-x-0.5")}>
@@ -131,10 +131,10 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
         </nav>
 
         {/* Share */}
-        <div className="space-y-3 pt-2">
-          <span className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/40 uppercase block">
+        <div className="space-y-3">
+          <div className="text-[11px] font-bold font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
             Share
-          </span>
+          </div>
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyLink}
