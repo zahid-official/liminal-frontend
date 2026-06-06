@@ -1,4 +1,4 @@
-import { IBlogArticle } from "./blogData";
+import { IBlogArticle } from "../blogData";
 import Image from "next/image";
 
 // BlogArticleHero Props
@@ -13,7 +13,7 @@ const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
       <div className="custom-container">
         <div className="relative group/hero">
           {/* Hero Image */}
-          <div className="relative aspect-video lg:aspect-[21/9] overflow-hidden rounded-sm shadow-2xl">
+          <div className="relative aspect-video lg:aspect-21/9 overflow-hidden rounded-sm shadow-2xl">
             <Image
               src={article.image}
               alt={article.title}

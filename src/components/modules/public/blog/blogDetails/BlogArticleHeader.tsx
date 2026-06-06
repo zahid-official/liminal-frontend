@@ -1,4 +1,4 @@
-import { IBlogArticle } from "./blogData";
+import { IBlogArticle } from "../blogData";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -79,7 +79,7 @@ const BlogArticleHeader = ({ article }: BlogArticleHeaderProps) => {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="text-background/50" />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-background font-medium truncate max-w-[200px]">
+                <BreadcrumbPage className="text-background font-medium truncate max-w-50">
                   {article.title}
                 </BreadcrumbPage>
               </BreadcrumbItem>
