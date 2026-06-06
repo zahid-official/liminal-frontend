@@ -1,5 +1,4 @@
 import { IBlogArticle } from "../blogData";
-import Image from "next/image";
 
 // BlogArticleHero Props
 interface BlogArticleHeroProps {
@@ -9,32 +8,24 @@ interface BlogArticleHeroProps {
 // BlogArticleHero Component
 const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
   return (
-    <section className="py-10 md:py-16 relative">
+    <section className="pt-16 relative">
       <div className="custom-container">
-        <div className="relative group/hero">
-          {/* Hero Image */}
-          <div className="relative aspect-video lg:aspect-21/9 overflow-hidden rounded-sm shadow-2xl">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              quality={90}
-              priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-cover transition-transform duration-1500 group-hover/hero:scale-[1.03] will-change-transform transform-gpu"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-foreground/5 to-transparent" />
+        {/* Navigation & Header Info */}
+        <div className="max-w-5xl mx-auto">
+          {/* Meta Line */}
+          <div className="flex flex-wrap justify-center items-center gap-3 text-xs font-mono uppercase tracking-widest text-liminal-secondary font-semibold mb-6">
+            <span>{article.category}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-border" />
+            <span>{article.date}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-border" />
+            <span>{article.readTime} Read</span>
           </div>
 
-          {/* Architectural Corner Brackets */}
-          <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-liminal-secondary/30 group-hover/hero:border-liminal-secondary/60 transition-colors duration-700" />
-          <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-liminal-secondary/30 group-hover/hero:border-liminal-secondary/60 transition-colors duration-700" />
+          {/* Title */}
+          <h1 className="text-3xl text-center sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-[1.1] tracking-tight uppercase">
+            {article.title}
+          </h1>
         </div>
-
-        {/* Caption */}
-        <p className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase text-center mt-6">
-          {article.title} — {article.category}
-        </p>
       </div>
     </section>
   );

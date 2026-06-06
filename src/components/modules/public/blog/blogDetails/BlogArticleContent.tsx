@@ -6,7 +6,9 @@ interface BlogArticleContentProps {
 }
 
 const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
-  const firstParagraphIndex = content.findIndex(block => block.type === "paragraph");
+  const firstParagraphIndex = content.findIndex(
+    (block) => block.type === "paragraph",
+  );
 
   return (
     <div className="space-y-8">
@@ -18,7 +20,7 @@ const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
             return (
               <p
                 key={index}
-                className="text-lg text-foreground/80 font-light"
+                className="text-lg text-muted-foreground font-light"
               >
                 {applyDropCap ? (
                   <>
@@ -49,14 +51,17 @@ const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
             return (
               <blockquote
                 key={index}
-                className="border-l-2 border-liminal-secondary/40 pl-8 py-6 my-12"
+                className="relative border-l-2 border-liminal-secondary/40 pl-6 pr-4 py-8 bg-zinc-50/80 my-12"
               >
-                <p className="italic font-serif text-xl md:text-2xl text-foreground/85 leading-relaxed">
-                  &quot;{block.text}&quot;
+                <div className="absolute top-2 left-4 text-5xl text-liminal-secondary/15 font-serif select-none pointer-events-none">
+                  &ldquo;
+                </div>
+                <p className="italic font-serif text-lg sm:text-xl text-foreground/80 leading-relaxed select-none pointer-events-none">
+                  {block.text}
                 </p>
                 {block.attribution && (
-                  <cite className="block mt-4 text-[11px] font-mono tracking-[0.2em] text-muted-foreground/60 uppercase not-italic">
-                    {block.attribution}
+                  <cite className="block mt-4 text-xs tracking-[0.2em] text-liminal-secondary font-medium not-italic">
+                    — {block.attribution}
                   </cite>
                 )}
               </blockquote>
@@ -65,19 +70,19 @@ const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
           case "image":
             return (
               <figure key={index} className="my-12">
-                <div className="relative aspect-video overflow-hidden rounded-sm shadow-lg">
-                  <Image
-                    src={block.src}
-                    alt={block.alt}
-                    fill
-                    quality={85}
-                    sizes="(max-width: 768px) 100vw, 720px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-foreground/5 to-transparent" />
+                <div className="relative aspect-video w-full overflow-hidden border border-border/40 rounded p-2 bg-background/50">
+                  <div className="relative w-full h-full overflow-hidden bg-muted">
+                    <Image
+                      src={block.src}
+                      alt={block.alt}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 800px"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
                 {block.caption && (
-                  <figcaption className="text-[11px] font-mono tracking-wider text-muted-foreground/50 uppercase text-center mt-4">
+                  <figcaption className="text-sm tracking-wider text-muted-foreground/80 text-center mt-3">
                     {block.caption}
                   </figcaption>
                 )}
