@@ -2,10 +2,11 @@ import { IBlogContentBlock } from "../blogData";
 import Image from "next/image";
 
 interface BlogArticleContentProps {
+  articleImage: string;
   content: IBlogContentBlock[];
 }
 
-const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
+const BlogArticleContent = ({ articleImage, content }: BlogArticleContentProps) => {
   const firstParagraphIndex = content.findIndex(
     (block) => block.type === "paragraph",
   );
@@ -73,7 +74,7 @@ const BlogArticleContent = ({ content }: BlogArticleContentProps) => {
                 <div className="relative aspect-video w-full overflow-hidden border border-border/40 rounded p-2 bg-background/50">
                   <div className="relative w-full h-full overflow-hidden bg-muted">
                     <Image
-                      src={block.src}
+                      src={articleImage}
                       alt={block.alt}
                       fill
                       sizes="(max-width: 800px) 100vw, 800px"

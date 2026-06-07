@@ -35,8 +35,7 @@ const BlogExplorer = () => {
       results = results.filter(
         (article) =>
           article.title.toLowerCase().includes(query) ||
-          article.excerpt.toLowerCase().includes(query) ||
-          article.tags.some((tag) => tag.toLowerCase().includes(query)),
+          article.excerpt.toLowerCase().includes(query),
       );
     }
 

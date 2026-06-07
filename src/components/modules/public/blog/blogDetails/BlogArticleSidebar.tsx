@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { IBlogContentBlock } from "../blogData";
 import ShareButtons from "@/components/shared/ShareButtons";
@@ -15,10 +15,12 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
   // let the scroll handler override the optimistic active state
   const isClickScrolling = useRef(false);
 
-  const headings = content.filter(
-    (block): block is Extract<IBlogContentBlock, { type: "heading" }> =>
-      block.type === "heading"
-  );
+  const headings = useMemo(() => {
+    return content.filter(
+      (block): block is Extract<IBlogContentBlock, { type: "heading" }> =>
+        block.type === "heading"
+    );
+  }, [content]);
 
   const detectActive = useCallback(() => {
     if (isClickScrolling.current) return;
@@ -40,10 +42,10 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
       newActive = headings[0].id;
     }
 
-    if (newActive && newActive !== activeHeading) {
-      setActiveHeading(newActive);
+    if (newActive) {
+      setActiveHeading((prev) => (prev !== newActive ? newActive : prev));
     }
-  }, [headings, activeHeading]);
+  }, [headings]);
 
   useEffect(() => {
     window.addEventListener("scroll", detectActive, { passive: true });

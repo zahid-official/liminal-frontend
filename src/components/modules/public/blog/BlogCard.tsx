@@ -72,17 +72,6 @@ const BlogCard = ({ article }: BlogCardProps) => {
             <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover/link:rotate-45 transform-gpu" />
           </Link>
         </div>
-
-        {/* <Link
-          href={`/blog/${article.id}`}
-          className="flex items-center gap-1.5 group/link cursor-pointer"
-        >
-          <span className="text-[10px] font-bold uppercase tracking-widest text-liminal-secondary block relative">
-            Read
-            <span className="absolute -bottom-0.5 left-0 h-px bg-liminal-secondary w-0 group-hover/link:w-full transition-[width] duration-300" />
-          </span>
-          <ArrowUpRight className="size-3 text-liminal-secondary transition-transform duration-300 group-hover/link:rotate-45" />
-        </Link> */}
       </div>
     </article>
   );

@@ -11,7 +11,11 @@ interface BlogArticleDetailsProps {
   next: IBlogArticle | null;
 }
 
-const BlogArticleDetails = ({ article, prev, next }: BlogArticleDetailsProps) => {
+const BlogArticleDetails = ({
+  article,
+  prev,
+  next,
+}: BlogArticleDetailsProps) => {
   return (
     <div className="py-20 md:py-28 lg:py-32">
       {/* Article Hero */}
@@ -26,7 +30,10 @@ const BlogArticleDetails = ({ article, prev, next }: BlogArticleDetailsProps) =>
 
             {/* Main Content */}
             <div className="lg:col-span-8 lg:col-start-4">
-              <BlogArticleContent content={article.content} />
+              <BlogArticleContent
+                articleImage={article.image}
+                content={article.content}
+              />
 
               {/* Article Footer */}
               <BlogArticleFooter />

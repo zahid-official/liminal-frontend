@@ -14,8 +14,6 @@ export interface IBlogArticle {
   image: string;
   author: string;
   authorRole: string;
-  featured: boolean;
-  tags: string[];
 }
 
 // Content Block Types for structured article body
@@ -23,7 +21,7 @@ export type IBlogContentBlock =
   | { type: "paragraph"; text: string }
   | { type: "heading"; text: string; id: string }
   | { type: "quote"; text: string; attribution?: string }
-  | { type: "image"; src: string; alt: string; caption?: string };
+  | { type: "image"; alt: string; caption?: string };
 
 // Blog Categories
 export const blogCategories = [
@@ -61,7 +59,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/shadow.png",
         alt: "Light and shadow interplay in a minimal interior space",
         caption: "The choreography of light through architectural apertures",
       },
@@ -103,8 +100,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/home/journal-1.png",
     author: "Liminal Studio",
     authorRole: "Design Team",
-    featured: true,
-    tags: ["Light", "Spatial Design", "Atmosphere", "Architecture"],
   },
   {
     id: "2",
@@ -128,7 +123,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/travertine-wall.png",
         alt: "Travertine wall detail showing natural texture and warmth",
         caption: "Travertine: A material that bridges antiquity and modernity",
       },
@@ -166,8 +160,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/home/journal-2.png",
     author: "Liminal Studio",
     authorRole: "Material Research",
-    featured: true,
-    tags: ["Material", "Texture", "Craftsmanship", "Interior Design"],
   },
   {
     id: "3",
@@ -191,7 +183,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/silence.png",
         alt: "A serene minimal interior with clean lines and natural light",
         caption: "Silence is not the absence of design; it is design at its most distilled",
       },
@@ -229,8 +220,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/home/journal-3.png",
     author: "Liminal Studio",
     authorRole: "Creative Direction",
-    featured: true,
-    tags: ["Philosophy", "Minimalism", "Wellbeing", "Calm Design"],
   },
   {
     id: "4",
@@ -254,7 +243,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/proportion.png",
         alt: "Architectural interior demonstrating proportional harmony",
         caption: "Proportion creates harmony that is felt before it is understood",
       },
@@ -288,8 +276,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/proportion.png",
     author: "Liminal Studio",
     authorRole: "Architecture Team",
-    featured: false,
-    tags: ["Proportion", "Architecture", "Golden Ratio", "Spatial Design"],
   },
   {
     id: "5",
@@ -313,7 +299,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/studio.png",
         alt: "Liminal design studio workspace with material samples",
         caption: "Our studio: where dialogue becomes design direction",
       },
@@ -351,8 +336,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/studio.png",
     author: "Liminal Studio",
     authorRole: "Project Management",
-    featured: false,
-    tags: ["Process", "Methodology", "Client Experience", "Design Thinking"],
   },
   {
     id: "6",
@@ -376,7 +359,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/travertine.png",
         alt: "Close-up of travertine surface showing natural texture and warmth",
         caption: "Every vein tells a story measured in millennia",
       },
@@ -410,8 +392,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/travertine.png",
     author: "Liminal Studio",
     authorRole: "Material Research",
-    featured: false,
-    tags: ["Travertine", "Material", "Stone", "Luxury Interior"],
   },
   {
     id: "7",
@@ -435,7 +415,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/transitions.png",
         alt: "Architectural transition space with dramatic light and materiality",
         caption: "The threshold: where anticipation becomes experience",
       },
@@ -469,8 +448,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/transitions.png",
     author: "Liminal Studio",
     authorRole: "Design Team",
-    featured: false,
-    tags: ["Threshold", "Transition", "Spatial Narrative", "Interior Design"],
   },
   {
     id: "8",
@@ -494,7 +471,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/monoliths.png",
         alt: "A monolithic stone kitchen island in a luxury interior",
         caption: "Monolithic design: authority through material integrity",
       },
@@ -528,8 +504,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/monoliths.png",
     author: "Liminal Studio",
     authorRole: "Design Team",
-    featured: false,
-    tags: ["Monolith", "Minimalism", "Kitchen Design", "Feature Walls"],
   },
   {
     id: "9",
@@ -553,7 +527,6 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "image",
-        src: "/assets/blog/colonnade.png",
         alt: "Reimagined colonnade in a contemporary interior space",
         caption: "The colonnade: where structure becomes spatial music",
       },
@@ -591,8 +564,6 @@ export const blogArticles: IBlogArticle[] = [
     image: "/assets/blog/colonnade.png",
     author: "Liminal Studio",
     authorRole: "Architecture Team",
-    featured: false,
-    tags: ["Colonnade", "Architecture", "Columns", "Structural Design"],
   },
 ];
 
@@ -600,18 +571,29 @@ export const blogArticles: IBlogArticle[] = [
 export const getArticleBySlug = (slug: string): IBlogArticle | undefined =>
   blogArticles.find((a) => a.slug === slug || a.id === slug);
 
-// Helper: get featured articles
-export const getFeaturedArticles = (): IBlogArticle[] =>
-  blogArticles.filter((a) => a.featured);
 
 // Helper: get related articles (same category, excluding current)
 export const getRelatedArticles = (
   currentId: string,
   limit: number = 3
-): IBlogArticle[] =>
-  blogArticles
-    .filter((a) => a.id !== currentId)
-    .slice(0, limit);
+): IBlogArticle[] => {
+  const current = blogArticles.find((a) => a.id === currentId);
+  if (!current) return [];
+
+  const sameCategory = blogArticles.filter(
+    (a) => a.id !== currentId && a.category === current.category
+  );
+
+  if (sameCategory.length >= limit) {
+    return sameCategory.slice(0, limit);
+  }
+
+  const others = blogArticles.filter(
+    (a) => a.id !== currentId && a.category !== current.category
+  );
+
+  return [...sameCategory, ...others].slice(0, limit);
+};
 
 // Helper: get adjacent articles for prev/next navigation
 export const getAdjacentArticles = (

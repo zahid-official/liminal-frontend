@@ -45,7 +45,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
     <main>
       {/* Page Header */}
       <PageHeader
-        title={article.title}
+        title="Journal Insight"
         items={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
