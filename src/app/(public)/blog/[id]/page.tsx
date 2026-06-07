@@ -2,11 +2,7 @@ import {
   getAdjacentArticles,
   getArticleBySlug,
 } from "@/components/modules/public/blog/blogData";
-import BlogArticleContent from "@/components/modules/public/blog/blogDetails/BlogArticleContent";
-import BlogArticleHero from "@/components/modules/public/blog/blogDetails/BlogArticleHero";
-import BlogArticleNavigation from "@/components/modules/public/blog/blogDetails/BlogArticleNavigation";
-import BlogArticleSidebar from "@/components/modules/public/blog/blogDetails/BlogArticleSidebar";
-import BlogDesignerInsights from "@/components/modules/public/blog/blogDetails/BlogDesignerInsights";
+import BlogArticleDetails from "@/components/modules/public/blog/blogDetails/BlogArticleDetails";
 import BlogRelatedArticles from "@/components/modules/public/blog/blogDetails/BlogRelatedArticles";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -47,7 +43,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
 
   return (
     <main>
-      {/* Page Header — Consistent with other pages */}
+      {/* Page Header */}
       <PageHeader
         title={article.title}
         items={[
@@ -58,31 +54,10 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
         bgImage={article.image}
       />
 
-      {/* Hero Image — Full-width immersive presentation */}
-      <BlogArticleHero article={article} />
+      {/* Article Details Wrapper */}
+      <BlogArticleDetails article={article} prev={prev} next={next} />
 
-      {/* Article Body — Content + Sidebar */}
-      <section className="py-10 md:pb-16 relative">
-        <div className="custom-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-            {/* Sidebar — Desktop only, sticky */}
-            <BlogArticleSidebar content={article.content} />
-
-            {/* Main Content */}
-            <div className="lg:col-span-8 lg:col-start-4">
-              <BlogArticleContent content={article.content} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Previous / Next Article Navigation */}
-      <BlogArticleNavigation prev={prev} next={next} />
-
-      {/* Designer Insights — Studio commentary */}
-      <BlogDesignerInsights />
-
-      {/* Related Articles — From The Journal */}
+      {/* Related Articles */}
       <BlogRelatedArticles currentId={article.id} />
     </main>
   );

@@ -17,7 +17,7 @@ const BlogRelatedArticles = ({ currentId }: BlogRelatedArticlesProps) => {
     <section
       id="related-articles"
       aria-labelledby="related-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden bg-zinc-50/80"
     >
       <div className="custom-container">
         {/* Section Header */}

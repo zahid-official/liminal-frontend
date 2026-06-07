@@ -135,11 +135,16 @@ const ShareButtons = ({ url, title, className }: ShareButtonsProps) => {
           </TooltipContent>
         </Tooltip>
       </div>
-      {copied && (
-        <span className="text-[10px] text-liminal-secondary font-medium block animate-in fade-in duration-300">
+      <div className="h-4 relative">
+        <span
+          className={cn(
+            "text-[10px] text-liminal-secondary font-medium absolute left-0 top-0 transition-all duration-300",
+            copied ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none"
+          )}
+        >
           Link copied!
         </span>
-      )}
+      </div>
     </div>
   );
 };

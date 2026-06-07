@@ -14,7 +14,7 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
   if (!prev && !next) return null;
 
   return (
-    <section className="py-12 md:py-16 border-t border-border/40">
+    <section className="pt-16 border-t border-border/40">
       <div className="custom-container">
         {/* Navigation Heading */}
         <div className="flex items-center gap-3 mb-8">

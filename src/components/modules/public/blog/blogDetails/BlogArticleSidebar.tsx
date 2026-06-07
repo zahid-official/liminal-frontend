@@ -28,15 +28,22 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
       .map((h) => document.getElementById(h.id))
       .filter(Boolean) as HTMLElement[];
 
+    let newActive = "";
     for (let i = els.length - 1; i >= 0; i--) {
       if (els[i].getBoundingClientRect().top <= mid) {
-        setActiveHeading(headings[i].id);
-        return;
+        newActive = headings[i].id;
+        break;
       }
     }
 
-    if (els.length > 0) setActiveHeading(headings[0].id);
-  }, [headings]);
+    if (!newActive && els.length > 0) {
+      newActive = headings[0].id;
+    }
+
+    if (newActive && newActive !== activeHeading) {
+      setActiveHeading(newActive);
+    }
+  }, [headings, activeHeading]);
 
   useEffect(() => {
     window.addEventListener("scroll", detectActive, { passive: true });
@@ -89,21 +96,21 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
                   href={`#${heading.id}`}
                   onClick={(e) => handleTocClick(e, heading.id)}
                   className={cn(
-                    "flex items-center gap-2.5 py-1.5 text-sm leading-snug transition-all duration-300",
+                    "flex items-center gap-2.5 py-1.5 text-sm leading-snug transition-colors duration-300 font-medium group",
                     isActive
-                      ? "text-liminal-secondary font-semibold"
-                      : "text-muted-foreground/50 font-medium hover:text-foreground/70",
+                      ? "text-liminal-secondary"
+                      : "text-muted-foreground/50 hover:text-foreground/70",
                   )}
                 >
                   <span
                     className={cn(
-                      "shrink-0 rounded-full transition-all duration-300",
+                      "w-1.5 h-1.5 shrink-0 rounded-full transition-all duration-300 ease-out",
                       isActive
-                        ? "w-1.5 h-1.5 bg-liminal-secondary"
-                        : "w-1 h-1 bg-border",
+                        ? "bg-liminal-secondary scale-110"
+                        : "bg-border scale-75 group-hover:bg-border/80",
                     )}
                   />
-                  <span className={cn(isActive && "translate-x-0.5")}>
+                  <span className={cn("transition-transform duration-300 ease-out", isActive && "translate-x-1")}>
                     {heading.text}
                   </span>
                 </a>
