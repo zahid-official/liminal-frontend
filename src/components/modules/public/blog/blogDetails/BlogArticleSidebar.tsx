@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { IBlogContentBlock } from "../blogData";
-import { Link2, Twitter } from "lucide-react";
+import ShareButtons from "@/components/shared/ShareButtons";
 
 interface BlogArticleSidebarProps {
   content: IBlogContentBlock[];
@@ -11,7 +11,6 @@ interface BlogArticleSidebarProps {
 
 const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
   const [activeHeading, setActiveHeading] = useState("");
-  const [copied, setCopied] = useState(false);
   // Tracks whether user just clicked a TOC link so we don't
   // let the scroll handler override the optimistic active state
   const isClickScrolling = useRef(false);
@@ -69,24 +68,7 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
     }, 800);
   };
 
-  const handleCopyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* silently fail */
-    }
-  };
 
-  const handleShareTwitter = () => {
-    const url = window.location.href;
-    window.open(
-      `https://x.com/intent/tweet?text=${encodeURIComponent(document.title)}&url=${encodeURIComponent(url)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
 
   if (headings.length === 0) return null;
 
@@ -131,32 +113,7 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
         </nav>
 
         {/* Share */}
-        <div className="space-y-3">
-          <div className="text-[11px] font-bold font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
-            Share
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleCopyLink}
-              aria-label="Copy link"
-              className="w-8 h-8 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:text-liminal-secondary hover:border-liminal-secondary/40 transition-all duration-300 cursor-pointer"
-            >
-              <Link2 className="size-3.5" />
-            </button>
-            <button
-              onClick={handleShareTwitter}
-              aria-label="Share on X"
-              className="w-8 h-8 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:text-liminal-secondary hover:border-liminal-secondary/40 transition-all duration-300 cursor-pointer"
-            >
-              <Twitter className="size-3.5" />
-            </button>
-          </div>
-          {copied && (
-            <span className="text-[10px] text-liminal-secondary font-medium animate-in fade-in duration-300">
-              Link copied!
-            </span>
-          )}
-        </div>
+        <ShareButtons />
       </div>
     </aside>
   );
