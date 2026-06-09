@@ -1,3 +1,4 @@
+import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import localFont from "next/font/local";
@@ -38,7 +39,7 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={`${jost.variable} ${satoshi.variable} antialiased`}>
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );
