@@ -1,6 +1,8 @@
 ﻿import HomeCTA from "@/components/modules/public/home/HomeCTA";
 import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
+import HomeJournal from "@/components/modules/public/home/HomeJournal";
+
 import HomeManifesto from "@/components/modules/public/home/HomeManifesto";
 import HomePhilosophy from "@/components/modules/public/home/HomePhilosophy";
 import HomeProjects from "@/components/modules/public/home/HomeProjects";
@@ -41,16 +43,16 @@ const HomePage = () => {
       {/* 7. Testimonials — Social proof & trust (zinc) */}
       <HomeTestimonials />
 
-      {/* 8. Journal / Insights — Thought leadership (background) */}
-      {/* <HomeJournal /> */}
-
-      {/* 9. FAQ — Questions answered (zinc) */}
+      {/* 8. FAQ — Questions answered (zinc) */}
       <HomeFAQ />
+
+      {/* 9. Journal / Insights — Thought leadership (background) */}
+      <HomeJournal />
 
       {/* 10. Consultation CTA — Conversion moment (dark) */}
       <HomeCTA />
 
-      {/* 11. Newsletter — Soft final engagement (background) */}
+      {/* 11. Newsletter */}
       {/* <HomeNewsletter /> */}
     </main>
   );
