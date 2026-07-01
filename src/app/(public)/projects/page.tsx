@@ -1,3 +1,4 @@
+import FeaturedProject from "@/components/modules/public/projects/FeaturedProject";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
 
@@ -18,6 +19,9 @@ const ProjectsPage = () => {
         items={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         bgImage="/assets/projects/apex-residence.png"
       />
+
+      {/* Featured Project */}
+      <FeaturedProject />
     </main>
   );
 };
