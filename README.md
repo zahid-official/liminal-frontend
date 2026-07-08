@@ -1,2 +1,2 @@
-Liminal - Interior Design Studio (Github)
+Liminal - Interior Design Studio 
 
