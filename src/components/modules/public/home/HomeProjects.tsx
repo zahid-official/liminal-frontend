@@ -1,4 +1,4 @@
-﻿import LiminalButton from "@/components/shared/LiminalButton";
+import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
