@@ -133,8 +133,8 @@ const HomeProjects = () => {
 
                 {/* Title, Category & Interaction */}
                 <div className="relative group/content">
-                  {/* Sliding Mask Effect Background */}
-                  <div className="absolute -inset-x-6 -bottom-6 md:-inset-x-8 md:-bottom-8 translate-y-full group-hover:translate-y-0 h-44 bg-foreground/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out transform-gpu will-change-transform backface-hidden -z-10" />
+                  {/* Sliding backdrop blur mask */}
+                  <div className="absolute -inset-x-6 -bottom-6 md:-inset-x-8 md:-bottom-8 h-[calc(100%+3.5rem)] bg-foreground/20 backdrop-blur-md [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0_0_0_0)] transition-all duration-700 ease-out -z-10" />
 
                   <div className="space-y-3">
                     {/* Editorial Line */}
