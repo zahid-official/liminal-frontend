@@ -1,5 +1,5 @@
 import { projects } from "@/components/modules/public/projects/projectsData";
-import LiminalButton from "@/components/shared/LiminalButton";
+import AnimatedButton from "@/components/shared/AnimatedButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
@@ -38,7 +38,7 @@ const HomeProjects = () => {
             </>
           }
           description="A selection of our most definitive projects, where architectural precision meets human emotion. Each space is a testament to our commitment to timeless design."
-          className="mb-12"
+          className="mb-10"
         />
 
         {/* Asymmetric Project Grid */}
@@ -134,15 +134,14 @@ const HomeProjects = () => {
               Portfolio Status
             </span>
             <p className="text-xs font-medium text-foreground/50">
-              Showing {projects.length} of {projects.length} completed projects
+              Showing {Math.min(6, projects.length)} of {projects.length}{" "}
+              completed projects
             </p>
           </div>
 
           {/* Right: View Full Portfolio Button */}
           <Link href="/projects" className="w-full sm:w-auto">
-            <LiminalButton variant="outline" className="px-8 h-14">
-              View Full Portfolio
-            </LiminalButton>
+            <AnimatedButton>View Full Portfolio</AnimatedButton>
           </Link>
         </div>
       </div>
