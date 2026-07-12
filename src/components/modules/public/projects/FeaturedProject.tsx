@@ -35,15 +35,14 @@ const FeaturedProject = () => {
                 priority
                 className="object-cover transition-transform duration-1500 group-hover/img:scale-105 will-change-transform transform-gpu"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/10 to-transparent" />
+
+              {/* Cinematic Overlay and Inner Border Frame */}
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/20 to-transparent" />
+              <div className="absolute inset-0 border border-background/15 e z-20 m-3" />
             </div>
 
-            {/* Architectural Corner Brackets */}
-            <div className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-liminal-secondary/30 group-hover/img:border-liminal-secondary/60 transition-colors duration-700" />
-            <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-liminal-secondary/30 group-hover/img:border-liminal-secondary/60 transition-colors duration-700" />
-
             {/* Blueprint Label */}
-            <div className="absolute top-5 left-5 z-10">
+            <div className="absolute top-5.5 left-6 z-10">
               <span className="text-[9px] font-mono tracking-[0.4em] text-background/70 uppercase bg-foreground/35 backdrop-blur-sm px-3 py-1.5">
                 Featured Project
               </span>

@@ -1,4 +1,5 @@
 import FeaturedProject from "@/components/modules/public/projects/FeaturedProject";
+import ProjectsExplorer from "@/components/modules/public/projects/ProjectsExplorer";
 import PageHeader from "@/components/shared/PageHeader";
 import type { Metadata } from "next";
 
@@ -22,6 +23,8 @@ const ProjectsPage = () => {
 
       {/* Featured Project */}
       <FeaturedProject />
+
+      <ProjectsExplorer />
     </main>
   );
 };

@@ -79,11 +79,10 @@ export type ProjectType =
 // Project Categories
 export const projectCategories = [
   "All",
-  "Interior Design",
-  "Architecture",
-  "Renovation",
-  "Space Planning",
-  "Furniture Design",
+  "Residential",
+  "Commercial",
+  "Institutional",
+  "Interior",
 ] as const;
 
 export type ProjectCategory = (typeof projectCategories)[number];
@@ -144,7 +143,7 @@ export const projects: IProject[] = [
     id: "1",
     slug: "apex-residence",
     title: "Apex Residence",
-    category: "Interior Design",
+    category: "Interior",
     type: "Residential",
     location: "Baridhara, Dhaka",
     area: "4,200 sq ft",
@@ -274,7 +273,7 @@ export const projects: IProject[] = [
     id: "2",
     slug: "corporate-zen",
     title: "Corporate Zen",
-    category: "Space Planning",
+    category: "Commercial",
     type: "Commercial",
     location: "Motijheel, Dhaka",
     area: "8,500 sq ft",
@@ -392,7 +391,7 @@ export const projects: IProject[] = [
     id: "3",
     slug: "marble-haven",
     title: "Marble Haven",
-    category: "Interior Design",
+    category: "Interior",
     type: "Residential",
     location: "Gulshan, Dhaka",
     area: "3,100 sq ft",
@@ -510,7 +509,7 @@ export const projects: IProject[] = [
     id: "4",
     slug: "the-glass-pavilion",
     title: "The Glass Pavilion",
-    category: "Architecture",
+    category: "Institutional",
     type: "Cultural",
     location: "Dhanmondi, Dhaka",
     area: "6,800 sq ft",
@@ -634,7 +633,7 @@ export const projects: IProject[] = [
     id: "5",
     slug: "sanctuary-penthouse",
     title: "Sanctuary Penthouse",
-    category: "Renovation",
+    category: "Interior",
     type: "Residential",
     location: "Banani, Dhaka",
     area: "3,800 sq ft",
@@ -752,7 +751,7 @@ export const projects: IProject[] = [
     id: "6",
     slug: "urban-loft-studio",
     title: "Urban Loft Studio",
-    category: "Renovation",
+    category: "Commercial",
     type: "Commercial",
     location: "Uttara, Dhaka",
     area: "2,400 sq ft",
@@ -869,6 +868,478 @@ export const projects: IProject[] = [
       name: "Farhan Huq",
       role: "Founder, Design Collective",
       avatar: "https://i.pravatar.cc/150?img=12",
+    },
+    isFeatured: false,
+  },
+  {
+    id: "7",
+    slug: "concrete-villa",
+    title: "The Concrete Villa",
+    category: "Residential",
+    type: "Residential",
+    location: "Gulshan, Dhaka",
+    area: "5,800 sq ft",
+    completionYear: "2023",
+    timeline: "16 Months",
+    status: "Completed",
+    interiorStyle: "Contemporary Minimal",
+    scope: "Architectural & Interior Design",
+    services: [
+      "Architectural Design",
+      "Interior Design",
+      "Structural Engineering",
+      "Landscape Architecture",
+      "Lighting Design",
+    ],
+    materials: [
+      "Fair-Faced Concrete",
+      "Teak Wood",
+      "Structural Steel",
+      "Low-E Glass",
+      "Basalt Stone",
+    ],
+    photographyCredit: "Liminal Studio Archives",
+    heroImage: "/assets/projects/premium-villa.png",
+    galleryImages: [
+      {
+        src: "/assets/projects/villa.png",
+        alt: "The Concrete Villa exterior view",
+        caption: "Exterior — Concrete & Teak Harmony",
+        span: "full",
+      },
+      {
+        src: "/assets/projects/staircase.png",
+        alt: "The Concrete Villa cantilevered staircase",
+        caption: "Staircase — Floating Geometry",
+        span: "half",
+      },
+      {
+        src: "/assets/projects/living-room.png",
+        alt: "The Concrete Villa open living room",
+        caption: "Living Space — Double Height Volume",
+        span: "half",
+      },
+    ],
+    shortIntro:
+      "A 5,800 square foot private villa where raw fair-faced concrete and mature teak wood blend seamlessly into a tropical landscape, prioritizing natural light and passive cooling.",
+    clientVision:
+      "The client wanted a multigenerational family home that felt strongly connected to nature, offering privacy from the busy city streets while maintaining open, light-filled communal spaces.",
+    designObjectives:
+      "To design a home that ages gracefully, utilizing raw materials that require minimal maintenance while optimizing airflow to reduce energy consumption.",
+    context:
+      "Located in a quiet residential pocket of Gulshan, surrounded by mature trees that the design works around.",
+    challenges:
+      "Developing high-quality fair-faced concrete surfaces in local humidity, and designing cantilevered concrete slabs that shade the interior spaces from the harsh summer sun.",
+    overallConcept:
+      "The Monolithic Canopy — a raw concrete shell that acts as a protective shield while opening up to lush internal courtyards and water bodies.",
+    designPhilosophy: {
+      spacePlanning:
+        "Living spaces are arranged around a central double-height courtyard containing a reflective pool, providing natural cross-ventilation.",
+      materialSelection:
+        "Raw concrete provides structural honesty and thermal mass, complemented by rich teak wood for visual warmth.",
+      lighting:
+        "Deep overhangs shade floor-to-ceiling windows, while concealed LED strips accentuate concrete textures at night.",
+      colorPalette:
+        "Natural concrete grey, warm teak brown, and charcoal metal, accented by the green of the tropical garden.",
+      furnitureChoices:
+        "Low-profile teak furniture custom-designed for each room, upholstered in neutral linen fabrics.",
+      userExperience:
+        "Moving from the solid exterior entry, visitors transition across a bridge over the pool into a double-height glass pavilion.",
+      emotionalAtmosphere:
+        "A sense of absolute sanctuary, quiet protection, and calm alignment with the elements.",
+    },
+    designHighlights: [
+      {
+        icon: "Home",
+        title: "Fair-Faced Concrete Slabs",
+        description:
+          "Precisely cast load-bearing concrete walls that serve as both structure and final interior finish.",
+      },
+      {
+        icon: "Wind",
+        title: "Microclimate Courtyard",
+        description:
+          "An internal courtyard and reflective pool that lowers ambient temperature by up to 3 degrees.",
+      },
+    ],
+    clientTestimonial: {
+      quote:
+        "Living here feels like being in a tropical resort. The concrete keeps the house beautifully cool, and the views of the courtyard pool bring peace to our daily lives.",
+      name: "Sabrina Rahman",
+      role: "Client, The Concrete Villa",
+      avatar: "https://i.pravatar.cc/150?img=32",
+    },
+    isFeatured: false,
+  },
+  {
+    id: "8",
+    slug: "bespoke-lounge",
+    title: "Bespoke Lounge",
+    category: "Interior",
+    type: "Residential",
+    location: "Banani, Dhaka",
+    area: "1,200 sq ft",
+    completionYear: "2022",
+    timeline: "6 Months",
+    status: "Completed",
+    interiorStyle: "Organic Modern",
+    scope: "Furniture Curation & Custom Fabrication",
+    services: [
+      "Furniture Design",
+      "Custom Joinery",
+      "Interior Styling",
+      "Material Consultation",
+    ],
+    materials: [
+      "Oiled Walnut",
+      "Raw Travertine",
+      "Wool Bouclé",
+      "Polished Brass",
+      "Aniline Leather",
+    ],
+    photographyCredit: "Liminal Studio Archives",
+    heroImage: "/assets/projects/project-furniture-bespoke.png",
+    galleryImages: [
+      {
+        src: "/assets/projects/minimalist-interior-1.png",
+        alt: "Bespoke lounge custom seating arrangement",
+        caption: "Bespoke Lounge — Curated Seating",
+        span: "full",
+      },
+      {
+        src: "/assets/projects/project-1.png",
+        alt: "Crafted timber joins",
+        caption: "Joinery Detail — Walnut & Brass",
+        span: "half",
+      },
+    ],
+    shortIntro:
+      "A curated 1,200 square foot private lounge showcasing custom-designed furniture pieces, celebrating organic forms and premium tactile materials.",
+    clientVision:
+      "The client requested a dedicated lounge space in their penthouse to host intimate gatherings and relax, centered around custom furniture that acts as functional art.",
+    designObjectives:
+      "To craft individual furniture pieces that prioritize sculptural silhouettes, ergonomics, and rare materials like oiled walnut and raw travertine.",
+    context:
+      "An addition to a luxury residence in Banani, serving as a quiet relaxation space away from the main family zones.",
+    challenges:
+      "Sourcing flawless walnut timber with complex grain patterns and executing seamless hidden wood-to-metal joints for structural longevity.",
+    overallConcept:
+      "Sculpted Tactility — where every piece of furniture is designed to be touched and experienced, showcasing raw beauty without unnecessary ornamentation.",
+    designPhilosophy: {
+      spacePlanning:
+        "A conversational seating circle anchors the room, with low-slung credenzas lining the walls to maximize vertical space.",
+      materialSelection:
+        "Oiled walnut provides deep wood tones, while raw travertine tables introduce organic stone patterns and textures.",
+      lighting:
+        "Soft, low-level warm lighting from brass floor lamps and integrated LED backlights behind the credenzas.",
+      colorPalette:
+        "Warm browns, creams, and brass gold, accented by the rich texture of aniline leather.",
+      furnitureChoices:
+        "Bespoke curved bouclé sofas, custom walnut coffee tables, and hand-stitched leather lounge chairs.",
+      userExperience:
+        "A highly tactile journey where hands naturally trace the smooth walnut edges and textured travertine cavities.",
+      emotionalAtmosphere:
+        "Warm, welcoming, and deeply intimate — a place for slow conversations and quiet relaxation.",
+    },
+    designHighlights: [
+      {
+        icon: "Armchair",
+        title: "Bespoke Walnut Joinery",
+        description:
+          "Hand-finished walnut joints using classic techniques that eliminate visible screws or brackets.",
+      },
+      {
+        icon: "Gem",
+        title: "Artisan Leather Stitching",
+        description:
+          "Hand-stitched full-grain leather details on lounge chairs, ensuring lasting durability and premium texture.",
+      },
+    ],
+    clientTestimonial: {
+      quote:
+        "Every single piece in this room feels like it was made specifically for my comfort. The attention to wood grains and stitching is simply extraordinary.",
+      name: "Tariq Zaman",
+      role: "Client, Bespoke Lounge",
+      avatar: "https://i.pravatar.cc/150?img=33",
+    },
+    isFeatured: false,
+  },
+  {
+    id: "9",
+    slug: "retail-atelier",
+    title: "Luxe Retail Atelier",
+    category: "Commercial",
+    type: "Commercial",
+    location: "Gulshan, Dhaka",
+    area: "2,800 sq ft",
+    completionYear: "2024",
+    timeline: "9 Months",
+    status: "Completed",
+    interiorStyle: "Art Deco Revival",
+    scope: "Complete Interior Design & Styling",
+    services: [
+      "Interior Design",
+      "Visual Merchandising",
+      "Lighting Design",
+      "Custom Millwork",
+    ],
+    materials: [
+      "Honed Marble",
+      "Fluted Glass",
+      "Brushed Gold",
+      "Velvet Upholstery",
+      "Lacquered Wood",
+    ],
+    photographyCredit: "Liminal Studio Archives",
+    heroImage: "/assets/projects/retail.png",
+    galleryImages: [
+      {
+        src: "/assets/projects/project-2.png",
+        alt: "Retail space display case detail",
+        caption: "Main Display — Fluted Glass & Gold",
+        span: "full",
+      },
+      {
+        src: "/assets/projects/staircase.png",
+        alt: "Atelier staircase and mezzanine",
+        caption: "Mezzanine Transition — Sculpted Curves",
+        span: "half",
+      },
+    ],
+    shortIntro:
+      "A 2,800 square foot boutique fashion atelier that blends classical Art Deco symmetry with contemporary minimal lines to create an immersive retail journey.",
+    clientVision:
+      "A luxury fashion brand required an international-standard showroom that showcases garments like art pieces, establishing a sophisticated brand presence.",
+    designObjectives:
+      "To design custom brass display racks, integrate theatrical accent lighting, and establish a luxurious fitting room suite for high-end clients.",
+    context:
+      "A prominent multi-level storefront space in Gulshan's premium commercial hub.",
+    challenges:
+      "Balancing high-level lighting requirements for garment color accuracy with the warm, moody atmosphere requested by the brand identity.",
+    overallConcept:
+      "The Stage of Elegance — a sequence of gallery-like rooms that elevate the products, utilizing mirrors and gold finishes to create depth.",
+    designPhilosophy: {
+      spacePlanning:
+        "An open circular flow guiding customers past curated collections, terminating at a private VIP fitting lounge.",
+      materialSelection:
+        "Honed marble floors create a prestigious path, while fluted glass panels and brushed gold fixtures offer delicate ornamentation.",
+      lighting:
+        "High-CRI LED spot tracks highlight fabrics, while soft ambient light from frosted glass globes sets a warm mood.",
+      colorPalette:
+        "Deep emerald green velvet, ivory marble, and metallic gold accents against a charcoal grey background.",
+      furnitureChoices:
+        "Bespoke velvet lounge seating in the VIP area and custom-finished brass garment displays.",
+      userExperience:
+        "Customers feel transported into a high-fashion salon, where every product is presented with theatrical focus.",
+      emotionalAtmosphere:
+        "Exclusivity, premium luxury, and artistic sophistication.",
+    },
+    designHighlights: [
+      {
+        icon: "Sparkles",
+        title: "Custom Brass Displays",
+        description:
+          "Bespoke ceiling-mounted garment racks finished in satin brass, providing clean lines and structural strength.",
+      },
+      {
+        icon: "Crown",
+        title: "VIP Fitting Sanctuary",
+        description:
+          "An expansive dressing suite with plush velvet curtains, three-way mirrors, and dedicated beverage service.",
+      },
+    ],
+    clientTestimonial: {
+      quote:
+        "Our clients spend double the time in the store now. The fitting suite has completely redefined the shopping experience, making it feel like a private consultation.",
+      name: "Nadia Amin",
+      role: "Creative Director, Luxury Brand",
+      avatar: "https://i.pravatar.cc/150?img=47",
+    },
+    isFeatured: false,
+  },
+  {
+    id: "10",
+    slug: "eco-luxe-pavilion",
+    title: "Eco-Luxe Pavilion",
+    category: "Commercial",
+    type: "Commercial",
+    location: "Uttara, Dhaka",
+    area: "7,500 sq ft",
+    completionYear: "2023",
+    timeline: "11 Months",
+    status: "Completed",
+    interiorStyle: "Organic Modern",
+    scope: "Workspace Design & Sustainable Integration",
+    services: [
+      "Space Planning",
+      "Sustainable Design",
+      "Indoor Landscaping",
+      "Acoustic Engineering",
+    ],
+    materials: [
+      "Bamboo Panels",
+      "Recycled Cork",
+      "Low-VOC Sealants",
+      "Hemp Fabrics",
+      "Clay Plaster",
+    ],
+    photographyCredit: "Liminal Studio Archives",
+    heroImage: "/assets/projects/sustainable-premium.png",
+    galleryImages: [
+      {
+        src: "/assets/projects/liminal-office.png",
+        alt: "Eco-Luxe Pavilion main office space",
+        caption: "Collaboration Hub — Bamboo & Plants",
+        span: "full",
+      },
+      {
+        src: "/assets/projects/project-6.png",
+        alt: "Eco-Luxe Pavilion quiet work area",
+        caption: "Quiet Zone — Cork Wall Panels",
+        span: "half",
+      },
+    ],
+    shortIntro:
+      "A 7,500 square foot biophilic workspace designed around wellness and circular materials, establishing a new benchmark for sustainable office design.",
+    clientVision:
+      "An environmental consultancy wanted an office that reflected their core mission, showcasing sustainable construction materials and optimizing employee wellbeing.",
+    designObjectives:
+      "To maximize natural daylight penetration, integrate vertical green walls, and ensure all materials are zero-waste or highly recyclable.",
+    context:
+      "A modern green-certified commercial building in Uttara, utilizing energy-efficient building infrastructure.",
+    challenges:
+      "Engineering a self-watering vertical green wall system indoors without increasing local humidity past optimal comfort ranges.",
+    overallConcept:
+      "The Living Workspace — a spatial ecosystem where human productivity, indoor plants, and natural materials coexist in dynamic balance.",
+    designPhilosophy: {
+      spacePlanning:
+        "Open-plan desks arranged to guarantee views of the green walls or exterior windows for all team members.",
+      materialSelection:
+        "Rapidly renewable bamboo for partitions, recycled acoustic cork for walls, and clay plasters that regulate humidity.",
+      lighting:
+        "Daylight-harvesting lighting systems that dim automatically as natural sunlight shifts throughout the day.",
+      colorPalette:
+        "Terracotta, bamboo cream, leaf green, and soft earth tones, creating a grounding, natural look.",
+      furnitureChoices:
+        "Ergonomic chairs made from recycled ocean plastics, paired with solid timber tables sourced from sustainable local farms.",
+      userExperience:
+        "Employees enjoy fresh filtered air, rich plant life, and pleasant acoustics, minimizing fatigue and stress.",
+      emotionalAtmosphere:
+        "Energizing, clean, and deeply connected to nature — a breath of fresh air in the middle of the city.",
+    },
+    designHighlights: [
+      {
+        icon: "Leaf",
+        title: "Biophilic Green Walls",
+        description:
+          "A 20-meter living wall system containing local air-purifying plant species, powered by a smart graywater system.",
+      },
+      {
+        icon: "ShieldCheck",
+        title: "Healthy Air Standards",
+        description:
+          "Use of zero-VOC paints and clay plaster, achieving premium indoor air quality levels monitored in real-time.",
+      },
+    ],
+    clientTestimonial: {
+      quote:
+        "Our team feels energized throughout the day. The air quality and greenery have reduced absenteeism and made our office a genuine joy to work in.",
+      name: "Dr. Kamal Sen",
+      role: "Director, Eco-Consultancy",
+      avatar: "https://i.pravatar.cc/150?img=69",
+    },
+    isFeatured: false,
+  },
+  {
+    id: "11",
+    slug: "metropolitan-bistro",
+    title: "Metropolitan Bistro",
+    category: "Commercial",
+    type: "Hospitality",
+    location: "Dhanmondi, Dhaka",
+    area: "3,200 sq ft",
+    completionYear: "2022",
+    timeline: "7 Months",
+    status: "Completed",
+    interiorStyle: "Industrial Refined",
+    scope: "Restaurant Renovation & Brand Integration",
+    services: [
+      "Renovation",
+      "Interior Design",
+      "Kitchen Layout Planning",
+      "Lighting Design",
+    ],
+    materials: [
+      "Terrazzo Flooring",
+      "Exposed Brickwork",
+      "Reclaimed Oak",
+      "Ribbed Steel Panels",
+      "Copper Accents",
+    ],
+    photographyCredit: "Liminal Studio Archives",
+    heroImage: "/assets/projects/commercial-premium.png",
+    galleryImages: [
+      {
+        src: "/assets/projects/project-corporate.png",
+        alt: "Metropolitan Bistro bar dining area",
+        caption: "Bistro Dining — Terrazzo & Copper Details",
+        span: "full",
+      },
+      {
+        src: "/assets/projects/project-4.png",
+        alt: "Metropolitan Bistro cozy booth seating",
+        caption: "Booth Seating — Brick & Oak",
+        span: "half",
+      },
+    ],
+    shortIntro:
+      "A 3,200 square foot casual-dining restaurant renovation that transforms an industrial space into a warm, high-energy bistro featuring custom copper accents.",
+    clientVision:
+      "A culinary group desired a modern neighborhood eatery that feels rustic yet polished, serving as a social landmark for local food enthusiasts.",
+    designObjectives:
+      "To build a large central bar, optimize seating capacity without crowding, and design custom lighting to make the food look spectacular.",
+    context:
+      "A converted warehouse-style commercial storefront in Dhanmondi's bustling dining street.",
+    challenges:
+      "Integrating heavy-duty commercial kitchen ventilation through old building structures without disrupting residential tenants above.",
+    overallConcept:
+      "The Culinary Hearth — centered around the visual drama of a copper bar and open kitchen prep line, celebrating the shared joy of dining.",
+    designPhilosophy: {
+      spacePlanning:
+        "High-density seating zones around the perimeter, with a prominent central bar acting as the main architectural anchor.",
+      materialSelection:
+        "Polished terrazzo floors resist high traffic, while raw brickwork and reclaimed oak provide rich, historic texture.",
+      lighting:
+        "Focused warm spotlights above each table, paired with custom copper pendant fixtures highlighting the central bar.",
+      colorPalette:
+        "Deep copper orange, warm brick red, charcoal steel, and dark timber brown, creating a cozy evening atmosphere.",
+      furnitureChoices:
+        "Bespoke leather-upholstered booths, steel barstools, and solid oak tables that develop character with age.",
+      userExperience:
+        "Guests are greeted by the warm glow of copper and the sound of a lively kitchen, entering a high-energy social hub.",
+      emotionalAtmosphere:
+        "Lively, warm, and inviting — a space that celebrates culinary craft and community.",
+    },
+    designHighlights: [
+      {
+        icon: "GlassWater",
+        title: "Central Copper Bar",
+        description:
+          "A custom-fabricated bar clad in hand-hammered copper panels that will naturally oxidize and gain character.",
+      },
+      {
+        icon: "ChefHat",
+        title: "Open Theater Kitchen",
+        description:
+          "A semi-open kitchen design with steel and glass partitions that lets diners safely view the chef's culinary craftsmanship.",
+      },
+    ],
+    clientTestimonial: {
+      quote:
+        "The design captured our brand's warm, high-energy vibe perfectly. The central copper bar is packed every evening — it has truly become the heart of the restaurant.",
+      name: "Rashed Karim",
+      role: "Partner, Culinary Group",
+      avatar: "https://i.pravatar.cc/150?img=11",
     },
     isFeatured: false,
   },
