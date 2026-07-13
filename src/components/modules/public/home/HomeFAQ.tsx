@@ -14,12 +14,12 @@ const faqs = [
   {
     question: "What types of projects does Liminal specialize in?",
     answer:
-      "We specialize in residential interiors, commercial spaces, and architectural consultancy. Our work spans private homes, corporate offices, retail environments, and hospitality projects, always with an emphasis on material authenticity and spatial intelligence.",
+      "We specialize in residential interiors, commercial spaces and architectural consultancy. Our work spans private homes, corporate offices, retail environments and hospitality projects, always with an emphasis on material authenticity and spatial intelligence.",
   },
   {
     question: "How does the design process work?",
     answer:
-      "Our process begins with a deep-listening phase where we understand your lifestyle, aspirations, and spatial needs. We then move through concept development, material specification, detailed design documentation, and finally, on-site execution. Every step is collaborative and transparent.",
+      "Our process begins with a deep-listening phase where we understand your lifestyle, aspirations and spatial needs. We then move through concept development, material specification, detailed design documentation and finally, on-site execution. Every step is collaborative and transparent.",
   },
   {
     question: "What is the typical project timeline?",
@@ -34,12 +34,12 @@ const faqs = [
   {
     question: "What makes Liminal different from other firms?",
     answer:
-      "Our approach is rooted in architectural thinking rather than decorative styling. We don't follow trends. We study how spaces affect human behavior and emotion. Every material choice, every spatial proportion, and every detail is intentional and purposeful.",
+      "Our approach is rooted in architectural thinking rather than decorative styling. We don't follow trends. We study how spaces affect human behavior and emotion. Every material choice, every spatial proportion and every detail is intentional and purposeful.",
   },
   {
     question: "How do I start a project with Liminal?",
     answer:
-      "Start by scheduling a consultation through our contact page. During this initial meeting, we'll discuss your vision, project scope, budget considerations, and timeline expectations. From there, we'll propose a tailored approach that aligns with your goals.",
+      "Start by scheduling a consultation through our contact page. During this initial meeting, we'll discuss your vision, project scope, budget considerations and timeline expectations. From there, we'll propose a tailored approach that aligns with your goals.",
   },
 ];
 

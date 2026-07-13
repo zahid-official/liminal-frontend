@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Services | Liminal Design Studio",
   description:
-    "Explore Liminal's curated ecosystem of design disciplines — from bespoke interior architecture to handcrafted furniture. We bridge creative vision with architectural reality.",
+    "Explore Liminal's curated ecosystem of design disciplines, ranging from bespoke interior architecture to handcrafted furniture. We bridge creative vision with architectural reality.",
 };
 
 // ServicePage Component

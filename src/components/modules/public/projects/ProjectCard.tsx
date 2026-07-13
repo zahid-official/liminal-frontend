@@ -10,7 +10,7 @@ interface ProjectCardProps {
 
 /**
  * ProjectCard component displays a project preview card with rich hover states,
- * sliding mask backdrop effects, and editorial details.
+ * sliding mask backdrop effects and editorial details.
  */
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const metaInfo = [

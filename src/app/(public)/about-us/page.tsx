@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Liminal",
   description:
-    "Discover the philosophy, story, and people behind Liminal. We are a premium interior design studio dedicated to creating evocative, functional, and timeless spaces.",
+    "Discover the philosophy, story and people behind Liminal. We are a premium interior design studio dedicated to creating evocative, functional and timeless spaces.",
 };
 
 // AboutUsPage Component
@@ -26,7 +26,7 @@ const AboutUsPage = () => {
       {/* Our Origin Story */}
       <AboutStory />
 
-      {/* Who We Are — Editorial Manifesto */}
+      {/* Who We Are */}
       <AboutIdentity />
 
       {/* Our Vision*/}
@@ -37,9 +37,6 @@ const AboutUsPage = () => {
 
       {/* The Team */}
       <AboutTeam />
-
-      {/* Impact in Numbers */}
-      {/* <AboutImpact /> */}
     </main>
   );
 };

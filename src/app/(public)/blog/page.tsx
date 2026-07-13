@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Journal & Insights",
   description:
-    "Explore the editorial voice, spatial philosophies, materiality studies, and design thinking behind Liminal's luxury environments.",
+    "Explore the editorial voice, spatial philosophies, materiality studies and design thinking behind Liminal's luxury environments.",
 };
 
 // BlogPage Component

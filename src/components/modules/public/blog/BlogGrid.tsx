@@ -7,7 +7,7 @@ interface BlogGridProps {
   showQuoteCard?: boolean;
 }
 
-// Quote Card — decorative, design-purpose only
+// Quote Card - decorative purpose only
 const QuoteCard = () => (
   <div
     className="group relative flex flex-col justify-between bg-liminal-dark text-background rounded-sm overflow-hidden p-8 lg:p-10 border border-foreground/15 shadow-xl min-h-95"

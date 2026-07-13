@@ -25,7 +25,7 @@ const BlogArticleDetails = ({
       <section className="py-10 md:pb-16 relative">
         <div className="custom-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-            {/* Sidebar — Desktop only, sticky */}
+            {/* Sidebar - Desktop only, sticky */}
             <BlogArticleSidebar content={article.content} />
 
             {/* Main Content */}

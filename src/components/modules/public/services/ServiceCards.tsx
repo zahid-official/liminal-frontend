@@ -9,7 +9,7 @@ const services = [
     number: "01",
     title: "Interior Design",
     description:
-      "Bespoke residential and commercial interiors that balance material honesty with spatial poetry. We manifest sophisticated, high-end spaces by bridging creative vision with architectural reality — guiding each project from initial concept through final installation.",
+      "Bespoke residential and commercial interiors that balance material honesty with spatial poetry. We manifest sophisticated, high-end spaces by bridging creative vision with architectural reality, guiding each project from initial concept through final installation.",
     image: "/assets/interior/hero-premium-new.png",
     href: "/services/interior",
     specs: [
@@ -21,7 +21,7 @@ const services = [
     number: "02",
     title: "Bespoke Furniture",
     description:
-      "Handcrafted furniture designed as functional sculpture, where each bespoke piece narrates a rich story of material, proportion, and human touch — from curated pre-made collections to fully bespoke architectural pieces crafted with structural integrity.",
+      "Handcrafted furniture designed as functional sculpture, where each bespoke piece narrates a rich story of material, proportion and human touch, ranging from curated pre-made collections to fully bespoke architectural pieces crafted with structural integrity.",
     image: "/assets/furniture/hero-premium.png",
     href: "/services/furniture",
     specs: [
@@ -52,7 +52,7 @@ const ServiceCards = () => {
               </span>
             </>
           }
-          description="Our work exists at the intersection of architectural precision and human intuition. Each discipline — though distinct in craft — shares a singular philosophy: that great design is not what you see, but what you feel when you inhabit a space."
+          description="Our work exists at the intersection of architectural precision and human intuition. Each discipline, though distinct in craft, shares a singular philosophy: that great design is not what you see, but what you feel when you inhabit a space."
           className="mb-12"
         />
 

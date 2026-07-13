@@ -29,7 +29,7 @@ const HomeJournal = () => {
               </span>
             </>
           }
-          description="Explorations in design thinking, material culture, and the philosophy of space, written from the studio where ideas take form."
+          description="Explorations in design thinking, material culture and the philosophy of space, written from the studio where ideas take form."
         />
 
         {/* Articles Grid */}

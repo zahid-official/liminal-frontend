@@ -1,4 +1,4 @@
-﻿import HomeCTA from "@/components/modules/public/home/HomeCTA";
+import HomeCTA from "@/components/modules/public/home/HomeCTA";
 import HomeFAQ from "@/components/modules/public/home/HomeFAQ";
 import HomeHero from "@/components/modules/public/home/HomeHero";
 import HomeJournal from "@/components/modules/public/home/HomeJournal";
@@ -22,38 +22,35 @@ export const metadata: Metadata = {
 const HomePage = () => {
   return (
     <main>
-      {/* 1. Hero — Cinematic first impression (dark) */}
+      {/* 1.  Home Hero  */}
       <HomeHero />
 
-      {/* 2. Studio Introduction — Intimate brand reveal (background) */}
+      {/* 2. Studio Introduction */}
       <HomeStudio />
 
-      {/* 3. Brand Manifesto — Philosophical depth (zinc) */}
+      {/* 3. Brand Manifesto */}
       <HomeManifesto />
 
-      {/* 4. Featured Projects — Portfolio authority (background) */}
+      {/* 4. Featured Projects */}
       <HomeProjects />
 
-      {/* 5. Design Philosophy — Technical credibility (dark) */}
+      {/* 5. Design Philosophy */}
       <HomePhilosophy />
 
-      {/* 6. Services Overview — Clear offering structure (background) */}
+      {/* 6. Services Overview  */}
       <HomeServices />
 
-      {/* 7. Testimonials — Social proof & trust (zinc) */}
+      {/* 7. Testimonials */}
       <HomeTestimonials />
 
-      {/* 8. FAQ — Questions answered (zinc) */}
+      {/* 8. FAQ */}
       <HomeFAQ />
 
-      {/* 9. Journal / Insights — Thought leadership (background) */}
+      {/* 9. Journal */}
       <HomeJournal />
 
-      {/* 10. Consultation CTA — Conversion moment (dark) */}
+      {/* 10. Consultation CTA */}
       <HomeCTA />
-
-      {/* 11. Newsletter */}
-      {/* <HomeNewsletter /> */}
     </main>
   );
 };

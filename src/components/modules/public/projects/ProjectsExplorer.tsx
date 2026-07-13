@@ -19,7 +19,6 @@ const ProjectsExplorer = () => {
     useState<IProject[]>(allProjects);
   const gridRef = useRef<HTMLDivElement>(null);
 
-
   // Filter Projects
   const handleFilterChange = (projects: IProject[]) => {
     setFilteredProjects(projects);
@@ -64,7 +63,7 @@ const ProjectsExplorer = () => {
               </span>
             </>
           }
-          description="A master index of our built works and material concepts. Explore the complete collection of residential sanctuaries, commercial spaces, and bespoke designs through our interactive archive."
+          description="A master index of our built works and material concepts. Explore the complete collection of residential sanctuaries, commercial spaces and bespoke designs through our interactive archive."
           headingId="explorer-heading"
           className="mb-5"
         />

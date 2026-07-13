@@ -28,7 +28,7 @@ const FeaturedProject = () => {
             <div className="relative aspect-4/3 overflow-hidden rounded-sm shadow-2xl">
               <Image
                 src={featured.heroImage}
-                alt={`${featured.title} — ${featured.category} in ${featured.location}`}
+                alt={`${featured.title} - ${featured.category} in ${featured.location}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"
                 quality={100}

@@ -16,7 +16,7 @@ const processSteps = [
     code: "STEP_02",
     title: "Material Curation",
     description:
-      "Sourcing the finest FSC-certified hardwoods, premium textiles, and bespoke hardware tailored to your choice.",
+      "Sourcing the finest FSC-certified hardwoods, premium textiles and bespoke hardware tailored to your choice.",
     icon: Layers,
   },
   {

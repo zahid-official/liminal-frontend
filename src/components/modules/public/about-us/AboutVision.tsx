@@ -18,7 +18,7 @@ const AboutVision = () => {
         <div className="relative aspect-square lg:aspect-auto overflow-hidden group">
           <Image
             src="/assets/about-us/vision_man.png"
-            alt="Liminal Design Vision — Crafting Timeless Spaces"
+            alt="Liminal Design Vision - Crafting Timeless Spaces"
             fill
             className="object-cover transition-transform duration-1500 group-hover:scale-105"
           />
@@ -31,7 +31,7 @@ const AboutVision = () => {
           <div className="absolute bottom-8 right-8 w-8 h-8 border-b border-r border-background/20" />
         </div>
 
-        {/* Right: Content — Vision */}
+        {/* Right: Vision */}
         <div className="relative z-10 flex items-center justify-center py-20 md:py-28 lg:py-32 px-4 sm:px-8">
           <div className="space-y-12 max-w-2xl">
             <SectionHeader
@@ -65,7 +65,7 @@ const AboutVision = () => {
                 We are committed to redefining spatial standards across South
                 Asia and beyond. By blending innovation with soulful
                 craftsmanship, we ensure that the spaces we create today become
-                the enduring foundations for how we live, work, and thrive
+                the enduring foundations for how we live, work and thrive
                 tomorrow.
               </p>
             </div>

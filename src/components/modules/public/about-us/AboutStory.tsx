@@ -76,10 +76,10 @@ const AboutStory = () => {
             <div className="space-y-5 text-muted-foreground leading-relaxed font-light">
               <p>
                 Liminal was founded with a singular conviction: that the spaces
-                we inhabit profoundly shape how we think, feel, and live. In a
+                we inhabit profoundly shape how we think, feel and live. In a
                 world of disposable aesthetics, we chose to build something
                 enduring, a studio where every design decision is rooted in
-                intention, craftsmanship, and deep respect for the people who
+                intention, craftsmanship and deep respect for the people who
                 will call these spaces home.
               </p>
 
@@ -91,7 +91,7 @@ const AboutStory = () => {
 
               <p>
                 From our studio in Dhaka, we&apos;ve grown into a team of
-                architects, designers, and artisans united by a shared vision:
+                architects, designers and artisans united by a shared vision:
                 to create spaces that exist at the intersection of art and
                 function. Each project is a new chapter in our ongoing story of
                 design evolution.

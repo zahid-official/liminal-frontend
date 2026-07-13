@@ -30,7 +30,7 @@ interface SectionHeaderProps extends Omit<
  *
  * Variants:
  * - editorial: Split layout 30/70 with background grid lines (Default)
- * - centered: Centered badge, title, and description
+ * - centered: Centered badge, title and description
  * - inline: Left-aligned with a horizontal line prefix to the badge
  * - split: Grid layout with Title (Left) and Description (Right)
  * - simple: Left-aligned with a SectionBadge (Pill style)

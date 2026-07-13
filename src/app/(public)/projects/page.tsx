@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Projects | Liminal Interior Design Portfolio",
   description:
-    "Explore Liminal's portfolio of stunning interior design projects — from residential sanctuaries to commercial masterpieces. Each project showcases our commitment to spatial excellence and material innovation.",
+    "Explore Liminal's portfolio of stunning interior design projects, ranging from residential sanctuaries to commercial masterpieces. Each project showcases our commitment to spatial excellence and material innovation.",
 };
 
 // ProjectsPage Component
