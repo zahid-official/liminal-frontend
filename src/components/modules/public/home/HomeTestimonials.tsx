@@ -65,7 +65,7 @@ const HomeTestimonials = () => {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-zinc-50/80"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden relative bg-zinc-50/80 bg-[url('/assets/home/testimonial-bg.png')] bg-bottom bg-cover bg-no-repeat"
     >
       <Carousel
         opts={{
@@ -134,7 +134,7 @@ const HomeTestimonials = () => {
               >
                 <div className="group bg-background rounded-xl p-8 sm:p-10 h-full flex flex-col shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-foreground/4 hover:border-liminal-secondary/25 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-lg hover:-translate-y-2.5 relative overflow-hidden select-none cursor-pointer">
                   {/* Premium Glossy Sheen Effect */}
-                  <div className="absolute top-0 left-[-20%] h-full w-60 bg-linear-to-r from-transparent via-foreground/3 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[400%] transition-none group-hover:transition-all group-hover:duration-1500 group-hover:ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0" />
+                  <div className="absolute top-0 left-[-20%] h-full w-60 bg-linear-to-r from-transparent via-foreground/3 to-transparent opacity-0 group-hover:opacity-100 transform translate-x-[-150%] skew-x-[-20deg] group-hover:translate-x-[400%] transition-none group-hover:transition-all group-hover:duration-1500 group-hover:ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0" />
 
                   {/* Rating */}
                   <div className="flex items-center gap-1 mb-8 relative z-10">
