@@ -278,7 +278,7 @@ const SectionHeader = ({
             {title}
           </h2>
         </div>
-        <div className="lg:col-span-5 text-center lg:text-left">
+        <div className="lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start gap-6">
           {description && (
             <p
               className={cn(
@@ -289,6 +289,7 @@ const SectionHeader = ({
               {description}
             </p>
           )}
+          {props.children}
         </div>
       </div>
     );
