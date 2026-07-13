@@ -26,7 +26,7 @@ const InteriorProjects = () => {
           descriptionClassName="text-right"
         >
           <div className="hidden lg:flex w-full justify-end">
-            <AnimatedButton className="border-background/20 hover:border-background/40 [&_span.text-foreground]:text-background/90">
+            <AnimatedButton className="border-background/20 text-background hover:border-background/40 [&_span.text-foreground]:text-background/90">
               Explore Portfolio
             </AnimatedButton>
           </div>
