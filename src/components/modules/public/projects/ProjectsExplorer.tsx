@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { projects as allProjects, type IProject } from "./projectsData";
 import ProjectsGrid from "./ProjectsGrid";
 import ProjectsPagination from "./ProjectsPagination";
@@ -20,10 +20,10 @@ const ProjectsExplorer = () => {
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Filter Projects
-  const handleFilterChange = (projects: IProject[]) => {
+  const handleFilterChange = useCallback((projects: IProject[]) => {
     setFilteredProjects(projects);
     setCurrentPage(1);
-  };
+  }, []);
 
   // Pagination
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
