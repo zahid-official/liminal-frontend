@@ -31,7 +31,7 @@ const ProjectIntro = ({ project }: ProjectIntroProps) => {
           badgeText={project.projectType}
           headingId="project-intro-heading"
           title={<span className="uppercase">{project.title}</span>}
-          description={project.shortIntro}
+          description={project.description}
         />
 
         {/* Metadata Fields */}

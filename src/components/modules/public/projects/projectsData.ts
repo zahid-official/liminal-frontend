@@ -62,12 +62,9 @@ export interface IProject {
   completionYear: string;
   status: ProjectStatus;
   interiorStyle: string;
-  scope: string;
-  services: string[];
-  materials: string[];
   thumbnail: string;
   galleryImages: IProjectGalleryImage[];
-  shortIntro: string;
+  description: string;
   narratives: IProjectNarratives;
   designPhilosophy: IProjectDesignPhilosophy;
   isFeatured: boolean;
@@ -90,21 +87,6 @@ export const projects: IProject[] = [
     duration: "14 Months",
     status: "Completed",
     interiorStyle: "Contemporary Minimal",
-    scope: "Full Interior Design & Furnishing",
-    services: [
-      "Space Planning",
-      "Interior Design",
-      "Custom Furniture",
-      "Lighting Design",
-      "Art Curation",
-    ],
-    materials: [
-      "Italian Travertine",
-      "Oiled Walnut",
-      "Brushed Brass",
-      "Linen Textiles",
-      "Smoked Glass",
-    ],
     thumbnail: "/assets/projects/apex-residence.png",
     galleryImages: [
       {
@@ -132,7 +114,7 @@ export const projects: IProject[] = [
         caption: "Hallway - Brass Detail & Natural Light",
       },
     ],
-    shortIntro:
+    description:
       "A transformative residential project where minimalist architecture meets warm materiality. The Apex Residence redefines modern living through carefully orchestrated spatial sequences, natural light choreography, and a material palette that bridges contemporary precision with timeless comfort.",
     narratives: {
       projectContext:
@@ -179,21 +161,6 @@ export const projects: IProject[] = [
     duration: "10 Months",
     status: "Completed",
     interiorStyle: "Warm Modernism",
-    scope: "Complete Office Redesign",
-    services: [
-      "Space Planning",
-      "Interior Design",
-      "Acoustic Design",
-      "Lighting Design",
-      "Branding Integration",
-    ],
-    materials: [
-      "Micro-Cement",
-      "Fluted Timber Panels",
-      "Acoustic Felt",
-      "Blackened Steel",
-      "Natural Linen",
-    ],
     thumbnail: "/assets/projects/corporate-zen.png",
     galleryImages: [
       {
@@ -213,7 +180,7 @@ export const projects: IProject[] = [
         caption: "Collaboration Zone - Casual Geometry",
       },
     ],
-    shortIntro:
+    description:
       "A forward-thinking corporate workspace where biophilic design meets precision engineering. Corporate Zen redefines office life through a modular spatial framework, circadian-responsive lighting, and a soothing material palette of timber and stone that balances productivity with sensory wellbeing.",
     narratives: {
       projectContext:
@@ -260,21 +227,6 @@ export const projects: IProject[] = [
     duration: "11 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
-    scope: "Interior Design & Renovation",
-    services: [
-      "Interior Design",
-      "Renovation",
-      "Custom Furniture",
-      "Material Sourcing",
-      "Styling",
-    ],
-    materials: [
-      "Book-Matched Marble",
-      "Fluted Limestone",
-      "Warm Bronze",
-      "White Oak",
-      "Bouclé Textiles",
-    ],
     thumbnail: "/assets/projects/minimalist-hero.png",
     galleryImages: [
       {
@@ -294,7 +246,7 @@ export const projects: IProject[] = [
         caption: "Bedroom - Organic Tranquility",
       },
     ],
-    shortIntro:
+    description:
       "An elevated penthouse residence where monumental stone meets soft, textured interiors. Marble Haven redefines contemporary luxury through custom book-matched marble, fluted limestone columns, and a warm material dialogue that bridges raw texture with quiet sophistication.",
     narratives: {
       projectContext:
@@ -341,21 +293,6 @@ export const projects: IProject[] = [
     duration: "18 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
-    scope: "Architectural Design & Interior Fit-Out",
-    services: [
-      "Architectural Design",
-      "Interior Design",
-      "Landscape Integration",
-      "Exhibition Design",
-      "Lighting Design",
-    ],
-    materials: [
-      "Structural Glass",
-      "Exposed Concrete",
-      "Corten Steel",
-      "Polished Aggregate",
-      "Raw Timber",
-    ],
     thumbnail: "/assets/projects/glass-house.png",
     galleryImages: [
       {
@@ -379,7 +316,7 @@ export const projects: IProject[] = [
         caption: "Landscape - Inside-Outside Blur",
       },
     ],
-    shortIntro:
+    description:
       "A transparent cultural pavilion where raw concrete, glass, and Corten steel meet the landscape. The Glass Pavilion dissolves spatial boundaries through fluid thresholds, optimized natural daylighting, and an honest material expression that bridges structure with nature.",
     narratives: {
       projectContext:
@@ -426,21 +363,6 @@ export const projects: IProject[] = [
     duration: "12 Months",
     status: "Completed",
     interiorStyle: "Scandinavian Luxe",
-    scope: "Complete Renovation & Interior Design",
-    services: [
-      "Renovation",
-      "Interior Design",
-      "Lighting Design",
-      "Custom Storage",
-      "Textile Curation",
-    ],
-    materials: [
-      "White Oak",
-      "Venetian Plaster",
-      "Polished Nickel",
-      "Cashmere Textiles",
-      "Honed Basalt",
-    ],
     thumbnail: "/assets/projects/penthouse.png",
     galleryImages: [
       {
@@ -460,7 +382,7 @@ export const projects: IProject[] = [
         caption: "Reading Nook - City Panorama",
       },
     ],
-    shortIntro:
+    description:
       "A Nordic-inspired penthouse sanctuary where simple warmth meets expansive city views. The Sanctuary Penthouse redefines high-rise living through hand-applied Venetian plaster, light-filtering linen, and a white oak palette that bridges modern elegance with quiet tranquility.",
     narratives: {
       projectContext:
@@ -507,21 +429,6 @@ export const projects: IProject[] = [
     duration: "8 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
-    scope: "Renovation & Creative Studio Design",
-    services: [
-      "Renovation",
-      "Interior Design",
-      "Furniture Design",
-      "Acoustic Design",
-      "Brand Identity Integration",
-    ],
-    materials: [
-      "Exposed Brick",
-      "Raw Steel",
-      "Polished Concrete",
-      "Reclaimed Wood",
-      "Industrial Glass",
-    ],
     thumbnail: "/assets/projects/urban-loft.png",
     galleryImages: [
       {
@@ -545,7 +452,7 @@ export const projects: IProject[] = [
         caption: "Workshop - Making Space",
       },
     ],
-    shortIntro:
+    description:
       "A dynamic creative workspace where industrial heritage meets contemporary collaboration. The Urban Loft Studio celebrates the beauty of making through exposed brickwork, raw steel partitions, and custom reclaimed timber details that bridge history with modern design.",
     narratives: {
       projectContext:
@@ -592,21 +499,6 @@ export const projects: IProject[] = [
     duration: "16 Months",
     status: "Completed",
     interiorStyle: "Contemporary Minimal",
-    scope: "Architectural & Interior Design",
-    services: [
-      "Architectural Design",
-      "Interior Design",
-      "Structural Engineering",
-      "Landscape Architecture",
-      "Lighting Design",
-    ],
-    materials: [
-      "Fair-Faced Concrete",
-      "Teak Wood",
-      "Structural Steel",
-      "Low-E Glass",
-      "Basalt Stone",
-    ],
     thumbnail: "/assets/projects/premium-villa.png",
     galleryImages: [
       {
@@ -622,7 +514,7 @@ export const projects: IProject[] = [
         caption: "Living Space - Double Height Volume",
       },
     ],
-    shortIntro:
+    description:
       "A monolithic residential sanctuary where raw concrete meets a lush tropical landscape. The Concrete Villa redefines open-plan living through an internal courtyard, passive climate shading, and a double-height glass pavilion that bridges protective privacy with natural light.",
     narratives: {
       projectContext:
@@ -669,20 +561,6 @@ export const projects: IProject[] = [
     duration: "6 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
-    scope: "Furniture Curation & Custom Fabrication",
-    services: [
-      "Furniture Design",
-      "Custom Joinery",
-      "Interior Styling",
-      "Material Consultation",
-    ],
-    materials: [
-      "Oiled Walnut",
-      "Raw Travertine",
-      "Wool Bouclé",
-      "Polished Brass",
-      "Aniline Leather",
-    ],
     thumbnail: "/assets/projects/project-furniture-bespoke.png",
     galleryImages: [
       {
@@ -694,7 +572,7 @@ export const projects: IProject[] = [
         caption: "Joinery Detail - Walnut & Brass",
       },
     ],
-    shortIntro:
+    description:
       "An intimate penthouse lounge where organic modernism meets highly tactile furniture design. The Bespoke Lounge redefines leisure spaces through hand-finished oiled walnut joinery, raw travertine elements, and a material palette that bridges sculptural beauty with conversational warmth.",
     narratives: {
       projectContext:
@@ -741,20 +619,6 @@ export const projects: IProject[] = [
     duration: "9 Months",
     status: "Completed",
     interiorStyle: "Art Deco Revival",
-    scope: "Complete Interior Design & Styling",
-    services: [
-      "Interior Design",
-      "Visual Merchandising",
-      "Lighting Design",
-      "Custom Millwork",
-    ],
-    materials: [
-      "Honed Marble",
-      "Fluted Glass",
-      "Brushed Gold",
-      "Velvet Upholstery",
-      "Lacquered Wood",
-    ],
     thumbnail: "/assets/projects/retail.png",
     galleryImages: [
       {
@@ -766,7 +630,7 @@ export const projects: IProject[] = [
         caption: "Mezzanine Transition - Sculpted Curves",
       },
     ],
-    shortIntro:
+    description:
       "An immersive fashion atelier where classical Art Deco symmetry meets contemporary minimalism. The Luxe Retail Atelier redefines the boutique experience through custom brass displays, honed marble pathways, and a material palette that bridges dramatic elegance with intimate comfort.",
     narratives: {
       projectContext:
@@ -813,20 +677,6 @@ export const projects: IProject[] = [
     duration: "11 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
-    scope: "Workspace Design & Sustainable Integration",
-    services: [
-      "Space Planning",
-      "Sustainable Design",
-      "Indoor Landscaping",
-      "Acoustic Engineering",
-    ],
-    materials: [
-      "Bamboo Panels",
-      "Recycled Cork",
-      "Low-VOC Sealants",
-      "Hemp Fabrics",
-      "Clay Plaster",
-    ],
     thumbnail: "/assets/projects/sustainable-premium.png",
     galleryImages: [
       {
@@ -838,7 +688,7 @@ export const projects: IProject[] = [
         caption: "Quiet Zone - Cork Wall Panels",
       },
     ],
-    shortIntro:
+    description:
       "A biophilic workspace where circular design meets healthy indoor ecosystems. The Eco-Luxe Pavilion redefines sustainable office spaces through self-watering green walls, natural cork acoustic panels, and daylight-harvesting systems that bridge human productivity with environmental harmony.",
     narratives: {
       projectContext:
@@ -885,20 +735,6 @@ export const projects: IProject[] = [
     duration: "7 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
-    scope: "Restaurant Renovation & Brand Integration",
-    services: [
-      "Renovation",
-      "Interior Design",
-      "Kitchen Layout Planning",
-      "Lighting Design",
-    ],
-    materials: [
-      "Terrazzo Flooring",
-      "Exposed Brickwork",
-      "Reclaimed Oak",
-      "Ribbed Steel Panels",
-      "Copper Accents",
-    ],
     thumbnail: "/assets/projects/commercial-premium.png",
     galleryImages: [
       {
@@ -910,7 +746,7 @@ export const projects: IProject[] = [
         caption: "Booth Seating - Brick & Oak",
       },
     ],
-    shortIntro:
+    description:
       "A high-energy bistro where raw industrial details meet warm culinary hospitality. The Metropolitan Bistro redefines shared dining through a hand-hammered central copper bar, exposed brick textures, and a material palette that bridges urban character with welcoming comfort.",
     narratives: {
       projectContext:
@@ -1012,7 +848,7 @@ export const filterProjects = (options: {
         p.title.toLowerCase().includes(query) ||
         p.category.toLowerCase().includes(query) ||
         p.location.toLowerCase().includes(query) ||
-        p.shortIntro.toLowerCase().includes(query),
+        p.description.toLowerCase().includes(query),
     );
   }
 

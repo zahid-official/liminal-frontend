@@ -74,7 +74,7 @@ const FeaturedProject = () => {
 
             {/* Narrative */}
             <p className="text-muted-foreground font-light text-[16px] sm:text-lg leading-relaxed">
-              {featured.shortIntro}
+              {featured.description}
             </p>
 
             {/* Blockquote */}
