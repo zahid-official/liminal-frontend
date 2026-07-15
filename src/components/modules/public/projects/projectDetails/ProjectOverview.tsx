@@ -1,5 +1,7 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import SectionFooter from "@/components/shared/SectionFooter";
+import DetailNavigation from "@/components/shared/DetailNavigation";
+import { getPrevNextProjects } from "../projectsData";
 import type { IProject } from "../projectsData";
 
 // ProjectOverview Props
@@ -34,6 +36,8 @@ const ProjectOverview = ({ project }: ProjectOverviewProps) => {
         },
       ].filter((item) => item.content)
     : [];
+
+  const { prev, next } = getPrevNextProjects(project.slug);
 
   return (
     <section
@@ -83,6 +87,36 @@ const ProjectOverview = ({ project }: ProjectOverviewProps) => {
 
         {/* Section Footer */}
         <SectionFooter label="End of Project" />
+
+        {/* Project Navigation */}
+        <DetailNavigation
+          prev={
+            prev
+              ? {
+                  href: `/projects/${prev.slug}`,
+                  title: prev.title,
+                  image: prev.thumbnail,
+                  category: prev.category,
+                  metaText: prev.completionYear,
+                }
+              : null
+          }
+          next={
+            next
+              ? {
+                  href: `/projects/${next.slug}`,
+                  title: next.title,
+                  image: next.thumbnail,
+                  category: next.category,
+                  metaText: next.completionYear,
+                }
+              : null
+          }
+          prevLabel="Previous Project"
+          nextLabel="Next Project"
+          headingLabel="Continue Exploring"
+          className="mt-16 md:mt-24"
+        />
       </div>
     </section>
   );

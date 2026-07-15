@@ -679,3 +679,16 @@ export const filterProjects = (options: {
 
   return results;
 };
+
+// Get previous and next projects for navigation
+export const getPrevNextProjects = (
+  currentSlug: string
+): { prev: IProject | null; next: IProject | null } => {
+  const currentIndex = projects.findIndex((p) => p.slug === currentSlug);
+  if (currentIndex === -1) return { prev: null, next: null };
+
+  const prev = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const next = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+  return { prev, next };
+};

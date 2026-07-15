@@ -37,6 +37,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
     console.log("Project not found for slug:", slug);
     notFound();
   }
+
   return (
     <main>
       {/* Page Header */}
