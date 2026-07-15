@@ -1,4 +1,5 @@
 import SectionHeader from "@/components/shared/SectionHeader";
+import SectionFooter from "@/components/shared/SectionFooter";
 import type { IProject } from "../projectsData";
 
 // ProjectOverview Props
@@ -79,6 +80,9 @@ const ProjectOverview = ({ project }: ProjectOverviewProps) => {
             );
           })}
         </div>
+
+        {/* Section Footer */}
+        <SectionFooter label="End of Project" />
       </div>
     </section>
   );

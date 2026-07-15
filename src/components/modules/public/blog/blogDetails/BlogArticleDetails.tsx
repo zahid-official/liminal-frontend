@@ -1,6 +1,6 @@
 import { IBlogArticle } from "../blogData";
 import BlogArticleContent from "./BlogArticleContent";
-import BlogArticleFooter from "./BlogArticleFooter";
+import SectionFooter from "@/components/shared/SectionFooter";
 import BlogArticleHero from "./BlogArticleHero";
 import BlogArticleNavigation from "./BlogArticleNavigation";
 import BlogArticleSidebar from "./BlogArticleSidebar";
@@ -36,7 +36,7 @@ const BlogArticleDetails = ({
               />
 
               {/* Article Footer */}
-              <BlogArticleFooter />
+              <SectionFooter label="End of Article" />
             </div>
           </div>
         </div>
