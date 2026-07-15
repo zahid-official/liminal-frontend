@@ -57,7 +57,7 @@ const HomeProjects = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                   <Image
-                    src={project.heroImage}
+                    src={project.thumbnail}
                     alt={project.title}
                     fill
                     quality={100}

@@ -27,7 +27,7 @@ const FeaturedProject = () => {
           <div className="lg:col-span-7 relative group/img">
             <div className="relative aspect-4/3 overflow-hidden rounded-sm shadow-2xl">
               <Image
-                src={featured.heroImage}
+                src={featured.thumbnail}
                 alt={`${featured.title} - ${featured.category} in ${featured.location}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"

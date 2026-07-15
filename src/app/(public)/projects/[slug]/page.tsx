@@ -1,3 +1,4 @@
+import ProjectGallery from "@/components/modules/public/projects/projectDetails/ProjectGallery";
 import ProjectIntro from "@/components/modules/public/projects/projectDetails/ProjectIntro";
 import ProjectOverview from "@/components/modules/public/projects/projectDetails/ProjectOverview";
 import { getProjectBySlug } from "@/components/modules/public/projects/projectsData";
@@ -46,7 +47,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
           { label: "Projects", href: "/projects" },
           { label: project.title },
         ]}
-        bgImage={project.heroImage}
+        bgImage={project.thumbnail}
       />
 
       {/* Project Intro */}
@@ -54,6 +55,9 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
 
       {/* Project Overview */}
       <ProjectOverview project={project} />
+
+      {/* Project Gallery */}
+      <ProjectGallery project={project} />
     </main>
   );
 };

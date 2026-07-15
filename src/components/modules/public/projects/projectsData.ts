@@ -1,9 +1,7 @@
 // Gallery Image Interface
 export interface IProjectGalleryImage {
-  src: string;
-  alt: string;
+  url: string;
   caption?: string;
-  span?: "full" | "half"; // layout hint for the gallery grid
 }
 
 // Design Philosophy Section
@@ -67,8 +65,7 @@ export interface IProject {
   scope: string;
   services: string[];
   materials: string[];
-  photographyCredit: string;
-  heroImage: string;
+  thumbnail: string;
   galleryImages: IProjectGalleryImage[];
   shortIntro: string;
   narratives: IProjectNarratives;
@@ -108,44 +105,31 @@ export const projects: IProject[] = [
       "Linen Textiles",
       "Smoked Glass",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/apex-residence.png",
+    thumbnail: "/assets/projects/apex-residence.png",
     galleryImages: [
       {
-        src: "/assets/projects/liminal-living-room.png",
-        alt: "Apex Residence living room with travertine feature wall",
+        url: "/assets/projects/liminal-living-room.png",
         caption: "Living Room - Travertine Feature Wall",
-        span: "full",
       },
       {
-        src: "/assets/projects/liminal-kitchen.png",
-        alt: "Apex Residence minimalist kitchen with walnut cabinetry",
+        url: "/assets/projects/liminal-kitchen.png",
         caption: "Kitchen - Walnut Cabinetry & Stone Counters",
-        span: "half",
       },
       {
-        src: "/assets/projects/liminal-bedroom.png",
-        alt: "Apex Residence master bedroom sanctuary",
+        url: "/assets/projects/liminal-bedroom.png",
         caption: "Master Bedroom - Serene Sanctuary",
-        span: "half",
       },
       {
-        src: "/assets/projects/liminal-bathroom.png",
-        alt: "Apex Residence marble bathroom",
+        url: "/assets/projects/liminal-bathroom.png",
         caption: "Bathroom - Italian Marble Surfaces",
-        span: "full",
       },
       {
-        src: "/assets/projects/liminal-lounge.png",
-        alt: "Apex Residence art lounge with curated pieces",
+        url: "/assets/projects/liminal-lounge.png",
         caption: "Art Lounge - Curated Collection",
-        span: "half",
       },
       {
-        src: "/assets/projects/interior-premium.png",
-        alt: "Apex Residence hallway with brass accents",
+        url: "/assets/projects/interior-premium.png",
         caption: "Hallway - Brass Detail & Natural Light",
-        span: "half",
       },
     ],
     shortIntro:
@@ -210,32 +194,23 @@ export const projects: IProject[] = [
       "Blackened Steel",
       "Natural Linen",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/corporate-zen.png",
+    thumbnail: "/assets/projects/corporate-zen.png",
     galleryImages: [
       {
-        src: "/assets/projects/liminal-office.png",
-        alt: "Corporate Zen open workspace with timber partitions",
+        url: "/assets/projects/liminal-office.png",
         caption: "Open Workspace - Timber & Light",
-        span: "full",
       },
       {
-        src: "/assets/projects/office-zen.png",
-        alt: "Corporate Zen quiet focus zone",
+        url: "/assets/projects/office-zen.png",
         caption: "Focus Pods - Acoustic Privacy",
-        span: "half",
       },
       {
-        src: "/assets/projects/premium-office.png",
-        alt: "Corporate Zen executive meeting room",
+        url: "/assets/projects/premium-office.png",
         caption: "Meeting Suite - Refined Formality",
-        span: "half",
       },
       {
-        src: "/assets/projects/office.png",
-        alt: "Corporate Zen collaborative breakout area",
+        url: "/assets/projects/office.png",
         caption: "Collaboration Zone - Casual Geometry",
-        span: "full",
       },
     ],
     shortIntro:
@@ -300,32 +275,23 @@ export const projects: IProject[] = [
       "White Oak",
       "Bouclé Textiles",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/minimalist-hero.png",
+    thumbnail: "/assets/projects/minimalist-hero.png",
     galleryImages: [
       {
-        src: "/assets/projects/minimalist-interior-1.png",
-        alt: "Marble Haven living area with book-matched marble wall",
+        url: "/assets/projects/minimalist-interior-1.png",
         caption: "Living Area - Book-Matched Marble Feature",
-        span: "full",
       },
       {
-        src: "/assets/projects/minimalist-interior-2.png",
-        alt: "Marble Haven dining space with fluted limestone columns",
+        url: "/assets/projects/minimalist-interior-2.png",
         caption: "Dining Space - Limestone Rhythm",
-        span: "half",
       },
       {
-        src: "/assets/projects/bathroom.png",
-        alt: "Marble Haven luxury bathroom with warm bronze fixtures",
+        url: "/assets/projects/bathroom.png",
         caption: "Master Bath - Bronze & Stone",
-        span: "half",
       },
       {
-        src: "/assets/projects/minimalist-sanctuary.png",
-        alt: "Marble Haven master bedroom with organic textures",
+        url: "/assets/projects/minimalist-sanctuary.png",
         caption: "Bedroom - Organic Tranquility",
-        span: "full",
       },
     ],
     shortIntro:
@@ -390,38 +356,27 @@ export const projects: IProject[] = [
       "Polished Aggregate",
       "Raw Timber",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/glass-house.png",
+    thumbnail: "/assets/projects/glass-house.png",
     galleryImages: [
       {
-        src: "/assets/projects/pavilion.png",
-        alt: "The Glass Pavilion exterior with Corten steel and glass",
+        url: "/assets/projects/pavilion.png",
         caption: "Exterior - Corten & Glass Dialogue",
-        span: "full",
       },
       {
-        src: "/assets/projects/premium-cultural.png",
-        alt: "The Glass Pavilion main gallery space",
+        url: "/assets/projects/premium-cultural.png",
         caption: "Main Gallery - Raw Concrete & Light",
-        span: "half",
       },
       {
-        src: "/assets/projects/museum-wing.png",
-        alt: "The Glass Pavilion exhibition wing",
+        url: "/assets/projects/museum-wing.png",
         caption: "Exhibition Wing - Curated Volumes",
-        span: "half",
       },
       {
-        src: "/assets/projects/gallery-1.png",
-        alt: "The Glass Pavilion detail of structural glass connection",
+        url: "/assets/projects/gallery-1.png",
         caption: "Detail - Structural Glass Junction",
-        span: "half",
       },
       {
-        src: "/assets/projects/gallery-2.png",
-        alt: "The Glass Pavilion landscape integration",
+        url: "/assets/projects/gallery-2.png",
         caption: "Landscape - Inside-Outside Blur",
-        span: "half",
       },
     ],
     shortIntro:
@@ -486,32 +441,23 @@ export const projects: IProject[] = [
       "Cashmere Textiles",
       "Honed Basalt",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/penthouse.png",
+    thumbnail: "/assets/projects/penthouse.png",
     galleryImages: [
       {
-        src: "/assets/projects/residential-premium.png",
-        alt: "Sanctuary Penthouse living room with Venetian plaster walls",
+        url: "/assets/projects/residential-premium.png",
         caption: "Living Room - Venetian Plaster Warmth",
-        span: "full",
       },
       {
-        src: "/assets/projects/bedroom.png",
-        alt: "Sanctuary Penthouse bedroom with linen canopy",
+        url: "/assets/projects/bedroom.png",
         caption: "Master Suite - Linen Canopy & Oak",
-        span: "half",
       },
       {
-        src: "/assets/projects/kitchen.png",
-        alt: "Sanctuary Penthouse kitchen with basalt counters",
+        url: "/assets/projects/kitchen.png",
         caption: "Kitchen - Basalt & White Oak",
-        span: "half",
       },
       {
-        src: "/assets/projects/living-room.png",
-        alt: "Sanctuary Penthouse reading nook with city views",
+        url: "/assets/projects/living-room.png",
         caption: "Reading Nook - City Panorama",
-        span: "full",
       },
     ],
     shortIntro:
@@ -576,38 +522,27 @@ export const projects: IProject[] = [
       "Reclaimed Wood",
       "Industrial Glass",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/urban-loft.png",
+    thumbnail: "/assets/projects/urban-loft.png",
     galleryImages: [
       {
-        src: "/assets/projects/project-corporate.png",
-        alt: "Urban Loft Studio main creative workspace",
+        url: "/assets/projects/project-corporate.png",
         caption: "Main Studio - Industrial Poetry",
-        span: "full",
       },
       {
-        src: "/assets/projects/project-1.png",
-        alt: "Urban Loft Studio material library corner",
+        url: "/assets/projects/project-1.png",
         caption: "Material Library - Curated Inspiration",
-        span: "half",
       },
       {
-        src: "/assets/projects/project-2.png",
-        alt: "Urban Loft Studio meeting area with reclaimed wood table",
+        url: "/assets/projects/project-2.png",
         caption: "Meeting Space - Reclaimed Timber",
-        span: "half",
       },
       {
-        src: "/assets/projects/project-4.png",
-        alt: "Urban Loft Studio lounge with exposed brick",
+        url: "/assets/projects/project-4.png",
         caption: "Client Lounge - Brick & Steel",
-        span: "half",
       },
       {
-        src: "/assets/projects/project-6.png",
-        alt: "Urban Loft Studio workshop and prototyping area",
+        url: "/assets/projects/project-6.png",
         caption: "Workshop - Making Space",
-        span: "half",
       },
     ],
     shortIntro:
@@ -672,26 +607,19 @@ export const projects: IProject[] = [
       "Low-E Glass",
       "Basalt Stone",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/premium-villa.png",
+    thumbnail: "/assets/projects/premium-villa.png",
     galleryImages: [
       {
-        src: "/assets/projects/villa.png",
-        alt: "The Concrete Villa exterior view",
+        url: "/assets/projects/villa.png",
         caption: "Exterior - Concrete & Teak Harmony",
-        span: "full",
       },
       {
-        src: "/assets/projects/staircase.png",
-        alt: "The Concrete Villa cantilevered staircase",
+        url: "/assets/projects/staircase.png",
         caption: "Staircase - Floating Geometry",
-        span: "half",
       },
       {
-        src: "/assets/projects/living-room.png",
-        alt: "The Concrete Villa open living room",
+        url: "/assets/projects/living-room.png",
         caption: "Living Space - Double Height Volume",
-        span: "half",
       },
     ],
     shortIntro:
@@ -755,20 +683,15 @@ export const projects: IProject[] = [
       "Polished Brass",
       "Aniline Leather",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/project-furniture-bespoke.png",
+    thumbnail: "/assets/projects/project-furniture-bespoke.png",
     galleryImages: [
       {
-        src: "/assets/projects/minimalist-interior-1.png",
-        alt: "Bespoke lounge custom seating arrangement",
+        url: "/assets/projects/minimalist-interior-1.png",
         caption: "Bespoke Lounge - Curated Seating",
-        span: "full",
       },
       {
-        src: "/assets/projects/project-1.png",
-        alt: "Crafted timber joins",
+        url: "/assets/projects/project-1.png",
         caption: "Joinery Detail - Walnut & Brass",
-        span: "half",
       },
     ],
     shortIntro:
@@ -832,20 +755,15 @@ export const projects: IProject[] = [
       "Velvet Upholstery",
       "Lacquered Wood",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/retail.png",
+    thumbnail: "/assets/projects/retail.png",
     galleryImages: [
       {
-        src: "/assets/projects/project-2.png",
-        alt: "Retail space display case detail",
+        url: "/assets/projects/project-2.png",
         caption: "Main Display - Fluted Glass & Gold",
-        span: "full",
       },
       {
-        src: "/assets/projects/staircase.png",
-        alt: "Atelier staircase and mezzanine",
+        url: "/assets/projects/staircase.png",
         caption: "Mezzanine Transition - Sculpted Curves",
-        span: "half",
       },
     ],
     shortIntro:
@@ -909,20 +827,15 @@ export const projects: IProject[] = [
       "Hemp Fabrics",
       "Clay Plaster",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/sustainable-premium.png",
+    thumbnail: "/assets/projects/sustainable-premium.png",
     galleryImages: [
       {
-        src: "/assets/projects/liminal-office.png",
-        alt: "Eco-Luxe Pavilion main office space",
+        url: "/assets/projects/liminal-office.png",
         caption: "Collaboration Hub - Bamboo & Plants",
-        span: "full",
       },
       {
-        src: "/assets/projects/project-6.png",
-        alt: "Eco-Luxe Pavilion quiet work area",
+        url: "/assets/projects/project-6.png",
         caption: "Quiet Zone - Cork Wall Panels",
-        span: "half",
       },
     ],
     shortIntro:
@@ -986,20 +899,15 @@ export const projects: IProject[] = [
       "Ribbed Steel Panels",
       "Copper Accents",
     ],
-    photographyCredit: "Liminal Studio Archives",
-    heroImage: "/assets/projects/commercial-premium.png",
+    thumbnail: "/assets/projects/commercial-premium.png",
     galleryImages: [
       {
-        src: "/assets/projects/project-corporate.png",
-        alt: "Metropolitan Bistro bar dining area",
+        url: "/assets/projects/project-corporate.png",
         caption: "Bistro Dining - Terrazzo & Copper Details",
-        span: "full",
       },
       {
-        src: "/assets/projects/project-4.png",
-        alt: "Metropolitan Bistro cozy booth seating",
+        url: "/assets/projects/project-4.png",
         caption: "Booth Seating - Brick & Oak",
-        span: "half",
       },
     ],
     shortIntro:
