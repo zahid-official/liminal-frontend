@@ -114,7 +114,7 @@ const ProjectOverview = ({ project }: ProjectOverviewProps) => {
           }
           prevLabel="Previous Project"
           nextLabel="Next Project"
-          headingLabel="Explore Projects"
+          headingLabel="Continue Exploring"
           className="mt-14"
         />
       </div>

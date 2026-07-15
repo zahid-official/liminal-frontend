@@ -24,7 +24,7 @@ const ProjectRelated = ({ project }: ProjectRelatedProps) => {
         {/* Section Header */}
         <SectionHeader
           variant="manifesto"
-          badgeText="Explore More"
+          badgeText="Discover Further"
           headingId="related-heading"
           title={
             <>
@@ -35,7 +35,7 @@ const ProjectRelated = ({ project }: ProjectRelatedProps) => {
             </>
           }
           description="Discover more from our portfolio - related projects that showcase the breadth and depth of our design practice."
-          className="mb-14 lg:mb-20"
+          className="mb-12"
         />
 
         {/* Related Projects Grid */}
