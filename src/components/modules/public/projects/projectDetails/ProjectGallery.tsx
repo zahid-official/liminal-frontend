@@ -1,4 +1,3 @@
-import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
 import { IProject, IProjectGalleryImage } from "../projectsData";
 
@@ -130,33 +129,13 @@ const ProjectGallery = ({ project }: ProjectGalleryProps) => {
   };
 
   return (
-    <section
+    <div
       id="project-gallery"
-      aria-labelledby="gallery-heading"
-      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
+      className="custom-container relative overflow-hidden"
     >
-      <div className="custom-container">
-        {/* Section Header */}
-        <SectionHeader
-          variant="manifesto"
-          badgeText="Visual Journey"
-          headingId="gallery-heading"
-          title={
-            <>
-              Project{" "}
-              <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Gallery
-              </span>
-            </>
-          }
-          description="A curated collection of moments that reveal the depth, detail, and atmosphere of the completed space."
-          className="mb-12"
-        />
-
-        {/* Gallery Grid */}
-        <div className="space-y-5 lg:space-y-6">{renderGallery()}</div>
-      </div>
-    </section>
+      {/* Gallery Grid */}
+      <div className="space-y-5 lg:space-y-6">{renderGallery()}</div>
+    </div>
   );
 };
 

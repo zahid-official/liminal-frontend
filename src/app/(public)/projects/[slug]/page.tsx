@@ -1,4 +1,3 @@
-import ProjectGallery from "@/components/modules/public/projects/projectDetails/ProjectGallery";
 import ProjectIntro from "@/components/modules/public/projects/projectDetails/ProjectIntro";
 import ProjectOverview from "@/components/modules/public/projects/projectDetails/ProjectOverview";
 import ProjectRelated from "@/components/modules/public/projects/projectDetails/ProjectRelated";
@@ -56,9 +55,6 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
 
       {/* Project Overview */}
       <ProjectOverview project={project} />
-
-      {/* Project Gallery */}
-      <ProjectGallery project={project} />
 
       {/* Project Related */}
       <ProjectRelated project={project} />

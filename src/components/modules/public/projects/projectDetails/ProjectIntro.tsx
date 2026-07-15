@@ -1,6 +1,7 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import type { IProject } from "../projectsData";
 import { Fragment } from "react";
+import ProjectGallery from "./ProjectGallery";
 
 // ProjectIntro Props
 interface ProjectIntroProps {
@@ -19,12 +20,13 @@ const ProjectIntro = ({ project }: ProjectIntroProps) => {
 
   return (
     <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
-      {/* Giant Background Letter */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[36rem] font-heading font-bold text-liminal-secondary/4 select-none pointer-events-none leading-none">
-        {project.title.charAt(0)}
-      </div>
+      {/* Project Introduction */}
+      <div className="max-lg:custom-container relative z-10 space-y-10 mb-16">
+        {/* Giant Background Letter */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[36rem] font-heading font-bold text-liminal-secondary/4 select-none pointer-events-none leading-none">
+          {project.title.charAt(0)}
+        </div>
 
-      <div className="max-lg:custom-container relative z-10 space-y-10">
         {/* Section Header */}
         <SectionHeader
           variant="manifesto"
@@ -55,6 +57,9 @@ const ProjectIntro = ({ project }: ProjectIntroProps) => {
           </div>
         </div>
       </div>
+
+      {/* Project Gallery */}
+      <ProjectGallery project={project} />
     </section>
   );
 };

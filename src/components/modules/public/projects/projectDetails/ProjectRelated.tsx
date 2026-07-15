@@ -18,7 +18,7 @@ const ProjectRelated = ({ project }: ProjectRelatedProps) => {
     <section
       id="related-projects"
       aria-labelledby="related-heading"
-      className="py-20 md:py-28 lg:py-32 bg-zinc-50 relative overflow-hidden"
+      className="py-20 md:py-28 lg:py-32 relative overflow-hidden"
     >
       <div className="custom-container">
         {/* Section Header */}
