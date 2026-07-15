@@ -1,27 +1,9 @@
-﻿// Projects Data - Static data layer for portfolio projects
-// This file will be replaced with dynamic API calls once the backend is ready
-
 // Gallery Image Interface
 export interface IProjectGalleryImage {
   src: string;
   alt: string;
   caption?: string;
   span?: "full" | "half"; // layout hint for the gallery grid
-}
-
-// Design Highlight Interface
-export interface IProjectHighlight {
-  icon: string; // lucide-react icon name
-  title: string;
-  description: string;
-}
-
-// Client Testimonial Interface
-export interface IProjectTestimonial {
-  quote: string;
-  name: string;
-  role: string;
-  avatar: string;
 }
 
 // Design Philosophy Section
@@ -35,17 +17,42 @@ export interface IProjectDesignPhilosophy {
   emotionalAtmosphere: string;
 }
 
+// Project Status Type
+export type ProjectStatus = "Completed" | "In Progress" | "Concept";
+
+// Project Categories
+export const projectCategories = [
+  "All",
+  "Residential",
+  "Commercial",
+  "Institutional",
+  "Interior",
+] as const;
+export type ProjectCategory = (typeof projectCategories)[number];
+
+// Interior Styles
+export const projectStyles = [
+  "All Styles",
+  "Contemporary Minimal",
+  "Warm Modernism",
+  "Industrial Refined",
+  "Scandinavian Luxe",
+  "Organic Modern",
+  "Art Deco Revival",
+] as const;
+export type ProjectStyle = (typeof projectStyles)[number];
+
 // Project Interface
 export interface IProject {
   id: string;
   slug: string;
   title: string;
   category: string;
-  type: ProjectType;
-  location: string;
+  projectType: string;
   area: string;
+  location: string;
+  duration: string;
   completionYear: string;
-  timeline: string;
   status: ProjectStatus;
   interiorStyle: string;
   scope: string;
@@ -61,78 +68,8 @@ export interface IProject {
   challenges: string;
   overallConcept: string;
   designPhilosophy: IProjectDesignPhilosophy;
-  designHighlights: IProjectHighlight[];
-  clientTestimonial: IProjectTestimonial;
   isFeatured: boolean;
 }
-
-// Project Status Type
-export type ProjectStatus = "Completed" | "In Progress" | "Concept";
-
-// Project Type
-export type ProjectType =
-  | "Residential"
-  | "Commercial"
-  | "Cultural"
-  | "Hospitality";
-
-// Project Categories
-export const projectCategories = [
-  "All",
-  "Residential",
-  "Commercial",
-  "Institutional",
-  "Interior",
-] as const;
-
-export type ProjectCategory = (typeof projectCategories)[number];
-
-// Project Types
-export const projectTypes: ProjectType[] = [
-  "Residential",
-  "Commercial",
-  "Cultural",
-  "Hospitality",
-];
-
-// Interior Styles
-export const projectStyles = [
-  "All Styles",
-  "Contemporary Minimal",
-  "Warm Modernism",
-  "Industrial Refined",
-  "Scandinavian Luxe",
-  "Organic Modern",
-  "Art Deco Revival",
-] as const;
-
-export type ProjectStyle = (typeof projectStyles)[number];
-
-// Locations
-export const projectLocations = [
-  "All Locations",
-  "Gulshan, Dhaka",
-  "Baridhara, Dhaka",
-  "Banani, Dhaka",
-  "Dhanmondi, Dhaka",
-  "Motijheel, Dhaka",
-  "Uttara, Dhaka",
-] as const;
-
-export type ProjectLocation = (typeof projectLocations)[number];
-
-// Completion Years
-export const projectYears = ["All Years", "2024", "2023", "2022"] as const;
-
-// Sort Options
-export const projectSortOptions = [
-  { label: "Newest First", value: "newest" },
-  { label: "Oldest First", value: "oldest" },
-  { label: "A – Z", value: "az" },
-  { label: "Z – A", value: "za" },
-] as const;
-
-export type ProjectSortValue = (typeof projectSortOptions)[number]["value"];
 
 // ─────────────────────────────────────────────
 // Mock Project Data
@@ -144,11 +81,11 @@ export const projects: IProject[] = [
     slug: "apex-residence",
     title: "Apex Residence",
     category: "Interior",
-    type: "Residential",
+    projectType: "Private Residence",
     location: "Baridhara, Dhaka",
     area: "4,200 sq ft",
     completionYear: "2024",
-    timeline: "14 Months",
+    duration: "14 Months",
     status: "Completed",
     interiorStyle: "Contemporary Minimal",
     scope: "Full Interior Design & Furnishing",
@@ -207,7 +144,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 4,200 square foot penthouse residence transformed into a sanctuary of understated luxury, where Italian travertine meets oiled walnut in a dialogue of warmth and permanence.",
+      "A transformative residential project where minimalist architecture meets warm materiality. The Apex Residence redefines modern living through carefully orchestrated spatial sequences, natural light choreography, and a material palette that bridges contemporary precision with timeless comfort.",
     clientVision:
       "The client, a seasoned art collector and entrepreneur, envisioned a home that could serve as both a private retreat and an intimate gallery for their growing collection. They sought spaces that felt calm and refined without sacrificing warmth or livability - a home where every room tells a story.",
     designObjectives:
@@ -234,39 +171,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The home radiates a quiet confidence - spaces that feel both grounded and elevated, substantial yet serene. The interplay of natural light with stone and timber creates a meditative quality that deepens with each visit.",
     },
-    designHighlights: [
-      {
-        icon: "Armchair",
-        title: "Bespoke Furniture Collection",
-        description:
-          "Eight custom furniture pieces designed exclusively for the residence, crafted by local artisans using traditional joinery techniques.",
-      },
-      {
-        icon: "Leaf",
-        title: "Sustainable Material Sourcing",
-        description:
-          "All timber sourced from FSC-certified suppliers. Local stone was prioritized to minimize transportation impact.",
-      },
-      {
-        icon: "Lightbulb",
-        title: "Adaptive Lighting System",
-        description:
-          "Tunable white lighting that adjusts color temperature throughout the day, syncing with the natural light cycle.",
-      },
-      {
-        icon: "Layers",
-        title: "Hidden Storage Integration",
-        description:
-          "Over 200 linear feet of concealed storage, including a hidden gallery archive and climate-controlled wine storage.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Liminal understood something that no other studio grasped - that our home needed to breathe. Every room feels like it has its own personality, yet the whole space flows as one continuous experience. Walking through our front door still takes our breath away, even after a year of living here.",
-      name: "Arthur Pendelton",
-      role: "Client, Apex Residence",
-      avatar: "https://i.pravatar.cc/150?img=57",
-    },
+
     isFeatured: true,
   },
   {
@@ -274,11 +179,11 @@ export const projects: IProject[] = [
     slug: "corporate-zen",
     title: "Corporate Zen",
     category: "Commercial",
-    type: "Commercial",
+    projectType: "Corporate Office",
     location: "Motijheel, Dhaka",
     area: "8,500 sq ft",
     completionYear: "2024",
-    timeline: "10 Months",
+    duration: "10 Months",
     status: "Completed",
     interiorStyle: "Warm Modernism",
     scope: "Complete Office Redesign",
@@ -325,7 +230,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "An 8,500 square foot corporate headquarters reimagined as a sanctuary of productive calm, where acoustic precision and material warmth replace the sterility of conventional office design.",
+      "A forward-thinking corporate workspace where biophilic design meets precision engineering. Corporate Zen redefines office life through a modular spatial framework, circadian-responsive lighting, and a soothing material palette of timber and stone that balances productivity with sensory wellbeing.",
     clientVision:
       "The founding partners sought a workspace that embodied their company's ethos of mindful productivity. They wanted an office that people would actively want to be in - a space that reduced stress, encouraged collaboration and felt distinctly different from every other corporate environment in the district.",
     designObjectives:
@@ -352,39 +257,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The office feels like a refined workshop rather than a corporate environment. There is a sense of purposeful calm - every surface and spatial decision supports concentrated work while maintaining human warmth and connection.",
     },
-    designHighlights: [
-      {
-        icon: "Volume2",
-        title: "Acoustic Performance Engineering",
-        description:
-          "Custom acoustic strategy achieving NRC 0.85 in focus zones, using material-integrated sound absorption rather than visible panels.",
-      },
-      {
-        icon: "Sun",
-        title: "Circadian Lighting System",
-        description:
-          "Automated lighting that adjusts color temperature from energizing 5000K mornings to relaxing 2700K afternoons.",
-      },
-      {
-        icon: "Recycle",
-        title: "Reclaimed Material Integration",
-        description:
-          "Communal tables crafted from century-old reclaimed teak, preserving history while reducing environmental impact.",
-      },
-      {
-        icon: "Maximize2",
-        title: "Modular Space Configuration",
-        description:
-          "Movable timber partition system allows the floor plan to adapt for different team configurations and event hosting.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Our team's productivity and wellbeing have measurably improved since moving into this space. People comment on how calm and focused they feel the moment they step off the elevator. Liminal didn't just design an office - they designed a better way of working.",
-      name: "Marcus Thorne",
-      role: "Founder, Corporate Zen",
-      avatar: "https://i.pravatar.cc/150?img=56",
-    },
+
     isFeatured: true,
   },
   {
@@ -392,11 +265,11 @@ export const projects: IProject[] = [
     slug: "marble-haven",
     title: "Marble Haven",
     category: "Interior",
-    type: "Residential",
+    projectType: "Private Penthouse",
     location: "Gulshan, Dhaka",
     area: "3,100 sq ft",
     completionYear: "2024",
-    timeline: "11 Months",
+    duration: "11 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
     scope: "Interior Design & Renovation",
@@ -443,7 +316,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 3,100 square foot family residence where book-matched marble and organic textures create an environment of sculptural serenity - a home that feels both grounding and aspirational.",
+      "An elevated penthouse residence where monumental stone meets soft, textured interiors. Marble Haven redefines contemporary luxury through custom book-matched marble, fluted limestone columns, and a warm material dialogue that bridges raw texture with quiet sophistication.",
     clientVision:
       "A young family wanted their first home to feel enduringly sophisticated without being cold or untouchable. They admired the permanence of natural stone but worried about creating a space that felt like a showroom rather than a home.",
     designObjectives:
@@ -470,39 +343,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Sculptural yet approachable. The monumental stone features provide a sense of gravity and significance, while the soft textures and warm lighting ensure the space never feels cold or intimidating. It is a home that impresses without exhausting.",
     },
-    designHighlights: [
-      {
-        icon: "Diamond",
-        title: "Book-Matched Marble Feature",
-        description:
-          "A single Calacatta marble block, split and mirrored to create a symmetrical four-meter feature wall of extraordinary natural beauty.",
-      },
-      {
-        icon: "Columns3",
-        title: "Fluted Limestone Colonnade",
-        description:
-          "Custom-carved limestone columns with contemporary fluting that reference classical architecture while maintaining a modern sensibility.",
-      },
-      {
-        icon: "ThermometerSun",
-        title: "Integrated Climate Comfort",
-        description:
-          "Underfloor heating beneath stone flooring ensures the natural stone surfaces feel warm and comfortable year-round.",
-      },
-      {
-        icon: "Baby",
-        title: "Child-Friendly Luxury",
-        description:
-          "Rounded furniture edges, washable bouclé upholstery and concealed storage make luxury living compatible with family life.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "We were nervous about using so much stone in a family home, but Liminal balanced it perfectly. Our children play freely while we live surrounded by genuine beauty. Friends can't believe how warm and inviting it feels despite the marble - that's the Liminal magic.",
-      name: "Tanvir Kabir",
-      role: "Client, Marble Haven",
-      avatar: "https://i.pravatar.cc/150?img=68",
-    },
+
     isFeatured: true,
   },
   {
@@ -510,11 +351,11 @@ export const projects: IProject[] = [
     slug: "the-glass-pavilion",
     title: "The Glass Pavilion",
     category: "Institutional",
-    type: "Cultural",
+    projectType: "Cultural Pavilion",
     location: "Dhanmondi, Dhaka",
     area: "6,800 sq ft",
     completionYear: "2023",
-    timeline: "18 Months",
+    duration: "18 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
     scope: "Architectural Design & Interior Fit-Out",
@@ -567,7 +408,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 6,800 square foot cultural pavilion where structural glass, exposed concrete and Corten steel create a dialogue between art and architecture - a building that is itself an exhibit.",
+      "A transparent cultural pavilion where raw concrete, glass, and Corten steel meet the landscape. The Glass Pavilion dissolves spatial boundaries through fluid thresholds, optimized natural daylighting, and an honest material expression that bridges structure with nature.",
     clientVision:
       "An arts foundation sought a multipurpose cultural space that could host exhibitions, lectures and intimate performances. The building needed to be as architecturally significant as the art it would house, becoming a destination in itself.",
     designObjectives:
@@ -594,39 +435,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The pavilion creates a sense of lightness, transparency and intellectual openness. It feels like being inside a thought - clear, structured, but permeable. The honesty of raw materials creates an atmosphere of trust and authenticity.",
     },
-    designHighlights: [
-      {
-        icon: "Frame",
-        title: "Structural Glass Innovation",
-        description:
-          "Six-meter frameless glass spans using point-fixed structural silicone glazing, achieving maximum transparency with minimal structure.",
-      },
-      {
-        icon: "TreePine",
-        title: "Landscape Integration",
-        description:
-          "Three existing mature trees preserved and integrated into the building's courtyard, with root zones protected by cantilevered foundations.",
-      },
-      {
-        icon: "Thermometer",
-        title: "Passive Climate Strategy",
-        description:
-          "Automated exterior blinds and thermal mass concrete reduce cooling loads by 40% compared to conventional glazed buildings.",
-      },
-      {
-        icon: "Palette",
-        title: "Gallery-Grade Environment",
-        description:
-          "Museum-standard climate control maintaining 21°C ±1° and 50% RH ±5% for conservation-quality art display.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Liminal created a building that artists love to exhibit in. The quality of light, the raw honesty of materials and the connection to the garden create an atmosphere that elevates every artwork we show. It has become a cultural landmark in its own right.",
-      name: "Farhan Huq",
-      role: "Curator, Arts Foundation",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
+
     isFeatured: false,
   },
   {
@@ -634,11 +443,11 @@ export const projects: IProject[] = [
     slug: "sanctuary-penthouse",
     title: "Sanctuary Penthouse",
     category: "Interior",
-    type: "Residential",
+    projectType: "Private Penthouse",
     location: "Banani, Dhaka",
     area: "3,800 sq ft",
     completionYear: "2023",
-    timeline: "12 Months",
+    duration: "12 Months",
     status: "Completed",
     interiorStyle: "Scandinavian Luxe",
     scope: "Complete Renovation & Interior Design",
@@ -685,7 +494,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 3,800 square foot penthouse renovation that transformed a dated luxury apartment into a Scandinavian-inspired sanctuary where Venetian plaster, white oak and cashmere textiles create an environment of cultivated tranquility.",
+      "A Nordic-inspired penthouse sanctuary where simple warmth meets expansive city views. The Sanctuary Penthouse redefines high-rise living through hand-applied Venetian plaster, light-filtering linen, and a white oak palette that bridges modern elegance with quiet tranquility.",
     clientVision:
       "An established couple, downsizing from a large family home, wanted their penthouse to feel like a Nordic retreat in the heart of Dhaka. They desired simplicity, warmth and a deep sense of calm - a space that celebrated light, texture and the art of living well with less.",
     designObjectives:
@@ -712,39 +521,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The penthouse feels like a warm embrace. Soft, luminous surfaces absorb the day's stress. The quietness of the material palette allows the mind to rest. Cashmere throws and linen curtains move gently in the breeze - the space breathes.",
     },
-    designHighlights: [
-      {
-        icon: "Paintbrush",
-        title: "Artisan Venetian Plaster",
-        description:
-          "Hand-applied Venetian plaster across all main walls by master craftsmen, creating a luminous surface with depth and movement.",
-      },
-      {
-        icon: "Wind",
-        title: "Natural Ventilation Design",
-        description:
-          "Cross-ventilation corridors and operable clerestory windows reduce dependence on mechanical cooling by 35%.",
-      },
-      {
-        icon: "Gem",
-        title: "Vintage Danish Furniture Curation",
-        description:
-          "Authentic mid-century Danish pieces sourced from European dealers, restored and reupholstered in natural fabrics.",
-      },
-      {
-        icon: "Eye",
-        title: "Panoramic View Optimization",
-        description:
-          "Window treatments and furniture placement carefully designed to frame and maximize the penthouse's 270-degree city views.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "After decades in a grand, ornate home, we feared that simplicity might feel like deprivation. Liminal proved us completely wrong. This apartment feels more luxurious than anything we've ever lived in - because the luxury is in the quality of every surface and the peace of every room.",
-      name: "Michael Vance",
-      role: "Client, Sanctuary Penthouse",
-      avatar: "https://i.pravatar.cc/150?img=55",
-    },
+
     isFeatured: false,
   },
   {
@@ -752,11 +529,11 @@ export const projects: IProject[] = [
     slug: "urban-loft-studio",
     title: "Urban Loft Studio",
     category: "Commercial",
-    type: "Commercial",
+    projectType: "Creative Studio",
     location: "Uttara, Dhaka",
     area: "2,400 sq ft",
     completionYear: "2023",
-    timeline: "8 Months",
+    duration: "8 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
     scope: "Renovation & Creative Studio Design",
@@ -809,7 +586,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 2,400 square foot former warehouse unit transformed into a creative studio that celebrates the raw beauty of industrial materials while providing a refined, inspiring environment for design work.",
+      "A dynamic creative workspace where industrial heritage meets contemporary collaboration. The Urban Loft Studio celebrates the beauty of making through exposed brickwork, raw steel partitions, and custom reclaimed timber details that bridge history with modern design.",
     clientVision:
       "A growing design collective needed a studio that reflected their creative philosophy - honest, hands-on and materially driven. They wanted a workspace that felt like a workshop, not a corporate office, while still being professional enough for client meetings.",
     designObjectives:
@@ -836,39 +613,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The studio feels alive and purposeful - a space where work happens and materials are celebrated. The industrial honesty creates an atmosphere of authenticity and creative energy. It is a space that feels both rugged and refined.",
     },
-    designHighlights: [
-      {
-        icon: "Hammer",
-        title: "Custom Craftsmanship",
-        description:
-          "All steel furniture and fixtures fabricated by local metalworkers, celebrating traditional craft within a contemporary design framework.",
-      },
-      {
-        icon: "Warehouse",
-        title: "Heritage Preservation",
-        description:
-          "Original brick walls, steel columns and timber trusses preserved and restored, maintaining the building's industrial narrative.",
-      },
-      {
-        icon: "Mic",
-        title: "Acoustic Zoning",
-        description:
-          "Strategic use of acoustic panels disguised as display boards, creating quiet zones for calls and presentations within the open plan.",
-      },
-      {
-        icon: "Droplets",
-        title: "Comprehensive Waterproofing",
-        description:
-          "Full basement-grade waterproofing system installed before fit-out, ensuring long-term protection against the building's historical moisture issues.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Liminal took our raw warehouse and turned it into the studio we always dreamed of. Clients are impressed the moment they walk in and our team has never been more inspired. The space feels like it was always meant to be this way - they just revealed what was already there.",
-      name: "Farhan Huq",
-      role: "Founder, Design Collective",
-      avatar: "https://i.pravatar.cc/150?img=12",
-    },
+
     isFeatured: false,
   },
   {
@@ -876,11 +621,11 @@ export const projects: IProject[] = [
     slug: "concrete-villa",
     title: "The Concrete Villa",
     category: "Residential",
-    type: "Residential",
+    projectType: "Private Villa",
     location: "Gulshan, Dhaka",
     area: "5,800 sq ft",
     completionYear: "2023",
-    timeline: "16 Months",
+    duration: "16 Months",
     status: "Completed",
     interiorStyle: "Contemporary Minimal",
     scope: "Architectural & Interior Design",
@@ -921,7 +666,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 5,800 square foot private villa where raw fair-faced concrete and mature teak wood blend seamlessly into a tropical landscape, prioritizing natural light and passive cooling.",
+      "A monolithic residential sanctuary where raw concrete meets a lush tropical landscape. The Concrete Villa redefines open-plan living through an internal courtyard, passive climate shading, and a double-height glass pavilion that bridges protective privacy with natural light.",
     clientVision:
       "The client wanted a multigenerational family home that felt strongly connected to nature, offering privacy from the busy city streets while maintaining open, light-filled communal spaces.",
     designObjectives:
@@ -948,27 +693,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "A sense of absolute sanctuary, quiet protection and calm alignment with the elements.",
     },
-    designHighlights: [
-      {
-        icon: "Home",
-        title: "Fair-Faced Concrete Slabs",
-        description:
-          "Precisely cast load-bearing concrete walls that serve as both structure and final interior finish.",
-      },
-      {
-        icon: "Wind",
-        title: "Microclimate Courtyard",
-        description:
-          "An internal courtyard and reflective pool that lowers ambient temperature by up to 3 degrees.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Living here feels like being in a tropical resort. The concrete keeps the house beautifully cool and the views of the courtyard pool bring peace to our daily lives.",
-      name: "Sabrina Rahman",
-      role: "Client, The Concrete Villa",
-      avatar: "https://i.pravatar.cc/150?img=32",
-    },
+
     isFeatured: false,
   },
   {
@@ -976,11 +701,11 @@ export const projects: IProject[] = [
     slug: "bespoke-lounge",
     title: "Bespoke Lounge",
     category: "Interior",
-    type: "Residential",
+    projectType: "Private Lounge",
     location: "Banani, Dhaka",
     area: "1,200 sq ft",
     completionYear: "2022",
-    timeline: "6 Months",
+    duration: "6 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
     scope: "Furniture Curation & Custom Fabrication",
@@ -1014,7 +739,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A curated 1,200 square foot private lounge showcasing custom-designed furniture pieces, celebrating organic forms and premium tactile materials.",
+      "An intimate penthouse lounge where organic modernism meets highly tactile furniture design. The Bespoke Lounge redefines leisure spaces through hand-finished oiled walnut joinery, raw travertine elements, and a material palette that bridges sculptural beauty with conversational warmth.",
     clientVision:
       "The client requested a dedicated lounge space in their penthouse to host intimate gatherings and relax, centered around custom furniture that acts as functional art.",
     designObjectives:
@@ -1041,27 +766,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Warm, welcoming and deeply intimate - a place for slow conversations and quiet relaxation.",
     },
-    designHighlights: [
-      {
-        icon: "Armchair",
-        title: "Bespoke Walnut Joinery",
-        description:
-          "Hand-finished walnut joints using classic techniques that eliminate visible screws or brackets.",
-      },
-      {
-        icon: "Gem",
-        title: "Artisan Leather Stitching",
-        description:
-          "Hand-stitched full-grain leather details on lounge chairs, ensuring lasting durability and premium texture.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Every single piece in this room feels like it was made specifically for my comfort. The attention to wood grains and stitching is simply extraordinary.",
-      name: "Tariq Zaman",
-      role: "Client, Bespoke Lounge",
-      avatar: "https://i.pravatar.cc/150?img=33",
-    },
+
     isFeatured: false,
   },
   {
@@ -1069,11 +774,11 @@ export const projects: IProject[] = [
     slug: "retail-atelier",
     title: "Luxe Retail Atelier",
     category: "Commercial",
-    type: "Commercial",
+    projectType: "Retail Boutique",
     location: "Gulshan, Dhaka",
     area: "2,800 sq ft",
     completionYear: "2024",
-    timeline: "9 Months",
+    duration: "9 Months",
     status: "Completed",
     interiorStyle: "Art Deco Revival",
     scope: "Complete Interior Design & Styling",
@@ -1107,7 +812,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 2,800 square foot boutique fashion atelier that blends classical Art Deco symmetry with contemporary minimal lines to create an immersive retail journey.",
+      "An immersive fashion atelier where classical Art Deco symmetry meets contemporary minimalism. The Luxe Retail Atelier redefines the boutique experience through custom brass displays, honed marble pathways, and a material palette that bridges dramatic elegance with intimate comfort.",
     clientVision:
       "A luxury fashion brand required an international-standard showroom that showcases garments like art pieces, establishing a sophisticated brand presence.",
     designObjectives:
@@ -1134,27 +839,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Exclusivity, premium luxury and artistic sophistication.",
     },
-    designHighlights: [
-      {
-        icon: "Sparkles",
-        title: "Custom Brass Displays",
-        description:
-          "Bespoke ceiling-mounted garment racks finished in satin brass, providing clean lines and structural strength.",
-      },
-      {
-        icon: "Crown",
-        title: "VIP Fitting Sanctuary",
-        description:
-          "An expansive dressing suite with plush velvet curtains, three-way mirrors and dedicated beverage service.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Our clients spend double the time in the store now. The fitting suite has completely redefined the shopping experience, making it feel like a private consultation.",
-      name: "Nadia Amin",
-      role: "Creative Director, Luxury Brand",
-      avatar: "https://i.pravatar.cc/150?img=47",
-    },
+
     isFeatured: false,
   },
   {
@@ -1162,11 +847,11 @@ export const projects: IProject[] = [
     slug: "eco-luxe-pavilion",
     title: "Eco-Luxe Pavilion",
     category: "Commercial",
-    type: "Commercial",
+    projectType: "Sustainable Workspace",
     location: "Uttara, Dhaka",
     area: "7,500 sq ft",
     completionYear: "2023",
-    timeline: "11 Months",
+    duration: "11 Months",
     status: "Completed",
     interiorStyle: "Organic Modern",
     scope: "Workspace Design & Sustainable Integration",
@@ -1200,7 +885,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 7,500 square foot biophilic workspace designed around wellness and circular materials, establishing a new benchmark for sustainable office design.",
+      "A biophilic workspace where circular design meets healthy indoor ecosystems. The Eco-Luxe Pavilion redefines sustainable office spaces through self-watering green walls, natural cork acoustic panels, and daylight-harvesting systems that bridge human productivity with environmental harmony.",
     clientVision:
       "An environmental consultancy wanted an office that reflected their core mission, showcasing sustainable construction materials and optimizing employee wellbeing.",
     designObjectives:
@@ -1227,27 +912,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Energizing, clean and deeply connected to nature - a breath of fresh air in the middle of the city.",
     },
-    designHighlights: [
-      {
-        icon: "Leaf",
-        title: "Biophilic Green Walls",
-        description:
-          "A 20-meter living wall system containing local air-purifying plant species, powered by a smart graywater system.",
-      },
-      {
-        icon: "ShieldCheck",
-        title: "Healthy Air Standards",
-        description:
-          "Use of zero-VOC paints and clay plaster, achieving premium indoor air quality levels monitored in real-time.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "Our team feels energized throughout the day. The air quality and greenery have reduced absenteeism and made our office a genuine joy to work in.",
-      name: "Dr. Kamal Sen",
-      role: "Director, Eco-Consultancy",
-      avatar: "https://i.pravatar.cc/150?img=69",
-    },
+
     isFeatured: false,
   },
   {
@@ -1255,11 +920,11 @@ export const projects: IProject[] = [
     slug: "metropolitan-bistro",
     title: "Metropolitan Bistro",
     category: "Commercial",
-    type: "Hospitality",
+    projectType: "Bespoke Restaurant",
     location: "Dhanmondi, Dhaka",
     area: "3,200 sq ft",
     completionYear: "2022",
-    timeline: "7 Months",
+    duration: "7 Months",
     status: "Completed",
     interiorStyle: "Industrial Refined",
     scope: "Restaurant Renovation & Brand Integration",
@@ -1293,7 +958,7 @@ export const projects: IProject[] = [
       },
     ],
     shortIntro:
-      "A 3,200 square foot casual-dining restaurant renovation that transforms an industrial space into a warm, high-energy bistro featuring custom copper accents.",
+      "A high-energy bistro where raw industrial details meet warm culinary hospitality. The Metropolitan Bistro redefines shared dining through a hand-hammered central copper bar, exposed brick textures, and a material palette that bridges urban character with welcoming comfort.",
     clientVision:
       "A culinary group desired a modern neighborhood eatery that feels rustic yet polished, serving as a social landmark for local food enthusiasts.",
     designObjectives:
@@ -1320,27 +985,7 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Lively, warm and inviting - a space that celebrates culinary craft and community.",
     },
-    designHighlights: [
-      {
-        icon: "GlassWater",
-        title: "Central Copper Bar",
-        description:
-          "A custom-fabricated bar clad in hand-hammered copper panels that will naturally oxidize and gain character.",
-      },
-      {
-        icon: "ChefHat",
-        title: "Open Theater Kitchen",
-        description:
-          "A semi-open kitchen design with steel and glass partitions that lets diners safely view the chef's culinary craftsmanship.",
-      },
-    ],
-    clientTestimonial: {
-      quote:
-        "The design captured our brand's warm, high-energy vibe perfectly. The central copper bar is packed every evening - it has truly become the heart of the restaurant.",
-      name: "Rashed Karim",
-      role: "Partner, Culinary Group",
-      avatar: "https://i.pravatar.cc/150?img=11",
-    },
+
     isFeatured: false,
   },
 ];
@@ -1357,7 +1002,7 @@ export const getFeaturedProject = (): IProject | undefined =>
 export const getProjectBySlug = (slug: string): IProject | undefined =>
   projects.find((p) => p.slug === slug || p.id === slug);
 
-// Get related projects (same type, excluding current)
+// Get related projects (same category, excluding current)
 export const getRelatedProjects = (
   currentId: string,
   limit: number = 3,
@@ -1365,30 +1010,34 @@ export const getRelatedProjects = (
   const current = projects.find((p) => p.id === currentId);
   if (!current) return [];
 
-  const sameType = projects.filter(
-    (p) => p.id !== currentId && p.type === current.type,
+  const sameCategory = projects.filter(
+    (p) => p.id !== currentId && p.category === current.category,
   );
 
-  if (sameType.length >= limit) {
-    return sameType.slice(0, limit);
+  if (sameCategory.length >= limit) {
+    return sameCategory.slice(0, limit);
   }
 
   const others = projects.filter(
-    (p) => p.id !== currentId && p.type !== current.type,
+    (p) => p.id !== currentId && p.category !== current.category,
   );
 
-  return [...sameType, ...others].slice(0, limit);
+  return [...sameCategory, ...others].slice(0, limit);
 };
 
+// Sort Options
+export const projectSortOptions = [
+  { label: "Newest First", value: "newest" },
+  { label: "Oldest First", value: "oldest" },
+  { label: "A – Z", value: "az" },
+  { label: "Z – A", value: "za" },
+] as const;
+
+export type ProjectSortValue = (typeof projectSortOptions)[number]["value"];
 // Filter and sort projects
 export const filterProjects = (options: {
-  search?: string;
   category?: string;
-  type?: string;
-  style?: string;
-  location?: string;
-  year?: string;
-  featured?: boolean;
+  search?: string;
   sort?: ProjectSortValue;
 }): IProject[] => {
   let results = [...projects];
@@ -1396,31 +1045,6 @@ export const filterProjects = (options: {
   // Category filter
   if (options.category && options.category !== "All") {
     results = results.filter((p) => p.category === options.category);
-  }
-
-  // Type filter
-  if (options.type && options.type !== "All Types") {
-    results = results.filter((p) => p.type === options.type);
-  }
-
-  // Style filter
-  if (options.style && options.style !== "All Styles") {
-    results = results.filter((p) => p.interiorStyle === options.style);
-  }
-
-  // Location filter
-  if (options.location && options.location !== "All Locations") {
-    results = results.filter((p) => p.location === options.location);
-  }
-
-  // Year filter
-  if (options.year && options.year !== "All Years") {
-    results = results.filter((p) => p.completionYear === options.year);
-  }
-
-  // Featured filter
-  if (options.featured) {
-    results = results.filter((p) => p.isFeatured);
   }
 
   // Search filter
@@ -1431,7 +1055,6 @@ export const filterProjects = (options: {
         p.title.toLowerCase().includes(query) ||
         p.category.toLowerCase().includes(query) ||
         p.location.toLowerCase().includes(query) ||
-        p.type.toLowerCase().includes(query) ||
         p.shortIntro.toLowerCase().includes(query),
     );
   }
