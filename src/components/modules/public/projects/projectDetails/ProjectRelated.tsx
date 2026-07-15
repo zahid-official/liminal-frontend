@@ -28,9 +28,9 @@ const ProjectRelated = ({ project }: ProjectRelatedProps) => {
           headingId="related-heading"
           title={
             <>
-              Continue{" "}
+              Releted{" "}
               <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
-                Exploring
+                Projects
               </span>
             </>
           }
