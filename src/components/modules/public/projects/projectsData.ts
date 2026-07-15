@@ -52,22 +52,22 @@ export interface IProjectNarratives {
 // Project Interface
 export interface IProject {
   id: string;
-  slug: string;
   title: string;
+  slug: string;
   category: string;
   projectType: string;
+  interiorStyle: string;
+  isFeatured: boolean;
+  status: ProjectStatus;
   area: string;
   location: string;
   duration: string;
   completionYear: string;
-  status: ProjectStatus;
-  interiorStyle: string;
   thumbnail: string;
   galleryImages: IProjectGalleryImage[];
   description: string;
   narratives: IProjectNarratives;
   designPhilosophy: IProjectDesignPhilosophy;
-  isFeatured: boolean;
 }
 
 // ─────────────────────────────────────────────
@@ -77,16 +77,17 @@ export interface IProject {
 export const projects: IProject[] = [
   {
     id: "1",
-    slug: "apex-residence",
     title: "Apex Residence",
+    slug: "apex-residence",
     category: "Interior",
     projectType: "Private Residence",
-    location: "Baridhara, Dhaka",
-    area: "4,200 sq ft",
-    completionYear: "2024",
-    duration: "14 Months",
-    status: "Completed",
     interiorStyle: "Contemporary Minimal",
+    isFeatured: true,
+    status: "Completed",
+    area: "4,200 sq ft",
+    location: "Baridhara, Dhaka",
+    duration: "14 Months",
+    completionYear: "2024",
     thumbnail: "/assets/projects/apex-residence.png",
     galleryImages: [
       {
@@ -146,21 +147,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The home radiates a quiet confidence - spaces that feel both grounded and elevated, substantial yet serene. The interplay of natural light with stone and timber creates a meditative quality that deepens with each visit.",
     },
-
-    isFeatured: true,
   },
   {
     id: "2",
-    slug: "corporate-zen",
     title: "Corporate Zen",
+    slug: "corporate-zen",
     category: "Commercial",
     projectType: "Corporate Office",
-    location: "Motijheel, Dhaka",
-    area: "8,500 sq ft",
-    completionYear: "2024",
-    duration: "10 Months",
-    status: "Completed",
     interiorStyle: "Warm Modernism",
+    isFeatured: true,
+    status: "Completed",
+    area: "8,500 sq ft",
+    location: "Motijheel, Dhaka",
+    duration: "10 Months",
+    completionYear: "2024",
     thumbnail: "/assets/projects/corporate-zen.png",
     galleryImages: [
       {
@@ -212,21 +212,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The office feels like a refined workshop rather than a corporate environment. There is a sense of purposeful calm - every surface and spatial decision supports concentrated work while maintaining human warmth and connection.",
     },
-
-    isFeatured: true,
   },
   {
     id: "3",
-    slug: "marble-haven",
     title: "Marble Haven",
+    slug: "marble-haven",
     category: "Interior",
     projectType: "Private Penthouse",
-    location: "Gulshan, Dhaka",
-    area: "3,100 sq ft",
-    completionYear: "2024",
-    duration: "11 Months",
-    status: "Completed",
     interiorStyle: "Organic Modern",
+    isFeatured: true,
+    status: "Completed",
+    area: "3,100 sq ft",
+    location: "Gulshan, Dhaka",
+    duration: "11 Months",
+    completionYear: "2024",
     thumbnail: "/assets/projects/minimalist-hero.png",
     galleryImages: [
       {
@@ -278,21 +277,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Sculptural yet approachable. The monumental stone features provide a sense of gravity and significance, while the soft textures and warm lighting ensure the space never feels cold or intimidating. It is a home that impresses without exhausting.",
     },
-
-    isFeatured: true,
   },
   {
     id: "4",
-    slug: "the-glass-pavilion",
     title: "The Glass Pavilion",
+    slug: "the-glass-pavilion",
     category: "Institutional",
     projectType: "Cultural Pavilion",
-    location: "Dhanmondi, Dhaka",
-    area: "6,800 sq ft",
-    completionYear: "2023",
-    duration: "18 Months",
-    status: "Completed",
     interiorStyle: "Industrial Refined",
+    isFeatured: false,
+    status: "Completed",
+    area: "6,800 sq ft",
+    location: "Dhanmondi, Dhaka",
+    duration: "18 Months",
+    completionYear: "2023",
     thumbnail: "/assets/projects/glass-house.png",
     galleryImages: [
       {
@@ -348,21 +346,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The pavilion creates a sense of lightness, transparency and intellectual openness. It feels like being inside a thought - clear, structured, but permeable. The honesty of raw materials creates an atmosphere of trust and authenticity.",
     },
-
-    isFeatured: false,
   },
   {
     id: "5",
-    slug: "sanctuary-penthouse",
     title: "Sanctuary Penthouse",
+    slug: "sanctuary-penthouse",
     category: "Interior",
     projectType: "Private Penthouse",
-    location: "Banani, Dhaka",
-    area: "3,800 sq ft",
-    completionYear: "2023",
-    duration: "12 Months",
-    status: "Completed",
     interiorStyle: "Scandinavian Luxe",
+    isFeatured: false,
+    status: "Completed",
+    area: "3,800 sq ft",
+    location: "Banani, Dhaka",
+    duration: "12 Months",
+    completionYear: "2023",
     thumbnail: "/assets/projects/penthouse.png",
     galleryImages: [
       {
@@ -414,21 +411,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The penthouse feels like a warm embrace. Soft, luminous surfaces absorb the day's stress. The quietness of the material palette allows the mind to rest. Cashmere throws and linen curtains move gently in the breeze - the space breathes.",
     },
-
-    isFeatured: false,
   },
   {
     id: "6",
-    slug: "urban-loft-studio",
     title: "Urban Loft Studio",
+    slug: "urban-loft-studio",
     category: "Commercial",
     projectType: "Creative Studio",
-    location: "Uttara, Dhaka",
-    area: "2,400 sq ft",
-    completionYear: "2023",
-    duration: "8 Months",
-    status: "Completed",
     interiorStyle: "Industrial Refined",
+    isFeatured: false,
+    status: "Completed",
+    area: "2,400 sq ft",
+    location: "Uttara, Dhaka",
+    duration: "8 Months",
+    completionYear: "2023",
     thumbnail: "/assets/projects/urban-loft.png",
     galleryImages: [
       {
@@ -484,21 +480,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "The studio feels alive and purposeful - a space where work happens and materials are celebrated. The industrial honesty creates an atmosphere of authenticity and creative energy. It is a space that feels both rugged and refined.",
     },
-
-    isFeatured: false,
   },
   {
     id: "7",
-    slug: "concrete-villa",
     title: "The Concrete Villa",
+    slug: "concrete-villa",
     category: "Residential",
     projectType: "Private Villa",
-    location: "Gulshan, Dhaka",
-    area: "5,800 sq ft",
-    completionYear: "2023",
-    duration: "16 Months",
-    status: "Completed",
     interiorStyle: "Contemporary Minimal",
+    isFeatured: false,
+    status: "Completed",
+    area: "5,800 sq ft",
+    location: "Gulshan, Dhaka",
+    duration: "16 Months",
+    completionYear: "2023",
     thumbnail: "/assets/projects/premium-villa.png",
     galleryImages: [
       {
@@ -546,21 +541,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "A sense of absolute sanctuary, quiet protection and calm alignment with the elements.",
     },
-
-    isFeatured: false,
   },
   {
     id: "8",
-    slug: "bespoke-lounge",
     title: "Bespoke Lounge",
+    slug: "bespoke-lounge",
     category: "Interior",
     projectType: "Private Lounge",
-    location: "Banani, Dhaka",
-    area: "1,200 sq ft",
-    completionYear: "2022",
-    duration: "6 Months",
-    status: "Completed",
     interiorStyle: "Organic Modern",
+    isFeatured: false,
+    status: "Completed",
+    area: "1,200 sq ft",
+    location: "Banani, Dhaka",
+    duration: "6 Months",
+    completionYear: "2022",
     thumbnail: "/assets/projects/project-furniture-bespoke.png",
     galleryImages: [
       {
@@ -604,21 +598,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Warm, welcoming and deeply intimate - a place for slow conversations and quiet relaxation.",
     },
-
-    isFeatured: false,
   },
   {
     id: "9",
-    slug: "retail-atelier",
     title: "Luxe Retail Atelier",
+    slug: "retail-atelier",
     category: "Commercial",
     projectType: "Retail Boutique",
-    location: "Gulshan, Dhaka",
-    area: "2,800 sq ft",
-    completionYear: "2024",
-    duration: "9 Months",
-    status: "Completed",
     interiorStyle: "Art Deco Revival",
+    isFeatured: false,
+    status: "Completed",
+    area: "2,800 sq ft",
+    location: "Gulshan, Dhaka",
+    duration: "9 Months",
+    completionYear: "2024",
     thumbnail: "/assets/projects/retail.png",
     galleryImages: [
       {
@@ -662,21 +655,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Exclusivity, premium luxury and artistic sophistication.",
     },
-
-    isFeatured: false,
   },
   {
     id: "10",
-    slug: "eco-luxe-pavilion",
     title: "Eco-Luxe Pavilion",
+    slug: "eco-luxe-pavilion",
     category: "Commercial",
     projectType: "Sustainable Workspace",
-    location: "Uttara, Dhaka",
-    area: "7,500 sq ft",
-    completionYear: "2023",
-    duration: "11 Months",
-    status: "Completed",
     interiorStyle: "Organic Modern",
+    isFeatured: false,
+    status: "Completed",
+    area: "7,500 sq ft",
+    location: "Uttara, Dhaka",
+    duration: "11 Months",
+    completionYear: "2023",
     thumbnail: "/assets/projects/sustainable-premium.png",
     galleryImages: [
       {
@@ -720,21 +712,20 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Energizing, clean and deeply connected to nature - a breath of fresh air in the middle of the city.",
     },
-
-    isFeatured: false,
   },
   {
     id: "11",
-    slug: "metropolitan-bistro",
     title: "Metropolitan Bistro",
+    slug: "metropolitan-bistro",
     category: "Commercial",
     projectType: "Bespoke Restaurant",
-    location: "Dhanmondi, Dhaka",
-    area: "3,200 sq ft",
-    completionYear: "2022",
-    duration: "7 Months",
-    status: "Completed",
     interiorStyle: "Industrial Refined",
+    isFeatured: false,
+    status: "Completed",
+    area: "3,200 sq ft",
+    location: "Dhanmondi, Dhaka",
+    duration: "7 Months",
+    completionYear: "2022",
     thumbnail: "/assets/projects/commercial-premium.png",
     galleryImages: [
       {
@@ -778,8 +769,6 @@ export const projects: IProject[] = [
       emotionalAtmosphere:
         "Lively, warm and inviting - a space that celebrates culinary craft and community.",
     },
-
-    isFeatured: false,
   },
 ];
 
