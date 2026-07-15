@@ -780,28 +780,31 @@ export const projects: IProject[] = [
 export const getFeaturedProject = (): IProject | undefined =>
   projects.find((p) => p.isFeatured);
 
-// Get a project by slug or id
+// Get a project by slug
 export const getProjectBySlug = (slug: string): IProject | undefined =>
-  projects.find((p) => p.slug === slug || p.id === slug);
+  projects.find((p) => p.slug === slug);
 
 // Get related projects (same category, excluding current)
 export const getRelatedProjects = (
-  currentId: string,
+  currentSlug: string,
   limit: number = 3,
 ): IProject[] => {
-  const current = projects.find((p) => p.id === currentId);
+  const current = projects.find((p) => p.slug === currentSlug);
   if (!current) return [];
 
+  // get same category projects
   const sameCategory = projects.filter(
-    (p) => p.id !== currentId && p.category === current.category,
+    (p) => p.id !== current.id && p.category === current.category,
   );
 
+  // if same category is more than or equal to limit, return same category projects
   if (sameCategory.length >= limit) {
     return sameCategory.slice(0, limit);
   }
 
+  // if same category is less than limit, get other category projects
   const others = projects.filter(
-    (p) => p.id !== currentId && p.category !== current.category,
+    (p) => p.id !== current.id && p.category !== current.category,
   );
 
   return [...sameCategory, ...others].slice(0, limit);
@@ -814,8 +817,8 @@ export const projectSortOptions = [
   { label: "A – Z", value: "az" },
   { label: "Z – A", value: "za" },
 ] as const;
-
 export type ProjectSortValue = (typeof projectSortOptions)[number]["value"];
+
 // Filter and sort projects
 export const filterProjects = (options: {
   category?: string;

@@ -1,6 +1,7 @@
 import ProjectGallery from "@/components/modules/public/projects/projectDetails/ProjectGallery";
 import ProjectIntro from "@/components/modules/public/projects/projectDetails/ProjectIntro";
 import ProjectOverview from "@/components/modules/public/projects/projectDetails/ProjectOverview";
+import ProjectRelated from "@/components/modules/public/projects/projectDetails/ProjectRelated";
 import { getProjectBySlug } from "@/components/modules/public/projects/projectsData";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -58,6 +59,9 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
 
       {/* Project Gallery */}
       <ProjectGallery project={project} />
+
+      {/* Project Related */}
+      <ProjectRelated project={project} />
     </main>
   );
 };
