@@ -4,17 +4,6 @@ export interface IProjectGalleryImage {
   caption?: string;
 }
 
-// Design Philosophy Section
-export interface IProjectDesignPhilosophy {
-  spacePlanning: string;
-  materialSelection: string;
-  lighting: string;
-  colorPalette: string;
-  furnitureChoices: string;
-  userExperience: string;
-  emotionalAtmosphere: string;
-}
-
 // Project Status Type
 export type ProjectStatus = "Completed" | "In Progress" | "Concept";
 
@@ -67,7 +56,6 @@ export interface IProject {
   galleryImages: IProjectGalleryImage[];
   description: string;
   narratives: IProjectNarratives;
-  designPhilosophy: IProjectDesignPhilosophy;
 }
 
 // ─────────────────────────────────────────────
@@ -131,22 +119,6 @@ export const projects: IProject[] = [
       theRealization:
         "The home radiates a quiet confidence - spaces that feel both grounded and elevated, substantial yet serene. The interplay of natural light with stone and timber creates a meditative quality that deepens with each visit.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "We dissolved unnecessary partitions to create a flowing open plan that maintains distinct zones through material transitions and ceiling height variations. The living, dining and kitchen areas form a continuous spatial experience connected by a travertine floor plane.",
-      materialSelection:
-        "Italian travertine anchors the public spaces with its warm, creamy tones. Oiled walnut introduces organic warmth in private areas. Brushed brass hardware and accents provide subtle luminosity, while smoked glass partitions define zones without interrupting sight lines.",
-      lighting:
-        "A layered lighting strategy combines recessed cove lighting for ambient warmth, adjustable track systems for art illumination and sculptural pendants as focal points. The lighting transitions from cool clarity in working areas to warm intimacy in living spaces.",
-      colorPalette:
-        "A restrained palette of warm neutrals - cream, sand, charcoal and deep umber - allows materials and textures to become the color story. Accent colors appear only through art and carefully curated objects.",
-      furnitureChoices:
-        "A mix of bespoke pieces designed specifically for the space and curated selections from European artisan makers. Every piece was selected for its material integrity, proportional harmony and tactile quality.",
-      userExperience:
-        "The spatial sequence creates a journey from the more public, expansive living areas through progressively intimate spaces. Entry compression releases into the double-height living room, creating a moment of arrival that residents experience daily.",
-      emotionalAtmosphere:
-        "The home radiates a quiet confidence - spaces that feel both grounded and elevated, substantial yet serene. The interplay of natural light with stone and timber creates a meditative quality that deepens with each visit.",
-    },
   },
   {
     id: "2",
@@ -196,22 +168,6 @@ export const projects: IProject[] = [
       theRealization:
         "The office feels like a refined workshop rather than a corporate environment. There is a sense of purposeful calm - every surface and spatial decision supports concentrated work while maintaining human warmth and connection.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "The floor plan radiates from a central communal hub - the heartbeat of the office - outward toward progressively quieter zones. Collaborative spaces face the perimeter for natural light, while focus pods are internalized with controlled artificial light.",
-      materialSelection:
-        "Micro-cement floors provide a monolithic base that unifies the entire space. Fluted timber panels add warmth and acoustic absorption. Acoustic felt in deep earth tones creates visual depth while controlling reverberation. Blackened steel frames provide structural rhythm.",
-      lighting:
-        "Human-centric lighting with circadian-responsive color temperatures. Task lighting at individual workstations operates independently from ambient systems. Feature pendant clusters define gathering points and create visual landmarks for wayfinding.",
-      colorPalette:
-        "A considered palette of charcoal, warm grey, sand and deep forest green. Brand colors appear only at key moments - the reception desk, meeting room accent walls and wayfinding signage - creating a subtle integration rather than visual dominance.",
-      furnitureChoices:
-        "Ergonomic workstations paired with bespoke communal tables crafted from reclaimed timber. Soft seating in breakout areas uses high-durability natural fabrics. All furniture was selected for both comfort during extended use and visual coherence with the material palette.",
-      userExperience:
-        "The spatial sequence guides employees from the energizing arrival experience through collaborative zones to individual focus areas. Transitions between zones are marked by material shifts underfoot and subtle changes in lighting warmth.",
-      emotionalAtmosphere:
-        "The office feels like a refined workshop rather than a corporate environment. There is a sense of purposeful calm - every surface and spatial decision supports concentrated work while maintaining human warmth and connection.",
-    },
   },
   {
     id: "3",
@@ -259,22 +215,6 @@ export const projects: IProject[] = [
       overallConcept:
         "The Geological Home - inspired by the idea that a home should feel as though it grew from the earth. Stone grounds the space, timber adds organic warmth, and textiles soften edges - each layer representing a stratum of comfort and permanence.",
       theRealization:
-        "Sculptural yet approachable. The monumental stone features provide a sense of gravity and significance, while the soft textures and warm lighting ensure the space never feels cold or intimidating. It is a home that impresses without exhausting.",
-    },
-    designPhilosophy: {
-      spacePlanning:
-        "An open-plan living, dining and kitchen zone flows around a central marble island that serves as both functional anchor and sculptural centerpiece. Private zones are accessed through a corridor defined by fluted limestone columns.",
-      materialSelection:
-        "Book-matched Calacatta marble creates a dramatic living room feature wall. Fluted limestone columns add texture and rhythm. White oak flooring and bouclé upholstery introduce warmth, while warm bronze fixtures and hardware provide subtle metallic luminosity.",
-      lighting:
-        "Concealed perimeter lighting washes the marble wall to enhance its veining. Pendant clusters above the dining table create intimate focal lighting. Reading nooks feature adjustable wall-mounted fixtures with warm brass finishes.",
-      colorPalette:
-        "White, cream, warm grey and touches of sage green. The marble's natural veining provides organic pattern, reducing the need for decorative color. Bronze accents add depth without introducing competing hues.",
-      furnitureChoices:
-        "Low-profile, rounded furniture forms that complement the stone's angular geometry. Custom bouclé sofas with deep seats for family comfort. A bespoke dining table with a marble base and white oak top bridges the material narrative.",
-      userExperience:
-        "The home feels like a progression from public grandeur to private softness. The marble-dominated living area gradually transitions through the limestone corridor into the textile-rich bedrooms, creating a sensory journey from cool permanence to warm embrace.",
-      emotionalAtmosphere:
         "Sculptural yet approachable. The monumental stone features provide a sense of gravity and significance, while the soft textures and warm lighting ensure the space never feels cold or intimidating. It is a home that impresses without exhausting.",
     },
   },
@@ -330,22 +270,6 @@ export const projects: IProject[] = [
       theRealization:
         "The pavilion creates a sense of lightness, transparency and intellectual openness. It feels like being inside a thought - clear, structured, but permeable. The honesty of raw materials creates an atmosphere of trust and authenticity.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "The plan consists of three interlocking rectangular volumes - gallery, performance and administration - connected by glass corridors that frame garden views. The main gallery has no fixed walls, allowing complete reconfiguration for each exhibition.",
-      materialSelection:
-        "Structural glass panels provide transparency and lightness. Exposed concrete ceilings and walls offer thermal mass and a raw textural backdrop for art. Corten steel exterior cladding weathers naturally, evolving the building's appearance over time. Polished aggregate floors provide durability with visual depth.",
-      lighting:
-        "A dual lighting system combines museum-grade track lighting with flexible color temperature control for exhibitions and ambient uplighting that washes concrete surfaces for evening events. Natural light is managed through automated exterior blinds.",
-      colorPalette:
-        "The palette is entirely material-driven: concrete grey, Corten rust, glass transparency and the green of surrounding landscape. No applied color - every hue is honest to its material origin.",
-      furnitureChoices:
-        "Minimal, moveable furniture including raw timber benches for gallery seating, lightweight aluminum lecture chairs and custom reception pieces in Corten steel and concrete. All furniture is designed to be cleared completely for exhibitions.",
-      userExperience:
-        "Visitors experience a gradual transition from the leafy exterior through an open forecourt into the main gallery volume. The glass walls create a constant awareness of nature and sky, ensuring the art experience remains connected to the natural world.",
-      emotionalAtmosphere:
-        "The pavilion creates a sense of lightness, transparency and intellectual openness. It feels like being inside a thought - clear, structured, but permeable. The honesty of raw materials creates an atmosphere of trust and authenticity.",
-    },
   },
   {
     id: "5",
@@ -393,22 +317,6 @@ export const projects: IProject[] = [
       overallConcept:
         "The Nordic Sanctuary - rooted in hygge and the Scandinavian tradition of finding beauty in simplicity. Every surface is reduced to its essence, every material is chosen for its natural warmth, and every space is designed to encourage mindful presence.",
       theRealization:
-        "The penthouse feels like a warm embrace. Soft, luminous surfaces absorb the day's stress. The quietness of the material palette allows the mind to rest. Cashmere throws and linen curtains move gently in the breeze - the space breathes.",
-    },
-    designPhilosophy: {
-      spacePlanning:
-        "The renovation opened the main living area into a single flowing space oriented toward the best views. The former formal dining room became a library alcove. Two guest bedrooms were consolidated into a generous master suite with separate his-and-hers dressing areas.",
-      materialSelection:
-        "Venetian plaster walls provide a luminous, handcrafted surface that changes character with the light. White oak flooring and millwork create warmth and continuity. Honed basalt in wet areas adds grounding darkness. Polished nickel hardware provides quiet metallic accent.",
-      lighting:
-        "Minimal visible fixtures - recessed slots in ceiling and wall niches provide ambient illumination. Large-format windows are dressed with sheer linen panels that filter light without blocking views. Candle-height table lamps encourage evening intimacy.",
-      colorPalette:
-        "Off-white, pale ash, warm grey and muted blush. The palette evolves from cooler tones in daytime spaces to warmer, deeper shades in the bedroom suite. No primary colors - warmth comes from material, not pigment.",
-      furnitureChoices:
-        "Low Scandinavian-inspired furniture with organic curves and natural fabric upholstery. Vintage Danish pieces mixed with custom designs. Emphasis on comfort and tactility - every surface invites touch.",
-      userExperience:
-        "Entry through a compressed vestibule with Venetian plaster walls releases into the panoramic living space - a deliberate moment of spatial drama. The apartment flows from social to private with graduated intimacy.",
-      emotionalAtmosphere:
         "The penthouse feels like a warm embrace. Soft, luminous surfaces absorb the day's stress. The quietness of the material palette allows the mind to rest. Cashmere throws and linen curtains move gently in the breeze - the space breathes.",
     },
   },
@@ -464,22 +372,6 @@ export const projects: IProject[] = [
       theRealization:
         "The studio feels alive and purposeful - a space where work happens and materials are celebrated. The industrial honesty creates an atmosphere of authenticity and creative energy. It is a space that feels both rugged and refined.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "A central open studio dominates the space, flanked by a material library, a meeting room with industrial glass partitions, a client lounge and a small workshop for physical prototyping. The plan maintains visual connectivity across all areas.",
-      materialSelection:
-        "Existing brick walls were cleaned and sealed, revealing their rich terracotta warmth. New steel elements - shelving, partitions, mezzanine railings - are finished in matte black. Polished concrete floors provide a continuous, low-maintenance surface. Reclaimed wood adds historical warmth.",
-      lighting:
-        "Industrial pendant fixtures with exposed Edison bulbs provide ambient warmth. Adjustable task lights on articulated arms serve individual workstations. Track lighting with LED spots illuminates the material library and exhibition wall.",
-      colorPalette:
-        "The palette emerges entirely from materials: brick red-brown, steel black, concrete grey and reclaimed wood honey. The only added color comes from the work displayed on the studio walls - the space is deliberately neutral to let creative work take center stage.",
-      furnitureChoices:
-        "Custom steel-frame desks with reclaimed wood tops. Industrial stools and task chairs. A large communal table built from a single reclaimed timber slab supported by raw steel trestles. Vintage industrial shelving for material storage.",
-      userExperience:
-        "Entering through a reclaimed timber and steel pivot door, visitors experience the full volume of the space immediately. The material library acts as a curated gallery of textures and samples. The client lounge offers comfortable seating within the industrial atmosphere.",
-      emotionalAtmosphere:
-        "The studio feels alive and purposeful - a space where work happens and materials are celebrated. The industrial honesty creates an atmosphere of authenticity and creative energy. It is a space that feels both rugged and refined.",
-    },
   },
   {
     id: "7",
@@ -525,22 +417,6 @@ export const projects: IProject[] = [
       theRealization:
         "A sense of absolute sanctuary, quiet protection and calm alignment with the elements.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "Living spaces are arranged around a central double-height courtyard containing a reflective pool, providing natural cross-ventilation.",
-      materialSelection:
-        "Raw concrete provides structural honesty and thermal mass, complemented by rich teak wood for visual warmth.",
-      lighting:
-        "Deep overhangs shade floor-to-ceiling windows, while concealed LED strips accentuate concrete textures at night.",
-      colorPalette:
-        "Natural concrete grey, warm teak brown and charcoal metal, accented by the green of the tropical garden.",
-      furnitureChoices:
-        "Low-profile teak furniture custom-designed for each room, upholstered in neutral linen fabrics.",
-      userExperience:
-        "Moving from the solid exterior entry, visitors transition across a bridge over the pool into a double-height glass pavilion.",
-      emotionalAtmosphere:
-        "A sense of absolute sanctuary, quiet protection and calm alignment with the elements.",
-    },
   },
   {
     id: "8",
@@ -580,22 +456,6 @@ export const projects: IProject[] = [
       overallConcept:
         "Sculpted Tactility - where every piece of furniture is designed to be touched and experienced, showcasing raw beauty without unnecessary ornamentation.",
       theRealization:
-        "Warm, welcoming and deeply intimate - a place for slow conversations and quiet relaxation.",
-    },
-    designPhilosophy: {
-      spacePlanning:
-        "A conversational seating circle anchors the room, with low-slung credenzas lining the walls to maximize vertical space.",
-      materialSelection:
-        "Oiled walnut provides deep wood tones, while raw travertine tables introduce organic stone patterns and textures.",
-      lighting:
-        "Soft, low-level warm lighting from brass floor lamps and integrated LED backlights behind the credenzas.",
-      colorPalette:
-        "Warm browns, creams and brass gold, accented by the rich texture of aniline leather.",
-      furnitureChoices:
-        "Bespoke curved bouclé sofas, custom walnut coffee tables and hand-stitched leather lounge chairs.",
-      userExperience:
-        "A highly tactile journey where hands naturally trace the smooth walnut edges and textured travertine cavities.",
-      emotionalAtmosphere:
         "Warm, welcoming and deeply intimate - a place for slow conversations and quiet relaxation.",
     },
   },
@@ -639,22 +499,6 @@ export const projects: IProject[] = [
       theRealization:
         "Exclusivity, premium luxury and artistic sophistication.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "An open circular flow guiding customers past curated collections, terminating at a private VIP fitting lounge.",
-      materialSelection:
-        "Honed marble floors create a prestigious path, while fluted glass panels and brushed gold fixtures offer delicate ornamentation.",
-      lighting:
-        "High-CRI LED spot tracks highlight fabrics, while soft ambient light from frosted glass globes sets a warm mood.",
-      colorPalette:
-        "Deep emerald green velvet, ivory marble and metallic gold accents against a charcoal grey background.",
-      furnitureChoices:
-        "Bespoke velvet lounge seating in the VIP area and custom-finished brass garment displays.",
-      userExperience:
-        "Customers feel transported into a high-fashion salon, where every product is presented with theatrical focus.",
-      emotionalAtmosphere:
-        "Exclusivity, premium luxury and artistic sophistication.",
-    },
   },
   {
     id: "10",
@@ -696,22 +540,6 @@ export const projects: IProject[] = [
       theRealization:
         "Energizing, clean and deeply connected to nature - a breath of fresh air in the middle of the city.",
     },
-    designPhilosophy: {
-      spacePlanning:
-        "Open-plan desks arranged to guarantee views of the green walls or exterior windows for all team members.",
-      materialSelection:
-        "Rapidly renewable bamboo for partitions, recycled acoustic cork for walls and clay plasters that regulate humidity.",
-      lighting:
-        "Daylight-harvesting lighting systems that dim automatically as natural sunlight shifts throughout the day.",
-      colorPalette:
-        "Terracotta, bamboo cream, leaf green and soft earth tones, creating a grounding, natural look.",
-      furnitureChoices:
-        "Ergonomic chairs made from recycled ocean plastics, paired with solid timber tables sourced from sustainable local farms.",
-      userExperience:
-        "Employees enjoy fresh filtered air, rich plant life and pleasant acoustics, minimizing fatigue and stress.",
-      emotionalAtmosphere:
-        "Energizing, clean and deeply connected to nature - a breath of fresh air in the middle of the city.",
-    },
   },
   {
     id: "11",
@@ -751,22 +579,6 @@ export const projects: IProject[] = [
       overallConcept:
         "The Culinary Hearth - centered around the visual drama of a copper bar and open kitchen prep line, celebrating the shared joy of dining.",
       theRealization:
-        "Lively, warm and inviting - a space that celebrates culinary craft and community.",
-    },
-    designPhilosophy: {
-      spacePlanning:
-        "High-density seating zones around the perimeter, with a prominent central bar acting as the main architectural anchor.",
-      materialSelection:
-        "Polished terrazzo floors resist high traffic, while raw brickwork and reclaimed oak provide rich, historic texture.",
-      lighting:
-        "Focused warm spotlights above each table, paired with custom copper pendant fixtures highlighting the central bar.",
-      colorPalette:
-        "Deep copper orange, warm brick red, charcoal steel and dark timber brown, creating a cozy evening atmosphere.",
-      furnitureChoices:
-        "Bespoke leather-upholstered booths, steel barstools and solid oak tables that develop character with age.",
-      userExperience:
-        "Guests are greeted by the warm glow of copper and the sound of a lively kitchen, entering a high-energy social hub.",
-      emotionalAtmosphere:
         "Lively, warm and inviting - a space that celebrates culinary craft and community.",
     },
   },
