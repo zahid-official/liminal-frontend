@@ -42,6 +42,15 @@ export const projectStyles = [
 ] as const;
 export type ProjectStyle = (typeof projectStyles)[number];
 
+export interface IProjectNarratives {
+  projectContext: string;
+  clientVision: string;
+  designObjectives: string;
+  spatialChallenges: string;
+  overallConcept: string;
+  theRealization: string;
+}
+
 // Project Interface
 export interface IProject {
   id: string;
@@ -62,11 +71,7 @@ export interface IProject {
   heroImage: string;
   galleryImages: IProjectGalleryImage[];
   shortIntro: string;
-  clientVision: string;
-  designObjectives: string;
-  context: string;
-  challenges: string;
-  overallConcept: string;
+  narratives: IProjectNarratives;
   designPhilosophy: IProjectDesignPhilosophy;
   isFeatured: boolean;
 }
@@ -145,16 +150,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A transformative residential project where minimalist architecture meets warm materiality. The Apex Residence redefines modern living through carefully orchestrated spatial sequences, natural light choreography, and a material palette that bridges contemporary precision with timeless comfort.",
-    clientVision:
-      "The client, a seasoned art collector and entrepreneur, envisioned a home that could serve as both a private retreat and an intimate gallery for their growing collection. They sought spaces that felt calm and refined without sacrificing warmth or livability - a home where every room tells a story.",
-    designObjectives:
-      "To create a seamless spatial narrative where art, architecture and daily life coexist harmoniously. Every transition between rooms needed to feel intentional, every material needed to resonate with the client's sensibility for authenticity and craft.",
-    context:
-      "Located on the top floor of a premium residential tower in Baridhara, the space offered panoramic views and abundant natural light. The challenge was to honor these qualities while creating defined interior zones that maintained visual continuity.",
-    challenges:
-      "The original floor plan featured fragmented rooms with inconsistent ceiling heights. Structural columns interrupted sight lines and the existing electrical infrastructure limited lighting placement. We worked closely with structural engineers to open key walls while preserving load-bearing integrity.",
-    overallConcept:
-      "The Threshold Continuum - inspired by Liminal's core philosophy, the design creates a sequence of spatial thresholds where each room gradually reveals itself as you move deeper into the home. Light narrows and expands, materials shift from cool stone to warm timber and ceiling heights compress and release to create an emotional journey through domestic space.",
+    narratives: {
+      projectContext:
+        "Located on the top floor of a premium residential tower in Baridhara, the space offered panoramic views and abundant natural light. The challenge was to honor these qualities while creating defined interior zones that maintained visual continuity.",
+      clientVision:
+        "The client, an art collector, envisioned a home serving as both a private retreat and a gallery for their collection. They sought spaces that felt calm and refined without sacrificing warmth or livability - a home where every room tells a story.",
+      designObjectives:
+        "To create a seamless spatial narrative where art, architecture, and daily life coexist. Every transition needed to feel intentional, and every material needed to resonate with the client's sensibility for authenticity and craft.",
+      spatialChallenges:
+        "The original floor plan featured fragmented rooms with inconsistent ceiling heights. Structural columns interrupted sight lines, and limited electrical systems restricted lighting. We opened key walls while preserving structural integrity.",
+      overallConcept:
+        "The Threshold Continuum - inspired by Liminal's core philosophy, the design creates spatial thresholds where rooms gradually reveal themselves. Materials shift from stone to timber as light narrows and expands, creating an emotional journey.",
+      theRealization:
+        "The home radiates a quiet confidence - spaces that feel both grounded and elevated, substantial yet serene. The interplay of natural light with stone and timber creates a meditative quality that deepens with each visit.",
+    },
     designPhilosophy: {
       spacePlanning:
         "We dissolved unnecessary partitions to create a flowing open plan that maintains distinct zones through material transitions and ceiling height variations. The living, dining and kitchen areas form a continuous spatial experience connected by a travertine floor plane.",
@@ -231,16 +240,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A forward-thinking corporate workspace where biophilic design meets precision engineering. Corporate Zen redefines office life through a modular spatial framework, circadian-responsive lighting, and a soothing material palette of timber and stone that balances productivity with sensory wellbeing.",
-    clientVision:
-      "The founding partners sought a workspace that embodied their company's ethos of mindful productivity. They wanted an office that people would actively want to be in - a space that reduced stress, encouraged collaboration and felt distinctly different from every other corporate environment in the district.",
-    designObjectives:
-      "To create a workspace that balances open collaboration with deep focus, integrates acoustic design seamlessly into the visual language and expresses the company's brand identity through spatial experience rather than surface-level graphics.",
-    context:
-      "Occupying an entire floor of a commercial tower in the business heart of Dhaka, the space needed to accommodate 45 employees across departments while maintaining the intimate, focused atmosphere the client valued.",
-    challenges:
-      "The floor plate had low ceiling heights and minimal natural light penetration beyond the perimeter. Dense HVAC infrastructure further constrained ceiling design. We needed to create a sense of openness and calm within genuinely restrictive physical parameters.",
-    overallConcept:
-      "The Breathing Grid - a modular spatial framework that alternates between zones of expansion (collaborative areas with higher perceived ceilings and wider sight lines) and compression (focus pods and meeting rooms with lower, more intimate proportions). The rhythm mirrors natural breathing patterns, creating an environment that unconsciously promotes calm.",
+    narratives: {
+      projectContext:
+        "Occupying an entire floor of a commercial tower in the business heart of Dhaka, the space needed to accommodate 45 employees across departments while maintaining the intimate, focused atmosphere the client valued.",
+      clientVision:
+        "The partners sought a workspace embodying their company's ethos of mindful productivity. They wanted an office employees would actively want to be in - reducing stress, encouraging collaboration, and feeling different from typical corporate spaces.",
+      designObjectives:
+        "To create a workspace that balances open collaboration with deep focus, integrates acoustic design seamlessly into the visual language and expresses the company's brand identity through spatial experience rather than surface-level graphics.",
+      spatialChallenges:
+        "The floor plate had low ceiling heights and minimal natural light. Dense HVAC infrastructure further constrained the ceiling design. We needed to create a sense of openness and calm within genuinely restrictive physical parameters.",
+      overallConcept:
+        "The Breathing Grid - a modular framework alternating between zones of expansion (collaborative areas with high ceilings) and compression (focus pods with intimate proportions). This rhythm mirrors natural breathing patterns to unconsciously promote calm.",
+      theRealization:
+        "The office feels like a refined workshop rather than a corporate environment. There is a sense of purposeful calm - every surface and spatial decision supports concentrated work while maintaining human warmth and connection.",
+    },
     designPhilosophy: {
       spacePlanning:
         "The floor plan radiates from a central communal hub - the heartbeat of the office - outward toward progressively quieter zones. Collaborative spaces face the perimeter for natural light, while focus pods are internalized with controlled artificial light.",
@@ -317,16 +330,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "An elevated penthouse residence where monumental stone meets soft, textured interiors. Marble Haven redefines contemporary luxury through custom book-matched marble, fluted limestone columns, and a warm material dialogue that bridges raw texture with quiet sophistication.",
-    clientVision:
-      "A young family wanted their first home to feel enduringly sophisticated without being cold or untouchable. They admired the permanence of natural stone but worried about creating a space that felt like a showroom rather than a home.",
-    designObjectives:
-      "To balance monumental stone with soft, approachable textures. To create a home that photographs beautifully but, more importantly, feels warm and inviting when lived in daily.",
-    context:
-      "A newly constructed apartment in Gulshan's most sought-after residential tower. The blank canvas offered freedom but also the challenge of creating character and warmth in a space with no existing architectural features.",
-    challenges:
-      "Sourcing a single marble block large enough for book-matching across a four-meter feature wall. Integrating underfloor heating with stone flooring without compromising thermal efficiency. Balancing the client's desire for bold stone presence with a child-friendly environment.",
-    overallConcept:
-      "The Geological Home - inspired by the idea that a home should feel as though it grew from the earth itself. Stone grounds the space, timber adds organic warmth and textiles soften edges - each layer representing a geological stratum of comfort and permanence.",
+    narratives: {
+      projectContext:
+        "A newly constructed apartment in Gulshan's most sought-after residential tower. The blank canvas offered freedom but also the challenge of creating character and warmth in a space with no existing architectural features.",
+      clientVision:
+        "A young family wanted their first home to feel enduringly sophisticated without being cold. They admired the permanence of natural stone but worried about creating a space that felt like a showroom rather than a home.",
+      designObjectives:
+        "To balance monumental stone with soft, approachable textures. To create a home that photographs beautifully but, more importantly, feels warm and inviting when lived in daily.",
+      spatialChallenges:
+        "Sourcing a marble block large enough for book-matching across a four-meter wall, integrating underfloor heating with stone flooring without compromising thermal efficiency, and balancing a bold stone presence with a child-friendly environment.",
+      overallConcept:
+        "The Geological Home - inspired by the idea that a home should feel as though it grew from the earth. Stone grounds the space, timber adds organic warmth, and textiles soften edges - each layer representing a stratum of comfort and permanence.",
+      theRealization:
+        "Sculptural yet approachable. The monumental stone features provide a sense of gravity and significance, while the soft textures and warm lighting ensure the space never feels cold or intimidating. It is a home that impresses without exhausting.",
+    },
     designPhilosophy: {
       spacePlanning:
         "An open-plan living, dining and kitchen zone flows around a central marble island that serves as both functional anchor and sculptural centerpiece. Private zones are accessed through a corridor defined by fluted limestone columns.",
@@ -409,16 +426,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A transparent cultural pavilion where raw concrete, glass, and Corten steel meet the landscape. The Glass Pavilion dissolves spatial boundaries through fluid thresholds, optimized natural daylighting, and an honest material expression that bridges structure with nature.",
-    clientVision:
-      "An arts foundation sought a multipurpose cultural space that could host exhibitions, lectures and intimate performances. The building needed to be as architecturally significant as the art it would house, becoming a destination in itself.",
-    designObjectives:
-      "To create a building that dissolves the boundary between inside and outside, allows maximum flexibility for diverse programming and provides gallery-quality environmental control while maintaining architectural transparency.",
-    context:
-      "Situated on a leafy corner plot in Dhanmondi's cultural precinct, the site offered mature trees and a quiet residential character. The design needed to be boldly contemporary while respecting the scale and atmosphere of the neighborhood.",
-    challenges:
-      "Achieving structural glass spans of up to six meters without visible framing. Managing solar heat gain through floor-to-ceiling glazing in Dhaka's climate. Creating acoustic isolation between the performance space and gallery areas within an otherwise open architectural concept.",
-    overallConcept:
-      "The Transparent Threshold - a building conceived as a series of glass and concrete planes that slide past each other, creating partially enclosed volumes that blur the distinction between gallery, garden and city. The architecture creates thresholds everywhere - you are always simultaneously inside and outside, seeing through the building to the landscape beyond.",
+    narratives: {
+      projectContext:
+        "Situated on a leafy corner plot in Dhanmondi's cultural precinct, the site offered mature trees and a quiet residential character. The design needed to be boldly contemporary while respecting the scale and atmosphere of the neighborhood.",
+      clientVision:
+        "An arts foundation sought a multipurpose cultural space for exhibitions, lectures and performances. The building needed to be as architecturally significant as the art it would house, becoming a destination in itself.",
+      designObjectives:
+        "To create a building that dissolves the boundary between inside and outside, allows maximum flexibility for diverse programming and provides gallery-quality environmental control while maintaining architectural transparency.",
+      spatialChallenges:
+        "Achieving structural glass spans of up to six meters without framing, managing solar heat gain through floor-to-ceiling glazing in Dhaka's climate, and creating acoustic isolation within an open architectural concept.",
+      overallConcept:
+        "The Transparent Threshold - glass and concrete planes sliding past each other, blurring the line between gallery, garden, and city. The design lets you feel inside and outside at once, seeing through the structure to the landscape.",
+      theRealization:
+        "The pavilion creates a sense of lightness, transparency and intellectual openness. It feels like being inside a thought - clear, structured, but permeable. The honesty of raw materials creates an atmosphere of trust and authenticity.",
+    },
     designPhilosophy: {
       spacePlanning:
         "The plan consists of three interlocking rectangular volumes - gallery, performance and administration - connected by glass corridors that frame garden views. The main gallery has no fixed walls, allowing complete reconfiguration for each exhibition.",
@@ -495,16 +516,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A Nordic-inspired penthouse sanctuary where simple warmth meets expansive city views. The Sanctuary Penthouse redefines high-rise living through hand-applied Venetian plaster, light-filtering linen, and a white oak palette that bridges modern elegance with quiet tranquility.",
-    clientVision:
-      "An established couple, downsizing from a large family home, wanted their penthouse to feel like a Nordic retreat in the heart of Dhaka. They desired simplicity, warmth and a deep sense of calm - a space that celebrated light, texture and the art of living well with less.",
-    designObjectives:
-      "To strip away decades of ornate detailing and replace them with quiet, considered surfaces. To maximize the penthouse's extraordinary views and natural light while creating intimate, cocooning spaces for rest and reflection.",
-    context:
-      "A top-floor apartment in one of Banani's earliest luxury towers. The building offered solid construction and generous proportions but the interior was trapped in a previous era of gilt mirrors, heavy curtains and dark wood paneling.",
-    challenges:
-      "Removing extensive ornamental plasterwork without damaging the underlying structure. Updating the building's original plumbing and electrical systems within walls that could not be significantly altered. Creating a sense of lightness and expansion within a structure designed for visual heaviness.",
-    overallConcept:
-      "The Nordic Sanctuary - a design philosophy rooted in hygge and the Scandinavian tradition of finding beauty in simplicity. Every surface is reduced to its essence, every material is chosen for its natural warmth and every space is designed to encourage mindful presence.",
+    narratives: {
+      projectContext:
+        "A top-floor apartment in one of Banani's earliest luxury towers. The building offered solid construction and generous proportions but the interior was trapped in a previous era of gilt mirrors, heavy curtains and dark wood paneling.",
+      clientVision:
+        "An established couple, downsizing from a large home, wanted their penthouse to feel like a Nordic retreat in Dhaka. They desired simplicity, warmth, and a deep sense of calm - a space celebrating light, texture, and the art of living well with less.",
+      designObjectives:
+        "To strip away decades of ornate detailing and replace them with quiet, considered surfaces. To maximize the penthouse's extraordinary views and natural light while creating intimate, cocooning spaces for rest and reflection.",
+      spatialChallenges:
+        "Removing extensive plasterwork without structural damage, updating original plumbing and wiring within unalterable walls, and creating a sense of lightness and expansion within a structure designed for visual heaviness.",
+      overallConcept:
+        "The Nordic Sanctuary - rooted in hygge and the Scandinavian tradition of finding beauty in simplicity. Every surface is reduced to its essence, every material is chosen for its natural warmth, and every space is designed to encourage mindful presence.",
+      theRealization:
+        "The penthouse feels like a warm embrace. Soft, luminous surfaces absorb the day's stress. The quietness of the material palette allows the mind to rest. Cashmere throws and linen curtains move gently in the breeze - the space breathes.",
+    },
     designPhilosophy: {
       spacePlanning:
         "The renovation opened the main living area into a single flowing space oriented toward the best views. The former formal dining room became a library alcove. Two guest bedrooms were consolidated into a generous master suite with separate his-and-hers dressing areas.",
@@ -587,16 +612,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A dynamic creative workspace where industrial heritage meets contemporary collaboration. The Urban Loft Studio celebrates the beauty of making through exposed brickwork, raw steel partitions, and custom reclaimed timber details that bridge history with modern design.",
-    clientVision:
-      "A growing design collective needed a studio that reflected their creative philosophy - honest, hands-on and materially driven. They wanted a workspace that felt like a workshop, not a corporate office, while still being professional enough for client meetings.",
-    designObjectives:
-      "To preserve and enhance the building's industrial character while creating a functional, comfortable workspace. To design a space that inspires creativity through material honesty and spatial generosity.",
-    context:
-      "A ground-floor warehouse unit in an industrial precinct of Uttara undergoing creative repurposing. The raw space featured exposed brick walls, steel columns and generous ceiling heights - an ideal canvas for industrial-refined design.",
-    challenges:
-      "The existing structure had significant moisture issues requiring comprehensive waterproofing before interior work could begin. The open warehouse acoustics created echo problems for video calls and client presentations. Uneven floors required leveling while preserving the industrial character.",
-    overallConcept:
-      "The Honest Workshop - a space that celebrates the beauty of making. Every material is visible, every connection is expressed and every surface tells the story of its construction. The design adds refinement without concealing the building's industrial truth.",
+    narratives: {
+      projectContext:
+        "A ground-floor warehouse unit in an industrial precinct of Uttara undergoing creative repurposing. The raw space featured exposed brick walls, steel columns and generous ceiling heights - an ideal canvas for industrial-refined design.",
+      clientVision:
+        "A growing design collective needed a studio reflecting their creative philosophy - honest, hands-on, and materially driven. They wanted a workspace that felt like a workshop rather than a corporate office, while remaining professional for client meetings.",
+      designObjectives:
+        "To preserve and enhance the building's industrial character while creating a functional, comfortable workspace. To design a space that inspires creativity through material honesty and spatial generosity.",
+      spatialChallenges:
+        "The structure had moisture issues requiring waterproofing before interior work, and warehouse acoustics created echo problems for calls and presentations. Uneven floors also required leveling while preserving the industrial character.",
+      overallConcept:
+        "The Honest Workshop - a space that celebrates the beauty of making. Every material is visible, every connection is expressed and every surface tells the story of its construction. The design adds refinement without concealing the building's industrial truth.",
+      theRealization:
+        "The studio feels alive and purposeful - a space where work happens and materials are celebrated. The industrial honesty creates an atmosphere of authenticity and creative energy. It is a space that feels both rugged and refined.",
+    },
     designPhilosophy: {
       spacePlanning:
         "A central open studio dominates the space, flanked by a material library, a meeting room with industrial glass partitions, a client lounge and a small workshop for physical prototyping. The plan maintains visual connectivity across all areas.",
@@ -667,16 +696,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A monolithic residential sanctuary where raw concrete meets a lush tropical landscape. The Concrete Villa redefines open-plan living through an internal courtyard, passive climate shading, and a double-height glass pavilion that bridges protective privacy with natural light.",
-    clientVision:
-      "The client wanted a multigenerational family home that felt strongly connected to nature, offering privacy from the busy city streets while maintaining open, light-filled communal spaces.",
-    designObjectives:
-      "To design a home that ages gracefully, utilizing raw materials that require minimal maintenance while optimizing airflow to reduce energy consumption.",
-    context:
-      "Located in a quiet residential pocket of Gulshan, surrounded by mature trees that the design works around.",
-    challenges:
-      "Developing high-quality fair-faced concrete surfaces in local humidity and designing cantilevered concrete slabs that shade the interior spaces from the harsh summer sun.",
-    overallConcept:
-      "The Monolithic Canopy - a raw concrete shell that acts as a protective shield while opening up to lush internal courtyards and water bodies.",
+    narratives: {
+      projectContext:
+        "Located in a quiet residential pocket of Gulshan, surrounded by mature trees that the design works around.",
+      clientVision:
+        "The client wanted a multigenerational family home that felt strongly connected to nature, offering privacy from the busy city streets while maintaining open, light-filled communal spaces.",
+      designObjectives:
+        "To design a home that ages gracefully, utilizing raw materials that require minimal maintenance while optimizing airflow to reduce energy consumption.",
+      spatialChallenges:
+        "Developing high-quality fair-faced concrete surfaces in local humidity and designing cantilevered concrete slabs that shade the interior spaces from the harsh summer sun.",
+      overallConcept:
+        "The Monolithic Canopy - a raw concrete shell that acts as a protective shield while opening up to lush internal courtyards and water bodies.",
+      theRealization:
+        "A sense of absolute sanctuary, quiet protection and calm alignment with the elements.",
+    },
     designPhilosophy: {
       spacePlanning:
         "Living spaces are arranged around a central double-height courtyard containing a reflective pool, providing natural cross-ventilation.",
@@ -740,16 +773,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "An intimate penthouse lounge where organic modernism meets highly tactile furniture design. The Bespoke Lounge redefines leisure spaces through hand-finished oiled walnut joinery, raw travertine elements, and a material palette that bridges sculptural beauty with conversational warmth.",
-    clientVision:
-      "The client requested a dedicated lounge space in their penthouse to host intimate gatherings and relax, centered around custom furniture that acts as functional art.",
-    designObjectives:
-      "To craft individual furniture pieces that prioritize sculptural silhouettes, ergonomics and rare materials like oiled walnut and raw travertine.",
-    context:
-      "An addition to a luxury residence in Banani, serving as a quiet relaxation space away from the main family zones.",
-    challenges:
-      "Sourcing flawless walnut timber with complex grain patterns and executing seamless hidden wood-to-metal joints for structural longevity.",
-    overallConcept:
-      "Sculpted Tactility - where every piece of furniture is designed to be touched and experienced, showcasing raw beauty without unnecessary ornamentation.",
+    narratives: {
+      projectContext:
+        "An addition to a luxury residence in Banani, serving as a quiet relaxation space away from the main family zones.",
+      clientVision:
+        "The client requested a dedicated lounge space in their penthouse to host intimate gatherings and relax, centered around custom furniture that acts as functional art.",
+      designObjectives:
+        "To craft individual furniture pieces that prioritize sculptural silhouettes, ergonomics and rare materials like oiled walnut and raw travertine.",
+      spatialChallenges:
+        "Sourcing flawless walnut timber with complex grain patterns and executing seamless hidden wood-to-metal joints for structural longevity.",
+      overallConcept:
+        "Sculpted Tactility - where every piece of furniture is designed to be touched and experienced, showcasing raw beauty without unnecessary ornamentation.",
+      theRealization:
+        "Warm, welcoming and deeply intimate - a place for slow conversations and quiet relaxation.",
+    },
     designPhilosophy: {
       spacePlanning:
         "A conversational seating circle anchors the room, with low-slung credenzas lining the walls to maximize vertical space.",
@@ -813,16 +850,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "An immersive fashion atelier where classical Art Deco symmetry meets contemporary minimalism. The Luxe Retail Atelier redefines the boutique experience through custom brass displays, honed marble pathways, and a material palette that bridges dramatic elegance with intimate comfort.",
-    clientVision:
-      "A luxury fashion brand required an international-standard showroom that showcases garments like art pieces, establishing a sophisticated brand presence.",
-    designObjectives:
-      "To design custom brass display racks, integrate theatrical accent lighting and establish a luxurious fitting room suite for high-end clients.",
-    context:
-      "A prominent multi-level storefront space in Gulshan's premium commercial hub.",
-    challenges:
-      "Balancing high-level lighting requirements for garment color accuracy with the warm, moody atmosphere requested by the brand identity.",
-    overallConcept:
-      "The Stage of Elegance - a sequence of gallery-like rooms that elevate the products, utilizing mirrors and gold finishes to create depth.",
+    narratives: {
+      projectContext:
+        "A prominent multi-level storefront space in Gulshan's premium commercial hub.",
+      clientVision:
+        "A luxury fashion brand required an international-standard showroom that showcases garments like art pieces, establishing a sophisticated brand presence.",
+      designObjectives:
+        "To design custom brass display racks, integrate theatrical accent lighting and establish a luxurious fitting room suite for high-end clients.",
+      spatialChallenges:
+        "Balancing high-level lighting requirements for garment color accuracy with the warm, moody atmosphere requested by the brand identity.",
+      overallConcept:
+        "The Stage of Elegance - a sequence of gallery-like rooms that elevate the products, utilizing mirrors and gold finishes to create depth.",
+      theRealization:
+        "Exclusivity, premium luxury and artistic sophistication.",
+    },
     designPhilosophy: {
       spacePlanning:
         "An open circular flow guiding customers past curated collections, terminating at a private VIP fitting lounge.",
@@ -886,16 +927,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A biophilic workspace where circular design meets healthy indoor ecosystems. The Eco-Luxe Pavilion redefines sustainable office spaces through self-watering green walls, natural cork acoustic panels, and daylight-harvesting systems that bridge human productivity with environmental harmony.",
-    clientVision:
-      "An environmental consultancy wanted an office that reflected their core mission, showcasing sustainable construction materials and optimizing employee wellbeing.",
-    designObjectives:
-      "To maximize natural daylight penetration, integrate vertical green walls and ensure all materials are zero-waste or highly recyclable.",
-    context:
-      "A modern green-certified commercial building in Uttara, utilizing energy-efficient building infrastructure.",
-    challenges:
-      "Engineering a self-watering vertical green wall system indoors without increasing local humidity past optimal comfort ranges.",
-    overallConcept:
-      "The Living Workspace - a spatial ecosystem where human productivity, indoor plants and natural materials coexist in dynamic balance.",
+    narratives: {
+      projectContext:
+        "A modern green-certified commercial building in Uttara, utilizing energy-efficient building infrastructure.",
+      clientVision:
+        "An environmental consultancy wanted an office that reflected their core mission, showcasing sustainable construction materials and optimizing employee wellbeing.",
+      designObjectives:
+        "To maximize natural daylight penetration, integrate vertical green walls and ensure all materials are zero-waste or highly recyclable.",
+      spatialChallenges:
+        "Engineering a self-watering vertical green wall system indoors without increasing local humidity past optimal comfort ranges.",
+      overallConcept:
+        "The Living Workspace - a spatial ecosystem where human productivity, indoor plants and natural materials coexist in dynamic balance.",
+      theRealization:
+        "Energizing, clean and deeply connected to nature - a breath of fresh air in the middle of the city.",
+    },
     designPhilosophy: {
       spacePlanning:
         "Open-plan desks arranged to guarantee views of the green walls or exterior windows for all team members.",
@@ -959,16 +1004,20 @@ export const projects: IProject[] = [
     ],
     shortIntro:
       "A high-energy bistro where raw industrial details meet warm culinary hospitality. The Metropolitan Bistro redefines shared dining through a hand-hammered central copper bar, exposed brick textures, and a material palette that bridges urban character with welcoming comfort.",
-    clientVision:
-      "A culinary group desired a modern neighborhood eatery that feels rustic yet polished, serving as a social landmark for local food enthusiasts.",
-    designObjectives:
-      "To build a large central bar, optimize seating capacity without crowding and design custom lighting to make the food look spectacular.",
-    context:
-      "A converted warehouse-style commercial storefront in Dhanmondi's bustling dining street.",
-    challenges:
-      "Integrating heavy-duty commercial kitchen ventilation through old building structures without disrupting residential tenants above.",
-    overallConcept:
-      "The Culinary Hearth - centered around the visual drama of a copper bar and open kitchen prep line, celebrating the shared joy of dining.",
+    narratives: {
+      projectContext:
+        "A converted warehouse-style commercial storefront in Dhanmondi's bustling dining street.",
+      clientVision:
+        "A culinary group desired a neighborhood eatery that feels rustic yet polished, serving as a social landmark for local food enthusiasts.",
+      designObjectives:
+        "To build a large central bar, optimize seating capacity without crowding and design custom lighting to make the food look spectacular.",
+      spatialChallenges:
+        "Integrating heavy-duty commercial kitchen ventilation through old building structures without disrupting residential tenants above.",
+      overallConcept:
+        "The Culinary Hearth - centered around the visual drama of a copper bar and open kitchen prep line, celebrating the shared joy of dining.",
+      theRealization:
+        "Lively, warm and inviting - a space that celebrates culinary craft and community.",
+    },
     designPhilosophy: {
       spacePlanning:
         "High-density seating zones around the perimeter, with a prominent central bar acting as the main architectural anchor.",

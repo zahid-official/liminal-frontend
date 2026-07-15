@@ -1,4 +1,5 @@
 import ProjectIntro from "@/components/modules/public/projects/projectDetails/ProjectIntro";
+import ProjectOverview from "@/components/modules/public/projects/projectDetails/ProjectOverview";
 import { getProjectBySlug } from "@/components/modules/public/projects/projectsData";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
@@ -50,6 +51,9 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailsPageProps) => {
 
       {/* Project Intro */}
       <ProjectIntro project={project} />
+
+      {/* Project Overview */}
+      <ProjectOverview project={project} />
     </main>
   );
 };
