@@ -11,7 +11,7 @@ const teamMembers = [
     role: "Founder & Principal Architect",
     image: "/assets/about-us/team-1.png",
     quote:
-      "Architecture is frozen music, and I aspire to compose symphonies in space.",
+      "Architecture is frozen music and I aspire to compose symphonies in space.",
     linkedin: "#",
     email: "zahid@liminal.com",
     specialization: "Spatial Design & Vision",

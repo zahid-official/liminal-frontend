@@ -69,21 +69,21 @@ const BlogPhilosophy = () => {
               <p>
                 Our journal is more than a collection of articles, it is an
                 extension of our design practice. Through writing, we explore
-                the ideas, materials, and spatial philosophies that shape our
+                the ideas, materials and spatial philosophies that shape our
                 work, inviting readers into the thinking behind each project.
               </p>
 
               <blockquote className="border-l-2 border-liminal-secondary/40 pl-6 py-2 italic text-foreground/80 font-serif text-lg">
                 &quot;Every surface, every shadow, every material carries a
                 narrative. Our journal explores these stories, the ones woven
-                into light, texture, and human experience.&quot;
+                into light, texture and human experience.&quot;
               </blockquote>
 
               <p>
                 From the geological origins of travertine to the psychology of
                 spatial proportion, from the craft of material curation to the
                 architecture of silence, each entry is a meditation on what it
-                means to design with intention, precision, and soul.
+                means to design with intention, precision and soul.
               </p>
             </div>
 

@@ -62,7 +62,7 @@ const BlogArticleContent = ({ articleImage, content }: BlogArticleContentProps) 
                 </p>
                 {block.attribution && (
                   <cite className="block mt-4 text-xs tracking-[0.2em] text-liminal-secondary font-medium not-italic">
-                    — {block.attribution}
+                    – {block.attribution}
                   </cite>
                 )}
               </blockquote>

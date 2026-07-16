@@ -6,7 +6,7 @@ import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 
-// BlogNewsletter Component — Premium journal subscription CTA
+// BlogNewsletter Component
 const BlogNewsletter = () => {
   return (
     <section
@@ -37,7 +37,7 @@ const BlogNewsletter = () => {
                         </span>
                       </>
                     }
-                    description="Curated insights on interior design, material culture, and spatial thinking."
+                    description="Curated insights on interior design, material culture and spatial thinking."
                   />
 
                   {/* Corner Markers */}
@@ -70,7 +70,7 @@ const BlogNewsletter = () => {
                   description={
                     <span className="text-muted-foreground/80">
                       Join our journal, a monthly collection of spatial
-                      insights, material explorations, and design thinking from
+                      insights, material explorations and design thinking from
                       the Liminal studio.
                     </span>
                   }
@@ -89,7 +89,11 @@ const BlogNewsletter = () => {
                       className="w-full h-13 px-4 bg-zinc-50/80 text-center border border-border/50 rounded-full placeholder:text-muted-foreground/35 focus:outline-none focus:border-liminal-secondary/50 focus:ring-2 focus:ring-liminal-secondary/10 transition-all duration-300"
                     />
                   </Field>
-                  <LiminalButton type="submit" icon={Send} className="w-full h-14">
+                  <LiminalButton
+                    type="submit"
+                    icon={Send}
+                    className="w-full h-14"
+                  >
                     Subscribe to Journal
                   </LiminalButton>
                 </form>

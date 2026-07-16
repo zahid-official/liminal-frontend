@@ -42,7 +42,7 @@ const BlogEditorialIntro = () => {
                 </span>
               </>
             }
-            description="Written from the studio where ideas take form, reflections on materiality, spatial philosophy, light, proportion, and the quiet art of crafting environments that endure."
+            description="Written from the studio where ideas take form, reflections on materiality, spatial philosophy, light, proportion and the quiet art of crafting environments that endure."
           />
 
           {/* Metrics Bar */}

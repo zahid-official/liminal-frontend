@@ -7,7 +7,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Premium Furniture Services | Liminal",
   description:
-    "Discover Liminal's curated collection of pre-made furniture and bespoke architectural pieces. Crafted with structural integrity, high-end materials, and timeless design.",
+    "Discover Liminal's curated collection of pre-made furniture and bespoke architectural pieces. Crafted with structural integrity, high-end materials and timeless design.",
 };
 
 // FurniturePage Component

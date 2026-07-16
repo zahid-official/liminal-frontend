@@ -32,8 +32,8 @@ const HomeNewsletter = () => {
 
           {/* Description */}
           <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-lg mx-auto">
-            Curated insights on interior design, material culture, and spatial
-            thinking — delivered to your inbox monthly.
+            Curated insights on interior design, material culture and spatial
+            thinking, delivered to your inbox monthly.
           </p>
 
           {/* Email Form */}

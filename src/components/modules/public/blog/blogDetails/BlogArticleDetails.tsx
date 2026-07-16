@@ -1,8 +1,8 @@
 import { IBlogArticle } from "../blogData";
 import BlogArticleContent from "./BlogArticleContent";
-import BlogArticleFooter from "./BlogArticleFooter";
+import SectionFooter from "@/components/shared/SectionFooter";
 import BlogArticleHero from "./BlogArticleHero";
-import BlogArticleNavigation from "./BlogArticleNavigation";
+import DetailNavigation from "@/components/shared/DetailNavigation";
 import BlogArticleSidebar from "./BlogArticleSidebar";
 
 interface BlogArticleDetailsProps {
@@ -25,7 +25,7 @@ const BlogArticleDetails = ({
       <section className="py-10 md:pb-16 relative">
         <div className="custom-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-            {/* Sidebar — Desktop only, sticky */}
+            {/* Sidebar - Desktop only, sticky */}
             <BlogArticleSidebar content={article.content} />
 
             {/* Main Content */}
@@ -36,14 +36,40 @@ const BlogArticleDetails = ({
               />
 
               {/* Article Footer */}
-              <BlogArticleFooter />
+              <SectionFooter label="End of Article" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Previous / Next Article Navigation */}
-      <BlogArticleNavigation prev={prev} next={next} />
+      <DetailNavigation
+        prev={
+          prev
+            ? {
+                href: `/blog/${prev.id}`,
+                title: prev.title,
+                image: prev.image,
+                category: prev.category,
+                metaText: prev.readTime,
+              }
+            : null
+        }
+        next={
+          next
+            ? {
+                href: `/blog/${next.id}`,
+                title: next.title,
+                image: next.image,
+                category: next.category,
+                metaText: next.readTime,
+              }
+            : null
+        }
+        prevLabel="Previous Article"
+        nextLabel="Next Article"
+        headingLabel="Continue Reading"
+      />
     </div>
   );
 };

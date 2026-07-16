@@ -19,7 +19,7 @@ const services = [
     title: "Enterprise Environments",
     description:
       "Architecting brand identity. We develop high-performance commercial landscapes that optimize operational efficiency while translating brand ethos into immersive, tangible reality.",
-    image: "/assets/commercial-design.png",
+    image: "/assets/interior/enterprise-premium-v3.png",
     id: "commercial",
     phase: "Strategy to Reality",
     expertise: "Identity Immersion",
@@ -29,7 +29,7 @@ const services = [
     title: "Strategic Consultancy",
     description:
       "The analytical bridge between vision and structural truth. Our consultancy provides the spatial intelligence and technical rigor required to ground ambitious concepts in functional reality.",
-    image: "/assets/interior/consultancy-premium.png",
+    image: "/assets/interior/consultancy-premium-v7.png",
     id: "consultancy",
     phase: "Analysis to Truth",
     expertise: "Structural Intelligence",
@@ -54,8 +54,8 @@ const InteriorServices = () => {
             </>
           }
           description="The intersection of architectural logic and strategic performance. We deliver high-impact interior solutions that balance structural precision with the intellectual depth of design."
-          variant="centered"
-          className="mb-16 custom-container"
+          variant="manifesto"
+          className="mb-16"
         />
 
         {/* Service Items */}
@@ -63,19 +63,16 @@ const InteriorServices = () => {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className={cn(
-                "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center custom-container relative",
-                index % 2 !== 0 && "lg:flex-row-reverse",
-              )}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative"
             >
               {/* Left Side: Image */}
               <div
                 className={cn(
-                  "lg:col-span-6 relative group",
+                  "relative group",
                   index % 2 !== 0 ? "lg:order-2" : "lg:order-1",
                 )}
               >
-                <div className="relative aspect-4/5 md:aspect-video lg:aspect-4/5 overflow-hidden group rounded-sm shadow-2xl">
+                <div className="relative aspect-4/5 md:aspect-video lg:aspect-5/6 overflow-hidden group rounded-sm shadow-2xl">
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -88,7 +85,7 @@ const InteriorServices = () => {
               {/* Right Side: Service Description */}
               <div
                 className={cn(
-                  "lg:col-span-5 space-y-8",
+                  "space-y-8",
                   index % 2 !== 0 ? "lg:order-1 lg:text-right" : "lg:order-2",
                 )}
               >
@@ -99,9 +96,9 @@ const InteriorServices = () => {
                   )}
                 >
                   <span className="text-[10px] font-mono tracking-[0.4em] text-liminal-secondary font-bold uppercase">
-                    SERVICE_ID: {service.id.toUpperCase()}
+                    SERVICE: {service.id.toUpperCase()}
                   </span>
-                  <h3 className="text-4xl font-bold font-heading tracking-tight">
+                  <h3 className="text-5xl font-bold font-heading tracking-tight">
                     {service.title}
                   </h3>
                 </div>

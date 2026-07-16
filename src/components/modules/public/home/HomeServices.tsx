@@ -19,7 +19,7 @@ const services = [
     description:
       "Contextually intelligent architectural solutions that respond deeply to unique place, natural light and the poetic human experience of modern inhabitation.",
     image: "/assets/home/discipline-architecture.png",
-    href: "/services",
+    href: "/projects",
   },
   {
     number: "03",

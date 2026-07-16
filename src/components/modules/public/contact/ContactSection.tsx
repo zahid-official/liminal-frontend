@@ -30,7 +30,7 @@ const ContactSection = () => {
                   </span>
                 </>
               }
-              description="Our approach is collaborative, transparent, and meticulous. We transform architectural possibilities into lived experiences."
+              description="Our approach is collaborative, transparent and meticulous. We transform architectural possibilities into lived experiences."
               className="lg:items-start"
             />
 

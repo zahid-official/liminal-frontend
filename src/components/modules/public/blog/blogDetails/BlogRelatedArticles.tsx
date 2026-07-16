@@ -33,7 +33,7 @@ const BlogRelatedArticles = ({ currentId }: BlogRelatedArticlesProps) => {
               </span>
             </>
           }
-          description="Further reading from our design journal — essays on materiality, spatial thinking, and the philosophy of interiors."
+          description="Further reading from our design journal, featuring essays on materiality, spatial thinking and the philosophy of interiors."
           className="mb-14 lg:mb-20"
         />
 

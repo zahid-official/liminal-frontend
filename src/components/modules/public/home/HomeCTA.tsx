@@ -114,7 +114,7 @@ const HomeCTA = () => {
       <div className="absolute bottom-12 left-0 right-0 custom-container hidden lg:flex justify-between items-center opacity-45 pointer-events-none">
         <div className="h-px w-32 bg-liminal-secondary" />
         <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-liminal-secondary">
-          Liminal Design Studio — Est. 2020
+          Liminal Design Studio | Est. 2020
         </span>
         <div className="h-px w-32 bg-liminal-secondary" />
       </div>

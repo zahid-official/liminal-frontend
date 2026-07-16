@@ -41,7 +41,7 @@ const philosophyPoints = [
     number: "01",
     title: "Material Integrity",
     description:
-      "We source only the highest grade sustainable hardwoods, natural stones, and premium alloys, ensuring each piece lasts for generations.",
+      "We source only the highest grade sustainable hardwoods, natural stones and premium alloys, ensuring each piece lasts for generations.",
   },
   {
     number: "02",

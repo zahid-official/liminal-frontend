@@ -13,6 +13,10 @@ const HomeManifesto = () => {
         L
       </div>
 
+      {/* Decorative Background Patterns */}
+      <div className="absolute inset-0 bg-[url('/assets/home/manifesto-bg.png')] bg-bottom-left bg-no-repeat pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[url('/assets/home/manifesto-bg2.png')] bg-top-right bg-no-repeat pointer-events-none z-0" />
+
       <div className="custom-container relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-12">
           {/* Section Header */}
@@ -36,16 +40,16 @@ const HomeManifesto = () => {
             <p className="text-lg text-muted-foreground leading-relaxed font-light">
               Every material, every proportion, every shadow is placed with
               absolute intention. Our work sits at the intersection of
-              architectural precision and human intuition, designing spaces
-              that feel inevitable, not merely beautiful.
+              architectural precision and human intuition, designing spaces that
+              feel inevitable, not merely beautiful.
             </p>
 
             <p className="text-muted-foreground leading-relaxed font-light">
               We don&apos;t follow trends. We study how light falls, how
               materials age, how textures whisper and how a room makes you
-              pause. Then we design accordingly, with the patience of
-              craftsmen, the rigor of architects and a profound reverence
-              for the timeless poetry of space.
+              pause. Then we design accordingly, with the patience of craftsmen,
+              the rigor of architects and a profound reverence for the timeless
+              poetry of space.
             </p>
           </div>
 

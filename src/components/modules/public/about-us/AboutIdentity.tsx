@@ -34,14 +34,14 @@ const AboutIdentity = () => {
           <div className="max-w-2xl mx-auto space-y-6">
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
               Liminal is a premium interior design studio based in Dhaka,
-              Bangladesh. We specialize in creating evocative, functional, and
+              Bangladesh. We specialize in creating evocative, functional and
               timeless spaces for discerning clients who demand more than
               surface-level beauty.
             </p>
 
             <p className="text-muted-foreground leading-relaxed font-light">
               Our work sits at the intersection of architectural precision and
-              human intuition. We don&apos;t follow trends — we study how light
+              human intuition. We don&apos;t follow trends; instead, we study how light
               falls, how materials age, how a room makes you pause. Then we
               design accordingly.
             </p>
@@ -67,7 +67,7 @@ const AboutIdentity = () => {
                 you enter a room.&quot;
               </p>
               <footer className="block mt-4 text-[10px] uppercase tracking-[0.3em]  text-liminal-secondary font-bold">
-                — Liminal Design Philosophy
+                – Liminal Design Philosophy
               </footer>
             </blockquote>
           </div>
