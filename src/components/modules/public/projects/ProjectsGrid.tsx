@@ -21,7 +21,7 @@ const ProjectsGrid = ({ projects }: ProjectsGridProps) => {
         </h3>
         <p className="text-muted-foreground font-light text-[15px] max-w-md">
           No projects match your current filters. Try adjusting your search
-          criteria or clearing the filters to explore our full portfolio.
+          criteria or clearing the filters to explore our portfolio.
         </p>
       </div>
     );
