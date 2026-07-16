@@ -3,19 +3,21 @@
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// ProjectsPagination Props
-interface ProjectsPaginationProps {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  ariaLabel?: string;
+  className?: string;
 }
 
-// ProjectsPagination Component
-const ProjectsPagination = ({
+const Pagination = ({
   currentPage,
   totalPages,
   onPageChange,
-}: ProjectsPaginationProps) => {
+  ariaLabel = "Pagination",
+  className,
+}: PaginationProps) => {
   if (totalPages <= 1) return null;
 
   const getPageNumbers = () => {
@@ -41,8 +43,11 @@ const ProjectsPagination = ({
   return (
     <nav
       role="navigation"
-      aria-label="Projects pagination"
-      className="flex items-center justify-center gap-2 pt-14 md:pt-18"
+      aria-label={ariaLabel}
+      className={cn(
+        "flex items-center justify-center gap-2 pt-14 md:pt-18",
+        className,
+      )}
     >
       {/* Previous */}
       <button
@@ -110,4 +115,4 @@ const ProjectsPagination = ({
   );
 };
 
-export default ProjectsPagination;
+export default Pagination;

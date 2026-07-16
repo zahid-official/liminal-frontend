@@ -5,8 +5,7 @@ import { Search } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { blogArticles, blogCategories, type BlogCategory } from "./blogData";
 import BlogGrid from "./BlogGrid";
-import BlogPagination from "./BlogPagination";
-// import BlogPagination from "./BlogPagination";
+import Pagination from "@/components/shared/Pagination";
 
 const BASE_ITEMS_PER_PAGE = 6;
 
@@ -162,10 +161,11 @@ const BlogExplorer = () => {
         </div>
 
         {/* Pagination */}
-        <BlogPagination
+        <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
+          ariaLabel="Blog pagination"
         />
       </div>
     </section>

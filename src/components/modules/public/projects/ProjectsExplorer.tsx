@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useCallback, useRef, useState } from "react";
 import { projects as allProjects, type IProject } from "./projectsData";
 import ProjectsGrid from "./ProjectsGrid";
-import ProjectsPagination from "./ProjectsPagination";
+import Pagination from "@/components/shared/Pagination";
 import ProjectsFilter from "./ProjectsFilter";
 
 import SectionHeader from "@/components/shared/SectionHeader";
@@ -85,10 +85,11 @@ const ProjectsExplorer = () => {
         </div>
 
         {/* Pagination */}
-        <ProjectsPagination
+        <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
+          ariaLabel="Projects pagination"
         />
       </div>
     </section>
