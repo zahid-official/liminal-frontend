@@ -6,7 +6,35 @@ import { MessageSquare } from "lucide-react";
 const InteriorCTA = () => {
   return (
     <section className="py-20 md:py-28 lg:py-32 bg-zinc-50 relative overflow-hidden">
-      {/* Abstract structural graphic */}
+      {/* Left Abstract structural graphics */}
+      <div className="absolute top-0 left-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <line
+            x1="50"
+            y1="50"
+            x2="100"
+            y2="50"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <line
+            x1="50"
+            y1="50"
+            x2="50"
+            y2="0"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+        </svg>
+      </div>
+
+      {/* Right Abstract structural graphics */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
         <svg
           width="100%"
@@ -40,12 +68,12 @@ const InteriorCTA = () => {
         <div className="max-w-4xl mx-auto space-y-10">
           {/* Section Header*/}
           <SectionHeader
-            variant="centered"
+            variant="manifesto"
             badgeText="Ready to Transform?"
             title={
               <>
                 Let&apos;s Create Something <br />
-                <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-8 decoration-1">
+                <span className="italic font-serif font-light text-liminal-secondary underline underline-offset-12 decoration-1">
                   Extraordinary
                 </span>
               </>

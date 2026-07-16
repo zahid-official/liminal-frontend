@@ -30,7 +30,7 @@ interface SectionHeaderProps extends Omit<
  *
  * Variants:
  * - editorial: Split layout 30/70 with background grid lines (Default)
- * - centered: Centered badge, title, and description
+ * - centered: Centered badge, title and description
  * - inline: Left-aligned with a horizontal line prefix to the badge
  * - split: Grid layout with Title (Left) and Description (Right)
  * - simple: Left-aligned with a SectionBadge (Pill style)
@@ -278,7 +278,7 @@ const SectionHeader = ({
             {title}
           </h2>
         </div>
-        <div className="lg:col-span-5 text-center lg:text-left">
+        <div className="lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start gap-6">
           {description && (
             <p
               className={cn(
@@ -289,6 +289,7 @@ const SectionHeader = ({
               {description}
             </p>
           )}
+          {props.children}
         </div>
       </div>
     );

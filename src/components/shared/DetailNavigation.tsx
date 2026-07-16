@@ -1,34 +1,50 @@
-import type { IBlogArticle } from "../blogData";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-// BlogArticleNavigation Props
-interface BlogArticleNavigationProps {
-  prev: IBlogArticle | null;
-  next: IBlogArticle | null;
+export interface NavigationItem {
+  href: string;
+  title: string;
+  image: string;
+  category?: string;
+  metaText?: string;
 }
 
-// BlogArticleNavigation Component
-const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
+interface DetailNavigationProps {
+  prev: NavigationItem | null;
+  next: NavigationItem | null;
+  prevLabel?: string;
+  nextLabel?: string;
+  headingLabel?: string;
+  className?: string;
+}
+
+const DetailNavigation = ({
+  prev,
+  next,
+  prevLabel = "Previous",
+  nextLabel = "Next",
+  headingLabel = "Continue",
+  className,
+}: DetailNavigationProps) => {
   if (!prev && !next) return null;
 
   return (
-    <section className="pt-16 border-t border-border/40">
+    <section className={`pt-16 border-t border-border/40 ${className || ""}`}>
       <div className="custom-container">
         {/* Navigation Heading */}
         <div className="flex items-center gap-3 mb-8">
           <div className="w-8 h-px bg-liminal-secondary shrink-0" />
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-liminal-secondary">
-            Continue Reading
+            {headingLabel}
           </span>
         </div>
 
         {/* Navigation */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Previous Article */}
+          {/* Previous Item */}
           {prev ? (
-            <Link href={`/blog/${prev.id}`}>
+            <Link href={prev.href}>
               <article className="group flex items-stretch bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg transition-all duration-700 h-full">
                 {/* Image */}
                 <div className="relative w-1/3 min-h-32 overflow-hidden shrink-0">
@@ -47,7 +63,7 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
                   <div className="flex items-center gap-2 text-muted-foreground/50 group-hover:text-liminal-secondary transition-colors duration-700">
                     <ArrowLeft className="size-3.5" />
                     <span className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                      Previous Article
+                      {prevLabel}
                     </span>
                   </div>
 
@@ -55,11 +71,15 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
                     {prev.title}
                   </h4>
 
-                  <div className="flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
-                    <span className="">{prev.category}</span>
-                    <div className="w-0.5 h-0.5 rounded-full bg-muted-foreground/50" />
-                    <span className="">{prev.readTime}</span>
-                  </div>
+                  {(prev.category || prev.metaText) && (
+                    <div className="flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
+                      {prev.category && <span className="">{prev.category}</span>}
+                      {prev.category && prev.metaText && (
+                        <div className="w-0.5 h-0.5 rounded-full bg-muted-foreground/50" />
+                      )}
+                      {prev.metaText && <span className="">{prev.metaText}</span>}
+                    </div>
+                  )}
                 </div>
               </article>
             </Link>
@@ -67,9 +87,9 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
             <div />
           )}
 
-          {/* Next Article */}
+          {/* Next Item */}
           {next ? (
-            <Link href={`/blog/${next.id}`}>
+            <Link href={next.href}>
               <article className="group flex items-stretch bg-background rounded-sm border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg transition-all duration-700 h-full flex-row-reverse">
                 {/* Image */}
                 <div className="relative w-1/3 min-h-32 overflow-hidden shrink-0">
@@ -87,7 +107,7 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
                 <div className="flex-1 gap-2 p-5 md:p-6 flex flex-col justify-center text-right">
                   <div className="flex items-center justify-end gap-2 text-muted-foreground/50 group-hover:text-liminal-secondary transition-colors duration-700">
                     <span className="text-[10px] font-mono uppercase tracking-[0.2em]">
-                      Next Article
+                      {nextLabel}
                     </span>
                     <ArrowRight className="size-3.5" />
                   </div>
@@ -96,11 +116,15 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
                     {next.title}
                   </h4>
 
-                  <div className="flex items-center justify-end gap-2 text-[10px] font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
-                    <span className="">{next.category}</span>
-                    <div className="w-0.5 h-0.5 rounded-full bg-muted-foreground/50" />
-                    <span className="">{next.readTime}</span>
-                  </div>
+                  {(next.category || next.metaText) && (
+                    <div className="flex items-center justify-end gap-2 text-[10px] font-mono tracking-[0.2em] text-muted-foreground/50 uppercase">
+                      {next.category && <span className="">{next.category}</span>}
+                      {next.category && next.metaText && (
+                        <div className="w-0.5 h-0.5 rounded-full bg-muted-foreground/50" />
+                      )}
+                      {next.metaText && <span className="">{next.metaText}</span>}
+                    </div>
+                  )}
                 </div>
               </article>
             </Link>
@@ -113,4 +137,4 @@ const BlogArticleNavigation = ({ prev, next }: BlogArticleNavigationProps) => {
   );
 };
 
-export default BlogArticleNavigation;
+export default DetailNavigation;

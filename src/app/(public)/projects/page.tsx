@@ -1,33 +1,35 @@
-import ProjectGrid from "@/components/modules/public/projects/ProjectGrid";
-import ProjectsCTA from "@/components/modules/public/projects/ProjectsCTA";
-import ProjectTeam from "@/components/modules/public/projects/ProjectTeam";
+import FeaturedProject from "@/components/modules/public/projects/FeaturedProject";
+import ProjectApproach from "@/components/modules/public/projects/ProjectApproach";
+import ProjectsExplorer from "@/components/modules/public/projects/ProjectsExplorer";
 import PageHeader from "@/components/shared/PageHeader";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
+// Metadata for the Projects Page
 export const metadata: Metadata = {
-  title: "Our Projects | Liminal",
+  title: "Our Projects | Liminal Interior Design Portfolio",
   description:
-    "Explore our portfolio of premium interior design and architectural projects. From residential villas to commercial spaces, we bring creative visions to life.",
+    "Explore Liminal's portfolio of stunning interior design projects, ranging from residential sanctuaries to commercial masterpieces. Each project showcases our commitment to spatial excellence and material innovation.",
 };
 
 // ProjectsPage Component
 const ProjectsPage = () => {
   return (
     <main>
+      {/* Page Header */}
       <PageHeader
         title="Our Projects"
         items={[{ label: "Home", href: "/" }, { label: "Projects" }]}
-        bgImage="/assets/projects/bg-project-premium.png"
+        bgImage="/assets/projects/apex-residence.png"
       />
 
-      {/* Project Grid */}
-      <ProjectGrid />
+      {/* Featured Project */}
+      <FeaturedProject />
 
-      {/* Project Team */}
-      <ProjectTeam />
+      {/* Portfolio Explorer */}
+      <ProjectsExplorer />
 
-      {/* Project CTA */}
-      <ProjectsCTA />
+      {/* Approach */}
+      <ProjectApproach />
     </main>
   );
 };

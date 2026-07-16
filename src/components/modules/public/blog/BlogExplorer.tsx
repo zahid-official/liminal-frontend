@@ -1,12 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 import { blogArticles, blogCategories, type BlogCategory } from "./blogData";
 import BlogGrid from "./BlogGrid";
-import BlogPagination from "./BlogPagination";
-// import BlogPagination from "./BlogPagination";
+import Pagination from "@/components/shared/Pagination";
+import FilterBar from "@/components/shared/FilterBar";
 
 const BASE_ITEMS_PER_PAGE = 6;
 
@@ -79,9 +78,9 @@ const BlogExplorer = () => {
   const handlePageChange = (page: number) => {
     if (page === currentPage) return;
     setIsTransitioning(true);
-    
+
     gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    
+
     setTimeout(() => {
       setCurrentPage(page);
       setIsTransitioning(false);
@@ -95,77 +94,37 @@ const BlogExplorer = () => {
       className="py-20 md:py-28 lg:py-32 bg-zinc-50 relative overflow-hidden"
     >
       <div className="custom-container">
-        {/* Filter Heading */}
-        <div className="flex items-center gap-3 pb-5">
-          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.3em] text-liminal-secondary">
-            Filter by Category
-          </span>
-          <div className="h-px w-8 bg-liminal-secondary" />
-        </div>
-
-        {/* Filter & Search Bar */}
-        <div
-          ref={gridRef}
-          className="space-y-8 flex flex-col lg:flex-row items-start justify-between gap-8 scroll-mt-48"
-        >
-          {/* Left: Category Filter */}
-          <div className="flex flex-wrap gap-2.5">
-            {blogCategories.map((category) => {
-              const isActive = activeCategory === category;
-              const count = categoryCounts[category] || 0;
-
-              return (
-                <button
-                  key={category}
-                  onClick={() => handleCategoryChange(category)}
-                  className={cn(
-                    "group relative flex items-center gap-3 px-5 py-2.5 transition-all duration-300 border cursor-pointer",
-                    isActive
-                      ? "bg-liminal-dark border-liminal-dark text-background shadow-lg shadow-liminal-dark/10"
-                      : "border-border/50 hover:border-liminal-secondary bg-background",
-                  )}
-                >
-                  <span className="text-[11px] uppercase tracking-[0.2em] font-semibold font-heading">
-                    {category}
-                  </span>
-                  <span
-                    className={cn(
-                      "flex items-center justify-center min-w-5 h-4.5 px-1.5 text-[10px] font-mono border transition-colors duration-300",
-                      isActive
-                        ? "bg-background/10 border-background/20 text-background"
-                        : "bg-zinc-50 border-border/50 text-foreground/60 group-hover:text-foreground",
-                    )}
-                  >
-                    {count.toString().padStart(2, "0")}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right: Search Bar */}
-          <div className="relative w-full lg:w-80 ">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50" />
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full h-12 pl-11 pr-5 bg-background border border-border/60 rounded-sm text-sm font-medium placeholder:text-muted-foreground/40 focus:outline-none focus:border-liminal-secondary/50 focus:ring-2 focus:ring-liminal-secondary/10 transition-all duration-300"
-            />
-          </div>
-        </div>
+        <FilterBar
+          categories={blogCategories}
+          categoryCounts={categoryCounts}
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          searchPlaceholder="Search articles..."
+          filterLabel="Filter Articles"
+          containerRef={gridRef}
+        />
 
         {/* Blog Grid */}
-        <div className={cn("transition-opacity duration-300", isTransitioning ? "opacity-0" : "opacity-100")}>
-          <BlogGrid articles={paginatedArticles} showQuoteCard={showQuoteCard} />
+        <div
+          className={cn(
+            "transition-opacity duration-300",
+            isTransitioning ? "opacity-0" : "opacity-100",
+          )}
+        >
+          <BlogGrid
+            articles={paginatedArticles}
+            showQuoteCard={showQuoteCard}
+          />
         </div>
 
         {/* Pagination */}
-        <BlogPagination
+        <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
+          ariaLabel="Blog pagination"
         />
       </div>
     </section>

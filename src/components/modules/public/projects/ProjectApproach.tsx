@@ -25,24 +25,24 @@ const expertise = [
   },
 ];
 
-// ProjectTeam Component
-const ProjectTeam = () => {
+// ProjectApproach Component
+const ProjectApproach = () => {
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 overflow-hidden">
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left: Image Container */}
-          <div className="relative aspect-square lg:aspect-4/5 overflow-hidden group cursor-pointer">
+          <div className="relative aspect-square lg:aspect-4/5 overflow-hidden group">
             <Image
               src="/assets/projects/bg-project-premium.png"
-              alt="Professional Team"
+              alt="Liminal Design Studio Project Approach"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-110 ease-out"
             />
-            
+
             {/* Subtle Brand Overlay */}
             <div className="absolute inset-0 bg-liminal-secondary/5 group-hover:bg-transparent transition-colors duration-1000" />
-            
+
             <div className="absolute inset-0 border-20 border-background/10" />
 
             {/* Technical Stamp */}
@@ -57,7 +57,7 @@ const ProjectTeam = () => {
           </div>
 
           {/* Right: Content Container */}
-          <div className="">
+          <div>
             <SectionHeader
               badgeText="The Approach"
               title={
@@ -70,16 +70,16 @@ const ProjectTeam = () => {
               }
               description="A studio dedicated to spatial storytelling, bridging structural logic and human experience through refined, intentional detail."
               variant="inline"
-              className=" space-y-5"
+              className="space-y-5"
             />
 
             {/* Expertise Grid */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 border-y border-border/60">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 border-y border-border/60">
               {expertise.map((item, index) => (
                 <div
                   key={index}
                   className={`
-                    p-8 md:p-10 hover:bg-liminal-secondary transition-colors duration-500 ease-in-out group relative
+                    p-8 md:p-10 hover:bg-liminal-dark transition-colors duration-500 ease-in-out group relative
                     ${index % 2 === 0 ? "sm:border-r border-border/60" : ""}
                     ${index < 2 ? "border-b border-border/60" : ""}
                   `}
@@ -128,4 +128,4 @@ const ProjectTeam = () => {
   );
 };
 
-export default ProjectTeam;
+export default ProjectApproach;

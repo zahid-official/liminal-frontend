@@ -29,7 +29,7 @@ const Footer = () => {
 
             <p className="text-base -mt-1.5 text-background/80">
               Transforming spaces into timeless elegance. We blend creativity,
-              functionality, and sustainability to craft interiors that inspire.
+              functionality and sustainability to craft interiors that inspire.
             </p>
 
             {/* Social Links */}

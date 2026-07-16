@@ -46,13 +46,13 @@ const HomePhilosophy = () => {
               <p>
                 We believe that true design is invisible. It is found in the
                 quiet alignment of a joint, the geometry of a shadow sweeping
-                across travertine at golden hour, and the heavy, tactile
-                response of cast bronze. We design not just for the eyes, but
-                for the senses.
+                across travertine at golden hour and the heavy, tactile response
+                of cast bronze. We design not just for the eyes, but for the
+                senses.
               </p>
               <p>
                 By anchoring our work in material authenticity, celebrating the
-                honest grain of timber, the weight of stone, and the cool patina
+                honest grain of timber, the weight of stone and the cool patina
                 of metal, we craft enduring spaces that age with grace and tell
                 a continuous story of quiet longevity.
               </p>
@@ -65,7 +65,7 @@ const HomePhilosophy = () => {
                 the memory long after the physical space has been left
                 behind.&rdquo;
                 <footer className="block mt-4 text-[9px] font-sans not-italic uppercase tracking-[0.3em] text-background/20 font-bold">
-                  — Liminal Design Studio
+                  – Liminal Design Studio
                 </footer>
               </blockquote>
 

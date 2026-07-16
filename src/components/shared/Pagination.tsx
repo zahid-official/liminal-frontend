@@ -3,19 +3,21 @@
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// BlogPagination Props
-interface BlogPaginationProps {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  ariaLabel?: string;
+  className?: string;
 }
 
-// BlogPagination Component
-const BlogPagination = ({
+const Pagination = ({
   currentPage,
   totalPages,
   onPageChange,
-}: BlogPaginationProps) => {
+  ariaLabel = "Pagination",
+  className,
+}: PaginationProps) => {
   if (totalPages <= 1) return null;
 
   const getPageNumbers = () => {
@@ -41,8 +43,11 @@ const BlogPagination = ({
   return (
     <nav
       role="navigation"
-      aria-label="Blog pagination"
-      className="flex items-center justify-center gap-2 pt-14 md:pt-18"
+      aria-label={ariaLabel}
+      className={cn(
+        "flex items-center justify-center gap-2 pt-14 md:pt-18",
+        className,
+      )}
     >
       {/* Previous */}
       <button
@@ -110,4 +115,4 @@ const BlogPagination = ({
   );
 };
 
-export default BlogPagination;
+export default Pagination;

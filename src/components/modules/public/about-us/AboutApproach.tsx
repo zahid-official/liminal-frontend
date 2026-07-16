@@ -7,13 +7,13 @@ const principles = [
     number: "01",
     title: "Contextual Intelligence",
     description:
-      "Every design begins with deep listening. We decode the cultural, environmental, and personal context before a single line is drawn.",
+      "Every design begins with deep listening. We decode the cultural, environmental and personal context before a single line is drawn.",
   },
   {
     number: "02",
     title: "Material Authenticity",
     description:
-      "We celebrate the honest character of stone, wood, and metal, sourcing materials that age with grace and tell a story of longevity.",
+      "We celebrate the honest character of stone, wood and metal, sourcing materials that age with grace and tell a story of longevity.",
   },
   {
     number: "03",
@@ -25,7 +25,7 @@ const principles = [
     number: "04",
     title: "Light Choreography",
     description:
-      "Light is our most potent tool. We sculpt natural and artificial illumination to transform mood, perception, and spatial drama.",
+      "Light is our most potent tool. We sculpt natural and artificial illumination to transform mood, perception and spatial drama.",
   },
 ];
 

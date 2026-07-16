@@ -42,11 +42,11 @@ export const blogArticles: IBlogArticle[] = [
     slug: "the-role-of-light-in-spatial-design",
     title: "The Role of Light in Spatial Design",
     excerpt:
-      "How natural and artificial illumination shapes human experience, transforms architectural volumes, and defines the emotional character of interior spaces.",
+      "How natural and artificial illumination shapes human experience, transforms architectural volumes and defines the emotional character of interior spaces.",
     content: [
       {
         type: "paragraph",
-        text: "Light is the most fundamental material in architecture. It is invisible yet omnipresent, shaping every surface it touches, defining depth, mood, and the very essence of spatial experience. At Liminal, we treat light not as a byproduct of window placement, but as a design material to be sculpted with the same precision as stone or timber.",
+        text: "Light is the most fundamental material in architecture. It is invisible yet omnipresent, shaping every surface it touches, defining depth, mood and the very essence of spatial experience. At Liminal, we treat light not as a byproduct of window placement, but as a design material to be sculpted with the same precision as stone or timber.",
       },
       {
         type: "heading",
@@ -64,7 +64,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "We study the solar path for every project, understanding how light will travel through each room at different times of day and across seasons. This analysis informs window sizing, orientation, material selection, and even furniture placement, where every decision is made in conversation with light.",
+        text: "We study the solar path for every project, understanding how light will travel through each room at different times of day and across seasons. This analysis informs window sizing, orientation, material selection and even furniture placement, where every decision is made in conversation with light.",
       },
       {
         type: "heading",
@@ -73,7 +73,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "When the sun sets, artificial lighting takes over the narrative. But unlike conventional approaches that simply illuminate, our lighting design creates atmosphere. Recessed cove lighting washes walls with warm amber tones, pendant fixtures become sculptural focal points, and carefully calibrated dimming systems allow spaces to transition from productive clarity to intimate warmth.",
+        text: "When the sun sets, artificial lighting takes over the narrative. But unlike conventional approaches that simply illuminate, our lighting design creates atmosphere. Recessed cove lighting washes walls with warm amber tones, pendant fixtures become sculptural focal points and carefully calibrated dimming systems allow spaces to transition from productive clarity to intimate warmth.",
       },
       {
         type: "quote",
@@ -91,7 +91,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "At Liminal, we believe that the most powerful design decisions are often invisible. Light is the ultimate invisible architect: it shapes experience without being seen, creates mood without being touched, and transforms space without occupying any of it.",
+        text: "At Liminal, we believe that the most powerful design decisions are often invisible. Light is the ultimate invisible architect: it shapes experience without being seen, creates mood without being touched and transforms space without occupying any of it.",
       },
     ],
     category: "Design",
@@ -119,7 +119,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "We believe in material honesty, allowing stone to look like stone, wood to age like wood, and metal to develop its natural patina over time. This commitment to authenticity creates spaces that grow more beautiful with age, developing character and memory rather than simply deteriorating.",
+        text: "We believe in material honesty, allowing stone to look like stone, wood to age like wood and metal to develop its natural patina over time. This commitment to authenticity creates spaces that grow more beautiful with age, developing character and memory rather than simply deteriorating.",
       },
       {
         type: "image",
@@ -137,7 +137,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "quote",
-        text: "A material palette is not a collection of pretty surfaces. It is an emotional vocabulary where each texture, each tone, and each weight carries meaning that shapes how we feel within a space.",
+        text: "A material palette is not a collection of pretty surfaces. It is an emotional vocabulary where each texture, each tone and each weight carries meaning that shapes how we feel within a space.",
         attribution: "Liminal Material Studies",
       },
       {
@@ -166,7 +166,7 @@ export const blogArticles: IBlogArticle[] = [
     slug: "architecture-of-silence-designing-calm",
     title: "Architecture of Silence: Designing Calm",
     excerpt:
-      "In an age of sensory overload, the most powerful design choice may be restraint. Exploring how quiet spaces cultivate focus, reflection, and wellbeing.",
+      "In an age of sensory overload, the most powerful design choice may be restraint. Exploring how quiet spaces cultivate focus, reflection and wellbeing.",
     content: [
       {
         type: "paragraph",
@@ -179,7 +179,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Visual silence is not emptiness. It is the careful removal of everything unnecessary until only the essential remains. A room designed with visual silence has no wasted elements; every line, every surface, and every object serves a purpose, whether functional or contemplative.",
+        text: "Visual silence is not emptiness. It is the careful removal of everything unnecessary until only the essential remains. A room designed with visual silence has no wasted elements; every line, every surface and every object serves a purpose, whether functional or contemplative.",
       },
       {
         type: "image",
@@ -193,7 +193,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Beyond the visual, we consider the acoustic landscape of every space. Hard surfaces reflect and amplify sound, creating environments that feel busy even when empty. Our approach layers sound-absorbing materials like thick textiles, upholstered panels, and timber cladding to create rooms where conversations feel intimate and silence feels rich rather than hollow.",
+        text: "Beyond the visual, we consider the acoustic landscape of every space. Hard surfaces reflect and amplify sound, creating environments that feel busy even when empty. Our approach layers sound-absorbing materials like thick textiles, upholstered panels and timber cladding to create rooms where conversations feel intimate and silence feels rich rather than hollow.",
       },
       {
         type: "quote",
@@ -207,7 +207,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Research in environmental psychology consistently demonstrates that visual complexity increases cognitive load. Our design philosophy responds to this by creating environments that actively reduce mental burden through restrained color palettes, ordered proportions, and intuitive spatial flow.",
+        text: "Research in environmental psychology consistently demonstrates that visual complexity increases cognitive load. Our design philosophy responds to this by creating environments that actively reduce mental burden through restrained color palettes, ordered proportions and intuitive spatial flow.",
       },
       {
         type: "paragraph",
@@ -226,11 +226,11 @@ export const blogArticles: IBlogArticle[] = [
     slug: "the-art-of-proportion-in-interior-spaces",
     title: "The Art of Proportion in Interior Spaces",
     excerpt:
-      "Why the golden ratio and classical proportional systems remain deeply relevant in contemporary interior design, and how we apply them at Liminal.",
+      "Why the golden ratio and classical proportional systems remain deeply relevant in contemporary interior design and how we apply them at Liminal.",
     content: [
       {
         type: "paragraph",
-        text: "Proportion is the invisible framework upon which all great design is built. Long before a single material is selected or a color is chosen, the proportional relationships between walls, openings, volumes, and surfaces determine whether a space will feel harmonious or discordant. At Liminal, proportional thinking is where every project begins.",
+        text: "Proportion is the invisible framework upon which all great design is built. Long before a single material is selected or a color is chosen, the proportional relationships between walls, openings, volumes and surfaces determine whether a space will feel harmonious or discordant. At Liminal, proportional thinking is where every project begins.",
       },
       {
         type: "heading",
@@ -295,7 +295,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Before we draw a single line, we spend time understanding. We visit existing spaces. We study how our clients live, work, entertain, and rest. We ask about memories and which spaces from their past made them feel most alive, most calm, most inspired. These conversations reveal the emotional blueprint that will guide every design decision.",
+        text: "Before we draw a single line, we spend time understanding. We visit existing spaces. We study how our clients live, work, entertain and rest. We ask about memories and which spaces from their past made them feel most alive, most calm, most inspired. These conversations reveal the emotional blueprint that will guide every design decision.",
       },
       {
         type: "image",
@@ -309,7 +309,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "With a deep understanding of our client's vision, we develop conceptual narratives, which are stories that will be told through material, light, and spatial sequence. We create mood boards, material palettes, and spatial diagrams that communicate the sensory experience of each room before a single technical drawing is produced.",
+        text: "With a deep understanding of our client's vision, we develop conceptual narratives, which are stories that will be told through material, light and spatial sequence. We create mood boards, material palettes and spatial diagrams that communicate the sensory experience of each room before a single technical drawing is produced.",
       },
       {
         type: "quote",
@@ -323,11 +323,11 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Once the concept is validated, our technical team translates vision into precise documentation, including detailed drawings, material specifications, lighting plans, and construction schedules. We work with a curated network of craftsmen and fabricators who share our commitment to excellence, ensuring that the built reality matches or exceeds the conceptual promise.",
+        text: "Once the concept is validated, our technical team translates vision into precise documentation, including detailed drawings, material specifications, lighting plans and construction schedules. We work with a curated network of craftsmen and fabricators who share our commitment to excellence, ensuring that the built reality matches or exceeds the conceptual promise.",
       },
       {
         type: "paragraph",
-        text: "The final installation is not simply a handover; it is a reveal. We style every surface, adjust every light, and position every element with the same care that went into the initial concept. The moment our clients step into their completed space should be transformative.",
+        text: "The final installation is not simply a handover; it is a reveal. We style every surface, adjust every light and position every element with the same care that went into the initial concept. The moment our clients step into their completed space should be transformative.",
       },
     ],
     category: "Process",
@@ -342,11 +342,11 @@ export const blogArticles: IBlogArticle[] = [
     slug: "travertine-the-timeless-surface",
     title: "Travertine: The Timeless Surface",
     excerpt:
-      "An exploration of travertine's enduring appeal in luxury interior design, focusing on its geological origins, textural variations, and the warmth it brings to contemporary spaces.",
+      "An exploration of travertine's enduring appeal in luxury interior design, focusing on its geological origins, textural variations and the warmth it brings to contemporary spaces.",
     content: [
       {
         type: "paragraph",
-        text: "Few materials carry as much historical weight while remaining utterly contemporary as travertine. This sedimentary limestone, formed over millennia in hot springs and limestone caves, has graced the floors of Roman temples, the facades of Renaissance palaces, and now, the interiors of the world's most discerning homes.",
+        text: "Few materials carry as much historical weight while remaining utterly contemporary as travertine. This sedimentary limestone, formed over millennia in hot springs and limestone caves, has graced the floors of Roman temples, the facades of Renaissance palaces and now, the interiors of the world's most discerning homes.",
       },
       {
         type: "heading",
@@ -383,7 +383,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "In our contemporary practice, we use travertine in unexpected ways, such as feature walls that create focal warmth, bathroom surfaces that transform daily rituals into sensory experiences, and floor surfaces that ground entire homes with their quiet, timeless presence. Its warm, creamy tones complement both minimalist and richly layered interiors.",
+        text: "In our contemporary practice, we use travertine in unexpected ways, such as feature walls that create focal warmth, bathroom surfaces that transform daily rituals into sensory experiences and floor surfaces that ground entire homes with their quiet, timeless presence. Its warm, creamy tones complement both minimalist and richly layered interiors.",
       },
     ],
     category: "Material",
@@ -398,11 +398,11 @@ export const blogArticles: IBlogArticle[] = [
     slug: "the-threshold-experience-designing-transitions",
     title: "The Threshold Experience: Designing Transitions",
     excerpt:
-      "How the moments between rooms, such as thresholds, corridors, and transitions, shape the narrative arc of interior spaces and create emotional pacing.",
+      "How the moments between rooms, such as thresholds, corridors and transitions, shape the narrative arc of interior spaces and create emotional pacing.",
     content: [
       {
         type: "paragraph",
-        text: "The name 'Liminal' comes from the Latin 'limen', meaning threshold. It represents the spaces between: the moment of transition from outside to inside, from public to private, from active to contemplative. These in-between moments are where the most powerful spatial experiences occur, and they are central to our design philosophy.",
+        text: "The name 'Liminal' comes from the Latin 'limen', meaning threshold. It represents the spaces between: the moment of transition from outside to inside, from public to private, from active to contemplative. These in-between moments are where the most powerful spatial experiences occur and they are central to our design philosophy.",
       },
       {
         type: "heading",
@@ -439,7 +439,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Where one material meets another is a moment of design truth. The junction between timber flooring and stone reveals the designer's attention to craft. At Liminal, we treat these material transitions as design opportunities, such as flush brass inlays, shadow gaps, and carefully aligned grain patterns, ensuring that every junction feels intentional and considered.",
+        text: "Where one material meets another is a moment of design truth. The junction between timber flooring and stone reveals the designer's attention to craft. At Liminal, we treat these material transitions as design opportunities, such as flush brass inlays, shadow gaps and carefully aligned grain patterns, ensuring that every junction feels intentional and considered.",
       },
     ],
     category: "Design",
@@ -454,7 +454,7 @@ export const blogArticles: IBlogArticle[] = [
     slug: "the-monolith-principle-strength-through-simplicity",
     title: "The Monolith Principle: Strength Through Simplicity",
     excerpt:
-      "How the concept of the monolith, a single, unified form, informs our approach to kitchen islands, feature walls, and sculptural furniture elements.",
+      "How the concept of the monolith, a single, unified form, informs our approach to kitchen islands, feature walls and sculptural furniture elements.",
     content: [
       {
         type: "paragraph",
@@ -495,7 +495,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "paragraph",
-        text: "A floor-to-ceiling stone feature wall transforms the vertical plane into a geological event. Book-matched marble slabs create symmetrical patterns that echo butterfly wings. Fluted stone panels add rhythmic texture. These vertical monoliths establish the material identity of an entire room, providing a backdrop against which lighter elements, like textiles, furniture, and artwork, can dance.",
+        text: "A floor-to-ceiling stone feature wall transforms the vertical plane into a geological event. Book-matched marble slabs create symmetrical patterns that echo butterfly wings. Fluted stone panels add rhythmic texture. These vertical monoliths establish the material identity of an entire room, providing a backdrop against which lighter elements, like textiles, furniture and artwork, can dance.",
       },
     ],
     category: "Design",
@@ -510,11 +510,11 @@ export const blogArticles: IBlogArticle[] = [
     slug: "the-colonnade-reimagined-columns-in-modern-interiors",
     title: "The Colonnade Reimagined: Columns in Modern Interiors",
     excerpt:
-      "How we reinterpret the classical colonnade, utilizing columns, rhythm, and structural expression, within contemporary residential and commercial interiors.",
+      "How we reinterpret the classical colonnade, utilizing columns, rhythm and structural expression, within contemporary residential and commercial interiors.",
     content: [
       {
         type: "paragraph",
-        text: "The column is one of architecture's most ancient and enduring elements. From the fluted Doric columns of the Parthenon to the slender steel pillars of modernist pavilions, vertical structural members have always carried meaning beyond their load-bearing function. They create rhythm, define space, and express the dialogue between gravity and aspiration.",
+        text: "The column is one of architecture's most ancient and enduring elements. From the fluted Doric columns of the Parthenon to the slender steel pillars of modernist pavilions, vertical structural members have always carried meaning beyond their load-bearing function. They create rhythm, define space and express the dialogue between gravity and aspiration.",
       },
       {
         type: "heading",
@@ -541,7 +541,7 @@ export const blogArticles: IBlogArticle[] = [
       },
       {
         type: "quote",
-        text: "A colonnade is frozen music. The spacing between columns is the rhythm, their height is the melody, and the light that falls between them is the harmony.",
+        text: "A colonnade is frozen music. The spacing between columns is the rhythm, their height is the melody and the light that falls between them is the harmony.",
         attribution: "Liminal Architectural Notes",
       },
       {

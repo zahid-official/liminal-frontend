@@ -40,7 +40,6 @@ const Navbar = () => {
     { label: "Home", href: "/" },
     {
       label: "Services",
-      href: "/services",
       subItems: [
         { label: "Interior Design", href: "/services/interior" },
         { label: "Furniture", href: "/services/furniture" },
@@ -76,23 +75,24 @@ const Navbar = () => {
             )}
           >
             {navLinks.map((item, idx) => {
-              const isActive = pathname === item.href;
               const hasSubItems = item.subItems && item.subItems.length > 0;
+              const isActive = hasSubItems
+                ? item.subItems.some((sub) => pathname === sub.href)
+                : pathname === item.href;
 
               if (hasSubItems) {
                 return (
                   <div key={idx} className="group relative">
-                    <Link
-                      href={item.href}
+                    <span
                       className={cn(
-                        "font-medium relative pb-0.5 flex items-center gap-1.5 transition-colors",
+                        "font-medium relative pb-0.5 flex items-center gap-1.5 transition-colors cursor-pointer",
                         "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 after:scale-x-0 group-hover:after:scale-x-100",
                         isActive && "after:scale-x-100",
                       )}
                     >
                       {item.label}
                       <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 opacity-70" />
-                    </Link>
+                    </span>
 
                     {/* Premium Submenu */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
@@ -135,7 +135,7 @@ const Navbar = () => {
               return (
                 <Link
                   key={idx}
-                  href={item.href}
+                  href={item.href || "#"}
                   className={cn(
                     "font-medium relative pb-0.5",
                     "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:bg-current after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100",
@@ -190,8 +190,10 @@ const Navbar = () => {
 
               <DropdownMenuContent className="w-52 -right-4.5 top-1 absolute border p-3 md:hidden">
                 {navLinks.map((item, idx) => {
-                  const isActive = pathname === item.href;
                   const hasSubItems = item.subItems && item.subItems.length > 0;
+                  const isActive = hasSubItems
+                    ? item.subItems.some((sub) => pathname === sub.href)
+                    : pathname === item.href;
 
                   return (
                     <React.Fragment key={idx}>
@@ -200,17 +202,27 @@ const Navbar = () => {
                           "justify-center cursor-pointer",
                           isActive && "bg-primary/10",
                         )}
-                        asChild
+                        asChild={!hasSubItems}
                       >
-                        <Link
-                          href={item.href}
-                          className={cn(
-                            "hover:text-primary w-full text-center transition-colors block",
-                            isActive && "text-primary font-semibold",
-                          )}
-                        >
-                          {item.label}
-                        </Link>
+                        {hasSubItems ? (
+                          <span
+                            className={cn(
+                              "hover:text-primary w-full text-center transition-colors block cursor-default font-semibold opacity-70",
+                            )}
+                          >
+                            {item.label}
+                          </span>
+                        ) : (
+                          <Link
+                            href={item.href || "#"}
+                            className={cn(
+                              "hover:text-primary w-full text-center transition-colors block",
+                              isActive && "text-primary font-semibold",
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        )}
                       </DropdownMenuItem>
 
                       {hasSubItems &&

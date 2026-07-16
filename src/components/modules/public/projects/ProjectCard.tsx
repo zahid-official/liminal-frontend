@@ -1,80 +1,77 @@
-﻿"use client";
-
-import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { IProject } from "./projectsData";
 
-// Project Interface
-export interface Project {
-  id: string | number;
-  title: string;
-  category: string;
-  location: string;
-  year: string;
-  status: "Completed" | "In Progress" | "Concept";
-  image: string;
-  client: string;
-  featured?: boolean;
-}
-
-// Project Card Props
+// Props for the ProjectCard component
 interface ProjectCardProps {
-  project: Project;
-  className?: string;
+  project: IProject;
 }
 
-// Project Card Component
-const ProjectCard = ({ project, className }: ProjectCardProps) => {
+/**
+ * ProjectCard component displays a project preview card with rich hover states,
+ * sliding mask backdrop effects and editorial details.
+ */
+const ProjectCard = ({ project }: ProjectCardProps) => {
   const metaInfo = [
     { label: "Location", value: project.location },
-    { label: "Archive", value: project.year },
-    { label: "Collaborator", value: project.client },
+    { label: "Archive", value: project.completionYear },
     { label: "Status", value: project.status },
+    { label: "Area", value: project.area },
   ];
 
   return (
-    <div
-      className={cn(
-        "group relative border border-border/40 p-1.5 bg-background/50 backdrop-blur-sm hover:border-liminal-secondary transition-all duration-500 ease-in-out hover:shadow-2xl hover:shadow-liminal-secondary/5 overflow-hidden",
-        className,
-      )}
-    >
-      {/* Technical Numbering */}
-      <div className="absolute top-4 right-5.5 text-4xl font-black text-background/30 group-hover:text-background/70 transition-all duration-1000 select-none pointer-events-none z-10 uppercase italic">
-        {String(project.id).padStart(2, "0")}
-      </div>
-
-      {/* Project Image Container */}
-      <div className="relative aspect-4/5 overflow-hidden bg-muted">
+    <article className="group relative overflow-hidden rounded bg-zinc-950 flex flex-col justify-end isolate aspect-3/4">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src={project.image}
+          src={project.thumbnail}
           alt={project.title}
           fill
-          quality={100}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
+          quality={85}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-1000 ease-out scale-100 group-hover:scale-110 transform-gpu will-change-transform backface-hidden"
         />
+        {/* Cinematic gradient overlays */}
+        <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute inset-0 bg-radial-vignette opacity-0 group-hover:opacity-25 transition-opacity duration-700" />
+      </div>
 
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
-          <div className="space-y-1 translate-y-8 group-hover:translate-y-0 transition-transform duration-700 delay-100">
-            {/* Title and Category */}
-            <div className="space-y-2">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-background/80">
-                {project.category}
+      {/* Floating category badge */}
+      <div className="absolute top-4.5 right-5 z-20">
+        <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-background/70 bg-foreground/40 backdrop-blur-xs px-2.5 py-1 rounded-xs">
+          {project.category}
+        </span>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-end p-7">
+        {/* Title, Category & Link wrapper */}
+        <div className="relative">
+          {/* Sliding backdrop blur mask */}
+          <div className="absolute -inset-x-6 -bottom-6 md:-inset-x-8 md:-bottom-8 h-[calc(100%+3rem)] bg-foreground/20 backdrop-blur-md [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0_0_0_0)] transition-all duration-700 ease-out -z-10" />
+
+          <div className="space-y-4">
+            {/* Project Style & Title */}
+            <div className="transform translate-y-39 group-hover:translate-y-0 transition-transform duration-700 transform-gpu backface-hidden will-change-transform">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-background/80">
+                {project.interiorStyle}
               </span>
-              <div className="flex items-center gap-4">
-                <h3 className="font-heading text-xl font-bold text-background uppercase tracking-tight">
+
+              <Link href={`/projects/${project.slug}`}>
+                <h3 className="text-2xl uppercase tracking-tight font-bold text-background leading-tight font-heading transform-gpu backface-hidden antialiased">
                   {project.title}
                 </h3>
-                <div className="h-px flex-1 bg-background/20 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 delay-100" />
-              </div>
+              </Link>
+
+              {/* Decorative divider line */}
+              <div className="h-px w-0 bg-background/20 group-hover:w-full transition-all duration-600 mb-6 mt-1" />
             </div>
 
-            {/* Meta Info */}
-            <div className="grid grid-cols-2 gap-6 pt-4 border-t border-background/10">
-              {metaInfo.map((item, index) => (
-                <div key={index} className="space-y-1">
+            {/* Technical metadata grid */}
+            <div className="grid grid-cols-2 gap-4 cursor-pointer opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 group-hover:duration-700 group-hover:delay-100 transform-gpu backface-hidden">
+              {metaInfo.map((item) => (
+                <div key={item.label} className="space-y-1">
                   <span className="text-[9px] font-mono text-background/40 uppercase tracking-widest block">
                     {item.label}
                   </span>
@@ -84,44 +81,25 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Base Info */}
-      <div className="pt-5 pb-3 px-2.5 group-hover:bg-liminal-secondary/5 transition-colors duration-700">
-        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest block">
-          {project.category} / {project.year}
-        </span>
-
-        <div className="flex justify-between items-center gap-4">
-          <h4 className="text-sm font-bold uppercase tracking-tight text-foreground/90">
-            {project.title}
-          </h4>
-
-          {/* View Details Action */}
-          <div className="flex items-center gap-2 group/details cursor-pointer shrink-0">
-            {/* Button Text */}
-            <div className="relative">
-              <span className="text-xs font-semibold uppercase text-liminal-secondary opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500 ease-out delay-100 block will-change-transform">
+            {/* Interactive view details action */}
+            <Link
+              href={`/projects/${project.slug}`}
+              className="inline-flex items-center gap-1 group/details cursor-pointer opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 group-hover:duration-700 group-hover:delay-100 transform-gpu backface-hidden"
+            >
+              <span className="relative text-[11px] font-semibold uppercase tracking-[0.2em] text-background">
                 View Details
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-background transition-all duration-300 ease-out group-hover/details:w-full" />
               </span>
-              {/* Border Bottom Animation */}
-              <div className="absolute -bottom-0.5 right-0 h-px bg-liminal-secondary w-0 group-hover/details:w-full transition-[width] duration-500 ease-in-out" />
-            </div>
-
-            {/* Arrow Icon */}
-            <div className="size-8 rounded-full border border-border flex items-center justify-center text-muted-foreground transition-all duration-300 ease-in-out group-hover:border-liminal-secondary group-hover:text-liminal-secondary group-hover:bg-liminal-secondary/5 group-hover/details:bg-liminal-secondary group-hover/details:text-background group-hover/details:border-liminal-secondary">
-              <ArrowUpRight className="size-4 transition-transform duration-500 ease-in-out group-hover/details:rotate-45 will-change-transform" />
-            </div>
+              <ArrowUpRight className="size-4 text-background transition-transform duration-500 group-hover/details:rotate-45" />
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Animated Border Reveal on Hover */}
-      <div className="absolute top-0 left-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-500 ease-in-out group-hover:w-full" />
-      <div className="absolute bottom-0 right-0 w-0 h-0.5 bg-liminal-secondary transition-all duration-500 ease-in-out group-hover:w-full" />
-    </div>
+      {/* Subtle inner boundary frame */}
+      <div className="absolute inset-0 border border-background/15 pointer-events-none z-20 m-3 transition-opacity duration-700" />
+    </article>
   );
 };
 
