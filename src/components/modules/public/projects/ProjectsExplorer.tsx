@@ -1,29 +1,63 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useCallback, useRef, useState } from "react";
-import { projects as allProjects, type IProject } from "./projectsData";
+import { useMemo, useRef, useState } from "react";
+import {
+  projects as allProjects,
+  projectCategories,
+  filterProjects,
+  projectSortOptions,
+  type ProjectCategory,
+  type ProjectSortValue,
+} from "./projectsData";
 import ProjectsGrid from "./ProjectsGrid";
 import Pagination from "@/components/shared/Pagination";
-import ProjectsFilter from "./ProjectsFilter";
+import FilterBar from "@/components/shared/FilterBar";
 
 import SectionHeader from "@/components/shared/SectionHeader";
 
 const ITEMS_PER_PAGE = 6;
 
-// ProjectsExplorer Component
 const ProjectsExplorer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [filteredProjects, setFilteredProjects] =
-    useState<IProject[]>(allProjects);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
+  const [sortBy, setSortBy] = useState<ProjectSortValue | "">("");
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Filter Projects
-  const handleFilterChange = useCallback((projects: IProject[]) => {
-    setFilteredProjects(projects);
-    setCurrentPage(1);
+  // Category counts
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: allProjects.length };
+    allProjects.forEach((p) => {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+    });
+    return counts;
   }, []);
+
+  // Filtered and sorted projects
+  const filteredProjects = useMemo(() => {
+    return filterProjects({
+      search: searchQuery,
+      category: activeCategory,
+      sort: sortBy || undefined,
+    });
+  }, [searchQuery, activeCategory, sortBy]);
+
+  const handleCategoryChange = (category: ProjectCategory) => {
+    setActiveCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (sort: ProjectSortValue) => {
+    setSortBy(sort);
+    setCurrentPage(1);
+  };
 
   // Pagination
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
@@ -69,8 +103,19 @@ const ProjectsExplorer = () => {
         />
 
         {/* Filter Projects */}
-        <ProjectsFilter
-          onFilterChange={handleFilterChange}
+        <FilterBar
+          categories={projectCategories}
+          categoryCounts={categoryCounts}
+          activeCategory={activeCategory}
+          onCategoryChange={handleCategoryChange}
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+          searchPlaceholder="Search projects..."
+          sortBy={sortBy || undefined}
+          onSortChange={handleSortChange}
+          sortOptions={projectSortOptions}
+          sortPlaceholder="Sort Projects"
+          filterLabel="Filter Projects"
           containerRef={gridRef}
         />
 
