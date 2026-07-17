@@ -574,14 +574,14 @@ export const getArticleBySlug = (slug: string): IBlogArticle | undefined =>
 
 // Helper: get related articles (same category, excluding current)
 export const getRelatedArticles = (
-  currentId: string,
+  currentSlug: string,
   limit: number = 3
 ): IBlogArticle[] => {
-  const current = blogArticles.find((a) => a.id === currentId);
+  const current = blogArticles.find((a) => a.slug === currentSlug);
   if (!current) return [];
 
   const sameCategory = blogArticles.filter(
-    (a) => a.id !== currentId && a.category === current.category
+    (a) => a.slug !== currentSlug && a.category === current.category
   );
 
   if (sameCategory.length >= limit) {
@@ -589,7 +589,7 @@ export const getRelatedArticles = (
   }
 
   const others = blogArticles.filter(
-    (a) => a.id !== currentId && a.category !== current.category
+    (a) => a.slug !== currentSlug && a.category !== current.category
   );
 
   return [...sameCategory, ...others].slice(0, limit);
@@ -597,9 +597,9 @@ export const getRelatedArticles = (
 
 // Helper: get adjacent articles for prev/next navigation
 export const getAdjacentArticles = (
-  currentId: string
+  currentSlug: string
 ): { prev: IBlogArticle | null; next: IBlogArticle | null } => {
-  const index = blogArticles.findIndex((a) => a.id === currentId);
+  const index = blogArticles.findIndex((a) => a.slug === currentSlug);
   return {
     prev: index > 0 ? blogArticles[index - 1] : null,
     next: index < blogArticles.length - 1 ? blogArticles[index + 1] : null,
