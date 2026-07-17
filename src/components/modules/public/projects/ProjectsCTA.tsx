@@ -1,9 +1,10 @@
 import LiminalButton from "@/components/shared/LiminalButton";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { MessageSquare } from "lucide-react";
+import Link from "next/link";
 
-// InteriorCTA Component
-const InteriorCTA = () => {
+// ProjectsCTA Component
+const ProjectsCTA = () => {
   return (
     <section className="py-20 md:py-28 lg:py-32 bg-zinc-50 relative overflow-hidden">
       {/* Left Abstract structural graphics */}
@@ -82,11 +83,16 @@ const InteriorCTA = () => {
           />
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <LiminalButton icon={MessageSquare} animateIcon={false}>
-              Book a Consultancy
-            </LiminalButton>
-            <LiminalButton variant="outline">View Portfolios</LiminalButton>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/contact">
+              <LiminalButton icon={MessageSquare} animateIcon={false}>
+                Book a Consultancy
+              </LiminalButton>
+            </Link>
+
+            <Link href="/services">
+              <LiminalButton variant="outline">View Services</LiminalButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -94,4 +100,4 @@ const InteriorCTA = () => {
   );
 };
 
-export default InteriorCTA;
+export default ProjectsCTA;

@@ -31,6 +31,7 @@ const InteriorProcess = () => {
   return (
     <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
       <div className="custom-container">
+        {/* Section Header */}
         <SectionHeader
           variant="split"
           badgeText="Our Process"
@@ -45,7 +46,8 @@ const InteriorProcess = () => {
           description="A meticulous four-stage evolution that translates abstract inspiration into tangible architectural reality."
         />
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {/* Process Steps Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {steps.map((step, index) => (
             <div
               key={index}
