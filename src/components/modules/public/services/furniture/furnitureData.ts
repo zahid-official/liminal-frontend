@@ -1192,9 +1192,9 @@ export const formatDimensions = (dimensions: IFurnitureDimensions): string => {
   return `${parts.join(" x ")} ${dimensions.unit}`;
 };
 
-// Get a furniture item by its slug or id
+// Get a furniture by slug
 export const getFurnitureBySlug = (slug: string): IFurniture | undefined =>
-  collection.find((item) => item.slug === slug || item.id === slug);
+  collection.find((item) => item.slug === slug);
 
 // Get related furniture items (same category, excluding current)
 export const getRelatedFurniture = (
@@ -1204,30 +1204,22 @@ export const getRelatedFurniture = (
   const current = collection.find((item) => item.slug === currentSlug);
   if (!current) return [];
 
+  // get all furniture in same category
   const sameCategory = collection.filter(
     (item) => item.slug !== currentSlug && item.category === current.category,
   );
 
+  // if same category is more than or equal to limit, return same category furniture
   if (sameCategory.length >= limit) {
     return sameCategory.slice(0, limit);
   }
 
+  // if same category is less than limit, get other category furniture
   const others = collection.filter(
     (item) => item.slug !== currentSlug && item.category !== current.category,
   );
 
   return [...sameCategory, ...others].slice(0, limit);
-};
-
-// Get adjacent furniture items for prev/next navigation
-export const getAdjacentFurniture = (
-  currentSlug: string,
-): { prev: IFurniture | null; next: IFurniture | null } => {
-  const index = collection.findIndex((item) => item.slug === currentSlug);
-  return {
-    prev: index > 0 ? collection[index - 1] : null,
-    next: index < collection.length - 1 ? collection[index + 1] : null,
-  };
 };
 
 // Get category counts for the filter bar
@@ -1245,4 +1237,20 @@ export const getFurnitureCategoryCounts = (): Record<
     }
   });
   return counts;
+};
+
+// Get previous and next furniture for navigation
+export const getPrevNextFurniture = (
+  currentSlug: string,
+): { prev: IFurniture | null; next: IFurniture | null } => {
+  const currentIndex = collection.findIndex(
+    (item) => item.slug === currentSlug,
+  );
+  if (currentIndex === -1) return { prev: null, next: null };
+
+  const prev = currentIndex > 0 ? collection[currentIndex - 1] : null;
+  const next =
+    currentIndex < collection.length - 1 ? collection[currentIndex + 1] : null;
+
+  return { prev, next };
 };
