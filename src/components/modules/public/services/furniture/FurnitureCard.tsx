@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
 import { IFurniture, formatDimensions } from "./furnitureData";
+import Link from "next/link";
 
 interface FurnitureCardProps {
   item: IFurniture;
@@ -34,9 +35,11 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
             </span>
 
             {/* View Specs Button */}
-            <button className="bg-background rounded cursor-pointer text-foreground p-4 tracking-widest text-[11px] font-bold uppercase flex items-center gap-2 transition-colors duration-300 hover:bg-liminal-secondary hover:text-background">
-              View Specifications <ShoppingBag className="w-4 h-4" />
-            </button>
+            <Link href={`/services/furniture/${item.slug}`}>
+              <button className="bg-background rounded cursor-pointer text-foreground p-4 tracking-widest text-[11px] font-bold uppercase flex items-center gap-2 transition-colors duration-300 hover:bg-liminal-secondary hover:text-background">
+                View Specifications <ShoppingBag className="w-4 h-4" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

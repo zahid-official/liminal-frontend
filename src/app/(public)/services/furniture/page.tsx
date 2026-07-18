@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 // FurniturePage Component
 const FurniturePage = () => {
   return (
-    <main className="bg-background">
+    <main>
+      {/* Page Header */}
       <PageHeader
         title="Furniture Services"
         items={[
@@ -23,6 +24,7 @@ const FurniturePage = () => {
         ]}
         bgImage="/assets/furniture/hero-premium.png"
       />
+
       {/* Furniture Philosophy */}
       <FurniturePhilosophy />
 
