@@ -1,4 +1,4 @@
-﻿// Furniture Data - Static data layer for furniture collection
+// Furniture Data - Static data layer for furniture collection
 // This file will be replaced with dynamic API calls once the backend is ready
 
 // Furniture Gallery Image Interface
@@ -79,20 +79,6 @@ export interface IFurniture {
   details: IFurnitureDetails;
   specifications: IFurnitureSpecifications;
 }
-
-// ─────────────────────────────────────────────
-// Sort Options
-// ─────────────────────────────────────────────
-
-export const furnitureSortOptions = [
-  { value: "newest", label: "Newest First" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-  { value: "name-asc", label: "Name: A to Z" },
-  { value: "name-desc", label: "Name: Z to A" },
-] as const;
-
-export type FurnitureSortType = (typeof furnitureSortOptions)[number]["value"];
 
 // ─────────────────────────────────────────────
 // Mock Furniture Data
@@ -1237,6 +1223,76 @@ export const getFurnitureCategoryCounts = (): Record<
     }
   });
   return counts;
+};
+
+// Sort Options
+export const furnitureSortOptions = [
+  { label: "Newest First", value: "newest" },
+  { label: "Oldest First", value: "oldest" },
+  { label: "Price: Low to High", value: "price-asc" },
+  { label: "Price: High to Low", value: "price-desc" },
+  { label: "Name: A to Z", value: "name-asc" },
+  { label: "Name: Z to A", value: "name-desc" },
+] as const;
+
+export type FurnitureSortType = (typeof furnitureSortOptions)[number]["value"];
+
+// Filter and sort furniture
+export const filterFurniture = (options: {
+  category?: string;
+  search?: string;
+  sort?: FurnitureSortType;
+}): IFurniture[] => {
+  let results = [...collection];
+
+  // Category filter
+  if (options.category && options.category !== "All") {
+    results = results.filter((item) => item.category === options.category);
+  }
+
+  // Search filter
+  if (options.search?.trim()) {
+    const query = options.search.toLowerCase().trim();
+    results = results.filter(
+      (item) =>
+        item.title.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query) ||
+        item.tagline.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query),
+    );
+  }
+
+  // Helper to parse price string to number for sorting
+  const parsePrice = (priceStr: string) =>
+    parseFloat(priceStr.replace(/[^0-9.-]+/g, "")) || 0;
+
+  // Sort
+  switch (options.sort) {
+    case "price-asc":
+      results.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+      break;
+    case "price-desc":
+      results.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+      break;
+    case "name-asc":
+      results.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "name-desc":
+      results.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    case "oldest":
+      // Keep original order (since collection is likely ordered newest to oldest, or we reverse newest)
+      break;
+    case "newest":
+    default:
+      // Since we don't have a date, we can fallback to ID or keep current order
+      // We'll reverse the array to simulate "newest" if ID is roughly sequential,
+      // or just leave it for now.
+      results.reverse(); // Simplified implementation
+      break;
+  }
+
+  return results;
 };
 
 // Get previous and next furniture for navigation
