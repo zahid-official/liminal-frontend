@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { ShoppingBag } from "lucide-react";
-import { FurnitureItem } from "./furnitureData";
+import { IFurniture, formatDimensions } from "./furnitureData";
 
 interface FurnitureCardProps {
-  item: FurnitureItem;
+  item: IFurniture;
 }
 
 const FurnitureCard = ({ item }: FurnitureCardProps) => {
@@ -19,7 +19,7 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
         </div>
 
         <Image
-          src={item.image}
+          src={item.thumbnail}
           alt={item.title}
           fill
           className="object-cover transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu"
@@ -28,12 +28,15 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
         {/* Quick Action Overlay */}
         <div className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
           <div className="flex flex-col items-center gap-4 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+            {/* Ref Text */}
+            <span className="text-background/60 text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
+              Ref: {item.productCode}
+            </span>
+
+            {/* View Specs Button */}
             <button className="bg-background rounded cursor-pointer text-foreground p-4 tracking-widest text-[11px] font-bold uppercase flex items-center gap-2 transition-colors duration-300 hover:bg-liminal-secondary hover:text-background">
               View Specifications <ShoppingBag className="w-4 h-4" />
             </button>
-            <span className="text-background/60 text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-              Ref: {item.id}
-            </span>
           </div>
         </div>
       </div>
@@ -41,7 +44,7 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
       {/* Product Info */}
       <div className="space-y-4">
         <div className="flex gap-2.5 justify-between items-start">
-          {/* Title & Description */}
+          {/* Title & Category */}
           <div className="space-y-1">
             <span className="text-[11px] font-mono font-semibold text-liminal-secondary uppercase tracking-[0.15em]">
               {item.category}
@@ -49,9 +52,6 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
             <h3 className="text-2xl font-bold font-heading group-hover:text-liminal-secondary transition-colors line-clamp-1">
               {item.title}
             </h3>
-            <p className="text-sm text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
-              {item.description}
-            </p>
           </div>
 
           {/* Price */}
@@ -65,14 +65,19 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
           </div>
         </div>
 
+        {/* description */}
+        <p className="text-sm text-muted-foreground -mt-2 line-clamp-2 leading-relaxed">
+          {item.description}
+        </p>
+
         {/* Dimensions & Materials */}
-        <div className="flex justify-between items-start pt-4 border-t border-border/50">
+        <div className="flex justify-between items-start pt-3 border-t border-border/50">
           <div className="space-y-1">
             <span className="text-[10px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em]">
               Materials
             </span>
             <p className="text-[11px] font-bold leading-tight uppercase">
-              {item.materials}
+              {item.specifications.materials}
             </p>
           </div>
           <div className="space-y-1 text-right">
@@ -80,7 +85,7 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
               Dimensions
             </span>
             <p className="text-[11px] font-bold leading-tight uppercase">
-              {item.dimensions}
+              {formatDimensions(item.specifications.dimensions)}
             </p>
           </div>
         </div>

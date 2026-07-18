@@ -20,10 +20,11 @@ const FurnitureCollection = () => {
           }
           description="A selection of our most iconic designs, balancing structural honesty with human comfort. Each piece is crafted to endure, both in material and aesthetic."
           variant="split"
+          className="mb-10"
         />
 
         {/* Collection Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {collection.map((item) => (
             <FurnitureCard key={item.id} item={item} />
           ))}
