@@ -26,7 +26,7 @@ const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
         {/* Metadata Fields */}
         <div className=" border-y border-border/25 py-5">
           <div className="custom-container max-w-2xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               {/* Left: Author */}
               <div className="flex items-center gap-4">
                 {/* Author Avatar */}
@@ -50,7 +50,7 @@ const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
               </div>
 
               {/* Right: Meta Info */}
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-wrap items-center gap-4">
                 {metaItems.map((item, i) => (
                   <Fragment key={item.label}>
                     {i > 0 && (

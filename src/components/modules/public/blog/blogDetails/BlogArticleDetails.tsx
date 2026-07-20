@@ -11,6 +11,7 @@ interface BlogArticleDetailsProps {
   next: IBlogArticle | null;
 }
 
+// BlogArticleDetails Component
 const BlogArticleDetails = ({
   article,
   prev,
@@ -47,7 +48,7 @@ const BlogArticleDetails = ({
         prev={
           prev
             ? {
-                href: `/blog/${prev.id}`,
+                href: `/blog/${prev.slug}`,
                 title: prev.title,
                 image: prev.image,
                 category: prev.category,
@@ -58,7 +59,7 @@ const BlogArticleDetails = ({
         next={
           next
             ? {
-                href: `/blog/${next.id}`,
+                href: `/blog/${next.slug}`,
                 title: next.title,
                 image: next.image,
                 category: next.category,

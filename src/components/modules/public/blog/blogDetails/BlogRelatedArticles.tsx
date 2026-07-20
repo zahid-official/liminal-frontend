@@ -4,12 +4,12 @@ import BlogCard from "../BlogCard";
 
 // BlogRelatedArticles Props
 interface BlogRelatedArticlesProps {
-  currentId: string;
+  currentSlug: string;
 }
 
 // BlogRelatedArticles Component
-const BlogRelatedArticles = ({ currentId }: BlogRelatedArticlesProps) => {
-  const related = getRelatedArticles(currentId, 3);
+const BlogRelatedArticles = ({ currentSlug }: BlogRelatedArticlesProps) => {
+  const related = getRelatedArticles(currentSlug, 3);
 
   if (related.length === 0) return null;
 

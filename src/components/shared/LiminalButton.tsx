@@ -50,13 +50,14 @@ const LiminalButton = ({
       {...props}
     >
       <span className="relative z-10 flex items-center justify-center gap-3 h-full transform-[translateZ(0)] will-change-transform">
-        <span className="font-semibold text-[15px] tracking-[0.05em] transition-colors duration-500 leading-none">
+        <span className="font-semibold text-[15px] tracking-wider transition-colors duration-500 leading-none">
           {children}
         </span>
         {isLoading ? (
           <Loader2 className="size-4 animate-spin" />
         ) : (
-          showIcon && Icon && (
+          showIcon &&
+          Icon && (
             <Icon
               size={16}
               strokeWidth={2}

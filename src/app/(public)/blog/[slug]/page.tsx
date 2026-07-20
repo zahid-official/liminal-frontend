@@ -10,15 +10,15 @@ import { notFound } from "next/navigation";
 
 // Props
 interface BlogDetailsPageProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 // Dynamic Metadata
 export async function generateMetadata({
   params,
 }: BlogDetailsPageProps): Promise<Metadata> {
-  const { id } = await params;
-  const article = getArticleBySlug(id);
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     return { title: "Article Not Found" };
@@ -32,14 +32,14 @@ export async function generateMetadata({
 
 // BlogDetailsPage Component
 const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
-  const { id } = await params;
-  const article = getArticleBySlug(id);
+  const { slug } = await params;
+  const article = getArticleBySlug(slug);
 
   if (!article) {
     notFound();
   }
 
-  const { prev, next } = getAdjacentArticles(article.id);
+  const { prev, next } = getAdjacentArticles(article.slug);
 
   return (
     <main>
@@ -58,7 +58,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
       <BlogArticleDetails article={article} prev={prev} next={next} />
 
       {/* Related Articles */}
-      <BlogRelatedArticles currentId={article.id} />
+      <BlogRelatedArticles currentSlug={article.slug} />
     </main>
   );
 };

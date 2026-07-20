@@ -1,24 +1,24 @@
 "use client";
 
+import FilterBar from "@/components/shared/FilterBar";
+import Pagination from "@/components/shared/Pagination";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { cn } from "@/lib/utils";
 import { useMemo, useRef, useState } from "react";
 import {
   projects as allProjects,
-  projectCategories,
   filterProjects,
+  projectCategories,
   projectSortOptions,
   type ProjectCategory,
   type ProjectSortValue,
 } from "./projectsData";
 import ProjectsGrid from "./ProjectsGrid";
-import Pagination from "@/components/shared/Pagination";
-import FilterBar from "@/components/shared/FilterBar";
-
-import SectionHeader from "@/components/shared/SectionHeader";
 
 const ITEMS_PER_PAGE = 6;
 
-const ProjectsExplorer = () => {
+// ProjectsCollection Component
+const ProjectsCollection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -141,4 +141,4 @@ const ProjectsExplorer = () => {
   );
 };
 
-export default ProjectsExplorer;
+export default ProjectsCollection;
