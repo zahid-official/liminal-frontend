@@ -13,7 +13,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
   return (
     <article className="group flex flex-col bg-background rounded p-2 border border-border/30 overflow-hidden hover:border-liminal-secondary/25 hover:shadow-lg transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform transform-gpu backface-hidden">
       {/* Image */}
-      <Link href={`/blog/${article.id}`} className="block">
+      <Link href={`/blog/${article.slug}`} className="block">
         <div className="relative aspect-video overflow-hidden">
           <Image
             src={article.image}
@@ -48,7 +48,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
         </div>
 
         {/* Title */}
-        <Link href={`/blog/${article.id}`}>
+        <Link href={`/blog/${article.slug}`}>
           <h3 className="text-xl font-bold font-heading tracking-tight leading-snug mb-3 group-hover:text-liminal-secondary transition-colors duration-500">
             {article.title}
           </h3>
@@ -62,7 +62,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
         {/* Read Link */}
         <div>
           <Link
-            href={`/blog/${article.id}`}
+            href={`/blog/${article.slug}`}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-liminal-secondary transition-all duration-500 group/link"
           >
             <span className="relative">

@@ -1,5 +1,5 @@
 import BlogEditorialIntro from "@/components/modules/public/blog/BlogEditorialIntro";
-import BlogExplorer from "@/components/modules/public/blog/BlogExplorer";
+import BlogCollection from "@/components/modules/public/blog/BlogCollection";
 import BlogNewsletter from "@/components/modules/public/blog/BlogNewsletter";
 import BlogPhilosophy from "@/components/modules/public/blog/BlogPhilosophy";
 import PageHeader from "@/components/shared/PageHeader";
@@ -26,10 +26,10 @@ const BlogPage = () => {
       {/* Editorial Intro */}
       <BlogEditorialIntro />
 
-      {/* Design Journal Explorer */}
-      <BlogExplorer />
+      {/* Blog Collection */}
+      <BlogCollection />
 
-      {/* Design Philosophy */}
+      {/* Editorial Philosophy */}
       <BlogPhilosophy />
 
       {/* Journal Newsletter */}

@@ -9,8 +9,8 @@ import FilterBar from "@/components/shared/FilterBar";
 
 const BASE_ITEMS_PER_PAGE = 6;
 
-// BlogExplorer Component
-const BlogExplorer = () => {
+// BlogCollection Component
+const BlogCollection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<BlogCategory>("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -131,4 +131,4 @@ const BlogExplorer = () => {
   );
 };
 
-export default BlogExplorer;
+export default BlogCollection;
