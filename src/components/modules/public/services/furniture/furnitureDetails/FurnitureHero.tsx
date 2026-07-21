@@ -53,7 +53,7 @@ const statusConfig: Record<
   },
   "Pre-Order": {
     dotColor: "bg-violet-500",
-    label: (f) => `Pre-Order - Ships In ${f.specifications.leadTime}`,
+    label: (f) => `Pre-Order - ${f.specifications.leadTime}`,
     ctaLabel: "Pre-Order Now",
     ctaIcon: Package,
   },
@@ -78,51 +78,82 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
   ];
   const activeImage = allImages[activeImageIndex];
 
+  // Quick Specs Data
+  const quickSpecs = [
+    {
+      icon: Layers,
+      label: "Materials",
+      value: furniture.specifications.materials,
+    },
+    {
+      icon: Weight,
+      label: "Weight",
+      value: furniture.specifications.weight,
+    },
+    {
+      icon: Ruler,
+      label: "Dimensions",
+      value: formatDimensions(furniture.specifications.dimensions),
+    },
+  ];
+
   return (
     <>
       <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
         <div className="custom-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
             {/* Left: Product Image */}
-            <div className="space-y-4">
+            <div className="lg:col-span-5 space-y-4">
               {/* Main Image */}
               <div className="relative aspect-3/4 rounded overflow-hidden border border-border/20 group">
-                <Image
-                  src={activeImage.url}
-                  alt={activeImage.caption || furniture.title}
-                  fill
-                  quality={95}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover ease-out transition-transform duration-1000 group-hover:scale-105 will-change-transform transform-gpu"
-                />
+                {allImages.map((img, idx) => (
+                  <Image
+                    key={idx}
+                    src={img.url}
+                    alt={img.caption || furniture.title}
+                    fill
+                    quality={95}
+                    priority={idx === 0}
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-105 will-change-transform transform-gpu ${
+                      activeImageIndex === idx
+                        ? "opacity-100 scale-100 z-0"
+                        : "opacity-0 scale-105 pointer-events-none"
+                    }`}
+                  />
+                ))}
 
-                {/* Status Badge */}
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-2 py-1.5 px-2.5 rounded-sm bg-background/80 backdrop-blur-md border border-border/30 shadow-lg">
-                  <span className={`w-2 h-2 rounded-full ${config.dotColor}`} />
+                {/* Status Badge and Expand Button Container */}
+                <div>
+                  {/* Status Badge */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2 py-1.5 px-2.5 rounded-sm bg-background/80 backdrop-blur-md border border-border/30 shadow-lg">
+                    <span
+                      className={`w-2 h-2 rounded-full ${config.dotColor}`}
+                    />
 
-                  <span className="text-[11px] font-semibold tracking-wider text-foreground/80 uppercase">
-                    {furniture.status}
-                  </span>
+                    <span className="text-[11px] font-semibold tracking-wider text-foreground/80 uppercase">
+                      {furniture.status}
+                    </span>
+                  </div>
+
+                  {/* Expand Button overlay */}
+                  <button
+                    onClick={() => setIsLightboxOpen(true)}
+                    className="absolute right-4 top-4 p-2.5 rounded-full bg-background/75  hover:bg-background backdrop-blur-md text-foreground border border-border/40 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer"
+                    aria-label="Expand image"
+                  >
+                    <Expand className="size-5" />
+                  </button>
                 </div>
 
-                {/* Expand Button overlay */}
-                <button
-                  onClick={() => setIsLightboxOpen(true)}
-                  className="absolute right-4 top-4 p-2.5 rounded-full bg-background/75  hover:bg-background backdrop-blur-md text-foreground border border-border/40 opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg cursor-pointer"
-                  aria-label="Expand image"
-                >
-                  <Expand className="size-5" />
-                </button>
-
                 {/* Caption & Counter Strip */}
-                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-foreground/60 via-foreground/20 to-transparent p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-foreground/60 via-foreground/20 to-transparent p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   {/* Caption */}
-                  <p className="text-background/80 text-xs font-mono tracking-widest uppercase">
+                  <p className="text-background/80 text-[11px] font-mono tracking-wide uppercase">
                     {activeImage.caption}
                   </p>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     {/* Dots indicator */}
                     <div className="flex gap-1.5">
                       {allImages.map((_, idx) => (
@@ -138,7 +169,7 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                     </div>
 
                     {/* Image Counter */}
-                    <span className="text-xs font-mono font-bold tracking-widest text-background/80">
+                    <span className="text-xs font-mono font-bold  text-background/80">
                       {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
                       {String(allImages.length).padStart(2, "0")}
                     </span>
@@ -152,9 +183,9 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                   <button
                     key={index}
                     onClick={() => setActiveImageIndex(index)}
-                    className={`relative aspect-4/3 w-full rounded overflow-hidden border-2 transition-all duration-500 cursor-pointer ${
+                    className={`relative aspect-4/3 w-full rounded overflow-hidden border-2 transition-all duration-300 ease-out cursor-pointer group/thumb transform-gpu ${
                       activeImageIndex === index
-                        ? "border-liminal-dark/60 shadow-lg shadow-liminal-secondary/20"
+                        ? "border-border/60 shadow-lg shadow-liminal-secondary/20 ring-2 ring-liminal-secondary/30 ring-offset-2 ring-offset-background z-10 opacity-100"
                         : "border-border/20 hover:border-border/60 opacity-60 hover:opacity-100"
                     }`}
                   >
@@ -163,7 +194,7 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                       alt={image.caption || `View ${index + 1}`}
                       fill
                       sizes="(max-width: 768px) 25vw, 15vw"
-                      className="object-cover"
+                      className={`object-cover transition-transform duration-500 ease-out`}
                     />
                   </button>
                 ))}
@@ -171,13 +202,13 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
             </div>
 
             {/* Right: Product Information */}
-            <div className="">
-              <div className="space-y-9">
+            <div className="lg:col-span-7 border border-border/20 rounded-xs p-8 sm:p-12 flex items-center">
+              <div className="space-y-8 text-center">
                 {/* Identity Section */}
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div className="flex justify-between items-end gap-2">
                     {/* Category */}
-                    <p className="text-xs space-x-1.5 font-semibold tracking-wider text-foreground/80 uppercase bg-liminal-secondary/3 border border-border/10 px-2 py-1 rounded">
+                    <p className="text-[11px] space-x-1.5 font-semibold tracking-wider text-foreground/80 uppercase bg-liminal-secondary/3 border border-border/10 px-2 py-1 rounded">
                       Category: {furniture.category}
                     </p>
 
@@ -190,12 +221,12 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold font-heading tracking-tight leading-[1.05]">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading tracking-tight leading-[1.05] uppercase">
                     {furniture.title}
                   </h2>
 
                   {/* Tagline */}
-                  <p className="text-lg italic font-serif text-liminal-secondary font-light underline underline-offset-10 decoration-1 decoration-liminal-secondary/35">
+                  <p className="-mt-3.5 text-lg italic font-serif text-liminal-secondary font-light underline underline-offset-10 decoration-1 decoration-liminal-secondary/35">
                     {furniture.tagline}
                   </p>
                 </div>
@@ -208,24 +239,26 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                 {/* Separator */}
                 <div className="h-px bg-border/50" />
 
-                {/* Price */}
-                <div className="flex items-baseline gap-3">
-                  <span className="text-[10px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em]">
-                    From
-                  </span>
-                  <span className="text-3xl sm:text-4xl font-bold font-heading text-foreground tracking-tight">
-                    {furniture.price}
-                  </span>
-                </div>
+                <div className="flex justify-between items-end gap-2">
+                  {/* Price */}
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-[11px] font-mono font-medium text-muted-foreground uppercase tracking-widest">
+                      From
+                    </span>
+                    <span className="text-3xl sm:text-4xl font-bold font-heading text-foreground tracking-tight">
+                      {furniture.price}
+                    </span>
+                  </div>
 
-                {/* Status Indicator */}
-                <div className="flex items-center gap-2 py-3 px-4 rounded-sm bg-zinc-50 border border-border/30">
-                  <span
-                    className={`w-2 h-2 rounded-full ${config.dotColor} shrink-0`}
-                  />
-                  <span className="text-[11px] font-mono font-semibold tracking-wider text-foreground/80 uppercase">
-                    {config.label(furniture)}
-                  </span>
+                  {/* Status Indicator */}
+                  <div className="flex items-center gap-2 py-2.5 px-3.5 rounded-sm bg-zinc-50 border border-border/30">
+                    <span
+                      className={`w-2 h-2 rounded-full ${config.dotColor} shrink-0`}
+                    />
+                    <span className="text-[11px] font-mono font-semibold tracking-wider text-foreground/80 uppercase">
+                      {config.label(furniture)}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Place Order Button */}
@@ -239,38 +272,28 @@ const FurnitureHero = ({ furniture }: FurnitureHeroProps) => {
                 </LiminalButton>
 
                 {/* Quick Specs */}
-                <div className="grid grid-cols-3 gap-4 py-1">
-                  <div className="space-y-2 text-center p-3 rounded-sm bg-zinc-50 border border-border/20">
-                    <Layers className="size-4 text-muted-foreground/50 mx-auto" />
-                    <span className="text-[9px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em] block">
-                      Materials
-                    </span>
-                    <p className="text-[11px] font-bold leading-tight">
-                      {furniture.specifications.materials}
-                    </p>
-                  </div>
-                  <div className="space-y-2 text-center p-3 rounded-sm bg-zinc-50 border border-border/20">
-                    <Weight className="size-4 text-muted-foreground/50 mx-auto" />
-                    <span className="text-[9px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em] block">
-                      Weight
-                    </span>
-                    <p className="text-[11px] font-bold leading-tight">
-                      {furniture.specifications.weight}
-                    </p>
-                  </div>
-                  <div className="space-y-2 text-center p-3 rounded-sm bg-zinc-50 border border-border/20">
-                    <Ruler className="size-4 text-muted-foreground/50 mx-auto" />
-                    <span className="text-[9px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em] block">
-                      Dimensions
-                    </span>
-                    <p className="text-[11px] font-bold leading-tight">
-                      {formatDimensions(furniture.specifications.dimensions)}
-                    </p>
-                  </div>
+                <div className="grid grid-cols-3 gap-4.5">
+                  {quickSpecs.map((spec) => (
+                    <div
+                      key={spec.label}
+                      className="space-y-2 text-center px-2 py-4 rounded-sm bg-zinc-50 border border-border/20"
+                    >
+                      <spec.icon className="size-4 text-muted-foreground/50 mx-auto" />
+                      <span className="text-[9px] font-mono font-medium text-muted-foreground uppercase tracking-[0.15em] block">
+                        {spec.label}
+                      </span>
+                      <p className="text-[11px] font-bold leading-tight">
+                        {spec.value}
+                      </p>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Share */}
-                <ShareButtons title={furniture.title} />
+                <ShareButtons
+                  title={furniture.title}
+                  className="flex flex-col items-center -mt-1"
+                />
               </div>
             </div>
           </div>
