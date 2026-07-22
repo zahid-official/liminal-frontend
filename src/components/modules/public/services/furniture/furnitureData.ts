@@ -1159,7 +1159,7 @@ export const collection: IFurniture[] = [
             "Professional assembly recommended. The modular system requires precise alignment for optimal stability.",
         },
       ],
-      leadTime: "12-16 weeks (pre-order)",
+      leadTime: "12-16 weeks",
       warranty: "Lifetime structural, 3-year LED, 5-year finish",
     },
   },

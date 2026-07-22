@@ -31,7 +31,7 @@ const FurnitureCard = ({ item }: FurnitureCardProps) => {
           <div className="flex flex-col items-center gap-4 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
             {/* Ref Text */}
             <span className="text-background/60 text-[10px] font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-              Ref: {item.productCode}
+              Code: {item.productCode}
             </span>
 
             {/* View Specs Button */}
