@@ -16,7 +16,7 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import { IFurniture, formatDimensions } from "../furnitureData";
-import FurnitureOrderPanel from "./FurnitureOrderPanel";
+import FurnitureOrderPanel from "./FurnitureOrderPanel2";
 
 // FurnitureHero Props
 interface FurnitureHeroProps {
