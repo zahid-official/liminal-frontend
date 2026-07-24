@@ -1,13 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { X, ChevronLeft, ChevronRight, Check } from "lucide-react";
-import { IFurniture } from "../furnitureData";
+import LiminalButton from "@/components/shared/LiminalButton";
+import {
+  Field,
+  FieldContent,
+  FieldError,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Field, FieldLabel, FieldContent, FieldError } from "@/components/ui/field";
-import LiminalButton from "@/components/shared/LiminalButton";
+import { Check, ChevronLeft, ChevronRight, Minus, Plus, X } from "lucide-react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import React, { useState } from "react";
+import { IFurniture } from "../furnitureData";
 
 interface FurnitureOrderPanelProps {
   isOpen: boolean;
@@ -15,7 +21,11 @@ interface FurnitureOrderPanelProps {
   furniture: IFurniture;
 }
 
-const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanelProps) => {
+const FurnitureOrderPanel = ({
+  isOpen,
+  onClose,
+  furniture,
+}: FurnitureOrderPanelProps) => {
   const { title, price, thumbnail, status, specifications } = furniture;
 
   // Form State
@@ -43,13 +53,112 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
   // Total Steps count
   const totalSteps = isOutOfStock ? 2 : 5; // Quantity -> Info -> Delivery -> Review -> Success
 
-  // Price calculations
+  // Price & Shipping calculations
   const numericPrice = parseFloat(price.replace(/[^0-9.]/g, "")) || 0;
+  const subtotal = numericPrice * quantity;
+  const shippingFee = subtotal >= 1000 ? 0 : 20;
+  const grandTotal = subtotal + shippingFee;
+
   const totalPriceFormatted = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 0,
-  }).format(numericPrice * quantity);
+  }).format(subtotal);
+
+  const shippingFormatted =
+    shippingFee === 0
+      ? "$0"
+      : new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        }).format(shippingFee);
+
+  const grandTotalFormatted = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(grandTotal);
+
+  // Order Summary Items
+  const orderSummaryItems = [
+    { label: "Quantity", value: quantity },
+    { label: "Unit Price", value: price },
+    { label: "Subtotal", value: totalPriceFormatted },
+    {
+      label:
+        shippingFee === 0 ? "Shipping (Free on orders over $1000)" : "Shipping",
+      value: shippingFormatted,
+    },
+    { label: "Total Amount", value: grandTotalFormatted, isTotal: true },
+  ];
+
+  // Product Status Notices Config
+  const statusNotices: Record<
+    string,
+    { containerClass: string; textClass: string; content: React.ReactNode }
+  > = {
+    "Made to Order": {
+      containerClass: "bg-blue-50/50 border-blue-200/40",
+      textClass: "text-blue-800",
+      content: (
+        <>
+          This piece is individually handcrafted upon order. The estimated
+          artisan period is{" "}
+          <strong>{specifications.leadTime || "standard lead time"}</strong>.
+          Submit your commission request below and our design team will
+          personally coordinate your specifications.
+        </>
+      ),
+    },
+    "Pre-Order": {
+      containerClass: "bg-indigo-50/50 border-indigo-200/40",
+      textClass: "text-indigo-800",
+      content: (
+        <>
+          This design is currently in production. Estimated dispatch begins in{" "}
+          <strong>{specifications.leadTime || "upcoming schedule"}</strong>.
+          Reserve your piece today to guarantee allocation from our upcoming
+          atelier release.
+        </>
+      ),
+    },
+    "Limited Edition": {
+      containerClass: "bg-amber-50/50 border-amber-200/40",
+      textClass: "text-amber-800",
+      content: (
+        <>
+          {furniture.stock && furniture.stock > 0 ? (
+            <>
+              Only <strong>{furniture.stock}</strong>{" "}
+              {furniture.stock === 1 ? "piece" : "pieces"} remaining of this
+              Limited Edition design.{" "}
+            </>
+          ) : (
+            <>This limited edition design has rare availability. </>
+          )}
+          Submit your order request to secure your allocation.
+        </>
+      ),
+    },
+    "In Stock": {
+      containerClass: "bg-zinc-50 border border-border/20",
+      textClass: "text-muted-foreground",
+      content: (
+        <>
+          This product is currently available in our primary atelier collection
+          and prepared for immediate white-glove dispatch.{" "}
+          {furniture.stock && furniture.stock > 0 ? (
+            <>
+              Only <strong>{furniture.stock}</strong>{" "}
+              {furniture.stock === 1 ? "unit remains" : "units remain"}.{" "}
+            </>
+          ) : null}
+          Place your order request to reserve your piece.
+        </>
+      ),
+    },
+  };
 
   // Validation
   const validateStep = (currentStep: number) => {
@@ -75,9 +184,11 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
         } else if (!/\S+@\S+\.\S+/.test(customerInfo.email)) {
           newErrors.email = "Invalid email format";
         }
-        if (!customerInfo.phone.trim()) newErrors.phone = "Phone number is required";
+        if (!customerInfo.phone.trim())
+          newErrors.phone = "Phone number is required";
       } else if (currentStep === 3) {
-        if (!deliveryInfo.address.trim()) newErrors.address = "Address is required";
+        if (!deliveryInfo.address.trim())
+          newErrors.address = "Address is required";
         if (!deliveryInfo.city.trim()) newErrors.city = "City is required";
         if (!deliveryInfo.zip.trim()) newErrors.zip = "Postal code is required";
       }
@@ -114,7 +225,9 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
       customerInfo,
       deliveryInfo: isOutOfStock ? null : deliveryInfo,
       interestReason: isOutOfStock ? interestReason : null,
-      totalAmount: isOutOfStock ? "$0" : totalPriceFormatted,
+      subtotal: isOutOfStock ? "$0" : totalPriceFormatted,
+      shippingFee: isOutOfStock ? "$0" : shippingFormatted,
+      totalAmount: isOutOfStock ? "$0" : grandTotalFormatted,
       orderDate: new Date().toISOString(),
     });
 
@@ -167,12 +280,20 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
       {/* Slide-over Content Container */}
       <div className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
         <div className="w-screen max-w-md sm:max-w-lg bg-background border-l border-border/20 shadow-2xl flex flex-col h-full relative z-10 animate-in slide-in-from-right duration-500 ease-out">
-          
           {/* Header */}
-          <div className="px-6 py-6 border-b border-border/10 flex items-center justify-between">
-            <h2 className="text-xl font-bold font-heading tracking-tight text-foreground">
-              {getPanelTitle()}
-            </h2>
+          <div className="p-6 border-b border-border/10 flex items-center justify-between">
+            {/* Titles */}
+            <div>
+              <span className="text-[9px] font-mono tracking-widest text-liminal-secondary uppercase font-bold block">
+                Exhibition Service
+              </span>
+
+              <h2 className="text-lg font-bold font-heading tracking-tight text-foreground uppercase">
+                {getPanelTitle()}
+              </h2>
+            </div>
+
+            {/* Close Button */}
             <button
               onClick={handleClose}
               className="p-2 rounded-full hover:bg-zinc-100 text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
@@ -184,36 +305,48 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
           {/* Product Quick View Card */}
           <div className="px-6 py-4 bg-zinc-50 border-b border-border/10 flex gap-4 items-center">
-            <div className="relative size-16 bg-background rounded-xs border border-border/20 overflow-hidden shrink-0">
-              <Image src={thumbnail} alt={title} fill className="object-cover" />
+            {/* product image */}
+            <div className="relative size-16 bg-background rounded border border-border/20 overflow-hidden shrink-0">
+              <Image
+                src={thumbnail}
+                alt={title}
+                fill
+                className="object-cover rounded"
+              />
             </div>
-            <div className="min-w-0 flex-1">
-              <h3 className="font-heading font-bold text-base truncate">{title}</h3>
-              <p className="text-xs text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
+
+            {/* product title */}
+            <div className="flex-1">
+              <h3 className="font-heading font-bold truncate uppercase">
+                {title}
+              </h3>
+              <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
                 Status: {status}
               </p>
             </div>
+
+            {/* price */}
             <div className="text-right">
-              <span className="text-sm font-bold text-liminal-secondary block">
-                {price}
-              </span>
-              <span className="text-[10px] text-muted-foreground font-mono">
-                {isOutOfStock ? "MSRP" : "Unit Price"}
-              </span>
+              <h3 className="font-heading font-bold">{price}</h3>
+              <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
+                {isOutOfStock ? "MSRP" : "Per Unit"}
+              </p>
             </div>
           </div>
 
           {/* Form Content Scrollable */}
           <div className="flex-1 overflow-y-auto px-6 py-8">
             {isSuccess ? (
-              /* SUCCESS STATE */
+              /* Success State */
               <div className="flex flex-col items-center justify-center text-center h-full py-10 space-y-6">
                 <div className="size-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500">
                   <Check className="size-8" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold font-heading">
-                    {isOutOfStock ? "Interest Registered" : "Order Request Received"}
+                    {isOutOfStock
+                      ? "Interest Registered"
+                      : "Order Request Received"}
                   </h3>
                   <p className="text-sm text-muted-foreground font-light max-w-sm">
                     {isOutOfStock
@@ -222,37 +355,49 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                   </p>
                 </div>
                 <div className="pt-4">
-                  <LiminalButton onClick={handleClose} variant="outline" showIcon={false}>
+                  <LiminalButton
+                    onClick={handleClose}
+                    variant="outline"
+                    showIcon={false}
+                  >
                     Return to Product Details
                   </LiminalButton>
                 </div>
               </div>
             ) : (
-              /* MULTI STEP FORM */
+              /* Multi Step Form */
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Step Indicator */}
-                <div className="flex items-center justify-between text-xs font-mono tracking-widest text-muted-foreground/60 mb-6 uppercase">
-                  <span>Step {step} of {totalSteps}</span>
+                <div className="flex items-center justify-between text-xs font-mono tracking-wider text-muted-foreground/60 mb-6 uppercase">
+                  <span>
+                    Step {step} of {totalSteps}
+                  </span>
+
                   <div className="flex gap-1">
                     {Array.from({ length: totalSteps }).map((_, i) => (
                       <div
                         key={i}
                         className={`h-1 w-6 rounded-full transition-all duration-300 ${
-                          step >= i + 1 ? "bg-liminal-secondary" : "bg-border/30"
+                          step >= i + 1
+                            ? "bg-liminal-secondary"
+                            : "bg-border/30"
                         }`}
                       />
                     ))}
                   </div>
                 </div>
 
-                {/* OUT OF STOCK FORM FLOW */}
+                {/* Out Of Stock Form Flow */}
                 {isOutOfStock && (
                   <>
                     {step === 1 && (
                       <div className="space-y-5">
                         <div className="p-4 bg-amber-50/50 border border-amber-200/40 rounded-sm mb-4">
                           <p className="text-[12px] font-light text-amber-800 leading-relaxed">
-                            This Limited Edition piece is currently out of stock. Leave your contact details below to join the priority waitlist and receive notifications of potential re-releases or cancellations.
+                            This Limited Edition piece is currently out of
+                            stock. Leave your contact details below to join the
+                            priority waitlist and receive notifications of
+                            potential re-releases or cancellations.
                           </p>
                         </div>
 
@@ -263,12 +408,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="name"
                               value={customerInfo.name}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, name: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  name: e.target.value,
+                                }))
                               }
                               placeholder="John Doe"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.name && <FieldError>{errors.name}</FieldError>}
+                            {errors.name && (
+                              <FieldError>{errors.name}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -280,22 +430,31 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               type="email"
                               value={customerInfo.email}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, email: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  email: e.target.value,
+                                }))
                               }
                               placeholder="john@example.com"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.email && <FieldError>{errors.email}</FieldError>}
+                            {errors.email && (
+                              <FieldError>{errors.email}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
                         <Field invalid={!!errors.interestReason}>
-                          <FieldLabel htmlFor="reason">Why are you interested in this piece?</FieldLabel>
+                          <FieldLabel htmlFor="reason">
+                            Why are you interested in this piece?
+                          </FieldLabel>
                           <FieldContent>
                             <Textarea
                               id="reason"
                               value={interestReason}
-                              onChange={(e) => setInterestReason(e.target.value)}
+                              onChange={(e) =>
+                                setInterestReason(e.target.value)
+                              }
                               placeholder="Let us know if you require a specific dimensions, or material variations."
                               className="min-h-24 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
@@ -314,19 +473,29 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                         </h4>
                         <div className="bg-zinc-50 border border-border/20 rounded-sm p-5 space-y-4 text-sm font-light">
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">Product</span>
-                            <span className="font-semibold text-foreground uppercase">{title}</span>
+                            <span className="text-muted-foreground">
+                              Product
+                            </span>
+                            <span className="font-semibold text-foreground uppercase">
+                              {title}
+                            </span>
                           </div>
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
                             <span className="text-muted-foreground">Name</span>
-                            <span className="font-semibold text-foreground">{customerInfo.name}</span>
+                            <span className="font-semibold text-foreground">
+                              {customerInfo.name}
+                            </span>
                           </div>
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
                             <span className="text-muted-foreground">Email</span>
-                            <span className="font-semibold text-foreground">{customerInfo.email}</span>
+                            <span className="font-semibold text-foreground">
+                              {customerInfo.email}
+                            </span>
                           </div>
                           <div className="flex flex-col gap-1.5">
-                            <span className="text-muted-foreground">Notes / Specifications</span>
+                            <span className="text-muted-foreground">
+                              Notes / Specifications
+                            </span>
                             <p className="text-foreground bg-background p-3 rounded-xs border border-border/10 text-xs italic">
                               {interestReason}
                             </p>
@@ -337,82 +506,114 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                   </>
                 )}
 
-                {/* IN STOCK / MADE TO ORDER / PRE-ORDER FLOW */}
+                {/* In Stock / Limited Edition / Made to Order / Pre-Order Flow */}
                 {!isOutOfStock && (
                   <>
                     {/* Step 1: Product Config & Lead Notice */}
                     {step === 1 && (
                       <div className="space-y-6">
-                        {status === "Made to Order" && (
-                          <div className="p-4 bg-blue-50/50 border border-blue-200/40 rounded-sm">
-                            <p className="text-[12px] font-light text-blue-800 leading-relaxed">
-                              This piece is handcrafted individually. The estimated craftsmanship period is{" "}
-                              <strong>{specifications.leadTime}</strong>. Place your commission request below, and our designers will align with you on requirements.
+                        {/* Status Notice */}
+                        {statusNotices[status] && (
+                          <div
+                            className={cn(
+                              "p-4 border rounded-sm",
+                              statusNotices[status].containerClass,
+                            )}
+                          >
+                            <p
+                              className={cn(
+                                "text-[12px] font-light leading-relaxed",
+                                statusNotices[status].textClass,
+                              )}
+                            >
+                              {statusNotices[status].content}
                             </p>
                           </div>
                         )}
 
-                        {status === "Pre-Order" && (
-                          <div className="p-4 bg-indigo-50/50 border border-indigo-200/40 rounded-sm">
-                            <p className="text-[12px] font-light text-indigo-800 leading-relaxed">
-                              This design is currently in production. Estimated shipping starts in{" "}
-                              <strong>{specifications.leadTime}</strong>. Pre-order now to secure allocation from our next batch.
-                            </p>
-                          </div>
-                        )}
-
-                        {status === "Limited Edition" && (
-                          <div className="p-4 bg-amber-50/50 border border-amber-200/40 rounded-sm">
-                            <p className="text-[12px] font-light text-amber-800 leading-relaxed">
-                              Only <strong>{furniture.stock}</strong> pieces of this Limited Edition design remain. Secure your unit by submitting your order request today.
-                            </p>
-                          </div>
-                        )}
-
-                        {status === "In Stock" && (
-                          <div className="p-4 bg-emerald-50/50 border border-emerald-200/40 rounded-sm">
-                            <p className="text-[12px] font-light text-emerald-800 leading-relaxed">
-                              This item is in stock and ready for immediate dispatch from our primary atelier.
-                            </p>
-                          </div>
-                        )}
-
-                        <div className="space-y-4">
-                          <label className="text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground/60 block">
-                            Quantity Selection
+                        {/* Quantity */}
+                        <div className="space-y-3">
+                          <label className="text-xs font-mono font-semibold tracking-wider text-muted-foreground/60 uppercase inline-block">
+                            Choose Quantity
                           </label>
+
                           <div className="flex items-center gap-4">
+                            {/* Minus Button */}
                             <button
                               type="button"
-                              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                              className="size-10 border border-border/40 hover:border-border rounded-full flex items-center justify-center font-bold text-lg cursor-pointer transition-colors"
+                              onClick={() =>
+                                setQuantity((q) => Math.max(1, q - 1))
+                              }
+                              disabled={quantity <= 1}
+                              className="w-9 h-9 border border-border/40 hover:border-border rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                             >
-                              -
+                              <Minus className="size-4" />
                             </button>
-                            <span className="text-xl font-heading font-bold w-8 text-center">{quantity}</span>
+
+                            {/* Display Quantity */}
+                            <p className="text-xl font-heading font-bold w-6 text-center">
+                              {quantity}
+                            </p>
+
+                            {/* Plus Button */}
                             <button
                               type="button"
                               onClick={() =>
                                 setQuantity((q) =>
-                                  status === "Limited Edition" ? Math.min(furniture.stock, q + 1) : q + 1
+                                  furniture.stock && furniture.stock > 0
+                                    ? Math.min(furniture.stock, q + 1)
+                                    : q + 1,
                                 )
                               }
-                              className="size-10 border border-border/40 hover:border-border rounded-full flex items-center justify-center font-bold text-lg cursor-pointer transition-colors"
+                              disabled={
+                                Boolean(
+                                  furniture.stock && furniture.stock > 0,
+                                ) && quantity >= furniture.stock
+                              }
+                              className="w-9 h-9 border border-border/40 hover:border-border rounded-full flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                             >
-                              +
+                              <Plus className="size-4.5" />
                             </button>
+
+                            {/* Max Quantity */}
+                            {Boolean(
+                              furniture.stock && furniture.stock > 0,
+                            ) && (
+                              <span className="text-xs font-mono text-muted-foreground ml-1.5">
+                                Max: {furniture.stock}
+                              </span>
+                            )}
                           </div>
                         </div>
 
-                        <div className="bg-zinc-50 border border-border/20 rounded-sm p-5 space-y-3.5">
-                          <div className="flex justify-between items-center text-sm">
-                            <span className="text-muted-foreground font-light">Subtotal ({quantity} x {price})</span>
-                            <span className="font-bold text-foreground">{totalPriceFormatted}</span>
-                          </div>
-                          <div className="flex justify-between items-center text-[11px] font-mono border-t border-border/10 pt-3">
-                            <span className="text-muted-foreground uppercase">Estimated Shipping</span>
-                            <span className="text-foreground uppercase">Calculated in next step</span>
-                          </div>
+                        {/* Order Summary */}
+                        <div className="bg-zinc-50 border border-border/20 rounded-sm p-5 space-y-3.5 text-sm">
+                          <h3 className="text-xl font-semibold pb-2 border-b border-border/60 border-dashed">
+                            Order Summary
+                          </h3>
+
+                          {/* Order Summary Items */}
+                          {orderSummaryItems.map((item) => (
+                            <div
+                              key={item.label}
+                              className={cn(
+                                "flex justify-between items-center",
+                                item.isTotal &&
+                                  "text-base pt-2 border-t border-border/60 border-dashed",
+                              )}
+                            >
+                              <label
+                                className={cn(
+                                  item.isTotal
+                                    ? "font-semibold"
+                                    : "text-muted-foreground",
+                                )}
+                              >
+                                {item.label}
+                              </label>
+                              <p className="font-semibold">{item.value}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -427,12 +628,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="name"
                               value={customerInfo.name}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, name: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  name: e.target.value,
+                                }))
                               }
                               placeholder="John Doe"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.name && <FieldError>{errors.name}</FieldError>}
+                            {errors.name && (
+                              <FieldError>{errors.name}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -444,12 +650,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               type="email"
                               value={customerInfo.email}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, email: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  email: e.target.value,
+                                }))
                               }
                               placeholder="john@example.com"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.email && <FieldError>{errors.email}</FieldError>}
+                            {errors.email && (
+                              <FieldError>{errors.email}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -460,12 +671,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="phone"
                               value={customerInfo.phone}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, phone: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  phone: e.target.value,
+                                }))
                               }
                               placeholder="+1 (555) 000-0000"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.phone && <FieldError>{errors.phone}</FieldError>}
+                            {errors.phone && (
+                              <FieldError>{errors.phone}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
                       </div>
@@ -475,18 +691,25 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                     {step === 3 && (
                       <div className="space-y-5">
                         <Field invalid={!!errors.address}>
-                          <FieldLabel htmlFor="address">Shipping Street Address</FieldLabel>
+                          <FieldLabel htmlFor="address">
+                            Shipping Street Address
+                          </FieldLabel>
                           <FieldContent>
                             <Input
                               id="address"
                               value={deliveryInfo.address}
                               onChange={(e) =>
-                                setDeliveryInfo((prev) => ({ ...prev, address: e.target.value }))
+                                setDeliveryInfo((prev) => ({
+                                  ...prev,
+                                  address: e.target.value,
+                                }))
                               }
                               placeholder="123 Atelier Way"
                               className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
                             />
-                            {errors.address && <FieldError>{errors.address}</FieldError>}
+                            {errors.address && (
+                              <FieldError>{errors.address}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -498,40 +721,57 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                                 id="city"
                                 value={deliveryInfo.city}
                                 onChange={(e) =>
-                                  setDeliveryInfo((prev) => ({ ...prev, city: e.target.value }))
+                                  setDeliveryInfo((prev) => ({
+                                    ...prev,
+                                    city: e.target.value,
+                                  }))
                                 }
                                 placeholder="New York"
                                 className="h-10 border-border/50 focus-visible:border-liminal-secondary"
                               />
-                              {errors.city && <FieldError>{errors.city}</FieldError>}
+                              {errors.city && (
+                                <FieldError>{errors.city}</FieldError>
+                              )}
                             </FieldContent>
                           </Field>
 
                           <Field invalid={!!errors.zip}>
-                            <FieldLabel htmlFor="zip">Postal / ZIP Code</FieldLabel>
+                            <FieldLabel htmlFor="zip">
+                              Postal / ZIP Code
+                            </FieldLabel>
                             <FieldContent>
                               <Input
                                 id="zip"
                                 value={deliveryInfo.zip}
                                 onChange={(e) =>
-                                  setDeliveryInfo((prev) => ({ ...prev, zip: e.target.value }))
+                                  setDeliveryInfo((prev) => ({
+                                    ...prev,
+                                    zip: e.target.value,
+                                  }))
                                 }
                                 placeholder="10001"
                                 className="h-10 border-border/50 focus-visible:border-liminal-secondary"
                               />
-                              {errors.zip && <FieldError>{errors.zip}</FieldError>}
+                              {errors.zip && (
+                                <FieldError>{errors.zip}</FieldError>
+                              )}
                             </FieldContent>
                           </Field>
                         </div>
 
                         <Field>
-                          <FieldLabel htmlFor="notes">Delivery Instructions / Bespoke Notes (Optional)</FieldLabel>
+                          <FieldLabel htmlFor="notes">
+                            Delivery Instructions / Bespoke Notes (Optional)
+                          </FieldLabel>
                           <FieldContent>
                             <Textarea
                               id="notes"
                               value={deliveryInfo.notes}
                               onChange={(e) =>
-                                setDeliveryInfo((prev) => ({ ...prev, notes: e.target.value }))
+                                setDeliveryInfo((prev) => ({
+                                  ...prev,
+                                  notes: e.target.value,
+                                }))
                               }
                               placeholder="Include details regarding floor height, freight elevator, or dimensional revisions."
                               className="min-h-24 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
@@ -550,26 +790,60 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
                         <div className="border border-border/20 rounded-sm p-5 bg-zinc-50 space-y-4 text-sm font-light">
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">Product</span>
-                            <span className="font-semibold text-foreground uppercase truncate max-w-[200px]">
+                            <span className="text-muted-foreground">
+                              Product
+                            </span>
+                            <span className="font-semibold text-foreground uppercase truncate max-w-50">
                               {title}
                             </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">Allocation (Units)</span>
-                            <span className="font-semibold text-foreground font-mono">{quantity}</span>
+                            <span className="text-muted-foreground">
+                              Allocation (Units)
+                            </span>
+                            <span className="font-semibold text-foreground font-mono">
+                              {quantity}
+                            </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">Commission Valuation</span>
-                            <span className="font-bold text-liminal-secondary font-heading text-base">
+                            <span className="text-muted-foreground">
+                              Subtotal
+                            </span>
+                            <span className="font-semibold text-foreground font-mono">
                               {totalPriceFormatted}
                             </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">Customer Contact</span>
+                            <span className="text-muted-foreground">
+                              Shipping Fee
+                            </span>
+                            <span
+                              className={`font-semibold font-mono ${
+                                shippingFee === 0
+                                  ? "text-emerald-600"
+                                  : "text-foreground"
+                              }`}
+                            >
+                              {shippingFormatted}
+                            </span>
+                          </div>
+
+                          <div className="flex justify-between border-b border-border/10 pb-2">
+                            <span className="text-muted-foreground">
+                              Total Valuation
+                            </span>
+                            <span className="font-bold text-liminal-secondary font-heading text-base">
+                              {grandTotalFormatted}
+                            </span>
+                          </div>
+
+                          <div className="flex justify-between border-b border-border/10 pb-2">
+                            <span className="text-muted-foreground">
+                              Customer Contact
+                            </span>
                             <span className="font-semibold text-foreground text-right">
                               {customerInfo.name} <br />
                               <span className="text-xs text-muted-foreground font-mono lowercase font-normal">
@@ -579,15 +853,20 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                           </div>
 
                           <div className="flex flex-col gap-1">
-                            <span className="text-muted-foreground">Shipping Destination</span>
+                            <span className="text-muted-foreground">
+                              Shipping Destination
+                            </span>
                             <p className="font-semibold text-foreground">
-                              {deliveryInfo.address}, {deliveryInfo.city} ({deliveryInfo.zip})
+                              {deliveryInfo.address}, {deliveryInfo.city} (
+                              {deliveryInfo.zip})
                             </p>
                           </div>
 
                           {deliveryInfo.notes.trim() && (
                             <div className="flex flex-col gap-1">
-                              <span className="text-muted-foreground">Bespoke instructions</span>
+                              <span className="text-muted-foreground">
+                                Bespoke instructions
+                              </span>
                               <p className="text-foreground p-3 rounded-xs bg-background border border-border/10 text-xs italic">
                                 {deliveryInfo.notes}
                               </p>
@@ -597,7 +876,10 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
                         <div className="p-4 bg-zinc-100 rounded-sm">
                           <p className="text-[11px] font-light text-muted-foreground leading-normal">
-                            Note: This is a commission request placement. No transaction takes place immediately. Our team will contact you directly to discuss shipping logistics, trade pricing alignments, and payment schedules.
+                            Note: This is a commission request placement. No
+                            transaction takes place immediately. Our team will
+                            contact you directly to discuss shipping logistics,
+                            trade pricing alignments, and payment schedules.
                           </p>
                         </div>
                       </div>
@@ -605,26 +887,29 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                   </>
                 )}
 
-                {/* Navigation Buttons Block */}
-                <div className="flex items-center gap-4 pt-6 border-t border-border/10">
+                {/* Navigation Buttons */}
+                <div className="flex items-center gap-4 pt-4">
                   {step > 1 && (
-                    <button
+                    <LiminalButton
                       type="button"
                       onClick={handlePrev}
-                      className="h-12 px-6 border border-border/60 hover:bg-zinc-50 rounded-full flex items-center justify-center gap-2 cursor-pointer text-sm font-semibold transition-all duration-300"
+                      variant="outline"
+                      showIcon={false}
                     >
-                      <ChevronLeft className="size-4" /> Back
-                    </button>
+                      <ChevronLeft className="size-4 mr-1 inline-block" /> Back
+                    </LiminalButton>
                   )}
 
                   {step < totalSteps ? (
-                    <button
+                    <LiminalButton
                       type="button"
                       onClick={handleNext}
-                      className="flex-1 h-12 bg-foreground text-background hover:bg-foreground/90 rounded-full flex items-center justify-center gap-2 cursor-pointer text-sm font-semibold transition-all duration-300 ml-auto"
+                      icon={ChevronRight}
+                      animateIcon={false}
+                      className="flex-1 ml-auto"
                     >
-                      Continue <ChevronRight className="size-4" />
-                    </button>
+                      Continue
+                    </LiminalButton>
                   ) : (
                     <LiminalButton
                       type="submit"
@@ -639,7 +924,6 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
               </form>
             )}
           </div>
-
         </div>
       </div>
     </div>

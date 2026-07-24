@@ -41,8 +41,6 @@ const getSteps = (status: FurnitureStatus) => {
   return ["product", "information", "delivery", "confirmation"] as const;
 };
 
-
-
 // Panel title by status
 const panelTitles: Record<FurnitureStatus, string> = {
   "In Stock": "Complete Your Order",
@@ -130,7 +128,7 @@ const FurnitureOrderPanel = ({
         customer: { ...prev.customer, [field]: value },
       }));
     },
-    []
+    [],
   );
 
   const updateDelivery = useCallback(
@@ -140,7 +138,7 @@ const FurnitureOrderPanel = ({
         delivery: { ...prev.delivery, [field]: value },
       }));
     },
-    []
+    [],
   );
 
   // Handle quantity
@@ -202,7 +200,7 @@ const FurnitureOrderPanel = ({
       <div
         className={cn(
           "fixed inset-0 z-50 bg-foreground/40 backdrop-blur-sm transition-opacity duration-500",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
         )}
         onClick={onClose}
       />
@@ -211,15 +209,18 @@ const FurnitureOrderPanel = ({
       <div
         className={cn(
           "fixed top-0 right-0 z-50 h-full w-full sm:w-120 bg-background shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col",
-          isOpen ? "translate-x-0" : "translate-x-full"
+          isOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
         {/* Panel Header */}
         <div className="shrink-0 p-6 border-b border-border/30">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-[10px] font-mono font-bold text-muted-foreground/50 tracking-[0.25em] uppercase">
+            <h3
+              className="text-lg font-bold font-heading tracking-tight text-foreground"
+            >
               {panelTitles[furniture.status]}
-            </span>
+            </h3>
+
             <button
               onClick={onClose}
               className="w-8 h-8 rounded-full border border-border/60 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all duration-300 cursor-pointer"
@@ -262,7 +263,7 @@ const FurnitureOrderPanel = ({
                       "h-1 flex-1 rounded-full transition-colors duration-500",
                       index <= currentStepIndex
                         ? "bg-liminal-secondary"
-                        : "bg-border/40"
+                        : "bg-border/40",
                     )}
                   />
                 </div>
@@ -326,7 +327,8 @@ const FurnitureOrderPanel = ({
                   {furniture.status === "Limited Edition" && (
                     <div className="p-4 bg-amber-50 border border-amber-200/50 rounded-sm">
                       <p className="text-xs font-semibold text-amber-800">
-                        Limited Edition - Only {furniture.stock} pieces remaining
+                        Limited Edition - Only {furniture.stock} pieces
+                        remaining
                       </p>
                     </div>
                   )}

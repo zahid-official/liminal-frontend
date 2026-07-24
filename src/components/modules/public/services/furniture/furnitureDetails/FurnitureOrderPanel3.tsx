@@ -4,7 +4,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { IFurniture } from "../furnitureData";
-import { Field, FieldLabel, FieldContent, FieldError } from "@/components/ui/field";
+import {
+  Field,
+  FieldLabel,
+  FieldContent,
+  FieldError,
+} from "@/components/ui/field";
 import LiminalButton from "@/components/shared/LiminalButton";
 
 interface FurnitureOrderPanelProps {
@@ -13,7 +18,11 @@ interface FurnitureOrderPanelProps {
   furniture: IFurniture;
 }
 
-const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanelProps) => {
+const FurnitureOrderPanel = ({
+  isOpen,
+  onClose,
+  furniture,
+}: FurnitureOrderPanelProps) => {
   const { title, price, thumbnail, status, specifications } = furniture;
 
   // Form State
@@ -70,9 +79,11 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
         } else if (!/\S+@\S+\.\S+/.test(customerInfo.email)) {
           newErrors.email = "Invalid email format";
         }
-        if (!customerInfo.phone.trim()) newErrors.phone = "Phone number is required";
+        if (!customerInfo.phone.trim())
+          newErrors.phone = "Phone number is required";
       } else if (currentStep === 3) {
-        if (!deliveryInfo.address.trim()) newErrors.address = "Address is required";
+        if (!deliveryInfo.address.trim())
+          newErrors.address = "Address is required";
         if (!deliveryInfo.city.trim()) newErrors.city = "City is required";
         if (!deliveryInfo.zip.trim()) newErrors.zip = "Postal code is required";
       }
@@ -118,8 +129,10 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
   if (!isOpen) return null;
 
   // Underline Input class style (blueprint/drafting feel)
-  const inputClass = "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0";
-  const textareaClass = "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none min-h-20 border-t-0 border-x-0 resize-none";
+  const inputClass =
+    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0";
+  const textareaClass =
+    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none min-h-20 border-t-0 border-x-0 resize-none";
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -132,7 +145,6 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
       {/* Slide-over Container */}
       <div className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
         <div className="w-screen max-w-md sm:max-w-lg bg-background border-l border-border/20 shadow-2xl flex flex-col h-full relative z-10 animate-in slide-in-from-right duration-500 ease-out">
-          
           {/* Header */}
           <div className="px-6 py-6 border-b border-border/10 flex items-center justify-between">
             <div>
@@ -155,10 +167,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
           {/* Product Header */}
           <div className="px-6 py-4 bg-zinc-50 border-b border-border/10 flex gap-4 items-center">
             <div className="relative size-14 bg-background rounded-xs border border-border/20 overflow-hidden shrink-0">
-              <Image src={thumbnail} alt={title} fill className="object-cover" />
+              <Image
+                src={thumbnail}
+                alt={title}
+                fill
+                className="object-cover"
+              />
             </div>
             <div className="min-w-0 flex-1">
-              <h3 className="font-heading font-bold text-base truncate uppercase">{title}</h3>
+              <h3 className="font-heading font-bold text-base truncate uppercase">
+                {title}
+              </h3>
               <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
                 STATUS: {status}
               </p>
@@ -191,7 +210,11 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                   </p>
                 </div>
                 <div className="pt-4">
-                  <LiminalButton onClick={handleClose} variant="outline" showIcon={false}>
+                  <LiminalButton
+                    onClick={handleClose}
+                    variant="outline"
+                    showIcon={false}
+                  >
                     Return to Exhibition
                   </LiminalButton>
                 </div>
@@ -200,13 +223,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Step indicators */}
                 <div className="flex items-center justify-between text-[10px] font-mono tracking-widest text-muted-foreground/60 mb-6 uppercase">
-                  <span>METRIC {step} OF {totalSteps}</span>
+                  <span>
+                    METRIC {step} OF {totalSteps}
+                  </span>
                   <div className="flex gap-1.5">
                     {Array.from({ length: totalSteps }).map((_, i) => (
                       <div
                         key={i}
                         className={`h-0.5 w-6 rounded-full transition-all duration-300 ${
-                          step >= i + 1 ? "bg-liminal-secondary" : "bg-border/30"
+                          step >= i + 1
+                            ? "bg-liminal-secondary"
+                            : "bg-border/30"
                         }`}
                       />
                     ))}
@@ -220,7 +247,10 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                       <div className="space-y-6">
                         <div className="p-4 bg-amber-50/40 border border-amber-200/25 rounded-xs">
                           <p className="text-[11px] font-light text-amber-800 leading-relaxed">
-                            This design is currently out of stock. Join the prioritized private collector waitlist below to receive notifications on allocation cancelations or upcoming collection drops.
+                            This design is currently out of stock. Join the
+                            prioritized private collector waitlist below to
+                            receive notifications on allocation cancelations or
+                            upcoming collection drops.
                           </p>
                         </div>
 
@@ -231,12 +261,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="name"
                               value={customerInfo.name}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, name: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  name: e.target.value,
+                                }))
                               }
                               placeholder="Name"
                               className={inputClass}
                             />
-                            {errors.name && <FieldError>{errors.name}</FieldError>}
+                            {errors.name && (
+                              <FieldError>{errors.name}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -248,22 +283,31 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               type="email"
                               value={customerInfo.email}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, email: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  email: e.target.value,
+                                }))
                               }
                               placeholder="Email Address"
                               className={inputClass}
                             />
-                            {errors.email && <FieldError>{errors.email}</FieldError>}
+                            {errors.email && (
+                              <FieldError>{errors.email}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
                         <Field invalid={!!errors.interestReason}>
-                          <FieldLabel htmlFor="reason">Describe your collection interest</FieldLabel>
+                          <FieldLabel htmlFor="reason">
+                            Describe your collection interest
+                          </FieldLabel>
                           <FieldContent>
                             <textarea
                               id="reason"
                               value={interestReason}
-                              onChange={(e) => setInterestReason(e.target.value)}
+                              onChange={(e) =>
+                                setInterestReason(e.target.value)
+                              }
                               placeholder="Describe your design interest..."
                               className={textareaClass}
                             />
@@ -282,19 +326,33 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                         </h4>
                         <div className="border border-border/20 rounded-xs p-5 bg-zinc-50 space-y-4 text-sm font-light">
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">DESIGN REFERENCE</span>
-                            <span className="font-semibold text-foreground uppercase">{title}</span>
+                            <span className="text-muted-foreground">
+                              DESIGN REFERENCE
+                            </span>
+                            <span className="font-semibold text-foreground uppercase">
+                              {title}
+                            </span>
                           </div>
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">COLLECTOR NAME</span>
-                            <span className="font-semibold text-foreground">{customerInfo.name}</span>
+                            <span className="text-muted-foreground">
+                              COLLECTOR NAME
+                            </span>
+                            <span className="font-semibold text-foreground">
+                              {customerInfo.name}
+                            </span>
                           </div>
                           <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">EMAIL DESTINATION</span>
-                            <span className="font-semibold text-foreground">{customerInfo.email}</span>
+                            <span className="text-muted-foreground">
+                              EMAIL DESTINATION
+                            </span>
+                            <span className="font-semibold text-foreground">
+                              {customerInfo.email}
+                            </span>
                           </div>
                           <div className="flex flex-col gap-1.5">
-                            <span className="text-muted-foreground">NOTES LOG</span>
+                            <span className="text-muted-foreground">
+                              NOTES LOG
+                            </span>
                             <p className="text-foreground bg-background p-3 rounded-xs border border-border/10 text-xs italic">
                               {interestReason}
                             </p>
@@ -314,7 +372,10 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                         {status === "Made to Order" && (
                           <div className="p-4 bg-zinc-50 border border-border/20 rounded-xs">
                             <p className="text-[11px] font-light text-muted-foreground leading-relaxed">
-                              This piece is made to order in our primary atelier. Handcrafting requires a duration of approximately <strong>{specifications.leadTime}</strong>.
+                              This piece is made to order in our primary
+                              atelier. Handcrafting requires a duration of
+                              approximately{" "}
+                              <strong>{specifications.leadTime}</strong>.
                             </p>
                           </div>
                         )}
@@ -322,7 +383,9 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                         {status === "Pre-Order" && (
                           <div className="p-4 bg-zinc-50 border border-border/20 rounded-xs">
                             <p className="text-[11px] font-light text-muted-foreground leading-relaxed">
-                              This item is in production. Estimated shipping allocations start within <strong>{specifications.leadTime}</strong>.
+                              This item is in production. Estimated shipping
+                              allocations start within{" "}
+                              <strong>{specifications.leadTime}</strong>.
                             </p>
                           </div>
                         )}
@@ -334,17 +397,23 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                           <div className="flex items-center gap-4">
                             <button
                               type="button"
-                              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                              onClick={() =>
+                                setQuantity((q) => Math.max(1, q - 1))
+                              }
                               className="size-10 border border-border/30 hover:border-foreground rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-colors"
                             >
                               -
                             </button>
-                            <span className="text-lg font-heading font-bold w-6 text-center">{quantity}</span>
+                            <span className="text-lg font-heading font-bold w-6 text-center">
+                              {quantity}
+                            </span>
                             <button
                               type="button"
                               onClick={() =>
                                 setQuantity((q) =>
-                                  status === "Limited Edition" ? Math.min(furniture.stock, q + 1) : q + 1
+                                  status === "Limited Edition"
+                                    ? Math.min(furniture.stock, q + 1)
+                                    : q + 1,
                                 )
                               }
                               className="size-10 border border-border/30 hover:border-foreground rounded-full flex items-center justify-center font-bold text-sm cursor-pointer transition-colors"
@@ -356,12 +425,20 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
                         <div className="bg-zinc-50 border border-border/20 rounded-xs p-5 space-y-3.5">
                           <div className="flex justify-between items-center text-sm">
-                            <span className="text-muted-foreground font-light">VALUATION VALUE</span>
-                            <span className="font-bold text-foreground font-heading text-lg">{totalPriceFormatted}</span>
+                            <span className="text-muted-foreground font-light">
+                              VALUATION VALUE
+                            </span>
+                            <span className="font-bold text-foreground font-heading text-lg">
+                              {totalPriceFormatted}
+                            </span>
                           </div>
                           <div className="flex justify-between items-center text-[10px] font-mono border-t border-border/10 pt-3">
-                            <span className="text-muted-foreground uppercase">LOGISTICS TAX</span>
-                            <span className="text-foreground uppercase">CALCULATED IN NEXT SECTION</span>
+                            <span className="text-muted-foreground uppercase">
+                              LOGISTICS TAX
+                            </span>
+                            <span className="text-foreground uppercase">
+                              CALCULATED IN NEXT SECTION
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -377,12 +454,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="name"
                               value={customerInfo.name}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, name: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  name: e.target.value,
+                                }))
                               }
                               placeholder="Name"
                               className={inputClass}
                             />
-                            {errors.name && <FieldError>{errors.name}</FieldError>}
+                            {errors.name && (
+                              <FieldError>{errors.name}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -394,12 +476,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               type="email"
                               value={customerInfo.email}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, email: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  email: e.target.value,
+                                }))
                               }
                               placeholder="Email Address"
                               className={inputClass}
                             />
-                            {errors.email && <FieldError>{errors.email}</FieldError>}
+                            {errors.email && (
+                              <FieldError>{errors.email}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -410,12 +497,17 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                               id="phone"
                               value={customerInfo.phone}
                               onChange={(e) =>
-                                setCustomerInfo((prev) => ({ ...prev, phone: e.target.value }))
+                                setCustomerInfo((prev) => ({
+                                  ...prev,
+                                  phone: e.target.value,
+                                }))
                               }
                               placeholder="Phone Number"
                               className={inputClass}
                             />
-                            {errors.phone && <FieldError>{errors.phone}</FieldError>}
+                            {errors.phone && (
+                              <FieldError>{errors.phone}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
                       </div>
@@ -425,18 +517,25 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                     {step === 3 && (
                       <div className="space-y-5">
                         <Field invalid={!!errors.address}>
-                          <FieldLabel htmlFor="address">Destination Address</FieldLabel>
+                          <FieldLabel htmlFor="address">
+                            Destination Address
+                          </FieldLabel>
                           <FieldContent>
                             <input
                               id="address"
                               value={deliveryInfo.address}
                               onChange={(e) =>
-                                setDeliveryInfo((prev) => ({ ...prev, address: e.target.value }))
+                                setDeliveryInfo((prev) => ({
+                                  ...prev,
+                                  address: e.target.value,
+                                }))
                               }
                               placeholder="Street Address"
                               className={inputClass}
                             />
-                            {errors.address && <FieldError>{errors.address}</FieldError>}
+                            {errors.address && (
+                              <FieldError>{errors.address}</FieldError>
+                            )}
                           </FieldContent>
                         </Field>
 
@@ -448,40 +547,57 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                                 id="city"
                                 value={deliveryInfo.city}
                                 onChange={(e) =>
-                                  setDeliveryInfo((prev) => ({ ...prev, city: e.target.value }))
+                                  setDeliveryInfo((prev) => ({
+                                    ...prev,
+                                    city: e.target.value,
+                                  }))
                                 }
                                 placeholder="City"
                                 className={inputClass}
                               />
-                              {errors.city && <FieldError>{errors.city}</FieldError>}
+                              {errors.city && (
+                                <FieldError>{errors.city}</FieldError>
+                              )}
                             </FieldContent>
                           </Field>
 
                           <Field invalid={!!errors.zip}>
-                            <FieldLabel htmlFor="zip">ZIP / Postal Code</FieldLabel>
+                            <FieldLabel htmlFor="zip">
+                              ZIP / Postal Code
+                            </FieldLabel>
                             <FieldContent>
                               <input
                                 id="zip"
                                 value={deliveryInfo.zip}
                                 onChange={(e) =>
-                                  setDeliveryInfo((prev) => ({ ...prev, zip: e.target.value }))
+                                  setDeliveryInfo((prev) => ({
+                                    ...prev,
+                                    zip: e.target.value,
+                                  }))
                                 }
                                 placeholder="ZIP"
                                 className={inputClass}
                               />
-                              {errors.zip && <FieldError>{errors.zip}</FieldError>}
+                              {errors.zip && (
+                                <FieldError>{errors.zip}</FieldError>
+                              )}
                             </FieldContent>
                           </Field>
                         </div>
 
                         <Field>
-                          <FieldLabel htmlFor="notes">Customization Requirements (Optional)</FieldLabel>
+                          <FieldLabel htmlFor="notes">
+                            Customization Requirements (Optional)
+                          </FieldLabel>
                           <FieldContent>
                             <textarea
                               id="notes"
                               value={deliveryInfo.notes}
                               onChange={(e) =>
-                                setDeliveryInfo((prev) => ({ ...prev, notes: e.target.value }))
+                                setDeliveryInfo((prev) => ({
+                                  ...prev,
+                                  notes: e.target.value,
+                                }))
                               }
                               placeholder="Customization notes..."
                               className={textareaClass}
@@ -500,26 +616,36 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
                         <div className="border border-border/20 rounded-xs p-5 bg-zinc-50 space-y-4 text-sm font-light">
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">REFERENCE</span>
-                            <span className="font-semibold text-foreground uppercase truncate max-w-[200px]">
+                            <span className="text-muted-foreground">
+                              REFERENCE
+                            </span>
+                            <span className="font-semibold text-foreground uppercase truncate max-w-50">
                               {title}
                             </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">ALLOCATION</span>
-                            <span className="font-semibold text-foreground font-mono">{quantity} UNITS</span>
+                            <span className="text-muted-foreground">
+                              ALLOCATION
+                            </span>
+                            <span className="font-semibold text-foreground font-mono">
+                              {quantity} UNITS
+                            </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">VALUATION</span>
+                            <span className="text-muted-foreground">
+                              VALUATION
+                            </span>
                             <span className="font-bold text-liminal-secondary font-heading text-base">
                               {totalPriceFormatted}
                             </span>
                           </div>
 
                           <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">COLLECTOR</span>
+                            <span className="text-muted-foreground">
+                              COLLECTOR
+                            </span>
                             <span className="font-semibold text-foreground text-right">
                               {customerInfo.name} <br />
                               <span className="text-xs text-muted-foreground font-mono lowercase">
@@ -529,15 +655,20 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                           </div>
 
                           <div className="flex flex-col gap-1">
-                            <span className="text-muted-foreground">DESTINATION</span>
+                            <span className="text-muted-foreground">
+                              DESTINATION
+                            </span>
                             <p className="font-semibold text-foreground">
-                              {deliveryInfo.address}, {deliveryInfo.city} ({deliveryInfo.zip})
+                              {deliveryInfo.address}, {deliveryInfo.city} (
+                              {deliveryInfo.zip})
                             </p>
                           </div>
 
                           {deliveryInfo.notes.trim() && (
                             <div className="flex flex-col gap-1">
-                              <span className="text-muted-foreground">CUSTOM LOGS</span>
+                              <span className="text-muted-foreground">
+                                CUSTOM LOGS
+                              </span>
                               <p className="text-foreground p-3 rounded-xs bg-background border border-border/10 text-xs italic">
                                 {deliveryInfo.notes}
                               </p>
@@ -547,7 +678,10 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
 
                         <div className="p-4 bg-zinc-100 rounded-xs">
                           <p className="text-[10px] font-light text-muted-foreground leading-normal">
-                            Commission placement logs allocation placeholder values. Our collection representative will contact you directly to confirm transport coordinates, trades discount alignment, and invoice templates.
+                            Commission placement logs allocation placeholder
+                            values. Our collection representative will contact
+                            you directly to confirm transport coordinates,
+                            trades discount alignment, and invoice templates.
                           </p>
                         </div>
                       </div>
@@ -582,14 +716,15 @@ const FurnitureOrderPanel = ({ isOpen, onClose, furniture }: FurnitureOrderPanel
                       className="flex-1"
                       showIcon={false}
                     >
-                      {isOutOfStock ? "Register Interest" : "Confirm Commission"}
+                      {isOutOfStock
+                        ? "Register Interest"
+                        : "Confirm Commission"}
                     </LiminalButton>
                   )}
                 </div>
               </form>
             )}
           </div>
-
         </div>
       </div>
     </div>
