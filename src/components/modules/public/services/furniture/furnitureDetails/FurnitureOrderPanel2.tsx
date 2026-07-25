@@ -80,6 +80,13 @@ const FurnitureOrderPanel = ({
     maximumFractionDigits: 0,
   }).format(grandTotal);
 
+  // Customer Info Items
+  const customerInfoItems = [
+    { label: "Name", value: customerInfo.name },
+    { label: "Email", value: customerInfo.email },
+    { label: "Interest Reason", value: interestReason, isBlock: true },
+  ];
+
   // Order Summary Items
   const orderSummaryItems = [
     { label: "Quantity", value: quantity },
@@ -177,6 +184,18 @@ const FurnitureOrderPanel = ({
             </>
           ) : null}
           Place your order request to reserve your piece.
+        </>
+      ),
+    },
+    "Out of Stock": {
+      containerClass: "bg-red-50/50 border border-red-200/40",
+      textClass: "text-red-800",
+      content: (
+        <>
+          This product is currently out of stock in our primary atelier
+          collection. Leave your contact details below to join the priority
+          waitlist and receive notifications of potential re-releases or
+          cancellations.
         </>
       ),
     },
@@ -290,11 +309,28 @@ const FurnitureOrderPanel = ({
     }
   };
 
+  // Subtitle / Eyebrow text above panel title
+  const getPanelSubtitle = () => {
+    switch (status) {
+      case "In Stock":
+        return "Immediate Purchase";
+      case "Limited Edition":
+        return "Exclusive Edition";
+      case "Made to Order":
+        return "Custom Creation";
+      case "Pre-Order":
+        return "Early Reservation";
+      case "Out of Stock":
+      default:
+        return "Priority Waitlist";
+    }
+  };
+
   const inputClass =
-    "w-full bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15";
+    "w-full bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15 text-foreground";
 
   const textareaClass =
-    "w-full min-h-24 bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none resize-none border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15";
+    "w-full min-h-24 bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none resize-none border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15 text-foreground";
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -313,7 +349,7 @@ const FurnitureOrderPanel = ({
               {/* Titles */}
               <div>
                 <span className="text-[9px] font-mono tracking-widest text-liminal-secondary uppercase font-bold block">
-                  Exhibition Service
+                  {getPanelSubtitle()}
                 </span>
 
                 <h2 className="text-lg font-bold font-heading tracking-tight text-foreground uppercase">
@@ -359,7 +395,7 @@ const FurnitureOrderPanel = ({
               <div className="text-right">
                 <h3 className="font-heading font-bold">{price}</h3>
                 <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
-                  {isOutOfStock ? "MSRP" : "Per Unit"}
+                  Per Unit
                 </p>
               </div>
             </div>
@@ -410,7 +446,7 @@ const FurnitureOrderPanel = ({
                     {Array.from({ length: totalSteps }).map((_, i) => (
                       <div
                         key={i}
-                        className={`h-1 w-6 rounded-full transition-all duration-300 ${
+                        className={`h-0.75 w-6 rounded-full transition-all duration-300 ${
                           step >= i + 1
                             ? "bg-liminal-secondary"
                             : "bg-border/30"
@@ -426,114 +462,132 @@ const FurnitureOrderPanel = ({
                     {/* Step 1: Out of Stock Notice */}
                     {step === 1 && (
                       <div className="space-y-6">
-                        <div className="p-4 bg-amber-50/50 border border-amber-200/40 rounded-sm mb-4">
-                          <p className="text-[12px] font-light text-amber-800 leading-relaxed">
-                            This Limited Edition piece is currently out of
-                            stock. Leave your contact details below to join the
-                            priority waitlist and receive notifications of
-                            potential re-releases or cancellations.
-                          </p>
+                        {/* Status Notice */}
+                        {statusNotices[status] && (
+                          <div
+                            className={cn(
+                              "p-4 rounded-sm mb-4",
+                              statusNotices[status].containerClass,
+                            )}
+                          >
+                            <p
+                              className={cn(
+                                "text-[12px] font-light leading-relaxed",
+                                statusNotices[status].textClass,
+                              )}
+                            >
+                              {statusNotices[status].content}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Contact Information Form */}
+                        <div className="space-y-6 pt-4">
+                          {/* Full Name */}
+                          <Field invalid={!!errors.name}>
+                            <FieldLabel htmlFor="name">Full Name</FieldLabel>
+                            <FieldContent>
+                              <Input
+                                id="name"
+                                value={customerInfo.name}
+                                onChange={(e) =>
+                                  setCustomerInfo((prev) => ({
+                                    ...prev,
+                                    name: e.target.value,
+                                  }))
+                                }
+                                placeholder="e.g. John Doe"
+                                className={inputClass}
+                              />
+                              {errors.name && (
+                                <FieldError>{errors.name}</FieldError>
+                              )}
+                            </FieldContent>
+                          </Field>
+
+                          {/* Email Address */}
+                          <Field invalid={!!errors.email}>
+                            <FieldLabel htmlFor="email">
+                              Email Address
+                            </FieldLabel>
+                            <FieldContent>
+                              <Input
+                                id="email"
+                                type="email"
+                                value={customerInfo.email}
+                                onChange={(e) =>
+                                  setCustomerInfo((prev) => ({
+                                    ...prev,
+                                    email: e.target.value,
+                                  }))
+                                }
+                                placeholder="john@example.com"
+                                className={inputClass}
+                              />
+                              {errors.email && (
+                                <FieldError>{errors.email}</FieldError>
+                              )}
+                            </FieldContent>
+                          </Field>
+
+                          {/* Interest reason */}
+                          <Field invalid={!!errors.interestReason}>
+                            <FieldLabel htmlFor="reason">
+                              Why are you interested in this piece?
+                            </FieldLabel>
+                            <FieldContent>
+                              <Textarea
+                                id="reason"
+                                value={interestReason}
+                                onChange={(e) =>
+                                  setInterestReason(e.target.value)
+                                }
+                                placeholder="Let us know if you require a specific dimensions, or material variations."
+                                className={textareaClass}
+                              />
+                              {errors.interestReason && (
+                                <FieldError>{errors.interestReason}</FieldError>
+                              )}
+                            </FieldContent>
+                          </Field>
                         </div>
-
-                        <Field invalid={!!errors.name}>
-                          <FieldLabel htmlFor="name">Your Name</FieldLabel>
-                          <FieldContent>
-                            <Input
-                              id="name"
-                              value={customerInfo.name}
-                              onChange={(e) =>
-                                setCustomerInfo((prev) => ({
-                                  ...prev,
-                                  name: e.target.value,
-                                }))
-                              }
-                              placeholder="John Doe"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
-                            />
-                            {errors.name && (
-                              <FieldError>{errors.name}</FieldError>
-                            )}
-                          </FieldContent>
-                        </Field>
-
-                        <Field invalid={!!errors.email}>
-                          <FieldLabel htmlFor="email">Email Address</FieldLabel>
-                          <FieldContent>
-                            <Input
-                              id="email"
-                              type="email"
-                              value={customerInfo.email}
-                              onChange={(e) =>
-                                setCustomerInfo((prev) => ({
-                                  ...prev,
-                                  email: e.target.value,
-                                }))
-                              }
-                              placeholder="john@example.com"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
-                            />
-                            {errors.email && (
-                              <FieldError>{errors.email}</FieldError>
-                            )}
-                          </FieldContent>
-                        </Field>
-
-                        <Field invalid={!!errors.interestReason}>
-                          <FieldLabel htmlFor="reason">
-                            Why are you interested in this piece?
-                          </FieldLabel>
-                          <FieldContent>
-                            <Textarea
-                              id="reason"
-                              value={interestReason}
-                              onChange={(e) =>
-                                setInterestReason(e.target.value)
-                              }
-                              placeholder="Let us know if you require a specific dimensions, or material variations."
-                              className="min-h-24 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
-                            />
-                            {errors.interestReason && (
-                              <FieldError>{errors.interestReason}</FieldError>
-                            )}
-                          </FieldContent>
-                        </Field>
                       </div>
                     )}
 
                     {step === 2 && (
                       <div className="space-y-6">
-                        <h4 className="text-[14px] font-mono tracking-widest uppercase text-muted-foreground mb-4">
+                        <h3 className="text-lg font-semibold mb-3">
                           Review Your Details
-                        </h4>
+                        </h3>
+
+                        {/* Product and Customer Information */}
                         <div className="bg-zinc-50 border border-border/20 rounded-sm p-5 space-y-4 text-sm font-light">
-                          <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">
-                              Product
-                            </span>
-                            <span className="font-semibold text-foreground uppercase">
-                              {title}
-                            </span>
-                          </div>
-                          <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">Name</span>
-                            <span className="font-semibold text-foreground">
-                              {customerInfo.name}
-                            </span>
-                          </div>
-                          <div className="flex justify-between border-b border-border/10 pb-2.5">
-                            <span className="text-muted-foreground">Email</span>
-                            <span className="font-semibold text-foreground">
-                              {customerInfo.email}
-                            </span>
-                          </div>
-                          <div className="flex flex-col gap-1.5">
-                            <span className="text-muted-foreground">
-                              Notes / Specifications
-                            </span>
-                            <p className="text-foreground bg-background p-3 rounded-xs border border-border/10 text-xs italic">
-                              {interestReason}
-                            </p>
-                          </div>
+                          {customerInfoItems.map((item, index) =>
+                            item.isBlock ? (
+                              <div key={item.label}>
+                                <label className="text-muted-foreground">
+                                  {item.label}
+                                </label>
+                                <p className="text-foreground bg-background p-4 rounded-sm border border-border/20 text-xs italic mt-1.5">
+                                  {item.value}
+                                </p>
+                              </div>
+                            ) : (
+                              <div
+                                key={item.label}
+                                className={`flex justify-between pb-2 ${
+                                  index !== customerInfoItems.length - 1
+                                    ? "border-b border-border/10"
+                                    : ""
+                                }`}
+                              >
+                                <label className="text-muted-foreground">
+                                  {item.label}
+                                </label>
+                                <p className="font-semibold">{item.value}</p>
+                              </div>
+                            ),
+                          )}
                         </div>
                       </div>
                     )}
@@ -905,7 +959,7 @@ const FurnitureOrderPanel = ({
                     className="flex-1"
                     showIcon={false}
                   >
-                    {isOutOfStock ? "Register Interest" : "Place Order"}
+                    {isOutOfStock ? "Submit Request" : "Place Order"}
                   </LiminalButton>
                 )}
               </div>

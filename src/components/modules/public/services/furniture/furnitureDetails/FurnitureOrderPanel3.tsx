@@ -130,9 +130,9 @@ const FurnitureOrderPanel = ({
 
   // Underline Input class style (blueprint/drafting feel)
   const inputClass =
-    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0";
+    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0 text-foreground";
   const textareaClass =
-    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none min-h-20 border-t-0 border-x-0 resize-none";
+    "w-full bg-transparent border-b border-border/80 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none min-h-20 border-t-0 border-x-0 resize-none text-foreground";
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
