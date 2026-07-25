@@ -275,22 +275,53 @@ const FurnitureOrderPanel = ({
     setIsSuccess(true);
   };
 
-  // Close reset handler
+  // Handle mounted and animated state for smooth slide in & out
+  const [isMounted, setIsMounted] = useState(isOpen);
+  const [isVisible, setIsVisible] = useState(false);
+
+  React.useEffect(() => {
+    let animationFrameId1: number;
+    let animationFrameId2: number;
+    let unmountTimer: NodeJS.Timeout;
+
+    if (isOpen) {
+      // Defer mounting to animation frame so browser registers the initial closed state first
+      animationFrameId1 = requestAnimationFrame(() => {
+        setIsMounted(true);
+        animationFrameId2 = requestAnimationFrame(() => {
+          setIsVisible(true);
+        });
+      });
+    } else {
+      animationFrameId1 = requestAnimationFrame(() => {
+        setIsVisible(false);
+      });
+      unmountTimer = setTimeout(() => {
+        setIsMounted(false);
+        // Reset state after unmounting animation completes
+        setStep(1);
+        setQuantity(1);
+        setCustomerInfo({ name: "", email: "", phone: "" });
+        setDeliveryInfo({ address: "", city: "", zip: "", notes: "" });
+        setInterestReason("");
+        setErrors({});
+        setIsSuccess(false);
+      }, 500);
+    }
+
+    return () => {
+      cancelAnimationFrame(animationFrameId1);
+      cancelAnimationFrame(animationFrameId2);
+      clearTimeout(unmountTimer);
+    };
+  }, [isOpen]);
+
+  // Close handler
   const handleClose = () => {
     onClose();
-    // Reset state after close animation completes
-    setTimeout(() => {
-      setStep(1);
-      setQuantity(1);
-      setCustomerInfo({ name: "", email: "", phone: "" });
-      setDeliveryInfo({ address: "", city: "", zip: "", notes: "" });
-      setInterestReason("");
-      setErrors({});
-      setIsSuccess(false);
-    }, 300);
   };
 
-  if (!isOpen) return null;
+  if (!isMounted) return null;
 
   // Title depending on Status
   const getPanelTitle = () => {
@@ -336,13 +367,21 @@ const FurnitureOrderPanel = ({
     <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-foreground/20 backdrop-blur-xs transition-opacity duration-500 cursor-pointer animate-in fade-in"
+        className={cn(
+          "absolute inset-0 bg-foreground/20 backdrop-blur-xs transition-opacity duration-500 ease-in-out cursor-pointer",
+          isVisible ? "opacity-100" : "opacity-0"
+        )}
         onClick={handleClose}
       />
 
       {/* Slide-over Content Container */}
       <div className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
-        <div className="w-screen max-w-md sm:max-w-lg bg-background border-l border-border/20 shadow-2xl flex flex-col h-full relative z-10 animate-in slide-in-from-right duration-500 ease-out">
+        <div
+          className={cn(
+            "w-screen max-w-md sm:max-w-lg bg-background border-l border-border/20 shadow-2xl flex flex-col h-full relative z-10 transition-transform duration-500 ease-in-out",
+            isVisible ? "translate-x-0" : "translate-x-full"
+          )}
+        >
           {/* Header */}
           {!isSuccess && (
             <div className="p-6 border-b border-border/10 flex items-center justify-between">
