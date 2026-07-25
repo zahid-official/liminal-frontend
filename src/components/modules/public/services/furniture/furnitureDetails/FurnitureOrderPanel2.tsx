@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 import { Check, ChevronLeft, ChevronRight, Minus, Plus, X } from "lucide-react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import { IFurniture } from "../furnitureData";
 
@@ -51,7 +51,7 @@ const FurnitureOrderPanel = ({
   const isOutOfStock = status === "Out of Stock";
 
   // Total Steps count
-  const totalSteps = isOutOfStock ? 2 : 5; // Quantity -> Info -> Delivery -> Review -> Success
+  const totalSteps = isOutOfStock ? 2 : 4; // Quantity -> Info -> Delivery -> Review & Submit
 
   // Price & Shipping calculations
   const numericPrice = parseFloat(price.replace(/[^0-9.]/g, "")) || 0;
@@ -93,6 +93,28 @@ const FurnitureOrderPanel = ({
     { label: "Total Amount", value: grandTotalFormatted, isTotal: true },
   ];
 
+  // Final Review Summary Items
+  const finalReviewSummaryItems = [
+    { label: "Quantity", value: quantity },
+    { label: "Unit Price", value: price },
+    { label: "Subtotal", value: totalPriceFormatted },
+    {
+      label:
+        shippingFee === 0 ? "Shipping (Free on orders over $1000)" : "Shipping",
+      value: shippingFormatted,
+    },
+    { label: "Total Amount", value: grandTotalFormatted },
+    {
+      label: "Customer Contact",
+      value: customerInfo.name,
+      subValue: customerInfo.email,
+    },
+    {
+      label: "Shipping Destination",
+      value: `${deliveryInfo.address}, ${deliveryInfo.city} (${deliveryInfo.zip})`,
+    },
+  ];
+
   // Product Status Notices Config
   const statusNotices: Record<
     string,
@@ -106,7 +128,7 @@ const FurnitureOrderPanel = ({
           This piece is individually handcrafted upon order. The estimated
           artisan period is{" "}
           <strong>{specifications.leadTime || "standard lead time"}</strong>.
-          Submit your commission request below and our design team will
+          Submit your order request below and our design team will
           personally coordinate your specifications.
         </>
       ),
@@ -198,18 +220,21 @@ const FurnitureOrderPanel = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     if (validateStep(step)) {
-      setStep((prev) => prev + 1);
+      setStep((prev) => Math.min(totalSteps, prev + 1));
     }
   };
 
-  const handlePrev = () => {
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     setStep((prev) => Math.max(1, prev - 1));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (step < totalSteps) return;
     if (!validateStep(step)) return;
 
     setIsSubmitting(true);
@@ -225,10 +250,6 @@ const FurnitureOrderPanel = ({
       customerInfo,
       deliveryInfo: isOutOfStock ? null : deliveryInfo,
       interestReason: isOutOfStock ? interestReason : null,
-      subtotal: isOutOfStock ? "$0" : totalPriceFormatted,
-      shippingFee: isOutOfStock ? "$0" : shippingFormatted,
-      totalAmount: isOutOfStock ? "$0" : grandTotalFormatted,
-      orderDate: new Date().toISOString(),
     });
 
     setIsSubmitting(false);
@@ -260,7 +281,7 @@ const FurnitureOrderPanel = ({
       case "Limited Edition":
         return "Secure Your Piece";
       case "Made to Order":
-        return "Commission This Piece";
+        return "Order This Piece";
       case "Pre-Order":
         return "Reserve Your Piece";
       case "Out of Stock":
@@ -287,80 +308,86 @@ const FurnitureOrderPanel = ({
       <div className="absolute inset-y-0 right-0 pl-10 max-w-full flex">
         <div className="w-screen max-w-md sm:max-w-lg bg-background border-l border-border/20 shadow-2xl flex flex-col h-full relative z-10 animate-in slide-in-from-right duration-500 ease-out">
           {/* Header */}
-          <div className="p-6 border-b border-border/10 flex items-center justify-between">
-            {/* Titles */}
-            <div>
-              <span className="text-[9px] font-mono tracking-widest text-liminal-secondary uppercase font-bold block">
-                Exhibition Service
-              </span>
+          {!isSuccess && (
+            <div className="p-6 border-b border-border/10 flex items-center justify-between">
+              {/* Titles */}
+              <div>
+                <span className="text-[9px] font-mono tracking-widest text-liminal-secondary uppercase font-bold block">
+                  Exhibition Service
+                </span>
 
-              <h2 className="text-lg font-bold font-heading tracking-tight text-foreground uppercase">
-                {getPanelTitle()}
-              </h2>
+                <h2 className="text-lg font-bold font-heading tracking-tight text-foreground uppercase">
+                  {getPanelTitle()}
+                </h2>
+              </div>
+
+              {/* Close Button */}
+              <button
+                onClick={handleClose}
+                className="p-2 rounded-full hover:bg-zinc-100 text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
+                aria-label="Close panel"
+              >
+                <X className="size-5" />
+              </button>
             </div>
-
-            {/* Close Button */}
-            <button
-              onClick={handleClose}
-              className="p-2 rounded-full hover:bg-zinc-100 text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
-              aria-label="Close panel"
-            >
-              <X className="size-5" />
-            </button>
-          </div>
+          )}
 
           {/* Product Quick View Card */}
-          <div className="px-6 py-4 bg-zinc-50 border-b border-border/10 flex gap-4 items-center">
-            {/* product image */}
-            <div className="relative size-16 bg-background rounded border border-border/20 overflow-hidden shrink-0">
-              <Image
-                src={thumbnail}
-                alt={title}
-                fill
-                className="object-cover rounded"
-              />
-            </div>
+          {!isSuccess && (
+            <div className="px-6 py-4 bg-zinc-50 border-b border-border/10 flex gap-4 items-center">
+              {/* product image */}
+              <div className="relative size-16 bg-background rounded border border-border/20 overflow-hidden shrink-0">
+                <Image
+                  src={thumbnail}
+                  alt={title}
+                  fill
+                  className="object-cover rounded"
+                />
+              </div>
 
-            {/* product title */}
-            <div className="flex-1">
-              <h3 className="font-heading font-bold truncate uppercase">
-                {title}
-              </h3>
-              <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
-                Status: {status}
-              </p>
-            </div>
+              {/* product title */}
+              <div className="flex-1">
+                <h3 className="font-heading font-bold truncate uppercase">
+                  {title}
+                </h3>
+                <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
+                  Status: {status}
+                </p>
+              </div>
 
-            {/* price */}
-            <div className="text-right">
-              <h3 className="font-heading font-bold">{price}</h3>
-              <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
-                {isOutOfStock ? "MSRP" : "Per Unit"}
-              </p>
+              {/* price */}
+              <div className="text-right">
+                <h3 className="font-heading font-bold">{price}</h3>
+                <p className="text-[10px] text-muted-foreground/80 font-mono tracking-wider uppercase mt-0.5">
+                  {isOutOfStock ? "MSRP" : "Per Unit"}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Form Content Scrollable */}
           <div className="flex-1 overflow-y-auto px-6 py-8">
             {isSuccess ? (
               /* Success State */
               <div className="flex flex-col items-center justify-center text-center h-full py-10 space-y-6">
-                <div className="size-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500">
-                  <Check className="size-8" />
+                <div className="size-16 rounded-full bg-liminal-secondary/10 border border-liminal-secondary/20 flex items-center justify-center text-liminal-secondary">
+                  <Check className="size-8 stroke-[2.5]" />
                 </div>
+
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold font-heading">
                     {isOutOfStock
                       ? "Interest Registered"
                       : "Order Request Received"}
                   </h3>
-                  <p className="text-sm text-muted-foreground font-light max-w-sm">
+                  <p className="text-sm text-muted-foreground font-light max-w-sm leading-relaxed">
                     {isOutOfStock
                       ? "Thank you for registering your interest. We will notify you immediately once this piece becomes available again."
-                      : "Your commission details have been saved. Our representative will contact you via email or phone within 24 hours to confirm shipment details."}
+                      : "Your order request has been recorded. Our representative will contact you via email or phone within 24 hours to confirm shipment details."}
                   </p>
                 </div>
-                <div className="pt-4">
+
+                <div className="pt-2">
                   <LiminalButton
                     onClick={handleClose}
                     variant="outline"
@@ -372,7 +399,7 @@ const FurnitureOrderPanel = ({
               </div>
             ) : (
               /* Multi Step Form */
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 {/* Step Indicator */}
                 <div className="flex items-center justify-between text-xs font-mono tracking-wider text-muted-foreground/60 mb-6 uppercase">
                   <span>
@@ -796,146 +823,93 @@ const FurnitureOrderPanel = ({
                     {/* Step 4: Final Summary Review */}
                     {step === 4 && (
                       <div className="space-y-6">
-                        <h4 className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-4">
+                        <h3 className="text-lg font-semibold mb-3">
                           Final Review Summary
-                        </h4>
+                        </h3>
 
+                        {/* Final Review Summary Items */}
                         <div className="border border-border/20 rounded-sm p-5 bg-zinc-50 space-y-4 text-sm font-light">
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Product
-                            </span>
-                            <span className="font-semibold text-foreground uppercase truncate max-w-50">
-                              {title}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Allocation (Units)
-                            </span>
-                            <span className="font-semibold text-foreground font-mono">
-                              {quantity}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Subtotal
-                            </span>
-                            <span className="font-semibold text-foreground font-mono">
-                              {totalPriceFormatted}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Shipping Fee
-                            </span>
-                            <span
-                              className={`font-semibold font-mono ${
-                                shippingFee === 0
-                                  ? "text-emerald-600"
-                                  : "text-foreground"
+                          {finalReviewSummaryItems.map((item, index) => (
+                            <div
+                              key={item.label}
+                              className={`flex justify-between pb-2 ${
+                                index !== finalReviewSummaryItems.length - 1
+                                  ? "border-b border-border/10"
+                                  : ""
                               }`}
                             >
-                              {shippingFormatted}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Total Valuation
-                            </span>
-                            <span className="font-bold text-liminal-secondary font-heading text-base">
-                              {grandTotalFormatted}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-between border-b border-border/10 pb-2">
-                            <span className="text-muted-foreground">
-                              Customer Contact
-                            </span>
-                            <span className="font-semibold text-foreground text-right">
-                              {customerInfo.name} <br />
-                              <span className="text-xs text-muted-foreground font-mono lowercase font-normal">
-                                {customerInfo.email}
-                              </span>
-                            </span>
-                          </div>
-
-                          <div className="flex flex-col gap-1">
-                            <span className="text-muted-foreground">
-                              Shipping Destination
-                            </span>
-                            <p className="font-semibold text-foreground">
-                              {deliveryInfo.address}, {deliveryInfo.city} (
-                              {deliveryInfo.zip})
-                            </p>
-                          </div>
-
-                          {deliveryInfo.notes.trim() && (
-                            <div className="flex flex-col gap-1">
-                              <span className="text-muted-foreground">
-                                Bespoke instructions
-                              </span>
-                              <p className="text-foreground p-3 rounded-xs bg-background border border-border/10 text-xs italic">
-                                {deliveryInfo.notes}
-                              </p>
+                              <label className="text-muted-foreground">
+                                {item.label}
+                              </label>
+                              <div className="text-right max-w-[60%]">
+                                <p className="font-semibold">{item.value}</p>
+                                {item.subValue && (
+                                  <p className="text-xs text-muted-foreground font-normal lowercase">
+                                    {item.subValue}
+                                  </p>
+                                )}
+                              </div>
                             </div>
-                          )}
+                          ))}
                         </div>
 
                         <div className="p-4 bg-zinc-100 rounded-sm">
                           <p className="text-[11px] font-light text-muted-foreground leading-normal">
-                            Note: This is a commission request placement. No
-                            transaction takes place immediately. Our team will
-                            contact you directly to discuss shipping logistics,
-                            trade pricing alignments, and payment schedules.
+                            Note: Submitting this form registers your order
+                            request. No payment will be processed now. Our team
+                            will review your order details and reach out soon to
+                            finalize delivery and payment.
                           </p>
                         </div>
                       </div>
                     )}
                   </>
                 )}
-
-                {/* Navigation Buttons */}
-                <div className="flex items-center gap-4 pt-4">
-                  {step > 1 && (
-                    <LiminalButton
-                      type="button"
-                      onClick={handlePrev}
-                      variant="outline"
-                      showIcon={false}
-                    >
-                      <ChevronLeft className="size-4 mr-1 inline-block" /> Back
-                    </LiminalButton>
-                  )}
-
-                  {step < totalSteps ? (
-                    <LiminalButton
-                      type="button"
-                      onClick={handleNext}
-                      icon={ChevronRight}
-                      animateIcon={false}
-                      className="flex-1 ml-auto"
-                    >
-                      Continue
-                    </LiminalButton>
-                  ) : (
-                    <LiminalButton
-                      type="submit"
-                      isLoading={isSubmitting}
-                      className="flex-1"
-                      showIcon={false}
-                    >
-                      {isOutOfStock ? "Register Interest" : "Submit Commission"}
-                    </LiminalButton>
-                  )}
-                </div>
-              </form>
+              </div>
             )}
           </div>
+
+          {/* Navigation Buttons (Pinned at Bottom) */}
+          {!isSuccess && (
+            <div className="p-7 bg-background border-t border-dashed border-border/25 shrink-0">
+              <div className="flex items-center gap-3">
+                {/* Back Button */}
+                {step > 1 && (
+                  <LiminalButton
+                    type="button"
+                    onClick={handlePrev}
+                    variant="outline"
+                    showIcon={false}
+                  >
+                    <ChevronLeft className="size-4 mr-1 inline-block" /> Back
+                  </LiminalButton>
+                )}
+
+                {/* Continue Button / Submit Button */}
+                {step < totalSteps ? (
+                  <LiminalButton
+                    type="button"
+                    onClick={handleNext}
+                    icon={ChevronRight}
+                    animateIcon={false}
+                    className="flex-1 ml-auto"
+                  >
+                    Continue
+                  </LiminalButton>
+                ) : (
+                  <LiminalButton
+                    type="button"
+                    onClick={handleSubmit}
+                    isLoading={isSubmitting}
+                    className="flex-1"
+                    showIcon={false}
+                  >
+                    {isOutOfStock ? "Register Interest" : "Place Order"}
+                  </LiminalButton>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
