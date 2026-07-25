@@ -269,6 +269,12 @@ const FurnitureOrderPanel = ({
     }
   };
 
+  const inputClass =
+    "w-full bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none h-10 border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15";
+
+  const textareaClass =
+    "w-full min-h-24 bg-transparent! border-b border-border/50 focus:border-liminal-secondary focus:outline-none py-2 text-sm font-light transition-all duration-300 rounded-none resize-none border-t-0 border-x-0 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15";
+
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Backdrop */}
@@ -620,9 +626,10 @@ const FurnitureOrderPanel = ({
 
                     {/* Step 2: Customer Contact Info */}
                     {step === 2 && (
-                      <div className="space-y-5">
+                      <div className="space-y-6">
+                        {/* Full Name */}
                         <Field invalid={!!errors.name}>
-                          <FieldLabel htmlFor="name">Your Full Name</FieldLabel>
+                          <FieldLabel htmlFor="name">Full Name</FieldLabel>
                           <FieldContent>
                             <Input
                               id="name"
@@ -633,8 +640,8 @@ const FurnitureOrderPanel = ({
                                   name: e.target.value,
                                 }))
                               }
-                              placeholder="John Doe"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
+                              placeholder="e.g. John Doe"
+                              className={inputClass}
                             />
                             {errors.name && (
                               <FieldError>{errors.name}</FieldError>
@@ -642,6 +649,7 @@ const FurnitureOrderPanel = ({
                           </FieldContent>
                         </Field>
 
+                        {/* Email Address */}
                         <Field invalid={!!errors.email}>
                           <FieldLabel htmlFor="email">Email Address</FieldLabel>
                           <FieldContent>
@@ -656,7 +664,7 @@ const FurnitureOrderPanel = ({
                                 }))
                               }
                               placeholder="john@example.com"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
+                              className={inputClass}
                             />
                             {errors.email && (
                               <FieldError>{errors.email}</FieldError>
@@ -664,6 +672,7 @@ const FurnitureOrderPanel = ({
                           </FieldContent>
                         </Field>
 
+                        {/* Phone Number */}
                         <Field invalid={!!errors.phone}>
                           <FieldLabel htmlFor="phone">Phone Number</FieldLabel>
                           <FieldContent>
@@ -676,8 +685,8 @@ const FurnitureOrderPanel = ({
                                   phone: e.target.value,
                                 }))
                               }
-                              placeholder="+1 (555) 000-0000"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
+                              placeholder="(+880) 100-0000"
+                              className={inputClass}
                             />
                             {errors.phone && (
                               <FieldError>{errors.phone}</FieldError>
@@ -690,9 +699,10 @@ const FurnitureOrderPanel = ({
                     {/* Step 3: Delivery Address */}
                     {step === 3 && (
                       <div className="space-y-5">
+                        {/* Street Address */}
                         <Field invalid={!!errors.address}>
                           <FieldLabel htmlFor="address">
-                            Shipping Street Address
+                            Street Address
                           </FieldLabel>
                           <FieldContent>
                             <Input
@@ -704,8 +714,8 @@ const FurnitureOrderPanel = ({
                                   address: e.target.value,
                                 }))
                               }
-                              placeholder="123 Atelier Way"
-                              className="h-10 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
+                              placeholder="e.g. House-12, Road-3, Sector-1, Uttara"
+                              className={inputClass}
                             />
                             {errors.address && (
                               <FieldError>{errors.address}</FieldError>
@@ -713,6 +723,7 @@ const FurnitureOrderPanel = ({
                           </FieldContent>
                         </Field>
 
+                        {/* City & Zip Code */}
                         <div className="grid grid-cols-2 gap-4">
                           <Field invalid={!!errors.city}>
                             <FieldLabel htmlFor="city">City</FieldLabel>
@@ -726,8 +737,8 @@ const FurnitureOrderPanel = ({
                                     city: e.target.value,
                                   }))
                                 }
-                                placeholder="New York"
-                                className="h-10 border-border/50 focus-visible:border-liminal-secondary"
+                                placeholder="e.g. Dhaka"
+                                className={inputClass}
                               />
                               {errors.city && (
                                 <FieldError>{errors.city}</FieldError>
@@ -749,8 +760,8 @@ const FurnitureOrderPanel = ({
                                     zip: e.target.value,
                                   }))
                                 }
-                                placeholder="10001"
-                                className="h-10 border-border/50 focus-visible:border-liminal-secondary"
+                                placeholder="e.g. 1230"
+                                className={inputClass}
                               />
                               {errors.zip && (
                                 <FieldError>{errors.zip}</FieldError>
@@ -759,9 +770,10 @@ const FurnitureOrderPanel = ({
                           </Field>
                         </div>
 
+                        {/* Delivery Instructions */}
                         <Field>
                           <FieldLabel htmlFor="notes">
-                            Delivery Instructions / Bespoke Notes (Optional)
+                            Delivery Instructions (Optional)
                           </FieldLabel>
                           <FieldContent>
                             <Textarea
@@ -773,8 +785,8 @@ const FurnitureOrderPanel = ({
                                   notes: e.target.value,
                                 }))
                               }
-                              placeholder="Include details regarding floor height, freight elevator, or dimensional revisions."
-                              className="min-h-24 border-border/50 focus-visible:border-liminal-secondary focus-visible:ring-liminal-secondary/15"
+                              placeholder="Include details regarding floor height, freight elevator or dimensional revisions."
+                              className={textareaClass}
                             />
                           </FieldContent>
                         </Field>
