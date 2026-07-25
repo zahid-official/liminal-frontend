@@ -128,8 +128,8 @@ const FurnitureOrderPanel = ({
           This piece is individually handcrafted upon order. The estimated
           artisan period is{" "}
           <strong>{specifications.leadTime || "standard lead time"}</strong>.
-          Submit your order request below and our design team will
-          personally coordinate your specifications.
+          Submit your order request below and our design team will personally
+          coordinate your specifications.
         </>
       ),
     },
@@ -423,8 +423,9 @@ const FurnitureOrderPanel = ({
                 {/* Out Of Stock Form Flow */}
                 {isOutOfStock && (
                   <>
+                    {/* Step 1: Out of Stock Notice */}
                     {step === 1 && (
-                      <div className="space-y-5">
+                      <div className="space-y-6">
                         <div className="p-4 bg-amber-50/50 border border-amber-200/40 rounded-sm mb-4">
                           <p className="text-[12px] font-light text-amber-800 leading-relaxed">
                             This Limited Edition piece is currently out of

@@ -1163,6 +1163,67 @@ export const collection: IFurniture[] = [
       warranty: "Lifetime structural, 3-year LED, 5-year finish",
     },
   },
+
+  {
+    id: "15",
+    productCode: "LFC-ST-003",
+    title: "Aura Lounge Chair",
+    slug: "aura-lounge-chair",
+    category: "Seating",
+    tagline: "Archival Sculptural Armchair",
+    description:
+      "An archival collector piece featuring hand-sculpted solid walnut and tactile shearling upholstery. Designed as a sanctuary of quiet luxury.",
+    status: "Out of Stock",
+    price: "$4,200",
+    stock: 0,
+    thumbnail: "/assets/furniture/aura-lounge-chair.png",
+    galleryImages: [
+      {
+        url: "/assets/furniture/aura-lounge-chair.png",
+        caption: "Aura Lounge Chair - Natural Shearling & American Walnut",
+      },
+      {
+        url: "/assets/furniture/aura-lounge-chair-detail.png",
+        caption: "Hand-sculpted Walnut Armrest Detail",
+      },
+    ],
+    features: [
+      "Solid American Walnut frame sculpted by hand",
+      "Ethically sourced natural shearling upholstery",
+      "Ergonomic lumbar curvature for prolonged repose",
+      "Hand-rubbed natural oil and beeswax finish",
+      "Limited archival release with serialized brass plaque",
+    ],
+    details: {
+      overview:
+        "The Aura Lounge Chair is a celebrated architectural seating piece that fuses tactile warmth with sculptural discipline. Hand-crafted by master woodworkers, its curved walnut frame embraces the sitter while maintaining a visually light, floating stance in any space.",
+      designStory:
+        "Inspired by mid-century Nordic lounge silhouettes, the Aura Chair emphasizes raw material warmth and organic contours. Due to high demand and rare material allocations, current production runs have been fully allocated.",
+      craftsmanship:
+        "Each frame is individually turned and joined using traditional mortise-and-tenon craftsmanship. The shearling is hand-selected for uniform curl density and exceptional softness.",
+    },
+    specifications: {
+      materials: "American Walnut & Natural Shearling",
+      weight: "34 kg",
+      dimensions: { width: 880, depth: 920, height: 760, unit: "mm" },
+      careInstructions: [
+        {
+          icon: "shield",
+          title: "Shearling Care",
+          description:
+            "Gently brush with a specialty wool brush to maintain loft and texture.",
+        },
+        {
+          icon: "hand",
+          title: "Wood Maintenance",
+          description:
+            "Treat walnut frame with natural beeswax polish annually.",
+        },
+      ],
+      leadTime: "Currently Unavailable",
+      warranty: "10-year structural warranty",
+    },
+  },
 ];
 
 // ─────────────────────────────────────────────
