@@ -1,6 +1,8 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import Image from "next/image";
-import { IFurniture } from "../furnitureData";
+import { getPrevNextFurniture, IFurniture } from "../furnitureData";
+import SectionFooter from "@/components/shared/SectionFooter";
+import DetailNavigation from "@/components/shared/DetailNavigation";
 
 interface FurnitureDesignStoryProps {
   furniture: IFurniture;
@@ -9,6 +11,7 @@ interface FurnitureDesignStoryProps {
 // FurnitureDesignStory Component
 const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
   const { details, galleryImages, thumbnail, title } = furniture;
+  const { prev, next } = getPrevNextFurniture(furniture.slug);
 
   if (!details.designStory && !details.craftsmanship) return null;
 
@@ -29,7 +32,7 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
 
   return (
     <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
-      <div className="custom-container relative z-10 space-y-20">
+      <div className="custom-container">
         {/* Section Header */}
         <SectionHeader
           variant="manifesto"
@@ -150,6 +153,36 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
             )}
           </div>
         </div>
+
+        <SectionFooter label="Liminal Narrative" />
+
+        {/* Previous / Next Furniture Navigation */}
+        <DetailNavigation
+          prev={
+            prev
+              ? {
+                  href: `/services/furniture/${prev.slug}`,
+                  title: prev.title,
+                  image: prev.thumbnail,
+                  category: prev.category,
+                }
+              : null
+          }
+          next={
+            next
+              ? {
+                  href: `/services/furniture/${next.slug}`,
+                  title: next.title,
+                  image: next.thumbnail,
+                  category: next.category,
+                }
+              : null
+          }
+          prevLabel="Previous Piece"
+          nextLabel="Next Piece"
+          headingLabel="Explore Collection"
+          className="border-none"
+        />
       </div>
     </section>
   );
