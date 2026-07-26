@@ -28,7 +28,7 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
     galleryImages && galleryImages.length > 2 ? galleryImages[2].caption : "";
 
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-zinc-50/80 text-foreground relative overflow-hidden">
+    <section className="py-20 md:py-28 lg:py-32 relative overflow-hidden">
       <div className="custom-container relative z-10 space-y-20">
         {/* Section Header */}
         <SectionHeader

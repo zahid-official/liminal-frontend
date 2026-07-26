@@ -2,6 +2,7 @@ import { getFurnitureBySlug } from "@/components/modules/public/services/furnitu
 import FurnitureDesignStory from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureDesignStory";
 import FurnitureHero from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureHero";
 import FurnitureRelated from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureRelated";
+import FurnitureSpecifications from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureSpecifications";
 import PageHeader from "@/components/shared/PageHeader";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -54,6 +55,9 @@ const FurnitureDetailsPage = async ({ params }: FurnitureDetailsPageProps) => {
 
       {/* Furniture Hero */}
       <FurnitureHero furniture={furniture} />
+
+      {/* Furniture Specifications */}
+      <FurnitureSpecifications furniture={furniture} />
 
       {/* Furniture Design Story */}
       <FurnitureDesignStory furniture={furniture} />
