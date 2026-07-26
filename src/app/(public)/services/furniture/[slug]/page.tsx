@@ -1,4 +1,5 @@
 import { getFurnitureBySlug } from "@/components/modules/public/services/furniture/furnitureData";
+import FurnitureDesignStory from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureDesignStory";
 import FurnitureHero from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureHero";
 import FurnitureRelated from "@/components/modules/public/services/furniture/furnitureDetails/FurnitureRelated";
 import PageHeader from "@/components/shared/PageHeader";
@@ -53,6 +54,9 @@ const FurnitureDetailsPage = async ({ params }: FurnitureDetailsPageProps) => {
 
       {/* Furniture Hero */}
       <FurnitureHero furniture={furniture} />
+
+      {/* Furniture Design Story */}
+      <FurnitureDesignStory furniture={furniture} />
 
       {/* Furniture Related */}
       <FurnitureRelated furniture={furniture} />
