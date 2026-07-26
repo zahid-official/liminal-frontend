@@ -37,19 +37,11 @@ export interface IFurnitureDimensions {
   unit: "cm" | "mm" | "in";
 }
 
-// Care Instruction Interface
-export interface IFurnitureCareInstruction {
-  icon: "shield" | "droplet" | "sun" | "wind" | "hand";
-  title: string;
-  description: string;
-}
-
 // Furniture Specifications Interface
 export interface IFurnitureSpecifications {
   materials: string;
   weight: string;
   dimensions: IFurnitureDimensions;
-  careInstructions: IFurnitureCareInstruction[];
   leadTime: string;
   warranty: string;
 }
@@ -75,7 +67,6 @@ export interface IFurniture {
   stock: number;
   thumbnail: string;
   galleryImages: IFurnitureGalleryImage[];
-  features: string[];
   details: IFurnitureDetails;
   specifications: IFurnitureSpecifications;
 }
@@ -112,13 +103,6 @@ export const collection: IFurniture[] = [
         caption: "Connection System - Hidden Interlocking Mechanism",
       },
     ],
-    features: [
-      "Modular system with 40+ configurations",
-      "Dual-density foam core with ethically sourced down wrap",
-      "Proprietary tool-free interlocking mechanism",
-      "Zero-VOC hardwax oil finished smoked oak base",
-      "Italian bouclé upholstery from heritage mill",
-    ],
     details: {
       overview:
         "The Horizon Sectional was born from a singular observation: the most comfortable seating in the world means nothing if it doesn't belong in the room. Too many sofas demand attention. The Horizon earns its place through restraint, sitting low and wide like a geological formation that has always been there. Every dimension has been calibrated to the human body at rest - the seat depth of 620mm accommodates a full cross-legged position without sacrificing back support, while the armrest height aligns precisely with a relaxed elbow.",
@@ -131,32 +115,6 @@ export const collection: IFurniture[] = [
       materials: "Bouclé & Smoked Oak",
       weight: "128 kg",
       dimensions: { width: 3200, depth: 1050, height: 680, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "shield",
-          title: "Fabric Protection",
-          description:
-            "Apply fabric protector spray every 6 months. Bouclé naturally resists light staining but benefits from periodic treatment.",
-        },
-        {
-          icon: "droplet",
-          title: "Spill Care",
-          description:
-            "Blot spills immediately with a clean, dry cloth. Avoid rubbing which may damage the loop texture of the bouclé weave.",
-        },
-        {
-          icon: "sun",
-          title: "Sun Exposure",
-          description:
-            "Position away from direct, prolonged sunlight to preserve the natural tone of both fabric and oak base.",
-        },
-        {
-          icon: "hand",
-          title: "Cushion Care",
-          description:
-            "Rotate and fluff cushions weekly to maintain even wear and consistent comfort across all sections.",
-        },
-      ],
       leadTime: "8-12 weeks",
       warranty: "10-year structural, 5-year upholstery",
     },
@@ -189,13 +147,6 @@ export const collection: IFurniture[] = [
         caption: "Honed edge finish at 45mm thickness",
       },
     ],
-    features: [
-      "Single-slab Nero Marquina marble from the Basque Region",
-      "Concealed steel reinforcement frame for 280 kg distribution",
-      "Honed matte surface warm to the touch",
-      "Seats 6-8 persons comfortably",
-      "Professional-grade, food-safe sealant",
-    ],
     details: {
       overview:
         "The Monolith Table began as a study in material honesty. We asked a simple question: what happens when you remove everything unnecessary from a dining table? The answer stands before you - a single slab of Nero Marquina marble, honed to a matte finish that reveals the stone's natural character without the distortion of high polish. The distinctive white veining against the deep black ground is a record of geological pressure applied over 350 million years.",
@@ -208,32 +159,6 @@ export const collection: IFurniture[] = [
       materials: "Nero Marquina Marble",
       weight: "280 kg",
       dimensions: { width: 2400, depth: 1100, height: 750, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "shield",
-          title: "Surface Sealant",
-          description:
-            "Professional re-sealing recommended annually. We include the first year's maintenance service with purchase.",
-        },
-        {
-          icon: "droplet",
-          title: "Liquid Protection",
-          description:
-            "Wipe spills immediately, especially acidic liquids like wine, citrus or vinegar, which can etch the honed surface.",
-        },
-        {
-          icon: "hand",
-          title: "Daily Cleaning",
-          description:
-            "Use a soft, damp cloth with pH-neutral stone cleaner. Avoid abrasive pads or general household cleaning products.",
-        },
-        {
-          icon: "sun",
-          title: "Temperature",
-          description:
-            "Use trivets for hot dishes. While marble is heat-resistant, sudden temperature changes can cause micro-fractures over time.",
-        },
-      ],
       leadTime: "10-14 weeks",
       warranty: "Lifetime structural, 5-year surface finish",
     },
@@ -266,13 +191,6 @@ export const collection: IFurniture[] = [
         caption: "Interior - Leather Lined Drawers",
       },
     ],
-    features: [
-      "Book-matched Eucalyptus veneer across all four doors",
-      "Push-latch handleless door mechanism",
-      "Sand-cast bronze legs using traditional lost-wax methods",
-      "Six coats of hand-rubbed lacquer finish",
-      "LED touch-activated internal lighting",
-    ],
     details: {
       overview:
         "Storage furniture faces a fundamental paradox: it must contain the visual chaos of daily life while contributing order and beauty to the room. The Ether Sideboard resolves this tension through an architecture of concealment, where push-latch doors open without handles, and the external surface reads as a continuous plane of figured Eucalyptus veneer.",
@@ -285,32 +203,6 @@ export const collection: IFurniture[] = [
       materials: "Eucalyptus & Bronze",
       weight: "85 kg",
       dimensions: { width: 2100, depth: 500, height: 720, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Surface Care",
-          description:
-            "Dust regularly with a soft, lint-free cloth. Use a slightly damp cloth for deeper cleaning, always drying immediately.",
-        },
-        {
-          icon: "droplet",
-          title: "Moisture",
-          description:
-            "Avoid placing water-bearing items directly on the surface without coasters. Eucalyptus veneer is moisture-sensitive.",
-        },
-        {
-          icon: "sun",
-          title: "Positioning",
-          description:
-            "Avoid direct sunlight exposure to prevent uneven veneer aging. Natural light variation is acceptable.",
-        },
-        {
-          icon: "shield",
-          title: "Bronze Care",
-          description:
-            "Bronze legs will naturally develop patina over time. This is intended. To maintain original finish, apply bronze wax annually.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "8-year structural, 3-year finish",
     },
@@ -343,13 +235,6 @@ export const collection: IFurniture[] = [
         caption: "Base Mechanism - 360-Degree Swivel System",
       },
     ],
-    features: [
-      "270-degree wraparound backrest for intimate enclosure",
-      "360-degree dampened rotation mechanism",
-      "Moulded high-resilience foam at 40 kg/m3 density",
-      "Precision-machined brushed brass base",
-      "Dual-texture bouclé interior and exterior",
-    ],
     details: {
       overview:
         "The Halo Chair emerged from our fascination with the circle as an architectural motif. Where most chairs define a direction, with a clear front and back, the Halo embraces all directions equally. Its continuous curved backrest creates a gentle enclosure, a private alcove within the larger room, that invites the occupant to settle in and let the world recede.",
@@ -362,32 +247,6 @@ export const collection: IFurniture[] = [
       materials: "Bouclé & Brass",
       weight: "38 kg",
       dimensions: { width: 920, depth: 880, height: 740, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Upholstery",
-          description:
-            "Vacuum regularly using a soft brush attachment. Professional upholstery cleaning recommended annually.",
-        },
-        {
-          icon: "shield",
-          title: "Base Mechanism",
-          description:
-            "The rotation mechanism is sealed and maintenance-free. If resistance develops, contact our service team.",
-        },
-        {
-          icon: "droplet",
-          title: "Spill Response",
-          description:
-            "Blot immediately with a clean, absorbent cloth. Do not rub bouclé as this can distort the loop texture.",
-        },
-        {
-          icon: "wind",
-          title: "Placement",
-          description:
-            "Position on a level surface for optimal rotation. Use felt pads under the base on hardwood floors.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "10-year structural, 5-year upholstery",
     },
@@ -420,13 +279,6 @@ export const collection: IFurniture[] = [
         caption: "Wood Finish - Kiln-Dried American Walnut",
       },
     ],
-    features: [
-      "Six adjustable shelves in 32mm increments",
-      "Dovetail and mortise-tenon joinery throughout",
-      "Precision-machined solid brass shelf brackets",
-      "Anti-tip wall bracket included for safety",
-      "Kiln-dried 14 days to 8% moisture content",
-    ],
     details: {
       overview:
         "The Linear Library was designed for readers who understand that a bookshelf is not merely storage - it is autobiography made visible. The books you choose to display, their arrangement, the objects you place among them: these reveal more about you than any portrait. We created a framework worthy of that revelation.",
@@ -439,32 +291,6 @@ export const collection: IFurniture[] = [
       materials: "Walnut & Brass",
       weight: "45 kg",
       dimensions: { width: 800, depth: 350, height: 2100, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Wood Care",
-          description:
-            "Dust with a soft cloth. Apply walnut oil every 6 months to maintain the richness of the grain and protect the surface.",
-        },
-        {
-          icon: "sun",
-          title: "Light Exposure",
-          description:
-            "Walnut naturally darkens with light exposure. This is desirable and contributes to the development of character over time.",
-        },
-        {
-          icon: "shield",
-          title: "Stability",
-          description:
-            "Always secure to the wall using the included anti-tip bracket, especially in homes with children or seismic activity.",
-        },
-        {
-          icon: "droplet",
-          title: "Humidity",
-          description:
-            "Maintain indoor humidity between 40-60% to prevent wood movement. Avoid placement near heating vents.",
-        },
-      ],
       leadTime: "6-8 weeks",
       warranty: "Lifetime structural, 3-year finish",
     },
@@ -497,13 +323,6 @@ export const collection: IFurniture[] = [
         caption: "Base Integration - Concealed Steel Supports",
       },
     ],
-    features: [
-      "Single-block Roman travertine base from Tivoli, Italy",
-      "15mm bronze-tinted tempered glass top",
-      "Anti-fingerprint glass coating for easy maintenance",
-      "Open-pore honed stone finish revealing natural voids",
-      "Concealed steel supports for glass stability",
-    ],
     details: {
       overview:
         "The Travertine Table is an exercise in material dialogue. The base, carved from a single block of Roman travertine, speaks of geological patience - layers of mineral deposits accumulated over millennia in the thermal springs of central Italy. Above it, a disc of bronze-tinted glass floats on concealed supports, adding a contemporary lightness that prevents the stone from feeling heavy.",
@@ -516,32 +335,6 @@ export const collection: IFurniture[] = [
       materials: "Travertine & Glass",
       weight: "95 kg",
       dimensions: { width: 1100, depth: 1100, height: 320, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Glass Care",
-          description:
-            "Clean with a soft microfibre cloth and glass cleaner. The anti-fingerprint coating reduces maintenance frequency.",
-        },
-        {
-          icon: "shield",
-          title: "Stone Sealant",
-          description:
-            "The open-pore travertine base is sealed during production. Re-sealing recommended every 18 months for continued protection.",
-        },
-        {
-          icon: "droplet",
-          title: "Spill Care",
-          description:
-            "Wipe spills on the stone base promptly. While sealed, prolonged exposure to acidic liquids can affect the stone.",
-        },
-        {
-          icon: "sun",
-          title: "Placement",
-          description:
-            "The weight of the stone base provides excellent stability. No additional securing is typically required.",
-        },
-      ],
       leadTime: "4-6 weeks",
       warranty: "Lifetime stone, 5-year glass",
     },
@@ -574,13 +367,6 @@ export const collection: IFurniture[] = [
         caption: "Hardware - Solid Brass Accent",
       },
     ],
-    features: [
-      "Hand-bent solid brass arc from 25mm rod",
-      "Double-layer Belgian linen diffuser",
-      "Integrated LED at 2700K with CRI >95",
-      "Trailing-edge dimmable",
-      "Adjustable 2000mm textile cable",
-    ],
     details: {
       overview:
         "Lighting is architecture made visible. The Arc Pendant takes this principle literally, using a single curved brass element to define a zone of warmth and intimacy above the surfaces that matter most, whether a dining table, a reading nook or a kitchen island. The light it casts is not merely functional; it is atmospheric.",
@@ -593,32 +379,6 @@ export const collection: IFurniture[] = [
       materials: "Brass & Linen",
       weight: "4.8 kg",
       dimensions: { width: 900, depth: 350, height: 450, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Linen Diffuser",
-          description:
-            "Dust gently with a soft brush. The linen can be spot-cleaned with a damp cloth if needed. Avoid harsh cleaners.",
-        },
-        {
-          icon: "shield",
-          title: "Brass Finish",
-          description:
-            "The brass will develop a natural patina over time. To maintain original brightness, polish with brass cream every 3 months.",
-        },
-        {
-          icon: "wind",
-          title: "Installation",
-          description:
-            "Professional electrical installation required. Ensure ceiling can support 8 kg including mounting hardware.",
-        },
-        {
-          icon: "sun",
-          title: "LED Module",
-          description:
-            "Integrated LED rated for 50,000 hours. Replacement modules available through our service programme.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "5-year structural, 3-year LED module",
     },
@@ -651,13 +411,6 @@ export const collection: IFurniture[] = [
         caption: "Base Detail - Board-Marked Concrete",
       },
     ],
-    features: [
-      "UHPC concrete base with board-marked texture",
-      "8mm CNC-milled solid brass top surface",
-      "3mm shadow gap between brass and concrete",
-      "Adjustable levelling feet for uneven floors",
-      "Penetrating sealant preserving natural chalky finish",
-    ],
     details: {
       overview:
         "The entryway is the first and last space your guests experience. The Vestige Console was designed to make both moments memorable. Its raw concrete base provides visual weight and permanence while the brass top surface adds a warmth and refinement that invites the placement of personal objects, creating an altar of daily ritual.",
@@ -670,32 +423,6 @@ export const collection: IFurniture[] = [
       materials: "Concrete & Brass",
       weight: "68 kg",
       dimensions: { width: 1400, depth: 350, height: 850, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Brass Surface",
-          description:
-            "Wipe with a soft cloth. The brass will develop a living patina. Polish with brass cream if you prefer the original brightness.",
-        },
-        {
-          icon: "shield",
-          title: "Concrete Care",
-          description:
-            "The sealed concrete base requires minimal maintenance. Wipe with a damp cloth. Re-seal every 2 years.",
-        },
-        {
-          icon: "droplet",
-          title: "Moisture",
-          description:
-            "While sealed, avoid standing water on the concrete base. The brass top is naturally water-resistant.",
-        },
-        {
-          icon: "wind",
-          title: "Positioning",
-          description:
-            "Use the adjustable levelling feet to ensure perfect stability on uneven floors.",
-        },
-      ],
       leadTime: "6-10 weeks",
       warranty: "Lifetime structural, 5-year surface finish",
     },
@@ -728,13 +455,6 @@ export const collection: IFurniture[] = [
         caption: "Base Profile - Honed Carrara Marble",
       },
     ],
-    features: [
-      "200mm Carrara marble cube base from Tuscan quarries",
-      "Hand-turned alabaster shade at ~6mm wall thickness",
-      "Blackened steel stem with inline brass rotary dimmer",
-      "Integrated LED module rated for 50,000 hours",
-      "2.5m braided textile cable",
-    ],
     details: {
       overview:
         "Most floor lamps are afterthoughts, functional poles placed where light is needed. The Plinth is fundamentally different: it is a piece of architecture in miniature, a column that announces its presence and rewards close attention. The weight of the marble base, the precision of the steel stem and the translucency of the alabaster shade create a three-part composition that references classical column orders.",
@@ -747,32 +467,6 @@ export const collection: IFurniture[] = [
       materials: "Marble & Alabaster",
       weight: "18 kg",
       dimensions: { width: 200, depth: 200, height: 1650, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Alabaster Shade",
-          description:
-            "Dust gently when unlit and cool. Never use water or liquid cleaners on alabaster as it is a porous stone.",
-        },
-        {
-          icon: "shield",
-          title: "Marble Base",
-          description:
-            "Clean with a damp cloth and pH-neutral cleaner. Seal annually to maintain protection against stains.",
-        },
-        {
-          icon: "sun",
-          title: "LED Module",
-          description:
-            "The integrated LED provides 50,000 hours of warm light. Replacement available through our service team.",
-        },
-        {
-          icon: "wind",
-          title: "Stability",
-          description:
-            "The weighted marble base ensures stability. Position on level surfaces away from high-traffic pathways.",
-        },
-      ],
       leadTime: "8-12 weeks",
       warranty: "Lifetime marble, 3-year LED, 5-year alabaster",
     },
@@ -805,13 +499,6 @@ export const collection: IFurniture[] = [
         caption: "Reflection - Optical-Grade Glass",
       },
     ],
-    features: [
-      "Five concentric oxidised brass bands at graduated depths",
-      "900mm diameter optical-grade silver-backed mirror",
-      "5mm depth progression per band for topographic effect",
-      "French cleat mounting system for secure installation",
-      "Sealed clear lacquer over oxidised finish",
-    ],
     details: {
       overview:
         "A mirror is the most honest piece of furniture: it shows you only what is real. The Strata Mirror honours this honesty while adding depth, literally. Five concentric bands of brass, each oxidised to a slightly different tone and set at a different depth, create a frame that is itself a landscape of light and shadow, changing character throughout the day as natural light shifts.",
@@ -824,32 +511,6 @@ export const collection: IFurniture[] = [
       materials: "Oxidised Brass & Mirror",
       weight: "12 kg",
       dimensions: { width: 900, depth: 45, height: 900, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Mirror Surface",
-          description:
-            "Clean with a soft, lint-free cloth and standard glass cleaner. Avoid spraying directly on the brass frame.",
-        },
-        {
-          icon: "shield",
-          title: "Brass Frame",
-          description:
-            "The oxidised finish is sealed with a clear lacquer. Simply dust regularly. Do not polish, as this would remove the intentional patina.",
-        },
-        {
-          icon: "wind",
-          title: "Installation",
-          description:
-            "Professional installation recommended due to weight. The French cleat system requires secure wall fixings.",
-        },
-        {
-          icon: "droplet",
-          title: "Environment",
-          description:
-            "Suitable for dry environments. Not recommended for bathrooms without adequate ventilation.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "10-year mirror, 5-year frame finish",
     },
@@ -882,13 +543,6 @@ export const collection: IFurniture[] = [
         caption: "Joinery - Concealed Brass Fixings",
       },
     ],
-    features: [
-      "Single-piece steam-bent European ash frame",
-      "Full-grain vegetable-tanned Tuscan saddle leather",
-      "Stackable up to 4 chairs for storage",
-      "Natural spring flex from steam-bent construction",
-      "Leather seat moulds to owner's posture over time",
-    ],
     details: {
       overview:
         "The dining chair is the most demanding typology in furniture design. It must be comfortable for hours, light enough to move, strong enough for daily use, stackable for storage and beautiful from every angle. The Form Dining Chair was our answer to all five demands simultaneously, achieved through steam-bent European ash and Italian saddle leather.",
@@ -901,32 +555,6 @@ export const collection: IFurniture[] = [
       materials: "Ash & Leather",
       weight: "5.2 kg",
       dimensions: { width: 520, depth: 540, height: 780, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Leather Conditioning",
-          description:
-            "Apply leather conditioner every 3-4 months to maintain suppleness. The leather will darken naturally with use and age.",
-        },
-        {
-          icon: "shield",
-          title: "Wood Frame",
-          description:
-            "Wipe with a dry cloth. Apply furniture wax once a year to protect the ash and maintain its natural sheen.",
-        },
-        {
-          icon: "wind",
-          title: "Stacking",
-          description:
-            "Stack no more than 4 chairs to prevent frame stress. Use the provided felt pads between stacked chairs.",
-        },
-        {
-          icon: "droplet",
-          title: "Spills",
-          description:
-            "Blot leather spills immediately with a dry cloth. The vegetable tanning provides natural resistance but is not waterproof.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "10-year structural, 5-year leather",
     },
@@ -959,13 +587,6 @@ export const collection: IFurniture[] = [
         caption: "Display - Curated Botanicals",
       },
     ],
-    features: [
-      "Hand-thrown on manual kick wheel, each piece unique",
-      "Proprietary volcanic ash glaze with matte stone finish",
-      "Food and water-safe clear interior glaze",
-      "High-fire stoneware at 1280 degrees Celsius",
-      "Colour range from warm sand to deep charcoal",
-    ],
     details: {
       overview:
         "The Orbit Vase was not designed on a screen. It was born on the wheel, through the dialogue between a ceramic artist's hands and the spinning clay. The asymmetric form that resulted, a sphere seemingly caught mid-rotation, could only emerge through this direct, physical process. It is a record of a gesture, frozen in fired stoneware.",
@@ -978,32 +599,6 @@ export const collection: IFurniture[] = [
       materials: "Stoneware",
       weight: "3.2 kg",
       dimensions: { width: 280, depth: 280, height: 350, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Cleaning",
-          description:
-            "Rinse with warm water after use. The matte exterior can be wiped with a damp cloth. Dishwasher safe but hand-washing preferred.",
-        },
-        {
-          icon: "droplet",
-          title: "Water Use",
-          description:
-            "The glazed interior is fully waterproof. Change water regularly when displaying fresh flowers to prevent mineral deposits.",
-        },
-        {
-          icon: "shield",
-          title: "Handling",
-          description:
-            "While robust, stoneware can chip if dropped on hard surfaces. Handle with care and place on soft surfaces.",
-        },
-        {
-          icon: "sun",
-          title: "Display",
-          description:
-            "Suitable for indoor and sheltered outdoor display. Avoid prolonged freezing temperatures with water inside.",
-        },
-      ],
       leadTime: "Immediate dispatch",
       warranty: "Lifetime (excluding physical damage)",
     },
@@ -1036,13 +631,6 @@ export const collection: IFurniture[] = [
         caption: "Headboard - Natural Belgian Linen",
       },
     ],
-    features: [
-      "Solid white oak platform with slatted support system",
-      "Integrated floating nightstand on both sides",
-      "Two concealed under-bed storage drawers per side",
-      "Upholstered headboard in natural Belgian linen",
-      "150mm platform height for contemporary low-profile silhouette",
-    ],
     details: {
       overview:
         "The bedroom should be the quietest room in the house, both acoustically and visually. The Haven Platform Bed achieves this by eliminating everything unnecessary - no visible legs, no ornamental headboard, no bulky frame. What remains is a pure horizontal plane of white oak, floating 150mm above the floor, supporting nothing but rest.",
@@ -1055,32 +643,6 @@ export const collection: IFurniture[] = [
       materials: "White Oak & Linen",
       weight: "110 kg (Queen), 125 kg (King)",
       dimensions: { width: 1800, depth: 2200, height: 350, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Wood Surface",
-          description:
-            "Dust with a soft cloth. Apply natural oil finish every 12 months to maintain the white oak's warm tone.",
-        },
-        {
-          icon: "sun",
-          title: "Linen Headboard",
-          description:
-            "Vacuum the linen headboard monthly with a soft brush attachment. Professional cleaning recommended annually.",
-        },
-        {
-          icon: "shield",
-          title: "Storage Drawers",
-          description:
-            "The soft-close drawer mechanism requires no maintenance. Keep runners clean and free of debris.",
-        },
-        {
-          icon: "wind",
-          title: "Ventilation",
-          description:
-            "The slatted system provides natural airflow. Ensure at least 50mm clearance from walls for optimal air circulation.",
-        },
-      ],
       leadTime: "10-14 weeks",
       warranty:
         "Lifetime structural, 5-year upholstery, 10-year drawer mechanism",
@@ -1114,13 +676,6 @@ export const collection: IFurniture[] = [
         caption: "Post Structure - Blackened Steel Patina",
       },
     ],
-    features: [
-      "25mm blackened steel posts with hand-applied patina",
-      "Solid oak canopy rail with concealed LED ambient strip",
-      "Modular assembly system, no visible hardware",
-      "Optional sheer linen drape panels available",
-      "Compatible with standard mattress sizes (Queen/King)",
-    ],
     details: {
       overview:
         "The four-poster bed is one of the oldest and most psychologically powerful furniture archetypes, a room within a room, a defined territory of rest. The Dusk Canopy Frame strips this archetype to its structural essence: four slender posts and a connecting rail that define a volume of intimate space without enclosing it.",
@@ -1133,32 +688,6 @@ export const collection: IFurniture[] = [
       materials: "Steel & Oak",
       weight: "65 kg",
       dimensions: { width: 1700, depth: 2200, height: 2100, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "hand",
-          title: "Steel Posts",
-          description:
-            "Wipe with a dry cloth. The blackened patina is sealed and maintenance-free. Avoid abrasive cleaners.",
-        },
-        {
-          icon: "shield",
-          title: "Oak Rail",
-          description:
-            "Dust regularly. Apply natural oil finish every 12 months to maintain the warm tone of the oak.",
-        },
-        {
-          icon: "sun",
-          title: "LED Strip",
-          description:
-            "The concealed LED strip is rated for 50,000 hours. Replacement strips available through our service programme.",
-        },
-        {
-          icon: "wind",
-          title: "Assembly",
-          description:
-            "Professional assembly recommended. The modular system requires precise alignment for optimal stability.",
-        },
-      ],
       leadTime: "12-16 weeks",
       warranty: "Lifetime structural, 3-year LED, 5-year finish",
     },
@@ -1187,13 +716,6 @@ export const collection: IFurniture[] = [
         caption: "Hand-sculpted Walnut Armrest Detail",
       },
     ],
-    features: [
-      "Solid American Walnut frame sculpted by hand",
-      "Ethically sourced natural shearling upholstery",
-      "Ergonomic lumbar curvature for prolonged repose",
-      "Hand-rubbed natural oil and beeswax finish",
-      "Limited archival release with serialized brass plaque",
-    ],
     details: {
       overview:
         "The Aura Lounge Chair is a celebrated architectural seating piece that fuses tactile warmth with sculptural discipline. Hand-crafted by master woodworkers, its curved walnut frame embraces the sitter while maintaining a visually light, floating stance in any space.",
@@ -1206,20 +728,6 @@ export const collection: IFurniture[] = [
       materials: "American Walnut & Natural Shearling",
       weight: "34 kg",
       dimensions: { width: 880, depth: 920, height: 760, unit: "mm" },
-      careInstructions: [
-        {
-          icon: "shield",
-          title: "Shearling Care",
-          description:
-            "Gently brush with a specialty wool brush to maintain loft and texture.",
-        },
-        {
-          icon: "hand",
-          title: "Wood Maintenance",
-          description:
-            "Treat walnut frame with natural beeswax polish annually.",
-        },
-      ],
       leadTime: "Currently Unavailable",
       warranty: "10-year structural warranty",
     },
