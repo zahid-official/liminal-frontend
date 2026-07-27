@@ -4,8 +4,7 @@ import { ILayoutProps } from "@/types";
 const DashboardLayout = ({ children }: ILayoutProps) => {
   return (
     <div>
-      <h1>Welcome to the DashboardLayout Component</h1>
-      {children}
+      <main>{children}</main>
     </div>
   );
 };
