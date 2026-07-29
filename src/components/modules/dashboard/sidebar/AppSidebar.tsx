@@ -1,8 +1,5 @@
 "use client";
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
 import Logo from "@/components/shared/Logo";
 import {
   Sidebar,
@@ -24,6 +21,9 @@ import {
 } from "@/config/navigation";
 import Link from "next/link";
 import * as React from "react";
+import { NavMain } from "./NavMain";
+import { NavProjects } from "./NavProjects";
+import { NavUser } from "./NavUser";
 
 const userProfile = {
   name: "Liminal User",
@@ -75,5 +75,3 @@ export function AppSidebar({
     </Sidebar>
   );
 }
-
-
