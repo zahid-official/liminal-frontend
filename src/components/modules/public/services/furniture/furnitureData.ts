@@ -1,6 +1,3 @@
-// Furniture Data - Static data layer for furniture collection
-// This file will be replaced with dynamic API calls once the backend is ready
-
 // Furniture Gallery Image Interface
 export interface IFurnitureGalleryImage {
   url: string;

@@ -76,9 +76,9 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                    <label className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
                       CONCEPT DESIGN
-                    </label>
+                    </span>
                   </div>
                   <p className="text-[15px] leading-relaxed text-muted-foreground text-justify">
                     {details.designStory}
@@ -96,9 +96,9 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                    <label className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
                       CREATIVE OVERVIEW
-                    </label>
+                    </span>
                   </div>
 
                   <p className="text-[15px] leading-relaxed text-muted-foreground text-justify">
@@ -110,9 +110,9 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-liminal-secondary" />
-                    <label className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-liminal-secondary uppercase font-bold">
                       CRAFTSMANSHIP PRINCIPLES
-                    </label>
+                    </span>
                   </div>
                   <p className="text-[15px] leading-relaxed text-muted-foreground text-justify">
                     {details.craftsmanship}
@@ -120,7 +120,7 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
                 </div>
 
                 {/* Framed Quote container */}
-                <div className="p-8 bg-zinc-50/80 border border-border/30 rounded-sm relative">
+                <blockquote className="p-8 bg-zinc-50/80 border border-border/30 rounded-sm relative">
                   <span className="absolute top-2 left-4 text-6xl font-serif text-liminal-secondary/15 leading-none select-none pointer-events-none">
                     “
                   </span>
@@ -130,7 +130,7 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
                     design furniture to silhouette cleanly against any
                     architectural background.
                   </p>
-                </div>
+                </blockquote>
 
                 {/* Landscape Offset Image Frame */}
                 <div className="group relative aspect-video w-full bg-zinc-50 rounded-xs overflow-hidden border border-border/15 shadow-sm">
@@ -154,6 +154,7 @@ const FurnitureDesignStory = ({ furniture }: FurnitureDesignStoryProps) => {
           </div>
         </div>
 
+        {/* Section Footer */}
         <SectionFooter label="Liminal Narrative" />
 
         {/* Previous / Next Furniture Navigation */}
