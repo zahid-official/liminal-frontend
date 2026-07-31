@@ -6,7 +6,7 @@ export interface IBlogArticle {
   id: string;
   slug: string;
   title: string;
-  excerpt: string;
+  description: string;
   content: IBlogContentBlock[];
   category: string;
   date: string;
@@ -41,8 +41,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "1",
     slug: "the-role-of-light-in-spatial-design",
     title: "The Role of Light in Spatial Design",
-    excerpt:
-      "How natural and artificial illumination shapes human experience, transforms architectural volumes and defines the emotional character of interior spaces.",
+    description:
+      "How natural and artificial illumination shapes human experience, transforms architectural volumes and defines the emotional character of interior spaces. At Liminal, we treat light not simply as a functional utility, but as a primary material that sculpts form and evokes deep feeling.",
     content: [
       {
         type: "paragraph",
@@ -105,8 +105,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "2",
     slug: "material-palettes-curating-texture",
     title: "Material Palettes: Curating Texture",
-    excerpt:
-      "A deep exploration of how material selection, from raw stone to burnished metal, creates narrative depth and sensory richness in contemporary interiors.",
+    description:
+      "A deep exploration of how material selection, from raw stone to burnished metal, creates narrative depth and sensory richness in contemporary interiors. Each surface carries tactile memory, bridging historical craftsmanship with modern minimal sensibilities.",
     content: [
       {
         type: "paragraph",
@@ -165,8 +165,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "3",
     slug: "architecture-of-silence-designing-calm",
     title: "Architecture of Silence: Designing Calm",
-    excerpt:
-      "In an age of sensory overload, the most powerful design choice may be restraint. Exploring how quiet spaces cultivate focus, reflection and wellbeing.",
+    description:
+      "In an age of sensory overload, the most powerful design choice may be restraint. Exploring how quiet spaces cultivate focus, reflection and wellbeing through visual silence, balanced acoustic design and distilled architectural forms.",
     content: [
       {
         type: "paragraph",
@@ -225,8 +225,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "4",
     slug: "the-art-of-proportion-in-interior-spaces",
     title: "The Art of Proportion in Interior Spaces",
-    excerpt:
-      "Why the golden ratio and classical proportional systems remain deeply relevant in contemporary interior design and how we apply them at Liminal.",
+    description:
+      "Why the golden ratio and classical proportional systems remain deeply relevant in contemporary interior design and how we apply them at Liminal. Proportional harmony creates an invisible spatial order that resonates with the human scale and spirit.",
     content: [
       {
         type: "paragraph",
@@ -281,8 +281,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "5",
     slug: "from-concept-to-completion-our-design-process",
     title: "From Concept to Completion: Our Design Process",
-    excerpt:
-      "A transparent look inside Liminal's end-to-end design methodology, from initial client dialogue through material sourcing to final installation.",
+    description:
+      "A transparent look inside Liminal's end-to-end design methodology, from initial client dialogue through material sourcing to final installation. Discover how our human-centered approach balances technical precision with subtle artistic expression.",
     content: [
       {
         type: "paragraph",
@@ -341,8 +341,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "6",
     slug: "travertine-the-timeless-surface",
     title: "Travertine: The Timeless Surface",
-    excerpt:
-      "An exploration of travertine's enduring appeal in luxury interior design, focusing on its geological origins, textural variations and the warmth it brings to contemporary spaces.",
+    description:
+      "An exploration of travertine's enduring appeal in luxury interior design, focusing on its geological origins, textural variations and the warmth it brings to contemporary spaces. This sedimentary stone bridges antiquity and modern luxury with timeless grace.",
     content: [
       {
         type: "paragraph",
@@ -397,8 +397,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "7",
     slug: "the-threshold-experience-designing-transitions",
     title: "The Threshold Experience: Designing Transitions",
-    excerpt:
-      "How the moments between rooms, such as thresholds, corridors and transitions, shape the narrative arc of interior spaces and create emotional pacing.",
+    description:
+      "How the moments between rooms, such as thresholds, corridors and transitions, shape the narrative arc of interior spaces and create emotional pacing. The in-between spaces frame our physical experience and heighten anticipation as we move from sanctuary to open hall.",
     content: [
       {
         type: "paragraph",
@@ -453,8 +453,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "8",
     slug: "the-monolith-principle-strength-through-simplicity",
     title: "The Monolith Principle: Strength Through Simplicity",
-    excerpt:
-      "How the concept of the monolith, a single, unified form, informs our approach to kitchen islands, feature walls and sculptural furniture elements.",
+    description:
+      "How the concept of the monolith, a single, unified form, informs our approach to kitchen islands, feature walls and sculptural furniture elements. Monolithic structures anchor living spaces, conveying authority, structural purity and material integrity.",
     content: [
       {
         type: "paragraph",
@@ -509,8 +509,8 @@ export const blogArticles: IBlogArticle[] = [
     id: "9",
     slug: "the-colonnade-reimagined-columns-in-modern-interiors",
     title: "The Colonnade Reimagined: Columns in Modern Interiors",
-    excerpt:
-      "How we reinterpret the classical colonnade, utilizing columns, rhythm and structural expression, within contemporary residential and commercial interiors.",
+    description:
+      "How we reinterpret the classical colonnade, utilizing columns, rhythm and structural expression, within contemporary residential and commercial interiors. Discover how vertical elements define boundary without closure, bringing timeless architectural dignity to modern design.",
     content: [
       {
         type: "paragraph",

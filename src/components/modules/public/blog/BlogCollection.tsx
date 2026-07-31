@@ -34,7 +34,7 @@ const BlogCollection = () => {
       results = results.filter(
         (article) =>
           article.title.toLowerCase().includes(query) ||
-          article.excerpt.toLowerCase().includes(query),
+          article.description.toLowerCase().includes(query),
       );
     }
 

@@ -32,6 +32,7 @@ const BlogArticleDetails = ({
             {/* Main Content */}
             <div className="lg:col-span-8 lg:col-start-4">
               <BlogArticleContent
+                description={article.description}
                 articleImage={article.image}
                 content={article.content}
               />

@@ -54,9 +54,9 @@ const BlogCard = ({ article }: BlogCardProps) => {
           </h3>
         </Link>
 
-        {/* Excerpt */}
+        {/* Description */}
         <p className="text-muted-foreground font-light text-[15px] leading-relaxed mb-6 flex-1 line-clamp-3">
-          {article.excerpt}
+          {article.description}
         </p>
 
         {/* Read Link */}

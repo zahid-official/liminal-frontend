@@ -2,37 +2,37 @@ import { IBlogContentBlock } from "../blogData";
 import Image from "next/image";
 
 interface BlogArticleContentProps {
+  description: string;
   articleImage: string;
   content: IBlogContentBlock[];
 }
 
-const BlogArticleContent = ({ articleImage, content }: BlogArticleContentProps) => {
-  const firstParagraphIndex = content.findIndex(
-    (block) => block.type === "paragraph",
-  );
-
+const BlogArticleContent = ({
+  description,
+  articleImage,
+  content,
+}: BlogArticleContentProps) => {
   return (
     <div className="space-y-8">
+      {/* Description as lead paragraph with drop-cap */}
+      {description && (
+        <p className="text-lg text-muted-foreground font-light">
+          <span className="float-left text-5xl md:text-6xl font-heading font-bold leading-[0.8] mr-2 mt-1.5 text-liminal-secondary">
+            {description.charAt(0)}
+          </span>
+          {description.slice(1)}
+        </p>
+      )}
+
       {content.map((block, index) => {
         switch (block.type) {
           case "paragraph": {
-            const applyDropCap = index === firstParagraphIndex;
-
             return (
               <p
                 key={index}
                 className="text-lg text-muted-foreground font-light"
               >
-                {applyDropCap ? (
-                  <>
-                    <span className="float-left text-5xl md:text-6xl font-heading font-bold leading-[0.8] mr-3 mt-1.5 text-liminal-secondary">
-                      {block.text.charAt(0)}
-                    </span>
-                    {block.text.slice(1)}
-                  </>
-                ) : (
-                  block.text
-                )}
+                {block.text}
               </p>
             );
           }
