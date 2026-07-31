@@ -32,10 +32,28 @@ const BlogArticleDetails = ({
             {/* Main Content */}
             <div className="lg:col-span-8 lg:col-start-4">
               <BlogArticleContent
+                title={article.title}
                 description={article.description}
-                articleImage={article.image}
+                thumbnail={article.thumbnail}
                 content={article.content}
               />
+
+              {/* Quote Section - showcased after BlogArticleContent and before SectionFooter */}
+              {article.quote && (
+                <blockquote className="relative border-l-2 border-liminal-secondary/40 pl-6 pr-4 py-8 bg-zinc-50/80 my-12">
+                  <div className="absolute top-2 left-4 text-5xl text-liminal-secondary/15 font-serif select-none pointer-events-none">
+                    &ldquo;
+                  </div>
+                  <p className="italic font-serif text-lg sm:text-xl text-foreground/80 leading-relaxed select-none pointer-events-none">
+                    {article.quote.text}
+                  </p>
+                  {article.quote.attribution && (
+                    <cite className="block mt-4 text-xs tracking-[0.2em] text-liminal-secondary font-medium not-italic">
+                      – {article.quote.attribution}
+                    </cite>
+                  )}
+                </blockquote>
+              )}
 
               {/* Article Footer */}
               <SectionFooter label="End of Article" />
@@ -51,7 +69,7 @@ const BlogArticleDetails = ({
             ? {
                 href: `/blog/${prev.slug}`,
                 title: prev.title,
-                image: prev.image,
+                image: prev.thumbnail.url,
                 category: prev.category,
                 metaText: prev.readTime,
               }
@@ -62,7 +80,7 @@ const BlogArticleDetails = ({
             ? {
                 href: `/blog/${next.slug}`,
                 title: next.title,
-                image: next.image,
+                image: next.thumbnail.url,
                 category: next.category,
                 metaText: next.readTime,
               }

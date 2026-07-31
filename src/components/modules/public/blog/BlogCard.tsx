@@ -16,7 +16,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
       <Link href={`/blog/${article.slug}`} className="block">
         <div className="relative aspect-video overflow-hidden">
           <Image
-            src={article.image}
+            src={article.thumbnail.url}
             alt={article.title}
             fill
             quality={85}

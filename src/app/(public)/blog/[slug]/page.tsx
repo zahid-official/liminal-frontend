@@ -51,7 +51,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
           { label: "Blog", href: "/blog" },
           { label: article.category },
         ]}
-        bgImage={article.image}
+        bgImage={article.thumbnail.url}
       />
 
       {/* Article Details Wrapper */}
