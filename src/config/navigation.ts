@@ -53,7 +53,7 @@ export const adminNavMain: NavItem[] = [
       },
       {
         title: "Add New Project",
-        url: "/dashboard/projects/new",
+        url: "/dashboard/projects/create",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const adminNavMain: NavItem[] = [
       },
       {
         title: "Add New Service",
-        url: "/dashboard/services/new",
+        url: "/dashboard/services/create",
       },
     ],
   },
@@ -87,7 +87,7 @@ export const adminNavMain: NavItem[] = [
       },
       {
         title: "Create Article",
-        url: "/dashboard/blog/new",
+        url: "/dashboard/blog/create",
       },
     ],
   },
