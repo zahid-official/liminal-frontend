@@ -39,7 +39,7 @@ const BlogCard = ({ article }: BlogCardProps) => {
         {/* Date & Read Time */}
         <div className="flex items-center gap-3 mb-4">
           <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
-            {article.date}
+            {article.createdAt}
           </span>
           <div className="w-1 h-1 rounded-full bg-muted-foreground/30" />
           <span className="text-[11px] font-mono tracking-wider text-muted-foreground/60 uppercase">
