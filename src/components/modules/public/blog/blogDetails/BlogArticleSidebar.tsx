@@ -16,10 +16,10 @@ const BlogArticleSidebar = ({ content }: BlogArticleSidebarProps) => {
   const isClickScrolling = useRef(false);
 
   const headings = useMemo(() => {
-    return content.filter(
-      (block): block is Extract<IBlogContentBlock, { type: "heading" }> =>
-        block.type === "heading"
-    );
+    return content.map((block) => ({
+      id: block.id || block.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      text: block.heading,
+    }));
   }, [content]);
 
   const detectActive = useCallback(() => {

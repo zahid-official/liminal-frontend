@@ -1,5 +1,6 @@
 import { IBlogArticle } from "../blogData";
 import { Fragment } from "react";
+import Image from "next/image";
 
 // BlogArticleHero Props
 interface BlogArticleHeroProps {
@@ -9,7 +10,7 @@ interface BlogArticleHeroProps {
 // BlogArticleHero Component
 const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
   const metaItems = [
-    { label: "Published", value: article.date },
+    { label: "Published", value: article.createdAt },
     { label: "Read Time", value: article.readTime },
     { label: "Category", value: article.category },
   ];
@@ -30,21 +31,30 @@ const BlogArticleHero = ({ article }: BlogArticleHeroProps) => {
               {/* Left: Author */}
               <div className="flex items-center gap-4">
                 {/* Author Avatar */}
-                <div className="w-14 h-14 rounded-full bg-liminal-dark/5 border border-liminal-dark/10 flex items-center justify-center shrink-0 relative">
-                  <span className="text-sm font-bold uppercase tracking-wider text-liminal-secondary">
-                    {article.author
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
+                <div className="w-14 h-14 rounded-full bg-liminal-dark/5 border border-liminal-dark/10 flex items-center justify-center shrink-0 relative overflow-hidden">
+                  {article.author.picture ? (
+                    <Image
+                      src={article.author.picture}
+                      alt={article.author.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <span className="text-sm font-bold uppercase tracking-wider text-liminal-secondary">
+                      {article.author.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </span>
+                  )}
                 </div>
 
                 <div>
                   <p className="text-[15px] font-semibold text-foreground leading-tight">
-                    {article.author}
+                    {article.author.name}
                   </p>
                   <p className="text-xs text-muted-foreground/55 mt-1">
-                    {article.authorRole} · Liminal Design Studio
+                    {article.author.role} · Liminal Design Studio
                   </p>
                 </div>
               </div>
