@@ -1,8 +1,25 @@
+import { FileTextIcon } from "lucide-react";
+
 // CreateProjectPage Component
 const CreateProjectPage = () => {
   return (
-    <main>
-      
+    <main className="custom-container py-16 space-y-8">
+      {/* Page Header */}
+      <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center justify-center size-12 rounded-lg bg-liminal-secondary/8 shrink-0">
+          <FileTextIcon className="size-6 text-liminal-secondary" />
+        </div>
+
+        <div className="space-y-1">
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Create New Project
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Fill in the details below to add a new interior design project to
+            your portfolio.
+          </p>
+        </div>
+      </div>
     </main>
   );
 };
