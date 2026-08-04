@@ -1,19 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import LiminalButton from "@/components/shared/LiminalButton";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { Globe, Save, UploadCloud, X } from "lucide-react";
+import { Globe, UploadCloud, X } from "lucide-react";
 import React from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 
@@ -21,13 +19,11 @@ import { ProjectFormValues } from "./types";
 
 interface ProjectPublishSectionProps {
   form: UseFormReturn<ProjectFormValues>;
-  isSubmitting: boolean;
 }
 
 // ProjectPublishSection Component
 const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
   form,
-  isSubmitting,
 }) => {
   return (
     <Card>
@@ -149,24 +145,6 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
           <FieldError errors={[form.formState.errors.thumbnail]} />
         </Field>
       </CardContent>
-
-      {/* Action Footer Button */}
-      <CardFooter className="bg-transparent border-t-0 pt-0">
-        <LiminalButton
-          type="submit"
-          className="w-full group shadow-none"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <span className="flex items-center gap-2">Saving...</span>
-          ) : (
-            <span className="flex items-center gap-2">
-              <Save className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              Save Project
-            </span>
-          )}
-        </LiminalButton>
-      </CardFooter>
     </Card>
   );
 };
