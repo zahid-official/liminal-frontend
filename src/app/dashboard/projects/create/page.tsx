@@ -1,4 +1,4 @@
-import CreateProjectForm from "@/components/modules/dashboard/projects/CreateProjectForm";
+import CreateProjectForm from "@/components/modules/dashboard/projects/create/CreateProjectForm";
 import { FileTextIcon } from "lucide-react";
 import { Metadata } from "next";
 

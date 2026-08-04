@@ -23,7 +23,7 @@ import { UseFormReturn } from "react-hook-form";
 import {
   projectCategories,
   projectStyles,
-} from "../../public/projects/projectsData";
+} from "@/components/modules/public/projects/projectsData";
 
 import slugify from "slugify";
 
