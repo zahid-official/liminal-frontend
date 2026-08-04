@@ -13,7 +13,8 @@ export const projectSchema = z.object({
   location: z.string().min(1, "Location is required"),
   duration: z.string().min(1, "Duration is required"),
   completionYear: z.string().min(4, "Completion Year is required"),
-  thumbnail: z.string().min(1, "Thumbnail URL is required"),
+  thumbnail: z.string().min(1, "Thumbnail is required"),
+  thumbnailCaption: z.string().optional(),
   description: z
     .string()
     .min(10, "Description should be at least 10 characters"),

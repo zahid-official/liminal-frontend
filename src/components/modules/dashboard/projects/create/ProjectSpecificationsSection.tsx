@@ -30,7 +30,7 @@ const ProjectSpecificationsSection: React.FC<
         <CardTitle className="flex items-center gap-2">
           <SlidersHorizontal className="w-4.5 h-4.5 text-liminal-secondary" />
           <span className="text-lg tracking-tight font-medium">
-            Specifications
+            Project Specifications
           </span>
         </CardTitle>
 
@@ -38,7 +38,7 @@ const ProjectSpecificationsSection: React.FC<
           Physical and quantitative parameters for the project.
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Location Input */}
         <Field invalid={!!form.formState.errors.location}>
           <FieldLabel required className="text-sm font-semibold tracking-wide">

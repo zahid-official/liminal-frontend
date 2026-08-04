@@ -32,6 +32,7 @@ const CreateProjectForm = () => {
       duration: "",
       completionYear: "",
       thumbnail: "",
+      thumbnailCaption: "",
       description: "",
       narratives: {
         projectContext: "",
@@ -92,19 +93,19 @@ const CreateProjectForm = () => {
         {/* Main Column: Basic Info, Narratives and Gallery */}
         <div className="xl:col-span-2 space-y-8">
           <ProjectBasicInfoSection form={form} />
+          <ProjectSpecificationsSection form={form} />
           <ProjectNarrativesSection form={form} />
+        </div>
+
+        {/* Sidebar Column: Publish Settings and Specifications */}
+        <div className="space-y-8">
+          <ProjectPublishSection form={form} isSubmitting={isSubmitting} />
           <ProjectGallerySection
             form={form}
             galleryFields={galleryFields}
             appendGalleryImage={appendGalleryImage}
             removeGalleryImage={removeGalleryImage}
           />
-        </div>
-
-        {/* Sidebar Column: Publish Settings and Specifications */}
-        <div className="space-y-8">
-          <ProjectPublishSection form={form} isSubmitting={isSubmitting} />
-          <ProjectSpecificationsSection form={form} />
         </div>
       </div>
     </form>

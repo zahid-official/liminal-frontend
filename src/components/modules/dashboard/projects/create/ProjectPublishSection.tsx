@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import LiminalButton from "@/components/shared/LiminalButton";
 import {
   Card,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
 import { Globe, Save, UploadCloud, X } from "lucide-react";
 import React from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
@@ -71,11 +73,12 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
             {form.watch("thumbnail") ? (
               /* Preview State */
               <div className="relative group rounded-xl border overflow-hidden bg-muted/30 aspect-video flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={form.watch("thumbnail")}
                   alt="Thumbnail preview"
-                  className="w-full h-full object-cover rounded-lg"
+                  fill
+                  className="object-cover rounded-lg"
+                  unoptimized
                 />
                 <label className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer text-background font-medium gap-1">
                   <UploadCloud className="w-5 h-5" />
@@ -104,21 +107,20 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
               </div>
             ) : (
               /* Upload State */
-              <label className="flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed rounded-xl cursor-pointer bg-card hover:bg-accent/40 border-border/80 hover:border-liminal-secondary/50 transition-all group">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
-                  <div className="p-3 rounded-full bg-muted/60 text-muted-foreground group-hover:text-liminal-secondary group-hover:bg-liminal-secondary/10 transition-colors mb-3">
-                    <UploadCloud className="w-6 h-6" />
+              <label className="flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed rounded-xl cursor-pointer bg-card hover:bg-accent/40 border-border/70 hover:border-liminal-secondary/50 transition-all group">
+                <div className="flex flex-col items-center justify-center text-center p-4">
+                  <div className="p-3 rounded-full bg-muted/60 text-muted-foreground group-hover:text-liminal-secondary group-hover:bg-liminal-secondary/10 transition-colors">
+                    <UploadCloud className="size-6" />
                   </div>
-                  <p className="mb-1 text-sm font-medium text-foreground">
-                    <span className="text-liminal-secondary">
-                      Click to upload
-                    </span>{" "}
-                    or drag and drop
+
+                  <p className="mt-1.5 mb-0.5 text-sm font-medium text-liminal-secondary">
+                    Click to upload
                   </p>
                   <p className="text-xs text-muted-foreground">
                     PNG, JPG, WEBP or SVG (Max 5MB)
                   </p>
                 </div>
+
                 <input
                   type="file"
                   accept="image/*"
@@ -133,6 +135,15 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
                 />
               </label>
             )}
+
+            {/* Caption Textarea - Always Visible */}
+            <Field>
+              <Textarea
+                placeholder="Thumbnail caption (Optional)..."
+                {...form.register("thumbnailCaption")}
+                className="min-h-20 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+              />
+            </Field>
           </div>
 
           <FieldError errors={[form.formState.errors.thumbnail]} />
