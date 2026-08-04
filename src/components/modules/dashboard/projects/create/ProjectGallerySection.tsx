@@ -1,26 +1,45 @@
 "use client";
 
+import { ImagePlus, Trash2Icon } from "lucide-react";
 import React from "react";
-import { UseFormReturn, UseFieldArrayReturn } from "react-hook-form";
-import { ImagePlus, Plus, Trash2 } from "lucide-react";
+import { UseFieldArrayReturn, UseFormReturn } from "react-hook-form";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import LiminalButton from "@/components/shared/LiminalButton";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 
+import { Button } from "@/components/ui/button";
 import { ProjectFormValues } from "./types";
 
 interface ProjectGallerySectionProps {
   form: UseFormReturn<ProjectFormValues>;
-  galleryFields: UseFieldArrayReturn<ProjectFormValues, "galleryImages", "id">["fields"];
-  appendGalleryImage: UseFieldArrayReturn<ProjectFormValues, "galleryImages", "id">["append"];
-  removeGalleryImage: UseFieldArrayReturn<ProjectFormValues, "galleryImages", "id">["remove"];
+  galleryFields: UseFieldArrayReturn<
+    ProjectFormValues,
+    "galleryImages",
+    "id"
+  >["fields"];
+  appendGalleryImage: UseFieldArrayReturn<
+    ProjectFormValues,
+    "galleryImages",
+    "id"
+  >["append"];
+  removeGalleryImage: UseFieldArrayReturn<
+    ProjectFormValues,
+    "galleryImages",
+    "id"
+  >["remove"];
 }
 
 /**
  * ProjectGallerySection Component
- * 
+ *
  * Manages dynamic gallery image input fields using useFieldArray.
  * Allows users to add, remove, edit image URLs and optional captions.
  */
@@ -51,15 +70,15 @@ export const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
             className="p-4 rounded-xl border bg-muted/20 relative group"
           >
             {/* Delete button (visible on hover) */}
-            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-              <LiminalButton
-                variant="ghost"
+            <div className="absolute top-2 right-2 z-10">
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => removeGalleryImage(index)}
-                className="h-8 w-8 p-0 text-destructive hover:bg-destructive/10 border-0 shadow-none"
+                className="h-8 w-8 p-0 text-muted-foreground/80 hover:text-destructive hover:bg-destructive/10 border border-border/30 hover:border-destructive/10 transition-colors rounded-md"
               >
-                <Trash2 className="w-4 h-4" />
-              </LiminalButton>
+                <Trash2Icon className="w-4 h-4" />
+              </Button>
             </div>
 
             <div className="grid gap-4 pr-8">
@@ -67,7 +86,10 @@ export const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
               <Field
                 invalid={!!form.formState.errors.galleryImages?.[index]?.url}
               >
-                <FieldLabel required className="text-sm font-semibold tracking-wide">
+                <FieldLabel
+                  required
+                  className="text-sm font-semibold tracking-wide"
+                >
                   Image URL
                 </FieldLabel>
                 <Input
@@ -99,11 +121,13 @@ export const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
         <LiminalButton
           type="button"
           variant="outline"
+          icon={ImagePlus}
+          iconPosition="left"
+          animateIcon={false}
+          className="w-full border-dashed border-border/60 hover:border-border text-muted-foreground hover:text-foreground  h-12 rounded-lg"
           onClick={() => appendGalleryImage({ url: "", caption: "" })}
-          className="w-full border-dashed shadow-none"
         >
-          <Plus className="w-4 h-4 mr-2" />
-          Add Image
+          Add Gallery Image
         </LiminalButton>
         <FieldError errors={[form.formState.errors.galleryImages?.root]} />
       </CardContent>
