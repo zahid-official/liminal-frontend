@@ -102,7 +102,10 @@ const CreateProjectForm = () => {
         </div>
 
         {/* Sidebar Column: Publish Settings and Specifications */}
-        <div className="space-y-8"></div>
+        <div className="space-y-8">
+          <ProjectPublishSection form={form} isSubmitting={isSubmitting} />
+      
+        </div>
       </div>
     </form>
   );
