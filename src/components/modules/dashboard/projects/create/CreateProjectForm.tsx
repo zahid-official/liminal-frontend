@@ -6,11 +6,11 @@ import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
-import { ProjectBasicInfoSection } from "./ProjectBasicInfoSection";
-import { ProjectGallerySection } from "./ProjectGallerySection";
-import { ProjectNarrativesSection } from "./ProjectNarrativesSection";
-import { ProjectPublishSection } from "./ProjectPublishSection";
-import { ProjectSpecificationsSection } from "./ProjectSpecificationsSection";
+import ProjectBasicInfoSection from "./ProjectBasicInfoSection";
+import ProjectGallerySection from "./ProjectGallerySection";
+import ProjectNarrativesSection from "./ProjectNarrativesSection";
+import ProjectPublishSection from "./ProjectPublishSection";
+import ProjectSpecificationsSection from "./ProjectSpecificationsSection";
 import { ProjectFormValues, projectSchema } from "./types";
 
 // CreateProjectForm Component

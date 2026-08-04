@@ -20,13 +20,8 @@ interface ProjectSpecificationsSectionProps {
   form: UseFormReturn<ProjectFormValues>;
 }
 
-/**
- * ProjectSpecificationsSection Component
- *
- * Manages physical and quantitative specifications for the project,
- * including total floor area, location, duration, and completion year.
- */
-export const ProjectSpecificationsSection: React.FC<
+// ProjectSpecificationsSection Component
+const ProjectSpecificationsSection: React.FC<
   ProjectSpecificationsSectionProps
 > = ({ form }) => {
   return (
@@ -99,3 +94,5 @@ export const ProjectSpecificationsSection: React.FC<
     </Card>
   );
 };
+
+export default ProjectSpecificationsSection;

@@ -35,9 +35,9 @@ interface ProjectBasicInfoSectionProps {
 }
 
 // ProjectBasicInfoSection Component
-export const ProjectBasicInfoSection: React.FC<
-  ProjectBasicInfoSectionProps
-> = ({ form }) => {
+const ProjectBasicInfoSection: React.FC<ProjectBasicInfoSectionProps> = ({
+  form,
+}) => {
   const titleValue = form.watch("title");
 
   useEffect(() => {
@@ -223,3 +223,5 @@ export const ProjectBasicInfoSection: React.FC<
     </Card>
   );
 };
+
+export default ProjectBasicInfoSection;

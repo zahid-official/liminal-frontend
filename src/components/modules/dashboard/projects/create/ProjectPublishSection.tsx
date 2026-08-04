@@ -24,7 +24,7 @@ interface ProjectPublishSectionProps {
 }
 
 // ProjectPublishSection Component
-export const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
+const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
   form,
   isSubmitting,
 }) => {
@@ -96,3 +96,5 @@ export const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
     </Card>
   );
 };
+
+export default ProjectPublishSection;

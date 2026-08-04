@@ -3,7 +3,13 @@
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
 import { FileText } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -15,21 +21,42 @@ interface ProjectNarrativesSectionProps {
 
 /** Configuration array for generating narrative textarea fields dynamically. */
 const narrativeFields = [
-  { name: "projectContext" as const, label: "Project Context", placeholder: "Describe the physical and cultural context of the site..." },
-  { name: "clientVision" as const, label: "Client Vision", placeholder: "What was the client looking for?" },
-  { name: "designObjectives" as const, label: "Design Objectives", placeholder: "What were the primary goals of the design?" },
-  { name: "spatialChallenges" as const, label: "Spatial Challenges", placeholder: "What obstacles were faced during design or construction?" },
-  { name: "overallConcept" as const, label: "Overall Concept", placeholder: "Summarize the core architectural or interior concept." },
-  { name: "theRealization" as const, label: "The Realization", placeholder: "How does the final space feel and function?" },
+  {
+    name: "projectContext" as const,
+    label: "Project Context",
+    placeholder: "Describe the physical and cultural context of the site...",
+  },
+  {
+    name: "clientVision" as const,
+    label: "Client Vision",
+    placeholder: "What was the client looking for?",
+  },
+  {
+    name: "designObjectives" as const,
+    label: "Design Objectives",
+    placeholder: "What were the primary goals of the design?",
+  },
+  {
+    name: "spatialChallenges" as const,
+    label: "Spatial Challenges",
+    placeholder: "What obstacles were faced during design or construction?",
+  },
+  {
+    name: "overallConcept" as const,
+    label: "Overall Concept",
+    placeholder: "Summarize the core architectural or interior concept.",
+  },
+  {
+    name: "theRealization" as const,
+    label: "The Realization",
+    placeholder: "How does the final space feel and function?",
+  },
 ];
 
-/**
- * ProjectNarrativesSection Component
- * 
- * Handles the collection of narrative text blocks detailing the project journey,
- * client requirements, spatial challenges, and execution context.
- */
-export const ProjectNarrativesSection: React.FC<ProjectNarrativesSectionProps> = ({ form }) => {
+// ProjectNarrativesSection Component
+const ProjectNarrativesSection: React.FC<ProjectNarrativesSectionProps> = ({
+  form,
+}) => {
   return (
     <Card>
       <CardHeader className="gap-0 pb-1.5">
@@ -50,7 +77,10 @@ export const ProjectNarrativesSection: React.FC<ProjectNarrativesSectionProps> =
             key={field.name}
             invalid={!!form.formState.errors.narratives?.[field.name]}
           >
-            <FieldLabel required className="text-sm font-semibold tracking-wide">
+            <FieldLabel
+              required
+              className="text-sm font-semibold tracking-wide"
+            >
               {field.label}
             </FieldLabel>
             <Textarea
@@ -67,3 +97,5 @@ export const ProjectNarrativesSection: React.FC<ProjectNarrativesSectionProps> =
     </Card>
   );
 };
+
+export default ProjectNarrativesSection;
