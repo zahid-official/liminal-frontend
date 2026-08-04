@@ -7,6 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import { ProjectBasicInfoSection } from "./ProjectBasicInfoSection";
+import { ProjectNarrativesSection } from "./ProjectNarrativesSection";
 import { ProjectFormValues, projectSchema } from "./types";
 
 // CreateProjectForm Component
@@ -88,6 +89,7 @@ const CreateProjectForm = () => {
         {/* Main Column: Basic Info, Narratives and Gallery */}
         <div className="xl:col-span-2 space-y-8">
           <ProjectBasicInfoSection form={form} />
+          <ProjectNarrativesSection form={form} />
         </div>
 
         {/* Sidebar Column: Publish Settings and Specifications */}
