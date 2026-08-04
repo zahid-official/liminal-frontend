@@ -7,7 +7,10 @@ import { useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import { ProjectBasicInfoSection } from "./ProjectBasicInfoSection";
+import { ProjectGallerySection } from "./ProjectGallerySection";
 import { ProjectNarrativesSection } from "./ProjectNarrativesSection";
+import { ProjectPublishSection } from "./ProjectPublishSection";
+import { ProjectSpecificationsSection } from "./ProjectSpecificationsSection";
 import { ProjectFormValues, projectSchema } from "./types";
 
 // CreateProjectForm Component
@@ -90,6 +93,12 @@ const CreateProjectForm = () => {
         <div className="xl:col-span-2 space-y-8">
           <ProjectBasicInfoSection form={form} />
           <ProjectNarrativesSection form={form} />
+          <ProjectGallerySection
+            form={form}
+            galleryFields={galleryFields}
+            appendGalleryImage={appendGalleryImage}
+            removeGalleryImage={removeGalleryImage}
+          />
         </div>
 
         {/* Sidebar Column: Publish Settings and Specifications */}
