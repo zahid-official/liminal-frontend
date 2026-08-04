@@ -7,7 +7,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import LiminalButton from "@/components/shared/LiminalButton";
-import { FileTextIcon, Send } from "lucide-react";
+import { FileTextIcon, RotateCcw, Send } from "lucide-react";
 import ProjectBasicInfoSection from "./ProjectBasicInfoSection";
 import ProjectGallerySection from "./ProjectGallerySection";
 import ProjectNarrativesSection from "./ProjectNarrativesSection";
@@ -57,6 +57,14 @@ const CreateProjectForm = () => {
     control: form.control,
     name: "galleryImages",
   });
+
+  // Form reset handler
+  const handleReset = () => {
+    form.reset();
+    toast.info("Form reset", {
+      description: "All fields have been reset to default values.",
+    });
+  };
 
   // Form submission handler
   const onSubmit = async (data: ProjectFormValues) => {
@@ -110,15 +118,32 @@ const CreateProjectForm = () => {
           </div>
         </div>
 
-        {/* Page Action Button */}
-        <LiminalButton
-          type="submit"
-          icon={Send}
-          isLoading={isSubmitting}
-          className="rounded-lg"
-        >
-          {isSubmitting ? "Publishing..." : "Publish Project"}
-        </LiminalButton>
+        {/* Page Action Buttons */}
+        <div className="flex items-center gap-3">
+          {/* Reset Button */}
+          <LiminalButton
+            type="button"
+            variant="outline"
+            icon={RotateCcw}
+            iconPosition="left"
+            animateIcon={false}
+            onClick={handleReset}
+            disabled={isSubmitting}
+            className="rounded-lg w-24"
+          >
+            Reset
+          </LiminalButton>
+
+          {/* Publish Button */}
+          <LiminalButton
+            type="submit"
+            icon={Send}
+            isLoading={isSubmitting}
+            className="rounded-lg"
+          >
+            {isSubmitting ? "Publishing..." : "Publish Project"}
+          </LiminalButton>
+        </div>
       </div>
 
       {/* Main Form Content */}
