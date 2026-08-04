@@ -11,32 +11,37 @@ import {
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { Globe, UploadCloud, X } from "lucide-react";
+import { ImageIcon, UploadCloud, X } from "lucide-react";
 import React from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 
 import { ProjectFormValues } from "./types";
 
-interface ProjectPublishSectionProps {
+interface ProjectThumbnailSectionProps {
   form: UseFormReturn<ProjectFormValues>;
 }
 
-// ProjectPublishSection Component
-const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
+// ProjectThumbnailSection Component
+const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
   form,
 }) => {
   return (
     <Card>
+      {/* Card Header */}
       <CardHeader className="gap-0 pb-1.5">
-        <CardTitle className="flex items-center gap-1.5">
-          <Globe className="w-4.5 h-4.5 text-liminal-secondary" />
-          <span className="text-lg tracking-tight font-medium">Publishing</span>
+        <CardTitle className="flex items-center gap-2">
+          <ImageIcon className="w-4.5 h-4.5 text-liminal-secondary" />
+          <span className="text-lg tracking-tight font-medium">
+            Project Thumbnail
+          </span>
         </CardTitle>
 
         <CardDescription>
-          Manage project visibility and publish settings.
+          Configure thumbnail image & featured options.
         </CardDescription>
       </CardHeader>
+
+      {/* Card Body */}
       <CardContent className="space-y-6">
         {/* Featured Project Switch */}
         <div className="flex items-center justify-between p-4 rounded-xl border bg-muted/20">
@@ -65,7 +70,7 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
             Thumbnail Image
           </FieldLabel>
 
-          <div className="space-y-3 mt-1.5">
+          <div className="space-y-4">
             {form.watch("thumbnail") ? (
               /* Preview State */
               <div className="relative group rounded-xl border overflow-hidden bg-muted/30 aspect-video flex items-center justify-center">
@@ -132,12 +137,12 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
               </label>
             )}
 
-            {/* Caption Textarea - Always Visible */}
+            {/* Caption Textarea */}
             <Field>
               <Textarea
                 placeholder="Thumbnail caption (Optional)..."
                 {...form.register("thumbnailCaption")}
-                className="min-h-20 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+                className="min-h-24 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
               />
             </Field>
           </div>
@@ -149,4 +154,4 @@ const ProjectPublishSection: React.FC<ProjectPublishSectionProps> = ({
   );
 };
 
-export default ProjectPublishSection;
+export default ProjectThumbnailSection;

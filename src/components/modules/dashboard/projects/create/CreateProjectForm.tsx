@@ -11,7 +11,7 @@ import { FileTextIcon, Send } from "lucide-react";
 import ProjectBasicInfoSection from "./ProjectBasicInfoSection";
 import ProjectGallerySection from "./ProjectGallerySection";
 import ProjectNarrativesSection from "./ProjectNarrativesSection";
-import ProjectPublishSection from "./ProjectPublishSection";
+import ProjectThumbnailSection from "./ProjectThumbnailSection";
 import ProjectSpecificationsSection from "./ProjectSpecificationsSection";
 import { ProjectFormValues, projectSchema } from "./types";
 
@@ -130,9 +130,9 @@ const CreateProjectForm = () => {
           <ProjectNarrativesSection form={form} />
         </div>
 
-        {/* Sidebar Column: Publish Settings and Specifications */}
+        {/* Sidebar Column: Thumbnail Settings and Gallery */}
         <div className="space-y-8">
-          <ProjectPublishSection form={form} />
+          <ProjectThumbnailSection form={form} />
           <ProjectGallerySection
             form={form}
             galleryFields={galleryFields}

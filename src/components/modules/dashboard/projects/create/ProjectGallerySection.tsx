@@ -123,7 +123,7 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
                     </Button>
                   </div>
 
-                  <div className="space-y-5">
+                  <div className="space-y-4">
                     {/* Image Preview / File Picker */}
                     <div className="md:col-span-4 lg:col-span-3">
                       {currentUrl ? (
