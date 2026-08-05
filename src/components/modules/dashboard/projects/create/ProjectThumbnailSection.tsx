@@ -92,14 +92,18 @@ const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
                       const file = e.target.files?.[0];
                       if (file) {
                         const url = URL.createObjectURL(file);
-                        form.setValue("thumbnail", url);
+                        form.setValue("thumbnail", url, {
+                          shouldValidate: true,
+                        });
                       }
                     }}
                   />
                 </label>
                 <button
                   type="button"
-                  onClick={() => form.setValue("thumbnail", "")}
+                  onClick={() =>
+                    form.setValue("thumbnail", "", { shouldValidate: true })
+                  }
                   className="absolute top-3 right-3 z-10 p-1 bg-background/30 hover:bg-destructive text-background rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer shadow-sm"
                   title="Remove thumbnail"
                 >
@@ -130,7 +134,9 @@ const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
                     const file = e.target.files?.[0];
                     if (file) {
                       const url = URL.createObjectURL(file);
-                      form.setValue("thumbnail", url);
+                      form.setValue("thumbnail", url, {
+                        shouldValidate: true,
+                      });
                     }
                   }}
                 />

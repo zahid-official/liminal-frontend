@@ -45,6 +45,16 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
   appendGalleryImage,
   removeGalleryImage,
 }) => {
+  const galleryImagesError = form.formState.errors.galleryImages as
+    | { root?: { message?: string }; message?: string }
+    | undefined;
+
+  const rootError =
+    galleryImagesError?.root ||
+    (galleryImagesError?.message
+      ? { message: galleryImagesError.message }
+      : undefined);
+
   return (
     <Card>
       <CardHeader className="gap-0 pb-1.5">
@@ -104,11 +114,13 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
             {galleryFields.map((field, index) => {
               const currentUrl =
                 form.watch(`galleryImages.${index}.url`) || field.url;
+              const fieldError =
+                form.formState.errors.galleryImages?.[index]?.url;
 
               return (
                 <div
                   key={field.id}
-                  className="relative group p-4 rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow"
+                  className="relative group p-4 rounded-xl border bg-card shadow-sm hover:shadow-md transition-shadow space-y-3"
                 >
                   {/* Delete button */}
                   <div className="absolute -top-2.5 -right-2.5 z-10">
@@ -125,7 +137,7 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
 
                   <div className="space-y-4">
                     {/* Image Preview / File Picker */}
-                    <div className="md:col-span-4 lg:col-span-3">
+                    <div>
                       {currentUrl ? (
                         <div className="relative group/img rounded-lg overflow-hidden border aspect-video bg-muted/30 h-full min-h-24">
                           <Image
@@ -149,6 +161,7 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
                                   form.setValue(
                                     `galleryImages.${index}.url`,
                                     url,
+                                    { shouldValidate: true }
                                   );
                                 }
                               }}
@@ -181,6 +194,7 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
                                 form.setValue(
                                   `galleryImages.${index}.url`,
                                   url,
+                                  { shouldValidate: true }
                                 );
                               }
                             }}
@@ -190,18 +204,20 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
                     </div>
 
                     {/* Caption Input */}
-                    <div className="md:col-span-8 lg:col-span-9 flex flex-col">
+                    <div className="flex flex-col">
                       <Field className="flex-1 flex flex-col">
                         <Textarea
                           placeholder="Caption (Optional)..."
                           {...form.register(
-                            `galleryImages.${index}.caption` as const,
+                            `galleryImages.${index}.caption` as const
                           )}
                           className="flex-1 min-h-24 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
                         />
                       </Field>
                     </div>
                   </div>
+
+                  <FieldError errors={[fieldError]} />
                 </div>
               );
             })}
@@ -220,7 +236,7 @@ const ProjectGallerySection: React.FC<ProjectGallerySectionProps> = ({
           </>
         )}
 
-        <FieldError errors={[form.formState.errors.galleryImages?.root]} />
+        <FieldError errors={[rootError]} />
       </CardContent>
     </Card>
   );

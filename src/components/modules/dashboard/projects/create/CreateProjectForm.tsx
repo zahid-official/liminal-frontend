@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import LiminalButton from "@/components/shared/LiminalButton";
@@ -28,6 +28,8 @@ const CreateProjectForm = () => {
       slug: "",
       category: "",
       projectType: "",
+      interiorStyle: "",
+      isFeatured: false,
       status: "" as unknown as "Concept",
       area: "",
       location: "",
@@ -58,17 +60,19 @@ const CreateProjectForm = () => {
     name: "galleryImages",
   });
 
-  // Form reset handler
-  const handleReset = () => {
-    form.reset();
-    toast.info("Form reset", {
-      description: "All fields have been reset to default values.",
+  // Form validation failure handler
+  const onInvalid = (errors: FieldErrors<ProjectFormValues>) => {
+    console.error("Validation errors on submission:", errors);
+    toast.error("Validation Failed", {
+      description:
+        "Please check all required fields and correct the errors before publishing.",
     });
   };
 
   // Form submission handler
   const onSubmit = async (data: ProjectFormValues) => {
     setIsSubmitting(true);
+    console.log(data);
 
     try {
       // Auto-generate slug from title if missing or auto-update payload
@@ -84,21 +88,29 @@ const CreateProjectForm = () => {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log("Submitted Project Data:", payload);
 
-      toast.success("Project created successfully!", {
+      toast.success("Project published successfully!", {
         description: "The new project has been published to the portfolio.",
       });
 
-      router.push("/dashboard/projects");
+      // Brief delay to allow the user to see the success toast before redirecting
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 1500);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to create project");
+      toast.error("Failed to publish project", {
+        description: "An unexpected error occurred. Please try again.",
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+    <form
+      onSubmit={form.handleSubmit(onSubmit, onInvalid)}
+      className="space-y-8"
+    >
       {/* Form Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         {/* Page Title */}
@@ -127,7 +139,7 @@ const CreateProjectForm = () => {
             icon={RotateCcw}
             iconPosition="left"
             animateIcon={false}
-            onClick={handleReset}
+            onClick={() => form.reset()}
             disabled={isSubmitting}
             className="rounded-lg w-24"
           >

@@ -129,7 +129,9 @@ const ProjectBasicInfoSection: React.FC<ProjectBasicInfoSectionProps> = ({
             </FieldLabel>
 
             <Select
-              onValueChange={(val) => form.setValue("interiorStyle", val)}
+              onValueChange={(val) =>
+                form.setValue("interiorStyle", val, { shouldValidate: true })
+              }
               defaultValue={form.getValues("interiorStyle")}
             >
               <SelectTrigger className="focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
@@ -158,7 +160,9 @@ const ProjectBasicInfoSection: React.FC<ProjectBasicInfoSectionProps> = ({
             </FieldLabel>
 
             <Select
-              onValueChange={(val) => form.setValue("category", val)}
+              onValueChange={(val) =>
+                form.setValue("category", val, { shouldValidate: true })
+              }
               defaultValue={form.getValues("category")}
             >
               <SelectTrigger className="focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
@@ -188,7 +192,7 @@ const ProjectBasicInfoSection: React.FC<ProjectBasicInfoSectionProps> = ({
 
             <Select
               onValueChange={(val: "Completed" | "In Progress" | "Concept") =>
-                form.setValue("status", val)
+                form.setValue("status", val, { shouldValidate: true })
               }
               defaultValue={form.getValues("status")}
             >

@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
@@ -40,6 +41,7 @@ const RootLayout = ({
     <html lang="en">
       <body className={`${jost.variable} ${satoshi.variable} antialiased`}>
         <TooltipProvider>{children}</TooltipProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

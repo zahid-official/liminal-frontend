@@ -7,7 +7,7 @@ export const projectSchema = z.object({
   category: z.string().min(1, "Category is required"),
   projectType: z.string().min(1, "Project Type is required"),
   interiorStyle: z.string().min(1, "Interior Style is required"),
-  isFeatured: z.boolean(),
+  isFeatured: z.boolean().optional(),
   status: z.enum(["Completed", "In Progress", "Concept"]),
   area: z.string().min(1, "Area is required"),
   location: z.string().min(1, "Location is required"),
@@ -29,7 +29,7 @@ export const projectSchema = z.object({
   galleryImages: z
     .array(
       z.object({
-        url: z.string().min(1, "Image URL is required"),
+        url: z.string().min(1, "At least one gallery image is required"),
         caption: z.string().optional(),
       }),
     )
