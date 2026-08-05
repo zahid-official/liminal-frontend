@@ -11,7 +11,7 @@ import {
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { ImageIcon, UploadCloud, X } from "lucide-react";
+import { ImageIcon, UploadCloud } from "lucide-react";
 import React from "react";
 import { Controller, UseFormReturn } from "react-hook-form";
 
@@ -99,16 +99,6 @@ const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
                     }}
                   />
                 </label>
-                <button
-                  type="button"
-                  onClick={() =>
-                    form.setValue("thumbnail", "", { shouldValidate: true })
-                  }
-                  className="absolute top-3 right-3 z-10 p-1 bg-background/30 hover:bg-destructive text-background rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer shadow-sm"
-                  title="Remove thumbnail"
-                >
-                  <X className="w-4 h-4" />
-                </button>
               </div>
             ) : (
               /* Upload State */
@@ -148,7 +138,7 @@ const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
               <Textarea
                 placeholder="Thumbnail caption (Optional)..."
                 {...form.register("thumbnailCaption")}
-                className="min-h-10 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+                className="min-h-24 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
               />
             </Field>
           </div>
