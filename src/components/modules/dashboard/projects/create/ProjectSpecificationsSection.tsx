@@ -26,6 +26,7 @@ const ProjectSpecificationsSection: React.FC<
 > = ({ form }) => {
   return (
     <Card>
+      {/* Card Header */}
       <CardHeader className="gap-0 pb-1.5">
         <CardTitle className="flex items-center gap-2">
           <SlidersHorizontal className="w-4.5 h-4.5 text-liminal-secondary" />
@@ -38,7 +39,9 @@ const ProjectSpecificationsSection: React.FC<
           Physical and quantitative parameters for the project.
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {/* Card Body */}
+      <CardContent className="space-y-6">
         {/* Location Input */}
         <Field invalid={!!form.formState.errors.location}>
           <FieldLabel required className="text-sm font-semibold tracking-wide">

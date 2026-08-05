@@ -148,7 +148,7 @@ const ProjectThumbnailSection: React.FC<ProjectThumbnailSectionProps> = ({
               <Textarea
                 placeholder="Thumbnail caption (Optional)..."
                 {...form.register("thumbnailCaption")}
-                className="min-h-24 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+                className="min-h-10 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
               />
             </Field>
           </div>

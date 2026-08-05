@@ -46,7 +46,7 @@ const CreateProjectForm = () => {
         overallConcept: "",
         theRealization: "",
       },
-      galleryImages: [{ url: "", caption: "" }],
+      galleryImages: [],
     },
   });
 
@@ -163,19 +163,19 @@ const CreateProjectForm = () => {
         {/* Main Column: Basic Info, Narratives and Gallery */}
         <div className="xl:col-span-2 space-y-8">
           <ProjectBasicInfoSection form={form} />
-          <ProjectSpecificationsSection form={form} />
           <ProjectNarrativesSection form={form} />
-        </div>
-
-        {/* Sidebar Column: Thumbnail Settings and Gallery */}
-        <div className="space-y-8">
-          <ProjectThumbnailSection form={form} />
           <ProjectGallerySection
             form={form}
             galleryFields={galleryFields}
             appendGalleryImage={appendGalleryImage}
             removeGalleryImage={removeGalleryImage}
           />
+        </div>
+
+        {/* Sidebar Column: Thumbnail Settings and Gallery */}
+        <div className="space-y-8">
+          <ProjectThumbnailSection form={form} />
+          <ProjectSpecificationsSection form={form} />
         </div>
       </div>
     </form>

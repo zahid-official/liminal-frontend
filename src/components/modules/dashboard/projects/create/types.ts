@@ -29,7 +29,7 @@ export const projectSchema = z.object({
   galleryImages: z
     .array(
       z.object({
-        url: z.string().min(1, "At least one gallery image is required"),
+        url: z.string().min(1, "Image is required"),
         caption: z.string().optional(),
       }),
     )
