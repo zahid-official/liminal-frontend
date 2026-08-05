@@ -1,4 +1,5 @@
 import {
+  ArmchairIcon,
   BarChart3Icon,
   BriefcaseIcon,
   FileTextIcon,
@@ -58,17 +59,17 @@ export const adminNavMain: NavItem[] = [
     ],
   },
   {
-    title: "Services",
-    url: "/dashboard/services",
-    icon: React.createElement(BriefcaseIcon),
+    title: "Furniture",
+    url: "/dashboard/furniture",
+    icon: React.createElement(ArmchairIcon),
     items: [
       {
-        title: "All Services",
-        url: "/dashboard/services",
+        title: "All Furniture",
+        url: "/dashboard/furniture",
       },
       {
-        title: "Add New Service",
-        url: "/dashboard/services/create",
+        title: "Add New Furniture",
+        url: "/dashboard/furniture/create",
       },
     ],
   },
