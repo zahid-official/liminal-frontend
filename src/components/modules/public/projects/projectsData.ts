@@ -53,6 +53,7 @@ export interface IProject {
   duration: string;
   completionYear: string;
   thumbnail: string;
+  thumbnailCaption?: string;
   galleryImages: IProjectGalleryImage[];
   description: string;
   narratives: IProjectNarratives;
