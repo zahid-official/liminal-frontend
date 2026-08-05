@@ -1,6 +1,6 @@
-﻿import React from "react";
-import { LucideIcon, ArrowUpRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ArrowUpRight, Loader2, LucideIcon } from "lucide-react";
+import React from "react";
 
 interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -11,6 +11,7 @@ interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   showIcon?: boolean;
   animateIcon?: boolean;
   isLoading?: boolean;
+  iconPosition?: "left" | "right";
 }
 
 const LiminalButton = ({
@@ -22,6 +23,7 @@ const LiminalButton = ({
   showIcon = true,
   animateIcon = true,
   isLoading = false,
+  iconPosition = "right",
   disabled,
   ...props
 }: LiminalButtonProps) => {
@@ -49,26 +51,44 @@ const LiminalButton = ({
       )}
       {...props}
     >
-      <span className="relative z-10 flex items-center justify-center gap-3 h-full transform-[translateZ(0)] will-change-transform">
+      <span className="relative z-10 flex items-center justify-center gap-2 h-full transform-[translateZ(0)] will-change-transform">
+        {iconPosition === "left" &&
+          (isLoading ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            showIcon &&
+            Icon && (
+              <Icon
+                size={16}
+                strokeWidth={2}
+                className={cn(
+                  "size-4 transition-transform duration-400 transform-gpu",
+                  animateIcon && "group-hover:rotate-45",
+                  iconClassName,
+                )}
+              />
+            )
+          ))}
         <span className="font-semibold text-[15px] tracking-wider transition-colors duration-500 leading-none">
           {children}
         </span>
-        {isLoading ? (
-          <Loader2 className="size-4 animate-spin" />
-        ) : (
-          showIcon &&
-          Icon && (
-            <Icon
-              size={16}
-              strokeWidth={2}
-              className={cn(
-                "size-4 transition-transform duration-400 transform-gpu",
-                animateIcon && "group-hover:rotate-45",
-                iconClassName,
-              )}
-            />
-          )
-        )}
+        {iconPosition === "right" &&
+          (isLoading ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            showIcon &&
+            Icon && (
+              <Icon
+                size={16}
+                strokeWidth={2}
+                className={cn(
+                  "size-4 transition-transform duration-400 transform-gpu",
+                  animateIcon && "group-hover:rotate-45",
+                  iconClassName,
+                )}
+              />
+            )
+          ))}
       </span>
       {variant === "primary" && !isLoading && (
         <div className="absolute inset-0 bg-linear-to-r from-background/0 via-background/15 to-background/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
