@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-import { UseFormReturn } from "react-hook-form";
-import { FileText } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -10,8 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Textarea } from "@/components/ui/textarea";
+import { FileText } from "lucide-react";
+import React from "react";
+import { UseFormReturn } from "react-hook-form";
 
 import { FurnitureFormValues } from "./types";
 
@@ -41,10 +41,7 @@ const FurnitureNarrativeSection: React.FC<FurnitureNarrativeSectionProps> = ({
       <CardContent className="space-y-6">
         {/* Overview (Required) */}
         <Field invalid={!!form.formState.errors.details?.overview}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Overview
           </FieldLabel>
           <Textarea
@@ -66,9 +63,7 @@ const FurnitureNarrativeSection: React.FC<FurnitureNarrativeSectionProps> = ({
               {...form.register("details.designStory")}
               className="min-h-28 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
             />
-            <FieldError
-              errors={[form.formState.errors.details?.designStory]}
-            />
+            <FieldError errors={[form.formState.errors.details?.designStory]} />
           </Field>
 
           {/* Craftsmanship (Optional) */}

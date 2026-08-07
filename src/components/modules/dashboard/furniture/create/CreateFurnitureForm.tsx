@@ -9,11 +9,12 @@ import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
+import FurnitureGallerySection from "./FurnitureGallerySection";
+import FurnitureNarrativeSection from "./FurnitureNarrativeSection";
+import FurniturePricingSection from "./FurniturePricingSection";
+import FurnitureSpecificationsSection from "./FurnitureSpecificationsSection";
 import FurnitureThumbnailSection from "./FurnitureThumbnailSection";
 import { FurnitureFormValues, furnitureSchema } from "./types";
-import FurnitureNarrativeSection from "./FurnitureNarrativeSection";
-import FurnitureGallerySection from "./FurnitureGallerySection";
-import FurnitureSpecificationsSection from "./FurnitureSpecificationsSection";
 
 // CreateFurnitureForm Component
 const CreateFurnitureForm = () => {
@@ -199,6 +200,7 @@ const CreateFurnitureForm = () => {
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
         <div className="space-y-8">
           <FurnitureThumbnailSection form={form} />
+          <FurniturePricingSection form={form} />
           <FurnitureSpecificationsSection form={form} />
         </div>
       </div>
