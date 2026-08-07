@@ -8,6 +8,7 @@ import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
+import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
 import { FurnitureFormValues, furnitureSchema } from "./types";
 
 // CreateFurnitureForm Component
@@ -140,11 +141,11 @@ const CreateFurnitureForm = () => {
 
           <div>
             <h1 className="text-3xl font-semibold tracking-tight">
-              Create Furniture Product
+              Create New Furniture
             </h1>
             <p className="text-muted-foreground text-sm">
-              Add a new luxury furniture item to the Liminal collection with
-              complete specifications & details.
+              Fill in the details below to add a new furniture product to the
+              collection.
             </p>
           </div>
         </div>
@@ -172,7 +173,7 @@ const CreateFurnitureForm = () => {
             isLoading={isSubmitting}
             className="rounded-lg"
           >
-            {isSubmitting ? "Publishing..." : "Publish Product"}
+            {isSubmitting ? "Publishing..." : "Publish Furniture"}
           </LiminalButton>
         </div>
       </div>
@@ -180,7 +181,9 @@ const CreateFurnitureForm = () => {
       {/* Main Form Content */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Main Column: Basic Info, Marketing, Narratives and Gallery */}
-        <div className="xl:col-span-2 space-y-8"></div>
+        <div className="xl:col-span-2 space-y-8">
+          <FurnitureBasicInfoSection form={form} />
+        </div>
 
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
         <div className="space-y-8"></div>
