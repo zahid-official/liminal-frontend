@@ -199,7 +199,7 @@ const CreateFurnitureForm = () => {
         </div>
 
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
-        <div className="space-y-8">
+        <div className="space-y-8 xl:sticky xl:bottom-8 self-end h-fit">
           <FurnitureThumbnailSection form={form} />
           <FurniturePricingSection form={form} />
           <FurnitureSpecificationsSection form={form} />
