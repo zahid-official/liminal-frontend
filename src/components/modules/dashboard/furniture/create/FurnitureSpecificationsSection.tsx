@@ -50,10 +50,7 @@ const FurnitureSpecificationsSection: React.FC<
       <CardContent className="space-y-6">
         {/* Materials */}
         <Field invalid={!!form.formState.errors.specifications?.materials}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Materials
           </FieldLabel>
           <Input
@@ -68,10 +65,7 @@ const FurnitureSpecificationsSection: React.FC<
 
         {/* Weight */}
         <Field invalid={!!form.formState.errors.specifications?.weight}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Weight
           </FieldLabel>
           <Input
@@ -79,9 +73,7 @@ const FurnitureSpecificationsSection: React.FC<
             {...form.register("specifications.weight")}
             className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
           />
-          <FieldError
-            errors={[form.formState.errors.specifications?.weight]}
-          />
+          <FieldError errors={[form.formState.errors.specifications?.weight]} />
         </Field>
 
         {/* Dimensions */}
@@ -90,40 +82,9 @@ const FurnitureSpecificationsSection: React.FC<
             Dimensions
           </FieldLabel>
 
-          {/* Dimension Unit */}
-          <Field
-            invalid={
-              !!form.formState.errors.specifications?.dimensions?.unit
-            }
-          >
-            <Select
-              onValueChange={(val: "cm" | "mm" | "in") =>
-                form.setValue("specifications.dimensions.unit", val, {
-                  shouldValidate: true,
-                })
-              }
-              defaultValue={form.getValues("specifications.dimensions.unit")}
-            >
-              <SelectTrigger className="focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
-                <SelectValue placeholder="Select Unit" />
-              </SelectTrigger>
-              <SelectContent>
-                {(["mm", "cm", "in"] as const).map((unit) => (
-                  <SelectItem key={unit} value={unit}>
-                    {unit}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <FieldError
-              errors={[
-                form.formState.errors.specifications?.dimensions?.unit,
-              ]}
-            />
-          </Field>
-
-          {/* Width / Depth / Height */}
-          <div className="grid grid-cols-3 gap-3">
+          {/* Width / Depth / Height / Unit */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* Width */}
             <Field>
               <Input
                 type="number"
@@ -134,6 +95,7 @@ const FurnitureSpecificationsSection: React.FC<
               />
             </Field>
 
+            {/* Depth */}
             <Field>
               <Input
                 type="number"
@@ -144,6 +106,7 @@ const FurnitureSpecificationsSection: React.FC<
               />
             </Field>
 
+            {/* Height */}
             <Field>
               <Input
                 type="number"
@@ -153,15 +116,42 @@ const FurnitureSpecificationsSection: React.FC<
                 className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
               />
             </Field>
+
+            {/* Unit */}
+            <Field
+              invalid={!!form.formState.errors.specifications?.dimensions?.unit}
+            >
+              <Select
+                onValueChange={(val) =>
+                  form.setValue("specifications.dimensions.unit", val, {
+                    shouldValidate: true,
+                  })
+                }
+                defaultValue={form.getValues("specifications.dimensions.unit")}
+              >
+                <SelectTrigger className="w-full focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
+                  <SelectValue placeholder="Select Unit" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(["mm", "cm", "in"] as const).map((unit) => (
+                    <SelectItem key={unit} value={unit}>
+                      {unit}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FieldError
+                errors={[
+                  form.formState.errors.specifications?.dimensions?.unit,
+                ]}
+              />
+            </Field>
           </div>
         </div>
 
         {/* Lead Time */}
         <Field invalid={!!form.formState.errors.specifications?.leadTime}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Lead Time
           </FieldLabel>
           <Input
@@ -176,10 +166,7 @@ const FurnitureSpecificationsSection: React.FC<
 
         {/* Warranty */}
         <Field invalid={!!form.formState.errors.specifications?.warranty}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Warranty
           </FieldLabel>
           <Input

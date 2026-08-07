@@ -148,7 +148,7 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
               }
               defaultValue={form.getValues("category")}
             >
-              <SelectTrigger className="focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
+              <SelectTrigger className="w-full focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
                 <SelectValue placeholder="Select Category" />
               </SelectTrigger>
               <SelectContent>
@@ -179,7 +179,7 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
               }
               defaultValue={form.getValues("status")}
             >
-              <SelectTrigger className="focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
+              <SelectTrigger className="w-full focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
                 <SelectValue placeholder="Select Status" />
               </SelectTrigger>
               <SelectContent>

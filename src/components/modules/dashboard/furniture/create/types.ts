@@ -10,6 +10,7 @@ export const furnitureSchema = z.object({
   price: z.string().min(1, "Price is required"),
   stock: z.number().min(0, "Stock must be 0 or greater"),
   thumbnail: z.string().min(1, "Thumbnail is required"),
+  thumbnailCaption: z.string().optional(),
   tagline: z.string().min(1, "Tagline is required"),
   description: z
     .string()
@@ -28,7 +29,7 @@ export const furnitureSchema = z.object({
       width: z.string().optional(),
       depth: z.string().optional(),
       height: z.string().optional(),
-      unit: z.enum(["cm", "mm", "in"]),
+      unit: z.string().min(1, "Unit is required"),
     }),
     leadTime: z.string().min(1, "Lead time is required"),
     warranty: z.string().min(1, "Warranty is required"),

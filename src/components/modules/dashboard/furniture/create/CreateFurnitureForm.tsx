@@ -33,6 +33,7 @@ const CreateFurnitureForm = () => {
       price: "",
       stock: 0,
       thumbnail: "",
+      thumbnailCaption: "",
       tagline: "",
       description: "",
       details: {
@@ -47,7 +48,7 @@ const CreateFurnitureForm = () => {
           width: "",
           depth: "",
           height: "",
-          unit: "mm",
+          unit: "",
         },
         leadTime: "",
         warranty: "",

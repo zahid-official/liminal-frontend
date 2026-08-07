@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Textarea } from "@/components/ui/textarea";
 import { ImageIcon, UploadCloud } from "lucide-react";
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
@@ -109,6 +110,15 @@ const FurnitureThumbnailSection: React.FC<FurnitureThumbnailSectionProps> = ({
                 />
               </label>
             )}
+
+            {/* Caption Textarea */}
+            <Field>
+              <Textarea
+                placeholder="Thumbnail caption (Optional)..."
+                {...form.register("thumbnailCaption")}
+                className="min-h-24 text-xs bg-transparent focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+              />
+            </Field>
           </div>
 
           <FieldError errors={[form.formState.errors.thumbnail]} />
