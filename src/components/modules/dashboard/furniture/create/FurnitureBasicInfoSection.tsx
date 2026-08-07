@@ -26,6 +26,7 @@ import {
 import slugify from "slugify";
 
 import { FurnitureFormValues } from "./types";
+import { Textarea } from "@/components/ui/textarea";
 
 // Interface for furniture basic info section props
 interface FurnitureBasicInfoSectionProps {
@@ -98,6 +99,22 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
               </span>
             </div>
             <FieldError errors={[form.formState.errors.slug]} />
+          </Field>
+
+          {/* Tagline */}
+          <Field invalid={!!form.formState.errors.tagline}>
+            <FieldLabel
+              required
+              className="text-sm font-semibold tracking-wide"
+            >
+              Tagline
+            </FieldLabel>
+            <Input
+              placeholder="e.g. Modular Seating Architecture"
+              {...form.register("tagline")}
+              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+            />
+            <FieldError errors={[form.formState.errors.tagline]} />
           </Field>
 
           {/* Product Code */}
@@ -176,6 +193,19 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
             <FieldError errors={[form.formState.errors.status]} />
           </Field>
         </div>
+
+        {/* Description */}
+        <Field invalid={!!form.formState.errors.description}>
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
+            Product Description
+          </FieldLabel>
+          <Textarea
+            placeholder="Provide a compelling description of the furniture product..."
+            {...form.register("description")}
+            className="min-h-30 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+          />
+          <FieldError errors={[form.formState.errors.description]} />
+        </Field>
       </CardContent>
     </Card>
   );
