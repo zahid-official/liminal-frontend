@@ -1,5 +1,6 @@
 "use client";
 
+import { furnitureCategories } from "@/components/modules/public/services/furniture/furnitureData";
 import {
   Card,
   CardContent,
@@ -19,14 +20,10 @@ import {
 import { LayoutDashboard, Link as LinkIcon } from "lucide-react";
 import React, { useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
-import {
-  furnitureCategories,
-  furnitureAvailabilityStatus,
-} from "@/components/modules/public/services/furniture/furnitureData";
 import slugify from "slugify";
 
-import { FurnitureFormValues } from "./types";
 import { Textarea } from "@/components/ui/textarea";
+import { FurnitureFormValues } from "./types";
 
 // Interface for furniture basic info section props
 interface FurnitureBasicInfoSectionProps {
@@ -84,7 +81,7 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
           {/* Slug (Auto-generated & Non-editable) */}
           <Field invalid={!!form.formState.errors.slug}>
             <FieldLabel className="text-sm font-semibold tracking-wide">
-              Slug
+              URL Slug
             </FieldLabel>
             <div className="relative flex items-center">
               <LinkIcon className="absolute left-3 w-3.5 h-3.5 text-muted-foreground/60 pointer-events-none" />
@@ -99,38 +96,6 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
               </span>
             </div>
             <FieldError errors={[form.formState.errors.slug]} />
-          </Field>
-
-          {/* Tagline */}
-          <Field invalid={!!form.formState.errors.tagline}>
-            <FieldLabel
-              required
-              className="text-sm font-semibold tracking-wide"
-            >
-              Tagline
-            </FieldLabel>
-            <Input
-              placeholder="e.g. Modular Seating Architecture"
-              {...form.register("tagline")}
-              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-            />
-            <FieldError errors={[form.formState.errors.tagline]} />
-          </Field>
-
-          {/* Product Code */}
-          <Field invalid={!!form.formState.errors.productCode}>
-            <FieldLabel
-              required
-              className="text-sm font-semibold tracking-wide"
-            >
-              Product Code
-            </FieldLabel>
-            <Input
-              placeholder="e.g. LFC-ST-001"
-              {...form.register("productCode")}
-              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-            />
-            <FieldError errors={[form.formState.errors.productCode]} />
           </Field>
 
           {/* Category Selection */}
@@ -164,40 +129,27 @@ const FurnitureBasicInfoSection: React.FC<FurnitureBasicInfoSectionProps> = ({
             <FieldError errors={[form.formState.errors.category]} />
           </Field>
 
-          {/* Status Selection */}
-          <Field invalid={!!form.formState.errors.status}>
+          {/* Product Code */}
+          <Field invalid={!!form.formState.errors.productCode}>
             <FieldLabel
               required
               className="text-sm font-semibold tracking-wide"
             >
-              Availability Status
+              Product Code (SKU)
             </FieldLabel>
-
-            <Select
-              onValueChange={(val) =>
-                form.setValue("status", val, { shouldValidate: true })
-              }
-              defaultValue={form.getValues("status")}
-            >
-              <SelectTrigger className="w-full focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
-                <SelectValue placeholder="Select Status" />
-              </SelectTrigger>
-              <SelectContent>
-                {furnitureAvailabilityStatus.map((status) => (
-                  <SelectItem key={status} value={status}>
-                    {status}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <FieldError errors={[form.formState.errors.status]} />
+            <Input
+              placeholder="e.g. LFC-ST-001"
+              {...form.register("productCode")}
+              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+            />
+            <FieldError errors={[form.formState.errors.productCode]} />
           </Field>
         </div>
 
         {/* Description */}
         <Field invalid={!!form.formState.errors.description}>
           <FieldLabel required className="text-sm font-semibold tracking-wide">
-            Product Description
+            Description
           </FieldLabel>
           <Textarea
             placeholder="Provide a compelling description of the furniture product..."

@@ -14,6 +14,7 @@ import React from "react";
 import { UseFormReturn } from "react-hook-form";
 
 import { FurnitureFormValues } from "./types";
+import { Input } from "@/components/ui/input";
 
 interface FurnitureNarrativeSectionProps {
   form: UseFormReturn<FurnitureFormValues>;
@@ -39,6 +40,19 @@ const FurnitureNarrativeSection: React.FC<FurnitureNarrativeSectionProps> = ({
       </CardHeader>
 
       <CardContent className="space-y-6">
+        {/* Tagline */}
+        <Field invalid={!!form.formState.errors.tagline}>
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
+            Tagline
+          </FieldLabel>
+          <Input
+            placeholder="e.g. Modular Seating Architecture"
+            {...form.register("tagline")}
+            className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+          />
+          <FieldError errors={[form.formState.errors.tagline]} />
+        </Field>
+
         {/* Overview (Required) */}
         <Field invalid={!!form.formState.errors.details?.overview}>
           <FieldLabel required className="text-sm font-semibold tracking-wide">
@@ -47,7 +61,7 @@ const FurnitureNarrativeSection: React.FC<FurnitureNarrativeSectionProps> = ({
           <Textarea
             placeholder="Detailed overview of the design context and philosophy..."
             {...form.register("details.overview")}
-            className="min-h-32 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
+            className="min-h-30 focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary resize-y"
           />
           <FieldError errors={[form.formState.errors.details?.overview]} />
         </Field>

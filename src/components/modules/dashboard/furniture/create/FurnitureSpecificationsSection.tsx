@@ -63,18 +63,43 @@ const FurnitureSpecificationsSection: React.FC<
           />
         </Field>
 
-        {/* Weight */}
-        <Field invalid={!!form.formState.errors.specifications?.weight}>
-          <FieldLabel required className="text-sm font-semibold tracking-wide">
-            Weight
-          </FieldLabel>
-          <Input
-            placeholder="e.g. 128 kg"
-            {...form.register("specifications.weight")}
-            className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-          />
-          <FieldError errors={[form.formState.errors.specifications?.weight]} />
-        </Field>
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Weight */}
+          <Field invalid={!!form.formState.errors.specifications?.weight}>
+            <FieldLabel
+              required
+              className="text-sm font-semibold tracking-wide"
+            >
+              Weight
+            </FieldLabel>
+            <Input
+              placeholder="e.g. 128 kg"
+              {...form.register("specifications.weight")}
+              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+            />
+            <FieldError
+              errors={[form.formState.errors.specifications?.weight]}
+            />
+          </Field>
+
+          {/* Lead Time */}
+          <Field invalid={!!form.formState.errors.specifications?.leadTime}>
+            <FieldLabel
+              required
+              className="text-sm font-semibold tracking-wide"
+            >
+              Lead Time
+            </FieldLabel>
+            <Input
+              placeholder="e.g. 8-12 weeks"
+              {...form.register("specifications.leadTime")}
+              className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+            />
+            <FieldError
+              errors={[form.formState.errors.specifications?.leadTime]}
+            />
+          </Field>
+        </div>
 
         {/* Dimensions */}
         <div className="space-y-3">
@@ -148,21 +173,6 @@ const FurnitureSpecificationsSection: React.FC<
             </Field>
           </div>
         </div>
-
-        {/* Lead Time */}
-        <Field invalid={!!form.formState.errors.specifications?.leadTime}>
-          <FieldLabel required className="text-sm font-semibold tracking-wide">
-            Lead Time
-          </FieldLabel>
-          <Input
-            placeholder="e.g. 8-12 weeks"
-            {...form.register("specifications.leadTime")}
-            className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-          />
-          <FieldError
-            errors={[form.formState.errors.specifications?.leadTime]}
-          />
-        </Field>
 
         {/* Warranty */}
         <Field invalid={!!form.formState.errors.specifications?.warranty}>

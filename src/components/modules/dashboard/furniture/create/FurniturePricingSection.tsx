@@ -14,6 +14,8 @@ import React from "react";
 import { UseFormReturn } from "react-hook-form";
 
 import { FurnitureFormValues } from "./types";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { furnitureAvailabilityStatus } from "@/components/modules/public/services/furniture/furnitureData";
 
 // Interface for furniture pricing section props
 interface FurniturePricingSectionProps {
@@ -44,10 +46,7 @@ const FurniturePricingSection: React.FC<FurniturePricingSectionProps> = ({
       <CardContent className="space-y-6">
         {/* Price Input */}
         <Field invalid={!!form.formState.errors.price}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Price
           </FieldLabel>
           <Input
@@ -60,10 +59,7 @@ const FurniturePricingSection: React.FC<FurniturePricingSectionProps> = ({
 
         {/* Stock Input */}
         <Field invalid={!!form.formState.errors.stock}>
-          <FieldLabel
-            required
-            className="text-sm font-semibold tracking-wide"
-          >
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
             Stock Quantity
           </FieldLabel>
           <Input
@@ -74,6 +70,32 @@ const FurniturePricingSection: React.FC<FurniturePricingSectionProps> = ({
             className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
           />
           <FieldError errors={[form.formState.errors.stock]} />
+        </Field>
+
+        {/* Status Selection */}
+        <Field invalid={!!form.formState.errors.status}>
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
+            Availability Status
+          </FieldLabel>
+
+          <Select
+            onValueChange={(val) =>
+              form.setValue("status", val, { shouldValidate: true })
+            }
+            defaultValue={form.getValues("status")}
+          >
+            <SelectTrigger className="w-full focus:ring-liminal-secondary/10 focus:border-liminal-secondary">
+              <SelectValue placeholder="Select Status" />
+            </SelectTrigger>
+            <SelectContent>
+              {furnitureAvailabilityStatus.map((status) => (
+                <SelectItem key={status} value={status}>
+                  {status}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <FieldError errors={[form.formState.errors.status]} />
         </Field>
       </CardContent>
     </Card>
