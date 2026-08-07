@@ -1,0 +1,121 @@
+"use client";
+
+import Image from "next/image";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { ImageIcon, UploadCloud } from "lucide-react";
+import React from "react";
+import { UseFormReturn } from "react-hook-form";
+
+import { FurnitureFormValues } from "./types";
+
+interface FurnitureThumbnailSectionProps {
+  form: UseFormReturn<FurnitureFormValues>;
+}
+
+// FurnitureThumbnailSection Component
+const FurnitureThumbnailSection: React.FC<FurnitureThumbnailSectionProps> = ({
+  form,
+}) => {
+  return (
+    <Card>
+      {/* Card Header */}
+      <CardHeader className="gap-0 pb-1.5">
+        <CardTitle className="flex items-center gap-2">
+          <ImageIcon className="w-4.5 h-4.5 text-liminal-secondary" />
+          <span className="text-lg tracking-tight font-medium">
+            Product Thumbnail
+          </span>
+        </CardTitle>
+
+        <CardDescription>
+          Primary image displayed on listing cards.
+        </CardDescription>
+      </CardHeader>
+
+      {/* Card Body */}
+      <CardContent className="space-y-6">
+        {/* Thumbnail Image Dropzone */}
+        <Field invalid={!!form.formState.errors.thumbnail}>
+          <FieldLabel required className="text-sm font-semibold tracking-wide">
+            Thumbnail Image
+          </FieldLabel>
+
+          <div className="space-y-4">
+            {form.watch("thumbnail") ? (
+              /* Preview State */
+              <div className="relative group rounded-xl border overflow-hidden bg-muted/30 aspect-video flex items-center justify-center">
+                <Image
+                  src={form.watch("thumbnail")}
+                  alt="Thumbnail preview"
+                  fill
+                  className="object-cover rounded-lg"
+                  unoptimized
+                />
+                <label className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer text-background font-medium gap-1">
+                  <UploadCloud className="w-5 h-5" />
+                  Change
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const url = URL.createObjectURL(file);
+                        form.setValue("thumbnail", url, {
+                          shouldValidate: true,
+                        });
+                      }
+                    }}
+                  />
+                </label>
+              </div>
+            ) : (
+              /* Upload State */
+              <label className="flex flex-col items-center justify-center w-full aspect-video border-2 border-dashed rounded-xl cursor-pointer bg-card hover:bg-accent/40 border-border/70 hover:border-liminal-secondary/50 transition-all group">
+                <div className="flex flex-col items-center justify-center text-center p-4">
+                  <div className="p-3 rounded-full bg-muted/60 text-muted-foreground group-hover:text-liminal-secondary group-hover:bg-liminal-secondary/10 transition-colors">
+                    <UploadCloud className="size-6" />
+                  </div>
+
+                  <p className="mt-1.5 mb-0.5 text-sm font-medium text-liminal-secondary">
+                    Click to upload
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    PNG, JPG, WEBP or SVG (Max 5MB)
+                  </p>
+                </div>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const url = URL.createObjectURL(file);
+                      form.setValue("thumbnail", url, {
+                        shouldValidate: true,
+                      });
+                    }
+                  }}
+                />
+              </label>
+            )}
+          </div>
+
+          <FieldError errors={[form.formState.errors.thumbnail]} />
+        </Field>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default FurnitureThumbnailSection;

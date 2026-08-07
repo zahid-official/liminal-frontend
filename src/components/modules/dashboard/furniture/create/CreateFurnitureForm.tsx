@@ -9,6 +9,7 @@ import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
+import FurnitureThumbnailSection from "./FurnitureThumbnailSection";
 import { FurnitureFormValues, furnitureSchema } from "./types";
 
 // CreateFurnitureForm Component
@@ -186,7 +187,9 @@ const CreateFurnitureForm = () => {
         </div>
 
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
-        <div className="space-y-8"></div>
+        <div className="space-y-8">
+          <FurnitureThumbnailSection form={form} />
+        </div>
       </div>
     </form>
   );
