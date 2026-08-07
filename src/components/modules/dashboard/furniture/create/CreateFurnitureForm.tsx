@@ -12,6 +12,7 @@ import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
 import FurnitureThumbnailSection from "./FurnitureThumbnailSection";
 import { FurnitureFormValues, furnitureSchema } from "./types";
 import FurnitureNarrativeSection from "./FurnitureNarrativeSection";
+import FurnitureGallerySection from "./FurnitureGallerySection";
 
 // CreateFurnitureForm Component
 const CreateFurnitureForm = () => {
@@ -186,6 +187,12 @@ const CreateFurnitureForm = () => {
         <div className="xl:col-span-2 space-y-8">
           <FurnitureBasicInfoSection form={form} />
           <FurnitureNarrativeSection form={form} />
+          <FurnitureGallerySection
+            form={form}
+            galleryFields={galleryFields}
+            appendGalleryImage={appendGalleryImage}
+            removeGalleryImage={removeGalleryImage}
+          />
         </div>
 
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
