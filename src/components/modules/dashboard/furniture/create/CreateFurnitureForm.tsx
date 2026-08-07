@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
 import FurnitureThumbnailSection from "./FurnitureThumbnailSection";
 import { FurnitureFormValues, furnitureSchema } from "./types";
+import FurnitureNarrativeSection from "./FurnitureNarrativeSection";
 
 // CreateFurnitureForm Component
 const CreateFurnitureForm = () => {
@@ -184,6 +185,7 @@ const CreateFurnitureForm = () => {
         {/* Main Column: Basic Info, Marketing, Narratives and Gallery */}
         <div className="xl:col-span-2 space-y-8">
           <FurnitureBasicInfoSection form={form} />
+          <FurnitureNarrativeSection form={form} />
         </div>
 
         {/* Sidebar Column: Thumbnail, Pricing and Specifications */}
