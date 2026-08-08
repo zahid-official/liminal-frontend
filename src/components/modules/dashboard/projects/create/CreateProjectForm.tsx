@@ -173,7 +173,7 @@ const CreateProjectForm = () => {
         </div>
 
         {/* Sidebar Column: Thumbnail Settings and Gallery */}
-        <div className="space-y-8">
+        <div className="space-y-8 xl:sticky xl:bottom-8 self-end h-fit">
           <ProjectThumbnailSection form={form} />
           <ProjectSpecificationsSection form={form} />
         </div>
