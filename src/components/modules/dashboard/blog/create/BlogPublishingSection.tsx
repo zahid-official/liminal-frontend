@@ -11,7 +11,8 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Clock, Settings2 } from "lucide-react";
 import React, { useEffect } from "react";
-import { UseFormReturn } from "react-hook-form";
+import { Controller, UseFormReturn } from "react-hook-form";
+import { TagsInput } from "@/components/ui/tags-input";
 
 import { BlogFormValues } from "./types";
 
@@ -104,18 +105,26 @@ const BlogPublishingSection: React.FC<BlogPublishingSectionProps> = ({
         </Field>
 
         {/* Tags */}
-        <Field>
+        <Field invalid={!!form.formState.errors.tags}>
           <FieldLabel className="text-sm font-semibold tracking-wide">
             Tags
           </FieldLabel>
-          <Input
-            placeholder="e.g. light, design, architecture"
-            {...form.register("tags")}
-            className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
+          <Controller
+            control={form.control}
+            name="tags"
+            render={({ field }) => (
+              <TagsInput
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="e.g. light, design, architecture"
+                className="focus-within:border-liminal-secondary focus-within:ring-liminal-secondary/10"
+              />
+            )}
           />
           <p className="text-xs text-muted-foreground">
             Separate multiple tags with commas
           </p>
+          <FieldError errors={[form.formState.errors.tags]} />
         </Field>
       </CardContent>
     </Card>
