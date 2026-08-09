@@ -42,10 +42,16 @@ const BlogPublishingSection: React.FC<BlogPublishingSectionProps> = ({
     if (Array.isArray(content)) {
       content.forEach((block) => {
         if (block.heading) {
-          totalWords += block.heading.trim().split(/\s+/).filter(Boolean).length;
+          totalWords += block.heading
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean).length;
         }
         if (block.paragraph) {
-          totalWords += block.paragraph.trim().split(/\s+/).filter(Boolean).length;
+          totalWords += block.paragraph
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean).length;
         }
       });
     }
@@ -66,12 +72,12 @@ const BlogPublishingSection: React.FC<BlogPublishingSectionProps> = ({
         <CardTitle className="flex items-center gap-2">
           <Settings2 className="w-4.5 h-4.5 text-liminal-secondary" />
           <span className="text-lg tracking-tight font-medium">
-            Publishing Settings
+            Publishing & Metadata
           </span>
         </CardTitle>
 
         <CardDescription>
-          Publication timing and metadata settings.
+          Configure read time estimation and tags for post.
         </CardDescription>
       </CardHeader>
 
@@ -95,18 +101,6 @@ const BlogPublishingSection: React.FC<BlogPublishingSectionProps> = ({
             </span>
           </div>
           <FieldError errors={[form.formState.errors.readTime]} />
-        </Field>
-
-        {/* Publish Date */}
-        <Field>
-          <FieldLabel className="text-sm font-semibold tracking-wide">
-            Publish Date
-          </FieldLabel>
-          <Input
-            placeholder="e.g. Aug 2026"
-            {...form.register("createdAt")}
-            className="focus-visible:ring-liminal-secondary/10 focus-visible:border-liminal-secondary"
-          />
         </Field>
 
         {/* Tags */}
