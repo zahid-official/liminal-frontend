@@ -12,6 +12,7 @@ import { BlogFormValues, blogSchema } from "./types";
 import BlogEssentialsSection from "./BlogEssentialsSection";
 import BlogCoverImageSection from "./BlogCoverImageSection";
 import BlogContentSection from "./BlogContentSection";
+import BlogQuoteSection from "./BlogQuoteSection";
 
 // CreateBlogForm Component
 const CreateBlogForm = () => {
@@ -165,6 +166,7 @@ const CreateBlogForm = () => {
             appendContentBlock={appendContentBlock}
             removeContentBlock={removeContentBlock}
           />
+          <BlogQuoteSection form={form} />
         </div>
 
         {/* Sidebar Column: Cover Image, Author and Publishing */}
