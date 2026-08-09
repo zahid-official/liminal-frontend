@@ -83,6 +83,10 @@ export const adminNavMain: NavItem[] = [
         url: "/dashboard/blog",
       },
       {
+        title: "Drafts",
+        url: "/dashboard/blog/drafts",
+      },
+      {
         title: "Create Article",
         url: "/dashboard/blog/create",
       },

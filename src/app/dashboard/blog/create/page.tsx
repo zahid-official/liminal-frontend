@@ -2,8 +2,8 @@ import CreateBlogForm from "@/components/modules/dashboard/blog/create/CreateBlo
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Create Blog | Liminal Admin",
-  description: "Create a new blog post",
+  title: "Create Article | Liminal Admin",
+  description: "Create a new blog article for the Liminal journal",
 };
 
 // CreateBlogPage Component
