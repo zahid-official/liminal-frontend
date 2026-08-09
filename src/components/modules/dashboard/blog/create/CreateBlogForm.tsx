@@ -10,6 +10,7 @@ import slugify from "slugify";
 import { toast } from "sonner";
 import { BlogFormValues, blogSchema } from "./types";
 import BlogEssentialsSection from "./BlogEssentialsSection";
+import BlogCoverImageSection from "./BlogCoverImageSection";
 
 // CreateBlogForm Component
 const CreateBlogForm = () => {
@@ -160,7 +161,9 @@ const CreateBlogForm = () => {
         </div>
 
         {/* Sidebar Column: Cover Image, Author and Publishing */}
-        <div className="space-y-8 xl:sticky xl:bottom-8 self-end h-fit"></div>
+        <div className="space-y-8 xl:sticky xl:bottom-8 self-end h-fit">
+          <BlogCoverImageSection form={form} />
+        </div>
       </div>
     </form>
   );
