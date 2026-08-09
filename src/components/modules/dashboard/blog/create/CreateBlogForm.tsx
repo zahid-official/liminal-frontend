@@ -13,6 +13,7 @@ import BlogEssentialsSection from "./BlogEssentialsSection";
 import BlogCoverImageSection from "./BlogCoverImageSection";
 import BlogContentSection from "./BlogContentSection";
 import BlogQuoteSection from "./BlogQuoteSection";
+import BlogPublishingSection from "./BlogPublishingSection";
 
 // CreateBlogForm Component
 const CreateBlogForm = () => {
@@ -42,7 +43,6 @@ const CreateBlogForm = () => {
       },
       readTime: "",
       createdAt: "",
-      status: "",
       tags: "",
     },
   });
@@ -172,6 +172,7 @@ const CreateBlogForm = () => {
         {/* Sidebar Column: Cover Image, Author and Publishing */}
         <div className="space-y-8 xl:sticky xl:bottom-8 self-end h-fit">
           <BlogCoverImageSection form={form} />
+          <BlogPublishingSection form={form} />
         </div>
       </div>
     </form>

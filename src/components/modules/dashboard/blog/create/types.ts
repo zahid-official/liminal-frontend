@@ -32,7 +32,6 @@ export const blogSchema = z.object({
   }),
   readTime: z.string().min(1, "Read time is required"),
   createdAt: z.string().optional(),
-  status: z.string().min(1, "Status is required"),
   tags: z.string().optional(),
 });
 
