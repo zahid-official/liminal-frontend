@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { BlogFormValues, blogSchema } from "./types";
 import BlogEssentialsSection from "./BlogEssentialsSection";
 import BlogCoverImageSection from "./BlogCoverImageSection";
+import BlogContentSection from "./BlogContentSection";
 
 // CreateBlogForm Component
 const CreateBlogForm = () => {
@@ -158,6 +159,12 @@ const CreateBlogForm = () => {
         {/* Main Column: Essentials, Content Blocks and Editorial Quote */}
         <div className="xl:col-span-2 space-y-8">
           <BlogEssentialsSection form={form} />
+          <BlogContentSection
+            form={form}
+            contentFields={contentFields}
+            appendContentBlock={appendContentBlock}
+            removeContentBlock={removeContentBlock}
+          />
         </div>
 
         {/* Sidebar Column: Cover Image, Author and Publishing */}
