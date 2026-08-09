@@ -30,7 +30,7 @@ export const blogSchema = z.object({
     email: z.string().email("Valid email is required"),
     role: z.string().min(1, "Author role is required"),
   }),
-  readTime: z.string().min(1, "Read time is required"),
+  readTime: z.string().optional(),
   createdAt: z.string().optional(),
   tags: z.string().optional(),
 });
