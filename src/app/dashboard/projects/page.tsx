@@ -2,8 +2,8 @@ import ProjectsManagement from "@/components/modules/dashboard/projects/manageme
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "",
-  description: "",
+  title: "Projects Management | Liminal Admin",
+  description: "Manage and organize your interior design portfolio projects.",
 };
 
 // ProjectsManagementPage Component

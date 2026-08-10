@@ -1,8 +1,12 @@
+"use client";
+
+import ProjectsHeaderSection from "./ProjectsHeaderSection";
+
 // ProjectsManagement Component
 const ProjectsManagement = () => {
   return (
-    <div>
-      
+    <div className="space-y-8">
+      <ProjectsHeaderSection />
     </div>
   );
 };
