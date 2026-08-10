@@ -108,6 +108,19 @@ const ProjectsManagement = () => {
     setCurrentPage(1);
   };
 
+  const handleToggleFeatured = (project: IProject) => {
+    setProjectsList((prev) =>
+      prev.map((p) =>
+        p.id === project.id ? { ...p, isFeatured: !p.isFeatured } : p,
+      ),
+    );
+    toast.success(
+      project.isFeatured
+        ? `Removed "${project.title}" from featured projects`
+        : `Marked "${project.title}" as featured project`,
+    );
+  };
+
   const handleDeleteConfirm = () => {
     if (!projectToDelete) return;
     setProjectsList((prev) => prev.filter((p) => p.id !== projectToDelete.id));
@@ -144,6 +157,7 @@ const ProjectsManagement = () => {
       <ProjectsTableSection
         paginatedProjects={paginatedProjects}
         onDeleteClick={setProjectToDelete}
+        onToggleFeatured={handleToggleFeatured}
         onClearFilters={handleClearFilters}
       />
 

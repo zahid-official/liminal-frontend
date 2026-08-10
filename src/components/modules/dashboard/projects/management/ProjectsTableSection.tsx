@@ -1,16 +1,30 @@
-import Link from "next/link";
-import Image from "next/image";
 import {
+  ExternalLink,
   FolderSearch,
-  MoreVertical,
-  Eye,
-  Edit,
-  Trash2,
   ImageIcon,
-  X,
+  MoreHorizontal,
+  PencilLine,
+  Star,
   StarIcon,
+  StarOff,
+  Trash2,
+  X,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
+import { IProject } from "@/components/modules/public/projects/projectsData";
+import LiminalButton from "@/components/shared/LiminalButton";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -19,22 +33,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import LiminalButton from "@/components/shared/LiminalButton";
-import { IProject } from "@/components/modules/public/projects/projectsData";
 import { cn } from "@/lib/utils";
 
 interface ProjectsTableSectionProps {
   paginatedProjects: IProject[];
   onDeleteClick: (project: IProject) => void;
+  onToggleFeatured: (project: IProject) => void;
   onClearFilters?: () => void;
 }
 
@@ -42,6 +46,7 @@ interface ProjectsTableSectionProps {
 const ProjectsTableSection = ({
   paginatedProjects,
   onDeleteClick,
+  onToggleFeatured,
   onClearFilters,
 }: ProjectsTableSectionProps) => {
   // Handle empty state
@@ -177,42 +182,93 @@ const ProjectsTableSection = ({
               </TableCell>
 
               {/* Featured */}
-              <TableCell className="text-muted-foreground">
-                <StarIcon
-                  className={cn(
-                    "size-4",
+              <TableCell>
+                <button
+                  type="button"
+                  onClick={() => onToggleFeatured(project)}
+                  title={
                     project.isFeatured
-                      ? "fill-liminal-secondary text-liminal-secondary"
-                      : "text-muted-foreground/25",
-                  )}
-                />
+                      ? "Remove from featured"
+                      : "Mark as featured"
+                  }
+                  className="cursor-pointer p-1 rounded-md hover:bg-muted transition-colors inline-flex items-center justify-center"
+                >
+                  <StarIcon
+                    className={cn(
+                      "size-4 transition-transform hover:scale-110",
+                      project.isFeatured
+                        ? "fill-liminal-secondary text-liminal-secondary"
+                        : "text-muted-foreground/30 hover:text-muted-foreground/70",
+                    )}
+                  />
+                </button>
               </TableCell>
 
               {/* Actions */}
               <TableCell className="text-right">
                 <DropdownMenu>
+                  {/* Trigger */}
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon" className="size-8">
-                      <MoreVertical className="size-4" />
+                      <MoreHorizontal className="size-4" />
                       <span className="sr-only">Open menu</span>
                     </Button>
                   </DropdownMenuTrigger>
+
+                  {/* Content */}
                   <DropdownMenuContent align="end" className="w-40">
+                    {/* Menu Label */}
+                    <DropdownMenuLabel className="text-xs font-semibold text-center">
+                      Actions
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+
+                    {/* View on site */}
                     <DropdownMenuItem asChild>
-                      <Link href={`/projects/${project.slug}`} target="_blank">
-                        <Eye className="size-4 mr-2" />
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        target="_blank"
+                        className="cursor-pointer"
+                      >
+                        <ExternalLink className="size-4 mr-2" />
                         View on site
                       </Link>
                     </DropdownMenuItem>
+
+                    {/* Edit project */}
                     <DropdownMenuItem asChild>
-                      <Link href={`/dashboard/projects/edit/${project.slug}`}>
-                        <Edit className="size-4 mr-2" />
+                      <Link
+                        href={`/dashboard/projects/edit/${project.slug}`}
+                        className="cursor-pointer"
+                      >
+                        <PencilLine className="size-4 mr-2" />
                         Edit details
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator />
+
+                    {/* Toggle Featured */}
                     <DropdownMenuItem
-                      className="text-destructive focus:text-destructive focus:bg-destructive/10 cursor-pointer"
+                      onClick={() => onToggleFeatured(project)}
+                      className="gap-2 cursor-pointer"
+                    >
+                      {project.isFeatured ? (
+                        <>
+                          <StarOff className="size-4" />
+                          Remove Featured
+                        </>
+                      ) : (
+                        <>
+                          <Star className="size-4" />
+                          Mark Featured
+                        </>
+                      )}
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+
+                    {/* Delete project */}
+                    <DropdownMenuItem
+                      variant="destructive"
+                      className="cursor-pointer"
                       onClick={() => onDeleteClick(project)}
                     >
                       <Trash2 className="size-4 mr-2" />
