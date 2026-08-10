@@ -9,6 +9,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsHeaderSection from "./ProjectsHeaderSection";
+import ProjectsTableSection from "./ProjectsTableSection";
 
 // Constants
 const ITEMS_PER_PAGE = 8;
@@ -127,6 +128,11 @@ const ProjectsManagement = () => {
         onStatusChange={handleStatusChange}
         sortOption={sortOption}
         onSortChange={handleSortChange}
+      />
+
+      <ProjectsTableSection
+        paginatedProjects={paginatedProjects}
+        onDeleteClick={setProjectToDelete}
       />
     </div>
   );
