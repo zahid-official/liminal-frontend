@@ -1,16 +1,17 @@
 "use client";
 
+import { useState, useMemo } from "react";
+import { toast } from "sonner";
 import {
   projects as initialProjects,
-  IProject,
   ProjectSortValue,
+  IProject,
 } from "@/components/modules/public/projects/projectsData";
-import { useMemo, useState } from "react";
-import { toast } from "sonner";
-import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsHeaderSection from "./ProjectsHeaderSection";
-import ProjectsPaginationSection from "./ProjectsPaginationSection";
+import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsTableSection from "./ProjectsTableSection";
+import ProjectsPaginationSection from "./ProjectsPaginationSection";
+import ProjectDeleteDialog from "./ProjectDeleteDialog";
 
 // Constants
 const ITEMS_PER_PAGE = 8;
@@ -140,6 +141,14 @@ const ProjectsManagement = () => {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
+      />
+
+      <ProjectDeleteDialog
+        projectToDelete={projectToDelete}
+        onOpenChange={(open) => {
+          if (!open) setProjectToDelete(null);
+        }}
+        onConfirm={handleDeleteConfirm}
       />
     </div>
   );
