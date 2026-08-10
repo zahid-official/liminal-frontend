@@ -8,6 +8,7 @@ import {
   Trash2,
   ImageIcon,
   X,
+  StarIcon,
 } from "lucide-react";
 
 import {
@@ -29,6 +30,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import LiminalButton from "@/components/shared/LiminalButton";
 import { IProject } from "@/components/modules/public/projects/projectsData";
+import { cn } from "@/lib/utils";
 
 interface ProjectsTableSectionProps {
   paginatedProjects: IProject[];
@@ -82,11 +84,12 @@ const ProjectsTableSection = ({
         {/* Table Header */}
         <TableHeader className="bg-muted/80">
           <TableRow>
-            <TableHead className="w-75">Project</TableHead>
-            <TableHead>Category</TableHead>
-            <TableHead>Style</TableHead>
+            <TableHead className="w-72">Project</TableHead>
+            <TableHead>Category & Project Type</TableHead>
+            <TableHead>Interior Style</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Year</TableHead>
+            <TableHead>Featured</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -98,9 +101,10 @@ const ProjectsTableSection = ({
               key={project.id}
               className="group hover:bg-muted/60 transition-colors"
             >
-              {/* Project */}
+              {/* Thumbnail & Title */}
               <TableCell>
                 <div className="flex items-center gap-3">
+                  {/*Thumbnail */}
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
                     {project.thumbnail ? (
                       <Image
@@ -116,20 +120,27 @@ const ProjectsTableSection = ({
                       </div>
                     )}
                   </div>
+
+                  {/* Title and Location */}
                   <div>
                     <div className="font-medium text-foreground line-clamp-1">
                       {project.title}
                     </div>
                     <div className="text-xs text-muted-foreground line-clamp-1">
-                      {project.slug}
+                      {project.location}
                     </div>
                   </div>
                 </div>
               </TableCell>
 
-              {/* Category */}
-              <TableCell className="text-muted-foreground">
-                {project.category}
+              {/* Category & Project Type */}
+              <TableCell>
+                <div className="font-medium text-foreground line-clamp-1">
+                  {project.category}
+                </div>
+                <div className="text-xs text-muted-foreground line-clamp-1">
+                  {project.projectType}
+                </div>
               </TableCell>
 
               {/* Interior Style */}
@@ -163,6 +174,18 @@ const ProjectsTableSection = ({
               {/* Year */}
               <TableCell className="text-muted-foreground">
                 {project.completionYear}
+              </TableCell>
+
+              {/* Featured */}
+              <TableCell className="text-muted-foreground">
+                <StarIcon
+                  className={cn(
+                    "size-4",
+                    project.isFeatured
+                      ? "fill-liminal-secondary text-liminal-secondary"
+                      : "text-muted-foreground/25",
+                  )}
+                />
               </TableCell>
 
               {/* Actions */}
