@@ -42,6 +42,7 @@ const ProjectsTableSection = ({
   onDeleteClick,
   onClearFilters,
 }: ProjectsTableSectionProps) => {
+  // Handle empty state
   if (paginatedProjects.length === 0) {
     return (
       <div className="rounded-xl border border-border/50 bg-card overflow-hidden">
@@ -78,7 +79,8 @@ const ProjectsTableSection = ({
   return (
     <div className="rounded-xl border border-border/50 bg-card overflow-hidden">
       <Table>
-        <TableHeader className="bg-muted/30">
+        {/* Table Header */}
+        <TableHeader className="bg-muted/80">
           <TableRow>
             <TableHead className="w-75">Project</TableHead>
             <TableHead>Category</TableHead>
@@ -88,12 +90,15 @@ const ProjectsTableSection = ({
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
+
+        {/* Table Body */}
         <TableBody>
           {paginatedProjects.map((project) => (
             <TableRow
               key={project.id}
-              className="group hover:bg-muted/20 transition-colors"
+              className="group hover:bg-muted/60 transition-colors"
             >
+              {/* Project */}
               <TableCell>
                 <div className="flex items-center gap-3">
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
@@ -121,12 +126,18 @@ const ProjectsTableSection = ({
                   </div>
                 </div>
               </TableCell>
+
+              {/* Category */}
               <TableCell className="text-muted-foreground">
                 {project.category}
               </TableCell>
+
+              {/* Interior Style */}
               <TableCell className="text-muted-foreground">
                 {project.interiorStyle}
               </TableCell>
+
+              {/* Status */}
               <TableCell>
                 <Badge
                   variant="outline"
@@ -148,9 +159,13 @@ const ProjectsTableSection = ({
                   {project.status}
                 </Badge>
               </TableCell>
+
+              {/* Year */}
               <TableCell className="text-muted-foreground">
                 {project.completionYear}
               </TableCell>
+
+              {/* Actions */}
               <TableCell className="text-right">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
