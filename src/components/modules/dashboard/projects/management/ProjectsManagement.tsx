@@ -9,6 +9,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsHeaderSection from "./ProjectsHeaderSection";
+import ProjectsPaginationSection from "./ProjectsPaginationSection";
 import ProjectsTableSection from "./ProjectsTableSection";
 
 // Constants
@@ -133,6 +134,12 @@ const ProjectsManagement = () => {
       <ProjectsTableSection
         paginatedProjects={paginatedProjects}
         onDeleteClick={setProjectToDelete}
+      />
+
+      <ProjectsPaginationSection
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
       />
     </div>
   );
