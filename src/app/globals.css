@@ -125,6 +125,26 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  /*
+   * Radix UI applies data-scroll-locked on body when any Select/Dropdown/Dialog
+   * opens. It also injects --removed-body-scroll-bar-size with the scrollbar
+   * width as a CSS variable, and the fixed Navbar reads that variable via
+   * pr-(--removed-body-scroll-bar-size) to compensate for the scrollbar
+   * disappearing.
+   *
+   * Since scrollbar-gutter:stable on html permanently reserves the scrollbar
+   * gutter, the scrollbar slot never actually vanishes, so the compensation
+   * should always be 0. Forcing the variable to 0px here prevents the navbar
+   * (and any other fixed element using the variable) from shifting, while also
+   * resetting the body margin/padding Radix adds for the same reason.
+   */
+  body[data-scroll-locked] {
+    --removed-body-scroll-bar-size: 0px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
   h1,
   h2 {
     @apply font-heading;
