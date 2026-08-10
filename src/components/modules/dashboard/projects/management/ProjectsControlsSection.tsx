@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { ArrowUpDown, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -20,7 +20,7 @@ interface ProjectsControlsSectionProps {
   onCategoryChange: (val: string) => void;
   statusFilter: string;
   onStatusChange: (val: string) => void;
-  sortOption: ProjectSortValue;
+  sortOption: ProjectSortValue | "";
   onSortChange: (val: ProjectSortValue) => void;
 }
 
@@ -81,21 +81,30 @@ const ProjectsControlsSection = ({
         </Select>
 
         {/* Sort By */}
-        <Select
-          value={sortOption}
-          onValueChange={(val) => onSortChange(val as ProjectSortValue)}
-        >
-          <SelectTrigger className="w-35 bg-background/50">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            {projectSortOptions.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <div className="w-full sm:w-auto sm:min-w-36 sm:max-w-44 shrink-0">
+          <Select
+            value={sortOption || undefined}
+            onValueChange={(val) => onSortChange(val as ProjectSortValue)}
+          >
+            {/* Select Trigger */}
+            <SelectTrigger className="w-full relative pl-9">
+              <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+
+            {/* Select Content */}
+            <SelectContent
+              position="popper"
+              className="w-(--radix-select-trigger-width)"
+            >
+              {projectSortOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>
+                  {opt.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </div>
   );

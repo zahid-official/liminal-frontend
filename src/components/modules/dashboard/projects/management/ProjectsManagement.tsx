@@ -22,7 +22,7 @@ const ProjectsManagement = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
-  const [sortOption, setSortOption] = useState<ProjectSortValue>("newest");
+  const [sortOption, setSortOption] = useState<ProjectSortValue | "">("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const [projectToDelete, setProjectToDelete] = useState<IProject | null>(null);
