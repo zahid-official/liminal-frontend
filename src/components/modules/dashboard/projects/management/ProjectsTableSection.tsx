@@ -89,13 +89,13 @@ const ProjectsTableSection = ({
         {/* Table Header */}
         <TableHeader className="bg-muted/80">
           <TableRow>
-            <TableHead className="w-72">Project</TableHead>
+            <TableHead className="w-72 text-left pl-4">Project Title & Location</TableHead>
             <TableHead>Category & Project Type</TableHead>
             <TableHead>Interior Style</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Year</TableHead>
             <TableHead>Featured</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -205,7 +205,7 @@ const ProjectsTableSection = ({
               </TableCell>
 
               {/* Actions */}
-              <TableCell className="text-right">
+              <TableCell>
                 <DropdownMenu>
                   {/* Trigger */}
                   <DropdownMenuTrigger asChild>
