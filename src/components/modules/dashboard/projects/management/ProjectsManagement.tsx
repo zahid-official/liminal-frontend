@@ -117,6 +117,14 @@ const ProjectsManagement = () => {
     setProjectToDelete(null);
   };
 
+  const handleClearFilters = () => {
+    setSearchQuery("");
+    setCategoryFilter("");
+    setStatusFilter("");
+    setSortOption("");
+    setCurrentPage(1);
+  };
+
   return (
     <div className="space-y-8">
       <ProjectsHeaderSection />
@@ -130,11 +138,13 @@ const ProjectsManagement = () => {
         onStatusChange={handleStatusChange}
         sortOption={sortOption}
         onSortChange={handleSortChange}
+        onClearFilters={handleClearFilters}
       />
 
       <ProjectsTableSection
         paginatedProjects={paginatedProjects}
         onDeleteClick={setProjectToDelete}
+        onClearFilters={handleClearFilters}
       />
 
       <ProjectsPaginationSection

@@ -7,6 +7,7 @@ import {
   Edit,
   Trash2,
   ImageIcon,
+  X,
 } from "lucide-react";
 
 import {
@@ -26,17 +27,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import LiminalButton from "@/components/shared/LiminalButton";
 import { IProject } from "@/components/modules/public/projects/projectsData";
 
 interface ProjectsTableSectionProps {
   paginatedProjects: IProject[];
   onDeleteClick: (project: IProject) => void;
+  onClearFilters?: () => void;
 }
 
 // ProjectsTableSection Component
 const ProjectsTableSection = ({
   paginatedProjects,
   onDeleteClick,
+  onClearFilters,
 }: ProjectsTableSectionProps) => {
   if (paginatedProjects.length === 0) {
     return (
@@ -51,12 +55,21 @@ const ProjectsTableSection = ({
           <h3 className="text-xl font-bold font-heading tracking-tight mb-2">
             No Projects Found
           </h3>
-          <p
-            className="text-sm text-muted-foreground mt-1 max-w-sm"
-          >
+          <p className="text-sm text-muted-foreground mt-1 max-w-sm mb-6">
             No projects match your current filters. Try adjusting your search
             criteria.
           </p>
+          {onClearFilters && (
+            <LiminalButton
+              icon={X}
+              iconPosition="left"
+              animateIcon={false}
+              onClick={onClearFilters}
+              className="rounded-lg"
+            >
+              Clear filters
+            </LiminalButton>
+          )}
         </div>
       </div>
     );
