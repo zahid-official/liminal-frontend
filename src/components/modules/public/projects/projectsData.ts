@@ -623,6 +623,14 @@ export const getRelatedProjects = (
   return [...sameCategory, ...others].slice(0, limit);
 };
 
+// Category Options
+export const projectCategoryOptions = [
+  { label: "All Categories", value: "All" },
+  ...projectCategories
+    .filter((cat) => cat !== "All")
+    .map((cat) => ({ label: cat, value: cat })),
+] as const;
+
 // Status Options
 export const projectStatusOptions = [
   { label: "All Status", value: "All" },

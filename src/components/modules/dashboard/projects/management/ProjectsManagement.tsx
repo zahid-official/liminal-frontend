@@ -20,7 +20,7 @@ const ITEMS_PER_PAGE = 8;
 const ProjectsManagement = () => {
   const [projectsList, setProjectsList] = useState<IProject[]>(initialProjects);
   const [searchQuery, setSearchQuery] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [sortOption, setSortOption] = useState<ProjectSortValue | "">("");
   const [currentPage, setCurrentPage] = useState(1);
