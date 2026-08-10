@@ -623,6 +623,14 @@ export const getRelatedProjects = (
   return [...sameCategory, ...others].slice(0, limit);
 };
 
+// Status Options
+export const projectStatusOptions = [
+  { label: "All Status", value: "All" },
+  { label: "Completed", value: "Completed" },
+  { label: "In Progress", value: "In Progress" },
+  { label: "Concept", value: "Concept" },
+] as const satisfies readonly { label: string; value: "All" | ProjectStatus }[];
+
 // Sort Options
 export const projectSortOptions = [
   { label: "Newest First", value: "newest" },

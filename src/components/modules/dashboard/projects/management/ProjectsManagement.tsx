@@ -21,7 +21,7 @@ const ProjectsManagement = () => {
   const [projectsList, setProjectsList] = useState<IProject[]>(initialProjects);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("All");
-  const [statusFilter, setStatusFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState("");
   const [sortOption, setSortOption] = useState<ProjectSortValue | "">("");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -37,7 +37,7 @@ const ProjectsManagement = () => {
     }
 
     // Status filter
-    if (statusFilter !== "All") {
+    if (statusFilter && statusFilter !== "All") {
       localResult = localResult.filter((p) => p.status === statusFilter);
     }
 

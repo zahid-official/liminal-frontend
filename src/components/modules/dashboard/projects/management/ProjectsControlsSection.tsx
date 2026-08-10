@@ -1,4 +1,9 @@
-import { ArrowUpDown, Search } from "lucide-react";
+import {
+  projectCategories,
+  projectSortOptions,
+  projectStatusOptions,
+  ProjectSortValue,
+} from "@/components/modules/public/projects/projectsData";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -7,11 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  projectCategories,
-  projectSortOptions,
-  ProjectSortValue,
-} from "@/components/modules/public/projects/projectsData";
+import { ArrowUpDown, Search, Sliders } from "lucide-react";
 
 interface ProjectsControlsSectionProps {
   searchQuery: string;
@@ -68,17 +69,30 @@ const ProjectsControlsSection = ({
         </Select>
 
         {/* Status Filter */}
-        <Select value={statusFilter} onValueChange={onStatusChange}>
-          <SelectTrigger className="w-32.5 bg-background/50">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="All">All Status</SelectItem>
-            <SelectItem value="Completed">Completed</SelectItem>
-            <SelectItem value="In Progress">In Progress</SelectItem>
-            <SelectItem value="Concept">Concept</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="w-full sm:w-auto sm:min-w-40 sm:max-w-44 shrink-0">
+          <Select
+            value={statusFilter || undefined}
+            onValueChange={(val) => onStatusChange(val)}
+          >
+            {/* Select Trigger */}
+            <SelectTrigger className="w-full relative pl-9">
+              <Sliders className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
+              <SelectValue placeholder="Filter by Status" />
+            </SelectTrigger>
+
+            {/* Select Content */}
+            <SelectContent
+              position="popper"
+              className="w-(--radix-select-trigger-width)"
+            >
+              {projectStatusOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>
+                  {opt.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         {/* Sort By */}
         <div className="w-full sm:w-auto sm:min-w-36 sm:max-w-44 shrink-0">
