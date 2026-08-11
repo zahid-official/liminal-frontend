@@ -52,7 +52,7 @@ const ProjectsControlsSection = ({
       onClearFilters={onClearFilters}
     >
       {/* Category Filter */}
-      <div className="w-full sm:w-auto sm:min-w-44 sm:max-w-48 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-44 shrink-0">
         <Select value={categoryFilter} onValueChange={onCategoryChange}>
           <SelectTrigger className="w-full relative pl-9">
             <Sliders className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
@@ -61,7 +61,7 @@ const ProjectsControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             {projectCategoryOptions.map((opt) => (
               <SelectItem key={opt.value} value={opt.value}>
@@ -73,7 +73,7 @@ const ProjectsControlsSection = ({
       </div>
 
       {/* Status Filter */}
-      <div className="w-full sm:w-auto sm:min-w-40 sm:max-w-44 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-40 shrink-0">
         <Select value={statusFilter} onValueChange={onStatusChange}>
           <SelectTrigger className="w-full relative pl-9">
             <Activity className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
@@ -82,7 +82,7 @@ const ProjectsControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             {projectStatusOptions.map((opt) => (
               <SelectItem key={opt.value} value={opt.value}>
@@ -94,7 +94,7 @@ const ProjectsControlsSection = ({
       </div>
 
       {/* Sort By */}
-      <div className="w-full sm:w-auto sm:min-w-36 sm:max-w-44 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-36 shrink-0">
         <Select
           value={sortOption}
           onValueChange={(val) => onSortChange(val as ProjectSortValue)}
@@ -106,7 +106,7 @@ const ProjectsControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             {projectSortOptions.map((opt) => (
               <SelectItem key={opt.value} value={opt.value}>

@@ -1,14 +1,14 @@
 "use client";
 
-import LiminalButton from "@/components/shared/LiminalButton";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PenTool, RotateCcw, Send } from "lucide-react";
+import { PenTool, Send } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
 import { BlogFormValues, blogSchema } from "./types";
+import BlogHeaderSection from "./BlogHeaderSection";
 import BlogEssentialsSection from "./BlogEssentialsSection";
 import BlogCoverImageSection from "./BlogCoverImageSection";
 import BlogContentSection from "./BlogContentSection";
@@ -110,51 +110,16 @@ const CreateBlogForm = () => {
       className="space-y-8"
     >
       {/* Form Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        {/* Page Title */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center size-12 rounded-lg bg-liminal-secondary/8 shrink-0">
-            <PenTool className="size-6 text-liminal-secondary" />
-          </div>
-
-          <div>
-            <h1 className="text-3xl font-semibold tracking-tight">
-              Create New Article
-            </h1>
-            <p className="text-muted-foreground text-sm">
-              Compose and publish premium editorial content for the Liminal
-              journal.
-            </p>
-          </div>
-        </div>
-
-        {/* Page Action Buttons */}
-        <div className="flex items-center gap-3">
-          {/* Reset Button */}
-          <LiminalButton
-            type="button"
-            variant="outline"
-            icon={RotateCcw}
-            iconPosition="left"
-            animateIcon={false}
-            onClick={() => form.reset()}
-            disabled={isSubmitting}
-            className="rounded-lg w-24"
-          >
-            Reset
-          </LiminalButton>
-
-          {/* Publish Button */}
-          <LiminalButton
-            type="submit"
-            icon={Send}
-            isLoading={isSubmitting}
-            className="rounded-lg"
-          >
-            {isSubmitting ? "Publishing..." : "Publish Article"}
-          </LiminalButton>
-        </div>
-      </div>
+      <BlogHeaderSection
+        title="Create New Article"
+        description="Compose and publish premium editorial content for the Liminal journal."
+        icon={PenTool}
+        isSubmitting={isSubmitting}
+        submitButtonText="Publish Article"
+        submitButtonLoadingText="Publishing..."
+        submitButtonIcon={Send}
+        onReset={() => form.reset()}
+      />
 
       {/* Main Form Content */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">

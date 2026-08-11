@@ -52,7 +52,7 @@ const FurnitureControlsSection = ({
       onClearFilters={onClearFilters}
     >
       {/* Category Filter */}
-      <div className="w-full sm:w-auto sm:min-w-44 sm:max-w-48 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-44 shrink-0">
         <Select value={categoryFilter} onValueChange={onCategoryChange}>
           <SelectTrigger className="w-full relative pl-9">
             <Sliders className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
@@ -61,7 +61,7 @@ const FurnitureControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             {furnitureCategories.map((cat) => (
               <SelectItem key={cat} value={cat}>
@@ -73,7 +73,7 @@ const FurnitureControlsSection = ({
       </div>
 
       {/* Availability / Status Filter */}
-      <div className="w-full sm:w-auto sm:min-w-44 sm:max-w-48 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-44 shrink-0">
         <Select value={statusFilter} onValueChange={onStatusChange}>
           <SelectTrigger className="w-full relative pl-9">
             <Activity className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
@@ -82,7 +82,7 @@ const FurnitureControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             <SelectItem value="All">All Statuses</SelectItem>
             {furnitureAvailabilityStatus.map((status) => (
@@ -95,7 +95,7 @@ const FurnitureControlsSection = ({
       </div>
 
       {/* Sort By */}
-      <div className="w-full sm:w-auto sm:min-w-40 sm:max-w-48 shrink-0">
+      <div className="w-full sm:w-auto sm:min-w-40 shrink-0">
         <Select
           value={sortOption}
           onValueChange={(val) => onSortChange(val as FurnitureSortType)}
@@ -107,7 +107,7 @@ const FurnitureControlsSection = ({
 
           <SelectContent
             position="popper"
-            className="w-(--radix-select-trigger-width)"
+            className="min-w-(--radix-select-trigger-width) w-max"
           >
             {furnitureSortOptions.map((opt) => (
               <SelectItem key={opt.value} value={opt.value}>
