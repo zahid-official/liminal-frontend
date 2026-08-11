@@ -6,8 +6,8 @@ import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
-import LiminalButton from "@/components/shared/LiminalButton";
-import { FileTextIcon, RotateCcw, Save } from "lucide-react";
+import { FileTextIcon, Save } from "lucide-react";
+import ProjectHeaderSection from "../create/ProjectHeaderSection";
 import ProjectBasicInfoSection from "../create/ProjectBasicInfoSection";
 import ProjectGallerySection from "../create/ProjectGallerySection";
 import ProjectNarrativesSection from "../create/ProjectNarrativesSection";
@@ -115,53 +115,17 @@ const EditProjectForm = ({ initialData }: EditProjectFormProps) => {
       onSubmit={form.handleSubmit(onSubmit, onInvalid)}
       className="space-y-8"
     >
-      {/* Form Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        {/* Page Title */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center size-12 rounded-lg bg-liminal-secondary/8 shrink-0">
-            <FileTextIcon className="size-6 text-liminal-secondary" />
-          </div>
-
-          <div>
-            <h1 className="text-3xl font-semibold tracking-tight">
-              Edit Project
-            </h1>
-            <p className="text-muted-foreground text-sm">
-              Update the details of this interior design project in your
-              portfolio.
-            </p>
-          </div>
-        </div>
-
-        {/* Page Action Buttons */}
-        <div className="flex items-center gap-3">
-          {/* Reset Button */}
-          <LiminalButton
-            type="button"
-            variant="outline"
-            icon={RotateCcw}
-            iconPosition="left"
-            animateIcon={false}
-            onClick={() => form.reset()}
-            disabled={isSubmitting}
-            className="rounded-lg w-24"
-          >
-            Reset
-          </LiminalButton>
-
-          {/* Publish Button */}
-          <LiminalButton
-            type="submit"
-            icon={Save}
-            animateIcon={false}
-            isLoading={isSubmitting}
-            className="rounded-lg"
-          >
-            {isSubmitting ? "Saving..." : "Save Changes"}
-          </LiminalButton>
-        </div>
-      </div>
+      <ProjectHeaderSection
+        title="Edit Project"
+        description="Update the details of this interior design project in your portfolio."
+        icon={FileTextIcon}
+        isSubmitting={isSubmitting}
+        submitButtonText="Save Changes"
+        submitButtonLoadingText="Saving..."
+        submitButtonIcon={Save}
+        submitButtonAnimateIcon={false}
+        onReset={() => form.reset()}
+      />
 
       {/* Main Form Content */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
