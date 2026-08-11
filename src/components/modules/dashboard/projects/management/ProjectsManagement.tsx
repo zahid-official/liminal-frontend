@@ -10,7 +10,7 @@ import {
 import ProjectsHeaderSection from "./ProjectsHeaderSection";
 import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsTableSection from "./ProjectsTableSection";
-import ProjectsPaginationSection from "./ProjectsPaginationSection";
+import Pagination from "@/components/shared/Pagination";
 import ProjectDeleteDialog from "./ProjectDeleteDialog";
 
 // Constants
@@ -161,10 +161,11 @@ const ProjectsManagement = () => {
         onClearFilters={handleClearFilters}
       />
 
-      <ProjectsPaginationSection
+      <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
+        className="pt-5 md:pt-5"
       />
 
       <ProjectDeleteDialog

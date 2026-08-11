@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowUpDown, Search, Sliders, X } from "lucide-react";
+import { ArrowUpDown, Activity, Search, Sliders, X } from "lucide-react";
 
 // Interface for ProjectsControlsSection component props
 interface ProjectsControlsSectionProps {
@@ -114,7 +114,7 @@ const ProjectsControlsSection = ({
           <Select value={statusFilter} onValueChange={onStatusChange}>
             {/* Select Trigger */}
             <SelectTrigger className="w-full relative pl-9">
-              <Sliders className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
+              <Activity className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
               <SelectValue placeholder="Filter by Status" />
             </SelectTrigger>
 
