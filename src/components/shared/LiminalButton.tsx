@@ -8,6 +8,7 @@ interface LiminalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: "primary" | "outline" | "ghost";
   className?: string;
   iconClassName?: string;
+  textClassName?: string;
   showIcon?: boolean;
   animateIcon?: boolean;
   isLoading?: boolean;
@@ -20,6 +21,7 @@ const LiminalButton = ({
   variant = "primary",
   className,
   iconClassName,
+  textClassName,
   showIcon = true,
   animateIcon = true,
   isLoading = false,
@@ -39,7 +41,7 @@ const LiminalButton = ({
       disabled={disabled || isLoading}
       className={cn(
         "group relative flex items-center justify-center overflow-hidden rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer transform-gpu transform-[translateZ(0)] will-change-transform disabled:opacity-70 disabled:cursor-not-allowed",
-        "px-7 min-h-12",
+        "px-7 min-h-12 text-[15px]",
         variants[variant],
         variant === "primary" && [
           !className?.includes("shadow") &&
@@ -69,7 +71,12 @@ const LiminalButton = ({
               />
             )
           ))}
-        <span className="font-semibold text-[15px] tracking-wider transition-colors duration-500 leading-none">
+        <span
+          className={cn(
+            "font-semibold tracking-wider transition-colors duration-500 leading-none",
+            textClassName,
+          )}
+        >
           {children}
         </span>
         {iconPosition === "right" &&

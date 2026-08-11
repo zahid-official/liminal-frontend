@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import React from "react";
+import { Badge } from "@/components/ui/badge";
 
 interface ManagementHeaderProps {
   title: string;
@@ -7,6 +8,7 @@ interface ManagementHeaderProps {
   icon: LucideIcon;
   action?: React.ReactNode;
   badge?: React.ReactNode;
+  totalCount?: number;
   children?: React.ReactNode;
 }
 
@@ -17,6 +19,7 @@ const ManagementHeader = ({
   icon: Icon,
   action,
   badge,
+  totalCount,
   children,
 }: ManagementHeaderProps) => {
   return (
@@ -28,9 +31,18 @@ const ManagementHeader = ({
         </div>
 
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
-            {badge && <div>{badge}</div>}
+            {badge ? (
+              badge
+            ) : typeof totalCount === "number" ? (
+              <Badge
+                variant="secondary"
+                className="font-normal text-xs px-2.5 py-0.5 rounded-full"
+              >
+                {totalCount} Total
+              </Badge>
+            ) : null}
           </div>
           <p className="text-muted-foreground text-sm">{description}</p>
         </div>

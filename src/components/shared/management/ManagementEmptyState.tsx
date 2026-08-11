@@ -51,7 +51,7 @@ const ManagementEmptyState = ({
             iconPosition="left"
             animateIcon={false}
             onClick={onClearFilters}
-            className="rounded-lg"
+            className="rounded-lg min-h-10 px-4"
           >
             Clear filters
           </LiminalButton>

@@ -11,6 +11,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Spinner } from "@/components/ui/spinner";
 
 interface DeleteConfirmDialogProps {
   isOpen: boolean;
@@ -24,6 +25,7 @@ interface DeleteConfirmDialogProps {
   itemPreview?: React.ReactNode;
   confirmText?: string;
   cancelText?: string;
+  isLoading?: boolean;
 }
 
 // DeleteConfirmDialog Component
@@ -39,11 +41,14 @@ const DeleteConfirmDialog = ({
   itemPreview,
   confirmText,
   cancelText = "Cancel",
+  isLoading = false,
 }: DeleteConfirmDialogProps) => {
-  const dynamicConfirmText = confirmText || title;
+  const dynamicConfirmText = isLoading
+    ? "Deleting..."
+    : confirmText || title;
 
   return (
-    <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
+    <AlertDialog open={isOpen} onOpenChange={isLoading ? undefined : onOpenChange}>
       <AlertDialogContent className="max-w-md p-6">
         {/* Header */}
         <AlertDialogHeader>
@@ -113,16 +118,27 @@ const DeleteConfirmDialog = ({
 
         {/* Footer */}
         <AlertDialogFooter className="bg-transparent">
-          <AlertDialogCancel className="cursor-pointer">
+          <AlertDialogCancel
+            disabled={isLoading}
+            className="cursor-pointer disabled:opacity-50"
+          >
             {cancelText}
           </AlertDialogCancel>
 
           <AlertDialogAction
             variant="destructive"
-            onClick={onConfirm}
-            className="cursor-pointer"
+            disabled={isLoading}
+            onClick={(e) => {
+              e.preventDefault();
+              onConfirm();
+            }}
+            className="cursor-pointer disabled:opacity-50"
           >
-            <Trash2 className="size-4.5" />
+            {isLoading ? (
+              <Spinner className="size-4" />
+            ) : (
+              <Trash2 className="size-4.5" />
+            )}
             {dynamicConfirmText}
           </AlertDialogAction>
         </AlertDialogFooter>

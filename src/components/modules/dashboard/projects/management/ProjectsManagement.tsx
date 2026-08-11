@@ -150,6 +150,7 @@ const ProjectsManagement = () => {
         title="Projects Management"
         description="Manage your portfolio, update existing projects or publish new ones."
         icon={FolderGit2Icon}
+        totalCount={projectsList.length}
         action={
           <Link href="/dashboard/projects/create">
             <LiminalButton
