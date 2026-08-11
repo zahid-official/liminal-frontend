@@ -1,4 +1,6 @@
-import { IProject } from "@/components/modules/public/projects/projectsData";
+import { AlertTriangle, Trash2 } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,23 +11,39 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { AlertTriangle, Trash2 } from "lucide-react";
-import Image from "next/image";
 
-interface ProjectDeleteDialogProps {
-  projectToDelete: IProject | null;
+interface DeleteConfirmDialogProps {
+  isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   onConfirm: () => void;
+  title?: string;
+  description?: string;
+  itemName?: string;
+  itemSubtitle?: string;
+  itemImage?: string;
+  itemPreview?: React.ReactNode;
+  confirmText?: string;
+  cancelText?: string;
 }
 
-// ProjectDeleteDialog Component
-const ProjectDeleteDialog = ({
-  projectToDelete,
+// DeleteConfirmDialog Component
+const DeleteConfirmDialog = ({
+  isOpen,
   onOpenChange,
   onConfirm,
-}: ProjectDeleteDialogProps) => {
+  title = "Delete Item",
+  description,
+  itemName,
+  itemSubtitle,
+  itemImage,
+  itemPreview,
+  confirmText,
+  cancelText = "Cancel",
+}: DeleteConfirmDialogProps) => {
+  const dynamicConfirmText = confirmText || title;
+
   return (
-    <AlertDialog open={!!projectToDelete} onOpenChange={onOpenChange}>
+    <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
       <AlertDialogContent className="max-w-md p-6">
         {/* Header */}
         <AlertDialogHeader>
@@ -36,7 +54,7 @@ const ProjectDeleteDialog = ({
 
             <div>
               <AlertDialogTitle className="text-lg font-semibold">
-                Delete Project
+                {title}
               </AlertDialogTitle>
               <AlertDialogDescription className="text-xs text-muted-foreground">
                 This action is permanent and cannot be undone.
@@ -45,13 +63,16 @@ const ProjectDeleteDialog = ({
           </div>
         </AlertDialogHeader>
 
-        {projectToDelete && (
+        {/* Item Preview Card */}
+        {itemPreview ? (
+          itemPreview
+        ) : itemName ? (
           <div className="flex items-center gap-2.5 rounded-lg border border-border/60 bg-muted/30 p-2">
-            {projectToDelete.thumbnail && (
+            {itemImage && (
               <div className="relative h-14 w-14 aspect-square shrink-0 overflow-hidden rounded-md border border-border/50 bg-muted">
                 <Image
-                  src={projectToDelete.thumbnail}
-                  alt={projectToDelete.title}
+                  src={itemImage}
+                  alt={itemName}
                   fill
                   className="object-cover"
                   unoptimized
@@ -59,30 +80,41 @@ const ProjectDeleteDialog = ({
               </div>
             )}
 
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <h4 className="truncate text-sm font-medium text-foreground">
-                {projectToDelete.title}
+                {itemName}
               </h4>
-              <p className="truncate text-xs text-muted-foreground">
-                {projectToDelete.location}
-              </p>
+              {itemSubtitle && (
+                <p className="truncate text-xs text-muted-foreground">
+                  {itemSubtitle}
+                </p>
+              )}
             </div>
           </div>
-        )}
+        ) : null}
 
+        {/* Description */}
         <AlertDialogDescription>
-          Deleting{" "}
-          <span className="font-semibold text-foreground">
-            &quot;{projectToDelete?.title}&quot;
-          </span>{" "}
-          will permanently remove its details, gallery images, and associated
-          data from our servers.
+          {description ? (
+            description
+          ) : itemName ? (
+            <>
+              Deleting{" "}
+              <span className="font-semibold text-foreground">
+                &quot;{itemName}&quot;
+              </span>{" "}
+              will permanently remove its details and associated data from our
+              servers.
+            </>
+          ) : (
+            "Are you sure you want to delete this item? This action cannot be undone."
+          )}
         </AlertDialogDescription>
 
         {/* Footer */}
         <AlertDialogFooter className="bg-transparent">
           <AlertDialogCancel className="cursor-pointer">
-            Cancel
+            {cancelText}
           </AlertDialogCancel>
 
           <AlertDialogAction
@@ -91,7 +123,7 @@ const ProjectDeleteDialog = ({
             className="cursor-pointer"
           >
             <Trash2 className="size-4.5" />
-            Delete Project
+            {dynamicConfirmText}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -99,4 +131,4 @@ const ProjectDeleteDialog = ({
   );
 };
 
-export default ProjectDeleteDialog;
+export default DeleteConfirmDialog;

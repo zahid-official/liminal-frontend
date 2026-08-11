@@ -1,5 +1,7 @@
 "use client";
 
+import { FolderGit2Icon, PlusCircle } from "lucide-react";
+import Link from "next/link";
 import { useState, useMemo } from "react";
 import { toast } from "sonner";
 import {
@@ -7,11 +9,14 @@ import {
   ProjectSortValue,
   IProject,
 } from "@/components/modules/public/projects/projectsData";
-import ProjectsHeaderSection from "./ProjectsHeaderSection";
+import {
+  DeleteConfirmDialog,
+  ManagementHeader,
+} from "@/components/shared/management";
+import LiminalButton from "@/components/shared/LiminalButton";
+import Pagination from "@/components/shared/Pagination";
 import ProjectsControlsSection from "./ProjectsControlsSection";
 import ProjectsTableSection from "./ProjectsTableSection";
-import Pagination from "@/components/shared/Pagination";
-import ProjectDeleteDialog from "./ProjectDeleteDialog";
 
 // Constants
 const ITEMS_PER_PAGE = 8;
@@ -140,8 +145,26 @@ const ProjectsManagement = () => {
 
   return (
     <div className="space-y-8">
-      <ProjectsHeaderSection />
+      {/* Shared Management Header */}
+      <ManagementHeader
+        title="Projects Management"
+        description="Manage your portfolio, update existing projects or publish new ones."
+        icon={FolderGit2Icon}
+        action={
+          <Link href="/dashboard/projects/create">
+            <LiminalButton
+              icon={PlusCircle}
+              animateIcon={false}
+              iconPosition="left"
+              className="rounded-lg"
+            >
+              Create Project
+            </LiminalButton>
+          </Link>
+        }
+      />
 
+      {/* Projects Controls / Toolbar */}
       <ProjectsControlsSection
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
@@ -154,6 +177,7 @@ const ProjectsManagement = () => {
         onClearFilters={handleClearFilters}
       />
 
+      {/* Projects Table */}
       <ProjectsTableSection
         paginatedProjects={paginatedProjects}
         onDeleteClick={setProjectToDelete}
@@ -161,6 +185,7 @@ const ProjectsManagement = () => {
         onClearFilters={handleClearFilters}
       />
 
+      {/* Pagination */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
@@ -170,11 +195,16 @@ const ProjectsManagement = () => {
         activePageClassName="bg-liminal-secondary"
       />
 
-      <ProjectDeleteDialog
-        projectToDelete={projectToDelete}
+      {/* Shared Delete Confirmation Dialog */}
+      <DeleteConfirmDialog
+        isOpen={Boolean(projectToDelete)}
         onOpenChange={(open) => {
           if (!open) setProjectToDelete(null);
         }}
+        title="Delete Project"
+        itemName={projectToDelete?.title}
+        itemSubtitle={projectToDelete?.location}
+        itemImage={projectToDelete?.thumbnail}
         onConfirm={handleDeleteConfirm}
       />
     </div>

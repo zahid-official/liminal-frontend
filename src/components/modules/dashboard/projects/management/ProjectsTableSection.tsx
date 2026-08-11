@@ -1,6 +1,5 @@
 import {
   ExternalLink,
-  FolderSearch,
   ImageIcon,
   MoreHorizontal,
   PencilLine,
@@ -8,13 +7,12 @@ import {
   StarIcon,
   StarOff,
   Trash2,
-  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { IProject } from "@/components/modules/public/projects/projectsData";
-import LiminalButton from "@/components/shared/LiminalButton";
+import { ManagementEmptyState } from "@/components/shared/management";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -52,34 +50,11 @@ const ProjectsTableSection = ({
   // Handle empty state
   if (paginatedProjects.length === 0) {
     return (
-      <div className="rounded-xl border border-border/50 bg-card overflow-hidden">
-        <div className="flex flex-col items-center justify-center py-24 text-center">
-          {/* Empty State Icon */}
-          <div className="w-20 h-20 rounded-full bg-zinc-100 flex items-center justify-center mb-5">
-            <FolderSearch className="size-8 text-muted-foreground/40" />
-          </div>
-
-          {/* Empty State Text */}
-          <h3 className="text-xl font-bold font-heading tracking-tight mb-2">
-            No Projects Found
-          </h3>
-          <p className="text-sm text-muted-foreground mt-1 max-w-sm mb-6">
-            No projects match your current filters. Try adjusting your search
-            criteria.
-          </p>
-          {onClearFilters && (
-            <LiminalButton
-              icon={X}
-              iconPosition="left"
-              animateIcon={false}
-              onClick={onClearFilters}
-              className="rounded-lg"
-            >
-              Clear filters
-            </LiminalButton>
-          )}
-        </div>
-      </div>
+      <ManagementEmptyState
+        title="No Projects Found"
+        description="No projects match your current filters. Try adjusting your search criteria."
+        onClearFilters={onClearFilters}
+      />
     );
   }
 
