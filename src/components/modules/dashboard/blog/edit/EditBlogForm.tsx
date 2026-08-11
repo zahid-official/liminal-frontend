@@ -1,50 +1,56 @@
 "use client";
 
+import { IBlogArticle } from "@/components/modules/public/blog/blogData";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PenTool, Send } from "lucide-react";
+import { FileTextIcon, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
-import { BlogFormValues, blogSchema } from "./types";
-import BlogHeaderSection from "./BlogHeaderSection";
-import BlogEssentialsSection from "./BlogEssentialsSection";
-import BlogCoverImageSection from "./BlogCoverImageSection";
-import BlogContentSection from "./BlogContentSection";
-import BlogQuoteSection from "./BlogQuoteSection";
-import BlogPublishingSection from "./BlogPublishingSection";
-import BlogAuthorSection from "./BlogAuthorSection";
+import BlogAuthorSection from "../create/BlogAuthorSection";
+import BlogContentSection from "../create/BlogContentSection";
+import BlogCoverImageSection from "../create/BlogCoverImageSection";
+import BlogEssentialsSection from "../create/BlogEssentialsSection";
+import BlogHeaderSection from "../create/BlogHeaderSection";
+import BlogPublishingSection from "../create/BlogPublishingSection";
+import BlogQuoteSection from "../create/BlogQuoteSection";
+import { BlogFormValues, blogSchema } from "../create/types";
 
-// CreateBlogForm Component
-const CreateBlogForm = () => {
+// Interface for EditBlogForm Props
+interface EditBlogFormProps {
+  initialData: IBlogArticle;
+}
+
+// EditBlogForm Component
+const EditBlogForm = ({ initialData }: EditBlogFormProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Form initialization with Zod validation resolver
+  // Form initialization with Zod validation resolver and initial data
   const form = useForm<BlogFormValues>({
     resolver: zodResolver(blogSchema),
     defaultValues: {
-      title: "",
-      slug: "",
-      category: "",
-      description: "",
-      content: [],
-      thumbnail: "",
-      thumbnailCaption: "",
-      isFeatured: false,
+      title: initialData.title || "",
+      slug: initialData.slug || "",
+      category: initialData.category || "",
+      description: initialData.description || "",
+      content: initialData.content || [],
+      thumbnail: initialData.thumbnail?.url || "",
+      thumbnailCaption: initialData.thumbnail?.caption || "",
+      isFeatured: initialData.isFeatured || false,
       quote: {
-        text: "",
-        attribution: "",
+        text: initialData.quote?.text || "",
+        attribution: initialData.quote?.attribution || "",
       },
       author: {
-        name: "",
-        email: "",
-        role: "",
+        name: initialData.author?.name || "",
+        email: initialData.author?.email || "",
+        role: initialData.author?.role || "",
       },
-      readTime: "",
-      createdAt: "",
-      tags: "",
+      readTime: initialData.readTime || "",
+      createdAt: initialData.createdAt || "",
+      tags: initialData.tags || "",
     },
   });
 
@@ -63,7 +69,7 @@ const CreateBlogForm = () => {
     console.error("Validation errors on submission:", errors);
     toast.error("Validation Failed", {
       description:
-        "Please check all required fields and correct the errors before publishing.",
+        "Please check all required fields and correct the errors before saving.",
     });
   };
 
@@ -84,10 +90,10 @@ const CreateBlogForm = () => {
       };
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Submitted Blog Article Data:", payload);
+      console.log("Updated Blog Article Data:", payload);
 
-      toast.success("Article published successfully!", {
-        description: "The new blog article has been published to the journal.",
+      toast.success("Article updated successfully!", {
+        description: "The blog article changes have been saved.",
       });
 
       // Brief delay to allow the user to see the success toast before redirecting
@@ -96,7 +102,7 @@ const CreateBlogForm = () => {
       }, 1500);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to publish article", {
+      toast.error("Failed to update article", {
         description: "An unexpected error occurred. Please try again.",
       });
     } finally {
@@ -111,13 +117,13 @@ const CreateBlogForm = () => {
     >
       {/* Form Header */}
       <BlogHeaderSection
-        title="Create New Article"
-        description="Compose and publish premium editorial content for the Liminal journal."
-        icon={PenTool}
+        title="Edit Article"
+        description="Update article contents, metadata, and editorial highlights."
+        icon={FileTextIcon}
         isSubmitting={isSubmitting}
-        submitButtonText="Publish Article"
-        submitButtonLoadingText="Publishing..."
-        submitButtonIcon={Send}
+        submitButtonText="Save Changes"
+        submitButtonLoadingText="Saving..."
+        submitButtonIcon={Save}
         onReset={() => form.reset()}
       />
 
@@ -146,4 +152,4 @@ const CreateBlogForm = () => {
   );
 };
 
-export default CreateBlogForm;
+export default EditBlogForm;

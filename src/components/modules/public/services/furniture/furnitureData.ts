@@ -795,10 +795,10 @@ export const getFurnitureCategoryCounts = (): Record<
 export const furnitureSortOptions = [
   { label: "Newest First", value: "newest" },
   { label: "Oldest First", value: "oldest" },
+  { label: "Title: A to Z", value: "title-asc" },
+  { label: "Title: Z to A", value: "title-desc" },
   { label: "Price: Low to High", value: "price-asc" },
   { label: "Price: High to Low", value: "price-desc" },
-  { label: "Name: A to Z", value: "name-asc" },
-  { label: "Name: Z to A", value: "name-desc" },
 ] as const;
 
 export type FurnitureSortType = (typeof furnitureSortOptions)[number]["value"];
@@ -840,10 +840,10 @@ export const filterFurniture = (options: {
     case "price-desc":
       results.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
       break;
-    case "name-asc":
+    case "title-asc":
       results.sort((a, b) => a.title.localeCompare(b.title));
       break;
-    case "name-desc":
+    case "title-desc":
       results.sort((a, b) => b.title.localeCompare(a.title));
       break;
     case "oldest":

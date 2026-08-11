@@ -1,9 +1,8 @@
 import {
-  projectCategoryOptions,
-  projectSortOptions,
-  ProjectSortValue,
-  projectStatusOptions,
-} from "@/components/modules/public/projects/projectsData";
+  blogCategories,
+  blogSortOptions,
+  BlogSortValue,
+} from "@/components/modules/public/blog/blogData";
 import { ManagementToolbar } from "@/components/shared/management";
 import {
   Select,
@@ -12,42 +11,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowUpDown, Activity, Sliders } from "lucide-react";
+import { ArrowUpDown, Sliders } from "lucide-react";
 
-// Interface for ProjectsControlsSection component props
-interface ProjectsControlsSectionProps {
+// Interface for BlogControlsSection component props
+interface BlogControlsSectionProps {
   searchQuery: string;
   onSearchChange: (val: string) => void;
   categoryFilter: string;
   onCategoryChange: (val: string) => void;
-  statusFilter: string;
-  onStatusChange: (val: string) => void;
-  sortOption: ProjectSortValue | "";
-  onSortChange: (val: ProjectSortValue) => void;
+  sortOption: BlogSortValue | "";
+  onSortChange: (val: BlogSortValue) => void;
   onClearFilters?: () => void;
 }
 
-// ProjectsControlsSection Component
-const ProjectsControlsSection = ({
+// BlogControlsSection Component
+const BlogControlsSection = ({
   searchQuery,
   onSearchChange,
   categoryFilter,
   onCategoryChange,
-  statusFilter,
-  onStatusChange,
   sortOption,
   onSortChange,
   onClearFilters,
-}: ProjectsControlsSectionProps) => {
+}: BlogControlsSectionProps) => {
   const hasActiveFilters = Boolean(
-    searchQuery || categoryFilter || statusFilter || sortOption,
+    searchQuery || categoryFilter || sortOption,
   );
 
   return (
     <ManagementToolbar
       searchValue={searchQuery}
       onSearchChange={onSearchChange}
-      searchPlaceholder="Search projects..."
+      searchPlaceholder="Search articles, authors, excerpt..."
       hasActiveFilters={hasActiveFilters}
       onClearFilters={onClearFilters}
     >
@@ -60,27 +55,9 @@ const ProjectsControlsSection = ({
           </SelectTrigger>
 
           <SelectContent position="popper" align="start">
-            {projectCategoryOptions.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Status Filter */}
-      <div className="w-full sm:w-auto shrink-0">
-        <Select value={statusFilter} onValueChange={onStatusChange}>
-          <SelectTrigger className="w-full sm:w-auto relative pl-9">
-            <Activity className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
-            <SelectValue placeholder="Filter by Status" />
-          </SelectTrigger>
-
-          <SelectContent position="popper" align="start">
-            {projectStatusOptions.map((opt) => (
-              <SelectItem key={opt.value} value={opt.value}>
-                {opt.label}
+            {blogCategories.map((cat) => (
+              <SelectItem key={cat} value={cat}>
+                {cat === "All" ? "All Categories" : cat}
               </SelectItem>
             ))}
           </SelectContent>
@@ -91,7 +68,7 @@ const ProjectsControlsSection = ({
       <div className="w-full sm:w-auto shrink-0">
         <Select
           value={sortOption}
-          onValueChange={(val) => onSortChange(val as ProjectSortValue)}
+          onValueChange={(val) => onSortChange(val as BlogSortValue)}
         >
           <SelectTrigger className="w-full sm:w-auto relative pl-9">
             <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
@@ -99,7 +76,7 @@ const ProjectsControlsSection = ({
           </SelectTrigger>
 
           <SelectContent position="popper" align="end">
-            {projectSortOptions.map((opt) => (
+            {blogSortOptions.map((opt) => (
               <SelectItem key={opt.value} value={opt.value}>
                 {opt.label}
               </SelectItem>
@@ -111,4 +88,4 @@ const ProjectsControlsSection = ({
   );
 };
 
-export default ProjectsControlsSection;
+export default BlogControlsSection;

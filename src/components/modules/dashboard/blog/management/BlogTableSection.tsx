@@ -1,17 +1,4 @@
-import {
-  ExternalLink,
-  ImageIcon,
-  MoreHorizontal,
-  PencilLine,
-  Star,
-  StarIcon,
-  StarOff,
-  Trash2,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-
-import { IProject } from "@/components/modules/public/projects/projectsData";
+import { IBlogArticle } from "@/components/modules/public/blog/blogData";
 import { ManagementEmptyState } from "@/components/shared/management";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -32,42 +19,59 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import {
+  Clock,
+  ExternalLink,
+  ImageIcon,
+  MoreHorizontal,
+  PencilLine,
+  Star,
+  StarIcon,
+  StarOff,
+  Trash2,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-// Interface for ProjectsTableSection
-interface ProjectsTableSectionProps {
-  paginatedProjects: IProject[];
-  onDeleteClick: (project: IProject) => void;
-  onToggleFeatured: (project: IProject) => void;
+// Interface for BlogTableSection
+interface BlogTableSectionProps {
+  paginatedArticles: IBlogArticle[];
+  onDeleteClick: (article: IBlogArticle) => void;
+  onToggleFeatured: (article: IBlogArticle) => void;
   onClearFilters?: () => void;
 }
 
-// Helper to get status badge styling
-const getStatusBadgeClass = (status: IProject["status"] | string) => {
-  switch (status) {
-    case "Completed":
-      return "bg-[#68A039]/10 text-[#68A039] dark:text-[#68A039] border-[#68A039]/20";
-    case "In Progress":
+// Helper to get category badge styling
+const getCategoryBadgeClass = (category: string) => {
+  switch (category) {
+    case "Design":
       return "bg-[#D76417]/10 text-[#D76417] dark:text-[#D76417] border-[#D76417]/20";
-    case "Concept":
+    case "Material":
+      return "bg-[#68A039]/10 text-[#68A039] dark:text-[#68A039] border-[#68A039]/20";
+    case "Philosophy":
       return "bg-[#6A33CC]/10 text-[#6A33CC] dark:text-[#6A33CC] border-[#6A33CC]/20";
+    case "Architecture":
+      return "bg-[#3975C7]/10 text-[#3975C7] dark:text-[#3975C7] border-[#3975C7]/20";
+    case "Process":
+      return "bg-[#B45309]/10 text-[#B45309] dark:text-[#B45309] border-[#B45309]/20";
     default:
       return "bg-muted text-muted-foreground border-border";
   }
 };
 
-// ProjectsTableSection Component
-const ProjectsTableSection = ({
-  paginatedProjects,
+// BlogTableSection Component
+const BlogTableSection = ({
+  paginatedArticles,
   onDeleteClick,
   onToggleFeatured,
   onClearFilters,
-}: ProjectsTableSectionProps) => {
+}: BlogTableSectionProps) => {
   // Handle empty state
-  if (paginatedProjects.length === 0) {
+  if (paginatedArticles.length === 0) {
     return (
       <ManagementEmptyState
-        title="No Projects Found"
-        description="No projects match your current filters. Try adjusting your search criteria."
+        title="No Articles Found"
+        description="No blog articles match your current filters. Try adjusting your search query or clear active filters."
         onClearFilters={onClearFilters}
       />
     );
@@ -80,12 +84,12 @@ const ProjectsTableSection = ({
         <TableHeader className="bg-muted/80">
           <TableRow>
             <TableHead className="w-80 text-left pl-4">
-              Project Title & Location
+              Article & Overview
             </TableHead>
-            <TableHead>Category & Project Type</TableHead>
-            <TableHead>Interior Style</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Year</TableHead>
+            <TableHead>Author</TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead>Read Time</TableHead>
+            <TableHead>Published Date</TableHead>
             <TableHead>Featured</TableHead>
             <TableHead className="text-right pr-4">Actions</TableHead>
           </TableRow>
@@ -93,7 +97,7 @@ const ProjectsTableSection = ({
 
         {/* Table Body */}
         <TableBody>
-          {paginatedProjects.map((item) => (
+          {paginatedArticles.map((item) => (
             <TableRow
               key={item.id}
               className="group hover:bg-muted/60 transition-colors"
@@ -103,9 +107,9 @@ const ProjectsTableSection = ({
                 <div className="flex items-center gap-3">
                   {/* Thumbnail */}
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
-                    {item.thumbnail ? (
+                    {item.thumbnail?.url ? (
                       <Image
-                        src={item.thumbnail}
+                        src={item.thumbnail.url}
                         alt={item.title}
                         fill
                         className="object-cover"
@@ -118,49 +122,52 @@ const ProjectsTableSection = ({
                     )}
                   </div>
 
-                  {/* Title and Location */}
+                  {/* Title & Description Excerpt */}
                   <div className="min-w-0">
                     <div className="font-medium text-foreground line-clamp-1 truncate">
                       {item.title}
                     </div>
                     <div className="text-xs text-muted-foreground line-clamp-1 truncate">
-                      {item.location}
+                      {item.description}
                     </div>
                   </div>
                 </div>
               </TableCell>
 
-              {/* Category & Project Type */}
+              {/* Author */}
               <TableCell>
                 <div className="font-medium text-foreground line-clamp-1">
-                  {item.category}
+                  {item.author?.name}
                 </div>
                 <div className="text-xs text-muted-foreground line-clamp-1">
-                  {item.projectType}
+                  {item.author?.role}
                 </div>
               </TableCell>
 
-              {/* Interior Style */}
-              <TableCell className="text-muted-foreground">
-                {item.interiorStyle}
-              </TableCell>
-
-              {/* Status */}
+              {/* Category */}
               <TableCell>
                 <Badge
                   variant="outline"
-                  className={getStatusBadgeClass(item.status)}
+                  className={getCategoryBadgeClass(item.category)}
                 >
-                  {item.status}
+                  {item.category}
                 </Badge>
               </TableCell>
 
-              {/* Year */}
-              <TableCell className="text-muted-foreground">
-                {item.completionYear}
+              {/* Read Time & Blocks */}
+              <TableCell>
+                <div className="flex justify-center items-center gap-1 text-muted-foreground text-xs">
+                  <Clock className="size-3.5 text-muted-foreground" />
+                  <span>{item.readTime}</span>
+                </div>
               </TableCell>
 
-              {/* Featured */}
+              {/* Published Date */}
+              <TableCell className="text-xs text-muted-foreground">
+                {item.createdAt}
+              </TableCell>
+
+              {/* Featured Toggle */}
               <TableCell className="text-center">
                 <button
                   type="button"
@@ -183,7 +190,7 @@ const ProjectsTableSection = ({
                 </button>
               </TableCell>
 
-              {/* Actions */}
+              {/* Actions Menu */}
               <TableCell className="text-right pr-4">
                 <DropdownMenu>
                   {/* Trigger */}
@@ -205,7 +212,7 @@ const ProjectsTableSection = ({
                     {/* View on site */}
                     <DropdownMenuItem asChild>
                       <Link
-                        href={`/projects/${item.slug}`}
+                        href={`/blog/${item.slug}`}
                         target="_blank"
                         className="cursor-pointer"
                       >
@@ -214,10 +221,10 @@ const ProjectsTableSection = ({
                       </Link>
                     </DropdownMenuItem>
 
-                    {/* Edit project */}
+                    {/* Edit article */}
                     <DropdownMenuItem asChild>
                       <Link
-                        href={`/dashboard/projects/edit/${item.slug}`}
+                        href={`/dashboard/blog/edit/${item.slug}`}
                         className="cursor-pointer"
                       >
                         <PencilLine className="size-4 mr-2" />
@@ -244,14 +251,14 @@ const ProjectsTableSection = ({
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
 
-                    {/* Delete project */}
+                    {/* Delete article */}
                     <DropdownMenuItem
                       variant="destructive"
                       className="cursor-pointer"
                       onClick={() => onDeleteClick(item)}
                     >
                       <Trash2 className="size-4 mr-2" />
-                      Delete project
+                      Delete article
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -264,4 +271,4 @@ const ProjectsTableSection = ({
   );
 };
 
-export default ProjectsTableSection;
+export default BlogTableSection;

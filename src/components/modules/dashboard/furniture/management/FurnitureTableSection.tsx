@@ -79,7 +79,7 @@ const FurnitureTableSection = ({
         {/* Table Header */}
         <TableHeader className="bg-muted/80">
           <TableRow>
-            <TableHead className="w-72 text-left pl-4">
+            <TableHead className="w-80 text-left pl-4">
               Furniture Piece & Tagline
             </TableHead>
             <TableHead>Category & Product Code</TableHead>
@@ -87,7 +87,7 @@ const FurnitureTableSection = ({
             <TableHead>Price</TableHead>
             <TableHead>Availability</TableHead>
             <TableHead>Lead Time</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className="text-right pr-4">Actions</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -99,7 +99,7 @@ const FurnitureTableSection = ({
               className="group hover:bg-muted/60 transition-colors"
             >
               {/* Thumbnail & Title */}
-              <TableCell className="text-left pl-4">
+              <TableCell className="text-left pl-4 max-w-80">
                 <div className="flex items-center gap-3">
                   {/*Thumbnail */}
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
@@ -119,8 +119,8 @@ const FurnitureTableSection = ({
                   </div>
 
                   {/* Title and Tagline */}
-                  <div>
-                    <div className="font-medium text-foreground line-clamp-1">
+                  <div className="min-w-0">
+                    <div className="font-medium text-foreground line-clamp-1 truncate">
                       {item.title}
                     </div>
                     <div className="text-xs text-muted-foreground line-clamp-1 truncate">

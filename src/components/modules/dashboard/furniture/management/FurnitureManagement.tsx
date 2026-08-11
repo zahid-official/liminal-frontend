@@ -77,10 +77,10 @@ const FurnitureManagement = () => {
       case "price-desc":
         localResult.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
         break;
-      case "name-asc":
+      case "title-asc":
         localResult.sort((a, b) => a.title.localeCompare(b.title));
         break;
-      case "name-desc":
+      case "title-desc":
         localResult.sort((a, b) => b.title.localeCompare(a.title));
         break;
       case "oldest":

@@ -30,7 +30,7 @@ const ManagementEmptyState = ({
     >
       <div className="flex flex-col items-center justify-center py-24 text-center px-4">
         {/* Empty State Icon */}
-        <div className="w-20 h-20 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mb-5">
+        <div className="w-20 h-20 rounded-full bg-zinc-100 flex items-center justify-center mb-5">
           <Icon className="size-8 text-muted-foreground/40" />
         </div>
 
