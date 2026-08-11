@@ -52,7 +52,7 @@ const DeleteConfirmDialog = ({
       <AlertDialogContent className="max-w-md p-6">
         {/* Header */}
         <AlertDialogHeader>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-4.5">
             <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-destructive/10 text-destructive ring-8 ring-destructive/5">
               <AlertTriangle className="size-5.5" />
             </div>

@@ -1,13 +1,4 @@
 import {
-  ExternalLink,
-  ImageIcon,
-  MoreHorizontal,
-  PencilLine,
-  Trash2,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import {
   formatDimensions,
   IFurniture,
 } from "@/components/modules/public/services/furniture/furnitureData";
@@ -30,7 +21,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  ExternalLink,
+  ImageIcon,
+  MoreHorizontal,
+  PencilLine,
+  Trash2,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
+// Interface for FurnitureTableSection
 interface FurnitureTableSectionProps {
   paginatedFurniture: IFurniture[];
   onDeleteClick: (furniture: IFurniture) => void;
@@ -41,15 +42,15 @@ interface FurnitureTableSectionProps {
 const getStatusBadgeClass = (status: IFurniture["status"]) => {
   switch (status) {
     case "In Stock":
-      return "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20";
+      return "bg-[#68A039]/10 text-[#68A039] dark:text-[#68A039] border-[#68A039]/20";
     case "Out of Stock":
       return "bg-destructive/10 text-destructive border-destructive/20";
     case "Pre-Order":
-      return "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20";
+      return "bg-[#3975C7]/10 text-[#3975C7] dark:text-[#3975C7] border-[#3975C7]/20";
     case "Made to Order":
-      return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20";
+      return "bg-[#D76417]/10 text-[#D76417] dark:text-[#D76417] border-[#D76417]/20";
     case "Limited Edition":
-      return "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20";
+      return "bg-[#6A33CC]/10 text-[#6A33CC] dark:text-[#6A33CC] border-[#6A33CC]/20";
     default:
       return "bg-muted text-muted-foreground border-border";
   }
@@ -98,7 +99,7 @@ const FurnitureTableSection = ({
               className="group hover:bg-muted/60 transition-colors"
             >
               {/* Thumbnail & Title */}
-              <TableCell className="text-left">
+              <TableCell className="text-left pl-4">
                 <div className="flex items-center gap-3">
                   {/*Thumbnail */}
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
@@ -141,7 +142,7 @@ const FurnitureTableSection = ({
 
               {/* Materials & Dimensions */}
               <TableCell>
-                <div className="font-medium text-xs text-foreground line-clamp-1">
+                <div className="font-medium line-clamp-1">
                   {item.specifications.materials}
                 </div>
                 <div className="text-xs text-muted-foreground line-clamp-1 mt-0.5">
@@ -164,7 +165,7 @@ const FurnitureTableSection = ({
 
               {/* Lead Time */}
               <TableCell>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-muted-foreground">
                   {item.specifications.leadTime}
                 </span>
               </TableCell>
@@ -210,7 +211,6 @@ const FurnitureTableSection = ({
                         Edit details
                       </Link>
                     </DropdownMenuItem>
-
                     <DropdownMenuSeparator />
 
                     {/* Delete item */}

@@ -33,12 +33,27 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
+// Interface for ProjectsTableSection
 interface ProjectsTableSectionProps {
   paginatedProjects: IProject[];
   onDeleteClick: (project: IProject) => void;
   onToggleFeatured: (project: IProject) => void;
   onClearFilters?: () => void;
 }
+
+// Helper to get status badge styling
+const getStatusBadgeClass = (status: IProject["status"] | string) => {
+  switch (status) {
+    case "Completed":
+      return "bg-[#68A039]/10 text-[#68A039] dark:text-[#68A039] border-[#68A039]/20";
+    case "In Progress":
+      return "bg-[#D76417]/10 text-[#D76417] dark:text-[#D76417] border-[#D76417]/20";
+    case "Concept":
+      return "bg-[#6A33CC]/10 text-[#6A33CC] dark:text-[#6A33CC] border-[#6A33CC]/20";
+    default:
+      return "bg-muted text-muted-foreground border-border";
+  }
+};
 
 // ProjectsTableSection Component
 const ProjectsTableSection = ({
@@ -64,32 +79,34 @@ const ProjectsTableSection = ({
         {/* Table Header */}
         <TableHeader className="bg-muted/80">
           <TableRow>
-            <TableHead className="w-72 text-left pl-4">Project Title & Location</TableHead>
+            <TableHead className="w-72 text-left pl-4">
+              Project Title & Location
+            </TableHead>
             <TableHead>Category & Project Type</TableHead>
             <TableHead>Interior Style</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Year</TableHead>
-            <TableHead>Featured</TableHead>
-            <TableHead>Actions</TableHead>
+            <TableHead className="text-center">Featured</TableHead>
+            <TableHead className="text-right pr-4">Actions</TableHead>
           </TableRow>
         </TableHeader>
 
         {/* Table Body */}
         <TableBody>
-          {paginatedProjects.map((project) => (
+          {paginatedProjects.map((item) => (
             <TableRow
-              key={project.id}
+              key={item.id}
               className="group hover:bg-muted/60 transition-colors"
             >
               {/* Thumbnail & Title */}
-              <TableCell>
+              <TableCell className="text-left pl-4">
                 <div className="flex items-center gap-3">
-                  {/*Thumbnail */}
+                  {/* Thumbnail */}
                   <div className="relative size-12 rounded-md overflow-hidden bg-muted shrink-0">
-                    {project.thumbnail ? (
+                    {item.thumbnail ? (
                       <Image
-                        src={project.thumbnail}
-                        alt={project.title}
+                        src={item.thumbnail}
+                        alt={item.title}
                         fill
                         className="object-cover"
                         sizes="48px"
@@ -104,10 +121,10 @@ const ProjectsTableSection = ({
                   {/* Title and Location */}
                   <div>
                     <div className="font-medium text-foreground line-clamp-1">
-                      {project.title}
+                      {item.title}
                     </div>
-                    <div className="text-xs text-muted-foreground line-clamp-1">
-                      {project.location}
+                    <div className="text-xs text-muted-foreground line-clamp-1 truncate">
+                      {item.location}
                     </div>
                   </div>
                 </div>
@@ -116,53 +133,40 @@ const ProjectsTableSection = ({
               {/* Category & Project Type */}
               <TableCell>
                 <div className="font-medium text-foreground line-clamp-1">
-                  {project.category}
+                  {item.category}
                 </div>
                 <div className="text-xs text-muted-foreground line-clamp-1">
-                  {project.projectType}
+                  {item.projectType}
                 </div>
               </TableCell>
 
               {/* Interior Style */}
               <TableCell className="text-muted-foreground">
-                {project.interiorStyle}
+                {item.interiorStyle}
               </TableCell>
 
               {/* Status */}
               <TableCell>
                 <Badge
                   variant="outline"
-                  className={`
-                    ${
-                      project.status === "Completed" &&
-                      "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
-                    }
-                    ${
-                      project.status === "In Progress" &&
-                      "bg-amber-500/10 text-amber-600 border-amber-500/20"
-                    }
-                    ${
-                      project.status === "Concept" &&
-                      "bg-blue-500/10 text-blue-600 border-blue-500/20"
-                    }
-                  `}
+                  className={getStatusBadgeClass(item.status)}
                 >
-                  {project.status}
+                  {item.status}
                 </Badge>
               </TableCell>
 
               {/* Year */}
               <TableCell className="text-muted-foreground">
-                {project.completionYear}
+                {item.completionYear}
               </TableCell>
 
               {/* Featured */}
-              <TableCell>
+              <TableCell className="text-center">
                 <button
                   type="button"
-                  onClick={() => onToggleFeatured(project)}
+                  onClick={() => onToggleFeatured(item)}
                   title={
-                    project.isFeatured
+                    item.isFeatured
                       ? "Remove from featured"
                       : "Mark as featured"
                   }
@@ -171,7 +175,7 @@ const ProjectsTableSection = ({
                   <StarIcon
                     className={cn(
                       "size-4 transition-transform hover:scale-110",
-                      project.isFeatured
+                      item.isFeatured
                         ? "fill-liminal-secondary text-liminal-secondary"
                         : "text-muted-foreground/30 hover:text-muted-foreground/70",
                     )}
@@ -180,7 +184,7 @@ const ProjectsTableSection = ({
               </TableCell>
 
               {/* Actions */}
-              <TableCell>
+              <TableCell className="text-right pr-4">
                 <DropdownMenu>
                   {/* Trigger */}
                   <DropdownMenuTrigger asChild>
@@ -191,7 +195,7 @@ const ProjectsTableSection = ({
                   </DropdownMenuTrigger>
 
                   {/* Content */}
-                  <DropdownMenuContent align="end" className="w-40">
+                  <DropdownMenuContent align="end" className="w-44">
                     {/* Menu Label */}
                     <DropdownMenuLabel className="text-xs font-semibold text-center">
                       Actions
@@ -201,7 +205,7 @@ const ProjectsTableSection = ({
                     {/* View on site */}
                     <DropdownMenuItem asChild>
                       <Link
-                        href={`/projects/${project.slug}`}
+                        href={`/projects/${item.slug}`}
                         target="_blank"
                         className="cursor-pointer"
                       >
@@ -213,7 +217,7 @@ const ProjectsTableSection = ({
                     {/* Edit project */}
                     <DropdownMenuItem asChild>
                       <Link
-                        href={`/dashboard/projects/edit/${project.slug}`}
+                        href={`/dashboard/projects/edit/${item.slug}`}
                         className="cursor-pointer"
                       >
                         <PencilLine className="size-4 mr-2" />
@@ -223,10 +227,10 @@ const ProjectsTableSection = ({
 
                     {/* Toggle Featured */}
                     <DropdownMenuItem
-                      onClick={() => onToggleFeatured(project)}
+                      onClick={() => onToggleFeatured(item)}
                       className="gap-2 cursor-pointer"
                     >
-                      {project.isFeatured ? (
+                      {item.isFeatured ? (
                         <>
                           <StarOff className="size-4" />
                           Remove Featured
@@ -244,7 +248,7 @@ const ProjectsTableSection = ({
                     <DropdownMenuItem
                       variant="destructive"
                       className="cursor-pointer"
-                      onClick={() => onDeleteClick(project)}
+                      onClick={() => onDeleteClick(item)}
                     >
                       <Trash2 className="size-4 mr-2" />
                       Delete project
