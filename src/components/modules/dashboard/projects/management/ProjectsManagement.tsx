@@ -166,6 +166,8 @@ const ProjectsManagement = () => {
         totalPages={totalPages}
         onPageChange={setCurrentPage}
         className="pt-5 md:pt-5"
+        roundedClassName="rounded-sm"
+        activePageClassName="bg-liminal-secondary"
       />
 
       <ProjectDeleteDialog

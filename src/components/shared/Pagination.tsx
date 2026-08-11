@@ -9,6 +9,12 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
   ariaLabel?: string;
   className?: string;
+  /** Custom classes for buttons (Prev, Next, Page numbers) */
+  buttonClassName?: string;
+  /** Custom classes specifically for the active page button */
+  activePageClassName?: string;
+  /** Custom rounded border radius utility (e.g. "rounded-md", "rounded-full", "rounded-none") */
+  roundedClassName?: string;
 }
 
 const Pagination = ({
@@ -17,6 +23,9 @@ const Pagination = ({
   onPageChange,
   ariaLabel = "Pagination",
   className,
+  buttonClassName,
+  activePageClassName,
+  roundedClassName = "rounded-none",
 }: PaginationProps) => {
   if (totalPages <= 1) return null;
 
@@ -58,7 +67,11 @@ const Pagination = ({
         }}
         disabled={currentPage === 1}
         aria-label="Go to previous page"
-        className="flex items-center gap-2 px-4 py-2.5 border border-border/50 text-sm tracking-widest font-semibold transition-all duration-300 hover:border-liminal-secondary disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-background"
+        className={cn(
+          "flex items-center gap-2 px-4 py-2.5 border border-border/50 text-sm tracking-widest font-semibold transition-all duration-300 hover:border-liminal-secondary disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-background",
+          roundedClassName,
+          buttonClassName,
+        )}
       >
         <ChevronLeft className="size-3.5" />
         <span className="hidden sm:inline">Previous</span>
@@ -86,8 +99,13 @@ const Pagination = ({
               aria-current={currentPage === page ? "page" : undefined}
               className={cn(
                 "w-10 h-10 flex items-center justify-center text-sm font-mono font-bold transition-all duration-300 cursor-pointer",
+                roundedClassName,
+                buttonClassName,
                 currentPage === page
-                  ? "bg-liminal-dark text-background shadow-md shadow-liminal-secondary/20"
+                  ? cn(
+                      "bg-liminal-dark text-background shadow-md shadow-liminal-secondary/20",
+                      activePageClassName,
+                    )
                   : "border border-border/50 hover:border-liminal-secondary bg-background",
               )}
             >
@@ -106,7 +124,11 @@ const Pagination = ({
         }}
         disabled={currentPage === totalPages}
         aria-label="Go to next page"
-        className="flex items-center gap-2 px-4 py-2.5 border border-border/50 text-sm tracking-widest font-semibold transition-all duration-300 hover:border-liminal-secondary disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-background"
+        className={cn(
+          "flex items-center gap-2 px-4 py-2.5 border border-border/50 text-sm tracking-widest font-semibold transition-all duration-300 hover:border-liminal-secondary disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer bg-background",
+          roundedClassName,
+          buttonClassName,
+        )}
       >
         <span className="hidden sm:inline">Next</span>
         <ChevronRight className="size-3.5" />
