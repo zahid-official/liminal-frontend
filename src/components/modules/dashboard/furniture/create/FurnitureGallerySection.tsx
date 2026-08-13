@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import {
   ImageIcon,
   ImagePlus,
-  Plus,
+  PlusCircle,
   PlusCircleIcon,
   UploadCloud,
   X,
@@ -91,9 +91,15 @@ const FurnitureGallerySection: React.FC<FurnitureGallerySectionProps> = ({
               PNG, JPG, WEBP or SVG (Max 5MB per file)
             </p>
 
-            <span className="px-4 py-2 bg-liminal-secondary text-background rounded-lg text-sm font-medium shadow-sm flex items-center gap-2">
-              <Plus className="w-4 h-4" /> Add Gallery Images
-            </span>
+            <LiminalButton
+              icon={PlusCircle}
+              iconPosition="left"
+              animateIcon={false}
+              className="rounded-lg min-h-10 px-4"
+              textClassName="text-sm"
+            >
+              Add Gallery Images
+            </LiminalButton>
 
             <input
               type="file"

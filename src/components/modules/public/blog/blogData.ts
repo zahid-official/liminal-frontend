@@ -49,7 +49,20 @@ export interface IBlogArticle {
   author: IBlogAuthor;
   createdAt: string;
   readTime: string;
+  isFeatured?: boolean;
+  tags?: string;
 }
+
+// Blog Sort Options
+export const blogSortOptions = [
+  { label: "Newest First", value: "newest" },
+  { label: "Oldest First", value: "oldest" },
+  { label: "Title: A – Z", value: "az" },
+  { label: "Title: Z – A", value: "za" },
+  { label: "Read Time: Short to Long", value: "read-time-asc" },
+  { label: "Read Time: Long to Short", value: "read-time-desc" },
+] as const;
+export type BlogSortValue = (typeof blogSortOptions)[number]["value"];
 
 // Blog Articles Data
 export const blogArticles: IBlogArticle[] = [
@@ -535,3 +548,72 @@ export const getAdjacentArticles = (
 
   return { prev, next };
 };
+
+// Helper: parse read time in minutes
+export const parseBlogReadTime = (readTimeStr?: string): number => {
+  if (!readTimeStr) return 0;
+  return parseInt(readTimeStr.replace(/[^0-9]/g, ""), 10) || 0;
+};
+
+// Filter and sort blog articles
+export const filterBlogArticles = (options: {
+  category?: string;
+  search?: string;
+  sort?: BlogSortValue;
+}): IBlogArticle[] => {
+  let results = [...blogArticles];
+
+  // Category filter
+  if (options.category && options.category !== "All") {
+    results = results.filter(
+      (article) => article.category === options.category,
+    );
+  }
+
+  // Search filter
+  if (options.search?.trim()) {
+    const query = options.search.toLowerCase().trim();
+    results = results.filter(
+      (article) =>
+        article.title.toLowerCase().includes(query) ||
+        article.description.toLowerCase().includes(query) ||
+        article.category.toLowerCase().includes(query) ||
+        article.author.name.toLowerCase().includes(query) ||
+        article.author.role.toLowerCase().includes(query) ||
+        (article.tags && article.tags.toLowerCase().includes(query)),
+    );
+  }
+
+  // Sort
+  if (options.sort) {
+    switch (options.sort) {
+      case "oldest":
+        results.reverse();
+        break;
+      case "az":
+        results.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case "za":
+        results.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case "read-time-asc":
+        results.sort(
+          (a, b) =>
+            parseBlogReadTime(a.readTime) - parseBlogReadTime(b.readTime),
+        );
+        break;
+      case "read-time-desc":
+        results.sort(
+          (a, b) =>
+            parseBlogReadTime(b.readTime) - parseBlogReadTime(a.readTime),
+        );
+        break;
+      case "newest":
+      default:
+        break;
+    }
+  }
+
+  return results;
+};
+

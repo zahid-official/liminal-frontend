@@ -6,10 +6,76 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
+interface SelectContextValue {
+  autoSizerItems: string[];
+}
+
+const SelectContext = React.createContext<SelectContextValue>({
+  autoSizerItems: [],
+});
+
+/**
+ * Helper to recursively extract text labels from React elements (e.g. SelectItem children/textValue and SelectValue placeholder)
+ */
+function extractSelectLabels(children: React.ReactNode): string[] {
+  const labels: string[] = [];
+
+  function traverse(node: React.ReactNode) {
+    if (!node) return;
+
+    if (Array.isArray(node)) {
+      node.forEach(traverse);
+      return;
+    }
+
+    if (React.isValidElement(node)) {
+      const props = node.props as {
+        placeholder?: unknown;
+        textValue?: unknown;
+        children?: React.ReactNode;
+      };
+      // Extract placeholder from SelectValue
+      if (typeof props?.placeholder === "string") {
+        labels.push(props.placeholder);
+      }
+
+      // Extract explicit textValue if provided
+      if (props?.textValue && typeof props.textValue === "string") {
+        labels.push(props.textValue);
+      }
+
+      // Extract string children directly (standard for SelectItem)
+      if (typeof props?.children === "string") {
+        labels.push(props.children);
+      }
+
+      // Recursively traverse children
+      if (props?.children) {
+        traverse(props.children);
+      }
+    }
+  }
+
+  traverse(children);
+  return labels;
+}
+
 function Select({
+  children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
+  const autoSizerItems = React.useMemo(
+    () => extractSelectLabels(children),
+    [children],
+  );
+
+  return (
+    <SelectContext.Provider value={{ autoSizerItems }}>
+      <SelectPrimitive.Root data-slot="select" {...props}>
+        {children}
+      </SelectPrimitive.Root>
+    </SelectContext.Provider>
+  );
 }
 
 function SelectGroup({
@@ -31,27 +97,57 @@ function SelectValue({
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
+interface SelectTriggerProps
+  extends React.ComponentProps<typeof SelectPrimitive.Trigger> {
+  size?: "sm" | "default";
+  sizerItems?: (string | undefined | null)[];
+}
+
 function SelectTrigger({
   className,
   size = "default",
+  sizerItems,
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
-  size?: "sm" | "default";
-}) {
+}: SelectTriggerProps) {
+  const { autoSizerItems } = React.useContext(SelectContext);
+
+  const rawItems = sizerItems ?? autoSizerItems;
+  const validSizerItems = rawItems?.filter(
+    (item): item is string =>
+      typeof item === "string" && item.trim().length > 0,
+  );
+
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "flex w-fit items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-10 data-[size=sm]:h-8 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer",
+        "flex w-fit items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2.5 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 select-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-10 data-[size=sm]:h-8 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer",
         className,
       )}
       {...props}
     >
-      {children}
+      {validSizerItems && validSizerItems.length > 0 ? (
+        <div className="grid grid-cols-1 items-center flex-1 min-w-0 text-left">
+          <div className="col-start-1 row-start-1 min-w-0 flex items-center">
+            {children}
+          </div>
+          {validSizerItems.map((text, i) => (
+            <span
+              key={i}
+              aria-hidden="true"
+              className="col-start-1 row-start-1 invisible h-0 overflow-hidden whitespace-nowrap pointer-events-none select-none font-normal text-sm"
+            >
+              {text}
+            </span>
+          ))}
+        </div>
+      ) : (
+        children
+      )}
       <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
+        <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground ml-auto shrink-0" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
@@ -73,7 +169,7 @@ function SelectContent({
         className={cn(
           "relative z-50 max-h-(--radix-select-content-available-height) min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/20 duration-100 data-[align-trigger=true]:animate-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           position === "popper" &&
-            "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+            "w-(--radix-select-trigger-width) min-w-(--radix-select-trigger-width) data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
           className,
         )}
         position={position}
@@ -120,7 +216,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-pointer items-center gap-2 rounded-md py-2.5 pr-10 pl-3 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
+        "relative flex w-full cursor-pointer items-center gap-2 rounded-md py-2.5 pr-8 pl-3 text-sm whitespace-nowrap transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50",
         className,
       )}
       {...props}

@@ -6,17 +6,21 @@ import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
-import { FileTextIcon, Send } from "lucide-react";
-import ProjectHeaderSection from "./ProjectHeaderSection";
-import ProjectBasicInfoSection from "./ProjectBasicInfoSection";
-import ProjectGallerySection from "./ProjectGallerySection";
-import ProjectNarrativesSection from "./ProjectNarrativesSection";
-import ProjectThumbnailSection from "./ProjectThumbnailSection";
-import ProjectSpecificationsSection from "./ProjectSpecificationsSection";
-import { ProjectFormValues, projectSchema } from "./types";
+import { FileTextIcon, Save } from "lucide-react";
+import ProjectHeaderSection from "../create/ProjectHeaderSection";
+import ProjectBasicInfoSection from "../create/ProjectBasicInfoSection";
+import ProjectGallerySection from "../create/ProjectGallerySection";
+import ProjectNarrativesSection from "../create/ProjectNarrativesSection";
+import ProjectThumbnailSection from "../create/ProjectThumbnailSection";
+import ProjectSpecificationsSection from "../create/ProjectSpecificationsSection";
+import { ProjectFormValues, projectSchema } from "../create/types";
+import { IProject } from "@/components/modules/public/projects/projectsData";
 
-// CreateProjectForm Component
-const CreateProjectForm = () => {
+interface EditProjectFormProps {
+  initialData: IProject;
+}
+
+const EditProjectForm = ({ initialData }: EditProjectFormProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,29 +28,29 @@ const CreateProjectForm = () => {
   const form = useForm<ProjectFormValues>({
     resolver: zodResolver(projectSchema),
     defaultValues: {
-      title: "",
-      slug: "",
-      category: "",
-      projectType: "",
-      interiorStyle: "",
-      isFeatured: false,
-      status: "" as unknown as "Concept",
-      area: "",
-      location: "",
-      duration: "",
-      completionYear: "",
-      thumbnail: "",
-      thumbnailCaption: "",
-      description: "",
+      title: initialData.title || "",
+      slug: initialData.slug || "",
+      category: initialData.category || "",
+      projectType: initialData.projectType || "",
+      interiorStyle: initialData.interiorStyle || "",
+      isFeatured: initialData.isFeatured || false,
+      status: initialData.status as unknown as "Concept" | "Completed" | "In Progress",
+      area: initialData.area || "",
+      location: initialData.location || "",
+      duration: initialData.duration || "",
+      completionYear: initialData.completionYear || "",
+      thumbnail: initialData.thumbnail || "",
+      thumbnailCaption: initialData.thumbnailCaption || "",
+      description: initialData.description || "",
       narratives: {
-        projectContext: "",
-        clientVision: "",
-        designObjectives: "",
-        spatialChallenges: "",
-        overallConcept: "",
-        theRealization: "",
+        projectContext: initialData.narratives?.projectContext || "",
+        clientVision: initialData.narratives?.clientVision || "",
+        designObjectives: initialData.narratives?.designObjectives || "",
+        spatialChallenges: initialData.narratives?.spatialChallenges || "",
+        overallConcept: initialData.narratives?.overallConcept || "",
+        theRealization: initialData.narratives?.theRealization || "",
       },
-      galleryImages: [],
+      galleryImages: initialData.galleryImages || [],
     },
   });
 
@@ -65,7 +69,7 @@ const CreateProjectForm = () => {
     console.error("Validation errors on submission:", errors);
     toast.error("Validation Failed", {
       description:
-        "Please check all required fields and correct the errors before publishing.",
+        "Please check all required fields and correct the errors before updating.",
     });
   };
 
@@ -86,19 +90,19 @@ const CreateProjectForm = () => {
       };
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Submitted Project Data:", payload);
+      console.log("Updated Project Data:", payload);
 
-      toast.success("Project published successfully!", {
-        description: "The new project has been published to the portfolio.",
+      toast.success("Project updated successfully!", {
+        description: "The project has been updated in the portfolio.",
       });
 
       // Brief delay to allow the user to see the success toast before redirecting
       setTimeout(() => {
-        router.push("/dashboard");
+        router.push("/dashboard/projects");
       }, 1500);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to publish project", {
+      toast.error("Failed to update project", {
         description: "An unexpected error occurred. Please try again.",
       });
     } finally {
@@ -112,14 +116,14 @@ const CreateProjectForm = () => {
       className="space-y-8"
     >
       <ProjectHeaderSection
-        title="Create New Project"
-        description="Fill in the details below to add a new interior design project to your portfolio."
+        title="Edit Project"
+        description="Update the details of this interior design project in your portfolio."
         icon={FileTextIcon}
         isSubmitting={isSubmitting}
-        submitButtonText="Publish Project"
-        submitButtonLoadingText="Publishing..."
-        submitButtonIcon={Send}
-        submitButtonAnimateIcon={true}
+        submitButtonText="Save Changes"
+        submitButtonLoadingText="Saving..."
+        submitButtonIcon={Save}
+        submitButtonAnimateIcon={false}
         onReset={() => form.reset()}
       />
 
@@ -147,4 +151,4 @@ const CreateProjectForm = () => {
   );
 };
 
-export default CreateProjectForm;
+export default EditProjectForm;
