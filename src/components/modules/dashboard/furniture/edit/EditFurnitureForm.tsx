@@ -1,59 +1,78 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArmchairIcon, Send } from "lucide-react";
+import { ArmchairIcon, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldErrors, useFieldArray, useForm } from "react-hook-form";
 import slugify from "slugify";
 import { toast } from "sonner";
-import FurnitureBasicInfoSection from "./FurnitureBasicInfoSection";
-import FurnitureGallerySection from "./FurnitureGallerySection";
-import FurnitureHeaderSection from "./FurnitureHeaderSection";
-import FurnitureNarrativeSection from "./FurnitureNarrativeSection";
-import FurniturePricingSection from "./FurniturePricingSection";
-import FurnitureSpecificationsSection from "./FurnitureSpecificationsSection";
-import FurnitureThumbnailSection from "./FurnitureThumbnailSection";
-import { FurnitureFormValues, furnitureSchema } from "./types";
+import { IFurniture } from "@/components/modules/public/services/furniture/furnitureData";
+import FurnitureBasicInfoSection from "../create/FurnitureBasicInfoSection";
+import FurnitureGallerySection from "../create/FurnitureGallerySection";
+import FurnitureHeaderSection from "../create/FurnitureHeaderSection";
+import FurnitureNarrativeSection from "../create/FurnitureNarrativeSection";
+import FurniturePricingSection from "../create/FurniturePricingSection";
+import FurnitureSpecificationsSection from "../create/FurnitureSpecificationsSection";
+import FurnitureThumbnailSection from "../create/FurnitureThumbnailSection";
+import { FurnitureFormValues, furnitureSchema } from "../create/types";
 
-// CreateFurnitureForm Component
-const CreateFurnitureForm = () => {
+// Interface for EditFurnitureForm Props
+interface EditFurnitureFormProps {
+  initialData: IFurniture;
+}
+
+// EditFurnitureForm Component
+const EditFurnitureForm = ({ initialData }: EditFurnitureFormProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Form initialization with Zod validation resolver
+  // Form initialization with Zod validation resolver and initial data
   const form = useForm<FurnitureFormValues>({
     resolver: zodResolver(furnitureSchema),
     defaultValues: {
-      title: "",
-      slug: "",
-      productCode: "",
-      category: "",
-      status: "",
-      price: "",
-      stock: 0,
-      thumbnail: "",
+      title: initialData.title || "",
+      slug: initialData.slug || "",
+      productCode: initialData.productCode || "",
+      category: initialData.category || "",
+      status: initialData.status || "",
+      price: initialData.price || "",
+      stock: initialData.stock ?? 0,
+      thumbnail: initialData.thumbnail || "",
       thumbnailCaption: "",
-      tagline: "",
-      description: "",
+      tagline: initialData.tagline || "",
+      description: initialData.description || "",
       details: {
-        overview: "",
-        designStory: "",
-        craftsmanship: "",
+        overview: initialData.details?.overview || "",
+        designStory: initialData.details?.designStory || "",
+        craftsmanship: initialData.details?.craftsmanship || "",
       },
       specifications: {
-        materials: "",
-        weight: "",
+        materials: initialData.specifications?.materials || "",
+        weight: initialData.specifications?.weight || "",
         dimensions: {
-          width: "",
-          depth: "",
-          height: "",
-          unit: "",
+          width:
+            initialData.specifications?.dimensions?.width !== undefined
+              ? String(initialData.specifications.dimensions.width)
+              : "",
+          depth:
+            initialData.specifications?.dimensions?.depth !== undefined
+              ? String(initialData.specifications.dimensions.depth)
+              : "",
+          height:
+            initialData.specifications?.dimensions?.height !== undefined
+              ? String(initialData.specifications.dimensions.height)
+              : "",
+          unit: initialData.specifications?.dimensions?.unit || "mm",
         },
-        leadTime: "",
-        warranty: "",
+        leadTime: initialData.specifications?.leadTime || "",
+        warranty: initialData.specifications?.warranty || "",
       },
-      galleryImages: [],
+      galleryImages:
+        initialData.galleryImages?.map((image) => ({
+          url: image.url,
+          caption: image.caption || "",
+        })) || [],
     },
   });
 
@@ -72,7 +91,7 @@ const CreateFurnitureForm = () => {
     console.error("Validation errors on submission:", errors);
     toast.error("Validation Failed", {
       description:
-        "Please check all required fields and correct the errors before publishing.",
+        "Please check all required fields and correct the errors before saving.",
     });
   };
 
@@ -103,6 +122,7 @@ const CreateFurnitureForm = () => {
 
       const payload = {
         ...data,
+        id: initialData.id,
         slug: generatedSlug,
         specifications: {
           ...data.specifications,
@@ -111,20 +131,20 @@ const CreateFurnitureForm = () => {
       };
 
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Submitted Furniture Data:", payload);
+      console.log("Updated Furniture Data:", payload);
 
-      toast.success("Furniture published successfully!", {
+      toast.success("Furniture updated successfully!", {
         description:
-          "The new furniture product has been added to the collection.",
+          "The furniture piece has been updated in the collection.",
       });
 
       // Brief delay to allow the user to see the success toast before redirecting
       setTimeout(() => {
-        router.push("/dashboard");
+        router.push("/dashboard/furniture");
       }, 1500);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to publish furniture", {
+      toast.error("Failed to update furniture", {
         description: "An unexpected error occurred. Please try again.",
       });
     } finally {
@@ -139,13 +159,14 @@ const CreateFurnitureForm = () => {
     >
       {/* Form Header */}
       <FurnitureHeaderSection
-        title="Create New Furniture"
-        description="Fill in the details below to add a new furniture product to the collection."
+        title="Edit Furniture"
+        description="Update the specifications and details of this bespoke furniture piece."
         icon={ArmchairIcon}
         isSubmitting={isSubmitting}
-        submitButtonText="Publish Furniture"
-        submitButtonLoadingText="Publishing..."
-        submitButtonIcon={Send}
+        submitButtonText="Save Changes"
+        submitButtonLoadingText="Saving..."
+        submitButtonIcon={Save}
+        submitButtonAnimateIcon={false}
         onReset={() => form.reset()}
       />
 
@@ -174,4 +195,4 @@ const CreateFurnitureForm = () => {
   );
 };
 
-export default CreateFurnitureForm;
+export default EditFurnitureForm;

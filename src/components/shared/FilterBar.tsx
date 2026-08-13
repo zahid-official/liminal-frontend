@@ -118,12 +118,12 @@ const FilterBar = <CategoryType extends string, SortType extends string>({
 
           {/* Sort Dropdown */}
           {onSortChange && sortOptions.length > 0 && (
-            <div className="w-full sm:w-auto sm:min-w-38 sm:max-w-44 shrink-0">
+            <div className="w-full sm:w-auto shrink-0">
               <Select
                 value={sortBy || undefined}
                 onValueChange={(val) => onSortChange(val as SortType)}
               >
-                <SelectTrigger className="w-full h-10.5! border border-border/60 bg-background! text-sm font-medium focus:border-liminal-secondary/50 focus:ring-2 focus:ring-liminal-secondary/10 transition-all rounded-none pl-8 shadow-none relative flex items-center justify-start gap-2">
+                <SelectTrigger className="w-full sm:w-auto h-10.5! border border-border/60 bg-background! text-sm font-medium focus:border-liminal-secondary/50 focus:ring-2 focus:ring-liminal-secondary/10 transition-all rounded-none pl-8 shadow-none relative flex items-center justify-start gap-2">
                   <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 pointer-events-none" />
                   <SelectValue placeholder={sortPlaceholder} />
                 </SelectTrigger>
@@ -131,13 +131,14 @@ const FilterBar = <CategoryType extends string, SortType extends string>({
                 {/* Select Content */}
                 <SelectContent
                   position="popper"
-                  className="w-(--radix-select-trigger-width) border border-border/60 bg-background/98 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-none"
+                  align="end"
+                  className="border border-border/60 bg-background/98 backdrop-blur-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] rounded-none"
                 >
                   {sortOptions.map((opt) => (
                     <SelectItem
                       key={opt.value}
                       value={opt.value}
-                      className="text-sm cursor-pointer rounded-none hover:bg-zinc-50 focus:bg-zinc-50 focus:text-liminal-secondary py-2.5 px-4 transition-all"
+                      className="text-sm whitespace-nowrap cursor-pointer rounded-none hover:bg-zinc-50 focus:bg-zinc-50 focus:text-liminal-secondary py-2.5 px-4 transition-all"
                     >
                       {opt.label}
                     </SelectItem>

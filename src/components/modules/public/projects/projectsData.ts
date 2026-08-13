@@ -129,7 +129,7 @@ export const projects: IProject[] = [
     projectType: "Corporate Office",
     interiorStyle: "Warm Modernism",
     isFeatured: true,
-    status: "Completed",
+    status: "In Progress",
     area: "8,500 sq ft",
     location: "Motijheel, Dhaka",
     duration: "10 Months",
@@ -178,7 +178,7 @@ export const projects: IProject[] = [
     projectType: "Private Penthouse",
     interiorStyle: "Organic Modern",
     isFeatured: true,
-    status: "Completed",
+    status: "Concept",
     area: "3,100 sq ft",
     location: "Gulshan, Dhaka",
     duration: "11 Months",
@@ -280,7 +280,7 @@ export const projects: IProject[] = [
     projectType: "Private Penthouse",
     interiorStyle: "Scandinavian Luxe",
     isFeatured: false,
-    status: "Completed",
+    status: "In Progress",
     area: "3,800 sq ft",
     location: "Banani, Dhaka",
     duration: "12 Months",
@@ -329,7 +329,7 @@ export const projects: IProject[] = [
     projectType: "Creative Studio",
     interiorStyle: "Industrial Refined",
     isFeatured: false,
-    status: "Completed",
+    status: "Concept",
     area: "2,400 sq ft",
     location: "Uttara, Dhaka",
     duration: "8 Months",
@@ -382,7 +382,7 @@ export const projects: IProject[] = [
     projectType: "Private Villa",
     interiorStyle: "Contemporary Minimal",
     isFeatured: false,
-    status: "Completed",
+    status: "In Progress",
     area: "5,800 sq ft",
     location: "Gulshan, Dhaka",
     duration: "16 Months",
@@ -468,7 +468,7 @@ export const projects: IProject[] = [
     projectType: "Retail Boutique",
     interiorStyle: "Art Deco Revival",
     isFeatured: false,
-    status: "Completed",
+    status: "In Progress",
     area: "2,800 sq ft",
     location: "Gulshan, Dhaka",
     duration: "9 Months",
@@ -509,7 +509,7 @@ export const projects: IProject[] = [
     projectType: "Sustainable Workspace",
     interiorStyle: "Organic Modern",
     isFeatured: false,
-    status: "Completed",
+    status: "Concept",
     area: "7,500 sq ft",
     location: "Uttara, Dhaka",
     duration: "11 Months",
@@ -622,6 +622,22 @@ export const getRelatedProjects = (
 
   return [...sameCategory, ...others].slice(0, limit);
 };
+
+// Category Options
+export const projectCategoryOptions = [
+  { label: "All Categories", value: "All" },
+  ...projectCategories
+    .filter((cat) => cat !== "All")
+    .map((cat) => ({ label: cat, value: cat })),
+] as const;
+
+// Status Options
+export const projectStatusOptions = [
+  { label: "All Status", value: "All" },
+  { label: "Completed", value: "Completed" },
+  { label: "In Progress", value: "In Progress" },
+  { label: "Concept", value: "Concept" },
+] as const satisfies readonly { label: string; value: "All" | ProjectStatus }[];
 
 // Sort Options
 export const projectSortOptions = [
