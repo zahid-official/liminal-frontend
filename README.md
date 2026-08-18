@@ -1,2 +1,2 @@
-Liminal - Interior Design Studio - Repository
+Liminal - Interior Design Studio
 
