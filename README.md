@@ -1,2 +1,2 @@
-Liminal 
+Liminal Interior Design Studio
 
