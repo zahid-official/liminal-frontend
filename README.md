@@ -1,1 +1,1 @@
-Liminal Interior Design Frontend Development Repository
+Liminal Interior Design Frontend
