@@ -1,1 +1,1 @@
-Liminal interior design
+Liminal interio
