@@ -1,1 +1,1 @@
-Liminal Interior Design Studio - Frontend
+Liminal Interior Design Studio 
