@@ -1,2 +1,2 @@
-Liminal Interior Design Studio - repo
+Liminal Interior Design Studio 
 
