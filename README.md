@@ -1,1 +1,1 @@
-Liminal Interior Design Studio - repository 
+Liminal Interior Design Studio  
