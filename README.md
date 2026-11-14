@@ -1,1 +1,1 @@
-Liminal Interior Design Github
+Liminal Interior Design Github Repo
